@@ -43,3 +43,7 @@ Self-use checkpoint (after reading mandatory session documents):
   run checkpoint with `--refresh`, then inspect without it. Commit
   handoff/checkpoint.json in the same atomic change. See docs/CHECKPOINT.md.
 - A fresh checkpoint is not proof of test execution or semantic correctness.
+- Run `PYTHONPATH=src python3 -m ai_for_ai_lab coverage --root .` at session
+  start and before refreshing. Inspect uncovered src/tests paths and deliberately
+  maintain their claim relationships. Do not treat inventory coverage as proof
+  that every semantic dependency has been declared; see docs/COVERAGE.md.

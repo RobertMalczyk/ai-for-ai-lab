@@ -35,11 +35,18 @@ def main():
     checkpoint.add_argument("--root", required=True)
     checkpoint.add_argument("--refresh", action="store_true",
                             help="replace the baseline after reviewing changes and running tests")
+    coverage = sub.add_parser("coverage")
+    coverage.add_argument("--root", required=True)
     try:
         args = parser.parse_args()
         if args.command == "capture":
             result = capture(args.root, args.goal, args.next_step, args.paths)
             code = 0
+        elif args.command == "coverage":
+            # Git is required only for inventory, not the existing file tools.
+            from .coverage import audit
+            result = audit(args.root)
+            code = 0 if result["coverage_complete"] else 1
         elif args.command == "checkpoint":
             result = refresh(args.root) if args.refresh else inspect(args.root)
             code = 0 if args.refresh or result["fresh"] else 1

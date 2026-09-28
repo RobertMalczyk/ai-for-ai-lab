@@ -48,6 +48,7 @@ sandbox and assumes no concurrent writes during capture/check. A matching file
 can change immediately after checking. There is no demonstrated token saving or
 LLM task-success gain yet. Synthetic byte accounting is documented in
 `docs/BENCHMARKS.md`; it includes cases where scoped review costs more.
+The optional `coverage` inventory command also requires Git; other commands do not.
 
 ## Git and continuity
 
@@ -78,3 +79,8 @@ The lab now uses its own tool:
 Read the report before editing; after tests and documentation, explicitly refresh
 with `--refresh` and commit the checkpoint with the work. See `docs/CHECKPOINT.md`
 for why refreshing is not validation and how to handle a stale result.
+
+Check for files missing from the declarations with
+`PYTHONPATH=src python3 -m ai_for_ai_lab coverage --root .`.
+It covers tracked and nonignored untracked `src/` and `tests/` paths, not semantic
+dependency completeness. See `docs/COVERAGE.md` for the bounded contract.

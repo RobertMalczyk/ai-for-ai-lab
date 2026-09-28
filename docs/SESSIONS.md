@@ -96,3 +96,32 @@
 - Decisions: DEC-0008: one atomic self-use bundle with check-before-refresh; no automatic claims of validation.
 - Unresolved: Manual dependency maps can omit new files; hashes cannot prove semantics or test results; no real-agent token/outcome study and no concurrent-writer guarantee.
 - Next: Add a small dependency-coverage audit: compare tracked src/ and tests/ paths with handoff/claims.json, report uncovered new files as unknown coverage without inventing semantic links. Test an added undeclared module and preserve the existing omitted-dependency negative control.
+
+## 2026-09-28T19:13:16+02:00 — Session 007 (follow-up)
+
+- Goal: expose new src/tests files omitted from the checkpoint's declared evidence.
+- Problem: the baseline checkpoint was fresh, but by design could not notice an
+  added file outside its evidence list. Tracked-only inventory would also miss
+  a newly created module before staging.
+- Changes: read-only Git inventory audit, JSON/exit-code contract, shared claim
+  validation, ten tests, session integration and explicit project claim updates.
+- Files: src/ai_for_ai_lab/{coverage.py,review.py,checkpoint.py,__main__.py};
+  tests/test_coverage.py; handoff/{claims.json,checkpoint.json}; README.md;
+  AGENTS.md; STATE.md; ROADMAP.md; docs/{COVERAGE.md,CHECKPOINT.md,DECISIONS.md,SESSIONS.md}.
+- Tests: full unittest discovery: 47 passed, including tracked/untracked gaps,
+  ignore rules, odd filenames, invalid/nested roots, duplicate IDs, CLI exits,
+  and deleted tracked evidence without audit mutations. Original negative-control
+  recovery benchmark still passes with the same deliberately missed dependency.
+- Result: before claim updates the audit reported coverage_complete=false and
+  precisely its own two new source/test files; after deliberate assignment it
+  reported 15 covered paths, no gaps. The previous checkpoint independently
+  reported changed claims before refresh, rather than being silently replaced.
+- Learned: file membership coverage and freshness are independent. A deleted
+  tracked file can be covered but not fresh; wrong semantic edges are invisible.
+- Decisions: DEC-0009. Include nonignored untracked files, never auto-assign claims.
+- Unresolved: no transitive/semantic dependency completeness, concurrent inventory
+  snapshot, ignored-file coverage or empirical real-agent cost/success result.
+- Next: measure one real self-use session: record startup/report bytes, actual
+  reread paths and missed dependencies; compare with whole-declared-file reads
+  while separating mandatory document reading and hash I/O. Then decide whether
+  scoping earns its complexity before building another feature.

@@ -1,10 +1,10 @@
 # Hypotheses, not promises
 
 ## NOW
-- Five project claim groups are inspectable; deterministic checkpoint writes and copied-checkout isolation tests pass. The repository now consumes its own tool.
+- Checkpoint freshness and bounded src/tests declaration coverage both work; 47 tests pass. The audit detected its own two undeclared new files before their claim assignment.
 
 ## NEXT
-- Add a small dependency-coverage audit: compare tracked src/ and tests/ paths with handoff/claims.json, report uncovered new files as unknown coverage without inventing semantic links. Test an added undeclared module and preserve the existing omitted-dependency negative control.
+- Measure a real self-use session before more features: startup document bytes, report bytes, actual reread paths and missed dependencies. Compare against a whole-declared-file reread baseline, separately accounting for mandatory startup reads and hashing I/O. Decide whether to keep or simplify scoped review; do not infer token savings from bytes.
 
 ## EXPERIMENTS
 - H2: a bounded context selection manifest reduces repeated reads; measure bytes

@@ -66,7 +66,10 @@
       "src/ai_for_ai_lab/checkpoint.py",
       "src/ai_for_ai_lab/__main__.py",
       "tests/test_checkpoint.py",
-      "src/ai_for_ai_lab/__init__.py"
+      "src/ai_for_ai_lab/__init__.py",
+      "src/ai_for_ai_lab/coverage.py",
+      "tests/test_coverage.py",
+      "docs/COVERAGE.md"
     ]
   }
 ]

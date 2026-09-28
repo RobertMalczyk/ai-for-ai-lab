@@ -109,3 +109,22 @@ Why: actual self-use exposes integration friction, while one replacement avoids 
 Alternatives: automatically refresh when stale (erases the signal); separately overwrite capsule and manifest (mismatch risk).
 
 Consequences: deterministic JSON and Git preserve reviewable changes; refresh does not run tests or certify truth. Claims require manual dependency maintenance. Atomic rename is not a concurrency or power-loss durability guarantee.
+
+### DEC-0009 — Inventory coverage is a separate bounded signal
+
+Problem: unchanged captured files cannot reveal a newly added undeclared module.
+
+Decision: compare Git's tracked and nonignored untracked src/tests inventory to
+validated claim paths. Report gaps without assigning semantic links. Keep the
+audit separate from byte-freshness checking and use both in session instructions.
+
+Why: agents should notice new work before staging; ignoring generated untracked
+files avoids cache noise. Sharing claim validation avoids divergent contracts.
+
+Alternatives: tracked-only audit (misses unstaged additions); automatically attach
+every file to every claim (destroys useful scoping); infer imports now (larger scope).
+
+Consequences: requires local Git for this command. Outside-scope paths, ignored
+untracked files, submodule contents and missing dependency edges remain unknown.
+Even deleted tracked files can be covered: freshness must be checked separately.
+The original omitted-dependency negative control is retained.

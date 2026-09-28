@@ -20,6 +20,8 @@ baseline replacement, not a validation step; it neither runs tests nor certifies
 claims. Never refresh merely to silence a stale result. Claims are maintained in
 handoff/claims.json and the manifest stores the old declarations, so editing the
 claim map itself is detectable before refresh. Add newly relevant paths there.
+Run `coverage --root .` before refresh to find undeclared src/tests files;
+see docs/COVERAGE.md. Checkpoint freshness alone cannot detect such additions.
 
 One deterministic JSON bundle contains version=1, capsule and manifest. The
 writer stages a temporary file in the same directory, flushes it, then replaces

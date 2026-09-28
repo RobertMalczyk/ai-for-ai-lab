@@ -1,7 +1,7 @@
 """Bind claims to one capsule and localize evidence review, never truth."""
 import hashlib
 import json
-from .capsule import CapsuleError, check, validate
+from .capsule import CapsuleError, check, relative_path, validate
 
 
 def fingerprint(capsule):
@@ -10,11 +10,10 @@ def fingerprint(capsule):
     return hashlib.sha256(data.encode("utf-8")).hexdigest()
 
 
-def validate_claims(capsule, claims):
-    validate(capsule)
+def claim_paths(claims):
+    """Validate declarations without claiming that their dependencies exist."""
     if not isinstance(claims, list) or not claims:
         raise CapsuleError("claims must be a nonempty list")
-    known = {item["path"] for item in capsule["evidence"]}
     used, ids = set(), set()
     for claim in claims:
         if not isinstance(claim, dict) or set(claim) != {"id", "text", "evidence"}:
@@ -28,9 +27,20 @@ def validate_claims(capsule, claims):
         paths = claim["evidence"]
         if not isinstance(paths, list) or not paths or any(not isinstance(p, str) for p in paths):
             raise CapsuleError("claim evidence must be a nonempty list of paths")
-        if len(set(paths)) != len(paths) or not set(paths) <= known:
-            raise CapsuleError("claim evidence must be unique capsule paths")
+        if len(set(paths)) != len(paths):
+            raise CapsuleError("claim evidence paths must be unique")
+        for path in paths:
+            relative_path(path)
         used.update(paths)
+    return used
+
+
+def validate_claims(capsule, claims):
+    validate(capsule)
+    known = {item["path"] for item in capsule["evidence"]}
+    used = claim_paths(claims)
+    if not used <= known:
+        raise CapsuleError("claim evidence must reference capsule paths")
     if used != known:
         raise CapsuleError("every capsule evidence path must belong to a claim")
 

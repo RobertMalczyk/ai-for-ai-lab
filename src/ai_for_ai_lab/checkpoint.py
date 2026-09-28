@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import tempfile
 from .capsule import CapsuleError, capture, evidence_path, loads, root_path
-from .review import link, review
+from .review import claim_paths, link, review
 
 CLAIMS = "handoff/claims.json"
 CHECKPOINT = "handoff/checkpoint.json"
@@ -28,15 +28,7 @@ def atomic_json(path, value):
 def refresh(root):
     root = root_path(root)
     claims = loads(evidence_path(root, CLAIMS).read_text(encoding="utf-8"))
-    if not isinstance(claims, list) or not claims:
-        raise CapsuleError("checkpoint claims must be a nonempty list")
-    paths = set()
-    for claim in claims:
-        if not isinstance(claim, dict) or not isinstance(claim.get("evidence"), list):
-            raise CapsuleError("checkpoint claims require evidence lists")
-        if any(not isinstance(p, str) for p in claim["evidence"]):
-            raise CapsuleError("checkpoint evidence paths must be strings")
-        paths.update(claim["evidence"])
+    paths = claim_paths(claims)
     if CHECKPOINT in paths or CLAIMS not in paths:
         raise CapsuleError("declare claims.json as evidence, never checkpoint.json itself")
     capsule = capture(root, "Resume AI FOR AI LAB from declared project evidence",

@@ -61,3 +61,15 @@ Why: failures show what the tool cannot establish.
 Alternatives: only test changed/deleted files (misleading coverage).
 
 Consequences: fixture-defined counts are diagnostic only; claim scoping may reduce review breadth but cannot resolve either semantic limitation.
+
+### DEC-0005 — Bound claim manifests and complete affected dependency sets
+
+Problem: one changed file need not invalidate independent claims, but a changed comparison operand requires both operands.
+
+Decision: companion manifest bound by canonical capsule hash; strict claim IDs and references; review all dependencies of affected claims and separate missing paths.
+
+Why: preserve capsule v1 while reducing unnecessary review without dropping relevant unchanged evidence.
+
+Alternatives: embed claims in capsule v2 (premature break); reread only changed files (incomplete context).
+
+Consequences: manual dependency completeness is still unverified; binding prevents accidental capsule mismatch but not malicious or semantically incorrect claims.

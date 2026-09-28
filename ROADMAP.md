@@ -1,10 +1,10 @@
 # Hypotheses, not promises
 
 ## NOW
-- Byte changes: 3/3 detected. Task labels: 2 detected, 1 missed, 1 unnecessary invalidation; blind trust misses 3.
+- One edited dependency marks its claim for review and includes all that claim's dependencies; independent claims remain evidence_unchanged.
 
 ## NEXT
-- Add a strict companion claim manifest mapping each claim ID to nonempty capsule evidence paths; report affected claims and deduplicated review paths without changing capsule v1.
+- Benchmark scoped review against rereading all capsule evidence, including shared dependencies, deletion, all-changed and unchanged cases. Count actual UTF-8 file bytes and report manifest overhead separately.
 
 ## EXPERIMENTS
 - H2: a bounded context selection manifest reduces repeated reads; measure bytes

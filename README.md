@@ -62,3 +62,10 @@ source of truth is this Git repository, not a previous chat or local checkout.
 `PYTHONPATH=src python3 -m ai_for_ai_lab.benchmark benchmarks/recovery_cases.json`
 produces a six-case synthetic diagnostic. See `docs/BENCHMARKS.md` for labels,
 measured counts, the missed dependency and the harmless-comment false alarm.
+
+## Scoped review
+
+`link` binds claim-to-file relationships to one capsule; `review` reports only
+claims whose evidence changed and gives a deduplicated reread set. It includes
+unchanged dependencies of affected claims, because comparisons need both sides.
+See `docs/REVIEW.md`. No claim is certified as true.

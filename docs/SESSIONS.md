@@ -44,3 +44,16 @@
 - Decisions: DEC-0004: retain negative controls and explicitly separate byte/task labels.
 - Unresolved: No semantic validator, missing-dependency discovery, concurrent-write guarantee or measured LLM/token benefit.
 - Next: Add a strict companion claim manifest mapping each claim ID to nonempty capsule evidence paths; report affected claims and deduplicated review paths without changing capsule v1.
+
+## 2026-09-28T18:37:30+02:00 — Session 003 (burst 2/5)
+
+- Goal: Localize handoff review to claims affected by changed evidence.
+- Problem: One fresh=false flag can cause all independent claims and files to be reread.
+- Changes: Added claim manifest, capsule fingerprint binding, link/review CLI and dependency-aware reread sets.
+- Files: src/ai_for_ai_lab/review.py; src/ai_for_ai_lab/__main__.py; tests/test_review.py; docs/REVIEW.md; README.md; ROADMAP.md; STATE.md; docs/SESSIONS.md; docs/DECISIONS.md.
+- Tests: unittest discover: 21 passed, including CLI link/review, wrong-capsule binding, missing/shared dependencies and no-change behavior.
+- Result: One edited dependency marks its claim for review and includes all that claim's dependencies; independent claims remain evidence_unchanged.
+- Learned: Rereading only modified files is insufficient for claims comparing multiple files.
+- Decisions: DEC-0005: companion manifest bound to exact capsule; include all dependencies of affected claims.
+- Unresolved: Manually declared dependencies may be incomplete; semantic/comment changes still trigger review; no measured LLM/token gain.
+- Next: Benchmark scoped review against rereading all capsule evidence, including shared dependencies, deletion, all-changed and unchanged cases. Count actual UTF-8 file bytes and report manifest overhead separately.

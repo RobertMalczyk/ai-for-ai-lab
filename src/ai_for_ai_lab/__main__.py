@@ -4,6 +4,7 @@ import json
 import sys
 from pathlib import Path
 from .capsule import CapsuleError, capture, check, loads
+from .review import link, review
 
 
 def main():
@@ -17,13 +18,28 @@ def main():
     verify = sub.add_parser("check")
     verify.add_argument("--root", required=True)
     verify.add_argument("capsule")
+    bind = sub.add_parser("link")
+    bind.add_argument("capsule")
+    bind.add_argument("claims")
+    scoped = sub.add_parser("review")
+    scoped.add_argument("--root", required=True)
+    scoped.add_argument("capsule")
+    scoped.add_argument("manifest")
     args = parser.parse_args()
     try:
-        if not Path(args.root).is_dir():
+        if args.command != "link" and not Path(args.root).is_dir():
             raise CapsuleError("root must be an existing directory")
         if args.command == "capture":
             result = capture(args.root, args.goal, args.next_step, args.paths)
             code = 0
+        elif args.command == "link":
+            result = link(loads(Path(args.capsule).read_text(encoding="utf-8")),
+                          loads(Path(args.claims).read_text(encoding="utf-8")))
+            code = 0
+        elif args.command == "review":
+            result = review(args.root, loads(Path(args.capsule).read_text(encoding="utf-8")),
+                            loads(Path(args.manifest).read_text(encoding="utf-8")))
+            code = 0 if result["fresh"] else 1
         else:
             result = check(args.root, loads(Path(args.capsule).read_text(encoding="utf-8")))
             code = 0 if result["fresh"] else 1

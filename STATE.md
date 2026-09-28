@@ -1,8 +1,8 @@
 # State
 
-- Exists/works: Capsule CLI plus six-case diagnostic; 13 tests pass.
-- Limits: No semantic validator, missing-dependency discovery, concurrent-write guarantee or measured LLM/token benefit.
-- Focus: Measure freshness and task-relevance separately.
-- Next: Add a strict companion claim manifest mapping each claim ID to nonempty capsule evidence paths; report affected claims and deduplicated review paths without changing capsule v1.
+- Exists/works: capture/check/link/review CLI; six-case diagnostic; 21 passing tests.
+- Limits: Manually declared dependencies may be incomplete; semantic/comment changes still trigger review; no measured LLM/token gain.
+- Focus: Localize handoff review to claims affected by changed evidence.
+- Next: Benchmark scoped review against rereading all capsule evidence, including shared dependencies, deletion, all-changed and unchanged cases. Count actual UTF-8 file bytes and report manifest overhead separately.
 - Verify: `PYTHONPATH=src python3 -m unittest discover -s tests -v`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.

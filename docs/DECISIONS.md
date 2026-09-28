@@ -85,3 +85,15 @@ Why: independent evidence helps, shared evidence does not.
 Alternatives: report only avoided files or aggregate a favorable percentage across arbitrary fixtures.
 
 Consequences: no inferred token/cost/latency or real-agent success improvement; results depend on the explicitly defined baseline and transmission model.
+
+### DEC-0007 — Errors are not stale observations
+
+Problem: absent roots and unparseable arguments cannot justify conclusions about evidence freshness.
+
+Decision: validate roots in the library; retain human error text and add stable codes; CLI syntax failures also emit JSON. Preserve filesystem access failures as errors.
+
+Why: agents should distinguish repairable invocation problems from observed changes without prose parsing.
+
+Alternatives: encode missing root as all evidence missing; mark every I/O error retryable (both misleading).
+
+Consequences: consumers accepting additional error fields remain compatible; strict consumers must accept code. Help is still text. No resource sandbox or automatic retry guarantee is introduced.

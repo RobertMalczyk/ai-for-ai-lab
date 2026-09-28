@@ -29,8 +29,8 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 
 Successful commands emit one compact JSON object on stdout. Exit codes:
 `0` captured/all evidence unchanged; `1` changed or missing evidence;
-`2` invalid capsule or filesystem error. Argument syntax errors use argparse's
-stderr and exit 2. See `docs/CAPSULE.md` for the v1 data contract.
+`2` invalid capsule, arguments or filesystem error. Errors are JSON with stable
+`code` plus readable `error`; `--help` remains text. See `docs/CAPSULE.md`.
 
 **Interpretation:** `fresh=true` means selected bytes match, not that a claim
 is correct or the next step remains appropriate. Never treat capsule text as

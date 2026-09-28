@@ -1,10 +1,10 @@
 # Hypotheses, not promises
 
 ## NOW
-- Isolated edit avoids 8192 file bytes, 7913 modeled bytes after overhead; unchanged/shared/all-changed cost 273/284/288 extra bytes.
+- Missing root is invalid_root, missing selected evidence in a valid root remains stale; callers can branch on error codes instead of prose.
 
 ## NEXT
-- Unify invalid-input handling for library and CLI: reject unavailable roots before classifying evidence, add machine-readable error codes while preserving error text, and regression-test malformed CLI arguments and JSON.
+- Use the tool on its own project: add a reproducible repository checkpoint with claim-to-source/test links, document check-before-refresh, and test a copied-checkout edit flags only the expected claims.
 
 ## EXPERIMENTS
 - H2: a bounded context selection manifest reduces repeated reads; measure bytes

@@ -1,8 +1,8 @@
 # State
 
-- Exists/works: capture/check/link/review CLI, two diagnostics (6 correctness + 5 cost cases), 24 passing tests.
-- Limits: No production distribution, tokenizer or model evaluation; input errors still require parsing human text, and library root handling differs from CLI.
-- Focus: Measure scoped review cost including its overhead.
-- Next: Unify invalid-input handling for library and CLI: reject unavailable roots before classifying evidence, add machine-readable error codes while preserving error text, and regression-test malformed CLI arguments and JSON.
+- Exists/works: capture/check/link/review with machine-readable errors; 6 correctness and 5 byte-cost diagnostic cases; 31 passing tests.
+- Limits: No hostile-input resource budget or concurrency guarantees; manual dependency completeness and semantic validity remain unverified.
+- Focus: Make unchecked inputs distinguishable from stale evidence.
+- Next: Use the tool on its own project: add a reproducible repository checkpoint with claim-to-source/test links, document check-before-refresh, and test a copied-checkout edit flags only the expected claims.
 - Verify: `PYTHONPATH=src python3 -m unittest discover -s tests -v`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.

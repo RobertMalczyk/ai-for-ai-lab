@@ -7,8 +7,13 @@ from .capsule import CapsuleError, capture, check, loads
 from .review import link, review
 
 
+class JsonArgumentParser(argparse.ArgumentParser):
+    def error(self, message):
+        raise CapsuleError(message, "invalid_arguments")
+
+
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = JsonArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     create = sub.add_parser("capture")
     create.add_argument("--root", required=True)
@@ -25,10 +30,8 @@ def main():
     scoped.add_argument("--root", required=True)
     scoped.add_argument("capsule")
     scoped.add_argument("manifest")
-    args = parser.parse_args()
     try:
-        if args.command != "link" and not Path(args.root).is_dir():
-            raise CapsuleError("root must be an existing directory")
+        args = parser.parse_args()
         if args.command == "capture":
             result = capture(args.root, args.goal, args.next_step, args.paths)
             code = 0
@@ -45,9 +48,14 @@ def main():
             code = 0 if result["fresh"] else 1
         print(json.dumps(result, sort_keys=True, separators=(",", ":")))
         return code
-    except (CapsuleError, OSError, ValueError) as exc:
-        print(json.dumps({"error": str(exc)}))
-        return 2
+    except CapsuleError as exc:
+        result = {"error": str(exc), "code": exc.code}
+    except UnicodeError as exc:
+        result = {"error": str(exc), "code": "invalid_json"}
+    except OSError as exc:
+        result = {"error": str(exc), "code": "io_error"}
+    print(json.dumps(result, sort_keys=True, separators=(",", ":")))
+    return 2
 
 
 if __name__ == "__main__":

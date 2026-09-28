@@ -1,0 +1,8 @@
+[
+  {"name":"unchanged","after":{},"byte_stale":false,"task_stale":false},
+  {"name":"edited","after":{"config.txt":"limit=20\n"},"byte_stale":true,"task_stale":true},
+  {"name":"deleted","after":{"config.txt":null},"byte_stale":true,"task_stale":true},
+  {"name":"unrelated_edit","after":{"notes.txt":"new note\n"},"byte_stale":false,"task_stale":false},
+  {"name":"comment_only","after":{"config.txt":"limit=10\n# harmless comment\n"},"byte_stale":true,"task_stale":false},
+  {"name":"omitted_dependency","after":{"policy.txt":"override=30\n"},"byte_stale":false,"task_stale":true}
+]

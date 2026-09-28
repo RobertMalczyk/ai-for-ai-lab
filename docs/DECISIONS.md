@@ -49,3 +49,15 @@ write directly to main (loses branch isolation).
 
 Consequences: local tests are evidence, not independent review. Diverged work
 must be reconciled safely in a later scoped task; never overwrite collaborators.
+
+### DEC-0004 — Keep uncomfortable benchmark cases
+
+Problem: a perfect hash test can imply unjustified recovery reliability.
+
+Decision: separately label selected-byte freshness and task relevance; retain harmless-comment and omitted-dependency counterexamples.
+
+Why: failures show what the tool cannot establish.
+
+Alternatives: only test changed/deleted files (misleading coverage).
+
+Consequences: fixture-defined counts are diagnostic only; claim scoping may reduce review breadth but cannot resolve either semantic limitation.

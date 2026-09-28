@@ -1,15 +1,10 @@
 # Hypotheses, not promises
 
 ## NOW
-- H1: checking evidence hashes before resumption detects stale handoff inputs.
-  Minimal CLI implemented; next measure on deterministic recovery fixtures.
+- Byte changes: 3/3 detected. Task labels: 2 detected, 1 missed, 1 unnecessary invalidation; blind trust misses 3.
 
 ## NEXT
-- Add a small fixture benchmark: unchanged, edited, deleted, unrelated edit.
-  Compare a baseline that blindly trusts notes with the capsule checker;
-  report stale cases detected and unnecessary invalidations as counts in JSON.
-- Only after the benchmark, consider claim-to-evidence links to avoid invalidating
-  an entire handoff when one supporting file changes.
+- Add a strict companion claim manifest mapping each claim ID to nonempty capsule evidence paths; report affected claims and deduplicated review paths without changing capsule v1.
 
 ## EXPERIMENTS
 - H2: a bounded context selection manifest reduces repeated reads; measure bytes

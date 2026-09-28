@@ -56,3 +56,9 @@ when tests pass, the worktree is clean, and origin/main has not diverged.
 Never force-push or overwrite another contributor's changes. Keep feature
 branches for traceability until there is a reason to archive them. The durable
 source of truth is this Git repository, not a previous chat or local checkout.
+
+## Evaluation
+
+`PYTHONPATH=src python3 -m ai_for_ai_lab.benchmark benchmarks/recovery_cases.json`
+produces a six-case synthetic diagnostic. See `docs/BENCHMARKS.md` for labels,
+measured counts, the missed dependency and the harmless-comment false alarm.

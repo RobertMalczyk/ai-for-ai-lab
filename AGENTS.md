@@ -34,3 +34,12 @@ had no credentials. If still true, use authenticated GitHub connector tree,
 commit and branch/ref operations with force=false; build from the fetched base
 tree and preserve unrelated files. Verify the published tree equals the tested
 local tree. Do not request or expose raw tokens to make shell push work.
+
+Self-use checkpoint (after reading mandatory session documents):
+- Run `PYTHONPATH=src python3 -m ai_for_ai_lab checkpoint --root .` before
+  trusting existing implementation notes. Exit 1 means review affected claims;
+  exit 2 means an input/access error. Do not refresh to silence either result.
+- After tests and all documentation updates, maintain handoff/claims.json,
+  run checkpoint with `--refresh`, then inspect without it. Commit
+  handoff/checkpoint.json in the same atomic change. See docs/CHECKPOINT.md.
+- A fresh checkpoint is not proof of test execution or semantic correctness.

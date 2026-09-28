@@ -1,0 +1,72 @@
+[
+  {
+    "id": "core-cli",
+    "text": "Capsule and CLI contracts are described and exercised by these files.",
+    "evidence": [
+      "src/ai_for_ai_lab/capsule.py",
+      "src/ai_for_ai_lab/__main__.py",
+      "tests/test_capsule.py",
+      "tests/test_errors.py",
+      "docs/CAPSULE.md",
+      "src/ai_for_ai_lab/__init__.py",
+      "src/ai_for_ai_lab/review.py",
+      "src/ai_for_ai_lab/checkpoint.py"
+    ]
+  },
+  {
+    "id": "scoped-review",
+    "text": "Bound claim review uses these declared implementation and contract dependencies.",
+    "evidence": [
+      "src/ai_for_ai_lab/capsule.py",
+      "src/ai_for_ai_lab/__main__.py",
+      "src/ai_for_ai_lab/review.py",
+      "tests/test_review.py",
+      "docs/REVIEW.md",
+      "src/ai_for_ai_lab/__init__.py",
+      "src/ai_for_ai_lab/checkpoint.py"
+    ]
+  },
+  {
+    "id": "recovery-diagnostic",
+    "text": "The recovery diagnostic and its limitations are represented by these files.",
+    "evidence": [
+      "src/ai_for_ai_lab/capsule.py",
+      "src/ai_for_ai_lab/benchmark.py",
+      "tests/test_benchmark.py",
+      "benchmarks/recovery_cases.json",
+      "docs/BENCHMARKS.md",
+      "src/ai_for_ai_lab/__init__.py"
+    ]
+  },
+  {
+    "id": "byte-diagnostic",
+    "text": "Scoped byte accounting depends on the following files.",
+    "evidence": [
+      "src/ai_for_ai_lab/capsule.py",
+      "src/ai_for_ai_lab/review.py",
+      "src/ai_for_ai_lab/review_benchmark.py",
+      "tests/test_review_benchmark.py",
+      "docs/BENCHMARKS.md",
+      "src/ai_for_ai_lab/__init__.py"
+    ]
+  },
+  {
+    "id": "project-workflow",
+    "text": "The session and checkpoint workflow is defined by these files; this does not attest that tests ran.",
+    "evidence": [
+      "AGENTS.md",
+      "README.md",
+      "STATE.md",
+      "ROADMAP.md",
+      "docs/DECISIONS.md",
+      "docs/CHECKPOINT.md",
+      "handoff/claims.json",
+      "src/ai_for_ai_lab/capsule.py",
+      "src/ai_for_ai_lab/review.py",
+      "src/ai_for_ai_lab/checkpoint.py",
+      "src/ai_for_ai_lab/__main__.py",
+      "tests/test_checkpoint.py",
+      "src/ai_for_ai_lab/__init__.py"
+    ]
+  }
+]

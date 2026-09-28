@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 from .capsule import CapsuleError, capture, check, loads
 from .review import link, review
+from .checkpoint import inspect, refresh
 
 
 class JsonArgumentParser(argparse.ArgumentParser):
@@ -30,11 +31,18 @@ def main():
     scoped.add_argument("--root", required=True)
     scoped.add_argument("capsule")
     scoped.add_argument("manifest")
+    checkpoint = sub.add_parser("checkpoint")
+    checkpoint.add_argument("--root", required=True)
+    checkpoint.add_argument("--refresh", action="store_true",
+                            help="replace the baseline after reviewing changes and running tests")
     try:
         args = parser.parse_args()
         if args.command == "capture":
             result = capture(args.root, args.goal, args.next_step, args.paths)
             code = 0
+        elif args.command == "checkpoint":
+            result = refresh(args.root) if args.refresh else inspect(args.root)
+            code = 0 if args.refresh or result["fresh"] else 1
         elif args.command == "link":
             result = link(loads(Path(args.capsule).read_text(encoding="utf-8")),
                           loads(Path(args.claims).read_text(encoding="utf-8")))

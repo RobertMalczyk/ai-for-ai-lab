@@ -46,7 +46,8 @@ keep private capsules outside this public repository. Hashes are not signatures.
 The first experiment covers local files only; it is not an adversarial filesystem
 sandbox and assumes no concurrent writes during capture/check. A matching file
 can change immediately after checking. There is no demonstrated token saving or
-LLM task-success gain yet; the next benchmark must measure rather than assume it.
+LLM task-success gain yet. Synthetic byte accounting is documented in
+`docs/BENCHMARKS.md`; it includes cases where scoped review costs more.
 
 ## Git and continuity
 
@@ -69,3 +70,11 @@ measured counts, the missed dependency and the harmless-comment false alarm.
 claims whose evidence changed and gives a deduplicated reread set. It includes
 unchanged dependencies of affected claims, because comparisons need both sides.
 See `docs/REVIEW.md`. No claim is certified as true.
+
+## Project checkpoint
+
+The lab now uses its own tool:
+`PYTHONPATH=src python3 -m ai_for_ai_lab checkpoint --root .`.
+Read the report before editing; after tests and documentation, explicitly refresh
+with `--refresh` and commit the checkpoint with the work. See `docs/CHECKPOINT.md`
+for why refreshing is not validation and how to handle a stale result.

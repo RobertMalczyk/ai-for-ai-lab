@@ -97,3 +97,15 @@ Why: agents should distinguish repairable invocation problems from observed chan
 Alternatives: encode missing root as all evidence missing; mark every I/O error retryable (both misleading).
 
 Consequences: consumers accepting additional error fields remain compatible; strict consumers must accept code. Help is still text. No resource sandbox or automatic retry guarantee is introduced.
+
+### DEC-0008 — Use one atomic self-checkpoint without claiming self-verification
+
+Problem: the tool lacked a real repository consumer, and two output files could be updated only halfway.
+
+Decision: maintain a declared project claim map and atomically replace one capsule/manifest bundle. Inspect before work; explicitly refresh after tests and documentation.
+
+Why: actual self-use exposes integration friction, while one replacement avoids partial pairs.
+
+Alternatives: automatically refresh when stale (erases the signal); separately overwrite capsule and manifest (mismatch risk).
+
+Consequences: deterministic JSON and Git preserve reviewable changes; refresh does not run tests or certify truth. Claims require manual dependency maintenance. Atomic rename is not a concurrency or power-loss durability guarantee.

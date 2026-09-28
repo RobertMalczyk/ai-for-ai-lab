@@ -1,10 +1,10 @@
 # Hypotheses, not promises
 
 ## NOW
-- Missing root is invalid_root, missing selected evidence in a valid root remains stale; callers can branch on error codes instead of prose.
+- Five project claim groups are inspectable; deterministic checkpoint writes and copied-checkout isolation tests pass. The repository now consumes its own tool.
 
 ## NEXT
-- Use the tool on its own project: add a reproducible repository checkpoint with claim-to-source/test links, document check-before-refresh, and test a copied-checkout edit flags only the expected claims.
+- Add a small dependency-coverage audit: compare tracked src/ and tests/ paths with handoff/claims.json, report uncovered new files as unknown coverage without inventing semantic links. Test an added undeclared module and preserve the existing omitted-dependency negative control.
 
 ## EXPERIMENTS
 - H2: a bounded context selection manifest reduces repeated reads; measure bytes

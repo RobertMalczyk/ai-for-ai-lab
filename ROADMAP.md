@@ -2,12 +2,20 @@
 
 ## NOW
 - Exploration/utility policy is active. Handoff feature work is paused: correctness is tested, comparative real-agent benefit remains unknown.
+- Tool-discovery exploration has one preliminary positive real-task comparison:
+  names-first plus six exact schemas used 10,909 vs 239,617 serialized bytes while
+  retaining the required operations. Do not build a helper from one task.
 
 ## NEXT
-- EXPLORE another family: compare 3 observed-friction candidates, choose one cheap falsifying test. Tool discovery overhead is an observed starting point. Follow the gate, not just the previous backlog.
+- Repeat the tool-discovery comparison only when a natural non-GitHub connector
+  task occurs; predeclare required operations and quality. Then evaluate whether
+  a written names-first practice is enough or a tiny helper is justified.
 - Before more handoff features: observed real-workflow comparison with task quality, full overhead and predeclared threshold. If it cannot be completed, record inconclusive and apply the parking budget.
 
 ## EXPERIMENTS
+- H9: names-first tool discovery followed by exact schema retrieval reduces
+  registry payload without hiding required operations. One GitHub task passed;
+  cross-task replication is required before implementation.
 - H2: a bounded context selection manifest reduces repeated reads; measure bytes
   first, tokenizer-specific token counts only when justified.
 - H3: a structured tool error envelope makes retry decisions less ambiguous.

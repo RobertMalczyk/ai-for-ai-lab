@@ -1,9 +1,9 @@
 # State
 
-- Exists: handoff tools/benchmarks/checkpoint plus session gate, policy and ledger; 57 passing tests.
-- Value status: handoff benefit in real tasks is UNMEASURED; feature expansion paused pending field comparison. Synthetic gains are not utility proof.
-- Focus: escape repeated handoff work while demanding observed agent value.
-- Next: run session_gate; it requires EXPLORE outside handoff (7-session streak). Compare 3 distinct candidates using observed friction and choose one cheap test. Tool-discovery overhead is a documented candidate; do not build another handoff accessory.
-- Return condition: before more handoff features, compare observed real-task baseline/intervention with quality and total overhead per docs/EXPERIMENT_POLICY.md. Prior field-measurement work is deferred, not discarded.
+- Exists: handoff/checkpoint tools plus experiment gate and one tool-discovery field report; 57 passing tests.
+- Value: handoff benefit remains UNMEASURED and expansion paused. Names-first tool discovery cut one real task's serialized registry payload 239,617 -> 10,909 bytes with required-operation quality retained; single-task evidence only.
+- Focus: tool-discovery is the second active family; no helper yet. Handoff remains evaluation-required.
+- Next: run session_gate. For tool discovery, repeat the predeclared byte/quality comparison on a naturally occurring non-GitHub connector task before building. For handoff, field-evaluate before features.
+- Return/stop: one failed replication simplifies or rejects a helper; positive replication still must justify code over documentation.
 - Verify: `PYTHONPATH=src python3 -m unittest discover -s tests -v`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.

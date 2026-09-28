@@ -156,3 +156,77 @@
   candidates outside handoff, choose one small probe and record the cheapest
   falsifying test. Tool discovery overhead is observed, but selection must still
   compare alternatives. On returning to handoff, field-evaluate before new features.
+
+## 2026-09-29T00:01:24+02:00 — Session 009 (exploration; pre-result plan)
+
+- Gate: mode=explore, excluded_families=[handoff], family_streak=7,
+  evaluation_required=[handoff], parked_families=[]. Chosen family:
+  `tool-discovery`; no handoff feature work is allowed in this session.
+- Real task: identify the authenticated GitHub connector operations needed to
+  inspect and publish this repository. This task existed for the scheduled repo
+  work, independently of any experiment.
+- Observed friction/trace: the first broad registry filter in this session
+  serialized full matching tool descriptions and the runtime reported a 59,905
+  token output before truncation. A follow-up names-only query was usable. The
+  sanitized measurement record will be stored under `lab/observations/`.
+- Three candidates from distinct families:
+  1. `tool-discovery`: observed oversized/truncated registry output. Assumption
+     to challenge: full descriptions are needed in the first pass. Potential
+     value: less context and less truncation. Cheapest falsifier: compare full
+     broad matches with names-first plus exact schemas for only required GitHub
+     operations. Cost: two local registry queries; novelty: new family.
+  2. `side-effect-recovery`: interrupted agents may repeat writes, but this run
+     has no observed duplicate side effect. Assumption: an idempotency ledger is
+     necessary. Cheapest falsifier: inspect one real interrupted write trace;
+     unavailable here. Cost: medium; novelty: new family.
+  3. `verification-budget`: repeated checks may exceed a small edit's cost, but
+     this run has no comparable trace separating required and redundant checks.
+     Cheapest falsifier: timestamp one naturally occurring small change with a
+     predeclared quality check. Cost: low/medium; novelty: new family.
+- Selection: candidate 1 has direct evidence and a same-task baseline; observe
+  candidates 2/3 rather than inventing fixtures.
+- Simplest baseline: serialize every registry entry matching the original broad
+  Git/GitHub/repository/connector expression, including full descriptions.
+- Intervention: serialize matching tool names first, select the six operations
+  required for read/tree/commit/branch-ref publication, then serialize only those
+  six full entries. Include both intervention payloads as overhead.
+- Hypothesis/metric: intervention serialized UTF-8 bytes are lower; minimum
+  useful improvement is 90% versus baseline. Bytes are the unit, not tokens.
+- Quality control: the names pass must expose all six predeclared operations and
+  the exact pass must retrieve all six nonempty schemas/descriptions. Record the
+  selected names and counts, not proprietary registry contents.
+- Stop condition: if quality fails or byte reduction is below 90%, do not build a
+  discovery helper; simplify or reject. One sequential observation is only
+  preliminary field evidence and cannot establish latency or LLM-quality gains.
+- Probe execution: the first counter attempt failed because this tool runtime did
+  not expose `TextEncoder`; no result was claimed from it. A Unicode code-point
+  UTF-8 counter then measured the same registry snapshot successfully.
+- Changes/files: added a sanitized aggregate trace and field report under
+  `lab/observations/` and `lab/reports/`; appended ledger session 9; updated
+  STATE, ROADMAP, DECISIONS, session documentation and checkpoint declarations.
+- Tests/result: baseline=239,617 bytes for 129 full broad matches. Names-first
+  (4,176 bytes) plus six exact schemas (6,733 bytes) totaled 10,909 bytes,
+  avoiding 228,708 bytes (95.4473%). All six predeclared operations were present
+  with nonempty descriptions, so quality passed and the 90% threshold was met.
+  Final verification: 57/57 unit tests passed; gate accepted the field report and
+  returned mode=evaluate with handoff still evaluation-required; coverage reported
+  17/17 scoped files declared. The pre-refresh checkpoint correctly returned exit
+  1 and identified changed workflow/policy claims; it was then explicitly refreshed
+  and reinspected fresh after all documentation changes.
+- Actual agent-value evidence: preliminary positive field evidence for this one
+  real repository task only. The observed baseline was truncated; the
+  intervention exposed every required operation with 4.55% of its serialized
+  bytes, including both discovery passes. This is not a token, latency, LLM
+  quality or downstream task-success claim.
+- Learned: the dominant waste came from serializing irrelevant full schemas, not
+  from the count of names. Names-first is a useful operating pattern, but a new
+  helper is not justified by one registry/task pair.
+- Decision: `evaluate`, not build. Adopt names-first/exact-second as a documented
+  practice and seek a second naturally occurring non-GitHub task before creating
+  code. See DEC-0011.
+- Unresolved: registry variation, regex overmatching, order effects, and whether
+  smaller tool output improves model decisions or latency.
+- Exact next step: on the next natural connector-discovery task, predeclare its
+  required operations and repeat the same byte/quality comparison. If it does not
+  reproduce the threshold, simplify the rule to targeted name filtering; if it
+  does, decide whether documentation alone is sufficient.

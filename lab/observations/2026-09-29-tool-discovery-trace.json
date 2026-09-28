@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-29T00:01:24+02:00",
+  "task": "identify authenticated GitHub operations for repository inspection and publication",
+  "registry_entries": 213,
+  "initial_observation": {
+    "query": "broad Git/GitHub/repository/connector match with full entries",
+    "runtime_reported_output_tokens": 59905,
+    "truncated": true
+  },
+  "baseline": {
+    "match_count": 129,
+    "serialized_utf8_bytes": 239617,
+    "content": "full matching registry entries"
+  },
+  "intervention": {
+    "names_match_count": 89,
+    "names_utf8_bytes": 4176,
+    "exact_schema_count": 6,
+    "exact_schema_utf8_bytes": 6733,
+    "total_utf8_bytes": 10909,
+    "required_operations": [
+      "mcp__codex_apps__github_get_repo",
+      "mcp__codex_apps__github_search_branches",
+      "mcp__codex_apps__github_fetch_file",
+      "mcp__codex_apps__github_create_tree",
+      "mcp__codex_apps__github_create_commit",
+      "mcp__codex_apps__github_update_ref"
+    ],
+    "missing_required": []
+  },
+  "result": {
+    "quality_passed": true,
+    "bytes_avoided": 228708,
+    "reduction_fraction": 0.954473,
+    "minimum_reduction_fraction": 0.9
+  },
+  "measurement_notes": [
+    "Both strategies were measured against the same in-process registry snapshot.",
+    "Intervention cost includes the names payload and six exact full entries.",
+    "The first byte-count attempt failed because TextEncoder was unavailable; the successful retry used an explicit Unicode code-point UTF-8 counter.",
+    "No registry descriptions, credentials, or user data are retained in this trace."
+  ]
+}

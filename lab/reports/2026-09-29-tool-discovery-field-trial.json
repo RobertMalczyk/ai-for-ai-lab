@@ -1,0 +1,17 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "docs/SESSIONS.md",
+  "hypothesis": "Names-first discovery followed by exact retrieval of six required GitHub operations reduces serialized registry payload by at least 90 percent without losing the required capabilities.",
+  "metric": "serialized_registry_payload",
+  "unit": "bytes",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 239617,
+  "baseline_ref": "lab/observations/2026-09-29-tool-discovery-trace.json",
+  "intervention_value": 10909,
+  "intervention_ref": "lab/observations/2026-09-29-tool-discovery-trace.json",
+  "minimum_improvement": 215655.3,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One sequential task and one registry snapshot; the broad baseline exactly reproduces the observed query but may overmatch; no latency, tokenizer, model-quality, or downstream task-success effect was measured. Registry contents may differ across runtimes."
+}

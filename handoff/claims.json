@@ -76,5 +76,17 @@
     "id": "experiment-policy",
     "text": "Selection constraints and declared utility evidence are recorded here; format checks cannot prove honest measurement.",
     "evidence": ["src/ai_for_ai_lab/session_gate.py", "src/ai_for_ai_lab/capsule.py", "tests/test_session_gate.py", "lab/policy.json", "lab/sessions.jsonl", "docs/EXPERIMENT_POLICY.md"]
+  },
+  {
+    "id": "tool-discovery-probe",
+    "text": "The names-first tool-discovery observation and its bounded field claim are recorded by these files.",
+    "evidence": [
+      "lab/observations/2026-09-29-tool-discovery-trace.json",
+      "lab/reports/2026-09-29-tool-discovery-field-trial.json",
+      "docs/SESSIONS.md",
+      "docs/DECISIONS.md",
+      "ROADMAP.md",
+      "STATE.md"
+    ]
   }
 ]

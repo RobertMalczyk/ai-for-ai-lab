@@ -150,3 +150,25 @@ Consequences: handoff development pauses; next productive session explores outsi
 handoff. Thresholds are adjustable hypotheses, not empirical optima. Code validates
 ledger/report consistency but cannot prove truth or enforce agent honesty. Limit
 governance work itself; do not turn this gate into a new research platform.
+
+### DEC-0011 — Names first, exact schemas second; no helper yet
+
+Problem: a real startup query serialized 129 broad full tool entries and was
+truncated, although repository work required six GitHub operations.
+
+Decision: use names-only discovery first, then retrieve full entries only for a
+predeclared required set. Treat the 95.4473% byte reduction with retained operation
+coverage as preliminary evidence; wait for a natural non-GitHub replication before
+building a helper.
+
+Why: the one observed task exceeded its 90% threshold including both discovery
+passes, but documentation may capture the useful behavior without more software.
+
+Alternatives: serialize every matching description (observed waste/truncation);
+hard-code connector schemas (fragile); immediately build a registry service (not
+supported by one task); ignore exact schemas (risks malformed calls).
+
+Consequences: discovery takes two queries and selection is still agent judgment.
+The result establishes bytes for one registry snapshot, not tokens, latency, model
+quality or task success. A failed replication favors a simpler targeted filter or
+rejection rather than feature expansion.

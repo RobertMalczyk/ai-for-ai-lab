@@ -73,3 +73,15 @@ Why: preserve capsule v1 while reducing unnecessary review without dropping rele
 Alternatives: embed claims in capsule v2 (premature break); reread only changed files (incomplete context).
 
 Consequences: manual dependency completeness is still unverified; binding prevents accidental capsule mismatch but not malicious or semantically incorrect claims.
+
+### DEC-0006 — Measure overhead without universal savings claims
+
+Problem: a small reread set can conceal manifest/report overhead.
+
+Decision: publish per-case actual UTF-8 file bytes and modeled cold-review totals, plus unchanged hash-scan bytes and negative cases.
+
+Why: independent evidence helps, shared evidence does not.
+
+Alternatives: report only avoided files or aggregate a favorable percentage across arbitrary fixtures.
+
+Consequences: no inferred token/cost/latency or real-agent success improvement; results depend on the explicitly defined baseline and transmission model.

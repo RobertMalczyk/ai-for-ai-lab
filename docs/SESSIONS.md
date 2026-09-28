@@ -57,3 +57,16 @@
 - Decisions: DEC-0005: companion manifest bound to exact capsule; include all dependencies of affected claims.
 - Unresolved: Manually declared dependencies may be incomplete; semantic/comment changes still trigger review; no measured LLM/token gain.
 - Next: Benchmark scoped review against rereading all capsule evidence, including shared dependencies, deletion, all-changed and unchanged cases. Count actual UTF-8 file bytes and report manifest overhead separately.
+
+## 2026-09-28T18:40:00+02:00 — Session 004 (burst 3/5)
+
+- Goal: Measure scoped review cost including its overhead.
+- Problem: Fewer selected files can falsely imply savings if manifests and output are ignored.
+- Changes: Added five-case byte-accounting diagnostic, explicit hash-scan accounting and negative savings cases.
+- Files: src/ai_for_ai_lab/review_benchmark.py; tests/test_review_benchmark.py; docs/BENCHMARKS.md; ROADMAP.md; STATE.md; docs/SESSIONS.md; docs/DECISIONS.md.
+- Tests: unittest discover: 24 passed; review_benchmark CLI executed five cases.
+- Result: Isolated edit avoids 8192 file bytes, 7913 modeled bytes after overhead; unchanged/shared/all-changed cost 273/284/288 extra bytes.
+- Learned: Scoping is useful with separable dependencies, not universally. Hash I/O is unchanged; UTF-8 bytes are not tokens.
+- Decisions: DEC-0006: publish overhead and negative cases without a workload-wide percentage.
+- Unresolved: No production distribution, tokenizer or model evaluation; input errors still require parsing human text, and library root handling differs from CLI.
+- Next: Unify invalid-input handling for library and CLI: reject unavailable roots before classifying evidence, add machine-readable error codes while preserving error text, and regression-test malformed CLI arguments and JSON.

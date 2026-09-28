@@ -1,10 +1,10 @@
 # Hypotheses, not promises
 
 ## NOW
-- One edited dependency marks its claim for review and includes all that claim's dependencies; independent claims remain evidence_unchanged.
+- Isolated edit avoids 8192 file bytes, 7913 modeled bytes after overhead; unchanged/shared/all-changed cost 273/284/288 extra bytes.
 
 ## NEXT
-- Benchmark scoped review against rereading all capsule evidence, including shared dependencies, deletion, all-changed and unchanged cases. Count actual UTF-8 file bytes and report manifest overhead separately.
+- Unify invalid-input handling for library and CLI: reject unavailable roots before classifying evidence, add machine-readable error codes while preserving error text, and regression-test malformed CLI arguments and JSON.
 
 ## EXPERIMENTS
 - H2: a bounded context selection manifest reduces repeated reads; measure bytes

@@ -71,5 +71,10 @@
       "tests/test_coverage.py",
       "docs/COVERAGE.md"
     ]
+  },
+  {
+    "id": "experiment-policy",
+    "text": "Selection constraints and declared utility evidence are recorded here; format checks cannot prove honest measurement.",
+    "evidence": ["src/ai_for_ai_lab/session_gate.py", "src/ai_for_ai_lab/capsule.py", "tests/test_session_gate.py", "lab/policy.json", "lab/sessions.jsonl", "docs/EXPERIMENT_POLICY.md"]
   }
 ]

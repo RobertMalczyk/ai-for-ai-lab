@@ -128,3 +128,25 @@ Consequences: requires local Git for this command. Outside-scope paths, ignored
 untracked files, submodule contents and missing dependency edges remain unknown.
 Even deleted tracked files can be covered: freshness must be checked separately.
 The original omitted-dependency negative control is retained.
+
+### DEC-0010 — Require field evidence and schedule deliberate pivots
+
+Problem: seven iterations improved one handoff family without a comparative
+real-agent utility result. A local backlog can reward polishing its own machinery.
+
+Decision: a small append-only session ledger and configurable gate: max three
+same-family work sessions, exploration every fourth, evaluation after two builds
+without a field trial, and parking after two negative/inconclusive evaluations.
+Maintenance cannot reset cadence. Require observed baseline, traces, task quality,
+full overhead and a predeclared useful gain before recording positive utility.
+
+Why: protect useful exploitation while making exploration and falsification actual
+selection constraints. The user explicitly requested escape from local minima.
+
+Alternatives: purely random project switches (novelty without evidence); reminders
+in prose only (easy to forget); more synthetic tests of the existing tool (circular).
+
+Consequences: handoff development pauses; next productive session explores outside
+handoff. Thresholds are adjustable hypotheses, not empirical optima. Code validates
+ledger/report consistency but cannot prove truth or enforce agent honesty. Limit
+governance work itself; do not turn this gate into a new research platform.

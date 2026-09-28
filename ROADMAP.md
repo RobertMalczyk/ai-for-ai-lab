@@ -1,10 +1,11 @@
 # Hypotheses, not promises
 
 ## NOW
-- Checkpoint freshness and bounded src/tests declaration coverage both work; 47 tests pass. The audit detected its own two undeclared new files before their claim assignment.
+- Exploration/utility policy is active. Handoff feature work is paused: correctness is tested, comparative real-agent benefit remains unknown.
 
 ## NEXT
-- Measure a real self-use session before more features: startup document bytes, report bytes, actual reread paths and missed dependencies. Compare against a whole-declared-file reread baseline, separately accounting for mandatory startup reads and hashing I/O. Decide whether to keep or simplify scoped review; do not infer token savings from bytes.
+- EXPLORE another family: compare 3 observed-friction candidates, choose one cheap falsifying test. Tool discovery overhead is an observed starting point. Follow the gate, not just the previous backlog.
+- Before more handoff features: observed real-workflow comparison with task quality, full overhead and predeclared threshold. If it cannot be completed, record inconclusive and apply the parking budget.
 
 ## EXPERIMENTS
 - H2: a bounded context selection manifest reduces repeated reads; measure bytes

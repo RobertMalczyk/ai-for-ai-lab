@@ -125,3 +125,34 @@
   reread paths and missed dependencies; compare with whole-declared-file reads
   while separating mandatory document reading and hash I/O. Then decide whether
   scoping earns its complexity before building another feature.
+
+## 2026-09-28T20:07:04+02:00 — Session 008 (user-directed governance)
+
+- Goal: require real agent utility checks and periodically escape the current family.
+- Problem: all seven previous sessions stayed in handoff/checkpoint infrastructure;
+  synthetic results and self-use did not establish comparative real-task benefit.
+- Plan before implementation: inspect the real history; use a minimal ledger/gate
+  to block indefinite same-family development; keep thresholds explicit and demand
+  traceable baseline/intervention plus quality before recording positive utility.
+  This maintenance task tests rule behavior, not a claim of measured agent benefit.
+- Changes: policy, conservative history backfill, gate CLI, field-report consistency
+  validation, ten tests, instructions, paused handoff roadmap and next exploration.
+- Files: lab/{policy.json,sessions.jsonl}; src/ai_for_ai_lab/session_gate.py;
+  tests/test_session_gate.py; docs/EXPERIMENT_POLICY.md; AGENTS.md; README.md;
+  STATE.md; ROADMAP.md; docs/{DECISIONS.md,SESSIONS.md}; handoff/{claims.json,checkpoint.json}.
+- Tests: full unittest suite: 57 passed. Gate cases cover mandatory pivots,
+  maintenance not resetting cadence, synthetic positives, evaluation budgets,
+  parked families, malformed history and unverifiable/contradictory field reports.
+- Result: real project history produces mode=explore, excludes handoff, reports
+  family_streak=7 and evaluation_required=[handoff]. Next work ordinal is 8 even
+  though this administrative session has ID 8. No real field benefit claimed.
+- Learned: the loop needs both a value threshold and a diversity constraint;
+  successes must not suppress scheduled exploration. File/metric checks cannot
+  substitute for reading and challenging the underlying evidence.
+- Decisions: DEC-0010; default thresholds are provisional and explicitly visible.
+- Unresolved: agents can misclassify families or fabricate evidence; no optimality
+  guarantee or measured benefit of this policy yet. Limit policy maintenance too.
+- Next: productive session 9 must compare three distinct observed-friction
+  candidates outside handoff, choose one small probe and record the cheapest
+  falsifying test. Tool discovery overhead is observed, but selection must still
+  compare alternatives. On returning to handoff, field-evaluate before new features.

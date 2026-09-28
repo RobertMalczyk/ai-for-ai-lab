@@ -8,7 +8,10 @@ At every session:
    docs/SESSIONS.md, docs/DECISIONS.md, then only relevant code/tests.
 2. Fetch remote state. Do not assume a previous session's checkout exists.
    Inspect worktree, branches, and unmerged work before selecting a baseline.
-3. Choose ONE high-value task with about ten minutes of technical scope.
+3. Read docs/EXPERIMENT_POLICY.md and run
+   `PYTHONPATH=src python3 -m ai_for_ai_lab.session_gate .`. Follow its mode,
+   excluded families and evaluation obligations; choose ONE task with about ten
+   minutes of scope. Renaming a feature does not change its problem family.
 4. Use an agent/YYYY-MM-DD-topic branch (add a suffix if already used).
 5. Implement, test, document what worked and failed. Do not claim a test ran
    unless it did. No invented performance or token-efficiency claims.
@@ -18,7 +21,8 @@ At every session:
 7. Commit atomically. Push the feature branch. Fast-forward main only if
    verified, clean, and not diverged; otherwise preserve the branch and record
    the blocker. Never force-push, discard others' work, or commit secrets.
-8. Report a short outcome with tests, commit, and next step to the human.
+8. Append one row to lab/sessions.jsonl. Report actual agent-value evidence
+   separately from tests, plus commit, stop/continue decision and next step.
 
 Roadmap sections: NOW / NEXT / EXPERIMENTS / DISCOVERED PROBLEMS / REJECTED.
 If backlog empties, identify repeatable friction from your own workflow.

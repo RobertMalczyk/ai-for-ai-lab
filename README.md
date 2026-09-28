@@ -9,6 +9,9 @@ in response to actual friction, not because a large system looks impressive.
 Read `AGENTS.md`, then `README.md`, `ROADMAP.md`, `STATE.md`, the latest entry
 in `docs/SESSIONS.md`, and `docs/DECISIONS.md`. Read only code/tests related to
 the chosen task. One session should have roughly ten minutes of focused scope.
+Before selection run `PYTHONPATH=src python3 -m ai_for_ai_lab.session_gate .`
+and follow docs/EXPERIMENT_POLICY.md: bounded development, real-task comparisons,
+regular exploration and explicit parking of unproductive directions.
 
 ## Experiment 001: evidence-aware handoff capsule
 

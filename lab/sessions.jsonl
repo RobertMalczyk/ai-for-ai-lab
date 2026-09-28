@@ -1,0 +1,8 @@
+{"session":1,"family":"handoff","mode":"build","evidence":"synthetic","outcome":"unknown","record":"docs/SESSIONS.md"}
+{"session":2,"family":"handoff","mode":"evaluate","evidence":"synthetic","outcome":"unknown","record":"docs/BENCHMARKS.md"}
+{"session":3,"family":"handoff","mode":"build","evidence":"synthetic","outcome":"unknown","record":"docs/REVIEW.md"}
+{"session":4,"family":"handoff","mode":"evaluate","evidence":"synthetic","outcome":"unknown","record":"docs/BENCHMARKS.md"}
+{"session":5,"family":"handoff","mode":"build","evidence":"synthetic","outcome":"unknown","record":"docs/CAPSULE.md"}
+{"session":6,"family":"handoff","mode":"build","evidence":"replay","outcome":"unknown","record":"docs/CHECKPOINT.md"}
+{"session":7,"family":"handoff","mode":"build","evidence":"replay","outcome":"unknown","record":"docs/COVERAGE.md"}
+{"session":8,"family":"lab-governance","mode":"maintenance","evidence":"synthetic","outcome":"unknown","record":"docs/EXPERIMENT_POLICY.md"}

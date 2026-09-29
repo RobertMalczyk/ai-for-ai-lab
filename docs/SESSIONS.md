@@ -291,3 +291,52 @@
   non-GitHub connector task; reassess handoff only when a naturally dirty or
   long-lived resume exists. If neither occurs, observe real workflow friction
   instead of manufacturing a benchmark.
+
+## 2026-09-29T11:57:32+02:00 — Session 011 (stale policy directive; pre-result plan)
+
+- Gate: mode=select, excluded_families=[], family_streak=1,
+  evaluation_required=[], parked_families=[]. Neither active experiment has its
+  natural return condition: this is a fresh clean checkout and no non-GitHub
+  connector task exists. Chosen family/mode: `lab-governance` / `maintenance`.
+- Real task and observed problem: mandatory startup reading exposed one stale
+  imperative in `docs/EXPERIMENT_POLICY.md`: its `Immediate effect` says the next
+  work session must explore, while the current machine-readable gate says select
+  and STATE restricts work to natural return conditions. The duplicated mutable
+  state can send the next agent to the wrong family.
+- Simplest baseline: leave the one-time Session 008 conclusion in the permanent
+  policy and require agents to notice that newer gate/STATE output supersedes it.
+- Intervention: replace only the stale conclusion with an invariant precedence
+  rule: live gate plus STATE/ROADMAP determine current selection; policy prose
+  must not duplicate a one-time next-session command. Preserve the historical
+  reason in session history and decisions.
+- Hypothesis/metric: reduce current selection imperatives that contradict the live
+  gate from 1 to 0. Unit: contradictory imperatives; direction: lower; minimum
+  useful improvement: 1. This is a structural documentation check, not evidence
+  of improved LLM task success.
+- Quality control: session_gate must remain mode=select; all policy tests pass;
+  exploration, family limits and field-evidence rules remain unchanged; no active
+  experiment, policy threshold or product code is added.
+- Stop condition: if removing the directive loses an enforceable invariant or
+  requires new governance machinery, record inconclusive and leave it unchanged.
+  Do not turn the policy itself into a product.
+- Changes/files: replaced the stale `Immediate effect` with a stable selection
+  precedence rule; recorded DEC-0013; updated STATE/ROADMAP and appended exactly
+  ledger session 11. No product code, test, active experiment or threshold changed.
+- Result: the stable policy's current imperatives contradicting the live gate fell
+  from 1 to 0. The Session 008 history remains in SESSIONS/DECISIONS, while dynamic
+  selection now comes only from the validated ledger plus current return conditions.
+- Tests: 57/57 unit tests passed in 3.000s. The updated ledger validated; gate
+  remained mode=select with no exclusions/evaluation obligations/parked families;
+  coverage remained complete for all 17 scoped source/test files.
+- Actual agent-value evidence: unmeasured. This is a structural contradiction
+  repair, not evidence that agents make better decisions or use fewer tokens.
+- Learned: even a correct policy becomes misleading when it stores both invariants
+  and a snapshot of mutable state. A generated gate should own the latter.
+- Decision: `simplify`. Remove the duplicate authority and stop; do not add a
+  synchronizer or extend governance. See DEC-0013.
+- Unresolved: prose in other files can still become stale; no broad linter is
+  justified from one conflict. Agents must still challenge gate evidence itself.
+- Exact next step: run the gate. Replicate tool discovery only on a natural
+  non-GitHub connector task; reassess handoff only on a naturally dirty/long-lived
+  resume. If neither condition appears, observe real workflow friction without
+  starting a third product experiment.

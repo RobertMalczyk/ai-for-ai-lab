@@ -44,6 +44,7 @@
 6. Agents can repeat external side effects after an interrupted response.
 7. Git branches can carry work invisible to an agent reading only main.
 8. Broad rereading and redundant tests can cost more than a small change.
+9. One-time next-session commands become stale when duplicated in stable policy.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -52,3 +53,5 @@
 - Treat an unchanged hash as truth/confidence: it only establishes byte identity.
 - Claim checkpoint utility from canonical clean-clone self-use: the first field
   comparison added context and found nothing beyond Git identity/status.
+- Duplicate current gate state in policy prose: derive it from the ledger and keep
+  historical session-specific conclusions in the session log.

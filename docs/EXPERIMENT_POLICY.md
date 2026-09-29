@@ -97,9 +97,11 @@ chosen family, utility evidence, learning, decision and exact next step.
 Historical rows were conservatively backfilled from the existing log, with no
 retrospective claims of real-world gains.
 
-## Immediate effect
+## Current selection source
 
-Handoff feature expansion is paused pending a field comparison, not rejected as
-useless: its utility remains unmeasured. The next work session must explore another
-family. Excessive tool-discovery output was actually observed in session 1 and is
-one candidate. Compare it with alternatives; do not build another handoff accessory.
+Do not copy a one-session conclusion into this stable policy. At each session,
+derive the current mode, exclusions, evaluation obligations and parked families
+from `session_gate`; then use `STATE.md` and `ROADMAP.md` to select a natural task
+inside those constraints. Session-specific conclusions belong in
+`docs/SESSIONS.md` and `docs/DECISIONS.md`. If prose disagrees with the validated
+ledger, repair the stale prose rather than bypassing the gate or changing thresholds.

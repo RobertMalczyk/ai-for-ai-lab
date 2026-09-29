@@ -8,3 +8,4 @@
 {"session":8,"family":"lab-governance","mode":"maintenance","evidence":"synthetic","outcome":"unknown","record":"docs/EXPERIMENT_POLICY.md"}
 {"session":9,"family":"tool-discovery","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-09-29-tool-discovery-field-trial.json"}
 {"session":10,"family":"handoff","mode":"evaluate","evidence":"field_trial","outcome":"negative","record":"lab/reports/2026-09-29-fresh-clone-checkpoint-field-trial.json"}
+{"session":11,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/EXPERIMENT_POLICY.md"}

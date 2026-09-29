@@ -195,3 +195,25 @@ clean case (overgeneralizes beyond the observed condition).
 Consequences: correctness tests remain, but clean-clone self-use is not a benefit
 claim. The result does not cover uncommitted edits, stale notes on a long-lived
 branch, latency, semantic dependency completeness or downstream task success.
+
+### DEC-0013 — Keep mutable selection state out of stable policy
+
+Problem: the policy still said the next work session must explore after the gate
+had advanced to mode=select, creating two conflicting authorities during mandatory
+startup reading.
+
+Decision: stable policy defines invariants and precedence only. Each session gets
+mode, exclusions, evaluation obligations and parked families from `session_gate`,
+then selects among the natural return conditions in STATE/ROADMAP. One-session
+conclusions remain in SESSIONS and DECISIONS.
+
+Why: the ledger already computes mutable state. Duplicating its previous output
+in prose guarantees eventual staleness and asks agents to infer which command wins.
+
+Alternatives: update the policy conclusion after every session (recurring churn);
+ignore the conflict (nondeterministic selection); add another synchronizer
+(governance becoming a product).
+
+Consequences: agents still have to read the policy, gate and current state, but
+there is one source for dynamic constraints. This structural repair does not prove
+better LLM decisions and changes no threshold, experiment or product behavior.

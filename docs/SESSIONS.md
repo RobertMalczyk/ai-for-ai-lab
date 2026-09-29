@@ -340,3 +340,63 @@
   non-GitHub connector task; reassess handoff only on a naturally dirty/long-lived
   resume. If neither condition appears, observe real workflow friction without
   starting a third product experiment.
+
+## 2026-09-29T17:58:56+02:00 — Session 012 (web discovery replication; pre-result plan)
+
+- Gate: mode=select, excluded_families=[], family_streak=1,
+  evaluation_required=[], parked_families=[]. Chosen active family/mode:
+  `tool-discovery` / `evaluate`; no third experiment is opened.
+- Real task: consult current primary technical sources about progressive disclosure
+  and tool discovery before deciding whether the lab should build a discovery
+  helper. The research decision exists independently of measuring the connector.
+- Observed friction/trace: the task requires locating and correctly invoking the
+  non-GitHub web-search connector from the runtime registry. The prior GitHub task
+  showed a broad full-description query can dominate context, but cross-connector
+  behavior is unmeasured.
+- Simplest baseline: serialize every full registry entry matching the predeclared
+  broad web/search/research/browser/documentation expression.
+- Intervention: serialize matching names first, select the one required operation
+  `mcp__codex_apps__search_service_web_run`, then serialize its exact full entry.
+  Include both discovery payloads as overhead.
+- Hypothesis/metric: intervention serialized UTF-8 bytes are at least 90% lower
+  than baseline. Unit: bytes; direction: lower; minimum useful improvement: 90%.
+- Quality control: the names pass exposes the required operation; its exact schema
+  is nonempty; the real search yields at least two directly relevant primary
+  sources from official technical publishers and supports a bounded build/no-build
+  decision. Source relevance is checked independently of the registry byte count.
+- Stop condition: if required capability or research quality fails, or reduction
+  is below 90%, do not build a helper and simplify/reject the pattern. If it passes,
+  treat two heterogeneous tasks as support for a documented operating practice,
+  not proof of lower tokens, latency or better LLM decisions; still prefer no code
+  unless a concrete automation gap remains.
+- Changes/files: added a sanitized non-GitHub registry trace and field report;
+  appended ledger session 12; recorded DEC-0014; updated AGENTS, STATE, ROADMAP,
+  session documentation and checkpoint declarations. No helper or product code.
+- Measurement/result: baseline serialized 113 broad full matches into 296,035
+  bytes. Names-first (5,285 bytes) plus the exact web-search connector entry
+  (11,080 bytes) totaled 16,365 bytes, avoiding 279,670 bytes (94.4719%). The
+  required operation was present with a nonempty schema, so the 90% threshold passed.
+- Research quality: the selected connector successfully found and opened relevant
+  official guidance from OpenAI on deferred tool search and from Anthropic on
+  on-demand tool loading/progressive disclosure. Three primary-source URLs and
+  bounded relevance notes are retained in the sanitized trace; search bodies are not.
+- Tests: 57/57 unit tests passed in 0.796s. The gate accepted all three field
+  reports and returned mode=select with no evaluation obligation; coverage remained
+  complete for all 17 scoped source/test files.
+- Actual agent-value evidence: positive only for serialized registry payload and
+  retained capability/primary-source task quality on one web-research task. Together
+  with the GitHub result this supports portability across two connectors, but does
+  not establish token, latency, cache, model-choice or task-success improvement.
+- Learned: the exact schema for one compound connector is itself sizable, but the
+  dominant waste still comes from unrelated full entries. Official provider designs
+  independently use the same deferred/on-demand principle.
+- Decision: `simplify` and conclude this experiment. Document names-first then
+  exact-schema loading in AGENTS; reject a helper because direct registry filtering
+  already supplies the behavior. See DEC-0014.
+- Unresolved: registries with opaque names, poor descriptions, dynamic permissions
+  or many simultaneously required operations may behave differently. No accuracy
+  comparison or tokenizer-specific measurement was performed.
+- Exact next step: run the gate. Reopen tool discovery only after an observed
+  practice failure or materially different registry. Evaluate handoff only on a
+  natural dirty/long-lived resume; otherwise observe real workflow friction before
+  starting another bounded experiment.

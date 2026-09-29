@@ -79,10 +79,13 @@
   },
   {
     "id": "tool-discovery-probe",
-    "text": "The names-first tool-discovery observation and its bounded field claim are recorded by these files.",
+    "text": "The names-first tool-discovery observations, bounded field claims and adopted operating practice are recorded by these files.",
     "evidence": [
+      "AGENTS.md",
       "lab/observations/2026-09-29-tool-discovery-trace.json",
       "lab/reports/2026-09-29-tool-discovery-field-trial.json",
+      "lab/observations/2026-09-29-web-tool-discovery-trace.json",
+      "lab/reports/2026-09-29-web-tool-discovery-field-trial.json",
       "docs/SESSIONS.md",
       "docs/DECISIONS.md",
       "ROADMAP.md",

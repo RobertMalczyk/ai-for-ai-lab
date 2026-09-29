@@ -1,0 +1,17 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "docs/SESSIONS.md",
+  "hypothesis": "Names-first discovery followed by exact retrieval of the required web-search connector reduces serialized registry payload by at least 90 percent without losing the capability or primary-source research quality.",
+  "metric": "serialized_registry_payload",
+  "unit": "bytes",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 296035,
+  "baseline_ref": "lab/observations/2026-09-29-web-tool-discovery-trace.json",
+  "intervention_value": 16365,
+  "intervention_ref": "lab/observations/2026-09-29-web-tool-discovery-trace.json",
+  "minimum_improvement": 266431.5,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One sequential web-research task and one registry snapshot. The broad baseline exactly follows the predeclared expression but may overmatch. The intervention includes both discovery passes and retained the one required operation; research quality was checked against three official primary sources. Bytes are not tokens, and no latency, cache, model-choice accuracy or downstream task-success effect was measured."
+}

@@ -217,3 +217,29 @@ ignore the conflict (nondeterministic selection); add another synchronizer
 Consequences: agents still have to read the policy, gate and current state, but
 there is one source for dynamic constraints. This structural repair does not prove
 better LLM decisions and changes no threshold, experiment or product behavior.
+
+### DEC-0014 — Adopt two-stage discovery; reject a helper for now
+
+Problem: one GitHub task showed large registry payload savings, but it did not
+establish that the pattern transfers to a different connector or that software is
+needed to enforce it.
+
+Decision: adopt names-first followed by exact schemas as an agent operating
+practice and conclude the current tool-discovery experiment without building a
+helper. Reopen only after an observed practice failure or materially different
+registry makes manual selection insufficient.
+
+Why: the web-research replication used 16,365 versus 296,035 serialized bytes
+(94.47% lower), exposed the required connector and retrieved three relevant
+official primary sources. The earlier GitHub task saved 95.45%. OpenAI and
+Anthropic independently document deferred/on-demand tool loading, while the
+runtime already supports the needed two-stage queries.
+
+Alternatives: build a registry wrapper after two tasks (unnecessary code and
+maintenance); load every schema up front (observed waste); return names without
+loading exact schemas (risks malformed calls); claim general token/accuracy gains
+from bytes (unsupported).
+
+Consequences: AGENTS records the practice and both discovery passes count as
+overhead. The result is scoped to serialized payload and retained capability; it
+does not prove lower tokens, latency, better selection or downstream task success.

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-29T17:58:56+02:00",
+  "task": "research primary technical sources before deciding whether to build a tool-discovery helper",
+  "registry_entries": 214,
+  "baseline": {
+    "query": "broad web/search/research/browser/internet/documentation match",
+    "match_count": 113,
+    "serialized_utf8_bytes": 296035,
+    "content": "full matching registry entries"
+  },
+  "intervention": {
+    "names_match_count": 113,
+    "names_utf8_bytes": 5285,
+    "exact_schema_count": 1,
+    "exact_schema_utf8_bytes": 11080,
+    "total_utf8_bytes": 16365,
+    "required_operations": [
+      "mcp__codex_apps__search_service_web_run"
+    ],
+    "missing_required": []
+  },
+  "research_quality": {
+    "required_operation_visible": true,
+    "exact_schema_nonempty": true,
+    "primary_sources": [
+      {
+        "publisher": "OpenAI",
+        "url": "https://developers.openai.com/api/docs/guides/tools-tool-search",
+        "relevance": "Documents deferred tool loading and dynamic insertion of only needed definitions."
+      },
+      {
+        "publisher": "Anthropic",
+        "url": "https://www.anthropic.com/engineering/advanced-tool-use",
+        "relevance": "Documents on-demand tool search, context trade-offs and cases where discovery overhead is worthwhile."
+      },
+      {
+        "publisher": "Anthropic",
+        "url": "https://www.anthropic.com/engineering/code-execution-with-mcp",
+        "relevance": "Describes progressive disclosure from names through selected full definitions."
+      }
+    ],
+    "quality_passed": true
+  },
+  "result": {
+    "bytes_avoided": 279670,
+    "reduction_fraction": 0.944719,
+    "minimum_reduction_fraction": 0.9
+  },
+  "measurement_notes": [
+    "Both strategies were measured against the same in-process registry snapshot.",
+    "Intervention cost includes the names payload and the exact full web-search connector entry.",
+    "The search and source-opening task used the selected non-GitHub operation successfully.",
+    "The broad baseline intentionally reproduces generic capability discovery and may overmatch.",
+    "No registry descriptions, credentials, search-result bodies or user data are retained in this trace."
+  ]
+}

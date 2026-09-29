@@ -2,25 +2,21 @@
 
 ## NOW
 - Exploration/utility policy is active. Handoff feature work is paused: correctness is tested, comparative real-agent benefit remains unknown.
-- Tool-discovery exploration has one preliminary positive real-task comparison:
-  names-first plus six exact schemas used 10,909 vs 239,617 serialized bytes while
-  retaining the required operations. Do not build a helper from one task.
+- Tool-discovery evaluation is concluded as a documented practice: names-first
+  plus exact schemas reduced serialized registry payload 95.45% on GitHub and
+  94.47% on web research while retaining required operations. No helper is needed.
 - Handoff checkpoint has one negative real-task comparison on a verified clean
   fresh clone: +617 agent-visible bytes, no stale evidence and no decision change.
   This is a bounded negative control, not evidence about dirty worktrees.
 
 ## NEXT
-- Repeat the tool-discovery comparison only when a natural non-GitHub connector
-  task occurs; predeclare required operations and quality. Then evaluate whether
-  a written names-first practice is enough or a tiny helper is justified.
+- Revisit tool discovery only after an observed practice failure, a materially
+  different registry, or evidence that manual selection itself is the bottleneck.
 - Before more handoff features: evaluate only on a naturally dirty or long-lived
   resumed worktree where stale evidence is plausible. A second negative or
   inconclusive evaluation parks the family.
 
 ## EXPERIMENTS
-- H9: names-first tool discovery followed by exact schema retrieval reduces
-  registry payload without hiding required operations. One GitHub task passed;
-  cross-task replication is required before implementation.
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
   fresh-clone condition; the remaining bounded hypothesis is dirty/long-lived
   resume, where Git identity alone may not expose claim-level staleness.
@@ -38,7 +34,7 @@
 1. Handoff summaries outlive the files supporting them (current experiment).
 2. A fresh session may have no local checkout (observed at first launch).
 3. Large tool-discovery outputs consume context before useful work starts
-   (observed here; prefer names first and a few exact descriptions).
+   (observed; mitigated by names first and selected exact schemas).
 4. Goal and next-step summaries can mix evidence and assumptions.
 5. Tool failures vary in shape and omit whether retry is safe.
 6. Agents can repeat external side effects after an interrupted response.
@@ -55,3 +51,5 @@
   comparison added context and found nothing beyond Git identity/status.
 - Duplicate current gate state in policy prose: derive it from the ledger and keep
   historical session-specific conclusions in the session log.
+- Build a tool-discovery helper now: two heterogeneous field tasks support the
+  names-first/exact-second practice, and direct registry filtering already works.

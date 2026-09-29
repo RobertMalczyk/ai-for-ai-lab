@@ -33,6 +33,12 @@ Do not create paid services, recursive automations, or unsolicited messages.
 Four scheduled sessions daily are intended; the scheduler invokes sessions,
 it does not guarantee a strict ten-minute wall-clock execution limit.
 
+Tool discovery: when registry metadata can be queried selectively, first return
+matching operation names, choose the smallest required set, then retrieve each
+selected operation's exact schema before calling it. Count both passes. Do not
+skip exact schemas, load a broad catalog by default, or infer token/quality gains
+from serialized-byte savings alone.
+
 Infrastructure: public HTTPS clone works in the initial runtime, but shell push
 had no credentials. If still true, use authenticated GitHub connector tree,
 commit and branch/ref operations with force=false; build from the fetched base

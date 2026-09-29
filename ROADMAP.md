@@ -27,6 +27,8 @@
   becoming established facts after summarization.
 - H5: a restart checkpoint with completed side effects prevents duplicate writes.
 - H6: explicit tool preconditions reduce wasted calls with guessed parameters.
+  A root test entrypoint removed the ambient `PYTHONPATH` precondition in one
+  replay; require natural-session use before adding runner features or claiming value.
 - H7: branch/commit-aware handoffs reduce resuming from the wrong baseline.
 - H8: an explicit stop condition prevents unnecessary verification loops.
 
@@ -43,6 +45,8 @@
 9. One-time next-session commands become stale when duplicated in stable policy.
 10. Per-branch ancestor loops make branch audits implicit and scale linearly;
     native merged/no-merged filters classify the observed repository directly.
+11. A documented environment prefix was still omitted during real verification,
+    producing eight import errors before the valid test run.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,

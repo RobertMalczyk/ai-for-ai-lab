@@ -27,7 +27,7 @@ PYTHONPATH=src python3 -m ai_for_ai_lab capture --root . \
   --next-step 'Add a recovery fixture benchmark' \
   src/ai_for_ai_lab/capsule.py tests/test_capsule.py > /tmp/handoff.json
 PYTHONPATH=src python3 -m ai_for_ai_lab check --root . /tmp/handoff.json
-PYTHONPATH=src python3 -m unittest discover -s tests -v
+python3 run_tests.py
 ```
 
 Successful commands emit one compact JSON object on stdout. Exit codes:

@@ -458,3 +458,74 @@
 - Exact next step: run the gate and obey its scheduled exploration. Compare three
   candidates from distinct families with current workflow evidence; do not return
   to branch visibility unless the native classification fails a real task.
+
+## 2026-09-30T00:08:21+02:00 — Session 014 (test entrypoint; pre-result plan)
+
+- Gate: mode=explore, reasons=[scheduled_exploration],
+  excluded_families=[branch-visibility], family_streak=1,
+  evaluation_required=[], parked_families=[]. Chosen family/mode:
+  `verification-entrypoint` / `explore`.
+- Three candidates from distinct families:
+  1. `verification-entrypoint`: Session 013 records a real test invocation without
+     `PYTHONPATH=src`, producing eight import errors before the corrected command
+     passed 57 tests. Assumption to challenge: repeating the environment prefix in
+     prose is sufficient. Potential value: fewer invalid verification attempts.
+     Cheapest falsifier: one stdlib entrypoint run without ambient `PYTHONPATH`.
+     Cost: one small script and one replay; novelty: new family related to H6.
+  2. `side-effect-recovery`: publication still uses several remote writes, but no
+     interrupted or duplicate write occurred. Assumption: a durable write ledger is
+     needed. Cheapest falsifier requires a natural interruption trace, unavailable
+     here. Potential value high, evidence absent, cost medium; novelty: untried H5.
+  3. `assumption-provenance`: summaries can promote assumptions to facts, but the
+     recent entries explicitly separate measured results and limitations. Cheapest
+     falsifier is an audit of a real disputed claim; none appeared in this startup.
+     Potential value medium, evidence weak, cost low; novelty: untried H4.
+- Selection: candidate 1 has a preserved failure trace and the smallest direct
+  test. Observe 2/3 rather than inventing incidents. This session prototypes an
+  entrypoint, not a general task runner or verification framework.
+- Real task/baseline: run the repository's full unit suite before publication.
+  The observed baseline in Session 013 required two invocations: one invalid run
+  with eight import errors, then the documented environment-prefixed run.
+- Hypothesis/metric: `python3 run_tests.py` succeeds from repository root with no
+  ambient `PYTHONPATH`, reducing invalid invocations before a valid suite result
+  from 1 to 0. Unit: invalid invocations; direction: lower; minimum useful
+  improvement: 1. This replay cannot by itself prove future field utility.
+- Quality control: the entrypoint must run the same `tests/` discovery suite,
+  return the suite's exit status, report 57 passing tests, use only the standard
+  library, and succeed with `PYTHONPATH` explicitly unset.
+- Overhead/stop condition: count the new file and documentation/checkpoint upkeep;
+  do not call the replay positive field evidence. If it needs packaging, shell
+  assumptions, dependencies, or changes test semantics, reject it. After one
+  successful replay, require a later natural session before further features.
+- Changes/files: added the stdlib-only root `run_tests.py`; made it establish the
+  source path for itself and CLI-test subprocesses; changed the documented verify
+  command in AGENTS/README/STATE; added a sanitized replay trace and ledger row;
+  updated ROADMAP and checkpoint declarations. No product behavior changed.
+- Failures and tests: prototype 1 modified only `sys.path`; with ambient
+  `PYTHONPATH` unset it discovered 57 tests but ended with 5 failures and 1 error
+  because CLI subprocesses could not import the package. Prototype 2 propagated
+  the source path through the child environment and passed 57/57 in 1.167s under
+  `env -u PYTHONPATH`. A mocked failed suite independently confirmed exit code 1.
+- Replay result: invalid invocations before a valid suite result fell from the
+  observed baseline 1 to 0, and suite count/quality matched. The threshold was
+  met mechanically, but implementation, reading, report and maintenance overhead
+  was not compared end to end; evidence is replay, not a positive field trial.
+- Final verification: the finalized entrypoint again passed 57/57 tests with
+  `PYTHONPATH` unset in 1.100s, and the failed-suite mock again returned 1. The
+  updated gate accepted the ledger and returned mode=select with no exclusions,
+  evaluation obligation or parked family; coverage remained 17/17. The
+  pre-refresh checkpoint returned exit 1 for the edited declarations as expected.
+- Actual agent-value evidence: inconclusive. The entrypoint removes one reproduced
+  environment precondition and its nested-process variant, but has not yet reduced
+  wasted work in a later task that existed independently of this prototype.
+- Learned: changing only the parent interpreter's import path is insufficient for
+  suites that exercise CLIs in subprocesses. A useful entrypoint must propagate
+  the precondition while preserving any caller-provided path.
+- Decision: `evaluate`. Keep this one-file entrypoint, stop feature work, and use
+  it in the next natural verification. Reject expansion into a general task runner
+  unless that field use exposes a concrete missing operation.
+- Unresolved: cross-platform interpreter naming, callers running outside repository
+  root, parallel test execution, and whether the entrypoint saves net agent effort.
+- Exact next step: run the gate; during the next independently required full-suite
+  verification, use `python3 run_tests.py` and compare failed calls plus full setup,
+  reading/reporting and maintenance overhead. Do not open a third experiment.

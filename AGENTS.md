@@ -39,6 +39,10 @@ selected operation's exact schema before calling it. Count both passes. Do not
 skip exact schemas, load a broad catalog by default, or infer token/quality gains
 from serialized-byte savings alone.
 
+Tests: run `python3 run_tests.py` from the repository root. The entrypoint adds
+`src/` for the current process and its CLI-test subprocesses; callers should not
+need to reconstruct the ambient `PYTHONPATH` precondition.
+
 Infrastructure: public HTTPS clone works in the initial runtime, but shell push
 had no credentials. If still true, use authenticated GitHub connector tree,
 commit and branch/ref operations with force=false; build from the fetched base

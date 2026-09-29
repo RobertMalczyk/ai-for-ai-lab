@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-30T00:08:21+02:00",
+  "task": "run the full repository unit suite before publication",
+  "baseline": {
+    "source": "docs/SESSIONS.md session 013",
+    "invalid_invocations_before_valid_result": 1,
+    "invalid_result": "8 test-module import errors without PYTHONPATH",
+    "valid_test_count": 57
+  },
+  "prototype_1": {
+    "ambient_pythonpath": "unset",
+    "change": "insert src into the parent interpreter sys.path only",
+    "discovered_tests": 57,
+    "failures": 5,
+    "errors": 1,
+    "cause": "CLI test subprocesses did not inherit the parent sys.path mutation"
+  },
+  "prototype_2": {
+    "ambient_pythonpath": "unset",
+    "change": "prepend src to parent sys.path and child-process PYTHONPATH",
+    "invalid_invocations_before_valid_result": 0,
+    "tests_run": 57,
+    "tests_passed": 57,
+    "seconds": 1.167,
+    "failed_suite_exit_propagation": true
+  },
+  "result": {
+    "invalid_invocations_avoided_in_replay": 1,
+    "quality_passed": true,
+    "full_session_overhead_compared": false,
+    "evidence_level": "replay",
+    "utility_outcome": "inconclusive"
+  },
+  "measurement_notes": [
+    "The baseline failure occurred in the preceding natural repository session and is preserved in its session entry.",
+    "The intervention was created and exercised specifically for this replay, so it is not a positive field trial.",
+    "Both successful runs covered the same 57-test suite; no token, latency or downstream decision claim is made.",
+    "Implementation and documentation overhead is retained in the commit but was not converted into a favorable metric."
+  ]
+}

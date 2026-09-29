@@ -69,7 +69,8 @@
       "src/ai_for_ai_lab/__init__.py",
       "src/ai_for_ai_lab/coverage.py",
       "tests/test_coverage.py",
-      "docs/COVERAGE.md"
+      "docs/COVERAGE.md",
+      "run_tests.py"
     ]
   },
   {
@@ -110,6 +111,20 @@
     "evidence": [
       "AGENTS.md",
       "lab/observations/2026-09-29-branch-audit-trace.json",
+      "lab/sessions.jsonl",
+      "docs/SESSIONS.md",
+      "ROADMAP.md",
+      "STATE.md"
+    ]
+  },
+  {
+    "id": "verification-entrypoint-probe",
+    "text": "The no-setup test entrypoint, failed prototype and bounded replay interpretation are recorded by these files.",
+    "evidence": [
+      "run_tests.py",
+      "AGENTS.md",
+      "README.md",
+      "lab/observations/2026-09-30-test-entrypoint-replay.json",
       "lab/sessions.jsonl",
       "docs/SESSIONS.md",
       "ROADMAP.md",

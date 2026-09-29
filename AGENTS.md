@@ -45,6 +45,11 @@ commit and branch/ref operations with force=false; build from the fetched base
 tree and preserve unrelated files. Verify the published tree equals the tested
 local tree. Do not request or expose raw tokens to make shell push work.
 
+Branch audit: classify `refs/remotes/origin/agent/` with Git's native
+`for-each-ref --merged=origin/main` and `--no-merged=origin/main` filters and
+report both sets explicitly. Do not infer “no unfinished work” from silence or
+build a wrapper unless the native classification fails a real workflow.
+
 Self-use checkpoint (after reading mandatory session documents):
 - Run `PYTHONPATH=src python3 -m ai_for_ai_lab checkpoint --root .` before
   trusting existing implementation notes. Exit 1 means review affected claims;

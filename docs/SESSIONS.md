@@ -400,3 +400,61 @@
   practice failure or materially different registry. Evaluate handoff only on a
   natural dirty/long-lived resume; otherwise observe real workflow friction before
   starting another bounded experiment.
+
+## 2026-09-29T23:58:30+02:00 — Session 013 (branch audit; pre-result plan)
+
+- Gate: mode=select, excluded_families=[], family_streak=1,
+  evaluation_required=[], parked_families=[]. Chosen family/mode:
+  `branch-visibility` / `evaluate`; this tests an existing backlog hypothesis
+  before building a branch-aware handoff feature.
+- Real task: audit every remote `agent/*` branch for work not contained in
+  `origin/main` before choosing the session baseline. The repository contract
+  requires this task independently of the experiment.
+- Observed friction/trace: the initial audit listed 12 agent branches, then used
+  one `for-each-ref` process plus one `merge-base --is-ancestor` process per
+  branch. The 13-process baseline reported unmerged work only by printing nothing,
+  which is compact but not an explicit, machine-auditable classification.
+- Simplest baseline: enumerate the 12 refs and test each ref independently with
+  `merge-base --is-ancestor <ref> origin/main`.
+- Intervention: use Git's native `for-each-ref --merged=origin/main` and
+  `--no-merged=origin/main` filters, restricted to `refs/remotes/origin/agent/`,
+  and retain explicit sorted merged/unmerged lists. Do not build a helper.
+- Hypothesis/metric: reduce Git subprocesses for complete classification from 13
+  to at most 6 (more than 50%) while classifying every baseline ref exactly once.
+  Unit: Git subprocesses; direction: lower.
+- Quality control: the union of native-filter outputs must equal the 12-ref
+  baseline, their intersection must be empty, and the unmerged set must agree
+  with the per-ref baseline. Record refs only; no repository contents or secrets.
+- Overhead/stop condition: count both native filter calls and the inventory call;
+  report preparation and documentation remain real maintenance overhead but are
+  outside this narrow process-count metric. On any classification mismatch or
+  failure to exceed 50%, reject the practice change and add no tool or feature.
+- Changes/files: added one sanitized branch-classification trace, documented the
+  native Git practice in AGENTS, rejected a helper in ROADMAP, appended ledger
+  session 13, and updated STATE/checkpoint declarations. No product code changed.
+- Measured result: the operational classifier used 3 Git processes versus 13
+  for the baseline (10 fewer; 76.92%). It classified all 12 refs exactly once;
+  merged=12, unmerged=0, union mismatch=0, intersection=0, and the unmerged set
+  matched the per-ref baseline.
+- Tests/result: the first unittest invocation omitted `PYTHONPATH=src` and failed
+  collection with 8 `ModuleNotFoundError` errors; no product failure was inferred.
+  The corrected repository command passed 57/57 tests in 1.108s. The updated gate
+  accepted the ledger and requires scheduled exploration next, excluding
+  `branch-visibility`; coverage remained complete for all 17 scoped files. The
+  pre-refresh checkpoint returned exit 1 and identified the edited declarations.
+- Actual agent-value evidence: inconclusive. The process-count result is from a
+  real required task, but the evaluation itself repeated 12 per-ref checks and
+  did not measure end-to-end setup, reading, reporting or maintenance overhead.
+  It does not establish fewer tokens, lower latency or fewer wrong-baseline errors.
+- Learned: native Git already solves the observed mechanical classification;
+  explicit merged/unmerged sets are preferable to a silent success loop. The
+  broader H7 claim about resuming from the wrong baseline remains untested.
+- Decision: `simplify`. Adopt the native command pattern and reject a helper now;
+  record the outcome as inconclusive rather than promote a narrow process count
+  to positive utility.
+- Unresolved: branches rewritten concurrently after fetch, branches outside the
+  `agent/*` namespace, commit-equivalent but non-ancestor histories, and whether
+  explicit classification changes an agent's baseline decision.
+- Exact next step: run the gate and obey its scheduled exploration. Compare three
+  candidates from distinct families with current workflow evidence; do not return
+  to branch visibility unless the native classification fails a real task.

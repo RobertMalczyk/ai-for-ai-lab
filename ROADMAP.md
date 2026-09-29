@@ -41,6 +41,8 @@
 7. Git branches can carry work invisible to an agent reading only main.
 8. Broad rereading and redundant tests can cost more than a small change.
 9. One-time next-session commands become stale when duplicated in stable policy.
+10. Per-branch ancestor loops make branch audits implicit and scale linearly;
+    native merged/no-merged filters classify the observed repository directly.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -53,3 +55,6 @@
   historical session-specific conclusions in the session log.
 - Build a tool-discovery helper now: two heterogeneous field tasks support the
   names-first/exact-second practice, and direct registry filtering already works.
+- Build a branch-audit helper now: native Git classified all 12 observed agent
+  branches with three Git processes instead of 13. Wrong-baseline prevention and
+  full workflow overhead remain unmeasured, so retain the practice, not software.

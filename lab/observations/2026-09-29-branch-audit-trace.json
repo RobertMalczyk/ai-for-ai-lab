@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-29T23:58:30+02:00",
+  "task": "classify remote agent branches before selecting the session baseline",
+  "baseline": {
+    "agent_ref_count": 12,
+    "git_subprocesses": 13,
+    "method": "one for-each-ref inventory plus one merge-base ancestry check per ref",
+    "unmerged_ref_count": 0
+  },
+  "intervention": {
+    "git_subprocesses": 3,
+    "method": "one inventory plus native merged and no-merged filters",
+    "merged_ref_count": 12,
+    "unmerged_ref_count": 0
+  },
+  "quality": {
+    "union_equals_inventory": true,
+    "intersection_count": 0,
+    "unmerged_set_matches_baseline": true
+  },
+  "result": {
+    "method_git_subprocesses_avoided": 10,
+    "method_reduction_fraction": 0.769231,
+    "evaluation_cross_check_git_subprocesses": 12,
+    "full_session_overhead_measured": false
+  },
+  "measurement_notes": [
+    "The branch audit was required by the repository workflow and was not invented for the probe.",
+    "Only remote refs under refs/remotes/origin/agent/ were classified against the fetched origin/main.",
+    "The evaluation repeated the per-ref checks to compare sets; those 12 Git processes are not hidden from the interpretation.",
+    "Repository contents, credentials and connector payloads are not retained.",
+    "The narrow process count does not measure latency, context, decision quality or full session overhead, so the utility outcome is inconclusive."
+  ]
+}

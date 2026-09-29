@@ -103,5 +103,17 @@
       "ROADMAP.md",
       "STATE.md"
     ]
+  },
+  {
+    "id": "branch-visibility-probe",
+    "text": "The native Git branch-classification observation and its bounded inconclusive interpretation are recorded by these files.",
+    "evidence": [
+      "AGENTS.md",
+      "lab/observations/2026-09-29-branch-audit-trace.json",
+      "lab/sessions.jsonl",
+      "docs/SESSIONS.md",
+      "ROADMAP.md",
+      "STATE.md"
+    ]
   }
 ]

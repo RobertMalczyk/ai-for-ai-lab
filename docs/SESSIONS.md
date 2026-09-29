@@ -230,3 +230,64 @@
   required operations and repeat the same byte/quality comparison. If it does not
   reproduce the threshold, simplify the rule to targeted name filtering; if it
   does, decide whether documentation alone is sufficient.
+
+## 2026-09-29T06:02:32+02:00 — Session 010 (handoff evaluation; pre-result plan)
+
+- Gate: mode=evaluate, excluded_families=[], family_streak=1,
+  evaluation_required=[handoff], parked_families=[]. Chosen family: `handoff`;
+  this session evaluates the existing checkpoint instead of adding a feature.
+- Real task: resume the canonical lab from a newly cloned, clean `main`, establish
+  the trustworthy baseline and choose the next permitted task. This work existed
+  independently of the checkpoint evaluation.
+- Observed condition/trace: clone, fetch, branch inspection and mandatory startup
+  documents already established a clean worktree at the same main commit as the
+  authenticated remote. The required checkpoint then returned fresh with no
+  reread paths. Exact aggregate counts will be captured without repository or
+  tool-registry contents under `lab/observations/`.
+- Simplest baseline: mandatory startup documents plus Git identity/status and the
+  session gate; on a clean fresh clone, do not add a checkpoint report.
+- Intervention: the same startup plus checkpoint inspection. Count its complete
+  agent-visible JSON output and all bytes hashed from declared evidence; no setup
+  or report byte is excluded. Coverage is a separate common workflow check.
+- Hypothesis/metric: checkpoint inspection reduces agent-visible startup bytes by
+  at least 10% while producing the same permitted-task decision and detecting any
+  declared stale evidence. Unit: serialized UTF-8 bytes; direction: lower.
+- Quality control: baseline and intervention must identify the same canonical
+  commit, clean status and gate mode; intervention must return a valid report.
+  Any stale path uniquely found by the checkpoint is recorded as useful quality,
+  not hidden by the byte metric.
+- Stop condition: if the fresh-clone intervention finds no unique stale evidence
+  and does not beat the 10% threshold, record negative for this operating
+  condition; do not generalize to dirty or long-lived worktrees and do not add a
+  feature. A sequential single-session comparison cannot establish task-success
+  or latency effects.
+- Changes/files: added a sanitized fresh-clone observation and field report;
+  appended ledger session 10; updated STATE, ROADMAP, DECISIONS, session history
+  and the self-checkpoint declarations. No product code or threshold changed.
+- Measurement/result: baseline startup payload was 33,483 bytes; adding the
+  617-byte checkpoint report produced 34,100 bytes, 1.84% worse rather than 10%
+  better. The checkpoint also hashed 35 declared paths totaling 118,285 bytes and
+  read its 6,650-byte bundle. It was fresh, returned no reread paths, found no
+  evidence unavailable from the verified clean Git baseline and did not change
+  the gate-directed task. Quality checks passed, but the utility hypothesis did not.
+- Tests: 57/57 unit tests passed in 1.396s. The gate accepted both field reports
+  and returned mode=select with no evaluation obligation; coverage remained
+  complete for all 17 scoped source/test files. Before refresh, checkpoint exit 1
+  correctly exposed changed project-workflow, policy and discovery evidence.
+- Actual agent-value evidence: negative for one real clean fresh-clone resume.
+  Operational agent-visible overhead is fully counted; existing code maintenance
+  and policy-required evaluation logging were not charged, which only favors the
+  already losing intervention. Internal file I/O is reported separately and is
+  not mislabeled as model-context cost.
+- Learned: content fingerprints can be correct yet redundant when commit identity,
+  a clean worktree and mandatory current documents already establish the baseline.
+  The unresolved use case is a dirty/long-lived resume, not another synthetic edit.
+- Decision: `simplify` the claim, not the code. Do not cite clean-clone self-use as
+  benefit and do not add a feature. See DEC-0012.
+- Unresolved: dirty worktrees, cross-branch notes, semantic dependency omissions,
+  hash latency and downstream task success. One negative condition does not prove
+  the whole handoff family useless.
+- Exact next step: run the gate. Replicate tool discovery only during a natural
+  non-GitHub connector task; reassess handoff only when a naturally dirty or
+  long-lived resume exists. If neither occurs, observe real workflow friction
+  instead of manufacturing a benchmark.

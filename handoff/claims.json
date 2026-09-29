@@ -88,5 +88,17 @@
       "ROADMAP.md",
       "STATE.md"
     ]
+  },
+  {
+    "id": "handoff-fresh-clone-evaluation",
+    "text": "The clean fresh-clone checkpoint comparison and its bounded negative claim are recorded by these files.",
+    "evidence": [
+      "lab/observations/2026-09-29-fresh-clone-checkpoint-trace.json",
+      "lab/reports/2026-09-29-fresh-clone-checkpoint-field-trial.json",
+      "docs/SESSIONS.md",
+      "docs/DECISIONS.md",
+      "ROADMAP.md",
+      "STATE.md"
+    ]
   }
 ]

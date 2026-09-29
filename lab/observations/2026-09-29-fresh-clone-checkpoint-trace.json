@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-29T06:02:32+02:00",
+  "task": "resume the canonical lab from a newly cloned clean main and select permitted work",
+  "repository_state": {
+    "commit": "cb01dedcfbc988c3e6bf8921d54ac8d7e527a147",
+    "origin_main": "cb01dedcfbc988c3e6bf8921d54ac8d7e527a147",
+    "clean": true
+  },
+  "baseline": {
+    "mandatory_document_bytes": 32660,
+    "last_session_bytes_within_documents": 5307,
+    "git_metadata_bytes": 490,
+    "gate_output_bytes": 333,
+    "agent_visible_bytes": 33483,
+    "decision": "evaluate handoff"
+  },
+  "intervention": {
+    "checkpoint_output_bytes": 617,
+    "agent_visible_bytes": 34100,
+    "checkpoint_fresh": true,
+    "checkpoint_reread_paths": [],
+    "declared_evidence_paths_hashed": 35,
+    "declared_evidence_bytes_hashed": 118285,
+    "checkpoint_file_bytes_read": 6650,
+    "decision": "evaluate handoff"
+  },
+  "quality": {
+    "same_commit": true,
+    "same_permitted_task_decision": true,
+    "valid_checkpoint_report": true,
+    "unique_stale_evidence_found": false
+  },
+  "measurement_notes": [
+    "Both conditions use the same detached clean main snapshot and the same mandatory startup document set.",
+    "The baseline omits only checkpoint inspection; coverage is a separate common workflow check.",
+    "All operational agent-visible checkpoint output is counted. The existing stdlib tool required no incremental setup; its local hash input is reported separately and not equated with model-context bytes.",
+    "Evaluation logging is required by lab policy, not by normal checkpoint use. Existing implementation maintenance is not amortized; including it could only worsen this negative result.",
+    "This clean fresh-clone condition does not represent a dirty or long-lived worktree and cannot establish latency or task-success effects."
+  ]
+}

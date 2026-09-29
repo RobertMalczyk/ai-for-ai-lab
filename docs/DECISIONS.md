@@ -172,3 +172,26 @@ Consequences: discovery takes two queries and selection is still agent judgment.
 The result establishes bytes for one registry snapshot, not tokens, latency, model
 quality or task success. A failed replication favors a simpler targeted filter or
 rejection rather than feature expansion.
+
+### DEC-0012 — Treat a clean fresh clone as a checkpoint negative control
+
+Problem: self-use was previously cited as integration evidence, but the checkpoint
+had no measured comparative value on the lab's common clean-clone startup path.
+
+Decision: record the clean fresh-clone comparison as negative and make no new
+checkpoint feature. Restrict the remaining utility hypothesis to a naturally
+dirty or long-lived resumed worktree; a second negative/inconclusive handoff
+evaluation parks the family under the existing policy.
+
+Why: mandatory documents plus Git identity/status and the gate used 33,483
+agent-visible bytes and selected handoff evaluation. Adding the checkpoint raised
+that to 34,100 bytes, hashed 118,285 declared-evidence bytes plus its 6,650-byte
+bundle, found no stale evidence and did not change the decision.
+
+Alternatives: call hash freshness useful without a changed decision (unmeasured);
+invent a dirty fixture (replay, not field evidence); remove the tool after one
+clean case (overgeneralizes beyond the observed condition).
+
+Consequences: correctness tests remain, but clean-clone self-use is not a benefit
+claim. The result does not cover uncommitted edits, stale notes on a long-lived
+branch, latency, semantic dependency completeness or downstream task success.

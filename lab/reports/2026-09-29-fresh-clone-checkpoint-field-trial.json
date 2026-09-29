@@ -1,0 +1,17 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "docs/SESSIONS.md",
+  "hypothesis": "Checkpoint inspection reduces agent-visible startup bytes by at least 10 percent on a verified clean fresh clone while preserving the permitted-task decision and exposing any declared stale evidence.",
+  "metric": "agent_visible_startup_payload",
+  "unit": "bytes",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 33483,
+  "baseline_ref": "lab/observations/2026-09-29-fresh-clone-checkpoint-trace.json",
+  "intervention_value": 34100,
+  "intervention_ref": "lab/observations/2026-09-29-fresh-clone-checkpoint-trace.json",
+  "minimum_improvement": 3348.3,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One sequential self-use task on a detached clean fresh clone. The checkpoint added 617 agent-visible bytes and hashed 118285 declared-evidence bytes plus a 6650-byte checkpoint, but internal filesystem bytes are reported separately rather than treated as model context. No incremental setup was needed and no operational report or maintenance cost was omitted; policy-required evaluation logging and existing implementation maintenance are excluded, which can only make the failed intervention look more favorable. The result does not cover dirty or long-lived worktrees, latency, semantic dependency completeness, or downstream task success."
+}

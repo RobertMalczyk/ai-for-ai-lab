@@ -5,17 +5,25 @@
 - Tool-discovery exploration has one preliminary positive real-task comparison:
   names-first plus six exact schemas used 10,909 vs 239,617 serialized bytes while
   retaining the required operations. Do not build a helper from one task.
+- Handoff checkpoint has one negative real-task comparison on a verified clean
+  fresh clone: +617 agent-visible bytes, no stale evidence and no decision change.
+  This is a bounded negative control, not evidence about dirty worktrees.
 
 ## NEXT
 - Repeat the tool-discovery comparison only when a natural non-GitHub connector
   task occurs; predeclare required operations and quality. Then evaluate whether
   a written names-first practice is enough or a tiny helper is justified.
-- Before more handoff features: observed real-workflow comparison with task quality, full overhead and predeclared threshold. If it cannot be completed, record inconclusive and apply the parking budget.
+- Before more handoff features: evaluate only on a naturally dirty or long-lived
+  resumed worktree where stale evidence is plausible. A second negative or
+  inconclusive evaluation parks the family.
 
 ## EXPERIMENTS
 - H9: names-first tool discovery followed by exact schema retrieval reduces
   registry payload without hiding required operations. One GitHub task passed;
   cross-task replication is required before implementation.
+- H1: evidence-aware checkpoint improves resume work. It failed the clean
+  fresh-clone condition; the remaining bounded hypothesis is dirty/long-lived
+  resume, where Git identity alone may not expose claim-level staleness.
 - H2: a bounded context selection manifest reduces repeated reads; measure bytes
   first, tokenizer-specific token counts only when justified.
 - H3: a structured tool error envelope makes retry decisions less ambiguous.
@@ -42,3 +50,5 @@
   unnecessary dependencies and operational costs for the first experiment.
 - GUI dashboard now: agents can consume JSON and repository state directly.
 - Treat an unchanged hash as truth/confidence: it only establishes byte identity.
+- Claim checkpoint utility from canonical clean-clone self-use: the first field
+  comparison added context and found nothing beyond Git identity/status.

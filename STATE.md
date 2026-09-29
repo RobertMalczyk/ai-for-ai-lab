@@ -1,9 +1,9 @@
 # State
 
-- Exists: handoff/checkpoint tools plus experiment gate and one tool-discovery field report; 57 passing tests.
-- Value: handoff benefit remains UNMEASURED and expansion paused. Names-first tool discovery cut one real task's serialized registry payload 239,617 -> 10,909 bytes with required-operation quality retained; single-task evidence only.
-- Focus: tool-discovery is the second active family; no helper yet. Handoff remains evaluation-required.
-- Next: run session_gate. For tool discovery, repeat the predeclared byte/quality comparison on a naturally occurring non-GitHub connector task before building. For handoff, field-evaluate before features.
-- Return/stop: one failed replication simplifies or rejects a helper; positive replication still must justify code over documentation.
+- Exists: handoff/checkpoint tools, experiment gate and two bounded field reports; 57 passing tests.
+- Value: checkpoint was negative on one real clean fresh-clone resume: it added 617 agent-visible bytes, found no stale evidence and did not change task selection. Dirty/long-lived worktrees remain untested. Names-first tool discovery has one preliminary positive GitHub task only.
+- Focus: two active families, no new helper. Do not generalize either single-task result.
+- Next: run session_gate. Replicate tool discovery only on a natural non-GitHub task; evaluate handoff again only on a naturally dirty/long-lived resume. Otherwise observe workflow friction instead of inventing a fixture.
+- Return/stop: another negative/inconclusive handoff evaluation parks it; one failed discovery replication simplifies/rejects a helper. Positive replication still must justify code over documentation.
 - Verify: `PYTHONPATH=src python3 -m unittest discover -s tests -v`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.

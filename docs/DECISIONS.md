@@ -243,3 +243,30 @@ from bytes (unsupported).
 Consequences: AGENTS records the practice and both discovery passes count as
 overhead. The result is scoped to serialized payload and retained capability; it
 does not prove lower tokens, latency, better selection or downstream task success.
+
+### DEC-0015 — Park tool-discovery utility work after the targeted-baseline test
+
+Problem: the adopted names-first practice had two large byte reductions only
+against broad full-entry baselines; Agent 2 showed that a careful targeted query
+was the missing simpler alternative.
+
+Decision: keep names-first/exact-second as the documented default, but park the
+tool-discovery experiment. Reopen only for a concrete selection failure or a
+materially different registry where the strongest available baseline can be
+measured. Do not build a helper or extend byte-only evaluation.
+
+Why: on the real publication task, a verb-targeted full-entry query returned 48
+entries and 48,630 bytes; names plus seven exact schemas used 9,014 bytes, 81.46%
+less. But 41 results were irrelevant, while direct retrieval with already-known
+exact names used 6,869 bytes—2,145 fewer than names-first. Full time, token,
+quality and maintenance overhead was not comparable. This second inconclusive
+evaluation after Session 016 meets the existing parking rule.
+
+Alternatives: call the narrow reduction positive utility (ignores the strongest
+baseline and full overhead); tune queries until names-first loses or wins (moves
+the test post hoc); build a selector (no observed selection failure).
+
+Consequences: the practice remains a conservative way to learn names in an
+unfamiliar registry, not a general savings claim. The 95.45%, 94.47% and 81.46%
+figures must name their baselines. Exact-known retrieval is simpler when names are
+already reliable. Parking stops further optimization without erasing the traces.

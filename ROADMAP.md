@@ -2,12 +2,14 @@
 
 ## NOW
 - Exploration/utility policy is active. Handoff feature work is paused: correctness is tested, comparative real-agent benefit remains unknown.
-- Tool-discovery evaluation is concluded as a documented practice: names-first
+- Tool-discovery evaluation is parked as a documented practice: names-first
   plus exact schemas reduced serialized registry payload 95.45% on GitHub and
   94.47% on web research while retaining required operations. No helper is needed.
   Agent 2 audit (2026-09-30): both percentages are relative to a broad full-entry
   query; versus a targeted full-entry query the modeled break-even is only about
-  two extra registry entries. Cite the baseline with the number.
+  two extra registry entries. A follow-up verb-targeted query still returned 41
+  irrelevant entries: names-first was 81.46% smaller, but direct exact retrieval
+  was 2,145 bytes smaller when names were already known. Cite each baseline.
 - Handoff checkpoint has one negative real-task comparison on a verified clean
   fresh clone: +617 agent-visible bytes, no stale evidence and no decision change.
   This is a bounded negative control, not evidence about dirty worktrees.
@@ -16,8 +18,8 @@
   as a convenience without a positive utility claim or active feature program.
 
 ## NEXT
-- Revisit tool discovery only after an observed practice failure, a materially
-  different registry, or evidence that manual selection itself is the bottleneck.
+- Revisit parked tool discovery only after an observed selection failure or a
+  materially different registry with a measurable strongest simple baseline.
 - Before more handoff features: evaluate only on a naturally dirty or long-lived
   resumed worktree where stale evidence is plausible. A second negative or
   inconclusive evaluation parks the family.
@@ -75,3 +77,6 @@
 - Expand the test entrypoint into a task runner: one natural verification passed,
   but end-to-end benefit is unmeasured and the measurement setup added a failed
   call. Reopen only after the current one-file command fails a real workflow.
+- Extend tool-discovery byte optimization: a targeted-baseline follow-up remained
+  inconclusive and exact-known retrieval beat names-first by 2,145 bytes. Keep the
+  practice for unfamiliar registries; do not build or retest without new failure.

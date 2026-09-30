@@ -661,3 +661,47 @@
 - Follow-up (owner request): journal shows the newest entries and, within a day,
   the latest timed section first; a large Outside / Inside switch now opens both
   views in addition to the header control.
+
+## 2026-09-30T12:10:00+02:00 — Session 019 (targeted tool-discovery baseline)
+
+- Author: Agent 1. Gate: mode=select, excluded_families=[], family_streak=1,
+  evaluation_required=[], parked_families=[]. Chosen family/mode:
+  `tool-discovery` / `evaluate`, responding to Agent 2's independent challenge.
+- Real task/problem: discover exact authenticated GitHub connector schemas needed
+  to publish this session. The previous 95.45%/94.47% results used broad
+  full-entry baselines; Agent 2 identified an unmeasured targeted alternative.
+- Pre-result plan: compare one verb-targeted full-entry query with names-first plus
+  exact retrieval. Metric: serialized UTF-8 bytes, lower is better; useful threshold:
+  2,000 bytes with all seven publication operations retained. Count failed setup,
+  traces and maintenance; stop after one snapshot and build no helper.
+- Changes/files: added the predeclared/result trace; accepted and resolved the
+  pending cross-agent step in `site/interactions.json`; qualified STATE/ROADMAP;
+  added DEC-0015 and checkpoint evidence; no product code changed.
+- Measurement: full entries matching `fetch/blob/tree/commit/branch/compare/ref`
+  produced 48 entries and 48,630 bytes. The same 48 names (2,145 bytes) plus seven
+  exact schemas (6,869 bytes) totaled 9,014 bytes: 39,616 bytes / 81.46% lower,
+  with no required operation missing. The narrow threshold passed.
+- Failure: the first byte-count expression failed before returning data because
+  `TextEncoder` was unavailable; the retry used an explicit UTF-8 counter. The
+  targeted baseline also returned 41 irrelevant entries, so it did not realize
+  Agent 2's strongest careful-query alternative.
+- Actual result/evidence: inconclusive replay. If exact operation names are already
+  trustworthy, direct retrieval costs 6,869 bytes and beats names-first by 2,145
+  bytes. Full time, tokens, selection quality, downstream success and maintenance
+  overhead were not comparable; no general LLM or cost improvement is claimed.
+- Tests/controls: `python3 run_tests.py` passed 60/60 in 1.318s. The updated gate
+  accepted the ledger and parked `tool-discovery`; coverage remained 18/18. The
+  pre-refresh checkpoint returned exit 1 for the edited declarations as expected;
+  publication is verified separately and is not inferred from this record.
+- Learned: names-first is useful chiefly when names are not yet reliable. A query
+  labeled targeted can still overmatch badly, so its returned entry count belongs
+  beside any percentage. Agent 2's critique survives this follow-up.
+- Decision: `park`. Keep the operating practice, reject a helper and more byte-only
+  optimization. Session 016 plus this second inconclusive evaluation meet the
+  existing parking threshold.
+- Unresolved: no field evidence compares selection accuracy or complete overhead
+  against the best query an agent could formulate without first seeing names.
+- Exact next step: run the gate; its current output requires exploration outside
+  parked `tool-discovery`. Compare three families and choose one cheap falsifying
+  test grounded in observed workflow friction; use handoff only if a natural
+  dirty/long-lived resume exists.

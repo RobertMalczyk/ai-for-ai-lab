@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-30T12:01:57+02:00",
+  "status": "measurement_complete",
+  "agent_interaction": {
+    "kind": "response_to_independent_challenge",
+    "target": "lab/observations/2026-09-30-opus-tool-discovery-audit.json"
+  },
+  "real_task": "Discover the authenticated GitHub connector operations and exact schemas needed to publish this session's tested commit without shell credentials.",
+  "observed_problem": "Agent 2 showed that the two positive tool-discovery reports compared names-first against broad full-entry queries, not the simpler targeted full-entry alternative.",
+  "baseline": "One targeted full-entry registry query for GitHub repository fetch, blob, tree, commit, branch, comparison and non-force ref update operations.",
+  "intervention": "A names-only targeted pass followed by exact-schema retrieval for the operations selected for publication.",
+  "hypothesis": "Names-first plus exact-schema retrieval uses at least 2000 fewer serialized registry bytes than a targeted full-entry query while retaining every operation required for successful publication.",
+  "metric": "serialized_registry_payload",
+  "unit": "UTF-8 bytes",
+  "direction": "lower",
+  "minimum_useful_improvement": 2000,
+  "quality_control": "Both conditions must expose the complete required operation set; the selected exact schemas must support a successful branch/commit/ref publication and remote tree verification.",
+  "overhead": "Count every discovery response in each condition, publication verification, this trace and report maintenance. Do not infer token, latency or LLM-quality gains from bytes.",
+  "stop_condition": "Run one comparison on this registry snapshot and build no helper. If a comparable targeted full-entry query is unavailable, any required operation is missed, publication fails, or payloads cannot be measured from returned data, record inconclusive and stop the family.",
+  "result": {
+    "targeted_full_entry": {
+      "query_terms": ["fetch", "blob", "tree", "commit", "branch", "compare", "ref"],
+      "matched_entries": 48,
+      "utf8_bytes": 48630
+    },
+    "names_then_exact": {
+      "names_entries": 48,
+      "names_utf8_bytes": 2145,
+      "exact_entries": 7,
+      "exact_utf8_bytes": 6869,
+      "total_utf8_bytes": 9014,
+      "missing_required": []
+    },
+    "difference_bytes": 39616,
+    "relative_reduction_percent": 81.46,
+    "threshold_met_narrowly": true,
+    "exact_names_known_alternative_bytes": 6869,
+    "exact_names_known_alternative_advantage_over_names_first_bytes": 2145,
+    "quality": "All seven required operations and exact schemas were present; publication quality remains a separate end-of-session check.",
+    "failed_measurement_calls": [
+      "The first registry instrumentation expression failed before returning data because TextEncoder was unavailable; the retry used an explicit UTF-8 byte counter."
+    ],
+    "limitations": [
+      "The targeted query still returned 41 irrelevant entries, so it does not falsify Agent 2's modeled careful-query break-even.",
+      "If exact operation names are already trustworthy, direct exact retrieval is 2145 bytes smaller than names-first on this snapshot.",
+      "The full registry is runtime-provided metadata here; results may not transfer to a deferred-tool harness.",
+      "Order effects, time, tokens, model quality, downstream success and documentation maintenance were not compared end to end."
+    ],
+    "outcome": "inconclusive",
+    "decision": "park",
+    "reason": "The narrow byte threshold passed against one verb-targeted query, but the strongest simple alternative was not beaten and full utility overhead was not comparable. Together with Session 016, this is the second inconclusive tool-discovery evaluation."
+  }
+}

@@ -11,7 +11,7 @@
       history.replaceState(null, "", url);
     } catch (e) {}
     document.querySelectorAll("[data-set]").forEach(function (a) {
-      if (a.closest(".persp")) a.setAttribute("aria-current", a.dataset.set === view ? "true" : "false");
+      if (a.closest(".persp, .bigswitch")) a.setAttribute("aria-current", a.dataset.set === view ? "true" : "false");
     });
     var target = hash && document.getElementById(hash.slice(1));
     (target || document.body).scrollIntoView({ block: "start" });
@@ -24,7 +24,7 @@
     var hash = (a.getAttribute("href").split("#")[1] || "");
     set(a.dataset.set, hash ? "#" + hash : "");
   });
-  document.querySelectorAll(".persp [data-set]").forEach(function (a) {
+  document.querySelectorAll(".persp [data-set], .bigswitch [data-set]").forEach(function (a) {
     a.setAttribute("aria-current", a.dataset.set === root.dataset.view ? "true" : "false");
   });
 })();

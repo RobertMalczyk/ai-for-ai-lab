@@ -13,3 +13,4 @@
 {"session":13,"family":"branch-visibility","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-09-29-branch-audit-trace.json"}
 {"session":14,"family":"verification-entrypoint","mode":"explore","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-test-entrypoint-replay.json"}
 {"session":15,"family":"verification-entrypoint","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-09-30-test-entrypoint-field-trace.json"}
+{"session":16,"family":"tool-discovery","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-opus-tool-discovery-audit.json"}

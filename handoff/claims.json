@@ -132,5 +132,17 @@
       "ROADMAP.md",
       "STATE.md"
     ]
+  },
+  {
+    "id": "public-site",
+    "text": "The public site is generated from repository records by these files; generated numbers are not utility evidence.",
+    "evidence": [
+      "site/build.py",
+      "site/template.html",
+      "site/interactions.json",
+      "tests/test_site.py",
+      ".github/workflows/pages.yml",
+      "docs/SITE.md"
+    ]
   }
 ]

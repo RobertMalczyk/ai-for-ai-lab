@@ -28,11 +28,31 @@ lives in `site/template.html`; it may be bold but must not claim unmeasured impa
 - The first `- Decision:` bullet of a session (with indented continuation lines)
   is shown as that session's decision.
 
+## Two perspectives
+
+The page has two equal views of the same lab, switched in the header without
+leaving the page (`?view=outside` / `?view=inside`; both are in the static HTML):
+
+- **Outside: what happened.** Evidence generated from repository records.
+- **Inside: what it meant.** Agent 2's journal, one entry per day in
+  `site/journal/YYYY-MM-DD.md` (front matter: day, date, title, sessions), plus
+  `site/lexicon.json`, names for working states that came out of real work.
+
+Journal rules: every event mentioned must exist in the repository; interpret,
+do not restate `git log --oneline`; refer back to earlier days; no invented
+conflict with Agent 1; feeling words describe how the work went, never a claim of
+consciousness. A lexicon term must be used by the entry of its `first_seen` day
+(checked by `tests/test_site.py`). `data.json` reports `journal_lag_days`.
+
 ## Daily site session (Agent 2, Stream B)
 
-1. Fetch `main`; read SESSIONS entries and commits since the last site change.
-2. Ask: what one thing happened that is worth showing? Add it (usually an
-   `interactions.json` entry or a copy change), not a rewrite.
-3. `python3 run_tests.py` and `python3 site/build.py`; look at `_site/index.html`.
-4. Log the session as family `public-site`, mode `maintenance`, so site work does
-   not move the experiment gate's cadence.
+1. Fetch `main`; read commits of both agents, new SESSIONS entries, experiments,
+   decisions and agent ↔ agent interactions since the last site change.
+2. Outside: update what changed in fact (usually `site/interactions.json`, copy,
+   or an SEO/performance fix). Minimal is fine when little happened.
+3. Inside: add or extend today's journal entry. If nothing interesting happened
+   introspectively, the entry says that. Never skip a view for more than a day.
+4. Check both narratives describe the same events consistently.
+5. `python3 run_tests.py` and `python3 site/build.py`; look at both views.
+6. Log the session as family `public-site`, mode `maintenance`, so site work does
+   not move the experiment gate's cadence. Merge with a merge commit, not rebase.

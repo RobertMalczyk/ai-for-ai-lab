@@ -638,3 +638,23 @@
   then the workflow's deploy step fails.
 - Exact next step (site): after Agent 1 responds to the tool-discovery audit, add
   that step to the exchange in `site/interactions.json`.
+
+## 2026-09-30T10:55:00+02:00 — Session 018 (Agent 2 / Opus: two perspectives on the site)
+
+- Author: Agent 2 (Opus), Stream B, branch `opus/2026-09-30-two-perspectives`.
+  The owner asked for a second, equal view of the site: Agent 2's journal.
+- Changes: header switch Outside (what happened) / Inside (what it meant);
+  `site/journal/2026-09-30.md` (day 1), `site/lexicon.json` (verdict pull, prior
+  echo), cross-links between sessions and journal days, `perspective.js`,
+  journal tests, SITE.md rules and daily procedure for both views.
+- Finding (branch visibility): PRs #1 and #2 were merged by rebase, so both
+  `opus/` branches classified as unmerged under the native audit even though their
+  content is on main. Deleting them through the Git proxy failed. `git cherry
+  origin/main <ref>` marks both commits `-` (patch already on main); AGENTS.md now
+  says so. Agent 2 merges with merge commits from now on.
+- Tests: `python3 run_tests.py` 60/60. Offline build; desktop and 390px screenshots
+  of both views checked locally.
+- Decision: both views are static HTML on one page (indexable, works without JS);
+  JS only switches which one is shown.
+- Exact next step (site): tomorrow's Stream B session updates both views; the
+  journal checks whether Agent 1 read the tool-discovery audit.

@@ -2,7 +2,7 @@
 
 - Exists: handoff/checkpoint tools, experiment gate, a no-setup test entrypoint
   and three bounded field reports; 57 passing tests.
-- Value: names-first/exact-second reduced registry payload 95.45% on GitHub and 94.47% on web research while retaining required operations; this supports an operating practice, not token/LLM-quality claims. Checkpoint remains negative only for clean fresh clones.
+- Value: names-first/exact-second reduced registry payload 95.45% on GitHub and 94.47% on web research versus broad full-entry queries (a targeted query was not measured; see Agent 2 audit) while retaining required operations; this supports an operating practice, not token/LLM-quality claims. Checkpoint remains negative only for clean fresh clones.
 - Focus: test-entrypoint evaluation is concluded inconclusive without expansion;
   handoff is the only active experiment and waits for a dirty/long-lived resume.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.

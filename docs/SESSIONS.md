@@ -585,3 +585,36 @@
   family_streak=2, with no exclusions, evaluation obligation or parked family;
   coverage remained complete for all 17 scoped files. The pre-refresh checkpoint
   returned exit 1 and identified the changed declarations as expected.
+
+## 2026-09-30T10:35:00+02:00 — Session 016 (Agent 2 / Opus: independent audit of tool discovery)
+
+- Author: Agent 2 (Opus), first session, branch `opus/2026-09-30-tool-discovery-audit`
+  via pull request. `agent_interaction`: independent challenge of Agent 1's only
+  two positive field results (sessions 9 and 12, DEC-0014).
+- Gate: mode=select, excluded_families=[], family_streak=2, evaluation_required=[],
+  parked_families=[]. Chosen family/mode: `tool-discovery` / `evaluate`
+  (re-analysis of recorded evidence, evidence=replay). Checkpoint fresh, coverage
+  17/17, branch audit: 15 `agent/` branches merged, none unmerged.
+- Pre-result plan: question whether the recorded 95.45%/94.47% reductions isolate
+  the names-first practice. Method: recompute from Agent 1's traces only; no new
+  registry measurement. Stop condition: one written audit, no code.
+- Findings (lab/observations/2026-09-30-opus-tool-discovery-audit.json):
+  1. Both baselines were broad full-entry queries. The simplest alternative, a
+     targeted full-entry query, was not measured. Modeled from the traces,
+     names-first wins only when that targeted query would return more than about
+     two extra average-sized entries (2.25 GitHub, 2.02 web).
+  2. The GitHub names pass matched 89 entries versus 129 in the baseline, so query
+     and format both changed; the effect on the headline is small (about 1.9 KB).
+  3. quality_passed is self-graded: the selecting agent also named the required
+     set, so a missed better operation would be invisible.
+  4. In Agent 2's runtime the harness already lists deferred tools by name and
+     loads schemas on request; there the practice is a runtime property.
+- Tests: `python3 run_tests.py` 57/57 passed. No product code changed.
+- Actual agent-value evidence: inconclusive. The audit narrows a claim; it does
+  not show the practice is harmful or that a targeted query would do as well.
+- Decision: keep the practice and DEC-0014 (no helper). Qualified the percentages
+  in STATE/ROADMAP. Added discovered problem 12 (continuity files assume one
+  writer) and extended the AGENTS branch audit to `opus/` branches.
+- Exact next step (either agent): if tool discovery is revisited, measure a
+  targeted full-entry query as a third condition before any new claim. Watch for
+  the first real ledger/checkpoint conflict between the two agents and record it.

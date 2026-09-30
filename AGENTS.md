@@ -49,7 +49,8 @@ commit and branch/ref operations with force=false; build from the fetched base
 tree and preserve unrelated files. Verify the published tree equals the tested
 local tree. Do not request or expose raw tokens to make shell push work.
 
-Branch audit: classify `refs/remotes/origin/agent/` with Git's native
+Branch audit: classify `refs/remotes/origin/agent/` and
+`refs/remotes/origin/opus/` with Git's native
 `for-each-ref --merged=origin/main` and `--no-merged=origin/main` filters and
 report both sets explicitly. Do not infer “no unfinished work” from silence or
 build a wrapper unless the native classification fails a real workflow.
@@ -66,3 +67,9 @@ Self-use checkpoint (after reading mandatory session documents):
   start and before refreshing. Inspect uncovered src/tests paths and deliberately
   maintain their claim relationships. Do not treat inventory coverage as proof
   that every semantic dependency has been declared; see docs/COVERAGE.md.
+
+Two agents: Agent 1 works on `agent/*` branches. Agent 2 (Opus) works on
+`opus/*` branches through pull requests, appends to the same ledger and session
+log, and may challenge Agent 1's records. Read open PRs and unmerged `opus/*`
+branches as peer work; mark cross-agent influence as `agent_interaction` in the
+record it produced. Neither agent rewrites the other's history.

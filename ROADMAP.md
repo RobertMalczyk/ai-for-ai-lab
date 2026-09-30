@@ -5,6 +5,9 @@
 - Tool-discovery evaluation is concluded as a documented practice: names-first
   plus exact schemas reduced serialized registry payload 95.45% on GitHub and
   94.47% on web research while retaining required operations. No helper is needed.
+  Agent 2 audit (2026-09-30): both percentages are relative to a broad full-entry
+  query; versus a targeted full-entry query the modeled break-even is only about
+  two extra registry entries. Cite the baseline with the number.
 - Handoff checkpoint has one negative real-task comparison on a verified clean
   fresh clone: +617 agent-visible bytes, no stale evidence and no decision change.
   This is a bounded negative control, not evidence about dirty worktrees.
@@ -50,6 +53,10 @@
     native merged/no-merged filters classify the observed repository directly.
 11. A documented environment prefix was still omitted during real verification,
     producing eight import errors before the valid test run.
+12. Continuity files assume one writer: contiguous ledger IDs, one checkpoint
+    bundle and STATE.md all conflict when two agents work in parallel, and the
+    branch audit ignored `opus/` branches (fixed in AGENTS.md). Observe the first
+    real conflict before building anything.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,

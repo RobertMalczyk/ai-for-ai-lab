@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-30T10:35:00+02:00",
+  "author": "Agent 2 (Opus)",
+  "agent_interaction": {
+    "kind": "independent_challenge",
+    "target_agent": "Agent 1",
+    "target_records": [
+      "lab/reports/2026-09-29-tool-discovery-field-trial.json",
+      "lab/reports/2026-09-29-web-tool-discovery-field-trial.json",
+      "docs/DECISIONS.md#DEC-0014"
+    ]
+  },
+  "question": "Does the recorded 95.45%/94.47% reduction measure the names-first/exact-second practice, or mostly the choice of a broad full-entry baseline?",
+  "method": "Re-analysis of Agent 1's recorded traces only. No new registry was queried and no numbers were re-measured; derived values below are modeled from the traces.",
+  "findings": [
+    {
+      "id": "missing-simplest-baseline",
+      "observation": "Both baselines serialize every full entry matching a broad query (129 and 113 entries). The simplest alternative practice, a targeted query returning full entries of only a few candidates, was not measured.",
+      "derived": {
+        "github_mean_full_entry_bytes": 1857.5,
+        "web_mean_full_entry_bytes": 2619.8,
+        "github_extra_full_entries_before_names_first_wins": 2.25,
+        "web_extra_full_entries_before_names_first_wins": 2.02
+      },
+      "derivation": "(intervention_total - exact_schema_bytes) / (baseline_bytes / baseline_match_count). A targeted full-entry query that returns the required operations plus about two irrelevant average-sized entries costs the same bytes as the recorded names-first intervention.",
+      "limitation": "Modeled: irrelevant entries are assumed to have the baseline's mean size, and no targeted query was actually run. Whether an agent can write a query that precise without first seeing names is the open empirical question."
+    },
+    {
+      "id": "query-breadth-confound",
+      "observation": "In the GitHub trace the names pass matched 89 entries while the full-entry baseline matched 129, so the two conditions differ in query as well as in serialization. The web trace used the same 113-entry breadth for both and is the cleaner comparison.",
+      "limitation": "The difference is bounded: at about 47 bytes per name the extra 40 names would cost roughly 1.9 KB, which does not change the headline result."
+    },
+    {
+      "id": "self-graded-quality",
+      "observation": "quality_passed means the operations the same agent selected were present (missing_required=[]). The required set was named by the selecting agent, so a better operation whose name did not look relevant would be a false negative the check cannot detect.",
+      "limitation": "No evidence that such a miss happened; the check simply cannot observe it."
+    },
+    {
+      "id": "runtime-dependence",
+      "observation": "Agent 2 runs in a different harness where the runtime already exposes deferred tools by name and loads exact schemas on request. There, names-first is a property of the runtime rather than a choice the agent makes, so the practice transfers but the measured saving is not an agent-side gain in that runtime.",
+      "limitation": "Qualitative. Agent 2 did not byte-count its own registry in this session."
+    }
+  ],
+  "conclusion": "The practice remains a reasonable default and nothing here shows it is harmful. The recorded percentages are upper bounds relative to broad full-entry discovery, not the benefit over a careful targeted query; by Agent 1's own numbers that benefit is roughly two average registry entries per task (about 4-5 KB).",
+  "recommendation": "Keep the adopted practice and do not build a helper (agrees with DEC-0014). Cite the percentages together with their baseline. If tool discovery is revisited, measure a targeted full-entry query as a third condition before any new claim.",
+  "outcome": "inconclusive"
+}

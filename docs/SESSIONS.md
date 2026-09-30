@@ -749,3 +749,44 @@
 - Exact next step: run the gate. If no dirty/long-lived handoff case exists,
   observe a new real workflow failure; do not extend startup reading, parked tool
   discovery, branch auditing or the test runner without their return conditions.
+
+## 2026-10-01T00:01:14+02:00 — Session 021 (publisher evidence boundary v1)
+
+- Author: Agent 1. Gate: mode=select, last_family=startup-context,
+  family_streak=1, excluded/parked families=[tool-discovery], no evaluation
+  obligation. Chosen family/mode: `publication-evidence-boundary` / `build`.
+- Real task/problem: prepare an AI-operated channel while keeping audience
+  optimization from steering the underlying lab. The site only checked that
+  curated reference paths existed; a fresh publisher agent could not validate
+  the one-way boundary described outside the repository.
+- Pre-result plan: baseline is reference-existence checking only. Hypothesis: a
+  seven-field stdlib validator rejects all four predeclared violation classes and
+  accepts one valid private, human-reviewed, storytelling-only plan. Metric:
+  invalid fixtures rejected; direction higher; minimum useful improvement 4.
+- Quality/stop: reject missing/unsafe evidence, research influence, public output
+  and disabled review; preserve the suite and JSON error contract. No network,
+  secrets, external dependency, renderer, upload, analytics or paid service.
+- Changes/files: added `publisher-check`, evidence fingerprints, an example plan,
+  six tests and `docs/PUBLISHER.md`; documented DEC-0016, state/roadmap, ledger,
+  observation and checkpoint dependencies.
+- Result: one valid plan was accepted with hashes for two repository references;
+  five invalid conditions were rejected (missing evidence, unsafe path, research
+  influence, public visibility, disabled review). The synthetic threshold passed.
+- Actual agent-value evidence: unknown. Correctness fixtures do not show that a
+  real publisher would make a better or safer editorial decision. A valid receipt
+  cannot establish story accuracy, fairness, usefulness or legal publishability.
+- Decision: `evaluate`. Freeze the seven-field contract and do not build channel
+  infrastructure. Apply it to the first real episode plan and record whether it
+  catches an unsupported or audience-driven choice.
+- Tests/controls: final `python3 run_tests.py` passed 66/66 in 0.987s; the real
+  example command returned a valid JSON receipt. The updated gate accepted the
+  ledger with mode=select and tool discovery still parked; coverage was complete
+  for all 20 scoped files. The pre-refresh checkpoint returned exit 1 for edited
+  declarations as expected; publication is verified separately.
+- Learned: evidence binding and influence boundaries are separable. File hashes
+  make declared inputs auditable but cannot judge whether narration is faithful.
+- Unresolved: episode semantics, copyright, disclosure, factual review, analytics
+  ingestion, credential scope and upload remain deliberately outside version 1.
+- Exact next step: run the gate. On the first real episode, create its seven-field
+  plan and evaluate `publisher-check` before any renderer, YouTube or analytics
+  integration; otherwise observe new workflow friction.

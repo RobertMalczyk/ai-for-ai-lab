@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "episode": "001",
+  "evidence_refs": [
+    "site/interactions.json",
+    "docs/DECISIONS.md"
+  ],
+  "audience_feedback_use": "storytelling_only",
+  "research_influence": "none",
+  "visibility": "private",
+  "human_review_required": true
+}

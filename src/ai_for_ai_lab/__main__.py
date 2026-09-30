@@ -37,6 +37,9 @@ def main():
                             help="replace the baseline after reviewing changes and running tests")
     coverage = sub.add_parser("coverage")
     coverage.add_argument("--root", required=True)
+    publisher = sub.add_parser("publisher-check")
+    publisher.add_argument("--root", required=True)
+    publisher.add_argument("plan")
     try:
         args = parser.parse_args()
         if args.command == "capture":
@@ -50,6 +53,10 @@ def main():
         elif args.command == "checkpoint":
             result = refresh(args.root) if args.refresh else inspect(args.root)
             code = 0 if args.refresh or result["fresh"] else 1
+        elif args.command == "publisher-check":
+            from .publisher import validate_plan
+            result = validate_plan(args.root, loads(Path(args.plan).read_text(encoding="utf-8")))
+            code = 0
         elif args.command == "link":
             result = link(loads(Path(args.capsule).read_text(encoding="utf-8")),
                           loads(Path(args.claims).read_text(encoding="utf-8")))

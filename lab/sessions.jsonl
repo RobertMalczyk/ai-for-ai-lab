@@ -18,3 +18,4 @@
 {"session":18,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/SITE.md"}
 {"session":19,"family":"tool-discovery","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-targeted-tool-discovery-trace.json"}
 {"session":20,"family":"startup-context","mode":"explore","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-startup-read-boundary.json"}
+{"session":21,"family":"publication-evidence-boundary","mode":"build","evidence":"synthetic","outcome":"unknown","record":"lab/observations/2026-09-30-publisher-boundary-plan.json"}

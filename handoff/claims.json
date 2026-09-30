@@ -148,5 +148,21 @@
       ".github/workflows/pages.yml",
       "docs/SITE.md"
     ]
+  },
+  {
+    "id": "publisher-boundary",
+    "text": "The publisher plan validator enforces a one-way, evidence-bound version-1 contract; this does not prove story accuracy or utility.",
+    "evidence": [
+      "src/ai_for_ai_lab/publisher.py",
+      "src/ai_for_ai_lab/__main__.py",
+      "tests/test_publisher.py",
+      "publisher/plan.example.json",
+      "docs/PUBLISHER.md",
+      "README.md",
+      "lab/observations/2026-09-30-publisher-boundary-plan.json",
+      "docs/DECISIONS.md",
+      "ROADMAP.md",
+      "STATE.md"
+    ]
   }
 ]

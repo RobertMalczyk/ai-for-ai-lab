@@ -90,3 +90,11 @@ Check for files missing from the declarations with
 `PYTHONPATH=src python3 -m ai_for_ai_lab coverage --root .`.
 It covers tracked and nonignored untracked `src/` and `tests/` paths, not semantic
 dependency completeness. See `docs/COVERAGE.md` for the bounded contract.
+
+## Publisher boundary
+
+Before an AI publisher turns lab evidence into a public story, validate its plan:
+`PYTHONPATH=src python3 -m ai_for_ai_lab publisher-check --root . publisher/plan.example.json`.
+Version 1 requires repository evidence, private visibility, human review and a
+one-way boundary: audience feedback may improve storytelling but cannot influence
+experiment selection. See `docs/PUBLISHER.md`. Validation is not factual review.

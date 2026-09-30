@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-30T23:57:20+02:00",
+  "status": "complete",
+  "family": "publication-evidence-boundary",
+  "mode": "build",
+  "real_task": "Prepare a repository-grounded AI publisher for a future AI-operated channel without allowing audience analytics to steer the lab's experiments.",
+  "observed_problem": "The existing public-site test checks that curated reference paths exist, but the repository has no machine-readable contract requiring evidence or preventing publisher feedback from changing research direction.",
+  "baseline": "Curated site JSON with reference-existence checks only; publisher boundary rules exist outside the repository and cannot be validated by a fresh agent.",
+  "hypothesis": "A minimal stdlib plan validator can reject every tested evidence/boundary violation while accepting one valid private, human-reviewed, storytelling-only plan.",
+  "metric": "invalid_fixtures_rejected",
+  "unit": "fixtures",
+  "direction": "higher",
+  "minimum_useful_improvement": 4,
+  "quality_control": "Accept one valid plan; reject missing evidence, unsafe paths, research influence and disabled human review; preserve all existing tests and emit JSON with stable errors.",
+  "overhead": "Count a new module, CLI command, tests, documentation, example plan and checkpoint maintenance. No YouTube, ElevenLabs, secret, network or rendering integration.",
+  "stop_condition": "Stop after one version-1 contract. If validation needs external services, JSON Schema dependencies, channel credentials or more than the seven declared fields, reject the prototype.",
+  "result": {
+    "valid_fixtures_accepted": 1,
+    "invalid_conditions_rejected": 5,
+    "tested_invalid_conditions": [
+      "missing evidence",
+      "unsafe evidence path",
+      "research influence",
+      "public visibility",
+      "disabled human review"
+    ],
+    "threshold_met_synthetically": true,
+    "example_receipt_contains_evidence_hashes": true,
+    "external_calls": 0,
+    "outcome": "unknown",
+    "decision": "evaluate",
+    "reason": "The contract is correct on controlled fixtures, but no real episode has shown whether it prevents an unsupported or audience-driven decision. Stop feature work until that field use."
+  }
+}

@@ -270,3 +270,26 @@ Consequences: the practice remains a conservative way to learn names in an
 unfamiliar registry, not a general savings claim. The 95.45%, 94.47% and 81.46%
 figures must name their baselines. Exact-known retrieval is simpler when names are
 already reliable. Parking stops further optimization without erasing the traces.
+
+### DEC-0016 — One-way evidence boundary before channel infrastructure
+
+Problem: an AI publisher can use audience response to improve communication, but
+letting views steer lab experiments would corrupt the experiment. Existing site
+checks establish that referenced files exist, not how feedback may be used.
+
+Decision: version 1 publisher plans must cite repository evidence, remain private,
+require human review, restrict audience feedback to storytelling, and declare zero
+influence on experiment selection. Validate locally and return evidence hashes.
+Stop before rendering, analytics, upload, credentials or paid services.
+
+Why: this is the smallest machine-checkable boundary for the real planned channel.
+Six new tests accept one valid plan and reject five violation conditions without
+network access. Those tests establish contract behavior, not publisher utility.
+
+Alternatives: prose only (not machine-checkable); build the full channel pipeline
+first (premature infrastructure); forbid analytics entirely (prevents learning how
+to communicate); let engagement steer research (damages evidential independence).
+
+Consequences: a valid receipt proves declared bytes and boundary fields only, not
+story accuracy, fairness, usefulness or legal publishability. The next change in
+this family must evaluate a real episode plan before expanding the tool.

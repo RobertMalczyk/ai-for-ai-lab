@@ -16,6 +16,9 @@
 - Test entrypoint field use reached 57/57 in one test invocation, but the baseline
   lacks comparable full overhead and measurement setup itself failed once. Keep it
   as a convenience without a positive utility claim or active feature program.
+- Publisher plan v1 now enforces repository evidence, private visibility, human
+  review and zero research influence. Correctness is synthetic; utility waits for
+  the first real episode plan.
 
 ## NEXT
 - Revisit parked tool discovery only after an observed selection failure or a
@@ -23,6 +26,8 @@
 - Before more handoff features: evaluate only on a naturally dirty or long-lived
   resumed worktree where stale evidence is plausible. A second negative or
   inconclusive evaluation parks the family.
+- Before renderer, analytics or upload work: use `publisher-check` on one real
+  episode and record whether it catches an unsupported or feedback-driven choice.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -39,6 +44,8 @@
   different concrete precondition failure, not by extending the runner.
 - H7: branch/commit-aware handoffs reduce resuming from the wrong baseline.
 - H8: an explicit stop condition prevents unnecessary verification loops.
+- H9: a machine-readable one-way publisher boundary prevents audience optimization
+  from steering the underlying experiment while keeping stories evidence-bound.
 
 ## DISCOVERED PROBLEMS
 1. Handoff summaries outlive the files supporting them (current experiment).
@@ -61,6 +68,8 @@
     real conflict before building anything.
 13. Concatenating all mandatory startup documents produced a truncated response;
     separate bounded reads with EOF markers avoided the transport failure once.
+14. A future AI publisher needs an enforceable separation between storytelling
+    feedback and experiment selection; reference existence alone cannot express it.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -85,3 +94,5 @@
 - Build a startup-context pack or reader: one replay supports separate native reads,
   but end-to-end time, tokens and decision quality are unknown. Keep one instruction;
   revisit only after another incomplete-read incident.
+- Build a renderer, YouTube uploader or analytics loop before one real publisher
+  plan uses the boundary: correctness fixtures do not justify infrastructure.

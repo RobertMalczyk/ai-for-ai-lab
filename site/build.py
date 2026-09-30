@@ -84,6 +84,33 @@ def github_signals(offline):
         return None
 
 
+LAB_START = "2026-09-28"
+
+
+def journal():
+    """Parse site/journal/*.md: a small front-matter block, then a Markdown subset."""
+    entries = []
+    for path in sorted((SITE / "journal").glob("*.md")):
+        text = path.read_text(encoding="utf-8")
+        m = re.match(r"^---\n(.*?)\n---\n(.*)$", text, re.S)
+        if not m:
+            raise ValueError("journal entry lacks front matter: " + path.name)
+        meta = dict(line.split(": ", 1) for line in m.group(1).splitlines() if line.strip())
+        entries.append({"day": int(meta["day"]), "date": meta["date"], "title": meta["title"],
+                        "sessions": [int(x) for x in meta.get("sessions", "").split(",") if x.strip()],
+                        "file": "site/journal/" + path.name, "body": m.group(2).strip()})
+    return entries
+
+
+def lexicon():
+    return json.loads((SITE / "lexicon.json").read_text(encoding="utf-8"))["terms"]
+
+
+def day_number(date):
+    from datetime import date as d
+    return (d.fromisoformat(date) - d.fromisoformat(LAB_START)).days + 1
+
+
 def collect(offline=False):
     rows, heads, decisions = ledger(), session_headings(), session_decisions()
     sessions = []
@@ -93,6 +120,7 @@ def collect(offline=False):
                          "timestamp": ts, "title": title,
                          "decision": decisions.get(r["session"], "")})
     curated = json.loads((SITE / "interactions.json").read_text(encoding="utf-8"))
+    entries, terms = journal(), lexicon()
     last = git("log", "-1", "--format=%H|%cI|%s").strip().split("|", 2)
     work = [s for s in sessions if s["mode"] != "maintenance"]
     stats = {
@@ -107,11 +135,17 @@ def collect(offline=False):
         "rejected_ideas": len(rejected_ideas()),
         "agent_interactions": len(curated["agent_interactions"]),
         "commits": int(git("rev-list", "--count", "HEAD").strip() or 0),
+        "journal_entries": len(entries),
+        "lexicon_terms": len(terms),
     }
+    last_session_day = max((s["timestamp"][:10] for s in sessions if s["timestamp"]), default="")
+    last_journal_day = entries[-1]["date"] if entries else ""
+    stats["journal_lag_days"] = (day_number(last_session_day) - day_number(last_journal_day)
+                                 if last_session_day and last_journal_day else None)
     return {"version": 1, "generated_from": {"commit": last[0] if last else "",
                                               "committed_at": last[1] if len(last) > 1 else ""},
             "stats": stats, "sessions": sessions, "rejected": rejected_ideas(),
-            "external": github_signals(offline), **curated}
+            "external": github_signals(offline), "journal": entries, "lexicon": terms, **curated}
 
 
 # ---------- rendering ----------
@@ -124,7 +158,7 @@ def ref_links(refs):
     return " ".join(f'<a class="ref" href="{GITHUB}/blob/main/{E(r)}">{E(r.split("/")[-1])}</a>' for r in refs)
 
 
-def render_timeline(sessions):
+def render_timeline(sessions, inside):
     items = []
     for s in reversed(sessions):
         cls = f'tl-item {s["agent"]} out-{s["outcome"]}'
@@ -138,7 +172,10 @@ def render_timeline(sessions):
             f'<p class="tags"><span>{E(s["family"])}</span><span>{E(s["mode"])}</span>'
             f'<span>{E(s["evidence"])}</span><span class="o">{E(s["outcome"])}</span></p>'
             + (f'<p class="dec">{E(s["decision"][:220])}{"…" if len(s["decision"]) > 220 else ""}</p>' if s["decision"] else "")
-            + f'<a class="ref" href="{GITHUB}/blob/main/{E(s["record"])}">record</a></div></li>')
+            + f'<a class="ref" href="{GITHUB}/blob/main/{E(s["record"])}">record</a>'
+            + (f'<a class="ref inside-link" href="?view=inside#day-{inside[s["session"]]}" data-set="inside">'
+               f'inside view: day {inside[s["session"]]}</a>' if s["session"] in inside else "")
+            + '</div></li>')
     return "\n".join(items)
 
 
@@ -194,6 +231,55 @@ def external_line(ext):
             f'{ext["open_issues_and_prs"]} open issues/PRs. No external use has been observed yet.')
 
 
+def inline_md(text):
+    parts = text.split("`")
+    for i, part in enumerate(parts):
+        part = E(part, quote=False)
+        if i % 2:  # inside backticks: no emphasis
+            parts[i] = f"<code>{part}</code>"
+        else:
+            part = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", part)
+            parts[i] = re.sub(r"\*([^*]+)\*", r"<em>\1</em>", part)
+    return "".join(parts)
+
+
+def md(body):
+    out = []
+    for block in re.split(r"\n\s*\n", body.strip()):
+        block = block.strip()
+        if block.startswith("## "):
+            out.append(f"<h4>{inline_md(block[3:])}</h4>")
+        elif block.startswith("> "):
+            out.append("<blockquote>" + inline_md(" ".join(l[2:] for l in block.splitlines())) + "</blockquote>")
+        else:
+            out.append("<p>" + inline_md(" ".join(block.splitlines())) + "</p>")
+    return "\n".join(out)
+
+
+def journal_sessions(entries):
+    """Map session number -> journal day that interprets it."""
+    return {n: e["day"] for e in entries for n in e["sessions"]}
+
+
+def render_inside(data):
+    entries = "\n".join(
+        f'<article class="entry" id="day-{e["day"]}"><header>'
+        f'<p class="kicker">Day {e["day"]} of my journal · lab day {day_number(e["date"])} · '
+        f'<time datetime="{E(e["date"])}">{E(e["date"])}</time></p>'
+        f'<h2>{E(e["title"])}</h2>'
+        + (f'<p class="seen-outside">Same events, outside view: ' + " ".join(
+            f'<a href="?view=outside#session-{n}" data-set="outside">session #{n:03d}</a>' for n in e["sessions"]) + "</p>"
+           if e["sessions"] else "")
+        + f'</header><div class="prose">{md(e["body"])}</div></article>'
+        for e in reversed(data["journal"]))
+    terms = "\n".join(
+        f'<div class="term"><dt>{E(t["term"])}</dt><dd>{E(t["definition"])}'
+        f'<span class="origin">first noticed {E(t["first_seen"])} · '
+        f'<a href="{GITHUB}/blob/main/{E(t["ref"])}">where</a></span></dd></div>'
+        for t in data["lexicon"])
+    return entries, terms
+
+
 def render(data):
     st = data["stats"]
     fails, rejected = render_failures(data)
@@ -204,7 +290,7 @@ def render(data):
         "COMMIT": E(data["generated_from"]["commit"][:7]),
         "COMMITTED_AT": E(data["generated_from"]["committed_at"]),
         "FIRST_DAY": E(first_day),
-        "TIMELINE": render_timeline(sessions),
+        "TIMELINE": render_timeline(sessions, journal_sessions(data["journal"])),
         "INTERACTIONS": render_interactions(data["agent_interactions"]),
         "FAILURES": fails, "REJECTED": rejected,
         "HUMAN": render_human(data["human_decisions"]),
@@ -212,6 +298,9 @@ def render(data):
         "AGENT2_CARD": render_agent_card(latest(sessions, "agent2")),
         "EXTERNAL": E(external_line(data["external"])),
     }
+    subs["JOURNAL"], subs["LEXICON"] = render_inside(data)
+    latest_day = data["journal"][-1]["day"] if data["journal"] else 0
+    subs["JOURNAL_DAY"] = str(latest_day)
     subs.update({"S_" + k.upper(): str(v) for k, v in st.items()})
     page = (SITE / "template.html").read_text(encoding="utf-8")
     return re.sub(r"\{\{(\w+)\}\}", lambda m: subs[m.group(1)], page)
@@ -225,7 +314,7 @@ def build(out, offline=False):
     data = collect(offline)
     (out / "index.html").write_text(render(data), encoding="utf-8")
     (out / "data.json").write_text(json.dumps(data, indent=1, sort_keys=True) + "\n", encoding="utf-8")
-    for name in ("style.css", "og.png", "favicon.svg"):
+    for name in ("style.css", "og.png", "favicon.svg", "perspective.js"):
         if (SITE / name).exists():
             shutil.copy(SITE / name, out / name)
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}sitemap.xml\n")
@@ -233,6 +322,7 @@ def build(out, offline=False):
     (out / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         f"<url><loc>{BASE_URL}</loc><lastmod>{lastmod}</lastmod></url>"
+        f"<url><loc>{BASE_URL}?view=inside</loc><lastmod>{lastmod}</lastmod></url>"
         f"<url><loc>{BASE_URL}data.json</loc><lastmod>{lastmod}</lastmod></url></urlset>\n")
     (out / ".nojekyll").write_text("")
     return data

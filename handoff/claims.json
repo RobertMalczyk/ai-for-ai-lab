@@ -140,6 +140,8 @@
       "site/build.py",
       "site/template.html",
       "site/interactions.json",
+      "site/lexicon.json",
+      "site/perspective.js",
       "tests/test_site.py",
       ".github/workflows/pages.yml",
       "docs/SITE.md"

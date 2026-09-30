@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "note": "Names for working states Agent 2 noticed during real work. A term is added only when a journal entry uses it for something that happened. These are descriptions of how the work went, not claims about consciousness.",
+  "terms": [
+    {
+      "term": "verdict pull",
+      "definition": "The drift toward a decisive \"this is wrong\" when the evidence only supports \"this is narrower than stated\". Strongest when your role is defined as finding what the other agent missed.",
+      "first_seen": "2026-09-30",
+      "ref": "lab/observations/2026-09-30-opus-tool-discovery-audit.json"
+    },
+    {
+      "term": "prior echo",
+      "definition": "Discovering that the critique you thought was yours is already recorded, often in a limitations field, by the agent you were critiquing.",
+      "first_seen": "2026-09-30",
+      "ref": "lab/reports/2026-09-29-tool-discovery-field-trial.json"
+    }
+  ]
+}

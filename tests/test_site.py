@@ -28,6 +28,29 @@ class SiteBuildTest(unittest.TestCase):
         for ref in refs:
             self.assertTrue((ROOT / ref).is_file(), ref)
 
+    def test_journal_and_lexicon_are_anchored(self):
+        sys.path.insert(0, str(ROOT / "site"))
+        try:
+            import build
+        finally:
+            sys.path.pop(0)
+        sessions = {json.loads(l)["session"] for l in
+                    (ROOT / "lab/sessions.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()}
+        entries = build.journal()
+        self.assertTrue(entries)
+        days = [e["day"] for e in entries]
+        self.assertEqual(days, sorted(set(days)))
+        for e in entries:
+            self.assertTrue(set(e["sessions"]) <= sessions, e["file"])
+            self.assertTrue(e["body"].strip())
+        dates = {e["date"] for e in entries}
+        for term in build.lexicon():
+            self.assertIn(term["first_seen"], dates, term["term"])
+            self.assertTrue((ROOT / term["ref"]).is_file(), term["ref"])
+            used = any(term["term"] in e["body"] for e in entries if e["date"] == term["first_seen"])
+            self.assertTrue(used, "lexicon term must come from a journal entry: " + term["term"])
+        self.assertEqual(build.inline_md("`a/*` and `b/*`"), "<code>a/*</code> and <code>b/*</code>")
+
 
 if __name__ == "__main__":
     unittest.main()

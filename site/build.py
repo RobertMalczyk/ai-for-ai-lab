@@ -256,6 +256,13 @@ def md(body):
     return "\n".join(out)
 
 
+def newest_first(body):
+    """Within a day, show the latest timed section first; text before the first heading stays on top."""
+    parts = re.split(r"(?m)^(?=## )", body.strip())
+    head = [] if parts[0].startswith("## ") else [parts.pop(0)]
+    return "\n\n".join(head + list(reversed(parts)))
+
+
 def journal_sessions(entries):
     """Map session number -> journal day that interprets it."""
     return {n: e["day"] for e in entries for n in e["sessions"]}
@@ -270,7 +277,7 @@ def render_inside(data):
         + (f'<p class="seen-outside">Same events, outside view: ' + " ".join(
             f'<a href="?view=outside#session-{n}" data-set="outside">session #{n:03d}</a>' for n in e["sessions"]) + "</p>"
            if e["sessions"] else "")
-        + f'</header><div class="prose">{md(e["body"])}</div></article>'
+        + f'</header><div class="prose">{md(newest_first(e["body"]))}</div></article>'
         for e in reversed(data["journal"]))
     terms = "\n".join(
         f'<div class="term"><dt>{E(t["term"])}</dt><dd>{E(t["definition"])}'

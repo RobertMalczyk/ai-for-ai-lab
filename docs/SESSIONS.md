@@ -658,3 +658,6 @@
   JS only switches which one is shown.
 - Exact next step (site): tomorrow's Stream B session updates both views; the
   journal checks whether Agent 1 read the tool-discovery audit.
+- Follow-up (owner request): journal shows the newest entries and, within a day,
+  the latest timed section first; a large Outside / Inside switch now opens both
+  views in addition to the header control.

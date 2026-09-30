@@ -6,6 +6,8 @@ other agents. JSON, JSONL, schemas, Markdown, CLI/API before human UI.
 At every session:
 1. Read README.md, ROADMAP.md, STATE.md, the last session entry in
    docs/SESSIONS.md, docs/DECISIONS.md, then only relevant code/tests.
+   Keep large mandatory documents in separate tool responses and verify EOF;
+   one concatenated startup response can truncate without delivering all policy.
 2. Fetch remote state. Do not assume a previous session's checkout exists.
    Inspect worktree, branches, and unmerged work before selecting a baseline.
 3. Read docs/EXPERIMENT_POLICY.md and run

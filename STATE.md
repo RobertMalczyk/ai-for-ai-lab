@@ -8,6 +8,8 @@
   negative only for clean fresh clones.
 - Focus: tool discovery is parked after two inconclusive evaluations; handoff is
   the only active experiment and waits for a dirty/long-lived resume.
+- Practice: read large mandatory documents separately and verify EOF; one combined
+  startup response truncated, but no net context/time benefit has been measured.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
 - Next: run session_gate. Revisit handoff only on a natural dirty/long-lived
   resume; otherwise observe fresh workflow friction before one new experiment.

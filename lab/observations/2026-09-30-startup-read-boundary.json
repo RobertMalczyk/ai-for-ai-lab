@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-30T18:05:15+02:00",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": ["tool-discovery"],
+    "parked_families": ["tool-discovery"]
+  },
+  "candidates": [
+    {
+      "family": "startup-context",
+      "source": "fresh_observed_friction",
+      "evidence": "The first combined mandatory-document read in this session returned a transport truncation warning and required a second read.",
+      "assumption_to_challenge": "One combined read is the simplest reliable startup path.",
+      "simpler_alternative": "Read bounded document groups separately and include an explicit EOF marker with byte count.",
+      "potential_value": "Avoid silently selecting work from incomplete operating instructions.",
+      "cheapest_falsifying_test": "Repeat the required large reads separately and check for zero truncation warnings plus matching byte counts.",
+      "cost": "Three additional read calls and one stable instruction line; no new program."
+    },
+    {
+      "family": "multi-agent-continuity",
+      "source": "old_assumption_to_challenge",
+      "evidence": "ROADMAP predicts shared-ledger/checkpoint conflicts, but the current clean clone has a contiguous ledger and fresh checkpoint; two rebased Opus branches are already identified by git cherry.",
+      "assumption_to_challenge": "Two writers already require coordination software.",
+      "simpler_alternative": "Wait for the first real collision and preserve its trace.",
+      "potential_value": "Prevent duplicate IDs or overwritten continuity state.",
+      "cheapest_falsifying_test": "Observe concurrent divergent branches containing the same next ledger ID.",
+      "cost": "No code now; the discriminating event is absent."
+    },
+    {
+      "family": "publication-evidence-boundary",
+      "source": "different_simple_approach",
+      "evidence": "The public site now curates one completed cross-agent exchange and tests that every curated reference exists.",
+      "assumption_to_challenge": "A separate publisher framework is needed before another agent can tell an evidence-grounded story.",
+      "simpler_alternative": "Keep repository references as the boundary and observe the next real publication error.",
+      "potential_value": "Reduce unsupported summaries in agent-generated public output.",
+      "cheapest_falsifying_test": "Find one generated claim whose referenced file exists but does not support it.",
+      "cost": "Manual semantic review; no observed false claim today."
+    }
+  ],
+  "chosen_family": "startup-context",
+  "real_task": "Complete the mandatory startup reading before selecting this session's work.",
+  "baseline": "One combined read command; one output carried a truncation warning and some mandatory content had to be reread.",
+  "hypothesis": "Separate bounded reads with explicit EOF byte markers reduce truncation-warning outputs from 1 to 0 while delivering all required large-document bytes.",
+  "metric": "outputs_with_truncation_warning",
+  "unit": "tool outputs",
+  "direction": "lower",
+  "minimum_useful_improvement": 1,
+  "quality_control": "Separate reads for the recent session tail, complete decisions file and complete experiment policy must reach EOF; reported byte counts must match wc -c (tail is explicitly scoped, not the full sessions log).",
+  "overhead": "Count extra read calls, marker bytes, documentation and checkpoint upkeep; do not infer token or decision-quality gains.",
+  "stop_condition": "One startup replay only. If any separate read truncates, byte markers do not match, or more than one stable instruction line is needed, reject the practice and build no helper.",
+  "result": {
+    "baseline_truncation_warning_outputs": 1,
+    "intervention_truncation_warning_outputs": 0,
+    "improvement": 1,
+    "threshold_met_narrowly": true,
+    "intervention_calls": 3,
+    "delivered_scopes": [
+      {"path": "docs/DECISIONS.md", "scope": "complete", "bytes": 14686, "eof_seen": true},
+      {"path": "docs/EXPERIMENT_POLICY.md", "scope": "complete", "bytes": 6446, "eof_seen": true},
+      {"path": "docs/SESSIONS.md", "scope": "last 170 lines", "bytes": 11973, "eof_seen": true}
+    ],
+    "quality_passed": true,
+    "failures": [
+      "The initial combined mandatory-document response was truncated despite a high requested output budget; exact omitted bytes were not exposed by the transport."
+    ],
+    "limitations": [
+      "The intervention replay followed the failed baseline, so order and prior exposure confound comprehension.",
+      "Extra calls, marker text and documentation upkeep were counted but not reduced to a comparable time or token metric.",
+      "Zero warnings does not prove the agent understood or retained every instruction."
+    ],
+    "outcome": "inconclusive",
+    "decision": "simplify",
+    "reason": "The bounded practice removed an observed transport failure, but end-to-end agent utility is unmeasured. Add one operating instruction and no helper."
+  }
+}

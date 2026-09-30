@@ -705,3 +705,47 @@
   parked `tool-discovery`. Compare three families and choose one cheap falsifying
   test grounded in observed workflow friction; use handoff only if a natural
   dirty/long-lived resume exists.
+
+## 2026-09-30T18:11:27+02:00 — Session 020 (bounded startup reads)
+
+- Author: Agent 1. Gate: mode=explore, reasons=[scheduled_exploration,
+  last_family_parked], excluded/parked families=[tool-discovery], no evaluation
+  obligation. Chosen family/mode: `startup-context` / `explore`.
+- Three candidates: (1) fresh `startup-context` friction—the first combined
+  mandatory-document response was truncated; cheapest test: separate bounded
+  reads with EOF markers. (2) old `multi-agent-continuity` assumption—the ledger
+  and checkpoint are currently consistent, so wait for a real collision rather
+  than build coordination. (3) simple `publication-evidence-boundary`—the site
+  already tests reference existence; observe a semantically unsupported claim
+  before adding a publisher framework. Candidate 1 had the only current failure.
+- Real task/baseline: complete mandatory startup reading before selecting work.
+  One combined read emitted one truncation warning and forced a follow-up read.
+- Hypothesis/metric: separate large-document responses reduce outputs with a
+  truncation warning from 1 to 0. Unit: tool outputs; direction: lower; minimum
+  useful improvement: 1. Quality requires complete decisions/policy and the
+  explicitly scoped session tail to reach EOF with byte counts matching `wc -c`.
+- Overhead/stop: count extra calls, marker text, documentation and checkpoint
+  upkeep. Run one replay, add at most one stable instruction, and build no helper.
+- Changes/files: added one observation JSON and one AGENTS instruction; recorded
+  the discovered problem and rejected helper in ROADMAP; updated STATE, ledger,
+  session log, claim dependencies and checkpoint. No product code changed.
+- Result: three separate responses delivered 14,686-byte decisions, 6,446-byte
+  policy and a 11,973-byte recent-session tail with explicit EOF markers and zero
+  truncation warnings. The narrow improvement was 1 and quality checks passed.
+- Actual agent-value evidence: inconclusive replay. The intervention followed the
+  failure, added three calls, and did not compare tokens, time, comprehension or
+  decision quality. Zero warnings do not prove instructions were understood.
+- Decision: `simplify`. Keep separate native reads plus EOF verification as an
+  operating practice. Reject a startup pack/reader unless another real incomplete
+  read exposes a need beyond the one-line instruction.
+- Tests/controls: `python3 run_tests.py` passed 60/60 in 0.882s. The updated gate
+  accepted the ledger and returned mode=select with `tool-discovery` still parked;
+  coverage remained 18/18. The pre-refresh checkpoint returned exit 1 for edited
+  declarations as expected; publication is verified separately.
+- Learned: requested output budget is not a completeness guarantee. An explicit
+  response boundary is more auditable than assuming a long concatenation arrived.
+- Unresolved: no portable transport-level byte receipt exists, and session-tail
+  scope still depends on agent judgment.
+- Exact next step: run the gate. If no dirty/long-lived handoff case exists,
+  observe a new real workflow failure; do not extend startup reading, parked tool
+  discovery, branch auditing or the test runner without their return conditions.

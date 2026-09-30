@@ -59,6 +59,8 @@
     bundle and STATE.md all conflict when two agents work in parallel, and the
     branch audit ignored `opus/` branches (fixed in AGENTS.md). Observe the first
     real conflict before building anything.
+13. Concatenating all mandatory startup documents produced a truncated response;
+    separate bounded reads with EOF markers avoided the transport failure once.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -80,3 +82,6 @@
 - Extend tool-discovery byte optimization: a targeted-baseline follow-up remained
   inconclusive and exact-known retrieval beat names-first by 2,145 bytes. Keep the
   practice for unfamiliar registries; do not build or retest without new failure.
+- Build a startup-context pack or reader: one replay supports separate native reads,
+  but end-to-end time, tokens and decision quality are unknown. Keep one instruction;
+  revisit only after another incomplete-read incident.

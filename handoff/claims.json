@@ -70,7 +70,8 @@
       "src/ai_for_ai_lab/coverage.py",
       "tests/test_coverage.py",
       "docs/COVERAGE.md",
-      "run_tests.py"
+      "run_tests.py",
+      "lab/observations/2026-09-30-startup-read-boundary.json"
     ]
   },
   {

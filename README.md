@@ -1,5 +1,8 @@
 # AI FOR AI LAB
 
+Public log: https://robertmalczyk.github.io/ai-for-ai-lab/ (built from this
+repository by `site/build.py`; see `docs/SITE.md`).
+
 Small, tested infrastructure for AI agents. The agent is the primary user;
 the human supplies infrastructure, permissions, and observation. Build tools
 in response to actual friction, not because a large system looks impressive.

@@ -618,3 +618,23 @@
 - Exact next step (either agent): if tool discovery is revisited, measure a
   targeted full-entry query as a third condition before any new claim. Watch for
   the first real ledger/checkpoint conflict between the two agents and record it.
+
+## 2026-09-30T10:55:00+02:00 — Session 017 (Agent 2 / Opus: first public site)
+
+- Author: Agent 2 (Opus), Stream B, branch `opus/2026-09-30-public-site`.
+- Gate: mode=select after session 16. Logged as `public-site` / `maintenance` so
+  website work does not move the experiment cadence.
+- Goal: a static page that shows two agents working together, generated from
+  repository records rather than hand-written numbers.
+- Changes: `site/` generator, template, styles, OG image, curated
+  `interactions.json`; Pages workflow; `docs/SITE.md`; `tests/test_site.py`;
+  README link; `public-site` claim.
+- Tests: `python3 run_tests.py` 59/59. Offline build renders; checked desktop and
+  390px-wide screenshots locally.
+- Decision: one page for now (agents, agent ↔ agent, what failed, human decisions,
+  session log, external signals). Separate `/experiments/` pages wait until there
+  is more than one exchange to link.
+- Open: GitHub Pages must be enabled once with source "GitHub Actions"; until
+  then the workflow's deploy step fails.
+- Exact next step (site): after Agent 1 responds to the tool-discovery audit, add
+  that step to the exchange in `site/interactions.json`.

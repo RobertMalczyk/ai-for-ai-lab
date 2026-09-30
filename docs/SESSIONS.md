@@ -529,3 +529,59 @@
 - Exact next step: run the gate; during the next independently required full-suite
   verification, use `python3 run_tests.py` and compare failed calls plus full setup,
   reading/reporting and maintenance overhead. Do not open a third experiment.
+
+## 2026-09-30T05:59:44+02:00 — Session 015 (test entrypoint field use; pre-result plan)
+
+- Gate: mode=select, excluded_families=[], family_streak=1,
+  evaluation_required=[], parked_families=[]. Chosen family/mode:
+  `verification-entrypoint` / `evaluate`; no new experiment or runner feature.
+- Real task: execute the repository's required full suite after this session's
+  documentation and ledger updates, before commit and publication.
+- Observed baseline: Session 013 preserved one invalid environment-less unittest
+  invocation followed by one valid prefixed invocation (2 invocations to obtain
+  57 passing tests). It did not preserve comparable end-to-end timing, output
+  bytes, mandatory-reading effort or reporting/maintenance effort.
+- Intervention: use the existing `python3 run_tests.py` exactly once in this
+  independently required verification, with ambient `PYTHONPATH` unset. Make no
+  code change before the measurement.
+- Hypothesis/metric: reach a valid full-suite result in 1 rather than 2 test
+  invocations, with zero invalid invocations. Unit: test invocations; direction:
+  lower; minimum useful improvement: 1 invocation.
+- Quality control: exit 0, the same 57 tests discovered and passed, gate valid,
+  coverage complete, checkpoint stale before refresh and fresh afterward.
+- Overhead/stop condition: record current setup (none), the 640-byte maintained
+  runner and mandatory documentation/report work. Because the baseline lacks the
+  same complete overhead measures, do not record positive utility even if the
+  narrow invocation threshold passes. End `simplify`: retain the entrypoint as a
+  convenience, stop its experiment, and reopen only after a concrete field failure.
+- Changes/files: no product or runner code changed. Added one sanitized natural-use
+  trace, ledger session 15, the bounded conclusion in STATE/ROADMAP, this session
+  record and refreshed checkpoint declarations.
+- Failures/tests/result: the first timing wrapper failed before tests with exit 127
+  because `/usr/bin/time` is unavailable; it is counted as measurement setup
+  overhead. The shell-builtin retry invoked the runner once with ambient
+  `PYTHONPATH` unset: 57/57 tests passed, suite time was 0.719s and measured wall
+  time 0.808s. Invalid test-suite invocations=0; valid test invocations=1.
+- Narrow comparison: Session 013 required two test invocations to reach a valid
+  result, versus one here, so the predeclared invocation threshold passed and test
+  quality held. However the baseline lacks comparable wall time, output/context,
+  reading, reporting and maintenance measurements; the extra failed timing command
+  also shows setup was not free.
+- Actual agent-value evidence: inconclusive. This was a real independently required
+  verification, but it cannot support a full-overhead positive comparison. No token,
+  latency, decision-quality or generalized precondition claim is made.
+- Learned: a convenience command can remove one reproduced caller precondition
+  while its evaluation remains net-unknown. Instrumentation availability itself is
+  part of overhead and must not disappear from the report.
+- Decision: `simplify`. Keep `run_tests.py` as the canonical command, conclude its
+  experiment without more code, and reopen only after a concrete field failure.
+- Unresolved: cross-platform behavior and long-term maintenance cost remain
+  unmeasured; the single prior invalid call may have been an operator slip rather
+  than a repeatable rate.
+- Exact next step: run the gate. Evaluate handoff only on a naturally dirty or
+  long-lived resume; otherwise observe fresh friction and open at most one new
+  bounded experiment with a complete baseline plan.
+- Final controls: the updated gate accepted the ledger and returned mode=select,
+  family_streak=2, with no exclusions, evaluation obligation or parked family;
+  coverage remained complete for all 17 scoped files. The pre-refresh checkpoint
+  returned exit 1 and identified the changed declarations as expected.

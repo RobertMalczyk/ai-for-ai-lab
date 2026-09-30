@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "observed_at": "2026-09-30T05:59:44+02:00",
+  "task": "run the independently required full repository suite before publication",
+  "baseline": {
+    "source": "docs/SESSIONS.md session 013",
+    "test_invocations_until_valid_result": 2,
+    "invalid_test_invocations": 1,
+    "tests_passed": 57,
+    "comparable_full_overhead_available": false
+  },
+  "intervention": {
+    "command": "python3 run_tests.py",
+    "ambient_pythonpath": "unset",
+    "test_invocations_until_valid_result": 1,
+    "invalid_test_invocations": 0,
+    "tests_run": 57,
+    "tests_passed": 57,
+    "suite_seconds": 0.719,
+    "wall_seconds": 0.808,
+    "runner_bytes": 640,
+    "runner_setup_or_maintenance_changes": 0
+  },
+  "measurement_setup": {
+    "failed_commands": 1,
+    "failure": "/usr/bin/time unavailable; exit 127 before tests",
+    "successful_method": "shell builtin time"
+  },
+  "result": {
+    "test_invocations_avoided": 1,
+    "narrow_threshold_passed": true,
+    "quality_passed": true,
+    "full_overhead_comparable": false,
+    "utility_outcome": "inconclusive",
+    "decision": "simplify"
+  },
+  "measurement_notes": [
+    "The intervention task existed independently of the experiment and used the runner without modifying it.",
+    "The failed timing wrapper is retained as setup overhead rather than hidden.",
+    "The historical baseline does not provide matching wall-time, output-byte, mandatory-reading, reporting or maintenance measurements.",
+    "The narrow invocation reduction is not promoted to positive field utility."
+  ]
+}

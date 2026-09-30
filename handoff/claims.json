@@ -125,6 +125,7 @@
       "AGENTS.md",
       "README.md",
       "lab/observations/2026-09-30-test-entrypoint-replay.json",
+      "lab/observations/2026-09-30-test-entrypoint-field-trace.json",
       "lab/sessions.jsonl",
       "docs/SESSIONS.md",
       "ROADMAP.md",

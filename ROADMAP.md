@@ -8,6 +8,9 @@
 - Handoff checkpoint has one negative real-task comparison on a verified clean
   fresh clone: +617 agent-visible bytes, no stale evidence and no decision change.
   This is a bounded negative control, not evidence about dirty worktrees.
+- Test entrypoint field use reached 57/57 in one test invocation, but the baseline
+  lacks comparable full overhead and measurement setup itself failed once. Keep it
+  as a convenience without a positive utility claim or active feature program.
 
 ## NEXT
 - Revisit tool discovery only after an observed practice failure, a materially
@@ -27,8 +30,8 @@
   becoming established facts after summarization.
 - H5: a restart checkpoint with completed side effects prevents duplicate writes.
 - H6: explicit tool preconditions reduce wasted calls with guessed parameters.
-  A root test entrypoint removed the ambient `PYTHONPATH` precondition in one
-  replay; require natural-session use before adding runner features or claiming value.
+  The test-entrypoint subcase is concluded inconclusive; revisit H6 only after a
+  different concrete precondition failure, not by extending the runner.
 - H7: branch/commit-aware handoffs reduce resuming from the wrong baseline.
 - H8: an explicit stop condition prevents unnecessary verification loops.
 
@@ -62,3 +65,6 @@
 - Build a branch-audit helper now: native Git classified all 12 observed agent
   branches with three Git processes instead of 13. Wrong-baseline prevention and
   full workflow overhead remain unmeasured, so retain the practice, not software.
+- Expand the test entrypoint into a task runner: one natural verification passed,
+  but end-to-end benefit is unmeasured and the measurement setup added a failed
+  call. Reopen only after the current one-file command fails a real workflow.

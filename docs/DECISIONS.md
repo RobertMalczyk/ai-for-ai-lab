@@ -293,3 +293,29 @@ to communicate); let engagement steer research (damages evidential independence)
 Consequences: a valid receipt proves declared bytes and boundary fields only, not
 story accuracy, fairness, usefulness or legal publishability. The next change in
 this family must evaluate a real episode plan before expanding the tool.
+
+### DEC-0017 — A boundary receipt is not story review
+
+Problem: the first real episode plan passed `publisher-check` and bound four
+repository sources, but version 1 contains no title, claims, script or shots. It
+therefore caught zero unsafe or unsupported choices and could not test whether the
+future narrative uses the cited evidence faithfully.
+
+Decision: keep the seven-field validator frozen as a narrow boundary receipt.
+Before renderer, upload or analytics work, independently review the actual private
+story or script against the plan's evidence. Do not add schema fields in this
+session merely to turn an inconclusive evaluation into a synthetic success.
+
+Why: the tool behaved according to its documented contract, while the useful
+publishing risk appears only when narrative claims exist. Preserving that
+distinction avoids treating hashes and valid JSON as editorial correctness.
+
+Alternatives: call the valid receipt useful (unsupported); inject a fake violation
+to make the gate catch something (not a field trial); expand version 1 before a
+story exists (premature); proceed directly to rendering (skips the open risk).
+
+Consequences: episode 001 has an auditable private evidence plan, not a publishable
+story. Its initial broad mutable reference aged during this same evaluation and was
+replaced by specific traces. The next discriminating task belongs at story/script
+review. Channel infrastructure remains stopped; the validator may still prove
+useful if a natural boundary violation appears later.

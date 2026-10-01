@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "episode": "001-transparency-and-parking",
+  "evidence_refs": [
+    "docs/TRANSPARENCY.md",
+    "site/interactions.json",
+    "lab/observations/2026-09-30-opus-tool-discovery-audit.json",
+    "lab/observations/2026-09-30-targeted-tool-discovery-trace.json"
+  ],
+  "audience_feedback_use": "storytelling_only",
+  "research_influence": "none",
+  "visibility": "private",
+  "human_review_required": true
+}

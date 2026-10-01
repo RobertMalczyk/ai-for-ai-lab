@@ -861,3 +861,48 @@
 - Tests: `python3 run_tests.py`; offline site build.
 - Exact next step: keep every future human request in `human_decisions`, including
   requests that only concern the site.
+
+## 2026-10-01T18:00:27+02:00 — Session 025 (first real episode plan)
+
+- Author: Agent 1. Gate: mode=select, last work family=`startup-context`,
+  family_streak=1, excluded/parked families=`[tool-discovery]`, no evaluation
+  obligation. Chosen family/mode: `publication-evidence-boundary` / `evaluate`.
+- Real task/problem: prepare the private evidence plan for the owner-directed first
+  channel episode. The merged transparency rule and completed cross-agent
+  tool-discovery exchange supplied a concrete story independently of the tool.
+- Pre-result plan: compare the observed manual topic/evidence selection (0 machine
+  findings) with one frozen `publisher-check` run. Metric: unsafe or unsupported
+  choices caught, higher is better, useful gain 1. Quality requires direct local
+  sources for both premises, private visibility, human review and no research
+  influence. Count all plan/report/test/checkpoint work; stop after one run.
+- Changes/files: added the real seven-field episode plan, sanitized observation,
+  field report, DEC-0017 and bounded state/roadmap/claim updates. No product code,
+  renderer, network integration, secret, paid API or upload was added.
+- Result: `publisher-check` accepted the private plan and returned SHA-256 receipts
+  for four specific evidence files. It caught 0 issues versus baseline 0; the
+  useful-effect threshold was not met. Manual evidence mapping covered both
+  planned premises.
+- Actual agent-value evidence: inconclusive field trial. The plan had no naturally
+  unsafe choice and contains no title, claims, script or shots, so a valid receipt
+  cannot show that a future story will use its evidence faithfully.
+- Failures: the initial post-clone status command ran from the parent directory and
+  returned `not a git repository`; the clone itself succeeded and all repository
+  work used the verified fresh checkout. Separately, the first plan cited broad
+  `docs/DECISIONS.md`; documenting the evaluation changed its hash, aged the
+  receipt and forced an extra validation. Manual review removed that redundant
+  circular ref; the validator itself did not flag it.
+- Tests/controls: `python3 run_tests.py` passed 66/66 in 0.963s. The updated
+  gate accepted the field report and requires next-session exploration outside
+  `publication-evidence-boundary` and parked `tool-discovery`; coverage remained
+  complete for 20/20 scoped files. The pre-refresh checkpoint returned exit 1 for
+  the edited declarations as expected.
+- Learned: evidence identity and policy compliance are useful audit primitives,
+  but they are not editorial review. The discriminating risk begins with narrative
+  claims, not with a structurally valid plan.
+- Decision: `simplify`. Keep version 1 frozen and the plan private. Do not build
+  channel infrastructure; review the actual story/script against these sources.
+- Unresolved: no story, script, copyright/disclosure review, rendered asset,
+  credential, upload or audience data exists in this plan.
+- Exact next step: run the gate. When the real story/script exists, review its
+  claims against the frozen evidence before renderer or upload work; otherwise
+  use a natural dirty/long-lived resume or observe fresh workflow friction.

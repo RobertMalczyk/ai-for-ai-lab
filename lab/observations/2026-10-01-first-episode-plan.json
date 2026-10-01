@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-01T18:00:27+02:00",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["tool-discovery"]
+  },
+  "family": "publication-evidence-boundary",
+  "mode": "evaluate",
+  "real_task": "Prepare the private evidence plan for the first planned AI FOR AI LAB channel episode before any rendering or upload work.",
+  "task_origin": "The owner-directed channel was already recorded in Session 021; merged Session 024 and the completed cross-agent tool-discovery exchange now provide a concrete story that exists independently of publisher-check.",
+  "candidate_story": "The owner imposed a golden transparency rule, while the two agents independently challenged and then parked a weakly supported optimization direction.",
+  "evidence_map": [
+    {
+      "premise": "Human intervention must be disclosed, with safety and excessive cost as the stated limits.",
+      "refs": ["docs/TRANSPARENCY.md", "site/interactions.json"]
+    },
+    {
+      "premise": "Agent 2 challenged the tool-discovery baseline and Agent 1's follow-up led the gate to park the family.",
+      "refs": [
+        "lab/observations/2026-09-30-opus-tool-discovery-audit.json",
+        "lab/observations/2026-09-30-targeted-tool-discovery-trace.json"
+      ]
+    }
+  ],
+  "baseline": "A manually selected topic and repository references with no machine-readable boundary receipt; zero unsafe or unsupported choices were machine-detected.",
+  "hypothesis": "Running publisher-check on the real private plan catches at least one missing evidence or audience-to-research boundary problem before production, if one is present.",
+  "metric": "unsafe_or_unsupported_choices_caught",
+  "unit": "choices",
+  "direction": "higher",
+  "minimum_useful_improvement": 1,
+  "quality_control": "Independently inspect that both candidate-story premises have direct local references, keep the plan private and human-reviewed, and preserve all tests. A valid receipt alone is not a quality pass for a future script.",
+  "overhead": "Count plan authoring, evidence inspection, validator invocation, reporting, documentation, tests and checkpoint maintenance. No renderer, network, secret, paid API or upload.",
+  "stop_condition": "Run the frozen validator once. Do not add fields or product code in this session; report zero findings as inconclusive rather than manufacture a violation.",
+  "result": {
+    "baseline_choices_caught": 0,
+    "intervention_choices_caught": 0,
+    "improvement": 0,
+    "threshold_met": false,
+    "receipt_valid": true,
+    "evidence_receipts": [
+      {"path": "docs/TRANSPARENCY.md", "sha256": "8675f519e66c0a7f16bf3ad1108d7e1bc3b85609cbce27d93acb7c4ac1fa8153"},
+      {"path": "site/interactions.json", "sha256": "53d92eeab5e02e32b808860204e907e2a070d41fe9209e2519fd83cc4da3d572"},
+      {"path": "lab/observations/2026-09-30-opus-tool-discovery-audit.json", "sha256": "2f532396661f99b560bbc45ff4b831e31fa808b0e187247ac9c029fb7f1c17f8"},
+      {"path": "lab/observations/2026-09-30-targeted-tool-discovery-trace.json", "sha256": "00179b1de189a826407d0a3b7272fc670718e76f81f714f5d26d81ff0b29a0fc"}
+    ],
+    "quality_passed": true,
+    "failures": [
+      "The initial plan cited broad docs/DECISIONS.md. Recording this evaluation changed that file's hash on the verification run, immediately aging the receipt and exposing a partly circular dependency. The redundant ref was removed in favor of the two specific observation traces, requiring an extra validation invocation."
+    ],
+    "limitations": [
+      "The seven-field plan contains no title, claims, script or shot text, so the validator had no narrative statement to judge.",
+      "A valid receipt establishes declared bytes and boundary values only; it cannot show that the later story uses those bytes faithfully.",
+      "There was no naturally unsafe or audience-driven choice in this plan, so zero findings cannot distinguish a useful gate from a no-op.",
+      "publisher-check did not identify the broad mutable evidence reference; manual workflow review did.",
+      "Elapsed time and token overhead were not measured comparably; authored files, calls, tests and checkpoint maintenance are recorded instead."
+    ],
+    "outcome": "inconclusive",
+    "decision": "simplify",
+    "reason": "Keep version 1 as a narrow boundary receipt. Do not expand its schema or build channel infrastructure until an actual story or script can receive independent evidence review."
+  }
+}

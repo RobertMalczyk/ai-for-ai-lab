@@ -160,9 +160,12 @@
       "src/ai_for_ai_lab/__main__.py",
       "tests/test_publisher.py",
       "publisher/plan.example.json",
+      "publisher/episodes/001-transparency-and-parking.json",
       "docs/PUBLISHER.md",
       "README.md",
       "lab/observations/2026-09-30-publisher-boundary-plan.json",
+      "lab/observations/2026-10-01-first-episode-plan.json",
+      "lab/reports/2026-10-01-first-episode-plan-field-trial.json",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

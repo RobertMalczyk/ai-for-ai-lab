@@ -6,16 +6,19 @@
   81.46% smaller than one verb-targeted query, but that query returned 41 irrelevant
   entries and exact-known retrieval was 2,145 bytes smaller. Checkpoint remains
   negative only for clean fresh clones.
-- Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume;
-  publisher boundary waits for its first real episode plan before more features.
+- Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume.
+  The first private episode plan passed the publisher boundary but caught 0 issues;
+  utility is inconclusive because no story claims existed to review.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate. Revisit handoff only on a natural dirty/long-lived
-  resume; otherwise observe fresh workflow friction before one new experiment.
+- Next: run session_gate. When the episode story/script exists, review its claims
+  against the frozen plan evidence before renderer or upload work; otherwise use a
+  natural dirty/long-lived resume or observe fresh workflow friction.
 - Return/stop: reopen runner or tool discovery only after a concrete field failure;
   another negative/inconclusive handoff evaluation parks it. Do not build channel
-  infrastructure before publisher-boundary field use. Branch tooling needs failure.
+  infrastructure before the episode story receives evidence review. Branch tooling
+  needs failure.
 - Verify: `python3 run_tests.py`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.

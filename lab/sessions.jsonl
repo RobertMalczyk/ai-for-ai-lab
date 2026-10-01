@@ -22,3 +22,4 @@
 {"session":22,"family":"startup-context","mode":"evaluate","evidence":"field_trial","outcome":"inconclusive","record":"lab/reports/2026-10-01-startup-read-field-trial.json"}
 {"session":23,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/SITE.md"}
 {"session":24,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/TRANSPARENCY.md"}
+{"session":25,"family":"publication-evidence-boundary","mode":"evaluate","evidence":"field_trial","outcome":"inconclusive","record":"lab/reports/2026-10-01-first-episode-plan-field-trial.json"}

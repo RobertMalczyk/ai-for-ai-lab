@@ -16,9 +16,9 @@
 - Test entrypoint field use reached 57/57 in one test invocation, but the baseline
   lacks comparable full overhead and measurement setup itself failed once. Keep it
   as a convenience without a positive utility claim or active feature program.
-- Publisher plan v1 now enforces repository evidence, private visibility, human
-  review and zero research influence. Correctness is synthetic; utility waits for
-  the first real episode plan.
+- Publisher plan v1 enforces repository evidence, private visibility, human review
+  and zero research influence. Its first real private episode plan passed and
+  caught 0 issues; without story claims, utility remains inconclusive.
 - Separate startup reads reached complete EOF with zero truncation warnings in one
   natural follow-up, versus one warning in the original combined read. Different
   sessions and missing comparable time/token/call totals make utility inconclusive.
@@ -29,8 +29,9 @@
 - Before more handoff features: evaluate only on a naturally dirty or long-lived
   resumed worktree where stale evidence is plausible. A second negative or
   inconclusive evaluation parks the family.
-- Before renderer, analytics or upload work: use `publisher-check` on one real
-  episode and record whether it catches an unsupported or feedback-driven choice.
+- Before renderer, analytics or upload work: independently review the first
+  episode's actual story/script against its frozen evidence; the plan-only receipt
+  cannot inspect narrative claims.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -74,6 +75,8 @@
     one natural follow-up, but full overhead and decision quality remain unknown.
 14. A future AI publisher needs an enforceable separation between storytelling
     feedback and experiment selection; reference existence alone cannot express it.
+15. A valid seven-field publisher plan binds evidence and policy but carries no
+    narrative claims, so it cannot detect an unsupported story before one exists.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -101,3 +104,5 @@
   incident.
 - Build a renderer, YouTube uploader or analytics loop before one real publisher
   plan uses the boundary: correctness fixtures do not justify infrastructure.
+- Claim publisher utility from the first real plan receipt: it caught 0 issues and
+  had no narrative text to inspect. Keep the boundary, then review the actual story.

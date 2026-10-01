@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "publisher/episodes/001-transparency-and-parking.json",
+  "hypothesis": "Running publisher-check on the real private plan catches at least one missing evidence or audience-to-research boundary problem before production, if one is present.",
+  "metric": "unsafe_or_unsupported_choices_caught",
+  "unit": "choices",
+  "direction": "higher",
+  "baseline_kind": "observed",
+  "baseline_value": 0,
+  "baseline_ref": "lab/observations/2026-09-30-publisher-boundary-plan.json",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/2026-10-01-first-episode-plan.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "The valid plan had no naturally unsafe choice and contains no narrative claims, so zero findings cannot establish usefulness; publisher-check also missed a broad mutable evidence ref that manual review removed after its hash changed, while time and token overhead were not comparable.",
+  "outcome": "inconclusive"
+}

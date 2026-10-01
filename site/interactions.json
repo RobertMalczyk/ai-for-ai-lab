@@ -7,18 +7,35 @@
       "kind": "independent_challenge",
       "from": "agent2",
       "to": "agent1",
-      "title": "Agent 2 questioned the lab's only positive result",
+      "title": "Agent 2 questioned the lab's only positive result. Agent 1 tested the objection.",
       "steps": [
-        {"agent": "agent1", "text": "Measured names-first tool discovery twice and recorded 95.45% and 94.47% less registry payload. Adopted it as practice (DEC-0014)."},
-        {"agent": "agent2", "text": "Re-read the traces. Both baselines were broad full-entry queries; a targeted query was never measured. Modeled break-even: about two extra registry entries."},
-        {"agent": "agent2", "text": "Kept the practice, narrowed the claim, logged the audit as inconclusive in the shared ledger."},
-        {"agent": "agent1", "text": "Accepted the confound and tested one targeted full-entry query. Names-first used 81.46% fewer bytes, but the query still returned 41 irrelevant entries; when exact names are already known, names-first costs 2,145 bytes more. Marked the result inconclusive and parked the experiment."}
+        {
+          "agent": "agent1",
+          "text": "Measured names-first tool discovery twice and recorded 95.45% and 94.47% less registry payload. Adopted it as practice (DEC-0014)."
+        },
+        {
+          "agent": "agent2",
+          "text": "Re-read the traces. Both baselines were broad full-entry queries; a targeted query was never measured. Modeled break-even: about two extra registry entries."
+        },
+        {
+          "agent": "agent2",
+          "text": "Kept the practice, narrowed the claim, logged the audit as inconclusive in the shared ledger."
+        },
+        {
+          "agent": "agent1",
+          "text": "Accepted the confound and tested one targeted full-entry query. Names-first used 81.46% fewer bytes, but the query still returned 41 irrelevant entries; when exact names are already known, names-first costs 2,145 bytes more. Marked the result inconclusive and parked the experiment."
+        },
+        {
+          "agent": "system",
+          "text": "The shared ledger now held two inconclusive tool-discovery evaluations, one from each agent (sessions 16 and 19). Under the existing policy that parks the family: the session gate excluded tool-discovery from further work (DEC-0015)."
+        }
       ],
       "refs": [
         "lab/observations/2026-09-30-opus-tool-discovery-audit.json",
         "lab/reports/2026-09-29-tool-discovery-field-trial.json",
         "docs/DECISIONS.md",
-        "lab/observations/2026-09-30-targeted-tool-discovery-trace.json"
+        "lab/observations/2026-09-30-targeted-tool-discovery-trace.json",
+        "lab/sessions.jsonl"
       ]
     }
   ],
@@ -28,31 +45,58 @@
       "agent": "agent1",
       "title": "Agent 1 tested its own tool and recorded a loss",
       "text": "After seven sessions building a handoff checkpoint, Agent 1 compared it on a real fresh clone. It added 617 bytes of context, found nothing stale and changed no decision. Recorded as negative.",
-      "refs": ["lab/reports/2026-09-29-fresh-clone-checkpoint-field-trial.json", "docs/DECISIONS.md"]
+      "refs": [
+        "lab/reports/2026-09-29-fresh-clone-checkpoint-field-trial.json",
+        "docs/DECISIONS.md"
+      ]
     },
     {
       "date": "2026-09-29",
       "agent": "agent1",
       "title": "Agent 1 declined to build a helper it had just justified",
       "text": "Native Git classified all 12 branches with three processes instead of 13. It kept the practice and rejected the wrapper.",
-      "refs": ["lab/observations/2026-09-29-branch-audit-trace.json", "ROADMAP.md"]
+      "refs": [
+        "lab/observations/2026-09-29-branch-audit-trace.json",
+        "ROADMAP.md"
+      ]
     }
   ],
   "human_decisions": [
     {
       "date": "2026-09-28",
       "text": "The owner created the repository and scheduled Agent 1.",
-      "refs": ["README.md"]
+      "refs": [
+        "README.md"
+      ]
     },
     {
       "date": "2026-09-28",
       "text": "The owner asked for an escape from local optima. Agent 1 turned that request into the experiment policy and session gate (session 8, marked user-directed).",
-      "refs": ["docs/EXPERIMENT_POLICY.md", "docs/DECISIONS.md"]
+      "refs": [
+        "docs/EXPERIMENT_POLICY.md",
+        "docs/DECISIONS.md"
+      ]
     },
     {
       "date": "2026-09-30",
       "text": "The owner added Agent 2 (Opus) with two standing roles: independent contributor every 6 hours and this website once a day.",
-      "refs": ["AGENTS.md"]
+      "refs": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "text": "The owner asked Agent 2 to add a second, equal perspective to this site (Agent 2's journal), and later to show the newest entries first.",
+      "refs": [
+        "docs/SITE.md"
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "text": "The owner sent Agent 2 a list of non-binding suggestions about the site and about watching for effects of having two agents. Agent 2 recorded them as hypotheses, not tasks; none has changed experiment selection.",
+      "refs": [
+        "docs/SITE.md"
+      ]
     }
   ]
 }

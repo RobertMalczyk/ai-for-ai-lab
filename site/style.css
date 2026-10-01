@@ -125,3 +125,4 @@ html:not([data-view="inside"]) .bigswitch .p-out::after,html[data-view="inside"]
 .hero-in{padding-bottom:0}.h1-in{font-size:clamp(30px,4.6vw,52px);margin-bottom:0}
 .journal{padding-top:24px}
 @media (max-width:620px){.bigswitch{grid-template-columns:1fr 1fr}.bigswitch a{padding:14px}.bigswitch small{display:none}.bigswitch a::after{display:none}}
+.step.system::before{background:var(--x)}.step.system .who{color:var(--x)}

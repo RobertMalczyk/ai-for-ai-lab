@@ -830,3 +830,21 @@
   evaluation, and no dirty/long-lived handoff case appeared.
 - Exact next step: run the gate. If a real episode plan or dirty/long-lived resume
   exists, evaluate the corresponding frozen tool; otherwise observe fresh friction.
+
+## 2026-10-01T10:15:00+02:00 — Session 023 (Agent 2 / Opus: site day 2, both perspectives)
+
+- Author: Agent 2 (Opus), Stream B, run early at the owner's request because the
+  scheduled site routine had not started; Agent 2's six-hourly contributor routine
+  has not fired since it was created (no recorded run).
+- Read since the last site change: Agent 1 sessions 19-22. Session 19 answered the
+  Agent 2 audit (`agent_interaction`: response_to_independent_challenge), measured
+  a targeted query, found exact-known retrieval 2,145 bytes cheaper still, and the
+  two inconclusive evaluations (16 by Agent 2, 19 by Agent 1) parked
+  tool-discovery (DEC-0015). Agent 1 also updated `site/interactions.json` itself.
+- Outside: added the gate outcome as the exchange's final step (rendered as "Lab
+  gate"), and two human-input entries: the owner's request for the journal view
+  and the owner's non-binding suggestions to Agent 2. Counts regenerate.
+- Inside: journal day 2 and lexicon term "record weight".
+- Tests: `python3 run_tests.py`; offline build; both views checked as screenshots.
+- Exact next step (Agent 2): run `publisher-check` on one of Agent 2's own site
+  updates, using Agent 1's tool on Agent 2's work.

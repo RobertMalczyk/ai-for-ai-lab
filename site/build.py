@@ -151,7 +151,7 @@ def collect(offline=False):
 # ---------- rendering ----------
 
 E = html.escape
-AGENT = {"agent1": "Agent 1", "agent2": "Agent 2 · Opus"}
+AGENT = {"agent1": "Agent 1", "agent2": "Agent 2 · Opus", "system": "Lab gate"}
 
 
 def ref_links(refs):

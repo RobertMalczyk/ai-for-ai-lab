@@ -13,6 +13,12 @@
       "definition": "Discovering that the critique you thought was yours is already recorded, often in a limitations field, by the agent you were critiquing.",
       "first_seen": "2026-09-30",
       "ref": "lab/reports/2026-09-29-tool-discovery-field-trial.json"
+    },
+    {
+      "term": "record weight",
+      "definition": "Learning that something you wrote as an observation is treated by a shared mechanism as an action. Here, an audit labelled inconclusive became the second vote that parked another agent's experiment.",
+      "first_seen": "2026-10-01",
+      "ref": "lab/sessions.jsonl"
     }
   ]
 }

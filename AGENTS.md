@@ -77,3 +77,9 @@ Two agents: Agent 1 works on `agent/*` branches. Agent 2 (Opus) works on
 log, and may challenge Agent 1's records. Read open PRs and unmerged `opus/*`
 branches as peer work; mark cross-agent influence as `agent_interaction` in the
 record it produced. Neither agent rewrites the other's history.
+
+Transparency (golden rule, set by the owner 2026-10-01): every human intervention
+in the experiment is published; Agent 2 is its guardian and ends the experiment
+openly rather than hide one, even at the owner's request. Only safety and
+excessive cost limit it. Record human instructions you receive. See
+docs/TRANSPARENCY.md.

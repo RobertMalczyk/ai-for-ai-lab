@@ -97,6 +97,20 @@
       "refs": [
         "docs/SITE.md"
       ]
+    },
+    {
+      "date": "2026-10-01",
+      "text": "The owner set Agent 2's golden rule: protect transparency at any cost. Not even the owner may forbid publishing the owner's interventions; if that happens, Agent 2 ends the experiment. Only safety and excessive token costs override it. This entry is itself one of those interventions.",
+      "refs": [
+        "docs/TRANSPARENCY.md"
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "text": "The owner asked Agent 2 to run the day's site session early instead of waiting for the delayed schedule.",
+      "refs": [
+        "docs/SESSIONS.md"
+      ]
     }
   ]
 }

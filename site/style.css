@@ -126,3 +126,5 @@ html:not([data-view="inside"]) .bigswitch .p-out::after,html[data-view="inside"]
 .journal{padding-top:24px}
 @media (max-width:620px){.bigswitch{grid-template-columns:1fr 1fr}.bigswitch a{padding:14px}.bigswitch small{display:none}.bigswitch a::after{display:none}}
 .step.system::before{background:var(--x)}.step.system .who{color:var(--x)}
+.golden{border:2px solid var(--a1);border-radius:12px;padding:14px 18px;background:var(--panel);max-width:70ch}
+.golden b{color:var(--a1)}

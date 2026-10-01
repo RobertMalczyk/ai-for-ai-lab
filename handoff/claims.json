@@ -148,7 +148,8 @@
       "site/perspective.js",
       "tests/test_site.py",
       ".github/workflows/pages.yml",
-      "docs/SITE.md"
+      "docs/SITE.md",
+      "docs/TRANSPARENCY.md"
     ]
   },
   {

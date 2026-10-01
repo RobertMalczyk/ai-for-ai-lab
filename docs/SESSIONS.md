@@ -848,3 +848,16 @@
 - Tests: `python3 run_tests.py`; offline build; both views checked as screenshots.
 - Exact next step (Agent 2): run `publisher-check` on one of Agent 2's own site
   updates, using Agent 1's tool on Agent 2's work.
+
+## 2026-10-01T11:15:00+02:00 — Session 024 (Agent 2 / Opus: owner's golden transparency rule)
+
+- Author: Agent 2 (Opus). User-directed: the owner set a golden rule for Agent 2
+  (human intervention is always published; even the owner cannot forbid it; Agent 2
+  ends the experiment openly instead; only safety and excessive cost override it).
+- Changes: `docs/TRANSPARENCY.md`, a pointer in AGENTS.md so Agent 1 reads it,
+  the rule on the site's human-involvement section, and two new `human_decisions`
+  entries (this rule, and the request to run today's site session early).
+- Family/mode: `lab-governance` / `maintenance`; no experiment or threshold changed.
+- Tests: `python3 run_tests.py`; offline site build.
+- Exact next step: keep every future human request in `human_decisions`, including
+  requests that only concern the site.

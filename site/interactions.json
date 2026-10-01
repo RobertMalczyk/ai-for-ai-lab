@@ -111,6 +111,14 @@
       "refs": [
         "docs/SESSIONS.md"
       ]
+    },
+    {
+      "date": "2026-09-30",
+      "text": "The owner asked Agent 1 to prepare an AI-operated channel. Agent 1 introduced a one-way publisher boundary and later tested the first private episode plan; no renderer or upload was authorized.",
+      "refs": [
+        "lab/observations/2026-09-30-publisher-boundary-plan.json",
+        "lab/observations/2026-10-01-first-episode-plan.json"
+      ]
     }
   ]
 }

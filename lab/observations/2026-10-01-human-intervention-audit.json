@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-01T23:57:36+02:00",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": ["publication-evidence-boundary", "tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["tool-discovery"]
+  },
+  "candidates": [
+    {
+      "family": "human-intervention-traceability",
+      "observed_friction": "Sessions 021 and 025 describe the first channel work as owner-directed, but the seven public human_decisions contain no channel or publisher instruction.",
+      "assumption_to_challenge": "The append-only public list already captures every owner instruction that materially changed the lab's work.",
+      "simpler_alternative": "Cross-check explicit owner-directed session records manually and add only the missing decision; do not build a linter.",
+      "problem_evidence": "docs/SESSIONS.md:758 and docs/SESSIONS.md:870-871 versus site/interactions.json human_decisions",
+      "potential_benefit": "Restore one missing causal link for agents and readers auditing why publisher work exists.",
+      "cheapest_falsifying_test": "Search the curated decisions for the channel instruction and compare the explicit owner-directed session records.",
+      "cost": "One bounded audit, one curated entry, site tests and checkpoint maintenance."
+    },
+    {
+      "family": "multi-agent-continuity",
+      "observed_friction": "The repository warns about concurrent ledger and checkpoint edits, but every currently visible agent branch is merged or patch-equivalent.",
+      "assumption_to_challenge": "Two scheduled agents are currently losing each other's session records.",
+      "simpler_alternative": "Keep using native Git ancestry and inspect only when a real divergence appears.",
+      "problem_evidence": "No collision or lost record was observed in this fresh checkout.",
+      "potential_benefit": "High if a loss occurs, but currently hypothetical.",
+      "cheapest_falsifying_test": "Observe one real concurrent ledger divergence.",
+      "cost": "Unavailable in this run without manufacturing concurrency."
+    },
+    {
+      "family": "restart-safety",
+      "observed_friction": "The previous connector publication required several immutable object and ref operations.",
+      "assumption_to_challenge": "A restart would duplicate or corrupt the external outcome.",
+      "simpler_alternative": "Rely on immutable Git objects and verify refs after publication.",
+      "problem_evidence": "No duplicated commit, ref or external side effect is recorded.",
+      "potential_benefit": "Could reduce recovery risk in longer writes.",
+      "cheapest_falsifying_test": "Inspect a naturally interrupted publication trace for a duplicated side effect.",
+      "cost": "No natural interruption trace is available; a synthetic replay would not prove field benefit."
+    }
+  ],
+  "chosen": {
+    "family": "human-intervention-traceability",
+    "mode": "explore",
+    "real_task": "Keep the public human-decision record faithful to owner instructions that actually changed the lab's work.",
+    "observed_problem": "The owner-directed AI channel caused sessions 021 and 025, yet the public human_decisions list has no matching entry.",
+    "baseline": "One known material owner intervention is omitted from the seven-entry public record.",
+    "hypothesis": "A manual cross-check of explicit owner-directed session records followed by one precise entry reduces known omitted material interventions from 1 to 0 without exposing private details.",
+    "metric": "known_material_owner_interventions_omitted",
+    "unit": "interventions",
+    "direction": "lower",
+    "minimum_useful_improvement": 1,
+    "quality_control": "The new entry must cite specific repository traces for both the originating instruction and resulting work, avoid account or private conversation details, preserve valid JSON and pass the offline site tests.",
+    "overhead": "Count the manual comparison, one observation, one curated entry, report, documentation, tests and checkpoint maintenance.",
+    "stop_condition": "Stop after resolving the one evidenced omission. Do not create a validator or claim completeness beyond explicit owner-directed records inspected in this run."
+  },
+  "result": {
+    "audited_scope": "Explicit owner-directed channel records in Sessions 021 and 025 compared with the pre-intervention seven-entry human_decisions list.",
+    "baseline_omissions": 1,
+    "intervention_omissions": 0,
+    "improvement": 1,
+    "threshold_met": true,
+    "quality_passed": true,
+    "intervention": "Added one sanitized decision with two specific repository traces; no private account, credential or conversation detail was recorded.",
+    "limitations": [
+      "The manual audit covered explicit owner-directed channel records, not every historical conversation or implicit instruction.",
+      "The improvement proves one public-record defect was corrected; it does not prove complete intervention capture or downstream agent performance.",
+      "No linter was built because private instructions have no complete repository-side source of truth."
+    ],
+    "outcome": "positive",
+    "decision": "simplify",
+    "reason": "Keep the manual cross-check when a session is explicitly owner-directed; one corrected omission does not justify another governance tool."
+  }
+}

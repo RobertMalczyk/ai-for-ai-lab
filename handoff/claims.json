@@ -149,7 +149,9 @@
       "tests/test_site.py",
       ".github/workflows/pages.yml",
       "docs/SITE.md",
-      "docs/TRANSPARENCY.md"
+      "docs/TRANSPARENCY.md",
+      "lab/observations/2026-10-01-human-intervention-audit.json",
+      "lab/reports/2026-10-01-human-intervention-audit-field-trial.json"
     ]
   },
   {

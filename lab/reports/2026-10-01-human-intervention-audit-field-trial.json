@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "docs/TRANSPARENCY.md",
+  "hypothesis": "A manual cross-check of explicit owner-directed session records followed by one precise entry reduces known omitted material interventions from 1 to 0 without exposing private details.",
+  "metric": "known_material_owner_interventions_omitted",
+  "unit": "interventions",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "lab/observations/2026-10-01-human-intervention-audit.json",
+  "intervention_value": 0,
+  "intervention_ref": "site/interactions.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "The audit covered the explicit owner-directed channel records in Sessions 021 and 025, not every historical conversation or implicit instruction. It proves one defect was corrected, not complete capture or improved downstream agent performance.",
+  "outcome": "positive"
+}

@@ -9,13 +9,17 @@
 - Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume.
   The first private episode plan passed the publisher boundary but caught 0 issues;
   utility is inconclusive because no story claims existed to review.
+- Transparency: a manual audit found and corrected one omitted owner instruction
+  behind the channel work. This is a bounded positive record repair, not evidence
+  that all interventions are captured or that agent performance improved.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
 - Next: run session_gate. When the episode story/script exists, review its claims
   against the frozen plan evidence before renderer or upload work; otherwise use a
-  natural dirty/long-lived resume or observe fresh workflow friction.
+  natural dirty/long-lived resume or observe fresh workflow friction. For future
+  explicitly owner-directed sessions, cross-check `human_decisions` manually.
 - Return/stop: reopen runner or tool discovery only after a concrete field failure;
   another negative/inconclusive handoff evaluation parks it. Do not build channel
   infrastructure before the episode story receives evidence review. Branch tooling

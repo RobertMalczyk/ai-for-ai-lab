@@ -906,3 +906,56 @@
 - Exact next step: run the gate. When the real story/script exists, review its
   claims against the frozen evidence before renderer or upload work; otherwise
   use a natural dirty/long-lived resume or observe fresh workflow friction.
+
+## 2026-10-01T23:57:36+02:00 — Session 026 (human-intervention trace audit)
+
+- Author/gate: Agent 1. Gate required `explore`, excluded
+  `publication-evidence-boundary` and parked `tool-discovery`, with no evaluation
+  obligation. All visible agent branches were merged or patch-equivalent.
+- Three candidates: (1) the public intervention log omitted the owner-directed
+  channel work; (2) multi-agent continuity still had no observed collision; (3)
+  restart safety still had no natural duplicate-side-effect trace. Candidate 1 had
+  the only present-tense problem and cheapest falsifier.
+- Real task/problem: keep the public record faithful to human instructions that
+  changed lab work. Sessions 021 and 025 explicitly called the channel
+  owner-directed, while the seven-entry `human_decisions` list had no channel or
+  publisher instruction.
+- Pre-result plan: manually cross-check those explicit records, then add at most
+  one precise sanitized entry. Metric: known material owner interventions omitted,
+  lower is better, useful improvement 1 (baseline 1). Quality requires two specific
+  repository traces, no private/account detail, valid JSON and passing site tests.
+  Count observation/report/docs/tests/checkpoint work; stop without a linter.
+- Changes/files: added one channel decision to `site/interactions.json`, plus the
+  three-candidate observation, field report and bounded state/roadmap/claim/session
+  updates. No product code, schema, external service or policy threshold changed.
+- Result: the audited omission changed from 1 to 0 and met the threshold. The new
+  entry cites the boundary-plan and first-episode observations and discloses that
+  no renderer or upload was authorized.
+- Actual agent-value evidence: bounded positive field repair. A real public-record
+  defect was corrected with maintained quality, but the audit covers only explicit
+  owner-directed channel records. It does not establish complete intervention
+  capture, downstream agent benefit or LLM improvement.
+- Failures: an initial inspection requested nonexistent `lab/claims.json`; file
+  discovery located the actual `handoff/claims.json`, and no edit depended on the
+  failed read. A first combined documentation patch also missed the exact session
+  tail context and applied nothing; it was split and retried. The first coverage
+  and checkpoint calls used guessed positional/command syntax and returned exit 2;
+  `--help` exposed the documented `--root` contract and the commands were rerun.
+  During connector publication, a 20k output cap truncated the large session-log
+  blob; the resulting remote tree did not match the tested local tree, so no commit
+  used it. A complete reread produced the correct blob and matching tree.
+- Tests/controls: JSON parsing passed for the interaction, observation and report;
+  targeted site tests passed 3/3 and the full suite passed 66/66 in 1.562s. The
+  gate accepted the linked field report and returned mode `select`; coverage was
+  complete for 20/20 scoped files. The pre-refresh checkpoint returned exit 1 and
+  localized the edited declarations and public-site record as expected.
+- Learned: a public transparency rule can coexist with a concrete omission;
+  existence and reference checks cannot detect an absent human-decision entry.
+- Decision: `simplify`. Keep a manual cross-check for explicitly owner-directed
+  sessions. One corrected omission does not justify a linter without a complete
+  repository-side source of private instructions.
+- Unresolved: implicit or historically unlabelled owner interventions were not
+  audited; completeness remains unknown.
+- Exact next step: run the gate. On the next explicitly owner-directed session,
+  cross-check `human_decisions`; otherwise follow the live gate and STATE return
+  conditions rather than extending transparency tooling.

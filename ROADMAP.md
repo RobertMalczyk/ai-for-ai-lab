@@ -22,6 +22,9 @@
 - Separate startup reads reached complete EOF with zero truncation warnings in one
   natural follow-up, versus one warning in the original combined read. Different
   sessions and missing comparable time/token/call totals make utility inconclusive.
+- A real transparency audit found one owner-directed channel instruction missing
+  from `human_decisions` and repaired it. The 1-to-0 result applies only to the
+  explicit channel records inspected; it is not evidence of complete capture.
 
 ## NEXT
 - Revisit parked tool discovery only after an observed selection failure or a
@@ -77,6 +80,8 @@
     feedback and experiment selection; reference existence alone cannot express it.
 15. A valid seven-field publisher plan binds evidence and policy but carries no
     narrative claims, so it cannot detect an unsupported story before one exists.
+16. Explicit owner-directed sessions can still lack a matching public
+    `human_decisions` entry; one channel-related omission was observed and fixed.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -106,3 +111,6 @@
   plan uses the boundary: correctness fixtures do not justify infrastructure.
 - Claim publisher utility from the first real plan receipt: it caught 0 issues and
   had no narrative text to inspect. Keep the boundary, then review the actual story.
+- Build a human-intervention linter now: private instructions have no complete
+  repository-side source of truth. One manual cross-check found and fixed one
+  omission; repeat the check on explicit owner-directed work before adding tooling.

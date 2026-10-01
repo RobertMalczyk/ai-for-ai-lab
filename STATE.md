@@ -8,8 +8,9 @@
   negative only for clean fresh clones.
 - Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume;
   publisher boundary waits for its first real episode plan before more features.
-- Practice: read large mandatory documents separately and verify EOF; one combined
-  startup response truncated, but no net context/time benefit has been measured.
+- Practice: read large mandatory documents separately and verify EOF. One natural
+  follow-up had 0 truncation warnings, but added calls and lacked comparable
+  time/token/decision-quality data, so utility remains inconclusive.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
 - Next: run session_gate. Revisit handoff only on a natural dirty/long-lived
   resume; otherwise observe fresh workflow friction before one new experiment.

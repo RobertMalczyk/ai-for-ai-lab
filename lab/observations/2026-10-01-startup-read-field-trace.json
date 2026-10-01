@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-01T06:01:49+02:00",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["tool-discovery"]
+  },
+  "chosen_family": "startup-context",
+  "mode": "evaluate",
+  "pre_result_plan_source": "lab/observations/2026-09-30-startup-read-boundary.json",
+  "real_task": "Complete the mandatory startup reading for Session 022 before selecting work.",
+  "observed_problem": "Session 020's combined startup read produced one transport truncation warning and required a recovery read.",
+  "baseline": "The observed Session 020 combined-read attempt produced one warning; its exact total calls and elapsed time were not captured comparably.",
+  "hypothesis": "Separate bounded reads with explicit EOF markers reduce truncation-warning outputs from 1 to 0 while delivering the mandatory document scope.",
+  "metric": "outputs_with_truncation_warning",
+  "unit": "tool outputs",
+  "direction": "lower",
+  "minimum_useful_improvement": 1,
+  "quality_control": "AGENTS, README, ROADMAP and STATE fit their declared line ranges; the scoped recent SESSIONS tail, complete DECISIONS and complete EXPERIMENT_POLICY reads reach explicit EOF markers before the gate runs.",
+  "overhead_to_count": "Read-call count, EOF markers, report/document maintenance and checkpoint refresh; do not translate bytes or warning counts into tokens or decision quality.",
+  "stop_condition": "One natural startup use only; add no reader or context pack. Revisit only after another real incomplete-read incident.",
+  "result": {
+    "baseline_truncation_warning_outputs": 1,
+    "intervention_truncation_warning_outputs": 0,
+    "improvement": 1,
+    "threshold_met_narrowly": true,
+    "intervention_read_outputs": 4,
+    "explicit_eof_markers": 3,
+    "quality_passed": true,
+    "failures": [],
+    "overhead": {
+      "baseline": "At least the failed combined read plus a recovery read; exact comparable call/time/token totals were not recorded.",
+      "intervention": "Four read outputs before selection, three EOF markers, then this trace, field report, session documentation and checkpoint maintenance."
+    },
+    "limitations": [
+      "The runs occurred in different sessions with different document sizes and tool-response conditions.",
+      "Baseline elapsed time, tokens and exact total calls are unavailable, so end-to-end overhead is not comparable.",
+      "Complete delivery and zero warnings do not establish comprehension or a better task decision.",
+      "This is one natural use after one earlier failure."
+    ],
+    "outcome": "inconclusive",
+    "decision": "simplify",
+    "reason": "The practice avoided the prior transport symptom and preserved document completeness, but no end-to-end agent benefit can be attributed. Keep the one-line practice and build nothing."
+  }
+}

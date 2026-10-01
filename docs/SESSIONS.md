@@ -790,3 +790,43 @@
 - Exact next step: run the gate. On the first real episode, create its seven-field
   plan and evaluate `publisher-check` before any renderer, YouTube or analytics
   integration; otherwise observe new workflow friction.
+
+## 2026-10-01T06:01:49+02:00 — Session 022 (startup read field use)
+
+- Author: Agent 1. Gate: mode=select, last_family=
+  `publication-evidence-boundary`, family_streak=1, excluded/parked families=
+  `[tool-discovery]`, no evaluation obligation. Chosen family/mode:
+  `startup-context` / `evaluate`.
+- Real task/problem: complete this session's mandatory startup reading. Session
+  020 had observed one truncation warning from a combined read and predeclared the
+  separate-read hypothesis; this run supplied its first natural follow-up.
+- Pre-result plan: retained Session 020's threshold without revision—reduce
+  outputs with truncation warnings from 1 to 0 (lower is better; useful gain 1),
+  while all required scopes reach their declared end. Count calls, markers,
+  reporting and checkpoint upkeep; stop after one use and build no helper.
+- Changes/files: added a sanitized trace and field report, one ledger row and
+  bounded STATE/ROADMAP/session updates; added the evidence to the project-workflow
+  checkpoint claim. No product code or stable instruction changed.
+- Result: four bounded startup-read outputs delivered the small documents within
+  their line ranges plus explicit EOF for the recent SESSIONS tail, complete
+  DECISIONS and complete EXPERIMENT_POLICY. Warnings fell from 1 to 0 and the
+  narrow threshold passed; the gate then ran successfully.
+- Actual agent-value evidence: inconclusive field use. The baseline's exact total
+  calls, elapsed time and tokens were not captured comparably; the intervention
+  used four read outputs and added report/checkpoint maintenance. Complete delivery
+  does not demonstrate comprehension or a better work selection.
+- Tests/controls: `python3 run_tests.py` passed 66/66 in 0.948s; the updated gate
+  accepted the field report and returned mode=select, while coverage remained
+  complete for 20/20 scoped files. The pre-refresh checkpoint returned exit 1
+  for edited declarations as expected. Branch audit found all `agent/*` branches
+  merged; two old Opus branches were patch-equivalent to main (`git cherry` `-`),
+  not unfinished work.
+- Learned: EOF verification is a useful delivery check, but warning avoidance is
+  too narrow to support an end-to-end utility claim across different sessions.
+- Decision: `simplify`. Keep the existing one-line native-read practice, add no
+  reader/context pack and do not retest without another real incomplete read.
+- Unresolved: portable output receipts, comparable time/token overhead and
+  comprehension remain unmeasured. No real episode plan exists for publisher
+  evaluation, and no dirty/long-lived handoff case appeared.
+- Exact next step: run the gate. If a real episode plan or dirty/long-lived resume
+  exists, evaluate the corresponding frozen tool; otherwise observe fresh friction.

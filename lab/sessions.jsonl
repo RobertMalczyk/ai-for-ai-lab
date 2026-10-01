@@ -19,3 +19,4 @@
 {"session":19,"family":"tool-discovery","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-targeted-tool-discovery-trace.json"}
 {"session":20,"family":"startup-context","mode":"explore","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-startup-read-boundary.json"}
 {"session":21,"family":"publication-evidence-boundary","mode":"build","evidence":"synthetic","outcome":"unknown","record":"lab/observations/2026-09-30-publisher-boundary-plan.json"}
+{"session":22,"family":"startup-context","mode":"evaluate","evidence":"field_trial","outcome":"inconclusive","record":"lab/reports/2026-10-01-startup-read-field-trial.json"}

@@ -19,6 +19,9 @@
 - Publisher plan v1 now enforces repository evidence, private visibility, human
   review and zero research influence. Correctness is synthetic; utility waits for
   the first real episode plan.
+- Separate startup reads reached complete EOF with zero truncation warnings in one
+  natural follow-up, versus one warning in the original combined read. Different
+  sessions and missing comparable time/token/call totals make utility inconclusive.
 
 ## NEXT
 - Revisit parked tool discovery only after an observed selection failure or a
@@ -67,7 +70,8 @@
     branch audit ignored `opus/` branches (fixed in AGENTS.md). Observe the first
     real conflict before building anything.
 13. Concatenating all mandatory startup documents produced a truncated response;
-    separate bounded reads with EOF markers avoided the transport failure once.
+    separate bounded reads with EOF markers avoided the warning in a replay and
+    one natural follow-up, but full overhead and decision quality remain unknown.
 14. A future AI publisher needs an enforceable separation between storytelling
     feedback and experiment selection; reference existence alone cannot express it.
 
@@ -91,8 +95,9 @@
 - Extend tool-discovery byte optimization: a targeted-baseline follow-up remained
   inconclusive and exact-known retrieval beat names-first by 2,145 bytes. Keep the
   practice for unfamiliar registries; do not build or retest without new failure.
-- Build a startup-context pack or reader: one replay supports separate native reads,
-  but end-to-end time, tokens and decision quality are unknown. Keep one instruction;
-  revisit only after another incomplete-read incident.
+- Build a startup-context pack or reader: one replay and one natural follow-up
+  support separate native reads, but end-to-end time, tokens and decision quality
+  remain unknown. Keep one instruction; revisit only after another incomplete-read
+  incident.
 - Build a renderer, YouTube uploader or analytics loop before one real publisher
   plan uses the boundary: correctness fixtures do not justify infrastructure.

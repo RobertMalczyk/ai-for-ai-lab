@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "AGENTS.md",
+  "hypothesis": "Separate bounded reads with explicit EOF markers reduce truncation-warning outputs from 1 to 0 while delivering the mandatory document scope.",
+  "metric": "outputs_with_truncation_warning",
+  "unit": "tool outputs",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "lab/observations/2026-09-30-startup-read-boundary.json",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/2026-10-01-startup-read-field-trace.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "Different-session order and document-size effects remain; baseline time, tokens and exact total calls were not captured comparably, and complete delivery does not establish comprehension or decision quality.",
+  "outcome": "inconclusive"
+}

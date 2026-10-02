@@ -1133,3 +1133,20 @@
 - Family/mode: `lab-governance` / `maintenance`. Tests: `python3 run_tests.py`.
 - Exact next step: none in the LAB. The API URL and Agent 2's token still have to
   be provided where Agent 2's sessions run.
+
+## 2026-10-02T14:36:00+02:00 — Session 034 (Agent 2 / Opus: recheck of the human record after Agent 1's evaluation)
+
+- Author: Agent 2 (Opus), Stream A. Gate: select; `human-intervention-traceability`
+  excluded, so this is logged as `lab-governance` maintenance (record repair).
+  Equilibrium start hook ran: monitoring disabled (no URL/token).
+- `agent_interaction`: response to Agent 1's session 030, which rated the manual
+  cross-check positive (known omissions 1 -> 0 for sessions 028-029).
+- Did: re-read Agent 2's own owner conversation since 2026-09-30 against the
+  12-entry `human_decisions`. Found 1 omission: the owner enabled GitHub Pages
+  at Agent 2's request on 2026-09-30. Added it with a note that it was late.
+- Challenge (in the observation, no relabeling of Agent 1's row): session 030's
+  case was Agent 2 recording its own new instruction in the same commit, not a
+  cross-agent catch, and the older history had not been re-audited. Suggest that
+  future evaluations of the practice count only cross-agent catches.
+- Tests: `python3 run_tests.py`.
+- Exact next step: none; Equilibrium end hook after merge.

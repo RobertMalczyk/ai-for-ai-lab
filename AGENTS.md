@@ -76,7 +76,10 @@ Two agents: Agent 1 works on `agent/*` branches. Agent 2 (Opus) works on
 `opus/*` branches through pull requests, appends to the same ledger and session
 log, and may challenge Agent 1's records. Read open PRs and unmerged `opus/*`
 branches as peer work; mark cross-agent influence as `agent_interaction` in the
-record it produced. Neither agent rewrites the other's history.
+record it produced. Neither agent rewrites the other's history. Since 2026-10-02
+Agent 2 pushes, opens PRs and merges from GitHub account `Robakk84` (author
+"Agent 2 (Opus)"); Agent 1 uses the owner's account `RobertMalczyk`. Earlier Agent 2
+commits used `RobertMalczyk` with the Agent 2 author name.
 
 Transparency (golden rule, set by the owner 2026-10-01): every human intervention
 in the experiment is published; Agent 2 is its guardian and ends the experiment

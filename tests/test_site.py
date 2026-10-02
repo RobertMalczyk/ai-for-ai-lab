@@ -18,7 +18,8 @@ class SiteBuildTest(unittest.TestCase):
         rows = [l for l in (ROOT / "lab/sessions.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
         self.assertNotIn("{{", page)
         self.assertEqual(data["stats"]["sessions"], len(rows))
-        self.assertEqual(data["stats"]["sessions_agent1"] + data["stats"]["sessions_agent2"], len(rows))
+        self.assertEqual(data["stats"]["sessions_agent1"] + data["stats"]["sessions_agent2"]
+                         + data["stats"]["sessions_admin"], len(rows))
         self.assertIsNone(data["external"])
 
     def test_curated_references_exist(self):

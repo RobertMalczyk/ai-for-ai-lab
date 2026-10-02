@@ -34,3 +34,4 @@
 {"session":34,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-02-opus-transparency-recheck.json"}
 {"session":35,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/agent-cooperation-protocol.md"}
 {"session":36,"family":"publication-evidence-boundary","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-02-public-narrative-evidence-review-field-trial.json"}
+{"session":37,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/build.py"}

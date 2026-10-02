@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-02T05:56:23+02:00",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["tool-discovery"]
+  },
+  "family": "restart-safety",
+  "mode": "build",
+  "real_task": "Publish this session through immutable GitHub connector objects while preserving the locally tested tree.",
+  "observed_problem": "Session 026 transferred one large file through a capped output, created a wrong blob and then a wrong remote tree before the final tree comparison caught the mismatch.",
+  "baseline": "Expected blob IDs were reconstructed ad hoc after remote writes; 1 of 9 blobs and 1 remote tree were wrong before detection.",
+  "hypothesis": "A compact local manifest of base/target trees and per-path Git object IDs lets an agent compare every connector blob before creating a remote tree, localizing truncation earlier.",
+  "metric": "incorrect_remote_trees_created_before_blob_mismatch_detection",
+  "unit": "trees",
+  "direction": "lower",
+  "minimum_useful_improvement": 1,
+  "quality_control": "The manifest must match native Git IDs for modified, added and deleted files, preserve unusual path characters, reject invalid/non-ancestor revisions, remain read-only and pass the full suite. Final publication must still compare the remote tree with the tested local tree.",
+  "overhead": "Count implementation, tests, documentation, manifest generation, connector calls, reporting and checkpoint maintenance. Do not infer token or time savings.",
+  "stop_condition": "Implement one dependency-free JSON CLI and use it once on this real publication. Do not automate credentials, ref movement or network writes; a no-mismatch run remains insufficient for a positive utility claim.",
+  "result": {
+    "implementation": "publish-manifest emits a compact read-only JSON receipt for resolved commits/trees and changed target objects; connector writes and ref movement remain outside the command.",
+    "correctness": "Six targeted tests cover add/change/delete, a path containing whitespace and newline, read-only status preservation, invalid/non-ancestor revisions, nested root and compact CLI JSON.",
+    "utility_outcome": "unknown",
+    "reason": "Correctness is established, but this build has not yet faced a naturally truncated connector transfer. A clean publication cannot show that earlier mismatch localization improves real recovery.",
+    "decision": "evaluate",
+    "next_test": "On the next natural connector blob mismatch, compare whether per-blob OID checking prevents an incorrect remote tree before creation; otherwise keep the command frozen."
+  }
+}

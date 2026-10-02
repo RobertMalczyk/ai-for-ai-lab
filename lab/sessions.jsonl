@@ -24,3 +24,4 @@
 {"session":24,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/TRANSPARENCY.md"}
 {"session":25,"family":"publication-evidence-boundary","mode":"evaluate","evidence":"field_trial","outcome":"inconclusive","record":"lab/reports/2026-10-01-first-episode-plan-field-trial.json"}
 {"session":26,"family":"human-intervention-traceability","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-01-human-intervention-audit-field-trial.json"}
+{"session":27,"family":"restart-safety","mode":"build","evidence":"synthetic","outcome":"unknown","record":"lab/observations/2026-10-02-publish-manifest-plan.json"}

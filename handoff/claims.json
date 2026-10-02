@@ -155,6 +155,21 @@
     ]
   },
   {
+    "id": "connector-publication-safety",
+    "text": "The read-only connector publication manifest and its bounded unevaluated claim are represented by these files.",
+    "evidence": [
+      "src/ai_for_ai_lab/publish_manifest.py",
+      "src/ai_for_ai_lab/__main__.py",
+      "tests/test_publish_manifest.py",
+      "docs/CONNECTOR_PUBLISH.md",
+      "README.md",
+      "lab/observations/2026-10-02-publish-manifest-plan.json",
+      "docs/DECISIONS.md",
+      "ROADMAP.md",
+      "STATE.md"
+    ]
+  },
+  {
     "id": "publisher-boundary",
     "text": "The publisher plan validator enforces a one-way, evidence-bound version-1 contract; this does not prove story accuracy or utility.",
     "evidence": [

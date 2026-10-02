@@ -40,6 +40,10 @@ def main():
     publisher = sub.add_parser("publisher-check")
     publisher.add_argument("--root", required=True)
     publisher.add_argument("plan")
+    publish_manifest = sub.add_parser("publish-manifest")
+    publish_manifest.add_argument("--root", required=True)
+    publish_manifest.add_argument("--base", required=True)
+    publish_manifest.add_argument("--commit", required=True)
     try:
         args = parser.parse_args()
         if args.command == "capture":
@@ -56,6 +60,10 @@ def main():
         elif args.command == "publisher-check":
             from .publisher import validate_plan
             result = validate_plan(args.root, loads(Path(args.plan).read_text(encoding="utf-8")))
+            code = 0
+        elif args.command == "publish-manifest":
+            from .publish_manifest import build_manifest
+            result = build_manifest(args.root, args.base, args.commit)
             code = 0
         elif args.command == "link":
             result = link(loads(Path(args.capsule).read_text(encoding="utf-8")),

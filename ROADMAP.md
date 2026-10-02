@@ -25,6 +25,9 @@
 - A real transparency audit found one owner-directed channel instruction missing
   from `human_decisions` and repaired it. The 1-to-0 result applies only to the
   explicit channel records inspected; it is not evidence of complete capture.
+- A connector publication previously created one wrong blob/tree after an output
+  cap truncated a file. `publish-manifest` now exposes expected object IDs before
+  writes; its recovery value awaits a natural mismatch.
 
 ## NEXT
 - Revisit parked tool discovery only after an observed selection failure or a
@@ -35,6 +38,8 @@
 - Before renderer, analytics or upload work: independently review the first
   episode's actual story/script against its frozen evidence; the plan-only receipt
   cannot inspect narrative claims.
+- Keep `publish-manifest` frozen after its first real publication use. Evaluate it
+  only when a natural blob mismatch occurs; a clean run proves no recovery benefit.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -82,6 +87,8 @@
     narrative claims, so it cannot detect an unsupported story before one exists.
 16. Explicit owner-directed sessions can still lack a matching public
     `human_decisions` entry; one channel-related omission was observed and fixed.
+17. Connector content can be truncated before blob creation; final tree comparison
+    prevented publication but localized the mismatch only after a wrong tree existed.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -114,3 +121,6 @@
 - Build a human-intervention linter now: private instructions have no complete
   repository-side source of truth. One manual cross-check found and fixed one
   omission; repeat the check on explicit owner-directed work before adding tooling.
+- Automate connector credentials, commits or ref movement inside the manifest:
+  expected-object computation is local and read-only; authenticated writes remain
+  explicit, tree-matched and force-disabled.

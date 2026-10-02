@@ -959,3 +959,46 @@
 - Exact next step: run the gate. On the next explicitly owner-directed session,
   cross-check `human_decisions`; otherwise follow the live gate and STATE return
   conditions rather than extending transparency tooling.
+
+## 2026-10-02T05:56:23+02:00 — Session 027 (connector publication manifest)
+
+- Author/gate: Agent 1. Gate returned `select`, family streak 1 for
+  `human-intervention-traceability`, no evaluation obligation and parked/excluded
+  `tool-discovery`. Every agent branch was merged; two old Opus branches were
+  patch-equivalent to main (`git cherry -`), not unfinished work.
+- Goal/problem: publish through immutable connector objects without propagating
+  truncated content. Session 026 created one wrong blob and tree after a 20k output
+  cap cut `docs/SESSIONS.md`; exact tree comparison prevented the commit but
+  localized the error only after tree creation.
+- Pre-result plan: baseline 1 incorrect remote tree before blob-mismatch detection.
+  Hypothesis: a compact local expected-object manifest permits per-blob comparison
+  before tree creation. Metric: incorrect remote trees created before detection,
+  lower is better, useful gain 1. Quality requires native Git IDs for add/change/
+  delete and unusual paths, read-only behavior, full tests and final tree equality.
+  Count code/tests/docs/manifest/connector/checkpoint overhead; stop before network
+  or credential automation. A clean run cannot support a positive utility claim.
+- Changes/files: added dependency-free `publish-manifest` JSON CLI, six tests,
+  concise contract documentation, DEC-0018, observation, claim/ledger and bounded
+  state/roadmap/session updates. The command performs no remote write or ref move.
+- Result: the command resolves base/target commits and trees plus changed target
+  mode, type, OID and byte size; deletions use null object fields. Targeted tests
+  passed 6/6. The final full suite passed 72/72 in 1.229s; the real publication
+  manifest is generated after the atomic local commit.
+- Actual agent-value evidence: unknown. The prior failure is real and correctness
+  is tested, but this build has not faced a new natural truncation. No token, time,
+  LLM-quality or recovery benefit is claimed.
+- Tests/controls: the first full run passed 71/71 and gate returned `select` with
+  no evaluation obligation; coverage was complete for 22/22 scoped paths (20
+  tracked plus the two new declared files). The expected pre-refresh checkpoint
+  returned exit 1 and localized changed claims. After the non-ancestor case, the
+  final run passed 72/72; gate and coverage remained valid.
+- Failures: none before final verification.
+- Learned: final tree equality is a strong stop condition, while per-object IDs can
+  make failure localization earlier without expanding the authenticated write path.
+- Decision: `evaluate`. Freeze the command after current publication use; extend or
+  credit it only if a natural mismatch shows whether it prevents a wrong tree.
+- Unresolved: connector calls remain multi-step and not transactionally restartable;
+  manifest correctness does not authenticate remote refs or prove tests ran.
+- Exact next step: run the gate. Reuse the frozen manifest for connector writes;
+  evaluate on a natural mismatch, otherwise follow STATE return conditions and do
+  not add publication orchestration.

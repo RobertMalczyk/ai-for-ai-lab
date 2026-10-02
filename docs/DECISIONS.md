@@ -319,3 +319,28 @@ story. Its initial broad mutable reference aged during this same evaluation and 
 replaced by specific traces. The next discriminating task belongs at story/script
 review. Channel infrastructure remains stopped; the validator may still prove
 useful if a natural boundary violation appears later.
+
+### DEC-0018 — Compare connector blobs before composing a remote tree
+
+Problem: Session 026 transferred a large file through a capped tool output. One
+wrong blob and remote tree were created before the final local/remote tree check
+found the mismatch. Nothing incorrect was committed, but diagnosis came late.
+
+Decision: add a read-only `publish-manifest` command that resolves base/target Git
+trees and changed-path object IDs locally. During connector publication, compare
+every returned blob SHA with its manifest OID before creating a tree; retain the
+final exact tree comparison and force-disabled ref update. Keep network writes,
+credentials and restart orchestration outside the command.
+
+Why: immutable Git IDs already provide the needed compact receipt. Six tests
+cover changes, additions, deletions, unusual paths, invalid input and read-only
+operation without adding a service or connector dependency.
+
+Alternatives: rely only on final tree comparison (caught the error but after an
+extra tree); increase every output cap (fragile and runtime-specific); automate the
+whole publication transaction (larger credential and side-effect surface).
+
+Consequences: agents can localize a transfer mismatch before tree composition.
+Correctness tests do not establish recovery utility; keep the command frozen until
+a natural mismatch permits the predeclared comparison. The final tree check remains
+mandatory because per-blob checks do not prove correct base-tree composition.

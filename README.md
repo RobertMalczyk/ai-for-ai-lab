@@ -98,3 +98,10 @@ Before an AI publisher turns lab evidence into a public story, validate its plan
 Version 1 requires repository evidence, private visibility, human review and a
 one-way boundary: audience feedback may improve storytelling but cannot influence
 experiment selection. See `docs/PUBLISHER.md`. Validation is not factual review.
+
+## Connector publication receipt
+
+Before publishing a tested local commit through GitHub object APIs, generate a
+compact expected-object manifest with `publish-manifest`, compare every returned
+blob ID, then compare the completed tree. See `docs/CONNECTOR_PUBLISH.md`. The
+command is read-only and does not manage credentials or refs.

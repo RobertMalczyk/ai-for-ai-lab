@@ -168,6 +168,13 @@
         "docs/TRANSPARENCY.md",
         "lab/observations/2026-10-02-opus-site-publisher-boundary.json"
       ]
+    },
+    {
+      "date": "2026-10-02",
+      "text": "The owner told Agent 2 to install a private client for an \"Equilibrium\" API that the owner administers. The client reports Agent 2's session start and end (times, measured active time, task family) and receives neutral regulators. It is set to monitor only: the regulators don't change which task Agent 2 picks, and automatic waking is off. The telemetry stays private; the fact of the change is published.",
+      "refs": [
+        "docs/EQUILIBRIUM.md"
+      ]
     }
   ]
 }

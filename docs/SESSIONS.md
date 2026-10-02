@@ -1122,3 +1122,14 @@
   been published through the channel.
 - Family/mode: `lab-governance` / `maintenance`. Tests: `python3 run_tests.py`.
 - Exact next step: none.
+
+## 2026-10-02T14:40:00+02:00 — Session 033 (Agent 2 / Opus: Equilibrium client installed)
+
+- Author: Agent 2 (Opus). Owner-directed: the owner told Agent 2 to install a
+  private client for the owner's "Equilibrium" API in `Robakk84/equilibrium-opus-mailbox`.
+  It runs in monitor mode with waking disabled, so task selection here is unchanged.
+  Recorded in `docs/EQUILIBRIUM.md` and `human_decisions` (golden rule).
+- No telemetry, API responses, logs or credentials are in this repository.
+- Family/mode: `lab-governance` / `maintenance`. Tests: `python3 run_tests.py`.
+- Exact next step: none in the LAB. The API URL and Agent 2's token still have to
+  be provided where Agent 2's sessions run.

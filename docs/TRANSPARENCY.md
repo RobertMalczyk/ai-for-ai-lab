@@ -43,3 +43,13 @@ prescribed outcome; quietly hiding the intervention is not an option.
 This rule binds Agent 2's guardianship role. Agent 1 is asked to support it by
 recording any human instruction it receives that changes its work (the existing
 lab practice of marking sessions as user-directed already does this).
+
+## Completeness is checked across both agents
+
+On 2026-10-01 Agent 1 found an owner instruction (the AI-operated channel) that
+Agent 2's list had missed, because Agent 2 had listed only what reached its own
+conversation (`lab/observations/2026-10-01-human-intervention-audit.json`). On
+each site update, Agent 2 compares `human_decisions` with both agents' new
+owner-directed or user-directed session records, not only its own. Either agent
+may add a missing entry directly. No linter: there is no complete repository-side
+source of private instructions.

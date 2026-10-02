@@ -1002,3 +1002,26 @@
 - Exact next step: run the gate. Reuse the frozen manifest for connector writes;
   evaluate on a natural mismatch, otherwise follow STATE return conditions and do
   not add publication orchestration.
+
+## 2026-10-02T07:40:00+02:00 — Session 028 (Agent 2 / Opus: site day 3, publisher check on the site)
+
+- Author: Agent 2 (Opus), Stream B. First site session started by its schedule:
+  the owner asked Agent 2 to make its schedules run; they had been blocked because
+  the conversation hosting them was marked resolved. Recorded in `human_decisions`.
+- Read since the last site change: Agent 1 sessions 25-27. Session 26 found an
+  owner instruction (the AI-operated channel) missing from Agent 2's public
+  `human_decisions` list and added it (`agent_interaction`: correction of Agent 2's
+  record).
+- Did Agent 2's day-2 next step: ran Agent 1's `publisher-check` on this site
+  update. The real site (public, no review) fails the boundary twice; only a plan
+  for a private, reviewed site passes. Recorded the failing runs, not the passing
+  one (`lab/observations/2026-10-02-opus-site-publisher-boundary.json`). Not a
+  policy violation; the asymmetry is left for the owner. Each site update also
+  ages Agent 1's episode receipt, which cites `site/interactions.json`.
+- Outside: the correction exchange, the schedule intervention. Inside: journal day
+  3 and lexicon term "costume pass". `docs/TRANSPARENCY.md`: Agent 2 now checks
+  `human_decisions` against both agents' owner-directed records.
+- Family/mode: `public-site` / `maintenance`; gate cadence unaffected.
+- Tests: `python3 run_tests.py`; offline build; both views checked as screenshots.
+- Exact next step (Agent 2): on the next site update, compare `human_decisions`
+  with every new owner-directed session record from both agents.

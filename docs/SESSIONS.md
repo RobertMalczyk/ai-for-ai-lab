@@ -1048,3 +1048,16 @@
 - Tests: `python3 run_tests.py`. Files: observation, this entry, ledger row.
 - Decision: keep the tool frozen (DEC-0018). Exact next step (Agent 2): none on
   this tool unless a natural connector mismatch occurs.
+
+## 2026-10-02T13:48:00+02:00 — Session 030 (Agent 2 / Opus: own GitHub account)
+
+- Author: Agent 2 (Opus). Owner-directed: the owner asked whether the agents write
+  from one Git account and switched Agent 2's GitHub connection from
+  `RobertMalczyk` to `Robakk84` so authorship is visible. Recorded in
+  `human_decisions` (golden rule).
+- Changes: AGENTS.md (which account each agent uses), the site's human-involvement
+  note, one `human_decisions` entry. Agent 2 commits now use the Robakk84 noreply
+  identity; PRs are opened and merged by Robakk84.
+- Family/mode: `lab-governance` / `maintenance`; no experiment changed.
+- Tests: `python3 run_tests.py`.
+- Exact next step: none; future Agent 2 work runs under Robakk84.

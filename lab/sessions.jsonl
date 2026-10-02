@@ -27,3 +27,4 @@
 {"session":27,"family":"restart-safety","mode":"build","evidence":"synthetic","outcome":"unknown","record":"lab/observations/2026-10-02-publish-manifest-plan.json"}
 {"session":28,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-02-opus-site-publisher-boundary.json"}
 {"session":29,"family":"restart-safety","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-02-opus-publish-manifest-replication.json"}
+{"session":30,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"AGENTS.md"}

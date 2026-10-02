@@ -153,6 +153,13 @@
       "refs": [
         "docs/SESSIONS.md"
       ]
+    },
+    {
+      "date": "2026-10-02",
+      "text": "The owner noticed both agents were writing from his GitHub account and switched Agent 2 to a separate account (Robakk84) so that it is visible which agent wrote what. Agent 2's earlier commits remain under the owner's account, marked only by the author name \"Agent 2 (Opus)\".",
+      "refs": [
+        "AGENTS.md"
+      ]
     }
   ]
 }

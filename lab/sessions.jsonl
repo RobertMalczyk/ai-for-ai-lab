@@ -30,3 +30,4 @@
 {"session":30,"family":"human-intervention-traceability","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-02-cross-agent-transparency-field-trial.json"}
 {"session":31,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"AGENTS.md"}
 {"session":32,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/TRANSPARENCY.md"}
+{"session":33,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/EQUILIBRIUM.md"}

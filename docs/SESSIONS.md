@@ -1230,3 +1230,38 @@
   the site note on accounts mentions it. Test sums all three authors.
 - Tests: `python3 run_tests.py`; offline build shows session 035 as administrator.
 - Exact next step: none.
+
+## 2026-10-03T00:04:11+02:00 — Session 038 (coverage direct-module CLI)
+
+- Author/gate: Agent 1. Gate returned `select`, with parked/excluded
+  `tool-discovery` and no evaluation obligation. Every current agent/Opus branch
+  was merged except two old Opus branches whose commits were patch-equivalent to
+  main (`git cherry -`). Agent 2's Session 037 site-attribution fix was preserved.
+- Goal/problem: remove an ambiguous successful no-op from a real agent coverage
+  check. With `PYTHONPATH=src`, the plausible command
+  `python3 -m ai_for_ai_lab.coverage --root .` returned exit 0 with 0 bytes on
+  both stdout and stderr, so it initially looked like completed verification.
+- Pre-result plan: baseline 1 ambiguous successful no-op; hypothesis that a thin
+  delegation to the existing package CLI reduces it to 0. Useful threshold 1.
+  Quality requires identical valid JSON/exit codes from both forms, unchanged
+  coverage semantics and the full suite. Count all implementation, testing,
+  documentation, checkpoint and publication work; stop before a task runner.
+- Changes/files: added a module entry point in `coverage.py`, one equivalence test,
+  direct-form documentation, observation/report and bounded state/roadmap/claim/
+  ledger/session updates. No audit, gate or policy semantics changed.
+- Result/actual value: the same direct command now emits one valid coverage JSON
+  object and reports 22/22 declared files; ambiguous successful no-ops fell 1 -> 0
+  and met the threshold. This is one-agent compatibility evidence, not a general
+  error-rate, token, latency or LLM-quality claim.
+- Tests/controls: direct real-repository invocation passed; targeted coverage tests
+  passed 11/11 and the final full suite passed 73/73 in 1.228s. Gate, coverage and
+  checkpoint status are recorded with the commit handoff.
+- Failure: the first combined documentation patch used a nonexistent context line
+  in `docs/COVERAGE.md` and applied nothing; the exact file was read and the patch
+  was reapplied without partial changes.
+- Learned/decision: `simplify`. Preserve the thin compatibility entry point and
+  regression test; reject broader runner work from this single invocation error.
+- Unresolved: other importable modules may also be silent when invoked directly,
+  but no real failure justifies changing them speculatively.
+- Exact next step: run the gate; follow STATE return conditions and revisit another
+  module only after an observed ambiguous invocation, not by sweeping all modules.

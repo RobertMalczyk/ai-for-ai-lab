@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/2026-10-03-coverage-module-invocation.json",
+  "hypothesis": "Making direct module invocation run the existing coverage CLI removes an ambiguous successful no-op during real verification.",
+  "metric": "ambiguous_successful_noops",
+  "unit": "invocations",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "lab/observations/2026-10-03-coverage-module-invocation.json",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/2026-10-03-coverage-module-invocation.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One mistaken invocation by one agent; the canonical command already worked. This supports a thin compatibility entry point, not broader task-runner work, time/token savings or LLM improvement.",
+  "outcome": "positive"
+}

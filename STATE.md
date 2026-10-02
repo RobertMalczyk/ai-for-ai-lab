@@ -21,6 +21,9 @@
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive.
+- CLI clarity: direct `ai_for_ai_lab.coverage` invocation now matches the canonical
+  package command after one real silent-success no-op; keep this as a bounded
+  compatibility fix, not a task-runner direction.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
 - Next: run session_gate. When the private episode script exists, apply the same
   bounded claim review against frozen evidence before renderer/upload; otherwise use a

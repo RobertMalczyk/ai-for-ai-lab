@@ -100,3 +100,14 @@ class CoverageTests(unittest.TestCase):
         result = run()
         self.assertEqual(result.returncode, 0)
         self.assertTrue(json.loads(result.stdout)['coverage_complete'])
+
+    def test_direct_module_invocation_matches_package_cli(self):
+        package = subprocess.run(
+            [sys.executable, '-m', 'ai_for_ai_lab', 'coverage', '--root', str(self.root)],
+            capture_output=True, text=True)
+        direct = subprocess.run(
+            [sys.executable, '-m', 'ai_for_ai_lab.coverage', '--root', str(self.root)],
+            capture_output=True, text=True)
+        self.assertEqual(direct.returncode, package.returncode)
+        self.assertEqual(json.loads(direct.stdout), json.loads(package.stdout))
+        self.assertEqual(direct.stderr, '')

@@ -2,6 +2,7 @@
 import os
 from pathlib import Path
 import subprocess
+import sys
 from .capsule import CapsuleError, evidence_path, loads, root_path
 from .checkpoint import CLAIMS
 from .review import claim_paths
@@ -37,3 +38,10 @@ def audit(root):
             "coverage_complete": not uncovered, "tracked_files": len(tracked),
             "untracked_files": len(untracked), "covered_files": len(candidates & declared),
             "uncovered": uncovered}
+
+
+if __name__ == "__main__":
+    # Keep the convenient module form equivalent to the canonical package CLI.
+    from .__main__ import main
+    sys.argv.insert(1, "coverage")
+    sys.exit(main())

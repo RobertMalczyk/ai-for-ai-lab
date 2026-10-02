@@ -70,6 +70,8 @@
       "src/ai_for_ai_lab/coverage.py",
       "tests/test_coverage.py",
       "docs/COVERAGE.md",
+      "lab/observations/2026-10-03-coverage-module-invocation.json",
+      "lab/reports/2026-10-03-coverage-module-invocation-field-trial.json",
       "run_tests.py",
       "lab/observations/2026-09-30-startup-read-boundary.json",
       "lab/observations/2026-10-01-startup-read-field-trace.json",

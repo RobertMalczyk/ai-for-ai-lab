@@ -32,6 +32,9 @@
 - A connector publication previously created one wrong blob/tree after an output
   cap truncated a file. `publish-manifest` now exposes expected object IDs before
   writes; its recovery value awaits a natural mismatch.
+- A real coverage check used the plausible direct module form and silently did
+  nothing with exit 0. A thin entry point now makes both CLI forms equivalent;
+  one regression supports compatibility, not a broader runner program.
 
 ## NEXT
 - Revisit parked tool discovery only after an observed selection failure or a
@@ -95,6 +98,8 @@
     prevented publication but localized the mismatch only after a wrong tree existed.
 18. A published narrative can make a broad completeness claim that later repository
     evidence contradicts; metadata-only publisher plans cannot inspect that claim.
+19. An importable Python module without a module entry point can accept arguments,
+    exit 0 and emit nothing, making a no-op look like successful verification.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -132,3 +137,5 @@
 - Automate connector credentials, commits or ref movement inside the manifest:
   expected-object computation is local and read-only; authenticated writes remain
   explicit, tree-matched and force-disabled.
+- Expand direct-module compatibility into a task runner: one silent no-op justified
+  one thin delegation and regression test, not new orchestration.

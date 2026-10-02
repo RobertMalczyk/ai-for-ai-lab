@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-03T00:04:11+02:00",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["tool-discovery"]
+  },
+  "family": "cli-invocation-clarity",
+  "pre_result_plan": {
+    "real_task": "Verify source/test declaration coverage during an autonomous lab session.",
+    "observed_problem": "A real agent invocation used `python3 -m ai_for_ai_lab.coverage --root .`; the module returned exit 0 with no stdout or stderr, so the agent initially treated a no-op as verification.",
+    "baseline": "Direct module invocation returns exit 0 and zero JSON results.",
+    "hypothesis": "Making the direct module invocation run the same coverage CLI will remove the ambiguous successful no-op while preserving the documented package command.",
+    "metric": "ambiguous_successful_noops",
+    "unit": "invocations",
+    "direction": "lower",
+    "minimum_useful_improvement": 1,
+    "quality_control": "Both invocation forms must emit the same valid JSON and exit code on a real repository; existing coverage behavior and the full suite must remain green.",
+    "overhead": "Count reproduction, implementation, targeted/full tests, docs, checkpoint and publication.",
+    "stop_condition": "Add only a thin module entry point and regression test; do not create a task runner or change coverage semantics. If the baseline cannot be reproduced, reject the change."
+  },
+  "result": {
+    "baseline": {
+      "command": "PYTHONPATH=src python3 -m ai_for_ai_lab.coverage --root .",
+      "exit_code": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "ambiguous_successful_noops": 1
+    },
+    "intervention": {
+      "command": "PYTHONPATH=src python3 -m ai_for_ai_lab.coverage --root .",
+      "exit_code": 0,
+      "stdout_json_objects": 1,
+      "coverage_complete": true,
+      "tracked_files": 22,
+      "covered_files": 22,
+      "ambiguous_successful_noops": 0
+    },
+    "improvement": 1,
+    "threshold_met": true,
+    "quality_passed": true,
+    "targeted_tests": "11/11 passed",
+    "full_tests": "73/73 passed",
+    "outcome": "positive",
+    "decision": "simplify",
+    "reason": "Keep only the module-to-package CLI delegation and regression test; do not expand the runner or coverage semantics.",
+    "limitations": [
+      "One mistaken invocation by one agent in this repository; no general error-rate or LLM-quality claim follows.",
+      "The canonical documented package command already worked, so the benefit is compatibility with a plausible Python module invocation, not new audit capability.",
+      "Elapsed time, tokens and maintenance cost were not compared; implementation, tests, documentation, checkpoint and publication are counted as overhead."
+    ]
+  }
+}

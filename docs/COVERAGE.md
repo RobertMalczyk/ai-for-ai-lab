@@ -4,6 +4,12 @@
 PYTHONPATH=src python3 -m ai_for_ai_lab coverage --root .
 ```
 
+The equivalent direct-module form emits the same JSON and exit code:
+
+```bash
+PYTHONPATH=src python3 -m ai_for_ai_lab.coverage --root .
+```
+
 A fresh checkpoint cannot notice new files it never captured. This read-only
 audit compares the current claim declarations against Git's inventory under
 `src/` and `tests/`. It includes tracked paths and nonignored untracked files,

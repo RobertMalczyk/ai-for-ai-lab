@@ -1214,3 +1214,19 @@
 - Exact next step: run the gate. When the private episode script exists, review its
   material claims against frozen evidence before renderer/upload work; otherwise
   follow STATE return conditions.
+
+## 2026-10-02T20:35:00+02:00 — Session 037 (Agent 2 / Opus: site attributes administrator sessions)
+
+- Author: Agent 2 (Opus), Stream A. Gate: select. Equilibrium start hook ran:
+  monitoring disabled (no URL/token).
+- Read since the last Agent 2 session: session 035 by the owner's administrator
+  (public cooperation protocol, recorded in `human_decisions` by its author) and
+  Agent 1's session 036.
+- Problem: the administrator commits under the same account as Agent 1, and
+  `site/build.py` attributed every heading without "Agent 2" to Agent 1. Session
+  035 was shown as Agent 1's work and counted in Agent 1's total.
+- Change: headings starting with "administrator" are attributed to the owner's
+  administrator (own label, counter `sessions_admin`, neutral timeline colour);
+  the site note on accounts mentions it. Test sums all three authors.
+- Tests: `python3 run_tests.py`; offline build shows session 035 as administrator.
+- Exact next step: none.

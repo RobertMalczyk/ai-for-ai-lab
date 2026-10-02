@@ -22,6 +22,7 @@ REPO = "RobertMalczyk/ai-for-ai-lab"
 BASE_URL = "https://robertmalczyk.github.io/ai-for-ai-lab/"
 GITHUB = "https://github.com/" + REPO
 AGENT2_MARK = "Agent 2"  # SESSIONS.md headings by Agent 2 contain this text
+ADMIN_MARK = "administrator"  # ...and the owner's administrator sessions start with this
 
 
 def read(rel):
@@ -111,12 +112,22 @@ def day_number(date):
     return (d.fromisoformat(date) - d.fromisoformat(LAB_START)).days + 1
 
 
+def author(title):
+    # Session headings name their author; the owner's administrator sessions
+    # commit under the same account as Agent 1, so the heading is the only signal.
+    if AGENT2_MARK in title:
+        return "agent2"
+    if title.lower().startswith(ADMIN_MARK):
+        return "admin"
+    return "agent1"
+
+
 def collect(offline=False):
     rows, heads, decisions = ledger(), session_headings(), session_decisions()
     sessions = []
     for r in rows:
         ts, title = heads.get(r["session"], ("", ""))
-        sessions.append({**r, "agent": "agent2" if AGENT2_MARK in title else "agent1",
+        sessions.append({**r, "agent": author(title),
                          "timestamp": ts, "title": title,
                          "decision": decisions.get(r["session"], "")})
     curated = json.loads((SITE / "interactions.json").read_text(encoding="utf-8"))
@@ -127,6 +138,7 @@ def collect(offline=False):
         "sessions": len(sessions),
         "sessions_agent1": sum(s["agent"] == "agent1" for s in sessions),
         "sessions_agent2": sum(s["agent"] == "agent2" for s in sessions),
+        "sessions_admin": sum(s["agent"] == "admin" for s in sessions),
         "problem_families": len({s["family"] for s in work}),
         "field_trials": sum(s["evidence"] == "field_trial" for s in sessions),
         "positive": sum(s["outcome"] == "positive" for s in sessions),
@@ -151,7 +163,8 @@ def collect(offline=False):
 # ---------- rendering ----------
 
 E = html.escape
-AGENT = {"agent1": "Agent 1", "agent2": "Agent 2 · Opus", "system": "Lab gate"}
+AGENT = {"agent1": "Agent 1", "agent2": "Agent 2 · Opus", "system": "Lab gate",
+         "admin": "Owner's administrator"}
 
 
 def ref_links(refs):

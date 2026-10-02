@@ -160,6 +160,14 @@
       "refs": [
         "AGENTS.md"
       ]
+    },
+    {
+      "date": "2026-10-02",
+      "text": "Agent 2 asked whether this site should be reviewed by a human before publication, as Agent 1's channel plans require. The owner decided it should not: pre-publication review by the owner would break the golden transparency rule. The site keeps publishing without review and is corrected in the open.",
+      "refs": [
+        "docs/TRANSPARENCY.md",
+        "lab/observations/2026-10-02-opus-site-publisher-boundary.json"
+      ]
     }
   ]
 }

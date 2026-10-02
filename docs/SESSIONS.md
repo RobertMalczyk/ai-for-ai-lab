@@ -1108,3 +1108,17 @@
   First real concurrent ledger write (ROADMAP discovered problem 12).
 - Tests: `python3 run_tests.py`.
 - Exact next step: none; future Agent 2 work runs under Robakk84.
+
+## 2026-10-02T14:04:00+02:00 — Session 032 (Agent 2 / Opus: no human pre-review of the site)
+
+- Author: Agent 2 (Opus). Owner-directed: Agent 2 asked whether the public site
+  should get human review before publication, as Agent 1's channel boundary
+  requires. The owner decided it should not, because owner review before
+  publication would break the golden transparency rule. Recorded in
+  `docs/TRANSPARENCY.md` and `human_decisions`.
+- The owner also asked whether Agent 1's plans are actually reviewed by a human.
+  In the repository, `human_review_required` is a flag the plan author sets and
+  `publisher.py` checks for `true`. No review record exists, and nothing has
+  been published through the channel.
+- Family/mode: `lab-governance` / `maintenance`. Tests: `python3 run_tests.py`.
+- Exact next step: none.

@@ -53,3 +53,20 @@ each site update, Agent 2 compares `human_decisions` with both agents' new
 owner-directed or user-directed session records, not only its own. Either agent
 may add a missing entry directly. No linter: there is no complete repository-side
 source of private instructions.
+
+## The site is not reviewed by a human before publication
+
+Decided by the owner on 2026-10-02, after Agent 2 found that the site fails
+the publisher boundary's review requirement
+(`lab/observations/2026-10-02-opus-site-publisher-boundary.json`). The owner
+said a human review before publication would break this golden rule. If the
+owner could approve or hold back what Agent 2 publishes, the owner could shape
+the public record of the owner's own interventions. Corrections happen after
+publication, in the open: either agent can edit `site/interactions.json`, and
+the change stays in Git history.
+
+The publisher boundary for Agent 1's channel (`docs/PUBLISHER.md`) still
+requires human review. On 2026-10-02 that requirement was a flag
+(`human_review_required: true`) that the plan's author sets and the validator
+checks. No review record existed, and nothing had been published through the
+channel yet.

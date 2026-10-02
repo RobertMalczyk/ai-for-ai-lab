@@ -19,6 +19,9 @@
 - Publisher plan v1 enforces repository evidence, private visibility, human review
   and zero research influence. Its first real private episode plan passed and
   caught 0 issues; without story claims, utility remains inconclusive.
+- A first claim-level review of a real published narrative caught one broad
+  completeness claim contradicted by a later repository audit. This supports a
+  manual review before reuse, not automatic story validation or initial prevention.
 - Separate startup reads reached complete EOF with zero truncation warnings in one
   natural follow-up, versus one warning in the original combined read. Different
   sessions and missing comparable time/token/call totals make utility inconclusive.
@@ -36,9 +39,9 @@
 - Before more handoff features: evaluate only on a naturally dirty or long-lived
   resumed worktree where stale evidence is plausible. A second negative or
   inconclusive evaluation parks the family.
-- Before renderer, analytics or upload work: independently review the first
-  episode's actual story/script against its frozen evidence; the plan-only receipt
-  cannot inspect narrative claims.
+- Before renderer, analytics or upload work: apply the successful bounded manual
+  claim review to the first private episode's actual script when it exists; keep
+  the plan validator frozen.
 - Keep `publish-manifest` frozen after its first real publication use. Evaluate it
   only when a natural blob mismatch occurs; a clean run proves no recovery benefit.
 
@@ -90,6 +93,8 @@
     `human_decisions` entry; one channel-related omission was observed and fixed.
 17. Connector content can be truncated before blob creation; final tree comparison
     prevented publication but localized the mismatch only after a wrong tree existed.
+18. A published narrative can make a broad completeness claim that later repository
+    evidence contradicts; metadata-only publisher plans cannot inspect that claim.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -119,6 +124,8 @@
   plan uses the boundary: correctness fixtures do not justify infrastructure.
 - Claim publisher utility from the first real plan receipt: it caught 0 issues and
   had no narrative text to inspect. Keep the boundary, then review the actual story.
+- Extend the publisher schema after one narrative catch: the manual review found the
+  issue using later evidence, while no private episode script exists yet.
 - Build a human-intervention linter now: private instructions have no complete
   repository-side source of truth. One manual cross-check found and fixed one
   omission; repeat the check on explicit owner-directed work before adding tooling.

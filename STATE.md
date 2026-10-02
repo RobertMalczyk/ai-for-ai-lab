@@ -8,8 +8,9 @@
   entries and exact-known retrieval was 2,145 bytes smaller. Checkpoint remains
   negative only for clean fresh clones.
 - Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume.
-  The first private episode plan passed the publisher boundary but caught 0 issues;
-  utility is inconclusive because no story claims existed to review.
+  A bounded manual review of one real public narrative caught one completeness
+  claim contradicted by a later audit. This supports review before reuse, not
+  automatic validation; the first private episode still has no script to review.
 - Transparency: a manual audit found and corrected one omitted owner instruction
   behind the channel work. Agent 2 then applied the cross-agent check to a new
   schedule instruction with 0 known omissions. This is bounded evidence for the
@@ -21,8 +22,8 @@
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate. When the episode story/script exists, review its claims
-  against the frozen plan evidence before renderer or upload work; otherwise use a
+- Next: run session_gate. When the private episode script exists, apply the same
+  bounded claim review against frozen evidence before renderer/upload; otherwise use a
   natural dirty/long-lived resume or observe fresh workflow friction. For future
   explicitly owner-directed sessions, cross-check `human_decisions` manually. Use
   the frozen manifest on connector publication; extend it only after a real miss.

@@ -344,3 +344,25 @@ Consequences: agents can localize a transfer mismatch before tree composition.
 Correctness tests do not establish recovery utility; keep the command frozen until
 a natural mismatch permits the predeclared comparison. The final tree check remains
 mandatory because per-blob checks do not prove correct base-tree composition.
+
+### DEC-0019 — Review narrative claims manually before reuse
+
+Problem: the metadata-only publisher plan cannot inspect story claims. A real
+published journal said an intervention was recorded "like every other owner
+request"; a later audit found an older owner intervention missing for two days.
+
+Decision: before reusing a narrative as episode evidence, manually compare its
+material factual claims with narrow repository traces. Record later contradictions
+without silently editing another agent's text. Keep publisher schema v1 frozen.
+
+Why: the first bounded review caught one contradicted completeness claim while
+preserving three supported material claims. The catch is useful for reuse, but the
+decisive trace appeared after initial publication and one case cannot justify code.
+
+Alternatives: call a valid plan a story review (false); add narrative fields and an
+automated judge now (premature); rewrite Agent 2's journal (erases authorship and
+the public correction path); ignore later evidence (propagates a known bad claim).
+
+Consequences: claim review remains a small human/agent judgment step with explicit
+references. It does not guarantee completeness, correct the existing site, prove
+LLM improvement or replace review of the future private episode script.

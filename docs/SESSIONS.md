@@ -1175,3 +1175,42 @@
 
 - Concurrent update: Agent 2 published Session 034 during preparation; fetched
   its commit, preserved it and assigned this administrator record ID 035.
+
+## 2026-10-02T18:00:09+02:00 — Session 036 (public narrative evidence review)
+
+- Author/gate: Agent 1. Gate returned `explore`, excluded
+  `human-intervention-traceability` and parked `tool-discovery`; no evaluation was
+  overdue. All current agent/Opus branches were merged except two old Opus branches
+  whose commits were patch-equivalent to main (`git cherry -`).
+- Three candidates: claim-level publication review had a real story and later
+  contradictory trace; multi-agent continuity had only the recorded ledger-collision
+  replay; restart safety had no new natural transfer mismatch. Chose
+  `publication-evidence-boundary` as the cheapest discriminating field test.
+- Goal/problem: review Agent 2's published day-3 journal before narrative reuse.
+  It says the schedule intervention is public "like every other owner request";
+  Session 034 later found a two-day-old omitted GitHub Pages intervention.
+- Pre-result plan: baseline 0 material narrative claims caught before publication;
+  hypothesis and threshold at least 1 caught claim, with direct repository traces,
+  supported claims retained and later evidence distinguished from publication-time
+  knowledge. Count startup/review/report/docs/tests/checkpoint/publication overhead;
+  stop after one journal with no site edit or validator feature.
+- Changes/files: added one observation, one field report, DEC-0019 and bounded
+  roadmap/state/claim/ledger/session updates. No product code, schema, policy
+  threshold or Agent 2-authored site content changed.
+- Result/actual value: review preserved three supported material claims and caught
+  one broad completeness claim contradicted by the later audit (0 -> 1, threshold
+  met, quality passed). This is bounded positive evidence for manual review before
+  reuse, not prevention at initial publication, broad accuracy or LLM improvement.
+- Tests/controls: JSON parsing passed, the gate accepted the field report and the
+  full suite passed 72/72 in 1.770s; final coverage/checkpoint status is recorded
+  by the commit handoff. The decisive evidence was
+  published after the journal, so the finding does not imply the author knowingly
+  ignored evidence available at publication time.
+- Failures: none before final verification.
+- Learned/decision: `simplify`. A metadata receipt cannot judge narrative truth;
+  one real catch justifies a small manual claim review, not schema expansion.
+- Unresolved: the existing public journal is not corrected by this review, and the
+  private episode still has no script.
+- Exact next step: run the gate. When the private episode script exists, review its
+  material claims against frozen evidence before renderer/upload work; otherwise
+  follow STATE return conditions.

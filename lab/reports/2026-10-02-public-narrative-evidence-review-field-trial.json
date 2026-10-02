@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "site/journal/2026-10-02.md",
+  "hypothesis": "A bounded evidence review will identify at least one contradicted or unsupported material claim in the real published narrative before reuse.",
+  "metric": "material_narrative_claims_caught",
+  "unit": "claims",
+  "direction": "higher",
+  "baseline_kind": "observed",
+  "baseline_value": 0,
+  "baseline_ref": "site/journal/2026-10-02.md",
+  "intervention_value": 1,
+  "intervention_ref": "lab/observations/2026-10-02-public-narrative-evidence-review.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One journal and one later-contradicted completeness claim; evidence appeared after initial publication, so this supports manual review before reuse, not prevention at publication, broad narrative accuracy, time/token savings or LLM improvement.",
+  "outcome": "positive"
+}

@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-02T18:00:09+02:00",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "human-intervention-traceability",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "parked_families": [
+      "tool-discovery"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "publication-evidence-boundary",
+      "kind": "fresh_observed_friction",
+      "evidence": "site/journal/2026-10-02.md says every owner request is in the public record; Session 034 reports an older omitted GitHub Pages intervention.",
+      "potential_value": "Catch a contradicted public narrative claim before reusing it in another episode.",
+      "cheapest_falsifier": "Review the journal's material factual claims against its cited session range and the later correction trace.",
+      "cost": "One bounded manual review and report; no code or publication edit.",
+      "novelty": "First claim-level review of an actual narrative rather than a metadata-only plan."
+    },
+    {
+      "family": "multi-agent-continuity",
+      "kind": "assumption_to_challenge",
+      "evidence": "Session 031 records the first concurrent ledger-ID collision; the new cooperation schema has no allocation field.",
+      "potential_value": "Avoid merge-time continuity conflicts.",
+      "cheapest_falsifier": "Replay the recorded collision against Git-native merge and the schema, without building coordination software.",
+      "cost": "Low, but replay-only and no second live collision exists.",
+      "novelty": "Tests whether public artifacts solve continuity, not whether they parse."
+    },
+    {
+      "family": "restart-safety",
+      "kind": "simpler_alternative",
+      "evidence": "Session 029 replicated publish-manifest object correctness but observed no transfer mismatch.",
+      "potential_value": "Determine whether the manifest prevents a wrong remote tree during connector publication.",
+      "cheapest_falsifier": "Observe the next natural connector transfer and stop if all blobs match.",
+      "cost": "No discriminating mismatch is currently available; a fabricated truncation would be replay evidence only.",
+      "novelty": "Field observation instead of more manifest features."
+    }
+  ],
+  "selection": {
+    "family": "publication-evidence-boundary",
+    "reason": "It has a real published narrative and a later contradictory trace; the other candidates lack a current discriminating event."
+  },
+  "pre_result_plan": {
+    "real_task": "Independently review the factual claims in Agent 2's published day-3 journal before that narrative is reused as channel evidence.",
+    "observed_problem": "The journal makes a completeness claim about owner requests, while a later repository audit found an older omitted intervention.",
+    "baseline": "The published journal received no pre-review and records zero claim-level issues caught before publication.",
+    "hypothesis": "A bounded evidence review will identify at least one contradicted or unsupported material claim without changing the other agent's text.",
+    "metric": "material_narrative_claims_caught",
+    "unit": "claims",
+    "direction": "higher",
+    "minimum_useful_improvement": 1,
+    "quality_control": "Quote no private content; require direct repository traces for each finding; distinguish later evidence from what was visible at publication; keep supported claims and run the full suite.",
+    "overhead": "Count startup reading, evidence inspection, report/docs/ledger/checkpoint work, tests and connector publication.",
+    "stop_condition": "Review only the day-3 journal and directly relevant traces; make no site edit, schema extension or publisher feature. Report zero findings as inconclusive."
+  },
+  "review": {
+    "scope": "site/journal/2026-10-02.md",
+    "supported_material_claims": [
+      {
+        "claim": "The schedule request, resolved-conversation blocker and first scheduled site run were recorded.",
+        "refs": [
+          "docs/SESSIONS.md",
+          "site/interactions.json"
+        ]
+      },
+      {
+        "claim": "Agent 1 found and repaired the omitted channel instruction.",
+        "refs": [
+          "lab/observations/2026-10-01-human-intervention-audit.json",
+          "site/interactions.json"
+        ]
+      },
+      {
+        "claim": "The public, unreviewed site failed the channel publisher boundary twice.",
+        "refs": [
+          "lab/observations/2026-10-02-opus-site-publisher-boundary.json"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "claim": "The schedule intervention is in the public record 'like every other owner request.'",
+        "classification": "contradicted_by_later_audit",
+        "evidence": "Session 034 found that the 2026-09-30 GitHub Pages intervention had been absent for two days and repaired it.",
+        "refs": [
+          "lab/observations/2026-10-02-opus-transparency-recheck.json",
+          "site/interactions.json",
+          "docs/SESSIONS.md"
+        ],
+        "scope_note": "The contradiction was documented after the day-3 journal was published. It invalidates reuse of the broad completeness wording now; it does not show that the author knowingly ignored available evidence at publication time."
+      }
+    ]
+  },
+  "result": {
+    "baseline_claims_caught": 0,
+    "intervention_claims_caught": 1,
+    "improvement": 1,
+    "threshold_met": true,
+    "quality_passed": true,
+    "outcome": "positive",
+    "decision": "simplify",
+    "reason": "Keep claim-level evidence review as a manual pre-reuse step. One real catch does not justify changing the validator schema or editing another agent's published narrative in this session.",
+    "limitations": [
+      "One journal entry and one contradicted claim; no broad accuracy or LLM-quality claim follows.",
+      "The decisive evidence appeared after publication, so this tests review before reuse, not prevention at initial publication.",
+      "The baseline and intervention are sequential rather than randomized, and elapsed time or token overhead was not measured comparably.",
+      "Catching the issue does not itself correct the already published site."
+    ]
+  }
+}

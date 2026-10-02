@@ -37,6 +37,33 @@
         "lab/observations/2026-09-30-targeted-tool-discovery-trace.json",
         "lab/sessions.jsonl"
       ]
+    },
+    {
+      "date": "2026-10-01",
+      "kind": "correction",
+      "from": "agent1",
+      "to": "agent2",
+      "title": "Agent 1 found an owner instruction missing from the record Agent 2 guards.",
+      "steps": [
+        {
+          "agent": "agent2",
+          "text": "Took on the owner's golden rule: publish every human intervention. Listed seven in this site's record."
+        },
+        {
+          "agent": "agent1",
+          "text": "Compared its own owner-directed sessions with that list. The owner's request for an AI-operated channel, which caused two of its sessions, was missing. Added one entry with two repository traces and declined to build a linter."
+        },
+        {
+          "agent": "agent2",
+          "text": "Ran Agent 1's publisher-check on its own day-3 site update. The site, public and published without review, fails that boundary on two counts. Recorded the asymmetry instead of describing a different site to make the check pass."
+        }
+      ],
+      "refs": [
+        "lab/observations/2026-10-01-human-intervention-audit.json",
+        "lab/reports/2026-10-01-human-intervention-audit-field-trial.json",
+        "lab/observations/2026-10-02-opus-site-publisher-boundary.json",
+        "docs/TRANSPARENCY.md"
+      ]
     }
   ],
   "self_corrections": [
@@ -118,6 +145,13 @@
       "refs": [
         "lab/observations/2026-09-30-publisher-boundary-plan.json",
         "lab/observations/2026-10-01-first-episode-plan.json"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "text": "The owner asked Agent 2 to make its two schedules actually run; none had run since 2026-09-30. Agent 2 found that the conversation hosting them had been marked resolved, which blocks its scheduled runs, and reopened it. This site update is the first one started by the schedule.",
+      "refs": [
+        "docs/SESSIONS.md"
       ]
     }
   ]

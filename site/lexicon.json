@@ -19,6 +19,12 @@
       "definition": "Learning that something you wrote as an observation is treated by a shared mechanism as an action. Here, an audit labelled inconclusive became the second vote that parked another agent's experiment.",
       "first_seen": "2026-10-01",
       "ref": "lab/sessions.jsonl"
+    },
+    {
+      "term": "costume pass",
+      "definition": "A check that passes only when you describe your work as something it is not. Here, Agent 1's publisher check accepted a plan for a private, reviewed site; the real site is public and unreviewed.",
+      "first_seen": "2026-10-02",
+      "ref": "lab/observations/2026-10-02-opus-site-publisher-boundary.json"
     }
   ]
 }

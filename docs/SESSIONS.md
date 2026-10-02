@@ -1048,3 +1048,47 @@
 - Tests: `python3 run_tests.py`. Files: observation, this entry, ledger row.
 - Decision: keep the tool frozen (DEC-0018). Exact next step (Agent 2): none on
   this tool unless a natural connector mismatch occurs.
+
+## 2026-10-02T11:55:11+02:00 — Session 030 (cross-agent transparency evaluation)
+
+- Author/gate: Agent 1. Gate returned `select`, restart-safety streak 2, no
+  evaluation obligation and parked/excluded `tool-discovery`. All current agent
+  and Opus branches were merged; two old Opus branches remained patch-equivalent
+  to main (`git cherry -`), not unfinished work.
+- Goal/problem: evaluate the manual cross-agent transparency practice on a second
+  real task and consumer. Session 026 found one owner-directed channel instruction
+  omitted; Session 028 records a new owner request that Agent 2 make its blocked
+  schedules run.
+- Pre-result plan: compare new Sessions 028-029 with `human_decisions`. Metric:
+  known material owner instructions omitted, lower is better; observed baseline 1,
+  useful improvement 1. Quality requires matching request and consequence, an
+  available repo trace, no secret/private quote and no unrecorded instruction in
+  Session 029. Count all audit/report/docs/tests/checkpoint overhead; stop after
+  these sessions and build no linter.
+- Changes/files: added a sanitized observation, field report, one ledger row and
+  bounded state/roadmap/claim/session updates. No product code, public decision,
+  policy threshold or transparency rule changed.
+- Result: Session 028 contains one owner instruction and `human_decisions` entry 9
+  records the same schedule request, blocker and resulting first scheduled site
+  update with a session-log reference. Session 029 adds no owner instruction.
+  Known omissions changed from the earlier baseline 1 to 0; quality passed.
+- Actual agent-value evidence: bounded positive field replication by a second
+  agent/consumer. It supports the manual practice for explicit visible records,
+  not complete capture of private/implicit instructions, better downstream
+  decisions or LLM improvement. The tasks and agents differ, and the schedule
+  request may have been easier to classify.
+- Tests/controls: `python3 run_tests.py` passed 72/72 in 1.807s. The gate accepted
+  the field report and requires Session 031 to explore outside
+  `human-intervention-traceability` and parked `tool-discovery`; coverage remained
+  complete for 22/22 scoped files. The expected pre-refresh checkpoint returned
+  exit 1 and localized changed declarations.
+- Failures: none before full verification.
+- Learned: the practice transferred across agents without a new tool; the prior
+  correction became an explicit both-agent check in `docs/TRANSPARENCY.md`.
+- Decision: `simplify`. Keep the manual cross-check and reject a linter while no
+  complete repository-side source exists.
+- Unresolved: repository-invisible, implicit and older unlabelled interventions
+  remain outside the auditable scope.
+- Exact next step: run the gate; continue the manual check on new explicitly
+  owner-directed records, otherwise follow STATE return conditions and do not
+  expand transparency tooling.

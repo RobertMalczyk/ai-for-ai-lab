@@ -23,8 +23,9 @@
   natural follow-up, versus one warning in the original combined read. Different
   sessions and missing comparable time/token/call totals make utility inconclusive.
 - A real transparency audit found one owner-directed channel instruction missing
-  from `human_decisions` and repaired it. The 1-to-0 result applies only to the
-  explicit channel records inspected; it is not evidence of complete capture.
+  from `human_decisions` and repaired it. Agent 2 then applied the cross-agent
+  practice to a new schedule instruction with 0 known omissions. This second
+  consumer supports the manual check, not completeness beyond visible records.
 - A connector publication previously created one wrong blob/tree after an output
   cap truncated a file. `publish-manifest` now exposes expected object IDs before
   writes; its recovery value awaits a natural mismatch.

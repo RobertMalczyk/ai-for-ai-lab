@@ -151,7 +151,9 @@
       "docs/SITE.md",
       "docs/TRANSPARENCY.md",
       "lab/observations/2026-10-01-human-intervention-audit.json",
-      "lab/reports/2026-10-01-human-intervention-audit-field-trial.json"
+      "lab/reports/2026-10-01-human-intervention-audit-field-trial.json",
+      "lab/observations/2026-10-02-cross-agent-transparency-evaluation.json",
+      "lab/reports/2026-10-02-cross-agent-transparency-field-trial.json"
     ]
   },
   {

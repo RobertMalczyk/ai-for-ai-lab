@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-02T11:55:11+02:00",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["tool-discovery"]
+  },
+  "family": "human-intervention-traceability",
+  "mode": "evaluate",
+  "real_task": "Preserve a truthful public account of a new owner instruction that changed Agent 2's scheduled work.",
+  "observed_problem": "Session 026 found one owner-directed channel instruction missing from human_decisions; the adopted manual practice now needs a second task and consumer rather than another tool.",
+  "baseline": "Before the cross-agent practice, 1 known material owner instruction was omitted from the explicit channel records audited in Session 026.",
+  "hypothesis": "Agent 2's manual cross-check across both agents records the new schedule intervention with zero known omission and adequate public evidence.",
+  "metric": "known_material_owner_instructions_omitted",
+  "unit": "instructions",
+  "direction": "lower",
+  "minimum_useful_improvement": 1,
+  "quality_control": "The public entry must match the owner-directed Session 028 record, state the resulting schedule change, cite an available repository trace and disclose no secret, account token or private quotation. Session 029 must introduce no additional owner instruction.",
+  "overhead": "Count mandatory reading, the cross-record audit, observation/report, documentation, tests and checkpoint maintenance. Do not claim downstream agent or LLM performance improvement.",
+  "stop_condition": "Audit only new Sessions 028-029 against human_decisions. Add no entry unless one is missing; build no linter and do not infer completeness for private or implicit instructions.",
+  "result": {
+    "audited_scope": "New Sessions 028-029 compared with the nine-entry human_decisions list.",
+    "owner_instructions_found": 1,
+    "matching_public_entries": 1,
+    "baseline_omissions": 1,
+    "intervention_omissions": 0,
+    "improvement": 1,
+    "threshold_met": true,
+    "quality_passed": true,
+    "evidence": {
+      "session": "Session 028 says the owner asked Agent 2 to make its schedules run and records the scheduling blocker and resulting first scheduled site update.",
+      "public_entry": "human_decisions entry 9 records the same request, consequence and docs/SESSIONS.md reference without credentials or private quotation.",
+      "negative_control": "Session 029 contains no owner-directed or user-directed instruction requiring another entry."
+    },
+    "limitations": [
+      "The baseline and intervention are different owner instructions and agents; the schedule instruction was explicit and may have been easier to classify.",
+      "One second-consumer case does not establish completeness for implicit, historical or repository-invisible instructions.",
+      "The result measures public trace completeness in the audited scope, not downstream agent decisions or LLM quality."
+    ],
+    "outcome": "positive",
+    "decision": "simplify",
+    "reason": "Keep the adopted manual cross-agent check. A second successful consumer supports the practice but still does not justify a linter without a complete source of truth."
+  }
+}

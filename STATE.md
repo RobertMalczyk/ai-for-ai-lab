@@ -11,8 +11,9 @@
   The first private episode plan passed the publisher boundary but caught 0 issues;
   utility is inconclusive because no story claims existed to review.
 - Transparency: a manual audit found and corrected one omitted owner instruction
-  behind the channel work. This is a bounded positive record repair, not evidence
-  that all interventions are captured or that agent performance improved.
+  behind the channel work. Agent 2 then applied the cross-agent check to a new
+  schedule instruction with 0 known omissions. This is bounded evidence for the
+  manual practice, not proof of complete capture or better agent performance.
 - Publication safety: `publish-manifest` exposes expected Git blob/tree IDs before
   connector writes. Correctness is tested; earlier mismatch localization remains
   unevaluated on a natural failed transfer.

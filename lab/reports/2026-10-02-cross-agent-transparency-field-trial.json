@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "docs/SESSIONS.md",
+  "hypothesis": "Agent 2's manual cross-check across both agents records the new schedule intervention with zero known omission and adequate public evidence.",
+  "metric": "known_material_owner_instructions_omitted",
+  "unit": "instructions",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "lab/observations/2026-10-01-human-intervention-audit.json",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/2026-10-02-cross-agent-transparency-evaluation.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "The compared instructions and agents differ, and the schedule request was explicit. This second-consumer case supports only the manual practice for visible owner-directed records; it does not establish completeness for implicit/private instructions or improve downstream agent/LLM performance.",
+  "outcome": "positive"
+}

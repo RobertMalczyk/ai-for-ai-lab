@@ -79,7 +79,14 @@
   {
     "id": "experiment-policy",
     "text": "Selection constraints and declared utility evidence are recorded here; format checks cannot prove honest measurement.",
-    "evidence": ["src/ai_for_ai_lab/session_gate.py", "src/ai_for_ai_lab/capsule.py", "tests/test_session_gate.py", "lab/policy.json", "lab/sessions.jsonl", "docs/EXPERIMENT_POLICY.md"]
+    "evidence": [
+      "src/ai_for_ai_lab/session_gate.py",
+      "src/ai_for_ai_lab/capsule.py",
+      "tests/test_session_gate.py",
+      "lab/policy.json",
+      "lab/sessions.jsonl",
+      "docs/EXPERIMENT_POLICY.md"
+    ]
   },
   {
     "id": "tool-discovery-probe",
@@ -188,6 +195,14 @@
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"
+    ]
+  },
+  {
+    "id": "public-cooperation-protocol",
+    "text": "The public cooperation protocol and shared artifact schema preserve existing selection policies and contain no private service data.",
+    "evidence": [
+      "docs/agent-cooperation-protocol.md",
+      "schemas/agent-artifact.schema.json"
     ]
   }
 ]

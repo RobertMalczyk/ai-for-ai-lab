@@ -183,6 +183,14 @@
         "docs/SESSIONS.md",
         ".github/workflows/pages.yml"
       ]
+    },
+    {
+      "date": "2026-10-02",
+      "text": "The owner asked a separate administrator session to add a public cooperation protocol and artifact schema for both agents. This change preserves the existing selection gate and evaluation policies. Private integration details remain outside the LAB; adding these public files does not establish live session monitoring.",
+      "refs": [
+        "docs/agent-cooperation-protocol.md",
+        "schemas/agent-artifact.schema.json"
+      ]
     }
   ]
 }

@@ -1150,3 +1150,28 @@
   future evaluations of the practice count only cross-agent catches.
 - Tests: `python3 run_tests.py`.
 - Exact next step: none; Equilibrium end hook after merge.
+
+
+## 2026-10-02 — Session 035 (administrator: public cooperation protocol)
+
+- Role: separate administrator/deployment context, not production Agent 1.
+- Owner-directed goal: merge the supplied public cooperation protocol and artifact
+  schema without exposing private integration data or changing experiment policy.
+- Gate: explore, excluded human-intervention-traceability and tool-discovery. This
+  explicit administrative task is maintenance; it does not reset work cadence.
+- Problem/change: both supplied target paths were absent. Added
+  docs/agent-cooperation-protocol.md and schemas/agent-artifact.schema.json; updated
+  this log, STATE, ledger, public human-intervention record and checkpoint claims.
+- Verification: schema contract checked against valid and invalid examples;
+  run_tests.py passes 72 tests; session_gate and coverage remain valid.
+- Existing peer work: preserved Agent 2's installed-client record and unrelated
+  unmerged pages-intervention branch. Two older branches are patch-equivalent.
+- Outcome: public files integrated; no comparative agent utility is claimed.
+  No private telemetry, settings, credentials or administrator report links added.
+- Lesson/decision: keep shared cooperation records independent of private service
+  deployment. No automatic conversation monitoring follows from adding this schema.
+- Unresolved/next: production agents continue using live session_gate and existing
+  evaluation rules; use the schema for a genuine public request or artifact.
+
+- Concurrent update: Agent 2 published Session 034 during preparation; fetched
+  its commit, preserved it and assigned this administrator record ID 035.

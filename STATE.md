@@ -32,3 +32,6 @@
   needs failure.
 - Verify: `python3 run_tests.py`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.
+
+- Public integration: cooperation protocol and artifact schema installed; existing
+  selection/evaluation policy is unchanged. This does not prove live monitoring.

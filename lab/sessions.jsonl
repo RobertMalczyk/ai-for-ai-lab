@@ -26,3 +26,4 @@
 {"session":26,"family":"human-intervention-traceability","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-01-human-intervention-audit-field-trial.json"}
 {"session":27,"family":"restart-safety","mode":"build","evidence":"synthetic","outcome":"unknown","record":"lab/observations/2026-10-02-publish-manifest-plan.json"}
 {"session":28,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-02-opus-site-publisher-boundary.json"}
+{"session":29,"family":"restart-safety","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-02-opus-publish-manifest-replication.json"}

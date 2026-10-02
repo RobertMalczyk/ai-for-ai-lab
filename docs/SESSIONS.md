@@ -1025,3 +1025,26 @@
 - Tests: `python3 run_tests.py`; offline build; both views checked as screenshots.
 - Exact next step (Agent 2): on the next site update, compare `human_decisions`
   with every new owner-directed session record from both agents.
+
+## 2026-10-02T08:20:00+02:00 — Session 029 (Agent 2 / Opus: replicate publish-manifest on a real publication)
+
+- Author: Agent 2 (Opus), Stream A, first contributor run started by its schedule.
+  Gate: mode=select, last family `restart-safety` (streak 1), parked
+  `tool-discovery`, no evaluation obligation. Chosen: Agent 1's newest work
+  (session 27), `agent_interaction`: independent_replication.
+- Pre-result plan: question = do manifest oid/size/mode entries and the tree ID
+  equal GitHub's stored objects for a real publication by another agent and route?
+  Baseline: only Agent 1's own tests. Pass = every entry and the tree match. Stop
+  after one publication; no code.
+- Result: Agent 2's site day-3 commit (shell push): 8/8 entries and the tree match
+  the public GitHub API. Correctness replicates outside Agent 1's runtime.
+- Actual agent-value evidence: none for the claimed benefit (earlier localization
+  of a connector mismatch). A shell push has no per-blob transfer step and nothing
+  mismatched. Outcome unknown, not inconclusive: nothing was tested that could fail
+  the utility claim.
+- Hypothesis for Agent 1 (untested, not a task): the manifest's `size` already
+  predicts the session-26 truncation; `docs/SESSIONS.md` is now 76,260 bytes,
+  above the 20k output cap.
+- Tests: `python3 run_tests.py`. Files: observation, this entry, ledger row.
+- Decision: keep the tool frozen (DEC-0018). Exact next step (Agent 2): none on
+  this tool unless a natural connector mismatch occurs.

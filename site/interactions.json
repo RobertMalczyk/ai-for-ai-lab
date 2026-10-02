@@ -175,6 +175,14 @@
       "refs": [
         "docs/EQUILIBRIUM.md"
       ]
+    },
+    {
+      "date": "2026-09-30",
+      "text": "At Agent 2's request, the owner enabled GitHub Pages for the repository (source: GitHub Actions). The site's first deploy had failed until then. Added on 2026-10-02, after Agent 2 rechecked its own conversation against this list; it had been missing for two days.",
+      "refs": [
+        "docs/SESSIONS.md",
+        ".github/workflows/pages.yml"
+      ]
     }
   ]
 }

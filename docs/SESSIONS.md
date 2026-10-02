@@ -1026,7 +1026,7 @@
 - Exact next step (Agent 2): on the next site update, compare `human_decisions`
   with every new owner-directed session record from both agents.
 
-## 2026-10-02T08:20:00+02:00 — Session 029 (Agent 2 / Opus: replicate publish-manifest on a real publication)
+## 2026-10-02T08:13:00+02:00 — Session 029 (Agent 2 / Opus: replicate publish-manifest on a real publication)
 
 - Author: Agent 2 (Opus), Stream A, first contributor run started by its schedule.
   Gate: mode=select, last family `restart-safety` (streak 1), parked

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-03T23:57:49+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "cli-invocation-clarity",
+  "gate": {
+    "mode": "evaluate",
+    "excluded_families": ["tool-discovery"],
+    "evaluation_required": ["cli-invocation-clarity"],
+    "parked_families": ["tool-discovery"]
+  },
+  "agent_interaction": {
+    "type": "replication",
+    "record": "lab/observations/2026-10-03-opus-forced-evaluation-forecast.json",
+    "finding": "Agent 2 forecast that a second evaluation without a natural direct-module invocation would be inconclusive and park the family."
+  },
+  "pre_result_plan": {
+    "real_task": "Run the mandatory startup controls and inspect the repository record for any natural use of the repaired direct-module commands since Session 042.",
+    "observed_problem": "The compatibility fixes have no post-fix activation on an independently chosen real task, while the gate requires a second evaluation before more work in this family.",
+    "baseline": "Session 042 found zero comparable natural direct-module invocations and could not measure an intervention effect.",
+    "hypothesis": "At least one independently chosen direct-module invocation since Session 042 would permit a bounded comparison of ambiguous successful no-ops before and after the compatibility fixes.",
+    "metric": "comparable natural direct-module invocations",
+    "unit": "invocations",
+    "direction": "higher",
+    "minimum_useful_improvement": 1,
+    "quality_control": "A repository trace must show a task that existed without the tool, an independently selected repaired invocation, inspected JSON and exit status, and full setup, reading, reporting and maintenance overhead.",
+    "overhead": "Count startup controls, evidence review, reporting, tests, checkpoint maintenance and publication.",
+    "stop_condition": "If no qualifying invocation exists, record inconclusive, park the family under the existing threshold and change no product code or module entry point."
+  },
+  "evidence_review": {
+    "first_evaluation": "lab/observations/2026-10-03-cli-invocation-clarity-evaluation.json",
+    "independent_forecast": "lab/observations/2026-10-03-opus-forced-evaluation-forecast.json",
+    "intervening_session": "Session 044 evaluated publish-manifest preconditions and used the canonical package CLI; it did not activate either repaired direct-module path.",
+    "current_workflow": "The current startup again followed AGENTS.md's canonical package checkpoint command.",
+    "comparable_natural_invocations": 0
+  },
+  "result": {
+    "evidence": "none",
+    "outcome": "inconclusive",
+    "quality_passed": false,
+    "decision": "park",
+    "reason": "No comparable natural invocation occurred. This is the second inconclusive evaluation, so the existing policy parks the family rather than manufacturing activation or extending the module sweep.",
+    "code_changed": false,
+    "threshold_met": false,
+    "limitations": [
+      "Repository records cannot establish an intervention effect without an activated compatibility path.",
+      "The canonical command succeeding is not evidence that the direct-module fix improved agent task success, time, tokens or decision quality.",
+      "The absence of misuse may reflect explicit documentation rather than compatibility behavior.",
+      "No synthetic invocation was counted as field evidence."
+    ]
+  }
+}

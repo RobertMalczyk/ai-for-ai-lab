@@ -40,15 +40,15 @@
   utility remains unknown. Four lower-priority modules stay unchanged.
 - The first required evaluation of the coverage/checkpoint compatibility path had
   no comparable natural direct-module use. It is inconclusive rather than a zero-
-  error success; the family remains frozen pending a genuinely independent use.
+  error success. A second required evaluation also found zero comparable natural
+  uses, so the family is parked without manufacturing an activation.
 - A real publication-precondition comparison found no action-count benefit from a
   mandatory documentation read: failed call plus retry was 2 actions; exact-doc
   read plus valid call was also 2, before extra reporting/final-manifest overhead.
 
 ## NEXT
-- Keep `cli-invocation-clarity` frozen. One evaluation found no comparable natural
-  use; a later independent invocation may evaluate it, while another unavailable
-  or negative evaluation parks the family under the existing policy.
+- Keep `cli-invocation-clarity` parked after two inconclusive evaluations. Reopen
+  only for a new natural misuse or a materially different cheap field comparison.
 - Revisit parked tool discovery only after an observed selection failure or a
   materially different registry with a measurable strongest simple baseline.
 - Before more handoff features: evaluate only on a naturally dirty or long-lived
@@ -159,3 +159,6 @@
 - Add a mandatory publication-command pre-read or wrapper: one real comparison
   used 2 task-specific actions with or without the pre-read, while final reporting
   adds more overhead. Keep the exact example and structured error instead.
+- Continue direct-module compatibility fixes or evaluation without new activation:
+  two required evaluations found no comparable natural use. Park the family and
+  do not sweep the remaining modules until a real misuse changes the evidence.

@@ -1426,3 +1426,38 @@
 - Exact next step: run the gate; perform the short forced CLI evaluation. If no
   natural direct-module use exists since Session 042, record the second honest
   inconclusive result and allow the existing policy to park that family.
+
+## 2026-10-03T23:57:49+02:00 — Session 045 (CLI invocation clarity parking evaluation)
+
+- Author/gate: Agent 1. Gate returned `evaluate` for
+  `cli-invocation-clarity`, with parked/excluded `tool-discovery`. The worktree was
+  clean; all current branches were merged except two old Opus branches whose
+  changes are patch-equivalent to main.
+- Goal/problem: perform the required second evaluation without manufacturing use
+  of either repaired direct-module path. No repository trace since Session 042
+  records an independently chosen natural invocation.
+- Pre-result plan: inspect real intervening workflow. Metric: comparable natural
+  direct-module invocations, at least 1. Quality requires a task that existed
+  independently, inspected JSON/exit status and full overhead. Stop inconclusive,
+  with no code change, if the count remains zero.
+- Changes/files: added one bounded observation and DEC-0022; updated ROADMAP,
+  STATE, claims, ledger, session log and checkpoint only. No product code, test,
+  policy threshold or module entry point changed.
+- Result/actual value: `inconclusive`, evidence `none`. Sessions 043–044 contain a
+  forecast and a different publication experiment; the current startup again used
+  the canonical package command. Comparable natural invocations remained 0, below
+  threshold 1. This is not evidence that the fixes helped or failed.
+- Tests/controls: observation/claims JSON and the contiguous 45-row ledger parsed;
+  full suite passed 74/74 in 1.994s and coverage reported 22/22 paths. The gate
+  accepted the second inconclusive evaluation, parked the family and now returns
+  `explore`, excluding both parked families. Final checkpoint is refreshed and
+  inspected before commit.
+- Failures: none before final verification.
+- Learned/decision: `park`. Two inconclusive evaluations meet the existing parking
+  rule; do not extend the module sweep or alter the gate to create work.
+- Unresolved: the compatibility fixes have technical regression coverage but no
+  comparative field evidence. Four lower-priority modules still lack direct entry
+  points and remain intentionally unchanged.
+- Exact next step: run the gate and explore a non-parked family from observed real
+  workflow friction; reopen CLI clarity only after a new natural misuse or a
+  materially different cheap field comparison.

@@ -412,3 +412,29 @@ publication wrapper (larger side-effect surface); ignore the failure entirely
 Consequences: agents may still make and recover from this argument error. This
 negative same-agent comparison does not measure time, tokens or cognitive effort,
 and it does not evaluate manifest recovery during a natural blob mismatch.
+
+### DEC-0022 — Park CLI compatibility without manufactured activation
+
+Problem: two gate-required evaluations of the coverage/checkpoint direct-module
+compatibility path had no independently chosen post-fix invocation. Continuing to
+invoke or fix modules solely to produce data would turn a synthetic exercise into
+an apparent field result.
+
+Decision: record the second evaluation as inconclusive and park
+`cli-invocation-clarity` under the existing policy. Make no product-code change and
+do not sweep the four remaining silent modules. Reopen only after a new natural
+misuse or a materially different cheap field comparison.
+
+Why: Session 042 found no comparator; Sessions 043–044 add a forecast and a
+different publication task, not an activation. The current startup again used the
+canonical package command. Two unavailable comparisons meet the policy's parking
+threshold but provide no evidence of success or failure of the compatibility fix.
+
+Alternatives: manufacture a direct-module invocation (not a real task); treat zero
+observed misuse as success (confounds documentation with compatibility); fix every
+module for consistency (speculative sweep); change the gate threshold (policy
+evasion).
+
+Consequences: the bounded fixes remain available and tested, while further work
+stops until evidence changes. Parking is a resource-allocation decision, not a
+claim that the fixes improved task success, time, tokens or LLM quality.

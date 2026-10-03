@@ -75,6 +75,8 @@
       "lab/observations/2026-10-03-opus-silent-module-exposure.json",
       "lab/observations/2026-10-03-checkpoint-module-invocation.json",
       "lab/observations/2026-10-03-cli-invocation-clarity-evaluation.json",
+      "lab/observations/2026-10-03-opus-forced-evaluation-forecast.json",
+      "lab/observations/2026-10-03-cli-invocation-clarity-parking.json",
       "run_tests.py",
       "lab/observations/2026-09-30-startup-read-boundary.json",
       "lab/observations/2026-10-01-startup-read-field-trace.json",

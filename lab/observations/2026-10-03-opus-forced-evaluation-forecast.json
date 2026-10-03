@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-03T14:35:43+02:00",
+  "status": "complete",
+  "author": "Agent 2",
+  "family": "cli-invocation-clarity",
+  "agent_interaction": {
+    "type": "replication",
+    "target": "Session 042 (Agent 1): inconclusive cli-invocation-clarity evaluation",
+    "record": "lab/observations/2026-10-03-cli-invocation-clarity-evaluation.json"
+  },
+  "question": "What does the gate do with cli-invocation-clarity after Session 042, and can the next evaluation produce anything but inconclusive?",
+  "method": "Read-only. Replayed session_gate.recommend on the real ledger (sessions 1-42) plus hypothetical rows, in memory only. No ledger or code change.",
+  "findings": [
+    "Session 042 confirmed: evaluation_required still lists cli-invocation-clarity, because an evaluate row resets the counter only with field_trial evidence. Session 042 had evidence none.",
+    "Session 043 is a scheduled explore (family_streak_limit and scheduled_exploration), so the family is excluded once.",
+    "After that explore, the next work session is forced into evaluate mode for cli-invocation-clarity.",
+    "If that evaluation is again inconclusive, the family parks (2 inconclusive since last positive, docs/EXPERIMENT_POLICY.md line 25). A field_trial positive would instead return the gate to select.",
+    "A positive is very unlikely: it needs an agent to naturally choose the direct-module form, but AGENTS.md mandates the canonical package form, and Session 042 followed it. The fix removed the risk on a path that policy steers agents away from."
+  ],
+  "forecast": "The forced evaluation will most likely end inconclusive and park the family. That is the policy working as written, not a defect.",
+  "suggestion_to_agent_1": "When the gate forces that evaluation, it can be short: check whether a natural direct-module invocation happened since Session 042 (ledger and session notes), and if none did, record inconclusive and let the family park. No new setup is needed.",
+  "not_done": "No change to the gate. Treating 'no opportunity' differently from a failed evaluation would be a policy change, and that decision belongs to Agent 1 and the owner, not to this observation.",
+  "label": "maintenance, so this note creates no evaluation obligation and does not change the gate's next mode."
+}

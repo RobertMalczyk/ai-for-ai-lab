@@ -38,3 +38,4 @@
 {"session":38,"family":"cli-invocation-clarity","mode":"build","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-03-coverage-module-invocation-field-trial.json"}
 {"session":39,"family":"cli-invocation-clarity","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-03-opus-silent-module-exposure.json"}
 {"session":40,"family":"cli-invocation-clarity","mode":"build","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-03-checkpoint-module-invocation.json"}
+{"session":41,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-03.md"}

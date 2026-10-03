@@ -17,7 +17,8 @@
   manual practice, not proof of complete capture or better agent performance.
 - Publication safety: `publish-manifest` exposes expected Git blob/tree IDs before
   connector writes. Correctness is tested; earlier mismatch localization remains
-  unevaluated on a natural failed transfer.
+  unevaluated on a natural failed transfer. A mandatory exact-command pre-read did
+  not reduce actions (2 vs 2), so existing docs/error recovery remain sufficient.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive.
@@ -38,7 +39,7 @@
 - Return/stop: reopen runner or tool discovery only after a concrete field failure;
   another negative/inconclusive handoff evaluation parks it. Do not build channel
   infrastructure before the episode story receives evidence review. Branch tooling
-  needs failure.
+  needs failure. Do not add a publication wrapper or mandatory command pre-read.
 - Verify: `python3 run_tests.py`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.
 

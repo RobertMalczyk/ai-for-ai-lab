@@ -41,6 +41,9 @@
 - The first required evaluation of the coverage/checkpoint compatibility path had
   no comparable natural direct-module use. It is inconclusive rather than a zero-
   error success; the family remains frozen pending a genuinely independent use.
+- A real publication-precondition comparison found no action-count benefit from a
+  mandatory documentation read: failed call plus retry was 2 actions; exact-doc
+  read plus valid call was also 2, before extra reporting/final-manifest overhead.
 
 ## NEXT
 - Keep `cli-invocation-clarity` frozen. One evaluation found no comparable natural
@@ -56,6 +59,8 @@
   the plan validator frozen.
 - Keep `publish-manifest` frozen after its first real publication use. Evaluate it
   only when a natural blob mismatch occurs; a clean run proves no recovery benefit.
+- Do not add a mandatory `publish-manifest` pre-read or wrapper. Existing exact
+  documentation and structured `invalid_arguments` recovery are the simpler path.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -109,6 +114,8 @@
     evidence contradicts; metadata-only publisher plans cannot inspect that claim.
 19. An importable Python module without a module entry point can accept arguments,
     exit 0 and emit nothing, making a no-op look like successful verification.
+20. A real publication omitted required manifest flags once, but reading exact
+    documentation before the next publication did not reduce total agent actions.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -149,3 +156,6 @@
 - Expand direct-module compatibility into a task runner: one silent no-op justified
   coverage plus a targeted mandatory-checkpoint delegation, not new orchestration
   or a sweep of the remaining modules.
+- Add a mandatory publication-command pre-read or wrapper: one real comparison
+  used 2 task-specific actions with or without the pre-read, while final reporting
+  adds more overhead. Keep the exact example and structured error instead.

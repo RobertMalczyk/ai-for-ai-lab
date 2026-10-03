@@ -178,6 +178,8 @@
       "docs/CONNECTOR_PUBLISH.md",
       "README.md",
       "lab/observations/2026-10-02-publish-manifest-plan.json",
+      "lab/observations/2026-10-03-publish-manifest-precondition-evaluation.json",
+      "lab/reports/2026-10-03-publish-manifest-precondition-field-trial.json",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

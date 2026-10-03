@@ -388,3 +388,27 @@ dispatcher or task runner (larger surface than the problem).
 Consequences: both checkpoint invocation forms now share JSON and exit semantics,
 including explicit refresh. Utility remains unknown until natural use distinguishes
 the fix; the other four silent modules remain visible, bounded open risks.
+
+### DEC-0021 — Keep exact publication syntax discoverable, not mandatory
+
+Problem: Session 042 first invoked `publish-manifest` without required flags and
+needed a retry. A new preflight rule or wrapper could prevent the failed call but
+would itself add setup to every connector publication.
+
+Decision: keep the exact example in `docs/CONNECTOR_PUBLISH.md` and the structured
+`invalid_arguments` error. Do not add a mandatory documentation read, wrapper,
+alias or parser fallback from this one mistake.
+
+Why: in the next real publication, reading the exact command and then invoking it
+used 2 task-specific actions, equal to the earlier failed call plus corrected call.
+The useful threshold was one fewer action; reporting and final-manifest regeneration
+only increase intervention overhead.
+
+Alternatives: add a stable preflight instruction to AGENTS (recurring context and
+action cost); accept positional revisions (two invocation contracts); build a
+publication wrapper (larger side-effect surface); ignore the failure entirely
+(loses a measured negative control).
+
+Consequences: agents may still make and recover from this argument error. This
+negative same-agent comparison does not measure time, tokens or cognitive effort,
+and it does not evaluate manifest recovery during a natural blob mismatch.

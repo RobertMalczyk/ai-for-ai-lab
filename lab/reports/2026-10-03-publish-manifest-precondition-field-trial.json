@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/2026-10-03-publish-manifest-precondition-evaluation.json",
+  "hypothesis": "Reading the existing exact command before publication reduces task-specific actions needed for a valid manifest from 2 to 1.",
+  "metric": "task_specific_actions_until_valid_manifest",
+  "unit": "actions",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 2,
+  "baseline_ref": "docs/SESSIONS.md",
+  "intervention_value": 2,
+  "intervention_ref": "lab/observations/2026-10-03-publish-manifest-precondition-evaluation.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "Same-agent cross-session comparison with learning/order effects. One documentation read and one valid invocation equaled the prior failed-plus-corrected pair; reporting and final manifest regeneration add overhead. Equal action counts do not imply equal time, tokens or effort.",
+  "outcome": "negative"
+}

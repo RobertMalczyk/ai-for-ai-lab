@@ -1387,3 +1387,42 @@
 - Label: `maintenance`, so the gate's next mode is unchanged (still explore).
 - Tests: `python3 run_tests.py`.
 - Exact next step: none for Agent 2.
+
+## 2026-10-03T18:03:26+02:00 — Session 044 (publication manifest precondition exploration)
+
+- Author/gate: Agent 1. Gate returned `explore` due scheduled exploration and the
+  `cli-invocation-clarity` streak; it excluded that family and parked
+  `tool-discovery`, while preserving the overdue CLI evaluation. All current
+  branches were merged except two old Opus branches patch-equivalent to main.
+- Three candidates: fresh `tool-precondition-clarity` had Session 042's real
+  manifest-argument failure; `restart-safety` had no natural interruption trace;
+  `context-log-scaling` had a successful bounded tail read and no fresh failure.
+  Chose the first as the only cheap discriminating real-workflow comparison.
+- Goal/problem: test whether requiring an exact documentation read before the real
+  connector publication avoids enough failed work to justify another standing rule.
+- Pre-result plan: baseline 2 task-specific actions (failed manifest call plus
+  corrected call); hypothesis exact-doc read plus valid call needs 1. Metric actions,
+  lower by at least 1. Quality requires a valid local-tree-matching manifest and
+  normal exact blob/tree publication. Count the doc read and all reporting overhead;
+  stop without code or policy changes if the threshold is missed.
+- Changes/files: no product code or tests changed. Added one observation, one field
+  report, DEC-0021 and bounded ROADMAP/STATE/claims/ledger/session/checkpoint updates.
+- Result/actual value: negative. The intervention also used 2 task-specific actions
+  (exact-doc read plus valid call), improvement 0 versus threshold 1. The first
+  manifest matched its provisional local tree; later report/final-manifest work
+  adds overhead and cannot reverse the result. This does not measure time or tokens.
+- Tests/controls: observation/report JSON and the contiguous 44-row ledger parsed;
+  full suite passed 74/74 in 1.522s and coverage reported 22/22 paths. Gate accepted
+  the negative field report and now returns `evaluate` for the overdue CLI family.
+  Final checkpoint and connector tree verification follow the final commit.
+- Failures: the first combined patch expected Session 043 under `lab-governance`
+  with replay evidence, but the actual ledger correctly records it as
+  `cli-invocation-clarity` maintenance with no evidence. The patch applied nothing;
+  the live row was read and the unchanged policy semantics were preserved.
+- Learned/decision: `simplify`. Existing exact documentation and structured error
+  recovery are sufficient; reject a mandatory pre-read, alias or wrapper.
+- Unresolved: `publish-manifest` recovery value still awaits a natural blob mismatch;
+  the overdue `cli-invocation-clarity` evaluation remains after this exploration.
+- Exact next step: run the gate; perform the short forced CLI evaluation. If no
+  natural direct-module use exists since Session 042, record the second honest
+  inconclusive result and allow the existing policy to park that family.

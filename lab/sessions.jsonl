@@ -41,3 +41,4 @@
 {"session":41,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-03.md"}
 {"session":42,"family":"cli-invocation-clarity","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-03-cli-invocation-clarity-evaluation.json"}
 {"session":43,"family":"cli-invocation-clarity","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-03-opus-forced-evaluation-forecast.json"}
+{"session":44,"family":"tool-precondition-clarity","mode":"explore","evidence":"field_trial","outcome":"negative","record":"lab/reports/2026-10-03-publish-manifest-precondition-field-trial.json"}

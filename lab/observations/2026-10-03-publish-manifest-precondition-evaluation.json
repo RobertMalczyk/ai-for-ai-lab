@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-03T18:03:26+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "gate": {
+    "mode": "explore",
+    "reasons": ["scheduled_exploration", "family_streak_limit"],
+    "excluded_families": ["cli-invocation-clarity", "tool-discovery"],
+    "evaluation_required": ["cli-invocation-clarity"],
+    "parked_families": ["tool-discovery"]
+  },
+  "candidates": [
+    {
+      "family": "tool-precondition-clarity",
+      "kind": "fresh_observed_friction",
+      "evidence": "Session 042 records one invalid `publish-manifest` call that omitted required `--base` and `--commit` flags before the successful retry.",
+      "potential_value": "Avoid a failed call before every authenticated connector publication.",
+      "cheapest_falsifying_test": "On this session's real publication, count the task-specific actions needed to obtain a valid manifest when the existing exact documentation is read first.",
+      "cost": "One documentation read, one manifest call and normal publication verification.",
+      "novelty": "Different concrete precondition failure from the concluded test-entrypoint subcase."
+    },
+    {
+      "family": "restart-safety",
+      "kind": "old_assumption_to_challenge",
+      "evidence": "ROADMAP H5 hypothesizes duplicate external writes after interruption, but no natural interrupted publication is recorded.",
+      "potential_value": "Prevent duplicate connector side effects.",
+      "cheapest_falsifying_test": "Observe the next natural interrupted publication and inspect its durable receipt.",
+      "cost": "Unavailable in this session without manufacturing an interruption.",
+      "novelty": "Unstarted family, but currently unsupported by a real trace."
+    },
+    {
+      "family": "context-log-scaling",
+      "kind": "different_simpler_approach",
+      "evidence": "The session log is large, but a bounded tail read completed to EOF in this startup.",
+      "potential_value": "Reduce incomplete startup context reads.",
+      "cheapest_falsifying_test": "Keep using a native bounded tail and record another actual truncation before building anything.",
+      "cost": "No code; current workflow already passed.",
+      "novelty": "Fresh scale observation, but no current failure beyond the already rejected context-reader idea."
+    }
+  ],
+  "selected_family": "tool-precondition-clarity",
+  "pre_result_plan": {
+    "real_task": "Generate and use a local Git object manifest before publishing this session through the authenticated connector.",
+    "observed_problem": "The previous real publication first called `publish-manifest` with positional revisions and received `invalid_arguments` before retrying with the documented flags.",
+    "baseline": "Session 042 required two task-specific actions to obtain a valid manifest: one failed manifest call and one corrected manifest call.",
+    "hypothesis": "Reading the existing exact command before publication reduces task-specific actions needed for a valid manifest from 2 to 1.",
+    "metric": "task_specific_actions_until_valid_manifest",
+    "unit": "actions",
+    "direction": "lower",
+    "minimum_useful_improvement": 1,
+    "quality_control": "The first manifest invocation must be valid, all returned blob IDs and the final remote tree must match the tested local commit, and main may move only by non-forced fast-forward.",
+    "overhead": "Count the task-specific documentation read as one action, every manifest invocation, evidence/report work, tests, checkpoint maintenance and connector publication.",
+    "stop_condition": "If documentation read plus invocation does not beat the two-action baseline, do not add another instruction, wrapper or CLI change; record negative or inconclusive and simplify."
+  },
+  "result": {
+    "baseline_value": 2,
+    "baseline_actions": ["invalid manifest invocation", "corrected manifest invocation"],
+    "intervention_value": 2,
+    "intervention_actions": ["read exact command in docs/CONNECTOR_PUBLISH.md", "valid manifest invocation"],
+    "improvement": 0,
+    "minimum_useful_improvement": 1,
+    "threshold_met": false,
+    "quality_passed": true,
+    "first_manifest": {
+      "base_commit": "c2c0a47ce78e4064f400ae5c42649e69378bb769",
+      "commit": "7a981cae458dc6b3c4fed0d31c7bf6edcb9d09aa",
+      "tree": "31db4efdae1fea37e92994daaba1b6582d5a2b7e",
+      "entries": 1,
+      "matched_local_tree": true
+    },
+    "evidence": "field_trial",
+    "outcome": "negative",
+    "decision": "simplify",
+    "reason": "Reading the exact command replaced one failed call with one documentation-read action, so it did not reduce task-specific actions. Existing JSON error plus documentation are sufficient; another mandatory pre-read would add policy overhead.",
+    "limitations": [
+      "Cross-session comparison by the same agent is confounded by learning and order effects.",
+      "Actions are counted equally; wall time, tokens and cognitive effort were not comparable.",
+      "The first manifest covered a provisional local commit. Reporting changes require a final regenerated manifest, which increases intervention overhead and cannot reverse the negative result.",
+      "This result rejects a mandatory pre-read instruction, not the manifest command or structured argument errors."
+    ]
+  }
+}

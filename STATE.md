@@ -24,15 +24,17 @@
 - CLI clarity: direct `ai_for_ai_lab.coverage` invocation now matches the canonical
   package command after one real silent-success no-op. Agent 2 found the same
   exposure on mandatory checkpoint; its targeted fix is replay-tested, with no
-  utility claim. Do not sweep the remaining modules.
+  utility claim. A required evaluation then had no comparable natural direct-module
+  use and is inconclusive. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
 - Next: run session_gate. When the private episode script exists, apply the same
   bounded claim review against frozen evidence before renderer/upload; otherwise use a
   natural dirty/long-lived resume or observe fresh workflow friction. For future
   explicitly owner-directed sessions, cross-check `human_decisions` manually. Use
   the frozen manifest on connector publication; extend it only after a real miss.
-- CLI return condition: no more module fixes before a real-use evaluation of the
-  coverage/checkpoint compatibility path; unavailable comparison is inconclusive.
+- CLI return condition: keep the family frozen until an independent natural use
+  supplies a comparable evaluation; one more negative/inconclusive evaluation
+  parks it. Unavailable comparison is not evidence of success.
 - Return/stop: reopen runner or tool discovery only after a concrete field failure;
   another negative/inconclusive handoff evaluation parks it. Do not build channel
   infrastructure before the episode story receives evidence review. Branch tooling

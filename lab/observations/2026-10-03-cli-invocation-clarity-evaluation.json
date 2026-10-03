@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-03T11:58:15+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "cli-invocation-clarity",
+  "gate": {
+    "mode": "evaluate",
+    "excluded_families": ["tool-discovery"],
+    "evaluation_required": ["cli-invocation-clarity"],
+    "parked_families": ["tool-discovery"]
+  },
+  "pre_result_plan": {
+    "real_task": "Run the repository's mandatory startup controls while selecting one bounded session task.",
+    "observed_problem": "Session 038 contains one natural direct-module coverage mistake, but Session 040 fixed checkpoint only from Agent 2's deliberate sweep. The gate now requires evaluation before more work in this family.",
+    "baseline": "The simplest baseline is the documented canonical package command. A useful comparison requires a later real task in which an agent independently chooses the direct-module form; no command will be invented merely to exercise it.",
+    "hypothesis": "The compatibility entry points prevent a silent successful no-op when a real agent naturally chooses either repaired direct-module form.",
+    "metric": "ambiguous successful no-ops per comparable natural invocation",
+    "unit": "invocations",
+    "direction": "lower",
+    "minimum_useful_improvement": 1,
+    "quality_control": "The task must exist without this evaluation, the invocation choice must be natural, JSON and exit status must be independently inspected, and setup/documentation/publication overhead must be counted.",
+    "overhead": "Count startup reads, gate/checkpoint/coverage, evidence review, reporting, tests, checkpoint maintenance and publication.",
+    "stop_condition": "If this session follows the documented canonical command or otherwise lacks a comparable natural direct-module invocation, record inconclusive and make no code change."
+  },
+  "evidence_review": {
+    "natural_baseline": "lab/observations/2026-10-03-coverage-module-invocation.json",
+    "replay_only_checkpoint": "lab/observations/2026-10-03-checkpoint-module-invocation.json",
+    "independent_exposure_sweep": "lab/observations/2026-10-03-opus-silent-module-exposure.json",
+    "current_workflow_instruction": "AGENTS.md mandates `python3 -m ai_for_ai_lab checkpoint --root .`, and the current startup followed that canonical package form.",
+    "comparable_intervention_available": false
+  },
+  "result": {
+    "evidence": "none",
+    "outcome": "inconclusive",
+    "quality_passed": false,
+    "decision": "evaluate",
+    "reason": "No comparable natural use of the repaired direct-module path occurred, so the intervention effect cannot be measured without manufacturing the invocation.",
+    "code_changed": false,
+    "threshold_evaluated": false,
+    "limitations": [
+      "The current startup used the canonical package CLI named in repository policy, not either compatibility form.",
+      "The coverage baseline and checkpoint replay involve different commands and different selection conditions.",
+      "Absence of a new silent no-op is not evidence that the compatibility fix improved agent task success, time, tokens or decision quality.",
+      "The runtime transcript is not a repository artifact; the durable evidence is limited to the cited public records and this bounded report."
+    ]
+  }
+}

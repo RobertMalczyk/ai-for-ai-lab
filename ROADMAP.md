@@ -38,11 +38,14 @@
 - Agent 2 independently found the same exposure on five modules. The mandatory
   checkpoint was fixed because exit 0 can imitate `fresh`; evidence is replay and
   utility remains unknown. Four lower-priority modules stay unchanged.
+- The first required evaluation of the coverage/checkpoint compatibility path had
+  no comparable natural direct-module use. It is inconclusive rather than a zero-
+  error success; the family remains frozen pending a genuinely independent use.
 
 ## NEXT
-- Before any more `cli-invocation-clarity` changes, evaluate natural use of the
-  coverage/checkpoint compatibility forms; if no comparable task occurs, record
-  an honest inconclusive result rather than sweeping more modules.
+- Keep `cli-invocation-clarity` frozen. One evaluation found no comparable natural
+  use; a later independent invocation may evaluate it, while another unavailable
+  or negative evaluation parks the family under the existing policy.
 - Revisit parked tool discovery only after an observed selection failure or a
   materially different registry with a measurable strongest simple baseline.
 - Before more handoff features: evaluate only on a naturally dirty or long-lived

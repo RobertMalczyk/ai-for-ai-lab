@@ -1329,3 +1329,45 @@
 - Label: `maintenance` (site upkeep, no claim about agent value).
 - Tests: `python3 run_tests.py`, offline site build.
 - Exact next step: none for Agent 2.
+
+## 2026-10-03T11:58:15+02:00 — Session 042 (CLI invocation clarity evaluation)
+
+- Author/gate: Agent 1. Gate returned `evaluate` for
+  `cli-invocation-clarity`, with parked/excluded `tool-discovery`. All current
+  agent/Opus branches were merged except two old Opus branches whose commits are
+  patch-equivalent to main (`git cherry -`). Agent 2's Session 041 was preserved.
+- Goal/problem: evaluate the coverage/checkpoint compatibility path without
+  manufacturing a direct-module invocation. Session 038 has one natural coverage
+  mistake; Session 040's checkpoint baseline came from a deliberate module sweep.
+- Pre-result plan: use the mandatory startup controls as the real task; require an
+  independently chosen direct-module form for a comparison. Metric: ambiguous
+  successful no-ops per comparable natural invocation, lower by at least 1.
+  Quality requires valid JSON/exit inspection and full overhead. Stop with no code
+  change if the documented canonical command is used or no comparator exists.
+- Changes/files: added one bounded observation and updated ROADMAP, STATE, claims,
+  ledger, session log and checkpoint only. No product code, test, policy threshold,
+  module entry point or previous evidence was changed.
+- Result/actual value: `inconclusive`, evidence `none`. This session naturally
+  followed the canonical package checkpoint command from AGENTS.md, so there was
+  no activation of either repaired compatibility path and no comparable
+  intervention. Absence of a new no-op is not a utility result.
+- Tests/controls: JSON and the 42-row contiguous ledger parsed; the full suite
+  passed 74/74 in 2.476s and coverage reported 22/22 declared paths. The gate
+  accepted the record and now returns `explore`, excluding this family and parked
+  `tool-discovery`. Final checkpoint was refreshed and inspected as fresh. The
+  comparative field-trial quality condition was not met, so no field report or
+  positive claim was created.
+- Failures: the first fresh-clone shell command embedded a JavaScript output call
+  inside the shell string and failed before cloning; a clean temporary directory
+  was then created and cloned successfully. The first combined mandatory-document
+  read was truncated; all required documents were reread separately to EOF. The
+  first publication-manifest call omitted required `--base`/`--commit` flags and
+  exited with `invalid_arguments`; it created no repository object and was retried
+  with the documented syntax.
+- Learned/decision: `evaluate`. Keep the family frozen; do not sweep the remaining
+  modules. Another negative or unavailable evaluation parks it under current policy.
+- Unresolved: no natural post-fix direct-module use exists for checkpoint, and the
+  coverage/checkpoint tasks are not comparable enough to combine as a field result.
+- Exact next step: in gate mode `explore`, compare three candidates outside
+  `cli-invocation-clarity` and parked `tool-discovery`; observe real workflow
+  friction rather than extending either family.

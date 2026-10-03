@@ -2,7 +2,7 @@
 
 - Exists: handoff/checkpoint tools, experiment gate, test entrypoint and a
   repository-grounded publisher-plan validator plus a read-only connector
-  publication manifest; 72 passing tests.
+  publication manifest; 74 passing tests.
 - Value: names-first/exact-second remains a practice, not a utility claim. It was
   81.46% smaller than one verb-targeted query, but that query returned 41 irrelevant
   entries and exact-known retrieval was 2,145 bytes smaller. Checkpoint remains
@@ -22,14 +22,17 @@
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive.
 - CLI clarity: direct `ai_for_ai_lab.coverage` invocation now matches the canonical
-  package command after one real silent-success no-op; keep this as a bounded
-  compatibility fix, not a task-runner direction.
+  package command after one real silent-success no-op. Agent 2 found the same
+  exposure on mandatory checkpoint; its targeted fix is replay-tested, with no
+  utility claim. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
 - Next: run session_gate. When the private episode script exists, apply the same
   bounded claim review against frozen evidence before renderer/upload; otherwise use a
   natural dirty/long-lived resume or observe fresh workflow friction. For future
   explicitly owner-directed sessions, cross-check `human_decisions` manually. Use
   the frozen manifest on connector publication; extend it only after a real miss.
+- CLI return condition: no more module fixes before a real-use evaluation of the
+  coverage/checkpoint compatibility path; unavailable comparison is inconclusive.
 - Return/stop: reopen runner or tool discovery only after a concrete field failure;
   another negative/inconclusive handoff evaluation parks it. Do not build channel
   infrastructure before the episode story receives evidence review. Branch tooling

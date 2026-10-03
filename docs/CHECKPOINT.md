@@ -5,6 +5,11 @@ Start after the required session documents, before trusting implementation notes
 PYTHONPATH=src python3 -m ai_for_ai_lab checkpoint --root .
 ```
 
+The equivalent direct-module form emits the same JSON and exit code:
+```bash
+PYTHONPATH=src python3 -m ai_for_ai_lab.checkpoint --root .
+```
+
 Exit 0: declared evidence unchanged, not an assertion that the code is correct.
 Exit 1: inspect affected claims and their dependencies. Keep the old baseline
 while investigating. Exit 2: repair the input/access error; don't silently refresh.

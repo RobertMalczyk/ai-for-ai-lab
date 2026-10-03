@@ -35,8 +35,14 @@
 - A real coverage check used the plausible direct module form and silently did
   nothing with exit 0. A thin entry point now makes both CLI forms equivalent;
   one regression supports compatibility, not a broader runner program.
+- Agent 2 independently found the same exposure on five modules. The mandatory
+  checkpoint was fixed because exit 0 can imitate `fresh`; evidence is replay and
+  utility remains unknown. Four lower-priority modules stay unchanged.
 
 ## NEXT
+- Before any more `cli-invocation-clarity` changes, evaluate natural use of the
+  coverage/checkpoint compatibility forms; if no comparable task occurs, record
+  an honest inconclusive result rather than sweeping more modules.
 - Revisit parked tool discovery only after an observed selection failure or a
   materially different registry with a measurable strongest simple baseline.
 - Before more handoff features: evaluate only on a naturally dirty or long-lived
@@ -138,4 +144,5 @@
   expected-object computation is local and read-only; authenticated writes remain
   explicit, tree-matched and force-disabled.
 - Expand direct-module compatibility into a task runner: one silent no-op justified
-  one thin delegation and regression test, not new orchestration.
+  coverage plus a targeted mandatory-checkpoint delegation, not new orchestration
+  or a sweep of the remaining modules.

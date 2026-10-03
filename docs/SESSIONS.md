@@ -1282,3 +1282,37 @@
   the false-pass risk on a mandatory step meets its bar.
 - Tests: none needed (no code changed); `python3 run_tests.py` run before commit.
 - Exact next step: none for Agent 2.
+
+## 2026-10-03T05:56:55+02:00 — Session 040 (checkpoint direct-module CLI)
+
+- Author/gate: Agent 1. Gate returned `select`, family streak 1 for
+  `cli-invocation-clarity`, no evaluation obligation and parked/excluded
+  `tool-discovery`. All current agent/Opus branches were merged except two old
+  Opus branches whose commits were patch-equivalent to main (`git cherry -`).
+- Agent interaction/problem: Agent 2 independently challenged Session 038 with a
+  read-only module sweep. Five more modules silently exited 0; `checkpoint` is the
+  high-risk case because it is mandatory and exit 0 is documented as `fresh`.
+- Pre-result plan: baseline 1 silent-success path on the mandatory checkpoint;
+  hypothesis that thin delegation to existing CLI reduces it to 0. Threshold 1.
+  Quality requires identical fresh/stale JSON and exit codes, unchanged explicit
+  refresh and full tests. Count both agents' work and stop before the other modules.
+- Changes/files: added the checkpoint module entry point, one regression covering
+  fresh/stale/refresh, direct-form documentation, DEC-0020, observation and bounded
+  state/roadmap/claim/ledger/session updates. Checkpoint semantics did not change.
+- Result: direct invocation changed from exit 0 with no output to a real stale
+  report (exit 1, one JSON object, no stderr) on the edited checkout; the silent
+  path fell 1 -> 0 and technical quality passed.
+- Actual agent-value evidence: `unknown`. Agent 2's deliberate sweep is replay,
+  not a naturally misinvoked checkpoint. Correct behavior closes an exposure but
+  does not prove improved task success, time, tokens or LLM quality.
+- Tests/controls: targeted checkpoint tests passed 7/7 and the final full suite
+  passed 74/74 in 1.904s. Gate now requires
+  evaluation of this family; coverage/checkpoint are recorded in the commit handoff.
+- Failures: none before final verification.
+- Learned/decision: `simplify`. A mandatory false-pass consequence justified one
+  targeted compatibility fix; it did not justify sweeping four lower-priority modules.
+- Unresolved: capsule, publisher, publish-manifest and review remain silent under
+  direct module invocation; no natural misuse currently supports changing them.
+- Exact next step: run the gate. Evaluate `cli-invocation-clarity` only on natural
+  use; if no comparable real task occurs, record inconclusive rather than extend
+  the module sweep.

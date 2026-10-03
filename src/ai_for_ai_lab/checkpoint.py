@@ -2,6 +2,7 @@
 import json
 import os
 from pathlib import Path
+import sys
 import tempfile
 from .capsule import CapsuleError, capture, evidence_path, loads, root_path
 from .review import claim_paths, link, review
@@ -47,3 +48,10 @@ def inspect(root):
     if type(data["version"]) is not int or data["version"] != 1:
         raise CapsuleError("unsupported checkpoint version")
     return review(root, data["capsule"], data["manifest"])
+
+
+if __name__ == "__main__":
+    # Keep the convenient module form equivalent to the canonical package CLI.
+    from .__main__ import main
+    sys.argv.insert(1, "checkpoint")
+    sys.exit(main())

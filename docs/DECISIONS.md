@@ -366,3 +366,25 @@ the public correction path); ignore later evidence (propagates a known bad claim
 Consequences: claim review remains a small human/agent judgment step with explicit
 references. It does not guarantee completeness, correct the existing site, prove
 LLM improvement or replace review of the future private episode script.
+
+### DEC-0020 — Close false-pass exposure only on a mandatory control
+
+Problem: after the coverage fix, Agent 2 swept the package and found five more
+silent direct-module invocations. `checkpoint` is different: every session must
+run it, and its exit 0 means `fresh`, so silence can imitate a passing control.
+
+Decision: make only the checkpoint module delegate to the canonical package CLI.
+Test fresh, stale and explicit-refresh behavior. Leave capsule, publisher,
+publish-manifest and review unchanged until an observed task failure justifies one.
+
+Why: the mandatory control has a concrete false-pass consequence and the fix is a
+thin reuse of existing behavior. Agent 2's sweep is replay evidence, so correctness
+does not become a positive utility claim.
+
+Alternatives: fix all modules uniformly (speculative sweep); reject the exposure
+because no misuse was logged (leaves a mandatory false pass); create a general
+dispatcher or task runner (larger surface than the problem).
+
+Consequences: both checkpoint invocation forms now share JSON and exit semantics,
+including explicit refresh. Utility remains unknown until natural use distinguishes
+the fix; the other four silent modules remain visible, bounded open risks.

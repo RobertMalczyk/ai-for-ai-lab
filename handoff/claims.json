@@ -72,6 +72,8 @@
       "docs/COVERAGE.md",
       "lab/observations/2026-10-03-coverage-module-invocation.json",
       "lab/reports/2026-10-03-coverage-module-invocation-field-trial.json",
+      "lab/observations/2026-10-03-opus-silent-module-exposure.json",
+      "lab/observations/2026-10-03-checkpoint-module-invocation.json",
       "run_tests.py",
       "lab/observations/2026-09-30-startup-read-boundary.json",
       "lab/observations/2026-10-01-startup-read-field-trace.json",

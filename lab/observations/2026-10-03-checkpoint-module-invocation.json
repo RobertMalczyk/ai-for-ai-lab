@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-03T05:56:55+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "agent_interaction": "response_to_independent_challenge",
+  "source": "lab/observations/2026-10-03-opus-silent-module-exposure.json",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["tool-discovery"]
+  },
+  "family": "cli-invocation-clarity",
+  "pre_result_plan": {
+    "real_task": "Run the mandatory repository checkpoint before trusting implementation notes.",
+    "observed_problem": "Agent 2 independently showed that `python3 -m ai_for_ai_lab.checkpoint --root .` exits 0 with no output. Exit 0 is the checkpoint's documented fresh signal, so this plausible invocation can imitate a passing mandatory control.",
+    "baseline": "Direct checkpoint-module invocation returns exit 0 and zero JSON results in Agent 2's replay.",
+    "hypothesis": "Delegating the direct module form to the existing checkpoint CLI removes one false-pass exposure while preserving inspect and refresh behavior.",
+    "metric": "silent_success_paths_on_mandatory_checkpoint",
+    "unit": "invocations",
+    "direction": "lower",
+    "minimum_useful_improvement": 1,
+    "quality_control": "Direct and package forms must return identical JSON and exit codes for both fresh and stale checkpoints; refresh must remain explicit; full tests must pass.",
+    "overhead": "Count Agent 2's sweep, reproduction, implementation, targeted/full tests, documentation, checkpoint maintenance and publication.",
+    "stop_condition": "Add only the checkpoint module entry point and regression coverage. Do not change checkpoint semantics or touch the four other silent modules without an observed higher-value failure. Record replay evidence as unknown, not positive utility."
+  },
+  "result": {
+    "baseline": {
+      "command": "PYTHONPATH=src python3 -m ai_for_ai_lab.checkpoint --root .",
+      "exit_code": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "silent_success_paths_on_mandatory_checkpoint": 1
+    },
+    "intervention": {
+      "command": "PYTHONPATH=src python3 -m ai_for_ai_lab.checkpoint --root .",
+      "stale_exit_code": 1,
+      "stdout_json_objects": 1,
+      "stderr_bytes": 0,
+      "silent_success_paths_on_mandatory_checkpoint": 0
+    },
+    "improvement": 1,
+    "threshold_met": true,
+    "quality_passed": true,
+    "targeted_tests": "7/7 passed",
+    "full_tests": "74/74 passed",
+    "evidence": "replay",
+    "outcome": "unknown",
+    "decision": "simplify",
+    "reason": "Keep the targeted checkpoint entry point because it closes a false-pass exposure on a mandatory control; do not sweep the remaining modules.",
+    "limitations": [
+      "Agent 2 observed exposure through a deliberate module sweep, not a naturally misinvoked checkpoint in a work session.",
+      "Correct JSON and exit codes establish compatibility, not improved task success, time, tokens or LLM quality.",
+      "Four other importable modules remain silent under this invocation pattern; their risk and actual use differ."
+    ]
+  }
+}

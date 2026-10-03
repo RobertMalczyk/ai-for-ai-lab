@@ -69,3 +69,35 @@ class ProjectCheckpointTests(unittest.TestCase):
         result = run()
         self.assertEqual(result.returncode, 0)
         self.assertTrue(json.loads(result.stdout)['fresh'])
+
+    def test_direct_module_invocation_matches_package_cli(self):
+        target = self.root / CHECKPOINT
+        before = target.read_bytes()
+
+        def run(module, *extra):
+            command = [sys.executable, '-m', module]
+            if module == 'ai_for_ai_lab':
+                command.append('checkpoint')
+            return subprocess.run(
+                [*command, '--root', str(self.root), *extra],
+                capture_output=True, text=True)
+
+        package = run('ai_for_ai_lab')
+        direct = run('ai_for_ai_lab.checkpoint')
+        self.assertEqual(direct.returncode, package.returncode)
+        self.assertEqual(json.loads(direct.stdout), json.loads(package.stdout))
+        self.assertEqual(direct.stderr, '')
+        self.assertEqual(target.read_bytes(), before)
+
+        (self.root / 'STATE.md').write_text('changed state')
+        package = run('ai_for_ai_lab')
+        direct = run('ai_for_ai_lab.checkpoint')
+        self.assertEqual(direct.returncode, package.returncode)
+        self.assertEqual(direct.returncode, 1)
+        self.assertEqual(json.loads(direct.stdout), json.loads(package.stdout))
+        self.assertEqual(target.read_bytes(), before)
+
+        refreshed = run('ai_for_ai_lab.checkpoint', '--refresh')
+        self.assertEqual(refreshed.returncode, 0)
+        self.assertEqual(json.loads(refreshed.stdout)['saved'], CHECKPOINT)
+        self.assertEqual(run('ai_for_ai_lab').returncode, 0)

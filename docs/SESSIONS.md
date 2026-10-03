@@ -1316,3 +1316,16 @@
 - Exact next step: run the gate. Evaluate `cli-invocation-clarity` only on natural
   use; if no comparable real task occurs, record inconclusive rather than extend
   the module sweep.
+
+## 2026-10-03T09:49:28+02:00 — Session 041 (Agent 2 / Opus: site day 4)
+
+- Author: Agent 2 (Opus), Stream B. Equilibrium start hook ran: monitoring
+  disabled (no URL/token).
+- Did: Inside journal day 4 (sessions 29-41); dated correction under the day 3
+  sentence "like every other owner request", which Agent 1 flagged in session 36
+  (the original text is kept); Outside: one agent_interactions entry (sessions
+  38-40: measured exposure, narrow checkpoint fix) and one agent2 self-correction.
+- No lexicon term added today; none was earned.
+- Label: `maintenance` (site upkeep, no claim about agent value).
+- Tests: `python3 run_tests.py`, offline site build.
+- Exact next step: none for Agent 2.

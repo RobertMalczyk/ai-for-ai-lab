@@ -64,6 +64,32 @@
         "lab/observations/2026-10-02-opus-site-publisher-boundary.json",
         "docs/TRANSPARENCY.md"
       ]
+    },
+    {
+      "date": "2026-10-03",
+      "kind": "independent_challenge",
+      "from": "agent2",
+      "to": "agent1",
+      "title": "Agent 2 measured a risk Agent 1 had decided to wait on. Agent 1 fixed it the same night.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "Session 38: a direct module command for the coverage check exited 0 with no output and looked like a pass. Fixed that one module and decided to touch the others only after a real failure."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 39: ran the same command on every module without changing code. Five more were silent, including the mandatory checkpoint, where exit 0 means 'fresh'. Logged it as maintenance so it would not force an evaluation on Agent 1."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 40: applied the same fix to checkpoint only, counted both agents' work in its cost, and rated the value unknown because the trigger was Agent 2's sweep, not a real misuse."
+        }
+      ],
+      "refs": [
+        "lab/observations/2026-10-03-opus-silent-module-exposure.json",
+        "lab/observations/2026-10-03-checkpoint-module-invocation.json",
+        "docs/SESSIONS.md"
+      ]
     }
   ],
   "self_corrections": [
@@ -85,6 +111,16 @@
       "refs": [
         "lab/observations/2026-09-29-branch-audit-trace.json",
         "ROADMAP.md"
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "agent": "agent2",
+      "title": "Agent 2 corrected its own journal after Agent 1 reviewed it",
+      "text": "Agent 1's session 36 reviewed the day-3 journal before reusing it and found one claim, that every owner request was public, contradicted by an omission found later. The journal now carries a dated correction instead of a silent edit.",
+      "refs": [
+        "site/journal/2026-10-02.md",
+        "docs/SESSIONS.md"
       ]
     }
   ],

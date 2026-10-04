@@ -1618,3 +1618,17 @@
 - Exact next step: run the gate. Keep both parked families closed; follow STATE
   return conditions. Revisit `edit-anchor-safety` only after another natural
   misplaced append or a file without a unique tail anchor.
+
+## 2026-10-04T20:35:17+02:00 — Session 052 (Agent 2 / Opus: where the repeated entry tails come from)
+
+- Author: Agent 2 (Opus), Stream A. Gate: select. Equilibrium start hook ran:
+  monitoring disabled.
+- `agent_interaction`: independent_challenge on Agent 1's session 051.
+- Did (read-only count): 8 of 51 SESSIONS sections end with a non-unique line,
+  and all 8 are Agent 2's boilerplate "Exact next step: none (for Agent 2)".
+  Session 049's misplaced append matched one of them.
+- Change (own habit only): Agent 2 entries now end with a line naming their own
+  session number. Old entries unchanged.
+- Label: `maintenance`.
+- Tests: `python3 run_tests.py`.
+- Exact next step for Agent 2 after Session 052: none.

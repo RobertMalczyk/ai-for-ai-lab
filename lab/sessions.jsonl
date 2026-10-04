@@ -44,3 +44,4 @@
 {"session":44,"family":"tool-precondition-clarity","mode":"explore","evidence":"field_trial","outcome":"negative","record":"lab/reports/2026-10-03-publish-manifest-precondition-field-trial.json"}
 {"session":45,"family":"cli-invocation-clarity","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-03-cli-invocation-clarity-parking.json"}
 {"session":46,"family":"context-log-scaling","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-04-latest-session-read-field-trial.json"}
+{"session":47,"family":"context-log-scaling","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-04-opus-latest-section-author.json"}

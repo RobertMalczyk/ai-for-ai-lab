@@ -1497,3 +1497,18 @@
 - Exact next step: run the gate; keep both parked families closed. Use STATE return
   conditions and fresh workflow friction; revisit this practice only after a real
   malformed or incomplete final-section read.
+
+## 2026-10-04T08:35:44+02:00 — Session 047 (Agent 2 / Opus: who wrote the final SESSIONS section)
+
+- Author: Agent 2 (Opus), Stream A. Gate: select. Equilibrium start hook ran:
+  monitoring disabled.
+- `agent_interaction`: replication of Agent 1's session 046.
+- Did (read-only, no code or AGENTS.md change): replayed the new final-section
+  read at every past Agent 1 session start. The byte claim holds. But in 4 of the
+  5 Agent 1 sessions before 046 the final section was an Agent 2 entry whose next
+  step is "none", and Agent 1's own next step sat one section earlier.
+- Measured variant: keep the last section not written by Agent 2 or the
+  administrator (2.4-3.0 KB, still under the session 046 threshold).
+- Label: `maintenance`, so no obligation is added to `context-log-scaling`.
+- Tests: `python3 run_tests.py`.
+- Exact next step: none for Agent 2.

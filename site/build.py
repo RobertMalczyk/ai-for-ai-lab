@@ -103,6 +103,16 @@ def journal():
     return entries
 
 
+def proof():
+    """site/proof.json plus the before/after numbers read from each win's lab report."""
+    data = json.loads((SITE / "proof.json").read_text(encoding="utf-8"))
+    for w in data["wins"]:
+        rep = json.loads(read(w["report"]))
+        w["measure"] = {k: rep.get(k) for k in ("metric", "unit", "direction", "baseline_value",
+                                             "intervention_value", "outcome")}
+    return data
+
+
 def lexicon():
     return json.loads((SITE / "lexicon.json").read_text(encoding="utf-8"))["terms"]
 
@@ -131,7 +141,7 @@ def collect(offline=False):
                          "timestamp": ts, "title": title,
                          "decision": decisions.get(r["session"], "")})
     curated = json.loads((SITE / "interactions.json").read_text(encoding="utf-8"))
-    entries, terms = journal(), lexicon()
+    entries, terms, receipts = journal(), lexicon(), proof()
     last = git("log", "-1", "--format=%H|%cI|%s").strip().split("|", 2)
     work = [s for s in sessions if s["mode"] != "maintenance"]
     stats = {
@@ -149,6 +159,8 @@ def collect(offline=False):
         "commits": int(git("rev-list", "--count", "HEAD").strip() or 0),
         "journal_entries": len(entries),
         "lexicon_terms": len(terms),
+        "replays": len(receipts["replays"]),
+        "caught_defects": len(receipts["defects"]),
     }
     last_session_day = max((s["timestamp"][:10] for s in sessions if s["timestamp"]), default="")
     last_journal_day = entries[-1]["date"] if entries else ""
@@ -157,14 +169,15 @@ def collect(offline=False):
     return {"version": 1, "generated_from": {"commit": last[0] if last else "",
                                               "committed_at": last[1] if len(last) > 1 else ""},
             "stats": stats, "sessions": sessions, "rejected": rejected_ideas(),
-            "external": github_signals(offline), "journal": entries, "lexicon": terms, **curated}
+            "external": github_signals(offline), "journal": entries, "lexicon": terms,
+            "proof": receipts, **curated}
 
 
 # ---------- rendering ----------
 
 E = html.escape
 AGENT = {"agent1": "Agent 1", "agent2": "Agent 2 · Opus", "system": "Lab gate",
-         "admin": "Owner's administrator"}
+         "admin": "Owner's administrator", "both": "Both agents"}
 
 
 def ref_links(refs):
@@ -218,6 +231,62 @@ def render_failures(data):
                      f'<h3>{E(c["title"])}</h3><p>{E(c["text"])}</p>{ref_links(c["refs"])}</li>')
     rejected = "".join(f"<li>{E(r)}</li>" for r in data["rejected"])
     return "\n".join(cards), rejected
+
+
+def win_figure(m):
+    b, a = m["baseline_value"], m["intervention_value"]
+    if m["unit"] == "bytes" and b:
+        big = f"{'−' if a < b else '+'}{abs(round((b - a) / b * 100))}%"
+        bars = (f'<span class="bars"><i style="width:100%"></i>'
+                f'<i class="after" style="width:{max(a / b * 100, 1.5):.1f}%"></i></span>')
+        return big, f"{b:,} → {a:,} bytes", bars
+    return f"{b} → {a}", f'{m["unit"]} ({m["direction"]} is better)', ""
+
+
+def render_proof(p):
+    wins = []
+    for w in p["wins"]:
+        big, small, bars = win_figure(w["measure"])
+        wins.append(
+            f'<article class="receipt {w["who"]}"><p class="big">{E(big)}</p><p class="small">{E(small)}</p>{bars}'
+            f'<h3>{E(w["title"])}</h3><p>{E(w["problem"])}</p>'
+            f'<p class="meta"><span class="who">{AGENT[w["who"]]}</span> · sessions '
+            + ", ".join(f'<a href="#session-{n}">#{n:03d}</a>' for n in w["sessions"])
+            + f'</p><details><summary>Fine print</summary><p>{E(w["caveat"])}</p>'
+            f'<p class="refs">{ref_links([w["report"]] + [r for r in w["refs"] if r != w["report"]])}</p></details></article>')
+
+    def pane(side, x):
+        silent = x["exit_code"] == 0 and x["output_excerpt"].startswith("(no output")
+        badge = f'exit {x["exit_code"]}' + (" · said nothing" if silent else "")
+        cls = "bad" if silent or (side == "before" and x["exit_code"]) else ("ok" if side == "after" else "")
+        note = f' <span class="cn">{E(x["commit_note"])}</span>' if x.get("commit_note") else ""
+        return (f'<figure class="term {side}"><figcaption><b>{side}</b> at <a href="{GITHUB}/commit/{E(x["commit"])}">'
+                f'<code>{E(x["commit"])}</code></a>{note}<span class="exit {cls}">{E(badge)}</span></figcaption>'
+                f'<pre><span class="ps">$ </span>{E(x["command"])}\n{E(x["output_excerpt"])}</pre></figure>')
+
+    replays = []
+    for i, r in enumerate(p["replays"]):
+        m = r["metric"]
+        metric = (f'<p class="metric">{E(m["name"])}: <b>{E(str(m["before"]))}</b> → <b>{E(str(m["after"]))}</b></p>'
+                  if m else "")
+        replays.append(f'<article class="replay {r["who"]}"><header><span class="who">{AGENT[r["who"]]}</span>'
+                       f'<h3>{E(r["title_plain"])}</h3></header><p>{E(r["why_it_matters_plain"])}</p>'
+                       f'<div class="rw">{pane("before", r["before"])}{pane("after", r["after"])}</div>{metric}'
+                       f'<p class="fine">{E(r["notes"])}</p></article>')
+    shown, more = replays[:3], replays[3:]
+    replay_html = "\n".join(shown) + (f'<details class="more"><summary>{len(more)} more replays</summary>'
+                                        + "\n".join(more) + "</details>" if more else "")
+    found = {}
+    for d in p["defects"]:
+        found[d["found_by"]] = found.get(d["found_by"], 0) + 1
+    defects = "\n".join(
+        f'<li class="{d["found_by"]}"><span class="who">found by {AGENT[d["found_by"]]} · #{d["session"]:03d}'
+        + (f' → fixed #{d["fixed_in"]:03d}' if d["fixed_in"] else "") + f'</span>'
+        f'<h3>{E(d["title"])}</h3><p>{E(d["risk"])}</p><p class="refs">{ref_links(d["refs"])}</p></li>'
+        for d in p["defects"])
+    unproven = "\n".join(f'<li>{E(u["text"])} {ref_links(u["refs"])}</li>' for u in p["unproven"])
+    tally = " · ".join(f'{AGENT[k]}: {v}' for k, v in sorted(found.items()))
+    return "\n".join(wins), replay_html, defects, tally, unproven
 
 
 def render_human(items):
@@ -319,6 +388,7 @@ def render(data):
         "EXTERNAL": E(external_line(data["external"])),
     }
     subs["JOURNAL"], subs["LEXICON"] = render_inside(data)
+    subs["WINS"], subs["REPLAYS"], subs["DEFECTS"], subs["DEFECT_TALLY"], subs["UNPROVEN"] = render_proof(data["proof"])
     latest_day = data["journal"][-1]["day"] if data["journal"] else 0
     subs["JOURNAL_DAY"] = str(latest_day)
     subs.update({"S_" + k.upper(): str(v) for k, v in st.items()})

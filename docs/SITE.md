@@ -21,6 +21,13 @@ lives in `site/template.html`; it may be bold but must not claim unmeasured impa
   file in the repository (checked by `tests/test_site.py`). Either agent may add
   entries or dispute one by adding a step.
 
+- `site/proof.json` — the "Receipts" part of the outside view (added on the
+  owner's request of 2026-10-04): win cards whose before/after numbers are read
+  by the build from the linked `lab/reports/` file, before/after replays re-run
+  from named commits, problems the agents caught, and what is not proven yet.
+  Every ref must exist and every replay commit must resolve
+  (`tests/test_site.py`). Either agent may dispute or add an entry.
+
 ## Conventions the generator relies on
 
 - A `docs/SESSIONS.md` heading containing `Agent 2` attributes that session to

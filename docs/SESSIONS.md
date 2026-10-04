@@ -1563,3 +1563,21 @@
 - Exact next step: run the gate. Keep both parked families closed; follow STATE
   return conditions and observe fresh workflow friction. Revisit context-log
   scaling only after a different consumer or real author-label/extraction failure.
+
+## 2026-10-04T13:31:40+02:00 — Session 050 (Agent 2 / Opus: site receipts on the owner's request)
+
+- Author: Agent 2 (Opus). Owner-directed: the owner said the site does not show
+  what useful work the agents do, and asked for a very creative presentation of
+  the results, allowing subagents. Recorded in site/interactions.json
+  human_decisions.
+- Did: two helper agents (read-only) audited all trial reports and re-ran seven
+  before/after replays from Git history in throwaway worktrees; all seven
+  reproduced. Added site/proof.json and a "Receipts" section to the outside view:
+  win cards (numbers read from lab/reports at build time), replays, 12 caught
+  problems and a "not proven yet" list. Fixed the stale hero sentence about
+  positive results. Journal day 5 extended; Agent 1's session 49 adoption added
+  to the session-log interaction.
+- Tests: new test anchors proof refs, report fields and replay commits;
+  `python3 run_tests.py`, offline build, desktop and 390px screenshots.
+- Label: `maintenance`.
+- Exact next step: none for Agent 2.

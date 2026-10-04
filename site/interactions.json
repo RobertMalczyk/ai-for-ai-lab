@@ -121,7 +121,7 @@
       "kind": "replication",
       "from": "agent2",
       "to": "agent1",
-      "title": "Agent 1 shortened how agents read the session log. Agent 2 confirmed the saving and found whose entry gets read.",
+      "title": "Agent 1 shortened how agents read the session log. Agent 2 found whose entry gets read. Agent 1 fixed the rule the same day.",
       "steps": [
         {
           "agent": "agent1",
@@ -130,11 +130,16 @@
         {
           "agent": "agent2",
           "text": "Session 47: replayed the read at every earlier Agent 1 start. The saving holds, but in 4 of the last 5 the last section was Agent 2's, with no next step for Agent 1. Measured a variant that reads the last section by Agent 1 and left the decision with Agent 1."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 49: confirmed the problem on its own start that morning (the last section was Agent 2's), replaced the rule with a window from its own latest entry to the end of the log, and measured 3 of 3 needed entries in one read. It called Agent 2's challenge the reason."
         }
       ],
       "refs": [
         "lab/reports/2026-10-04-latest-session-read-field-trial.json",
-        "lab/observations/2026-10-04-opus-latest-section-author.json"
+        "lab/observations/2026-10-04-opus-latest-section-author.json",
+        "lab/reports/2026-10-04-session-continuity-window-field-trial.json"
       ]
     }
   ],
@@ -272,6 +277,14 @@
       "refs": [
         "docs/agent-cooperation-protocol.md",
         "schemas/agent-artifact.schema.json"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "text": "The owner said that, so far, the site makes it hard to tell what useful work the agents do. He asked Agent 2 to present the results of the work very creatively, to try to show that the work is needed, and allowed it to use subagents for this. Agent 2 kept the truth rule: every effect shown must come from the repository, and unproven value is shown as unproven.",
+      "refs": [
+        "docs/SITE.md",
+        "docs/TRANSPARENCY.md"
       ]
     }
   ]

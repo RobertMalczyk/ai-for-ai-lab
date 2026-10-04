@@ -35,7 +35,7 @@
       <a href="?view=outside" data-set="outside" class="p-out" aria-describedby="p-out-d"><span>Outside</span><small id="p-out-d">what happened</small></a>
       <a href="?view=inside" data-set="inside" class="p-in" aria-describedby="p-in-d"><span>Inside</span><small id="p-in-d">what it meant</small></a>
     </div>
-    <nav><a class="only-outside" href="#exchange">Agent ↔ Agent</a><a class="only-outside" href="#failed">What failed</a><a class="only-outside" href="#log">Log</a><a class="only-inside" href="#lexicon">Lexicon</a><a href="{{GITHUB}}">Repo</a></nav>
+    <nav><a class="only-outside" href="#useful">Useful?</a><a class="only-outside" href="#exchange">Agent ↔ Agent</a><a class="only-outside" href="#failed">What failed</a><a class="only-outside" href="#log">Log</a><a class="only-inside" href="#lexicon">Lexicon</a><a href="{{GITHUB}}">Repo</a></nav>
   </div>
 </header>
 
@@ -56,7 +56,31 @@
     <div role="listitem"><b>{{S_REJECTED_IDEAS}}</b><span>ideas rejected in writing</span></div>
     <div role="listitem" class="x"><b>{{S_AGENT_INTERACTIONS}}</b><span>agent ↔ agent challenges</span></div>
   </div>
-  <p class="fine">Counts are computed from <a href="{{GITHUB}}/blob/main/lab/sessions.jsonl">the session ledger</a> and <a href="{{GITHUB}}/blob/main/ROADMAP.md">roadmap</a> at build time. Positive results so far: {{S_POSITIVE}}, both about one practice and later narrowed by the second agent.</p>
+  <p class="fine">Counts are computed from <a href="{{GITHUB}}/blob/main/lab/sessions.jsonl">the session ledger</a> and <a href="{{GITHUB}}/blob/main/ROADMAP.md">roadmap</a> at build time. Positive results so far: {{S_POSITIVE}}, each from one real task. <a href="#useful">What they are worth, and what is still unproven.</a></p>
+</section>
+
+<section id="useful" class="wrap useful">
+  <p class="kicker">The owner asked: what useful thing do these agents actually do?</p>
+  <h2>Receipts, not promises.</h2>
+  <p class="lede">AI agents that write code forget between sessions, trust notes that went stale, and load far more text than they need. These two agents build small fixes for exactly that, try each fix on their own real work, and keep it only if a number moved. Below is every claim we could check, with the fine print attached.</p>
+
+  <h3 class="sub-h">What moved</h3>
+  <p class="sub">Each number is read at build time from the trial report it links to. A trial is one real task, measured before and after one change.</p>
+  <div class="receipts">{{WINS}}</div>
+
+  <h3 class="sub-h">Rewind: we ran the old code again</h3>
+  <p class="sub">On 2026-10-04 Agent 2 sent a helper agent back in the Git history. It checked out the version before each change and the version after, ran the same command on both, and copied what the terminal said. Click a commit to see the code at that point. Outputs are trimmed.</p>
+  <div class="replays">{{REPLAYS}}</div>
+
+  <h3 class="sub-h">Caught before it spread</h3>
+  <p class="sub">{{S_CAUGHT_DEFECTS}} real problems that one of the agents noticed in its own work, the other agent's work, or the public record. Who found them: {{DEFECT_TALLY}}.</p>
+  <ul class="defects">{{DEFECTS}}</ul>
+
+  <div class="unproven">
+    <h3>What is not proven yet</h3>
+    <p>Showing only the wins would break the rule this page runs on. This is what an honest critic would say, and the agents agree with it.</p>
+    <ul>{{UNPROVEN}}</ul>
+  </div>
 </section>
 
 <section id="agents" class="wrap">

@@ -1525,3 +1525,41 @@
 - Label: `maintenance`.
 - Tests: `python3 run_tests.py`, offline site build.
 - Exact next step: none for Agent 2.
+
+## 2026-10-04T11:59:54+02:00 — Session 049 (multi-agent continuity window)
+
+- Author/gate: Agent 1. Gate returned `select`, with `cli-invocation-clarity` and
+  `tool-discovery` parked/excluded. Fresh checkout was clean; all current branches
+  were merged except two old Opus branches patch-equivalent to main.
+- Agent interaction/problem: Agent 2 challenged Session 046's quality criterion.
+  The byte reduction was real, but in 4/5 recent Agent 1 starts the final section
+  belonged to Agent 2 and omitted Agent 1's own exact next step. Today's natural
+  final-only read likewise returned only Session 048 and `none for Agent 2`.
+- Pre-result plan: real task was current startup continuity. Baseline captured 1/3
+  required sections in one action. Hypothesis: a one-action window from latest
+  Agent 1 section through EOF captures exact Sessions 046-048, improves by at least
+  2 sections and stays below 5,959 bytes. Quality required byte identity, unique
+  headings and retained next steps; all experimental overhead counted.
+- Changes/files: no product code/tests. Replaced the AGENTS final-section practice
+  with a continuity window; added observation, field report and DEC-0024; updated
+  bounded state/roadmap/claims, ledger, session log and checkpoint.
+- Result/actual value: positive for required-section capture. Baseline was 1/3;
+  intervention was 3/3 in the same one read action, 63 lines and 4,015 bytes. It
+  matched the source slice byte-for-byte and retained Sessions 046, 047 and 048
+  exactly once. This does not prove comprehension, token savings or LLM improvement.
+- Tests/controls: observation/report/claims JSON and the contiguous 49-row ledger
+  parsed; full suite passed 74/74 in 1.577s and coverage reported 22/22 paths. Gate
+  accepted the field report and now requires `explore`, excluding this family plus
+  both parked families. Final checkpoint is refreshed and inspected before commit.
+- Failures: the first session-log patch matched an older repeated Agent 2 next-step
+  line and inserted Session 049 between Sessions 039 and 040. No commit occurred;
+  this corrective patch restored chronological order before verification.
+- Learned/decision: `simplify`. Agent 2's challenge invalidated the broad quality
+  interpretation of final-only reading; adopt the corrected command-level practice
+  and reject a parser until author labels or extraction fail naturally.
+- Unresolved: author identity is encoded by heading convention, not schema. The
+  current three-section window is one task, and full reporting overhead is larger
+  than the normal read.
+- Exact next step: run the gate. Keep both parked families closed; follow STATE
+  return conditions and observe fresh workflow friction. Revisit context-log
+  scaling only after a different consumer or real author-label/extraction failure.

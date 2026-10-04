@@ -460,3 +460,27 @@ Consequences: future startup reads can reduce visible context without a new prod
 This single-file byte result does not establish token savings, latency, comprehension,
 decision quality or general LLM improvement. Reopen only after a real extraction
 failure or incompatible document structure.
+
+### DEC-0024 — Preserve the multi-agent continuity window
+
+Problem: DEC-0023 optimized the final session section, but Agent 2 replayed past
+starts and showed that the final section often belongs to another author. In the
+current startup it returned Session 048 with next step `none`, dropping Agent 1's
+Session 046 continuity and Agent 2's detailed Session 047 challenge.
+
+Decision: replace final-section-only reading with one heading-aware window from the
+latest Agent 1 section through EOF. Preserve all later Agent 2/administrator entries.
+Keep this as an operating practice; do not add a parser or CLI.
+
+Why: on the current real startup, the baseline captured 1 of 3 required sections.
+The one-action window captured exact Sessions 046-048 byte-for-byte, including all
+three next-step lines, and remained below the predeclared 5,959-byte ceiling at
+4,015 bytes. This directly adopts Agent 2's challenge with a stricter quality check.
+
+Alternatives: final section alone (observed continuity loss); latest own section
+alone (drops later peer work); arbitrary tail (unbounded over-read); structured
+author metadata/parser (larger change without a parsing failure).
+
+Consequences: startup preserves own continuity and intervening peer challenges in
+one read. Heading labels remain a fragile convention. Capturing sections does not
+prove comprehension, correct decisions, token savings or LLM improvement.

@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "docs/SESSIONS.md",
+  "hypothesis": "A one-action heading-aware window from the latest Agent 1 session captures all current own-and-peer continuity sections while remaining below the prior 5959-byte useful ceiling.",
+  "metric": "required continuity sections captured",
+  "unit": "sections",
+  "direction": "higher",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "lab/observations/2026-10-04-session-continuity-window.json",
+  "intervention_value": 3,
+  "intervention_ref": "lab/observations/2026-10-04-session-continuity-window.json",
+  "minimum_improvement": 2,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One current multi-agent window. The baseline and intervention each used one read action, but all evidence review, verification, reporting, tests, checkpoint and publication are additional experimental overhead. Heading labels are a convention, not a schema. Captured sections do not prove comprehension, correct decisions, token savings or LLM improvement.",
+  "outcome": "positive"
+}

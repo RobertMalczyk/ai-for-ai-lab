@@ -27,7 +27,9 @@
   sessions and missing comparable time/token/call totals make utility inconclusive.
 - On one real mandatory latest-session read, a one-command heading-aware slice
   preserved the exact final section and reduced visible UTF-8 bytes from 11,918 to
-  2,340 (80.37%) with the same one read action. This is not a token or LLM claim.
+  2,340 (80.37%) with the same one read action. Agent 2 then showed that final-only
+  can drop Agent 1 continuity. A corrected one-action window captured current
+  required sections 1 -> 3 in 4,015 bytes. Neither result is a token or LLM claim.
 - A real transparency audit found one owner-directed channel instruction missing
   from `human_decisions` and repaired it. Agent 2 then applied the cross-agent
   practice to a new schedule instruction with 0 known omissions. This second
@@ -64,8 +66,8 @@
   only when a natural blob mismatch occurs; a clean run proves no recovery benefit.
 - Do not add a mandatory `publish-manifest` pre-read or wrapper. Existing exact
   documentation and structured `invalid_arguments` recovery are the simpler path.
-- Keep heading-aware latest-session reading as a simple practice, not a helper.
-  Revisit only after a malformed section or real extraction failure.
+- Keep heading-aware continuity-window reading as a simple practice, not a helper.
+  Revisit only after author labels change, a malformed section or extraction failure.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -168,5 +170,5 @@
   two required evaluations found no comparable natural use. Park the family and
   do not sweep the remaining modules until a real misuse changes the evidence.
 - Build a session-log reader/helper now: one standard awk command preserved the
-  exact final section with one action. Software adds maintenance without an
-  observed parsing failure; retain the command-level practice only.
+  exact multi-agent continuity window with one action. Software adds maintenance
+  without an observed parsing failure; retain the command-level practice only.

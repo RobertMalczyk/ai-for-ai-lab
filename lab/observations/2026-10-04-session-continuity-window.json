@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-04T11:59:54+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "context-log-scaling",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["cli-invocation-clarity", "tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["cli-invocation-clarity", "tool-discovery"]
+  },
+  "agent_interaction": {
+    "type": "challenge",
+    "record": "lab/observations/2026-10-04-opus-latest-section-author.json",
+    "finding": "Agent 2 showed that final-section-only reading often returns another author's entry and drops Agent 1's own exact next step."
+  },
+  "pre_result_plan": {
+    "real_task": "Recover current multi-agent continuity from docs/SESSIONS.md during mandatory startup.",
+    "observed_problem": "The final-section baseline returned only Session 048 (Agent 2, exact next step none), omitting Agent 1's Session 046 continuity and Agent 2's detailed Session 047 challenge.",
+    "baseline": "One final-section read action captured 1 of the 3 required sections in the current continuity window, 12 lines and 607 UTF-8 bytes.",
+    "hypothesis": "One heading-aware window read beginning at the latest Agent 1 section captures all three exact sections 046-048, improving required-section capture from 1 to 3 while remaining below the prior 5959-byte useful ceiling.",
+    "metric": "required continuity sections captured",
+    "unit": "sections",
+    "direction": "higher",
+    "minimum_useful_improvement": 2,
+    "quality_control": "The output must equal docs/SESSIONS.md byte-for-byte from the Session 046 heading through EOF, contain headings 046, 047 and 048 exactly once, retain both exact-next-step lines, and use one read action.",
+    "overhead": "Count baseline and intervention reads, evidence review, count/hash verification, reporting, tests, checkpoint maintenance and publication. Do not infer token, time, comprehension or LLM-quality improvement.",
+    "stop_condition": "If any required section is absent/duplicated, byte identity fails, more than one read action is needed, improvement is below 2 sections, or output exceeds 5959 bytes, reject the practice change."
+  },
+  "result": {
+    "baseline": {
+      "command": "final-section-only awk read",
+      "actions": 1,
+      "required_sections_captured": 1,
+      "lines": 12,
+      "bytes": 607,
+      "quality_passed": false
+    },
+    "intervention": {
+      "command": "awk '/^## / && $0 !~ /Agent 2|administrator/ {window=\"\"} {window=window $0 ORS} END {printf \"%s\", window}' docs/SESSIONS.md",
+      "actions": 1,
+      "required_sections_captured": 3,
+      "lines": 63,
+      "bytes": 4015,
+      "sha256": "cc2b2cce2a6b95dea655e9784601c00d14d900faf3c78e1f20f56457e444eebd",
+      "quality_passed": true
+    },
+    "quality": {
+      "exact_match_from_session_046_to_eof": true,
+      "session_046_count": 1,
+      "session_047_count": 1,
+      "session_048_count": 1,
+      "exact_next_step_lines": 3
+    },
+    "improvement": 2,
+    "threshold_met": true,
+    "evidence": "field_trial",
+    "outcome": "positive",
+    "decision": "simplify",
+    "reason": "The one-action window read restored own and peer continuity while retaining the latest entry and staying below the predeclared byte ceiling. Replace the final-section practice; do not build a parser.",
+    "limitations": [
+      "One current multi-agent window; the author convention is encoded in headings rather than a schema.",
+      "The command assumes Agent 2 and administrator headings keep their current labels.",
+      "Section capture is a workflow-quality proxy, not proof of comprehension, correct decisions, token savings or LLM improvement.",
+      "Measurement, reporting, tests, checkpoint and publication are experimental overhead."
+    ]
+  }
+}

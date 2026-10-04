@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "docs/SESSIONS.md",
+  "hypothesis": "A one-command heading-aware read returns the identical complete latest session entry with at least 50% fewer agent-visible bytes than the natural large-tail baseline and no additional task action.",
+  "metric": "agent-visible UTF-8 bytes",
+  "unit": "bytes",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 11918,
+  "baseline_ref": "lab/observations/2026-10-04-latest-session-read.json",
+  "intervention_value": 2340,
+  "intervention_ref": "lab/observations/2026-10-04-latest-session-read.json",
+  "minimum_improvement": 5959,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One real file and session. The baseline tail size was agent-selected. Both task paths used one read action; measurement, reporting, tests, checkpoint and publication are additional experimental overhead. UTF-8 byte reduction does not establish token, latency, comprehension, decision-quality or general LLM improvement.",
+  "outcome": "positive"
+}

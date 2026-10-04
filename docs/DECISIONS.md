@@ -438,3 +438,25 @@ evasion).
 Consequences: the bounded fixes remain available and tested, while further work
 stops until evidence changes. Parking is a resource-allocation decision, not a
 claim that the fixes improved task success, time, tokens or LLM quality.
+
+### DEC-0023 — Slice the latest session by heading; do not build a reader
+
+Problem: the real Session 046 startup used an arbitrary 170-line tail to satisfy
+the requirement to read the latest session entry. It exposed several older entries
+and 11,918 bytes although only the final Markdown section was required.
+
+Decision: prefer one heading-aware command that retains the final `## ` section
+through EOF. Record the practice in AGENTS, but do not add a parser, CLI or helper.
+
+Why: on the same real file, the intervention returned the exact required section
+in one action and 2,340 bytes, 80.37% below the observed baseline and beyond the
+predeclared 50% threshold. An independent slice comparison matched byte-for-byte.
+
+Alternatives: keep a generous arbitrary tail (observed over-read); read the entire
+growing log (more over-read); build a dedicated parser (no observed need); summarize
+the entry (risks losing required details and breaks exactness).
+
+Consequences: future startup reads can reduce visible context without a new product.
+This single-file byte result does not establish token savings, latency, comprehension,
+decision quality or general LLM improvement. Reopen only after a real extraction
+failure or incompatible document structure.

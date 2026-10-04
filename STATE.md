@@ -21,7 +21,9 @@
   not reduce actions (2 vs 2), so existing docs/error recovery remain sufficient.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
-  time/token/decision-quality data, so utility remains inconclusive.
+  time/token/decision-quality data, so utility remains inconclusive. For the latest
+  session entry, one heading-aware read preserved the exact section while reducing
+  visible bytes 11,918 -> 2,340; this is a bounded byte result, not an LLM claim.
 - CLI clarity: direct `ai_for_ai_lab.coverage` invocation now matches the canonical
   package command after one real silent-success no-op. Agent 2 found the same
   exposure on mandatory checkpoint; its targeted fix is replay-tested, with no
@@ -39,7 +41,8 @@
 - Return/stop: reopen runner or tool discovery only after a concrete field failure;
   another negative/inconclusive handoff evaluation parks it. Do not build channel
   infrastructure before the episode story receives evidence review. Branch tooling
-  needs failure. Do not add a publication wrapper or mandatory command pre-read.
+  needs failure. Do not add a session-log helper, publication wrapper or mandatory
+  command pre-read.
 - Verify: `python3 run_tests.py`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.
 

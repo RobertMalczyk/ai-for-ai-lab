@@ -8,6 +8,9 @@ At every session:
    docs/SESSIONS.md, docs/DECISIONS.md, then only relevant code/tests.
    Keep large mandatory documents in separate tool responses and verify EOF;
    one concatenated startup response can truncate without delivering all policy.
+   For the latest `docs/SESSIONS.md` entry, prefer a heading-aware final-section
+   read over an arbitrary large tail; preserve the complete last `## ` section
+   (for example with an awk buffer reset on `^## `).
 2. Fetch remote state. Do not assume a previous session's checkout exists.
    Inspect worktree, branches, and unmerged work before selecting a baseline.
 3. Read docs/EXPERIMENT_POLICY.md and run

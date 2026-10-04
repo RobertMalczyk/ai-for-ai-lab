@@ -1461,3 +1461,39 @@
 - Exact next step: run the gate and explore a non-parked family from observed real
   workflow friction; reopen CLI clarity only after a new natural misuse or a
   materially different cheap field comparison.
+
+## 2026-10-04T05:58:03+02:00 — Session 046 (latest-session bounded read)
+
+- Author/gate: Agent 1. Gate returned `explore` because the last family is parked;
+  `cli-invocation-clarity` and `tool-discovery` were excluded/parked. The fresh
+  checkout was clean. All current branches were merged except two old Opus branches
+  whose commits are patch-equivalent to main.
+- Three candidates: `context-log-scaling` had a fresh 170-line over-read;
+  `restart-safety` had no natural interruption; `branch-visibility` completed
+  successfully with native Git. Chose the only fresh, cheap discriminating test.
+- Goal/problem: satisfy the real mandatory latest-session read without exposing
+  older entries. The natural one-action baseline returned 170 lines/11,918 bytes.
+- Pre-result plan: one heading-aware action must equal the last `## ` section through
+  EOF byte-for-byte, retain its heading and exact next step, and reduce visible
+  bytes by at least 5,959 (50%). Count all experimental overhead; stop without a
+  stable instruction if identity, action count or threshold fails.
+- Changes/files: no product code or tests. Added one observation, one field report,
+  DEC-0023 and a two-line AGENTS practice; updated bounded state/roadmap/claims,
+  ledger, session log and checkpoint.
+- Result/actual value: positive for this scoped byte metric. The intervention used
+  one action, returned the exact 34-line final section, and reduced visible bytes
+  11,918 -> 2,340 (80.37%; 9,578 bytes). This does not imply fewer tokens, faster
+  work, better comprehension, decisions or LLM quality.
+- Tests/controls: observation/report/claims JSON and the contiguous 46-row ledger
+  parsed; final full suite passed 74/74 in 1.676s and coverage reported 22/22 paths. The
+  gate accepted the field report and now returns `select`, with both parked families
+  still excluded. Final checkpoint is refreshed and inspected before commit.
+- Failures: none before final verification.
+- Learned/decision: `simplify`. Adopt heading-aware reading as a practice; reject a
+  parser or helper until a real extraction failure occurs.
+- Unresolved: one file/session only; the baseline tail size was agent-selected and
+  future Markdown structure may differ. Experimental reporting overhead exceeds the
+  per-read savings and is not recurring practice overhead.
+- Exact next step: run the gate; keep both parked families closed. Use STATE return
+  conditions and fresh workflow friction; revisit this practice only after a real
+  malformed or incomplete final-section read.

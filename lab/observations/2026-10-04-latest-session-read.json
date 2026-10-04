@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-04T05:58:03+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "context-log-scaling",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": ["cli-invocation-clarity", "tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["cli-invocation-clarity", "tool-discovery"]
+  },
+  "candidates": [
+    {
+      "family": "context-log-scaling",
+      "observed_friction": "The real mandatory startup read used `tail -n 170 docs/SESSIONS.md`, exposing 170 lines although only the final Markdown session section was required.",
+      "assumption_to_challenge": "An arbitrary large tail is an adequate bounded way to obtain the latest entry.",
+      "simpler_alternative": "Use one heading-aware awk command that retains only the final `## ` section.",
+      "problem_evidence": "Current Session 046 startup transcript and docs/SESSIONS.md",
+      "potential_value": "Fewer agent-visible bytes with the complete required entry and no extra action.",
+      "cheapest_falsifying_test": "Compare line/byte counts and exact final-section identity on the current real startup file.",
+      "cost": "One intervention read plus local count/hash checks.",
+      "novelty": "Different family from parked CLI/tool discovery and from prior combined-document truncation work."
+    },
+    {
+      "family": "restart-safety",
+      "observed_friction": "No natural interrupted side effect occurred in this startup.",
+      "assumption_to_challenge": "A restart receipt is needed before another duplicate write is observed.",
+      "simpler_alternative": "Continue explicit publication receipts and observe a real interruption.",
+      "problem_evidence": "No current trace; hypothesis only.",
+      "potential_value": "Could prevent duplicate external writes.",
+      "cheapest_falsifying_test": "Wait for a naturally interrupted publication rather than simulate one.",
+      "cost": "Unavailable in this bounded session.",
+      "novelty": "Unbuilt family, but no evidence today."
+    },
+    {
+      "family": "branch-visibility",
+      "observed_friction": "The native branch audit completed successfully and found only two patch-equivalent old branches.",
+      "assumption_to_challenge": "Native Git classification remains sufficient as branch count grows.",
+      "simpler_alternative": "Keep the existing native commands until they fail a real task.",
+      "problem_evidence": "Current branch audit succeeded; no fresh failure.",
+      "potential_value": "A future helper might reduce audit work.",
+      "cheapest_falsifying_test": "Compare only after a wrong-baseline or audit failure.",
+      "cost": "No discriminating test available now.",
+      "novelty": "Known rejected helper direction without new evidence."
+    }
+  ],
+  "selection": {
+    "chosen_family": "context-log-scaling",
+    "reason": "It is the only candidate with fresh real-task friction and a one-command discriminating test."
+  },
+  "pre_result_plan": {
+    "real_task": "Read the latest docs/SESSIONS.md entry during mandatory startup.",
+    "observed_problem": "The natural baseline exposed 170 lines and 11918 UTF-8 bytes to obtain one final section.",
+    "baseline": "One `tail -n 170` action: 170 lines, 11918 bytes.",
+    "hypothesis": "One heading-aware read returns the identical complete final section with at least 50% fewer bytes and no additional task action.",
+    "metric": "agent-visible UTF-8 bytes",
+    "unit": "bytes",
+    "direction": "lower",
+    "minimum_useful_improvement": 5959,
+    "quality_control": "The intervention must equal the file slice from its last `## ` heading through EOF byte-for-byte, retain the Session 045 heading and exact-next-step tail, and use one read action.",
+    "overhead": "Count command setup, the read action, count/hash verification, reporting, tests, checkpoint maintenance and publication; do not translate bytes into token, time or LLM-quality claims.",
+    "stop_condition": "If identity fails, the intervention needs more than one read action, or savings are below 50%, reject the practice and change no stable instruction."
+  },
+  "result": {
+    "baseline": {
+      "command": "tail -n 170 docs/SESSIONS.md",
+      "actions": 1,
+      "lines": 170,
+      "bytes": 11918
+    },
+    "intervention": {
+      "command": "awk '/^## / {section=\"\"} {section=section $0 ORS} END {printf \"%s\", section}' docs/SESSIONS.md",
+      "actions": 1,
+      "lines": 34,
+      "bytes": 2340,
+      "sha256": "fc7be796f022378cb7bf74b8386a9c744d2263a4ae174e531562916092977813"
+    },
+    "quality": {
+      "exact_match_from_last_heading_to_eof": true,
+      "session_heading_retained": true,
+      "exact_next_step_retained": true
+    },
+    "saved_bytes": 9578,
+    "saved_percent": 80.37,
+    "threshold_met": true,
+    "evidence": "field_trial",
+    "outcome": "positive",
+    "decision": "simplify",
+    "reason": "The one-command intervention retained the exact required section and exceeded the predeclared byte threshold without adding a task action; adopt the practice as an instruction, not a helper.",
+    "limitations": [
+      "One file and one session; section size and tail choice vary over time.",
+      "UTF-8 bytes are not token counts and do not establish faster work, comprehension, decision quality or broader LLM improvement.",
+      "The baseline tail size was an agent judgment, not a fixed repository command.",
+      "Verification and reporting overhead exceed the saved bytes in this experimental session; future use avoids that measurement overhead."
+    ]
+  }
+}

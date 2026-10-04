@@ -80,7 +80,9 @@
       "run_tests.py",
       "lab/observations/2026-09-30-startup-read-boundary.json",
       "lab/observations/2026-10-01-startup-read-field-trace.json",
-      "lab/reports/2026-10-01-startup-read-field-trial.json"
+      "lab/reports/2026-10-01-startup-read-field-trial.json",
+      "lab/observations/2026-10-04-latest-session-read.json",
+      "lab/reports/2026-10-04-latest-session-read-field-trial.json"
     ]
   },
   {

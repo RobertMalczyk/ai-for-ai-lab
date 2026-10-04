@@ -508,3 +508,26 @@ Consequences: this is a bounded same-agent, different-session comparison with
 order and learning confounds. It supports a cheap editing practice, not claims
 about time, tokens, general patch reliability or LLM quality. Reopen only after a
 natural repeated failure or a structure without a unique tail anchor.
+
+### DEC-0026 — Keep volatile test counts out of current state
+
+Problem: mandatory `STATE.md` still claimed 74 passing tests after the repository
+suite grew to 75. The stale number survived Agent 1 and Agent 2 updates because
+neither session's actual change naturally touched the otherwise unrelated line.
+
+Decision: remove the exact test count from STATE and retain the canonical
+`python3 run_tests.py` verification command. Keep actual counts in dated session
+records where their execution context remains explicit.
+
+Why: the current real startup exposed one stale numeric assertion; the full suite
+confirmed 75 tests while STATE said 74. The edit reduced known contradictions from
+1 to 0 without removing the agent's route to recompute the current result.
+
+Alternatives: update 74 to 75 (repeats the same drift risk); automate the count in
+STATE (generated-file churn and new maintenance); omit test status entirely (loses
+the verification route); treat checkpoint freshness as semantic validation (false).
+
+Consequences: STATE becomes less precise about a past run but more stable as a
+current summary. This one-document result does not prove better decisions, time,
+tokens or LLM quality. Reopen only after another natural stale-result contradiction
+or a case where an exact current number is required and cannot be cheaply derived.

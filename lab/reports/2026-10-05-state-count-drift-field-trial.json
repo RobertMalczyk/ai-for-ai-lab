@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "STATE.md",
+  "hypothesis": "Removing a volatile exact test count while retaining its canonical verification command eliminates the known stale state assertion without reducing verifiability.",
+  "metric": "known stale exact numeric assertions in STATE.md",
+  "unit": "assertions",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "lab/observations/2026-10-05-state-count-drift.json",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/2026-10-05-state-count-drift.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One numeric claim in one mandatory summary. The edit trades an immediately visible historical count for a command that recomputes current status. Tests, reporting, checkpoint and publication are overhead. Contradiction count does not establish better decisions, time, tokens or LLM quality.",
+  "outcome": "positive"
+}

@@ -2,7 +2,7 @@
 
 - Exists: handoff/checkpoint tools, experiment gate, test entrypoint and a
   repository-grounded publisher-plan validator plus a read-only connector
-  publication manifest; 74 passing tests.
+  publication manifest. Run `python3 run_tests.py` for the current suite result.
 - Value: names-first/exact-second remains a practice, not a utility claim. It was
   81.46% smaller than one verb-targeted query, but that query returned 41 irrelevant
   entries and exact-known retrieval was 2,145 bytes smaller. Checkpoint remains
@@ -28,6 +28,8 @@
 - Editing: one repeated-line log append needed 2 patch actions; the next real
   append used a unique latest-heading/tail anchor and passed placement in 1. Keep
   the native practice; one ordered-log pair does not justify a writer or broad gain.
+- Status claims: removed one stale exact test count (74 while the suite ran 75).
+  Keep volatile results in session evidence and retain the canonical verify command.
 - CLI clarity: direct `ai_for_ai_lab.coverage` invocation now matches the canonical
   package command after one real silent-success no-op. Agent 2 found the same
   exposure on mandatory checkpoint; its targeted fix is replay-tested, with no
@@ -41,6 +43,8 @@
   the frozen manifest on connector publication; extend it only after a real miss.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
+- Status return condition: revisit only after another mandatory summary contains
+  a naturally stale exact result that cannot be replaced by its verification source.
 - CLI return condition: parked after two inconclusive evaluations. Reopen only
   after a new natural misuse or materially different cheap field comparison;
   unavailable comparison is not evidence of success.

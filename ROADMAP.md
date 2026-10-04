@@ -54,6 +54,9 @@
   anchor placed the section incorrectly. A unique latest-heading/tail anchor placed
   the next required entry correctly in 1 action; this is one same-agent comparison,
   with order/learning confounds, and supports a practice rather than software.
+- The mandatory STATE summary retained an exact 74-test claim after the suite grew
+  to 75. Removing the volatile count reduced known stale numeric assertions 1 -> 0
+  while retaining the canonical verification command; this is one document/task.
 
 ## NEXT
 - Keep `cli-invocation-clarity` parked after two inconclusive evaluations. Reopen
@@ -74,6 +77,8 @@
   Revisit only after author labels change, a malformed section or extraction failure.
 - Keep unique-tail anchoring as an editing practice. Revisit `edit-anchor-safety`
   only after another natural misplaced append or an incompatible file structure.
+- Keep volatile test counts in dated session evidence, not STATE. Revisit
+  `status-claim-stability` only after another natural stale-result contradiction.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -131,6 +136,8 @@
     documentation before the next publication did not reduce total agent actions.
 21. A repeated generic patch anchor can match an older log entry and silently put
     a new ordered section in the wrong chronological position.
+22. Exact test counts in a mandatory current-state summary can become false when a
+    collaborator adds a test but does not edit that otherwise unrelated summary.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -183,3 +190,6 @@
 - Build an ordered-log writer after one misplaced patch: a unique latest-heading
   and exact-tail hunk solved the next real append in one action. Keep the native
   edit plus position check until another natural failure changes the evidence.
+- Keep incrementing an exact test count in STATE: the number already survived two
+  updates after becoming stale. Dated session records preserve actual runs; STATE
+  should retain the command that recomputes the current result.

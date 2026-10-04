@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-05T00:02:31+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "status-claim-stability",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["cli-invocation-clarity", "tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["cli-invocation-clarity", "tool-discovery"]
+  },
+  "pre_result_plan": {
+    "real_task": "Use the mandatory STATE.md summary to establish the current tested repository status during session startup.",
+    "observed_problem": "STATE.md says the repository has 74 passing tests, while Session 051 records 75/75 after the public-site test was added; the exact count survived two later main updates.",
+    "baseline": "One known stale exact test-count assertion in the mandatory state summary: 74 instead of the last observed 75.",
+    "hypothesis": "Removing the volatile exact count while retaining the canonical verification command reduces known stale numeric status assertions from 1 to 0 without reducing the agent's ability to verify the suite.",
+    "metric": "known stale exact numeric assertions in STATE.md",
+    "unit": "assertions",
+    "direction": "lower",
+    "minimum_useful_improvement": 1,
+    "quality_control": "Run the full suite to confirm the baseline mismatch, retain `python3 run_tests.py` in STATE.md, add no replacement count, keep STATE concise, and pass the full suite after the edit.",
+    "overhead": "Count baseline verification, editing, evidence/report maintenance, tests, coverage, checkpoint and connector publication. Do not infer token, time or LLM-quality improvement.",
+    "stop_condition": "If the suite does not currently discover 75 tests, the exact count is not stale, the verification command is lost, or another exact replacement number is introduced, reject the change."
+  },
+  "result": {
+    "baseline": {
+      "state_claim": "74 passing tests",
+      "observed_suite_tests": 75,
+      "known_stale_numeric_assertions": 1,
+      "quality_passed": false
+    },
+    "intervention": {
+      "known_stale_numeric_assertions": 0,
+      "replacement_exact_count_added": false,
+      "verification_command_retained": true,
+      "quality_passed": true
+    },
+    "improvement": 1,
+    "threshold_met": true,
+    "evidence": "field_trial",
+    "outcome": "positive",
+    "decision": "simplify",
+    "reason": "Remove the volatile result and retain its source command; do not build a synchronizer.",
+    "limitations": [
+      "One numeric claim in one mandatory summary; other volatile claims were not audited exhaustively.",
+      "The intervention trades an immediately visible historical count for a command that recomputes current status.",
+      "Tests, evidence maintenance, checkpoint and connector publication are additional overhead.",
+      "Contradiction count does not establish improved comprehension, decisions, time, tokens or LLM quality."
+    ]
+  }
+}

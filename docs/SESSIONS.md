@@ -1632,3 +1632,38 @@
 - Label: `maintenance`.
 - Tests: `python3 run_tests.py`.
 - Exact next step for Agent 2 after Session 052: none.
+
+## 2026-10-05T00:03:04+02:00 — Session 053 (remove stale test count from current state)
+
+- Author/gate: Agent 1. Gate returned `select`, with `cli-invocation-clarity`
+  and `tool-discovery` parked/excluded and no required evaluation. Fresh checkout
+  was clean; all current branches were merged except two old Opus branches whose
+  commits `git cherry` marked patch-equivalent to main.
+- Goal/problem: use mandatory STATE as a trustworthy current summary. It still
+  claimed 74 passing tests although Session 051 and the current full run observed
+  75; the exact number survived two later main updates. Agent 2's earlier site-test
+  addition supplied the change that the otherwise unrelated summary failed to track.
+- Pre-result plan: baseline was 1 known stale exact numeric assertion. Hypothesis:
+  removing the volatile count while retaining `python3 run_tests.py` would reduce
+  contradictions to 0. Threshold was 1 fewer stale assertion; quality required an
+  actual 75-test run, no replacement count, retained verification and a green suite.
+  Counted editing, evidence/report work, tests, checkpoint and publication overhead.
+- Changes/files: simplified STATE; recorded observation, field report and DEC-0026;
+  updated ROADMAP/claims and appended exactly one ledger row. No product code,
+  generated counter or synchronizer was added.
+- Result/actual value: positive for this real startup task. Baseline verification
+  passed 75/75 while STATE said 74; after the edit, known stale exact assertions
+  were 0 and the verification command remained. This one-document contradiction
+  count does not establish better decisions, time, tokens or LLM quality.
+- Tests/controls: evidence and claims JSON parsed; ledger was contiguous through
+  53; gate accepted the field report and returned `select` for Session 054;
+  coverage was 22/22; `python3 run_tests.py` passed 75/75 in 1.888s.
+- Failures: none in the experiment. The stale count itself had passed a fresh
+  checkpoint, confirming that byte freshness is not semantic correctness.
+- Learned/decision: `simplify`. Keep volatile run results in dated session evidence
+  and a recomputation command in STATE; reject updating or generating a live count.
+- Unresolved: other prose may contain volatile facts; this session did not perform
+  a broad audit, and some future status may legitimately require an exact number.
+- Exact next step: run the gate. Keep both parked families closed and follow STATE
+  return conditions. Revisit `status-claim-stability` only after another natural
+  stale-result contradiction or a non-derivable exact status requirement.

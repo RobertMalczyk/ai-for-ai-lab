@@ -25,6 +25,9 @@
   only reading saved bytes but dropped own continuity in multi-agent history. A
   one-action window from latest Agent 1 session captured current sections 1 -> 3
   in 4,015 bytes. This is bounded workflow evidence, not an LLM claim.
+- Editing: one repeated-line log append needed 2 patch actions; the next real
+  append used a unique latest-heading/tail anchor and passed placement in 1. Keep
+  the native practice; one ordered-log pair does not justify a writer or broad gain.
 - CLI clarity: direct `ai_for_ai_lab.coverage` invocation now matches the canonical
   package command after one real silent-success no-op. Agent 2 found the same
   exposure on mandatory checkpoint; its targeted fix is replay-tested, with no
@@ -36,6 +39,8 @@
   natural dirty/long-lived resume or observe fresh workflow friction. For future
   explicitly owner-directed sessions, cross-check `human_decisions` manually. Use
   the frozen manifest on connector publication; extend it only after a real miss.
+- Edit return condition: revisit anchor safety only after another natural
+  misplaced append or a file whose structure cannot provide a unique tail anchor.
 - CLI return condition: parked after two inconclusive evaluations. Reopen only
   after a new natural misuse or materially different cheap field comparison;
   unavailable comparison is not evidence of success.

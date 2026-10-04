@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "docs/SESSIONS.md",
+  "hypothesis": "A patch hunk anchored by the unique latest heading and exact tail appends the next ordered session correctly in one action.",
+  "metric": "patch actions until correct chronological append",
+  "unit": "actions",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 2,
+  "baseline_ref": "docs/SESSIONS.md",
+  "intervention_value": 1,
+  "intervention_ref": "lab/observations/2026-10-04-edit-anchor-safety.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One same-agent comparison across different sessions and entry sizes, with learning and order effects. Planning, checks, reporting, tests, checkpoint maintenance and publication are overhead. Action count does not establish time, tokens, general patch reliability or LLM quality.",
+  "outcome": "positive"
+}

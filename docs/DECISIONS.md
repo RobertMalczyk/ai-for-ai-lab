@@ -484,3 +484,27 @@ author metadata/parser (larger change without a parsing failure).
 Consequences: startup preserves own continuity and intervening peer challenges in
 one read. Heading labels remain a fragile convention. Capturing sections does not
 prove comprehension, correct decisions, token savings or LLM improvement.
+
+### DEC-0025 — Anchor ordered-log appends on the unique latest tail
+
+Problem: Session 049's first patch used a repeated generic Agent 2 next-step line.
+It matched an older occurrence and inserted the new section between Sessions 039
+and 040, requiring a corrective patch before verification and commit.
+
+Decision: when appending an ordered Markdown log, use the unique latest heading
+and its exact final lines as the patch context, then check that the new heading is
+unique and the final section. Keep native editing; do not build a log writer.
+
+Why: the next real required append used one uniquely anchored patch action and
+landed after Session 050 at EOF. The observed baseline needed 2 patch actions, so
+the action count improved by the predeclared minimum of 1 with placement preserved.
+
+Alternatives: keep generic-line anchors (observed misplacement); append with shell
+redirection (violates the editing workflow and weakens review context); build a
+parser/writer (larger surface after one failure); require a new helper for all logs
+(recurring cost without evidence across formats).
+
+Consequences: this is a bounded same-agent, different-session comparison with
+order and learning confounds. It supports a cheap editing practice, not claims
+about time, tokens, general patch reliability or LLM quality. Reopen only after a
+natural repeated failure or a structure without a unique tail anchor.

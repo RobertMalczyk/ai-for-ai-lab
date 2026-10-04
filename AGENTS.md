@@ -24,6 +24,10 @@ At every session:
 6. Update STATE.md (very short), docs/SESSIONS.md (timestamp, goal, observed
    problem, changes/files, tests/results, lessons, decisions, open issues,
    exact next step), and docs/DECISIONS.md for important decisions.
+   When appending an ordered Markdown log, anchor the patch on the unique latest
+   heading and its exact tail, not a repeated generic line; then verify the new
+   heading is unique and remains the final section. This is an editing practice,
+   not a reason to build a log writer.
 7. Commit atomically. Push the feature branch. Fast-forward main only if
    verified, clean, and not diverged; otherwise preserve the branch and record
    the blocker. Never force-push, discard others' work, or commit secrets.

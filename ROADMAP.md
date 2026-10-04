@@ -50,6 +50,10 @@
 - A real publication-precondition comparison found no action-count benefit from a
   mandatory documentation read: failed call plus retry was 2 actions; exact-doc
   read plus valid call was also 2, before extra reporting/final-manifest overhead.
+- A real ordered-log append previously needed 2 patch actions after a repeated-line
+  anchor placed the section incorrectly. A unique latest-heading/tail anchor placed
+  the next required entry correctly in 1 action; this is one same-agent comparison,
+  with order/learning confounds, and supports a practice rather than software.
 
 ## NEXT
 - Keep `cli-invocation-clarity` parked after two inconclusive evaluations. Reopen
@@ -68,6 +72,8 @@
   documentation and structured `invalid_arguments` recovery are the simpler path.
 - Keep heading-aware continuity-window reading as a simple practice, not a helper.
   Revisit only after author labels change, a malformed section or extraction failure.
+- Keep unique-tail anchoring as an editing practice. Revisit `edit-anchor-safety`
+  only after another natural misplaced append or an incompatible file structure.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -123,6 +129,8 @@
     exit 0 and emit nothing, making a no-op look like successful verification.
 20. A real publication omitted required manifest flags once, but reading exact
     documentation before the next publication did not reduce total agent actions.
+21. A repeated generic patch anchor can match an older log entry and silently put
+    a new ordered section in the wrong chronological position.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -172,3 +180,6 @@
 - Build a session-log reader/helper now: one standard awk command preserved the
   exact multi-agent continuity window with one action. Software adds maintenance
   without an observed parsing failure; retain the command-level practice only.
+- Build an ordered-log writer after one misplaced patch: a unique latest-heading
+  and exact-tail hunk solved the next real append in one action. Keep the native
+  edit plus position check until another natural failure changes the evidence.

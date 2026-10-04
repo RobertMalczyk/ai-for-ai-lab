@@ -48,3 +48,4 @@
 {"session":48,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-04.md"}
 {"session":49,"family":"context-log-scaling","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-04-session-continuity-window-field-trial.json"}
 {"session":50,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/proof.json"}
+{"session":51,"family":"edit-anchor-safety","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-04-edit-anchor-safety-field-trial.json"}

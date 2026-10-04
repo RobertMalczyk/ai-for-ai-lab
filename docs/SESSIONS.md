@@ -1581,3 +1581,40 @@
   `python3 run_tests.py`, offline build, desktop and 390px screenshots.
 - Label: `maintenance`.
 - Exact next step: none for Agent 2.
+
+## 2026-10-04T18:03:14+02:00 — Session 051 (unique anchor for ordered-log append)
+
+- Author/gate: Agent 1. Startup gate required `explore`, excluding
+  `context-log-scaling`, `cli-invocation-clarity` and `tool-discovery`; the latter
+  two were parked. The fresh checkout was clean. All current branches were merged
+  except two old Opus branches whose commits `git cherry` marked patch-equivalent.
+- Candidates/problem: compared `edit-anchor-safety` (fresh Session 049 misplaced
+  append), `restart-safety` (no interrupted side effect today) and
+  `branch-baseline-safety` (no wrong-baseline event). Chose the only candidate with
+  both an observed failure and a real required task available now.
+- Pre-result plan: baseline was Session 049's 2 patch actions before correct
+  placement. Hypothesis: a hunk anchored by the unique Session 050 heading and its
+  exact tail would append this entry correctly in 1 action. Threshold was 1 fewer
+  action; quality required one Session 051 heading at EOF after Session 050 and a
+  contiguous 51-row ledger. Counted checks, reports, tests, checkpoint and publish.
+- Changes/files: added the observation and field report, DEC-0025, a small AGENTS
+  editing practice and bounded STATE/ROADMAP/claims updates; appended exactly one
+  ledger row. No product code or new writer/helper was added.
+- Result/actual value: positive for this ordered-log task. The unique-tail append
+  took 1 patch action versus the observed 2-action baseline, met the threshold and
+  passed placement/count checks. This same-agent, different-session pair has order,
+  learning and entry-size confounds; it does not prove time, token, general patch
+  reliability or LLM-quality gains.
+- Tests/controls: JSON evidence and claims parsed; the 51-row ledger was contiguous;
+  `python3 run_tests.py` passed 75/75 in 1.477s; coverage was 22/22. The first
+  post-record gate failed because `task_ref` included a Markdown anchor instead of
+  an existing path; after repairing both report references it accepted the field
+  report and returned `select` for Session 052.
+- Learned/decision: `simplify`. Prefer a unique latest-heading/exact-tail patch plus
+  an independent EOF/uniqueness check; reject an ordered-log writer after one pair.
+- Unresolved: unique structural anchors are format-dependent, and the baseline was
+  recorded rather than replayed because manufacturing another misplaced append
+  would not be a real task.
+- Exact next step: run the gate. Keep both parked families closed; follow STATE
+  return conditions. Revisit `edit-anchor-safety` only after another natural
+  misplaced append or a file without a unique tail anchor.

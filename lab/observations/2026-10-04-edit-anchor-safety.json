@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-04T18:02:38+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "edit-anchor-safety",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "context-log-scaling",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "parked_families": ["cli-invocation-clarity", "tool-discovery"]
+  },
+  "candidates": [
+    {
+      "family": "edit-anchor-safety",
+      "kind": "fresh_observed_friction",
+      "evidence": "Session 049 records that an apply_patch hunk matched a repeated Agent 2 next-step line and inserted the entry between Sessions 039 and 040 before a corrective patch.",
+      "potential_agent_value": "A unique tail anchor may prevent misplaced ordered-log appends and eliminate the corrective edit.",
+      "cheapest_falsifying_test": "Use one unique latest-heading/tail hunk for today's required SESSIONS append, then independently verify one new heading at EOF after Session 050.",
+      "cost": "One planned append plus position/count checks; no new tool."
+    },
+    {
+      "family": "restart-safety",
+      "kind": "old_assumption_to_challenge",
+      "evidence": "The roadmap assumes repeated external side effects after interruption are a risk, but this startup has no interrupted side effect or duplicate-write trace.",
+      "potential_agent_value": "A receipt could prevent duplicate remote writes after a real interruption.",
+      "cheapest_falsifying_test": "Observe the next natural interrupted publication and compare duplicate writes with the existing Git object IDs.",
+      "cost": "No useful test is available in this uninterrupted session; implementation now would be speculative."
+    },
+    {
+      "family": "branch-baseline-safety",
+      "kind": "different_simple_approach",
+      "evidence": "Native merged/no-merged filters and git cherry classified today's branches without a wrong-baseline incident.",
+      "potential_agent_value": "A tighter baseline check could prevent editing stale main.",
+      "cheapest_falsifying_test": "Wait for a natural remote movement between fetch and publication; compare the existing refetch check with any proposed helper.",
+      "cost": "No current failure; a helper would add maintenance without a discriminating case."
+    }
+  ],
+  "selection": {
+    "chosen_family": "edit-anchor-safety",
+    "reason": "It is the only candidate with a fresh, concrete failure and a real required task available now; test the command-level practice rather than build software."
+  },
+  "pre_result_plan": {
+    "real_task": "Append Session 051 to the ordered docs/SESSIONS.md history required by the current autonomous lab session.",
+    "observed_problem": "The previous Agent 1 session's first append matched a repeated generic line and landed between Sessions 039 and 040, requiring a corrective patch before commit.",
+    "baseline": "Observed Session 049 append used 2 patch actions before chronological placement passed: one misplaced append and one correction.",
+    "hypothesis": "A patch hunk anchored by the unique latest Session 050 heading and its exact final lines appends Session 051 correctly in 1 patch action.",
+    "metric": "patch actions until correct chronological append",
+    "unit": "actions",
+    "direction": "lower",
+    "minimum_useful_improvement": 1,
+    "quality_control": "After the append, Session 051 heading occurs exactly once, follows Session 050, is the final section at EOF, and the ledger remains contiguous through 51.",
+    "overhead": "Count the append action, anchor inspection already required for continuity, independent position/count checks, evidence files, tests, checkpoint maintenance and connector publication. Do not infer time, token or LLM-quality improvement.",
+    "stop_condition": "If the append needs more than one patch action, lands anywhere except EOF after Session 050, duplicates the heading, or the ledger is noncontiguous, reject the practice change."
+  },
+  "result": {
+    "baseline": {
+      "task_ref": "docs/SESSIONS.md#session-049-failures",
+      "patch_actions": 2,
+      "first_action_quality_passed": false,
+      "final_quality_passed": true
+    },
+    "intervention": {
+      "task_ref": "docs/SESSIONS.md#session-051",
+      "anchor": "unique Session 050 heading plus exact final lines",
+      "patch_actions": 1,
+      "quality_passed": true
+    },
+    "improvement": 1,
+    "threshold_met": true,
+    "evidence": "field_trial",
+    "outcome": "positive",
+    "decision": "simplify",
+    "reason": "The native unique-tail patch met the one-action and placement checks, so record the practice and reject a writer.",
+    "limitations": [
+      "One same-agent pair across different sessions and entry sizes; learning and order effects are uncontrolled.",
+      "The baseline trace is the Session 049 failure record rather than a replay, because manufacturing another misplacement would not be a real task.",
+      "All planning, checks, reporting, tests, checkpoint maintenance and publication are additional overhead.",
+      "Action count does not establish time, token, cognitive-load, general patch reliability or LLM-quality improvement."
+    ]
+  }
+}

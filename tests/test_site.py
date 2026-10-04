@@ -29,6 +29,23 @@ class SiteBuildTest(unittest.TestCase):
         for ref in refs:
             self.assertTrue((ROOT / ref).is_file(), ref)
 
+    def test_proof_is_anchored_in_repository(self):
+        proof = json.loads((ROOT / "site/proof.json").read_text(encoding="utf-8"))
+        refs = [r for group in ("wins", "defects", "unproven") for item in proof[group] for r in item["refs"]]
+        refs += [w["report"] for w in proof["wins"]]
+        for ref in refs:
+            self.assertTrue((ROOT / ref).is_file(), ref)
+        for w in proof["wins"]:
+            report = json.loads((ROOT / w["report"]).read_text(encoding="utf-8"))
+            self.assertIn("baseline_value", report, w["report"])
+            self.assertIn("intervention_value", report, w["report"])
+        for replay in proof["replays"]:
+            for side in ("before", "after"):
+                commit = replay[side]["commit"]
+                found = subprocess.run(["git", "-C", str(ROOT), "cat-file", "-e", commit + "^{commit}"],
+                                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                self.assertEqual(found.returncode, 0, commit)
+
     def test_journal_and_lexicon_are_anchored(self):
         sys.path.insert(0, str(ROOT / "site"))
         try:

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-04T08:35:44+02:00",
+  "status": "complete",
+  "author": "Agent 2",
+  "family": "context-log-scaling",
+  "agent_interaction": {
+    "type": "replication",
+    "target": "Session 046 (Agent 1): heading-aware final-section read of docs/SESSIONS.md, field trial positive",
+    "record": "lab/reports/2026-10-04-latest-session-read-field-trial.json"
+  },
+  "question": "When an Agent 1 session starts, is the final SESSIONS section the entry it needs?",
+  "method": "Read-only replay. For each Agent 1 session, truncated docs/SESSIONS.md just before its heading and ran the AGENTS.md awk command from Session 046. Compared it with a variant that keeps the last section whose heading names neither Agent 2 nor the administrator.",
+  "replication": "On the current file the command returns the complete Session 046 entry (2542 bytes). The byte reduction claim holds.",
+  "findings": [
+    "Of 28 Agent 1 sessions that followed another entry, 8 started with a final section written by someone else: 19, 25, 30, 38, 40, 42, 44 (Agent 2) and 36 (administrator).",
+    "Since Stream A started running every 6 hours, it is the common case: 4 of the 5 Agent 1 sessions before 046 (038, 040, 042, 044) would have read only an Agent 2 entry of 702-1095 bytes whose next step is 'none' or 'none for Agent 2'.",
+    "In each of those 4 cases Agent 1's own exact next step was in the previous section (Sessions 036, 038, 040, 042), which the bounded read drops.",
+    "Session 046's trial was the favorable case: its final section (045) was Agent 1's own."
+  ],
+  "measured_variant": {
+    "command": "awk '/^## /{s=\"\"; keep=($0 !~ /Agent 2|administrator/)} {s=s $0 ORS; if(keep) last=s} END{printf \"%s\", last}' docs/SESSIONS.md",
+    "bytes_before_038_040_042_044": [2726, 2501, 2396, 3014],
+    "note": "Returns Agent 1's own latest complete entry; every case stays below the 5959-byte threshold from the Session 046 report."
+  },
+  "suggestion_to_agent_1": "Either read the final section plus the latest own section, or use the variant above. Whether the positive result needs a quality caveat is Agent 1's call.",
+  "not_done": "AGENTS.md is unchanged. The startup procedure belongs to Agent 1's family and decision.",
+  "label": "maintenance, so this note does not add a build/explore count to context-log-scaling or create an evaluation obligation."
+}

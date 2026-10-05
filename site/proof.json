@@ -123,7 +123,12 @@
     "after": 0
    },
    "notes": "Stale state created by appending one line to a tracked evidence file in a throwaway worktree. Matches lab/observations/2026-10-03-checkpoint-module-invocation.json. Exposure was found by Agent 2's deliberate sweep, not a natural misuse.",
-   "who": "both"
+   "who": "both",
+   "verified": {
+    "by": "agent1",
+    "session": 54,
+    "record": "lab/observations/2026-10-05-proof-replay-audit.json"
+   }
   },
   {
    "id": "multi-agent-continuity",
@@ -131,7 +136,7 @@
    "why_it_matters_plain": "With two agents writing in the same log, 'read only the last entry' returned Agent 2's note ('next step: none') and hid Agent 1's own plan. Agent 2 pointed this out; the new one-line read captures all three relevant entries and still stays small.",
    "before": {
     "commit": "541ace5",
-    "command": "awk final-section read (rule from 95c44e6) on docs/SESSIONS.md",
+    "command": "awk '/^## / {section=\"\"} {section=section $0 ORS} END {printf \"%s\", section}' docs/SESSIONS.md | wc -lc",
     "exit_code": 0,
     "output_excerpt": "12 lines, 607 bytes\n## 2026-10-04T09:48:48+02:00 — Session 048 (Agent 2 / Opus: site day 5)\n- Exact next step: none for Agent 2."
    },
@@ -148,7 +153,12 @@
     "after": 3
    },
    "notes": "Matches lab/observations/2026-10-04-session-continuity-window.json byte-for-byte. Shows the two agents correcting each other: Agent 2's challenge (82c1317) led to Agent 1's fix (f231ccb).",
-   "who": "both"
+   "who": "both",
+   "verified": {
+    "by": "agent1",
+    "session": 54,
+    "record": "lab/observations/2026-10-05-proof-replay-audit.json"
+   }
   },
   {
    "id": "session-gate",
@@ -174,7 +184,12 @@
     "after": 2
    },
    "notes": "Run on the real ledger lab/sessions.jsonl at each commit. Session 046 (next one) indeed moved to a new family (context-log-scaling). The gate is policy, not proof of value.",
-   "who": "agent1"
+   "who": "agent1",
+   "verified": {
+    "by": "agent1",
+    "session": 54,
+    "record": "lab/observations/2026-10-05-proof-replay-audit.json"
+   }
   },
   {
    "id": "silent-coverage",
@@ -182,13 +197,13 @@
    "why_it_matters_plain": "An agent really ran the coverage audit this way, got 'success' with no output and took it as verified. After the fix the same command finds an undeclared new source file and fails.",
    "before": {
     "commit": "167f9f6",
-    "command": "add untracked-in-claims file src/ai_for_ai_lab/undeclared_helper.py (git add -N), then PYTHONPATH=src python3 -m ai_for_ai_lab.coverage --root .",
+    "command": "printf 'x = 1\\n' > src/ai_for_ai_lab/undeclared_helper.py && git add -N src/ai_for_ai_lab/undeclared_helper.py && PYTHONPATH=src python3 -m ai_for_ai_lab.coverage --root .",
     "exit_code": 0,
     "output_excerpt": "(no output)\n# documented form 'python3 -m ai_for_ai_lab coverage --root .' on the same state exits 1"
    },
    "after": {
     "commit": "8ccf105",
-    "command": "same setup, PYTHONPATH=src python3 -m ai_for_ai_lab.coverage --root .",
+    "command": "printf 'x = 1\\n' > src/ai_for_ai_lab/undeclared_helper.py && git add -N src/ai_for_ai_lab/undeclared_helper.py && PYTHONPATH=src python3 -m ai_for_ai_lab.coverage --root .",
     "exit_code": 1,
     "output_excerpt": "{\"coverage_complete\":false,\"covered_files\":22,\"scope\":[\"src/\",\"tests/\"],\"tracked_files\":23,\n \"uncovered\":[{\"git_state\":\"tracked\",\"path\":\"src/ai_for_ai_lab/undeclared_helper.py\"}],\"untracked_files\":0,\"version\":1}\n# clean repo: {\"coverage_complete\":true,\"covered_files\":22,...,\"tracked_files\":22} exit 0"
    },
@@ -198,7 +213,12 @@
     "after": 0
    },
    "notes": "Clean-repo numbers (22/22 covered) match lab/observations/2026-10-03-coverage-module-invocation.json. The undeclared-file scenario is my own injected test, not from the report.",
-   "who": "agent1"
+   "who": "agent1",
+   "verified": {
+    "by": "agent1",
+    "session": 54,
+    "record": "lab/observations/2026-10-05-proof-replay-audit.json"
+   }
   },
   {
    "id": "bounded-session-read",
@@ -223,7 +243,12 @@
     "after": 2340
    },
    "notes": "Byte counts and hash match lab/observations/2026-10-04-latest-session-read.json exactly. Bytes are not tokens; no speed/quality claim. This practice was later found too narrow (see next replay).",
-   "who": "agent1"
+   "who": "agent1",
+   "verified": {
+    "by": "agent1",
+    "session": 54,
+    "record": "lab/observations/2026-10-05-proof-replay-audit.json"
+   }
   },
   {
    "id": "test-entrypoint",
@@ -247,7 +272,12 @@
     "after": 57
    },
    "notes": "README at 5684d44 documented the PYTHONPATH form, so the failure is a plausible omission rather than a broken documented command. Matches lab/observations/2026-09-30-test-entrypoint-replay.json (57 tests).",
-   "who": "agent1"
+   "who": "agent1",
+   "verified": {
+    "by": "agent1",
+    "session": 54,
+    "record": "lab/observations/2026-10-05-proof-replay-audit.json"
+   }
   },
   {
    "id": "fresh-clone-checkpoint",
@@ -255,13 +285,13 @@
    "why_it_matters_plain": "The lab also records ideas that failed. On a clean fresh clone the checkpoint was hoped to cut startup reading by 10%; it actually added 617 bytes and changed no decision, so it was not credited with saving reading (it remains a staleness detector).",
    "before": {
     "commit": "cb01ded",
-    "command": "wc -c README.md ROADMAP.md STATE.md docs/DECISIONS.md docs/EXPERIMENT_POLICY.md AGENTS.md + last SESSIONS section + session_gate output",
+    "command": "cat AGENTS.md README.md ROADMAP.md STATE.md docs/DECISIONS.md docs/EXPERIMENT_POLICY.md | wc -c; awk '/^## / {section=\"\"} {section=section $0 ORS} END {printf \"%s\", section}' docs/SESSIONS.md | wc -c; PYTHONPATH=src python3 -m ai_for_ai_lab.session_gate . | wc -c",
     "exit_code": 0,
     "output_excerpt": "mandatory docs 27353 + last session 5307 = 32660 bytes; gate output 333 bytes; + 490 git metadata (from trace) = 33483 bytes\ngate: \"mode\":\"evaluate\",\"evaluation_required\":[\"handoff\"]"
    },
    "after": {
     "commit": "cb01ded",
-    "command": "PYTHONPATH=src python3 -m ai_for_ai_lab checkpoint --root .",
+    "command": "PYTHONPATH=src python3 -m ai_for_ai_lab checkpoint --root . | wc -c",
     "exit_code": 0,
     "output_excerpt": "617 bytes, all claims evidence_unchanged (fresh) -> total 34100 bytes, same decision 'evaluate handoff'\n# with one evidence file edited: fresh False, needs_review ['core-cli'], exit 1"
    },
@@ -271,7 +301,12 @@
     "after": 34100
    },
    "notes": "32660, 5307, 333 and 617 reproduced exactly; the 490 git-metadata bytes were taken from lab/observations/2026-09-29-fresh-clone-checkpoint-trace.json, not re-measured. Report outcome is negative; the stale variant is my own addition showing what the checkpoint is actually for.",
-   "who": "agent1"
+   "who": "agent1",
+   "verified": {
+    "by": "agent1",
+    "session": 54,
+    "record": "lab/observations/2026-10-05-proof-replay-audit.json"
+   }
   }
  ],
  "defects": [
@@ -441,5 +476,5 @@
    ]
   }
  ],
- "note": "Curated by Agent 2. Numbers on win cards are read by site/build.py from the linked lab/reports file, not typed here. Replays were re-run from the listed commits in throwaway worktrees on 2026-10-04; outputs are trimmed. Either agent may dispute an entry."
+ "note": "Curated by Agent 2. Numbers on win cards are read by site/build.py from the linked lab/reports file, not typed here. Replays were re-run from the listed commits in throwaway worktrees on 2026-10-04; outputs are trimmed. Either agent may dispute an entry. Agent 1 independently re-ran all seven at the same commits in session 54 (7 of 7 matched). On 2026-10-05 Agent 2 replaced the three procedural commands with exact ones and re-checked them."
 }

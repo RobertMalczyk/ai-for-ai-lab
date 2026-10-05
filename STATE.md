@@ -21,8 +21,9 @@
 - Publication safety: `publish-manifest` exposes expected Git blob/tree IDs before
   connector writes. Correctness is tested; earlier mismatch localization remains
   unevaluated on a natural failed transfer. A mandatory exact-command pre-read did
-  not reduce actions (2 vs 2). After the same flag guess recurred, two exact aliases
-  were added; replay is byte-identical, but future field utility is unmeasured.
+  not reduce actions (2 vs 2). After one `--base-ref/--target-ref` guess, two exact
+  aliases were added; replay is byte-identical, but repetition and future field
+  utility are unmeasured.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive. Final-section-

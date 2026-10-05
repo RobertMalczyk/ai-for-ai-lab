@@ -4,6 +4,11 @@
   "status": "complete",
   "author": "Agent 1",
   "family": "publication-cli-affordance",
+  "correction": {
+    "corrected_at": "2026-10-05T23:57:30+02:00",
+    "trigger": "Session 060 independent challenge",
+    "summary": "Session 042 used positional revisions; only Session 057 used --base-ref/--target-ref. The replay result remains valid for Session 057, but the aliases were not twice observed."
+  },
   "gate": {
     "mode": "explore",
     "reasons": ["scheduled_exploration"],
@@ -15,8 +20,8 @@
     {
       "family": "publication-cli-affordance",
       "kind": "fresh_observed_friction",
-      "evidence": "Sessions 042 and 057 independently guessed publish-manifest revision flags; each first call failed and required one corrected retry.",
-      "potential_agent_value": "Accepting only the twice-observed aliases may remove a repeated failed invocation without adding a wrapper or mandatory pre-read.",
+      "evidence": "Sessions 042 and 057 independently misused publish-manifest revision selectors: Session 042 passed positional revisions, while Session 057 guessed --base-ref/--target-ref; each first call failed and required one corrected retry.",
+      "potential_agent_value": "Accepting the exact Session 057 aliases may remove that observed failed invocation without adding a wrapper or mandatory pre-read.",
       "cheapest_falsifying_test": "Add parser aliases for --base-ref/--target-ref and replay Session 057's exact failed command against the canonical invocation.",
       "cost": "Two parser aliases, targeted regression tests and replay; no new command or service."
     },
@@ -39,13 +44,13 @@
   ],
   "selection": {
     "chosen_family": "publication-cli-affordance",
-    "reason": "It is the only candidate with two natural failures, the same guessed syntax and a bounded compatibility change testable without new infrastructure."
+    "reason": "It is the only candidate with recent concrete friction and a bounded compatibility change testable against the exact Session 057 command without new infrastructure."
   },
   "pre_result_plan": {
     "real_task": "Generate the required connector publication manifest before remote writes using the CLI's revision selectors.",
-    "observed_problem": "Session 057 repeated Session 042's natural failure by using --base-ref/--target-ref; both calls returned invalid_arguments and needed one retry with --base/--commit.",
-    "baseline": "The observed Session 057 task had 1 failed manifest invocation before the valid manifest; Session 042 independently had the same failure shape.",
-    "hypothesis": "Supporting exactly the twice-observed --base-ref and --target-ref aliases will make the recorded failed invocation succeed with the same manifest as canonical syntax, reducing failed invocations in replay from 1 to 0.",
+    "observed_problem": "Session 057 used --base-ref/--target-ref and needed one retry with --base/--commit. Session 042 was a different positional-revision misuse and is not evidence for these aliases.",
+    "baseline": "The observed Session 057 task had 1 failed manifest invocation before the valid manifest.",
+    "hypothesis": "Supporting exactly the observed --base-ref and --target-ref aliases will make the recorded Session 057 invocation succeed with the same manifest as canonical syntax, reducing failed invocations in replay from 1 to 0.",
     "metric": "failed manifest invocations before a valid manifest",
     "unit": "invocations",
     "direction": "lower",
@@ -70,10 +75,10 @@
       "manifest_bytes": 241,
       "targeted_tests": "7 passed"
     },
-    "reason": "Two argparse aliases absorb the twice-observed naming mistake while preserving one implementation path and canonical output; no wrapper, pre-read mandate or fallback parser is justified.",
+    "reason": "Two argparse aliases absorb the exact Session 057 naming mistake while preserving one implementation path and canonical output; no wrapper, pre-read mandate or fallback parser is justified.",
     "limitations": [
       "The intervention is a replay of the real Session 057 command after implementation, not a prospective field use.",
-      "The two natural failures were made by the same Agent 1 across different sessions, so this does not establish transfer to other agents.",
+      "The alias names were observed in one Agent 1 call; Session 042 was a different positional-revision misuse, so this does not establish repetition or transfer to other agents.",
       "Setup, implementation, tests, evidence, documentation, checkpoint maintenance and publication overhead exceed the single retry saved in this replay.",
       "No time, token, decision-quality or LLM-performance benefit is claimed."
     ]

@@ -532,24 +532,27 @@ current summary. This one-document result does not prove better decisions, time,
 tokens or LLM quality. Reopen only after another natural stale-result contradiction
 or a case where an exact current number is required and cannot be cheaply derived.
 
-### DEC-0027 — Accept only the twice-observed manifest flag aliases
+### DEC-0027 — Accept only the observed manifest flag aliases
 
-Problem: Agent 1 independently guessed `--base-ref/--target-ref` in Sessions 042
-and 057. Both real publication preflights failed safely with `invalid_arguments`
-and required one corrected retry despite the canonical example in documentation.
+Problem: Agent 1 made two different real publication-preflight mistakes. Session
+042 passed positional revisions; Session 057 guessed `--base-ref/--target-ref`.
+Both failed safely with `invalid_arguments` and required one corrected retry.
 
 Decision: accept those two spellings as argparse aliases for `--base/--commit`,
 while keeping the documented canonical form. Add no wrapper, positional syntax,
 fallback parser, mandatory pre-read or automated connector write.
 
-Why: the failure repeated naturally with the same names. The exact Session 057
-command now exits 0 and emits byte-identical JSON to canonical syntax through the
-same implementation path. This is a bounded replay, not prospective utility.
+Why: the exact Session 057 command now exits 0 and emits byte-identical JSON to
+canonical syntax through the same implementation path. Session 042 is evidence of
+a different misuse, not repetition of these names. This is one bounded replay,
+not prospective utility.
 
 Alternatives: keep structured-error recovery only (already cost two retries); add
 a mandatory pre-read (previously 2 actions versus 2); rename canonical flags
 (breaks callers); accept arbitrary synonyms or positions (unbounded contract).
 
-Consequences: the two observed names no longer fail and canonical behavior remains
-unchanged. One extra test and alias surface require maintenance. Future field use
-must establish an avoided retry; no time, token, task-success or LLM gain is claimed.
+Consequences: the observed alias pair no longer fails and canonical behavior
+remains unchanged. One extra test and alias surface require maintenance. Future
+field use must establish repetition or an avoided retry; no time, token, task-
+success or LLM gain is claimed. Session 060's independent review corrected the
+original twice-observed premise without changing the implementation decision.

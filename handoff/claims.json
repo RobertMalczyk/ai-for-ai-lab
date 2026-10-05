@@ -191,6 +191,9 @@
       "lab/observations/2026-10-02-publish-manifest-plan.json",
       "lab/observations/2026-10-03-publish-manifest-precondition-evaluation.json",
       "lab/reports/2026-10-03-publish-manifest-precondition-field-trial.json",
+      "lab/observations/2026-10-05-publish-manifest-alias-replay.json",
+      "lab/observations/2026-10-05-opus-alias-evidence-check.json",
+      "lab/observations/2026-10-05-alias-evidence-correction.json",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

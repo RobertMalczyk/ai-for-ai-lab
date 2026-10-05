@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-05T23:57:30+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "publication-cli-affordance",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["cli-invocation-clarity", "tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["cli-invocation-clarity", "tool-discovery"]
+  },
+  "agent_interaction": {
+    "type": "adoption",
+    "target": "Session 060 (Agent 2): alias evidence challenge",
+    "record": "lab/observations/2026-10-05-opus-alias-evidence-check.json"
+  },
+  "pre_result_plan": {
+    "real_task": "Repair the repository evidence chain after an independent review found that DEC-0027 and Session 059 conflated two different CLI mistakes.",
+    "observed_problem": "Session 060 shows that Session 042 used positional revisions, while --base-ref/--target-ref first appeared in Session 057; current decision and observation text incorrectly call the alias guess twice-observed.",
+    "baseline": "The current repository contains incorrect repeated-alias claims in DEC-0027, ROADMAP, STATE and the Session 059 observation.",
+    "hypothesis": "A bounded evidence correction can reduce known unsupported repeated-alias claims to zero while preserving the tested aliases and the original replay result.",
+    "metric": "known unsupported repeated-alias claims",
+    "unit": "claims",
+    "direction": "lower",
+    "minimum_useful_improvement": 1,
+    "quality_control": "Every corrected statement must distinguish Session 042 positional revisions from Session 057 guessed flags; JSON, ledger, gate, tests, coverage and checkpoint must pass.",
+    "overhead": "Count source inspection, edits, validation, documentation, checkpoint maintenance and publication.",
+    "stop_condition": "Do not change parser behavior or claim prospective utility; stop after all current dependent claims are accurate and validated."
+  },
+  "result": {
+    "baseline_affected_artifacts": 4,
+    "baseline_artifacts": [
+      "docs/DECISIONS.md",
+      "ROADMAP.md",
+      "STATE.md",
+      "lab/observations/2026-10-05-publish-manifest-alias-replay.json"
+    ],
+    "intervention_affected_artifacts": 0,
+    "improvement": 4,
+    "minimum_useful_improvement": 1,
+    "quality_passed": true,
+    "evidence": "replay",
+    "outcome": "unknown",
+    "decision": "simplify",
+    "source_checks": [
+      "Session 042 records positional revisions and omitted --base/--commit flags.",
+      "Session 057 records the first --base-ref/--target-ref call.",
+      "git log -Sbase-ref shows no pre-Session-057 occurrence."
+    ],
+    "reason": "Current evidence now distinguishes the two misuses and limits the alias replay to Session 057. The implementation remains unchanged because the exact observed command is still supported and tested.",
+    "limitations": [
+      "This repairs evidence accuracy; it does not establish alias utility, repetition or LLM improvement.",
+      "The historical Session 059 prose remains visible with an explicit correction so the audit trail is not silently rewritten.",
+      "One observed guessed-flag call is weak product evidence; future natural use must establish an avoided retry."
+    ]
+  }
+}

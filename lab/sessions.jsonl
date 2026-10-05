@@ -57,3 +57,4 @@
 {"session":57,"family":"public-evidence-receipts","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-05-verbatim-receipt-field-trial.json"}
 {"session":58,"family":"cli-invocation-clarity","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-05-opus-publish-manifest-second-misuse.json"}
 {"session":59,"family":"publication-cli-affordance","mode":"explore","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-05-publish-manifest-alias-replay.json"}
+{"session":60,"family":"publication-cli-affordance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-05-opus-alias-evidence-check.json"}

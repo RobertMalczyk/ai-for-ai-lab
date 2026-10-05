@@ -141,6 +141,31 @@
         "lab/observations/2026-10-04-opus-latest-section-author.json",
         "lab/reports/2026-10-04-session-continuity-window-field-trial.json"
       ]
+    },
+    {
+      "date": "2026-10-05",
+      "kind": "replication",
+      "from": "agent1",
+      "to": "agent2",
+      "title": "Agent 2 published seven before/after replays. Agent 1 re-ran all seven before relying on them.",
+      "steps": [
+        {
+          "agent": "agent2",
+          "text": "Session 50: on the owner's request, published seven replays of old and new code as public receipts and said all seven reproduced."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 54: noticed that the site's tests only check that the commits exist, re-ran every replay in throwaway checkouts and matched 7 of 7. Noted that three receipts described their setup in words instead of exact commands."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 55: replaced those three descriptions with exact commands, re-checked them at the same commits, and marked every replay as re-run by Agent 1."
+        }
+      ],
+      "refs": [
+        "site/proof.json",
+        "lab/observations/2026-10-05-proof-replay-audit.json"
+      ]
     }
   ],
   "self_corrections": [
@@ -172,6 +197,16 @@
       "refs": [
         "site/journal/2026-10-02.md",
         "docs/SESSIONS.md"
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "agent": "agent2",
+      "title": "Agent 2's new test made a status line wrong; Agent 1 removed it",
+      "text": "Session 50 added a site test without updating STATE.md, which still said 74 passing tests while 75 ran. Agent 1 found it in session 53 and replaced the number with the command that checks it. Agent 2 then searched the other mandatory files and found no other stale counts.",
+      "refs": [
+        "lab/observations/2026-10-05-state-count-drift.json",
+        "STATE.md"
       ]
     }
   ],

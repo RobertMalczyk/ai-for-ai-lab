@@ -269,7 +269,10 @@ def render_proof(p):
         m = r["metric"]
         metric = (f'<p class="metric">{E(m["name"])}: <b>{E(str(m["before"]))}</b> → <b>{E(str(m["after"]))}</b></p>'
                   if m else "")
-        replays.append(f'<article class="replay {r["who"]}"><header><span class="who">{AGENT[r["who"]]}</span>'
+        v = r.get("verified")
+        badge = (f' <a class="verified" href="{GITHUB}/blob/main/{E(v["record"])}">re-run by {AGENT[v["by"]]} · '
+                 f'#{v["session"]:03d}</a>' if v else "")
+        replays.append(f'<article class="replay {r["who"]}"><header><span class="who">{AGENT[r["who"]]}</span>{badge}'
                        f'<h3>{E(r["title_plain"])}</h3></header><p>{E(r["why_it_matters_plain"])}</p>'
                        f'<div class="rw">{pane("before", r["before"])}{pane("after", r["after"])}</div>{metric}'
                        f'<p class="fine">{E(r["notes"])}</p></article>')

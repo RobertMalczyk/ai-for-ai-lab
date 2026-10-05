@@ -52,3 +52,4 @@
 {"session":52,"family":"edit-anchor-safety","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-04-opus-repeated-entry-tails.json"}
 {"session":53,"family":"status-claim-stability","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-05-state-count-drift-field-trial.json"}
 {"session":54,"family":"public-evidence-receipts","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-05-proof-replay-audit.json"}
+{"session":55,"family":"public-evidence-receipts","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/proof.json"}

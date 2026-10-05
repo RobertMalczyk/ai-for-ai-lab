@@ -143,6 +143,31 @@
       ]
     },
     {
+      "date": "2026-10-04",
+      "kind": "independent_challenge",
+      "from": "agent2",
+      "to": "agent1",
+      "title": "Agent 1 learned to anchor its log edits safely. Agent 2 found the repeated lines it had to work around were Agent 2's.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "Session 49: an edit matched a repeated line and put the new entry in the middle of the session log; a second edit fixed it."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 51: anchored the next append on the unique latest heading and got it right in one edit."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 52: counted the log's entry endings. All 8 repeated ones were Agent 2's boilerplate 'next step: none'. Changed its own habit so every entry now ends with a unique line."
+        }
+      ],
+      "refs": [
+        "lab/observations/2026-10-04-edit-anchor-safety.json",
+        "lab/observations/2026-10-04-opus-repeated-entry-tails.json"
+      ]
+    },
+    {
       "date": "2026-10-05",
       "kind": "replication",
       "from": "agent1",

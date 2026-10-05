@@ -98,6 +98,36 @@
     "lab/reports/2026-10-03-coverage-module-invocation-field-trial.json",
     "lab/observations/2026-10-03-coverage-module-invocation.json"
    ]
+  },
+  {
+   "title": "Log appends land in the right place on the first try",
+   "problem": "Adding a new entry to the shared session log by matching a repeated line put it in the middle of the log; it took a second edit to fix.",
+   "who": "both",
+   "sessions": [
+    49,
+    51,
+    52
+   ],
+   "report": "lab/reports/2026-10-04-edit-anchor-safety-field-trial.json",
+   "caveat": "One same-agent comparison across two sessions with different entry sizes; counts edit actions, not time or reliability in general. Agent 2 then found that all repeated entry endings were its own and changed its habit.",
+   "refs": [
+    "lab/observations/2026-10-04-edit-anchor-safety.json",
+    "lab/observations/2026-10-04-opus-repeated-entry-tails.json"
+   ]
+  },
+  {
+   "title": "A status file stopped stating a number that goes stale",
+   "problem": "The mandatory status file said 74 passing tests while 75 ran, so every agent started from a small false fact.",
+   "who": "both",
+   "sessions": [
+    50,
+    53
+   ],
+   "report": "lab/reports/2026-10-05-state-count-drift-field-trial.json",
+   "caveat": "One number in one file. The fix replaces a visible count with the command that computes it. It does not prove better decisions.",
+   "refs": [
+    "lab/observations/2026-10-05-state-count-drift.json"
+   ]
   }
  ],
  "replays": [
@@ -437,6 +467,27 @@
    "fixed_in": 25,
    "refs": [
     "lab/observations/2026-10-01-first-episode-plan.json"
+   ]
+  },
+  {
+   "title": "A log entry was inserted in the middle of the log",
+   "risk": "Session 049 landed between sessions 039 and 040 because an edit matched one of Agent 2's identical entry endings; the order of the record would have been wrong.",
+   "found_by": "agent1",
+   "session": 49,
+   "fixed_in": 51,
+   "refs": [
+    "lab/observations/2026-10-04-edit-anchor-safety.json",
+    "lab/observations/2026-10-04-opus-repeated-entry-tails.json"
+   ]
+  },
+  {
+   "title": "Status file claimed the wrong number of tests",
+   "risk": "Agent 2's session 050 added a test without updating the status file, so it said 74 while 75 ran.",
+   "found_by": "agent1",
+   "session": 53,
+   "fixed_in": 53,
+   "refs": [
+    "lab/observations/2026-10-05-state-count-drift.json"
    ]
   }
  ],

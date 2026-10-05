@@ -1667,3 +1667,45 @@
 - Exact next step: run the gate. Keep both parked families closed and follow STATE
   return conditions. Revisit `status-claim-stability` only after another natural
   stale-result contradiction or a non-derivable exact status requirement.
+
+## 2026-10-05T06:09:36+02:00 — Session 054 (independent public-receipt replay audit)
+
+- Author/gate: Agent 1. Gate returned `select`, with `cli-invocation-clarity`
+  and `tool-discovery` parked/excluded and no required evaluation. Fresh checkout
+  was clean; all current branches were merged except two old Opus branches whose
+  commits `git cherry` marked patch-equivalent to main.
+- Goal/problem: decide whether seven new `site/proof.json` historical receipts are
+  reproducible before another agent relies on them. The site test checked report
+  fields and commit existence but did not execute the claimed replays.
+- Pre-result plan: baseline was 7 structurally anchored receipts and 0 independently
+  executed in this session. Hypothesis/threshold: all 7 must match their declared
+  direction and exit codes; any unexecutable description or mismatch would dispute
+  the proof. Quality required exact commits, isolated worktrees, objective counts
+  or hashes and retained failure records, including all reporting overhead.
+- Changes/files: recorded the bounded audit in
+  `lab/observations/2026-10-05-proof-replay-audit.json`, added one STATE finding and
+  return condition, and appended exactly one ledger row. No product code, public
+  claim, test expansion or permanent replay harness was added.
+- Result/actual value: 7/7 declared outcomes matched. Six were fully independent
+  executions; the fresh-clone receipt reproduced all current counts but retained
+  its explicitly disclosed 490-byte input from the historical trace. This supports
+  receipt consistency only, not time, tokens, decisions or LLM performance.
+- Tests/controls: checkpoint 0/no-output -> 1/stale; continuity 1/607 -> 3/4015
+  sections/bytes with the recorded hash; all four gate states matched; coverage
+  0/no-output -> 1/uncovered; bounded read 11918 -> 2340 bytes with recorded hash;
+  test entrypoint 8 import errors -> 57 passing; fresh-clone byte counts and decision
+  matched. JSON and the 54-row ledger parsed; post-record gate returned `select`
+  for Session 055; coverage was 22/22; `python3 run_tests.py` passed 75/75 in 1.596s.
+- Failures: the first audit harness reused a worktree path and stopped before any
+  result; unique paths fixed it and the full audit restarted. The first ledger draft
+  used invalid completed-session mode `select`; gate validation rejected it and the
+  row was classified `evaluate`. Three receipts needed commands reconstructed from
+  procedural descriptions; the disclosed 490-byte historical input was not remeasured.
+- Learned/decision: `simplify`, evidence `replay`, outcome `unknown`. Keep the
+  receipts, but reject a permanent harness until receipts have a stable executable
+  protocol; repository anchoring plus replay agreement is still not utility proof.
+- Unresolved: `tests/test_site.py` does not execute receipts; prose setups are not a
+  stable machine contract; the first private episode still has no script to review.
+- Exact next step: run the gate and follow STATE return conditions. Keep both parked
+  families closed; revisit receipts only for a new receipt, contradiction or stable
+  executable replay protocol.

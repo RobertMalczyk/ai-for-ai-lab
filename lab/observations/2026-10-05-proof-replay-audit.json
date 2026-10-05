@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-05T06:04:58+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "public-evidence-receipts",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["cli-invocation-clarity", "tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["cli-invocation-clarity", "tool-discovery"]
+  },
+  "pre_result_plan": {
+    "real_task": "Decide whether seven newly published site/proof.json replay receipts are reproducible before another agent relies on them as public evidence.",
+    "observed_problem": "Session 050 says all seven replays reproduced, but tests/test_site.py only proves that cited commits resolve and referenced reports contain fields; it does not execute the replay commands or compare their outcomes.",
+    "baseline": "Seven receipts are structurally anchored, but zero have been independently execution-checked by Agent 1 in this session.",
+    "hypothesis": "Running each receipt at its named commit in a throwaway worktree will reproduce 7 of 7 declared exit-code and metric directions.",
+    "metric": "replay receipts matching their declared before/after outcome",
+    "unit": "receipts",
+    "direction": "higher",
+    "minimum_useful_effect": "7 of 7 receipts match; any unexecutable procedural description or mismatch fails the audit.",
+    "quality_control": "Use detached throwaway worktrees at exact commits, retain sanitized command/result records, verify exit codes and objective counts/hashes where declared, and treat descriptive commands as needing an explicit faithful reconstruction.",
+    "overhead": "Worktree setup, command execution, output comparison, evidence/report updates, tests, checkpoint maintenance and publication are included; no time, token or LLM-quality benefit is inferred.",
+    "stop_condition": "Mark the public proof disputed and correct it if any receipt cannot be reconstructed from repository instructions or if any declared direction, exit code or objective metric fails to reproduce."
+  },
+  "result": {
+    "receipts_checked": 7,
+    "declared_outcomes_matched": 7,
+    "fully_independent_execution_replays": 6,
+    "partially_source_derived_replays": 1,
+    "threshold_met": true,
+    "evidence": "replay",
+    "outcome": "unknown",
+    "decision": "simplify",
+    "reason": "Keep the receipts: exact commits reproduced every declared direction and exit code. Add no permanent replay harness because the receipts include historical setup descriptions rather than a stable executable protocol, and this audit proves receipt consistency rather than agent utility.",
+    "checks": {
+      "silent_checkpoint": "before exit 0 with 0 output bytes; after exit 1 with fresh=false",
+      "multi_agent_continuity": "before 1 section/607 bytes; after 3 sections/4015 bytes with sha256 cc2b2cce2a6b95dea655e9784601c00d14d900faf3c78e1f20f56457e444eebd",
+      "session_gate": "91fe9b0 evaluate/streak 2; 07751d9 explore/streak 3; cc1cdcd evaluate with tool-discovery parked; 7197441 explore with both named families parked",
+      "silent_coverage": "before exit 0 with 0 output bytes; after exit 1 with 23 tracked files and the injected file uncovered",
+      "bounded_session_read": "11918 bytes/170 lines versus 2340 bytes/34 lines; after sha256 fc7be796f022378cb7bf74b8386a9c744d2263a4ae174e531562916092977813",
+      "test_entrypoint": "before exit 1 after 8 import-error tests; after exit 0 with 57 tests",
+      "fresh_clone_checkpoint": "reproduced 27353 mandatory-document bytes, 5307 last-session bytes, 333 gate bytes, 617 checkpoint bytes and the unchanged evaluate-handoff decision"
+    },
+    "failures": [
+      "The first audit harness attempt failed before producing a result because it reused a worktree path for commit 91fe9b0; the harness was corrected to use unique paths and the full audit was restarted.",
+      "The first ledger draft copied the gate recommendation 'select' into the completed-session mode, which accepts only build/evaluate/explore/maintenance; post-record validation rejected it and the audit was correctly classified as evaluate.",
+      "The fresh-clone receipt's 490 git-metadata bytes remain intentionally sourced from its named historical trace rather than independently re-measured, exactly as site/proof.json discloses."
+    ],
+    "limitations": [
+      "Three receipts contain procedural descriptions, so faithful commands had to be reconstructed from the named commit and repository instructions.",
+      "tests/test_site.py still validates references and commit existence, not execution replay.",
+      "Historical replay agreement is correctness evidence only; it does not show time, token, decision-quality or LLM-performance benefit.",
+      "Setup, worktree execution, comparison, reporting, testing, checkpoint maintenance and publication are additional overhead."
+    ]
+  }
+}

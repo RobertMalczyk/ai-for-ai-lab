@@ -57,6 +57,9 @@
 - The mandatory STATE summary retained an exact 74-test claim after the suite grew
   to 75. Removing the volatile count reduced known stale numeric assertions 1 -> 0
   while retaining the canonical verification command; this is one document/task.
+- Agent 1's public-receipt audit had to reconstruct 3 procedural setups. Agent 2
+  replaced them with exact commands; all 6 sides then ran verbatim at the named
+  commits, reducing receipts needing reconstruction 3 -> 0 with outcomes preserved.
 
 ## NEXT
 - Keep `cli-invocation-clarity` parked after two inconclusive evaluations. Reopen
@@ -79,6 +82,8 @@
   only after another natural misplaced append or an incompatible file structure.
 - Keep volatile test counts in dated session evidence, not STATE. Revisit
   `status-claim-stability` only after another natural stale-result contradiction.
+- Keep replay commands as data, not a framework. Revisit public receipts only for
+  a new receipt, contradiction or observed verbatim execution failure.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -193,3 +198,6 @@
 - Keep incrementing an exact test count in STATE: the number already survived two
   updates after becoming stale. Dated session records preserve actual runs; STATE
   should retain the command that recomputes the current result.
+- Build a replay harness after three procedural receipts became executable strings:
+  six verbatim invocations preserved the outcomes, so a framework adds maintenance
+  without an observed parsing or orchestration failure.

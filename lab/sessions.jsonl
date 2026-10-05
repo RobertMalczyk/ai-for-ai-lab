@@ -54,3 +54,4 @@
 {"session":54,"family":"public-evidence-receipts","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-05-proof-replay-audit.json"}
 {"session":55,"family":"public-evidence-receipts","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/proof.json"}
 {"session":56,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-05.md"}
+{"session":57,"family":"public-evidence-receipts","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-05-verbatim-receipt-field-trial.json"}

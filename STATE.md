@@ -11,9 +11,9 @@
   A bounded manual review of one real public narrative caught one completeness
   claim contradicted by a later audit. This supports review before reuse, not
   automatic validation; the first private episode still has no script to review.
-- Public receipts: all 7 historical outcomes in `site/proof.json` matched a fresh
-  replay audit; 6 were fully independent and 1 retained its disclosed 490-byte
-  historical input. This supports receipt consistency, not agent or LLM utility.
+- Public receipts: all 7 historical outcomes matched a replay audit. Agent 2 then
+  made the 3 reconstructed receipts executable; Agent 1 ran all 6 sides verbatim,
+  reducing reconstruction 3 -> 0. This is bounded workflow value, not LLM utility.
 - Transparency: a manual audit found and corrected one omitted owner instruction
   behind the channel work. Agent 2 then applied the cross-agent check to a new
   schedule instruction with 0 known omissions. This is bounded evidence for the
@@ -48,8 +48,8 @@
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains
   a naturally stale exact result that cannot be replaced by its verification source.
-- Receipt return condition: revisit only after a new public receipt, a contradiction,
-  or a stable executable replay protocol; do not build a harness for prose setups.
+- Receipt return condition: revisit only after a new receipt, contradiction or
+  verbatim execution failure; exact strings solved the observed gap without a harness.
 - CLI return condition: parked after two inconclusive evaluations. Reopen only
   after a new natural misuse or materially different cheap field comparison;
   unavailable comparison is not evidence of success.

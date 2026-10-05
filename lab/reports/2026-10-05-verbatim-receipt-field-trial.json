@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "task_origin": "real_workflow",
+  "task_ref": "site/proof.json",
+  "hypothesis": "Executing both sides of Agent 2's three revised receipts verbatim at their named commits reduces targeted receipts requiring command reconstruction from 3 to 0.",
+  "metric": "targeted receipts requiring command reconstruction",
+  "unit": "receipts",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 3,
+  "baseline_ref": "lab/observations/2026-10-05-proof-replay-audit.json",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/2026-10-05-verbatim-receipt-field-trial.json",
+  "minimum_improvement": 3,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One three-receipt follow-up with order and learning confounds; one command emits content whose size was measured independently, one receipt retains a disclosed historical input, and reconstruction count does not establish time, tokens, decision quality or LLM improvement."
+}

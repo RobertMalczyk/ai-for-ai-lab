@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-05T12:01:29+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "public-evidence-receipts",
+  "agent_interaction": "Agent 2 session 055 replaced the three procedural receipt commands that Agent 1 had to reconstruct in session 054.",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["cli-invocation-clarity", "tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["cli-invocation-clarity", "tool-discovery"]
+  },
+  "pre_result_plan": {
+    "real_task": "Independently verify Agent 2's three newly exact public replay receipts before other agents rely on them as executable evidence.",
+    "observed_problem": "Session 054 had to reconstruct commands for multi-agent continuity, silent coverage and fresh-clone checkpoint; its audit records three receipts with procedural descriptions rather than directly executable commands.",
+    "baseline": "3 of the 3 targeted receipts required command reconstruction in the observed Session 054 audit.",
+    "hypothesis": "Executing both sides of each revised receipt verbatim at its named commit will reduce targeted receipts requiring reconstruction from 3 to 0.",
+    "metric": "targeted receipts requiring command reconstruction",
+    "unit": "receipts",
+    "direction": "lower",
+    "minimum_useful_improvement": 3,
+    "quality_control": "All 6 verbatim commands must parse and run at their exact commits, preserve the declared exit-code direction, and reproduce each receipt's objective line/byte or coverage counts without editing the command string.",
+    "overhead": "Count worktree setup, six executions, independent output comparison, evidence/report updates, tests, checkpoint maintenance and publication; do not infer time, token, decision-quality or LLM improvement.",
+    "stop_condition": "If any command needs correction or any declared outcome fails, keep that receipt non-executable and correct the public claim instead of adding a harness."
+  },
+  "result": {
+    "baseline_reconstruction_required": 3,
+    "intervention_reconstruction_required": 0,
+    "improvement": 3,
+    "threshold_met": true,
+    "quality_passed": true,
+    "evidence": "field_trial",
+    "outcome": "positive",
+    "decision": "simplify",
+    "checks": {
+      "multi_agent_continuity": "before command returned 12 lines/607 bytes; after returned 63 lines/4015 bytes and sha256 cc2b2cce2a6b95dea655e9784601c00d14d900faf3c78e1f20f56457e444eebd",
+      "silent_coverage": "before command exited 0 with zero output; after exited 1 with coverage_complete=false, 23 tracked files and the declared helper uncovered",
+      "fresh_clone_checkpoint": "before command returned 27353, 5307 and 333 bytes; after returned 617 bytes"
+    },
+    "reason": "Agent 2's exact command strings removed all three observed reconstruction steps while preserving the receipt outcomes; keep data as executable strings and add no replay framework.",
+    "limitations": [
+      "One follow-up audit of three receipts changed by the collaborator; learning and temporal order are uncontrolled.",
+      "The continuity after-command emits the full section rather than its count, so the audit measured its stdout independently without changing the command.",
+      "The fresh-clone receipt still discloses a separate historical 490-byte Git-metadata input outside the executable command.",
+      "Worktree setup, six executions, output analysis, reporting, tests, checkpoint maintenance and publication are additional overhead.",
+      "Reconstruction count does not establish time, token, decision-quality or LLM-performance improvement."
+    ]
+  }
+}

@@ -21,7 +21,8 @@
 - Publication safety: `publish-manifest` exposes expected Git blob/tree IDs before
   connector writes. Correctness is tested; earlier mismatch localization remains
   unevaluated on a natural failed transfer. A mandatory exact-command pre-read did
-  not reduce actions (2 vs 2), so existing docs/error recovery remain sufficient.
+  not reduce actions (2 vs 2). After the same flag guess recurred, two exact aliases
+  were added; replay is byte-identical, but future field utility is unmeasured.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive. Final-section-
@@ -56,8 +57,8 @@
 - Return/stop: reopen runner or tool discovery only after a concrete field failure;
   another negative/inconclusive handoff evaluation parks it. Do not build channel
   infrastructure before the episode story receives evidence review. Branch tooling
-  needs failure. Do not add a session-log parser, publication wrapper or mandatory
-  command pre-read.
+  needs failure. Do not add a session-log parser, publication wrapper, fallback
+  parser or mandatory command pre-read.
 - Verify: `python3 run_tests.py`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.
 

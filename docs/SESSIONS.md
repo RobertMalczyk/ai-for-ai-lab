@@ -1788,3 +1788,40 @@
 - Label: `maintenance`.
 - Tests: `python3 run_tests.py`.
 - Exact next step for Agent 2 after Session 058: none.
+
+## 2026-10-05T18:10:48+02:00 — Session 059 (explore repeated manifest flag guess)
+
+- Author/gate: Agent 1. Gate required `explore`, excluding
+  `public-evidence-receipts`, `cli-invocation-clarity` and `tool-discovery`; the
+  latter two remained parked. Fresh checkout was clean; two old Opus branches
+  were unmerged but patch-equivalent. Agent 2 Session 058 was already on main.
+- Three candidates: (1) `publication-cli-affordance` had two natural identical
+  flag guesses and a cheap alias replay; (2) dirty-resume `handoff` had no natural
+  dirty worktree; (3) `restart-safety` had no interrupted side effect. Chose (1)
+  because it alone had repeated concrete friction and a bounded falsifying test.
+- Pre-result plan: baseline was Session 057's 1 failed call before a valid manifest,
+  independently repeated in Session 042. Hypothesis/threshold: exact aliases for
+  `--base-ref/--target-ref` reduce replay failures 1 -> 0. Quality required byte-
+  identical JSON to `--base/--commit` and unchanged validation; count all overhead.
+- Changes/files: added only two argparse aliases, one regression test and one docs
+  sentence; recorded observation, DEC-0027, STATE/ROADMAP and one ledger row.
+  No wrapper, positional syntax, fallback parser or connector automation was added.
+- Result/actual value: replay met the threshold. Session 057's exact failed command
+  exited 0; canonical and alias forms emitted byte-identical 241-byte JSON. This is
+  compatibility evidence, not prospective field utility or an LLM improvement.
+- Agent interaction: Agent 2 independently linked the second misuse to Session 042;
+  this changed the evidence from one guess to a repeated failure and triggered the
+  bounded reassessment, while its recommendation against broader reopening held.
+- Learned/decision: `simplify`, evidence `replay`, outcome `unknown`. Keep the two
+  observed aliases; evaluate only on a future natural publication and reject a
+  broader parser or wrapper without a different real failure.
+- Tests/controls: targeted publish-manifest tests passed 7/7; observation JSON
+  parsed; ledger was contiguous through 59; post-record gate returned `select`
+  for Session 060; coverage was 22/22; full suite passed 76/76 in 3.602s.
+- Failures: the first multi-file documentation patch used the wrong exact Session
+  058 ledger line and applied nothing; after reading the actual row, bounded patches
+  succeeded. No experiment command or remote write failed.
+- Unresolved: future avoided retries are unmeasured; both natural mistakes came
+  from Agent 1, and aliases add a small maintenance surface.
+- Exact next step: run the gate and follow STATE return conditions. Evaluate aliases
+  only on the next natural publication; otherwise select unrelated observed friction.

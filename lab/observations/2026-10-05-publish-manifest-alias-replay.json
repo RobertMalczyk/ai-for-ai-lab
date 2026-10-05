@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-05T18:01:21+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "publication-cli-affordance",
+  "gate": {
+    "mode": "explore",
+    "reasons": ["scheduled_exploration"],
+    "excluded_families": ["cli-invocation-clarity", "public-evidence-receipts", "tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["cli-invocation-clarity", "tool-discovery"]
+  },
+  "candidates": [
+    {
+      "family": "publication-cli-affordance",
+      "kind": "fresh_observed_friction",
+      "evidence": "Sessions 042 and 057 independently guessed publish-manifest revision flags; each first call failed and required one corrected retry.",
+      "potential_agent_value": "Accepting only the twice-observed aliases may remove a repeated failed invocation without adding a wrapper or mandatory pre-read.",
+      "cheapest_falsifying_test": "Add parser aliases for --base-ref/--target-ref and replay Session 057's exact failed command against the canonical invocation.",
+      "cost": "Two parser aliases, targeted regression tests and replay; no new command or service."
+    },
+    {
+      "family": "handoff",
+      "kind": "old_assumption_to_challenge",
+      "evidence": "H1 still assumes checkpoint value on a naturally dirty or long-lived resume, but this session began from a clean fresh clone.",
+      "potential_agent_value": "A dirty-resume comparison could determine whether to retain or park handoff utility work.",
+      "cheapest_falsifying_test": "Wait for a natural dirty or long-lived resumed worktree and compare the decision with and without checkpoint output.",
+      "cost": "No valid comparator exists in this fresh session; manufacturing dirt would be replay only."
+    },
+    {
+      "family": "restart-safety",
+      "kind": "different_simple_approach",
+      "evidence": "H5 predicts duplicate external writes after interruption, but current publications completed without interruption or duplicate side effects.",
+      "potential_agent_value": "A receipt could prevent repeated remote writes after a real interrupted publication.",
+      "cheapest_falsifying_test": "Observe the next natural interrupted side effect and compare immutable Git object IDs before retrying.",
+      "cost": "No present failure to test; implementation now would be speculative infrastructure."
+    }
+  ],
+  "selection": {
+    "chosen_family": "publication-cli-affordance",
+    "reason": "It is the only candidate with two natural failures, the same guessed syntax and a bounded compatibility change testable without new infrastructure."
+  },
+  "pre_result_plan": {
+    "real_task": "Generate the required connector publication manifest before remote writes using the CLI's revision selectors.",
+    "observed_problem": "Session 057 repeated Session 042's natural failure by using --base-ref/--target-ref; both calls returned invalid_arguments and needed one retry with --base/--commit.",
+    "baseline": "The observed Session 057 task had 1 failed manifest invocation before the valid manifest; Session 042 independently had the same failure shape.",
+    "hypothesis": "Supporting exactly the twice-observed --base-ref and --target-ref aliases will make the recorded failed invocation succeed with the same manifest as canonical syntax, reducing failed invocations in replay from 1 to 0.",
+    "metric": "failed manifest invocations before a valid manifest",
+    "unit": "invocations",
+    "direction": "lower",
+    "minimum_useful_improvement": 1,
+    "quality_control": "Alias and canonical forms must emit byte-identical JSON for the same revisions; existing required-argument and Git validation behavior must remain green.",
+    "overhead": "Count design, code, tests, replay, evidence, documentation, checkpoint maintenance and publication; replay cannot prove future field utility.",
+    "stop_condition": "Reject the aliases if they require semantic changes beyond argparse names, conflict with canonical flags, or do not reproduce the canonical manifest exactly."
+  },
+  "result": {
+    "baseline_failed_invocations": 1,
+    "intervention_failed_invocations_in_replay": 0,
+    "improvement": 1,
+    "threshold_met": true,
+    "quality_passed": true,
+    "evidence": "replay",
+    "outcome": "unknown",
+    "decision": "simplify",
+    "checks": {
+      "recorded_alias_command_exit": 0,
+      "canonical_command_exit": 0,
+      "outputs_byte_identical": true,
+      "manifest_bytes": 241,
+      "targeted_tests": "7 passed"
+    },
+    "reason": "Two argparse aliases absorb the twice-observed naming mistake while preserving one implementation path and canonical output; no wrapper, pre-read mandate or fallback parser is justified.",
+    "limitations": [
+      "The intervention is a replay of the real Session 057 command after implementation, not a prospective field use.",
+      "The two natural failures were made by the same Agent 1 across different sessions, so this does not establish transfer to other agents.",
+      "Setup, implementation, tests, evidence, documentation, checkpoint maintenance and publication overhead exceed the single retry saved in this replay.",
+      "No time, token, decision-quality or LLM-performance benefit is claimed."
+    ]
+  }
+}

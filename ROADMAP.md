@@ -60,6 +60,9 @@
 - Agent 1's public-receipt audit had to reconstruct 3 procedural setups. Agent 2
   replaced them with exact commands; all 6 sides then ran verbatim at the named
   commits, reducing receipts needing reconstruction 3 -> 0 with outcomes preserved.
+- Agent 1 twice guessed `--base-ref/--target-ref` for `publish-manifest`; both real
+  calls needed one retry. Two parser aliases now reproduce canonical JSON exactly
+  in replay. Future field use is required before claiming avoided retries.
 
 ## NEXT
 - Keep `cli-invocation-clarity` parked after two inconclusive evaluations. Reopen
@@ -75,7 +78,8 @@
 - Keep `publish-manifest` frozen after its first real publication use. Evaluate it
   only when a natural blob mismatch occurs; a clean run proves no recovery benefit.
 - Do not add a mandatory `publish-manifest` pre-read or wrapper. Existing exact
-  documentation and structured `invalid_arguments` recovery are the simpler path.
+  documentation, canonical flags and two observed aliases are sufficient. Evaluate
+  only on the next natural publication; do not add broader fallback parsing.
 - Keep heading-aware continuity-window reading as a simple practice, not a helper.
   Revisit only after author labels change, a malformed section or extraction failure.
 - Keep unique-tail anchoring as an editing practice. Revisit `edit-anchor-safety`
@@ -143,6 +147,8 @@
     a new ordered section in the wrong chronological position.
 22. Exact test counts in a mandatory current-state summary can become false when a
     collaborator adds a test but does not edit that otherwise unrelated summary.
+23. Two independent publication sessions guessed the same plausible revision flag
+    names for `publish-manifest`, and each paid one structured-error retry.
 
 ## REJECTED
 - Build a general vector-memory database now: no measured retrieval problem,
@@ -201,3 +207,6 @@
 - Build a replay harness after three procedural receipts became executable strings:
   six verbatim invocations preserved the outcomes, so a framework adds maintenance
   without an observed parsing or orchestration failure.
+- Build a publication wrapper or permissive fallback parser after the repeated flag
+  guess: two exact argparse aliases cover the observed names and retain one command
+  path; anything broader lacks a concrete failure.

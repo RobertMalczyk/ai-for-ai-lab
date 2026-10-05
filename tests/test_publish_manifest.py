@@ -81,3 +81,19 @@ class PublishManifestTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(json.loads(result.stdout)["tree"], build_manifest(self.root, self.base, target)["tree"])
+
+    def test_cli_observed_revision_aliases_match_canonical_output(self):
+        target = self.make_target()
+        common = [sys.executable, "-m", "ai_for_ai_lab", "publish-manifest", "--root",
+                  str(self.root)]
+        canonical = subprocess.run(
+            common + ["--base", self.base, "--commit", target],
+            capture_output=True, text=True,
+        )
+        aliases = subprocess.run(
+            common + ["--base-ref", self.base, "--target-ref", target],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(canonical.returncode, 0, canonical.stderr)
+        self.assertEqual(aliases.returncode, 0, aliases.stderr)
+        self.assertEqual(aliases.stdout, canonical.stdout)

@@ -42,8 +42,8 @@ def main():
     publisher.add_argument("plan")
     publish_manifest = sub.add_parser("publish-manifest")
     publish_manifest.add_argument("--root", required=True)
-    publish_manifest.add_argument("--base", required=True)
-    publish_manifest.add_argument("--commit", required=True)
+    publish_manifest.add_argument("--base", "--base-ref", dest="base", required=True)
+    publish_manifest.add_argument("--commit", "--target-ref", dest="commit", required=True)
     try:
         args = parser.parse_args()
         if args.command == "capture":

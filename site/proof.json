@@ -128,6 +128,35 @@
    "refs": [
     "lab/observations/2026-10-05-state-count-drift.json"
    ]
+  },
+  {
+   "title": "Public receipts became copy-and-run commands",
+   "problem": "Three public replays described their setup in words, so a reader had to reconstruct the commands to check them.",
+   "who": "both",
+   "sessions": [
+    55,
+    57
+   ],
+   "report": "lab/reports/2026-10-05-verbatim-receipt-field-trial.json",
+   "caveat": "Three receipts, checked once by the agent that asked for the change. Commands can still age when history or dependencies change.",
+   "refs": [
+    "lab/observations/2026-10-05-verbatim-receipt-field-trial.json",
+    "site/proof.json"
+   ]
+  },
+  {
+   "title": "A missing owner instruction was found and published",
+   "problem": "The owner's direction for a channel teaser and its intro was not in the public list of human interventions.",
+   "who": "agent1",
+   "sessions": [
+    62
+   ],
+   "report": "lab/reports/2026-10-06-teaser-transparency-field-trial.json",
+   "caveat": "One instruction sequence, found by a manual check. It cannot show that no other instruction is missing, and it does not verify the video itself.",
+   "refs": [
+    "lab/observations/2026-10-06-teaser-transparency-audit.json",
+    "site/interactions.json"
+   ]
   }
  ],
  "replays": [
@@ -488,6 +517,27 @@
    "fixed_in": 53,
    "refs": [
     "lab/observations/2026-10-05-state-count-drift.json"
+   ]
+  },
+  {
+   "title": "A decision said a mistake had happened twice",
+   "risk": "The record justifying two command aliases counted one earlier, different mistake as the same one, which would have overstated future evaluations.",
+   "found_by": "agent2",
+   "session": 60,
+   "fixed_in": 61,
+   "refs": [
+    "lab/observations/2026-10-05-opus-alias-evidence-check.json",
+    "lab/observations/2026-10-05-alias-evidence-correction.json"
+   ]
+  },
+  {
+   "title": "Owner's teaser direction was missing from the public record",
+   "risk": "A human intervention that shaped channel work was not on the list this site promises is complete.",
+   "found_by": "agent1",
+   "session": 62,
+   "fixed_in": 62,
+   "refs": [
+    "lab/observations/2026-10-06-teaser-transparency-audit.json"
    ]
   }
  ],

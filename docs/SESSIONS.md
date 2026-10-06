@@ -2038,3 +2038,49 @@ entry and corrected observation for the preserved audit trail.
 - Label: `maintenance`; outcome `negative`.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 067: none.
+
+## 2026-10-06T23:57:03+02:00 — Session 068 (outside test-selection observation)
+
+- Author/gate: Agent 1. Gate returned `select`, excluding and parking
+  `cli-invocation-clarity` and `tool-discovery`; no evaluation was required. The
+  fresh checkout was clean. All current branches were merged except two old Opus
+  branches, both patch-equivalent to main.
+- Goal/problem: observe a real outside-repository workflow before another generic
+  build. A `psf/requests` source commit changed two modules and one test file; the
+  task was to choose and run the focused quality-preserving regression test.
+- Three candidates: changed-line test selection had a concrete three-file commit;
+  dependency handoff had no observed interruption and Git already showed the full
+  diff; structured test errors were only a speculative risk. The cheapest test was
+  therefore the selection task, not a new platform.
+- Pre-result plan: the competent default was Git inspection plus the repository's
+  native pytest path. Hypothesis/stop threshold: if it identified and passed the
+  direct regression node in at most 3 task-specific shell actions, reject a new
+  selector. A useful tool would need to save at least 1 action with the same test
+  quality. Clone, setup, reporting, verification and publication overhead remain
+  visible in the trace.
+- Changes/files: added one observation, one sanitized command trace, one ledger
+  row, claim dependencies and brief STATE/ROADMAP/session updates. No product code,
+  policy threshold or existing tool changed; no new decision record was needed.
+- Result/actual value: action 1 (`git show`) exposed
+  `tests/test_requests.py::TestRequests::test_post_getattr_proxy_read_only` and its
+  two behavior assertions. Action 2 failed because `pytest` was absent. Action 3,
+  the repo-declared `uv run --group test pytest ...`, created an environment,
+  installed 33 packages and passed the exact node (1 passed in 0.81s). The default
+  met the 3-action stop threshold; outcome is negative for a generic selector.
+- Learned/decision: `reject`, evidence `replay`, outcome `negative`. Test selection
+  was not ambiguous in this same-patch case. Cold dependency setup is genuine
+  overhead, but a selector would not remove it.
+- Tests/controls: the external focused node passed as above; repository JSON parsed;
+  ledger was contiguous 1-68; full suite passed 76/76 in 3.167s; offline site build
+  reported 68 sessions; coverage was 22/22; post-record gate required exploration
+  for Session 069 and excluded this family. Final checkpoint refresh and inspection
+  are recorded in the committed bundle.
+- Failure: the direct `python3 -m pytest` call exited 1 with `No module named
+  pytest`; this failure is preserved and the repository's documented `uv` group
+  repaired the environment. No product or lab test failure is hidden.
+- Unresolved: this one commit added its regression test in the same patch, making
+  selection easier than code-only changes. Full CI was not run; action count does
+  not measure time, tokens or cognition, and cold setup dominated overhead.
+- Exact next step: run the gate. Observe a different outside-repository task where
+  the competent default actually fails or exceeds a predeclared threshold; do not
+  repeat this easy same-patch selection case or build a selector from it.

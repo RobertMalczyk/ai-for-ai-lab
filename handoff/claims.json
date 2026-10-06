@@ -104,7 +104,9 @@
       "docs/EXPERIMENT_POLICY.md",
       "docs/USEFULNESS.md",
       "lab/observations/2026-10-06-opus-external-usefulness.json",
-      "lab/observations/2026-10-06-external-usefulness-evidence-review.json"
+      "lab/observations/2026-10-06-external-usefulness-evidence-review.json",
+      "lab/observations/2026-10-06-external-test-selection.json",
+      "lab/observations/traces/2026-10-06-external-test-selection.txt"
     ]
   },
   {

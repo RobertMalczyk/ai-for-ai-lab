@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "session": 68,
+  "timestamp": "2026-10-06T23:57:03+02:00",
+  "family": "external-test-selection",
+  "mode": "explore",
+  "status": "complete",
+  "candidates": [
+    {
+      "family": "external-test-selection",
+      "observed_friction": "A real psf/requests source commit changes two modules and one test file; an agent must choose a quality-preserving focused verification instead of paying for the full suite.",
+      "assumption_to_challenge": "Changed files require a new mapping or selection tool before an agent can find the focused regression test.",
+      "simpler_approach": "Use git show to inspect the patch, then pytest's existing node IDs and collection/filtering.",
+      "problem_evidence": "psf/requests commit 6f66281a1d6326b1b9c4ac09ca30de0fc4e6ef43 changes src/requests/_types.py, src/requests/models.py and tests/test_requests.py.",
+      "potential_value": "Avoid unnecessary full-suite work while preserving direct coverage of the changed behavior.",
+      "cheapest_falsifier": "Try to identify and run the new regression node using at most three shell actions and no new tool.",
+      "cost": "One filtered checkout, patch inspection and one focused pytest invocation."
+    },
+    {
+      "family": "dependency-handoff",
+      "observed_friction": "The same commit spans a protocol type, runtime model logic and a regression test, so a handoff could omit a dependency.",
+      "assumption_to_challenge": "A capsule can represent this dependency more usefully than Git's commit identity and diff.",
+      "simpler_approach": "Record the commit SHA and reread its complete diff.",
+      "problem_evidence": "The three-file change is visible in one native git show result; no interrupted handoff was observed.",
+      "potential_value": "Prevent false freshness after context loss.",
+      "cheapest_falsifier": "Check whether Git alone exposes all changed paths for the replayed task.",
+      "cost": "One git show; weak novelty because this family already has a reproduced blind spot."
+    },
+    {
+      "family": "structured-test-errors",
+      "observed_friction": "A focused external test may fail because dependencies are absent rather than because the patch is wrong.",
+      "assumption_to_challenge": "Agents need a new normalized error envelope to distinguish setup failure from assertion failure.",
+      "simpler_approach": "Use pytest's exit code and first error block.",
+      "problem_evidence": "No failure has yet occurred in this checkout; this is a risk, not an observed problem.",
+      "potential_value": "Reduce ambiguous retries.",
+      "cheapest_falsifier": "Run the selected test and inspect whether native output is actionable.",
+      "cost": "No extra run beyond the selected candidate, but the evidence is speculative."
+    }
+  ],
+  "selected_plan": {
+    "task_origin": "real_workflow_replay",
+    "task_ref": "psf/requests@6f66281a1d6326b1b9c4ac09ca30de0fc4e6ef43",
+    "observed_problem": "Choose a focused quality-preserving test for a real cross-file source change without first running the full suite.",
+    "baseline": "Competent default: inspect the commit with Git, identify the changed regression test with native text/test metadata, then run that exact pytest node.",
+    "hypothesis": "The competent default will resolve this task in at most three shell actions, leaving no evidenced need for a generic changed-line test-selection tool.",
+    "metric": "task-specific shell actions",
+    "unit": "actions",
+    "direction": "lower",
+    "minimum_useful_improvement_for_a_new_tool": 1,
+    "quality_control": "The selected node must contain assertions for the changed hasattr/protocol behavior and pass at the parent commit with the target patch applied by checking out the target commit.",
+    "overhead": "Clone/checkout, inspection, test execution, trace writing, lab documentation, verification and publication all remain visible; only task-specific selection actions are the primary metric.",
+    "stop_condition": "Reject a new selector if the default identifies and passes the directly changed regression node in at most three task-specific actions; stop without product code."
+  },
+  "trace": "lab/observations/traces/2026-10-06-external-test-selection.txt",
+  "result": {
+    "task_specific_actions": 3,
+    "target": "tests/test_requests.py::TestRequests::test_post_getattr_proxy_read_only",
+    "selection": "The first git show exposed the exact new regression node and its assertions for the changed proxy-read behavior.",
+    "quality": "The repository-declared uv test environment ran the exact node: 1 passed in 0.81s.",
+    "setup": "The direct python -m pytest attempt failed because pytest was absent. uv then created .venv, installed 33 packages and downloaded pygments (1.2 MiB), cryptography (4.5 MiB) and brotlicffi (1.5 MiB).",
+    "threshold_met": true,
+    "outcome": "negative",
+    "interpretation": "The external task has real setup cost, but no observed test-selection ambiguity: Git plus the repository's native uv/pytest path completed the task at the three-action stop threshold. A generic selector has no evidenced action advantage here."
+  },
+  "decision": {
+    "action": "reject",
+    "reason": "Do not build changed-line test-selection infrastructure from this case. Observe a different outside-repository friction where the competent default actually fails or exceeds a predeclared threshold."
+  },
+  "failures": [
+    "python3 -m pytest failed immediately with No module named pytest; this was retained in the trace and repaired through the repository-declared uv test group."
+  ],
+  "limitations": [
+    "This replay used one commit whose regression test was added in the same patch, making selection easier than changes without tests.",
+    "Action count does not compare elapsed time, tokens or cognitive effort, and dependency downloads dominate cold-start overhead.",
+    "A passing focused node does not replace the external project's full CI matrix."
+  ]
+}

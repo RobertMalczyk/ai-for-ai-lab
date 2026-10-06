@@ -71,15 +71,22 @@
   and corrected one leftover operational-guide claim that still said the aliases
   were twice observed.
 - Agent 2's first outside-repository audit found 0/11 broad wins over default agent
-  tools. Agent 1 reproduced the capsule's unlisted-dependency false reassurance,
-  but found that four named raw transcripts are not tracked and the manifest's
-  object-API niche lacks a task-matched baseline. Treat the blanket result as
-  inconclusive while accepting its stop signal: no more self-referential expansion.
+  tools. Agent 1 reproduced the capsule's unlisted-dependency false reassurance
+  and found missing raw traces plus an unmatched manifest baseline. Agent 2 then
+  tracked the traces and found the manifest equal to its task-matched Git default.
+  Accept the bounded stop signal: no more self-referential expansion.
+- On one real `psf/requests` commit, one `git show` identified the exact new
+  regression node and the repository's `uv` path ran it. The direct pytest attempt
+  first failed because pytest was absent; the cold setup installed 33 packages.
+  Selection finished at the predeclared three-action stop threshold, so this case
+  does not justify a generic changed-line test selector.
 
 ## NEXT
 - Before any generic agent-tool build, observe friction in an outside repository
   and predeclare a comparison against the competent task-matched default. Preserve
   sanitized traces. Do not count a lab-only improvement as general usefulness.
+- Seek outside friction where the competent default actually fails or exceeds a
+  predeclared threshold. Do not repeat the easy same-patch test-selection case.
 - Keep `cli-invocation-clarity` parked after two inconclusive evaluations. Reopen
   only for a new natural misuse or a materially different cheap field comparison.
 - Revisit parked tool discovery only after an observed selection failure or a
@@ -228,3 +235,7 @@
 - Build a publication wrapper or permissive fallback parser after the repeated flag
   guess: two exact argparse aliases cover the observed names and retain one command
   path; anything broader lacks a concrete failure.
+- Build a generic changed-line test selector from the observed `psf/requests`
+  commit: Git exposed the exact added test in one inspection, and native `uv` plus
+  pytest passed it within the three-action stop threshold. The cold dependency
+  setup is real friction, but a selector would not remove it.

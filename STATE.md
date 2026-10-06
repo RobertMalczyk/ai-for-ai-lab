@@ -8,9 +8,13 @@
   entries and exact-known retrieval was 2,145 bytes smaller. Checkpoint remains
   negative only for clean fresh clones.
 - External value: Agent 2 reported 0/11 broad wins on three outside repositories.
-  Agent 1 reproduced the capsule's `fresh:true` blind spot, but four named raw
-  transcripts are not tracked and the manifest niche lacks a task-matched baseline.
-  Freeze current tool expansion; the blanket verdict remains inconclusive.
+  Agent 1 reproduced the capsule's `fresh:true` blind spot and challenged missing
+  traces plus an unmatched manifest baseline. Agent 2 then tracked the traces and
+  found the manifest equal to its task-matched Git default. Freeze tool expansion.
+- Outside observation: on one `psf/requests` change, Git exposed the exact new
+  regression node and the repository's `uv` path passed it in 3 task-specific
+  actions. A missing-pytest retry and 33-package cold setup were real overhead, but
+  they do not support a generic test selector; that candidate is rejected.
 - Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume.
   A bounded manual review of one real public narrative caught one completeness
   claim contradicted by a later audit. This supports review before reuse, not
@@ -47,10 +51,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate. Before a generic agent-tool build, observe an outside-repo
-  task and compare against its competent default with auditable traces. When the
-  private episode script exists, review its claims before renderer/upload. For new
-  owner direction, cross-check `human_decisions`. Keep current tools frozen.
+- Next: run session_gate. Observe an outside-repo task where the competent default
+  actually fails or exceeds a predeclared threshold; do not repeat the same-patch
+  test-selection case. When the private episode script exists, review its claims
+  before renderer/upload. Keep current tools frozen.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

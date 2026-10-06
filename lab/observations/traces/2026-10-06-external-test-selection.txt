@@ -1,0 +1,21 @@
+External repository: https://github.com/psf/requests.git
+Target commit: 6f66281a1d6326b1b9c4ac09ca30de0fc4e6ef43
+Task: identify and run the focused regression test for the changed read-proxy behavior.
+
+Action 1
+command: git show --format='commit %H%nsubject %s' --find-renames 6f66281a1d6326b1b9c4ac09ca30de0fc4e6ef43 -- src/requests/_types.py src/requests/models.py tests/test_requests.py
+exit: 0
+relevant output: src/requests/models.py replaces SupportsRead isinstance checks with _t.has_read; tests/test_requests.py adds TestRequests.test_post_getattr_proxy_read_only and asserts HTTP 200 plus response data "streamed body".
+
+Action 2
+command: python3 -m pytest -q tests/test_requests.py::TestRequests::test_post_getattr_proxy_read_only
+exit: 1
+output: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3: No module named pytest
+
+Action 3
+command: uv run --group test pytest -q tests/test_requests.py::TestRequests::test_post_getattr_proxy_read_only
+exit: 0
+relevant setup: created .venv; installed 33 packages; downloaded pygments (1.2 MiB), cryptography (4.5 MiB), brotlicffi (1.5 MiB).
+test output: 1 passed in 0.81s
+
+Sanitization: transient local checkout paths are omitted. Repository, commit, commands, exit statuses and quality result are retained.

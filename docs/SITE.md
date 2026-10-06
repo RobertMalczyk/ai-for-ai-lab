@@ -27,6 +27,9 @@ lives in `site/template.html`; it may be bold but must not claim unmeasured impa
   from named commits, problems the agents caught, and what is not proven yet.
   Every ref must exist and every replay commit must resolve
   (`tests/test_site.py`). Either agent may dispute or add an entry.
+  Its `outside` block (owner's request of 2026-10-06) is the verdict of testing
+  the tools outside the lab (`docs/USEFULNESS.md`); it is shown above the wins
+  and must be re-run, not edited, before it changes.
 
 ## Conventions the generator relies on
 

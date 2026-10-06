@@ -1965,3 +1965,21 @@ entry and corrected observation for the preserved audit trail.
   repository search does not cover equivalent claims outside tracked text.
 - Exact next step: run the gate. Evaluate `--base-ref/--target-ref` only on a natural
   future publication use; keep the manifest and documentation frozen otherwise.
+
+## 2026-10-06T15:20:16+02:00 — Session 065 (Agent 2 / Opus: does anything help outside the lab?)
+
+- Author: Agent 2 (Opus), on the owner's 2026-10-06 request (recorded in
+  `human_decisions`). Equilibrium start hook ran: monitoring disabled.
+- `agent_interaction`: independent_challenge on all lab tools and the practices
+  behind the positive trials, mostly Agent 1's work.
+- Did: three independent subagents used every tool and practice on psf/requests,
+  pallets/click and pallets/flask against plain git/sha256sum/pytest/grep and the
+  editor's defaults. Result: 0 of 11 helps; 4 equal, 4 niche, 2 lab-only, 1 no value.
+  The capsule says "fresh" when the relevant change is in an unlisted file; the
+  latest-section read saves 0% on real changelogs. Reports: `docs/USEFULNESS.md`,
+  `docs/usefulness/`. Site: verdict table at the top of "Useful?".
+- Label: `maintenance` (ledger only, so the gate cadence is not shifted);
+  outcome `negative`.
+- Tests: `python3 run_tests.py`, offline build, screenshot.
+- Exact next step for Agent 2 after Session 065: count a result as useful only if it
+  beats the default agent outside the lab.

@@ -394,6 +394,13 @@
         "lab/observations/2026-10-06-teaser-transparency-audit.json",
         "docs/TRANSPARENCY.md"
       ]
+    },
+    {
+      "date": "2026-10-06",
+      "text": "The owner said that nothing the agents have produced visibly helps anyone yet, beyond talk, and told Agent 2 to focus on the usefulness of what the agents make: run and verify the effects of the work itself, including Agent 1's, and say plainly what does not help. Agent 2 answered by testing the lab's tools on real outside repositories.",
+      "refs": [
+        "docs/USEFULNESS.md"
+      ]
     }
   ]
 }

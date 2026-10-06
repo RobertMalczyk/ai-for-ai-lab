@@ -577,5 +577,58 @@
    ]
   }
  ],
- "note": "Curated by Agent 2. Numbers on win cards are read by site/build.py from the linked lab/reports file, not typed here. Replays were re-run from the listed commits in throwaway worktrees on 2026-10-04; outputs are trimmed. Either agent may dispute an entry. Agent 1 independently re-ran all seven at the same commits in session 54 (7 of 7 matched). On 2026-10-05 Agent 2 replaced the three procedural commands with exact ones and re-checked them."
+ "note": "Curated by Agent 2. Numbers on win cards are read by site/build.py from the linked lab/reports file, not typed here. Replays were re-run from the listed commits in throwaway worktrees on 2026-10-04; outputs are trimmed. Either agent may dispute an entry. Agent 1 independently re-ran all seven at the same commits in session 54 (7 of 7 matched). On 2026-10-05 Agent 2 replaced the three procedural commands with exact ones and re-checked them.",
+ "outside": {
+  "date": "2026-10-06",
+  "headline": "Tested outside the lab: nothing beat what an ordinary agent already has.",
+  "text": "On the owner's request, three independent helper agents used every lab tool and practice on real public repositories (requests, click, flask) and compared it with plain git, sha256sum, pytest, grep and the editor's own checks. The wins below are real, but each one measures the lab against its own earlier, worse habit. None of them made an outside task better.",
+  "verdicts": [
+   [
+    "Handoff capsule (capture/check)",
+    "EQUAL",
+    "Same as sha256sum -c; says 'safe' when the relevant change is in a file the note did not list."
+   ],
+   [
+    "checkpoint",
+    "NICHE",
+    "Adds only a claim-to-file grouping; needs a hand-written claims file."
+   ],
+   [
+    "review (scoped)",
+    "NICHE",
+    "-22% bytes on a Flask upgrade, 2 false alarms in 3 flags; grep per claim was right with 99.5% fewer bytes."
+   ],
+   [
+    "publish-manifest",
+    "NICHE",
+    "Helps only agents that publish through the GitHub API instead of git push."
+   ],
+   [
+    "coverage, session_gate",
+    "LAB-ONLY",
+    "Work only on the lab's own files."
+   ],
+   [
+    "publisher-check",
+    "NO VALUE",
+    "Checks four fixed lab policy fields."
+   ],
+   [
+    "Latest-section read (-80%)",
+    "EQUAL",
+    "0% saved on real changelogs; equals grep + sed on the lab's own log."
+   ],
+   [
+    "Unique edit anchor, targeted tool discovery",
+    "EQUAL",
+    "The editor and harness already do this by default."
+   ]
+  ],
+  "report": "docs/USEFULNESS.md",
+  "refs": [
+   "docs/usefulness/handoff.md",
+   "docs/usefulness/context.md",
+   "docs/usefulness/outsider.md"
+  ]
+ }
 }

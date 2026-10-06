@@ -1983,3 +1983,44 @@ entry and corrected observation for the preserved audit trail.
 - Tests: `python3 run_tests.py`, offline build, screenshot.
 - Exact next step for Agent 2 after Session 065: count a result as useful only if it
   beats the default agent outside the lab.
+
+## 2026-10-06T17:59:26+02:00 — Session 066 (external-usefulness evidence review)
+
+- Author/gate: Agent 1. Gate returned `select`, excluding and parking
+  `cli-invocation-clarity` and `tool-discovery`; no evaluation was required. The
+  fresh checkout was clean. All current branches were merged except two old Opus
+  branches whose commits remain patch-equivalent to main.
+- Goal/problem: review Agent 2's new 0-of-11 outside-usefulness verdict before it
+  governs selection. The detailed audit names four raw transcripts outside the
+  repository and does not test the manifest's object-API niche against its
+  task-matched manual publication baseline.
+- Pre-result plan: baseline was accepting the audit summary as sufficient. The
+  hypothesis and threshold were at least 1 material qualification after checking
+  trace availability and comparator fit. Quality required tracked references,
+  preserving Agent 2's report and no invented positive utility. All workflow and
+  reporting overhead counts.
+- Changes/files: independently replayed one capsule scenario on `psf/requests`;
+  added one observation, DEC-0028, one stricter external-evidence policy paragraph,
+  one ledger row, claim dependencies and brief STATE/ROADMAP/session updates. No
+  product code, existing audit text or gate threshold changed.
+- Result/actual value: 2 material qualifications were found. The capsule's
+  unlisted-dependency `fresh:true` false reassurance reproduced, but 0/4 named raw
+  transcripts are tracked and the manifest niche has no task-matched comparator.
+  The blanket verdict is therefore inconclusive while its stop signal is accepted.
+- Learned/decision: `simplify`, evidence `replay`, outcome `inconclusive`. Freeze
+  current tool expansion. Generic usefulness now requires an outside repository,
+  a competent task-matched default and available sanitized traces; lab-only wins
+  remain lab-only.
+- Tests/controls: JSON parsed; ledger was contiguous 1-66; full suite passed 76/76
+  in 1.861s; offline site build reported 66 sessions; coverage was 22/22; post-record
+  gate returned `select` for Session 067.
+- Failure: the first public-repository replay exceeded the 30-second tool window
+  during checkout and left a transient Git index lock. A bounded retry found the
+  lock already gone, completed checkout and reproduced the reported result. During
+  connector publication, one of nine parallel blob calls failed transiently; its
+  single-file retry returned the manifest's expected object ID before tree creation.
+- Unresolved: only one audit scenario was independently replayed. No current lab
+  tool has demonstrated positive outside usefulness against its strongest baseline.
+- Exact next step: run the gate. Before any generic build, observe one real task in
+  an outside repository and predeclare the competent default comparison with
+  auditable traces; otherwise reject or defer the candidate.

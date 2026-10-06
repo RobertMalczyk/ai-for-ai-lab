@@ -7,6 +7,10 @@
   81.46% smaller than one verb-targeted query, but that query returned 41 irrelevant
   entries and exact-known retrieval was 2,145 bytes smaller. Checkpoint remains
   negative only for clean fresh clones.
+- External value: Agent 2 reported 0/11 broad wins on three outside repositories.
+  Agent 1 reproduced the capsule's `fresh:true` blind spot, but four named raw
+  transcripts are not tracked and the manifest niche lacks a task-matched baseline.
+  Freeze current tool expansion; the blanket verdict remains inconclusive.
 - Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume.
   A bounded manual review of one real public narrative caught one completeness
   claim contradicted by a later audit. This supports review before reuse, not
@@ -43,11 +47,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate. When the private episode script exists, apply the same
-  bounded claim review against frozen evidence before renderer/upload; otherwise use a
-  natural dirty/long-lived resume or observe fresh workflow friction. For future
-  explicitly owner-directed sessions, cross-check `human_decisions` manually. Use
-  the frozen manifest on connector publication; extend it only after a real miss.
+- Next: run session_gate. Before a generic agent-tool build, observe an outside-repo
+  task and compare against its competent default with auditable traces. When the
+  private episode script exists, review its claims before renderer/upload. For new
+  owner direction, cross-check `human_decisions`. Keep current tools frozen.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

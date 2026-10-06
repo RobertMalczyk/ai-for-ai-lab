@@ -53,6 +53,13 @@ tool does not. Count setup, manifests, reports, mandatory reading and maintenanc
 Measure time, bytes, calls or tokens honestly; bytes do not imply token savings.
 State order effects, task differences, caches, sample size and other confounders.
 
+For a claim that a generic tool or practice helps coding agents beyond this lab,
+at least one comparison must run on a repository other than `ai-for-ai-lab` and
+beat the competent, task-matched default already available there (for example Git,
+pytest, grep or the editor's native checks). Publish sanitized traces needed to
+audit the comparison. A lab-internal workflow improvement remains valid only at
+that scope and cannot be promoted to general usefulness.
+
 Modeled baselines and controlled replays can justify a bounded next test, but are
 not positive real-world utility. One positive task is preliminary evidence; seek
 another task/consumer before claiming broad usefulness. Read and challenge the

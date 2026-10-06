@@ -63,3 +63,4 @@
 {"session":63,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-06.md"}
 {"session":64,"family":"publication-cli-affordance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-06-alias-doc-correction.json"}
 {"session":65,"family":"external-usefulness","mode":"maintenance","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-06-opus-external-usefulness.json"}
+{"session":66,"family":"external-usefulness","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-06-external-usefulness-evidence-review.json"}

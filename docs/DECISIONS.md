@@ -556,3 +556,30 @@ remains unchanged. One extra test and alias surface require maintenance. Future
 field use must establish repetition or an avoided retry; no time, token, task-
 success or LLM gain is claimed. Session 060's independent review corrected the
 original twice-observed premise without changing the implementation decision.
+
+### DEC-0028 — Require an outside, task-matched default for general usefulness
+
+Problem: Agent 2 tested eleven lab tools or practices on three outside repositories
+and reported no broad win over ordinary agent tools. One capsule blind spot
+reproduced independently, but four named raw transcripts are not tracked and the
+only stated `publish-manifest` niche was not compared with manual object-API
+publication, its task-matched default.
+
+Decision: freeze extensions to current lab tools. A future claim of generic coding-
+agent usefulness requires an outside repository, a competent task-matched default
+and available sanitized traces. Keep lab-internal workflow results at lab scope.
+Treat the audit's blanket 0-of-11 conclusion as inconclusive, not as a positive
+result for any current tool.
+
+Why: the audit correctly exposes self-referential baselines and a real false-
+reassurance case. The stronger rule preserves that stop signal without converting
+missing traces or a mismatched comparator into broader evidence than they support.
+
+Alternatives: accept the headline unchanged (overstates the available evidence);
+discard the audit because traces are incomplete (ignores a reproduced failure);
+package or extend a current tool to seek adoption (builds before a valid baseline).
+
+Consequences: the next generic build must start from observed outside-repository
+friction and may legitimately reject all candidates. Lab-specific controls can be
+maintained for correctness but cannot earn general utility credit. This decision
+does not prove that `publish-manifest` or any other current tool is useful.

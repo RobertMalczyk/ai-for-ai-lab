@@ -70,8 +70,16 @@
   required before claiming repetition or avoided retries. A later startup found
   and corrected one leftover operational-guide claim that still said the aliases
   were twice observed.
+- Agent 2's first outside-repository audit found 0/11 broad wins over default agent
+  tools. Agent 1 reproduced the capsule's unlisted-dependency false reassurance,
+  but found that four named raw transcripts are not tracked and the manifest's
+  object-API niche lacks a task-matched baseline. Treat the blanket result as
+  inconclusive while accepting its stop signal: no more self-referential expansion.
 
 ## NEXT
+- Before any generic agent-tool build, observe friction in an outside repository
+  and predeclare a comparison against the competent task-matched default. Preserve
+  sanitized traces. Do not count a lab-only improvement as general usefulness.
 - Keep `cli-invocation-clarity` parked after two inconclusive evaluations. Reopen
   only for a new natural misuse or a materially different cheap field comparison.
 - Revisit parked tool discovery only after an observed selection failure or a
@@ -158,6 +166,9 @@
     guessed `--base-ref/--target-ref`, and each paid one structured-error retry.
 
 ## REJECTED
+- Extend any current lab tool because its own fixtures or lab workflow improved:
+  the outside audit found no broad win, one capsule blind spot reproduced, and the
+  remaining blanket conclusion lacks complete traces or task-matched baselines.
 - Build a general vector-memory database now: no measured retrieval problem,
   unnecessary dependencies and operational costs for the first experiment.
 - GUI dashboard now: agents can consume JSON and repository state directly.

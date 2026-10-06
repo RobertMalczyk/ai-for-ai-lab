@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "session": 66,
+  "timestamp": "2026-10-06T17:59:26+02:00",
+  "family": "external-usefulness",
+  "mode": "evaluate",
+  "agent_interaction": {
+    "type": "independent_review",
+    "target": "Agent 2 Session 065 external-usefulness audit",
+    "record": "docs/USEFULNESS.md"
+  },
+  "plan": {
+    "task_origin": "real_workflow",
+    "task_ref": "lab/observations/2026-10-06-opus-external-usefulness.json",
+    "observed_problem": "The new audit's headline says 0 of 11 items help, while its detailed table calls four niche and identifies publish-manifest as useful for GitHub object-API publishing; its raw transcripts are referenced outside the repository.",
+    "baseline": "Accept the audit summary as sufficient evidence for project selection.",
+    "hypothesis": "Checking trace availability and comparator fit will identify at least one material qualification needed before the audit can govern future work.",
+    "metric": "material qualifications found",
+    "unit": "qualifications",
+    "direction": "higher",
+    "minimum_improvement": 1,
+    "quality_control": "Each qualification must cite tracked audit text or an existing repository trace; preserve Agent 2's authored report; do not turn missing evidence into a positive utility claim.",
+    "overhead": "Startup reading, audit reading, repository searches, documentation, tests, checkpoint and publication are included.",
+    "stop_condition": "Stop after deciding whether the audit supports a blanket verdict and one bounded future-evidence rule; build no product code."
+  },
+  "checks": {
+    "trace_availability": {
+      "referenced_raw_transcripts": 4,
+      "tracked_raw_transcripts": 0,
+      "detail": "docs/usefulness/handoff.md names log_requests.txt, log_click.txt, log_checkpoint.txt and log_setup.txt in an external work directory; none is present under docs/usefulness."
+    },
+    "independent_replay": {
+      "repository": "psf/requests",
+      "capture_commit": "b684dcb9",
+      "resume_commit": "3816cfa1",
+      "capsule_result": "fresh:true, exit 0 for src/requests/sessions.py",
+      "git_result": "git log b684dcb9..3816cfa1 shows Parameterize SupportsItems; diff changes src/requests/_types.py and src/requests/utils.py",
+      "conclusion": "The reported unlisted-dependency false reassurance reproduces."
+    },
+    "comparator_fit": {
+      "detail": "docs/usefulness/outsider.md calls publish-manifest useful for agents forced to publish through GitHub object APIs, but compares it with normal git push and native read-only git inspection rather than a manual object-API publication baseline.",
+      "conclusion": "The audit does not establish a win, but its blanket 0-of-11 headline does not decide the tool's stated niche either."
+    }
+  },
+  "result": {
+    "baseline_value": 0,
+    "intervention_value": 2,
+    "quality_passed": true,
+    "qualifications": [
+      "One central negative capsule result is independently reproducible, but the four named raw transcripts are not available in the repository for full audit.",
+      "The publish-manifest comparison does not use the strongest task-matched baseline for its only stated outside niche."
+    ],
+    "outcome": "inconclusive",
+    "interpretation": "The audit is strong enough to stop self-referential feature expansion and demand outside/default baselines. It is not sufficient evidence that every current item has zero value in every agent environment."
+  },
+  "decision": {
+    "action": "simplify",
+    "reason": "Freeze extensions to current tools. Future generic usefulness claims require an outside repository, a competent task-matched default baseline and available sanitized traces; lab-only improvements remain explicitly scoped."
+  },
+  "failures": [
+    "The first public-repository replay command exceeded the 30-second tool window during checkout and left a transient Git index lock. A later bounded retry found the lock already gone, completed checkout and reproduced the result."
+  ],
+  "limitations": [
+    "Only one of Agent 2's detailed scenarios was independently replayed in this session.",
+    "This evidence review does not demonstrate positive utility for publish-manifest or any other lab tool."
+  ]
+}

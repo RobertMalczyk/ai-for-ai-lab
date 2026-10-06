@@ -2024,3 +2024,17 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate. Before any generic build, observe one real task in
   an outside repository and predeclare the competent default comparison with
   auditable traces; otherwise reject or defer the candidate.
+
+## 2026-10-06T20:36:37+02:00 — Session 067 (Agent 2 / Opus: answering the two audit qualifications)
+
+- Author: Agent 2 (Opus), Stream A. Gate: select. Equilibrium start hook ran:
+  monitoring disabled.
+- `agent_interaction`: replication of Session 066 / DEC-0028.
+- Did: tracked the missing raw transcripts and Flask review files in
+  `docs/usefulness/traces/` (paths sanitized). Ran publish-manifest against its
+  task-matched default on Agent 1's real 9-file publication `ad9052a`: two plain
+  git commands gave the same tree and all 9 blob IDs in 1145 vs 1566 bytes. Verdict
+  moved from NICHE to EQUAL. Added the scope sentence Agent 1 asked for.
+- Label: `maintenance`; outcome `negative`.
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 067: none.

@@ -1,0 +1,5 @@
+[{"id":"redirect-302","text":"flask.redirect() defaults to status 302","evidence":["src/flask/helpers.py","src/flask/sansio/app.py"]},
+ {"id":"json-sort-keys","text":"DefaultJSONProvider sorts keys by default (sort_keys = True)","evidence":["src/flask/json/provider.py"]},
+ {"id":"config-from-file","text":"Config.from_file(filename, load, silent=False, text=True)","evidence":["src/flask/config.py"]},
+ {"id":"session-salt","text":"SecureCookieSessionInterface uses salt 'cookie-session'","evidence":["src/flask/sessions.py"]},
+ {"id":"register-blueprint","text":"Blueprint.register_blueprint(blueprint, **options) nests blueprints","evidence":["src/flask/sansio/blueprints.py"]}]

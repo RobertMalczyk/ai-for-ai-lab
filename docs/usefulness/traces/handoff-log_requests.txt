@@ -1,0 +1,56 @@
+### R1 (cont) git log adds the why
+$ git log --oneline 3816cfa1..HEAD -- src/requests/utils.py tests/test_utils.py
+[exit=0 bytes=43]
+a4f9a599 Port bpo-39057 to Requests (#7427)
+
+### R2 unrelated change: note on adapters, later commits touch sessions/_types/utils/models only
+$ lab capture --root . --goal 'Preserve leading slashes in path_url for proxied requests' --next-step 'Add regression test for request_url with proxies in tests/test_adapters.py' src/requests/adapters.py tests/test_adapters.py > $WORK/handoff/caps/R2.json
+[exit=0 bytes=0]
+
+
+$ lab check --root . $WORK/handoff/caps/R2.json
+[exit=0 bytes=151]
+{"evidence":[{"path":"src/requests/adapters.py","status":"unchanged"},{"path":"tests/test_adapters.py","status":"unchanged"}],"fresh":true,"version":1}
+
+$ git diff --stat fd628095..HEAD -- src/requests/adapters.py tests/test_adapters.py
+[exit=0 bytes=0]
+
+
+$ git diff --stat fd628095..HEAD
+[exit=0 bytes=627]
+ .github/workflows/run-tests.yml |  1 -
+ HISTORY.md                      | 49 ++++++++++++++++++++++++++++++++++++-----
+ pyproject.toml                  |  1 +
+ src/requests/__version__.py     |  4 ++--
+ src/requests/_types.py          | 27 ++++++++++++++---------
+ src/requests/models.py          | 14 ++++++------
+ src/requests/sessions.py        | 15 +++++++++----
+ src/requests/utils.py           | 12 +++++-----
+ tests/conftest.py               |  9 ++++++++
+ tests/test_requests.py          | 15 +++++++++++++
+ tests/test_utils.py             | 23 +++++++++++++++++++
+ 11 files changed, 135 insertions(+), 35 deletions(-)
+
+### R3 relevant change in UNLISTED file (_types.py) while note lists sessions.py
+$ lab capture --root . --goal 'Tighten Session typing for hooks and headers' --next-step 'Annotate Session.request headers/params using SupportsItems in src/requests/sessions.py' src/requests/sessions.py > $WORK/handoff/caps/R3.json
+[exit=0 bytes=0]
+
+
+$ lab check --root . $WORK/handoff/caps/R3.json
+[exit=0 bytes=96]
+{"evidence":[{"path":"src/requests/sessions.py","status":"unchanged"}],"fresh":true,"version":1}
+
+$ git diff --stat b684dcb9..HEAD -- src/requests/sessions.py
+[exit=0 bytes=0]
+
+
+$ git diff --stat b684dcb9..HEAD
+[exit=0 bytes=125]
+ src/requests/_types.py | 10 ++++++----
+ src/requests/utils.py  |  6 +++---
+ 2 files changed, 9 insertions(+), 7 deletions(-)
+
+$ git log --oneline b684dcb9..HEAD
+[exit=0 bytes=76]
+3816cfa1 Parameterize SupportsItems to handle Mapping key invariance (#7426)
+

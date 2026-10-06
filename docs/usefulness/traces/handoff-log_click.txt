@@ -1,0 +1,73 @@
+### C1 revert A->B->A: note at f67c2bb lists core.py; e2bddbc adds deprecation, d036881 reverts it
+$ lab capture --root . --goal 'Deprecate parameter names that are not Python identifiers' --next-step 'Add the deprecation warning in Parameter._parse_decls in src/click/core.py, tests in tests/test_deprecations.py' src/click/core.py tests/test_deprecations.py > $WORK/handoff/caps/C1.json
+[exit=0 bytes=0]
+
+
+$ lab check --root . $WORK/handoff/caps/C1.json
+[exit=0 bytes=148]
+{"evidence":[{"path":"src/click/core.py","status":"unchanged"},{"path":"tests/test_deprecations.py","status":"unchanged"}],"fresh":true,"version":1}
+
+$ git diff --stat f67c2bb..HEAD -- src/click/core.py tests/test_deprecations.py
+[exit=0 bytes=0]
+
+
+$ git log --oneline f67c2bb..HEAD -- src/click/core.py tests/test_deprecations.py
+[exit=0 bytes=142]
+d036881 Revert "Deprecate a parameter name that is not a Python identifier"
+e2bddbc Deprecate a parameter name that is not a Python identifier
+
+### C2 uncommitted working-tree edit after a clean-tree note
+$ lab capture --root . --goal 'Add Parameter.spec property' --next-step 'Implement Parameter.spec in src/click/core.py, then test in tests/test_options.py' src/click/core.py tests/test_options.py > $WORK/handoff/caps/C2.json
+[exit=0 bytes=0]
+
+
+$ lab check --root . $WORK/handoff/caps/C2.json
+[exit=1 bytes=142]
+{"evidence":[{"path":"src/click/core.py","status":"changed"},{"path":"tests/test_options.py","status":"unchanged"}],"fresh":false,"version":1}
+
+$ git status --short
+[exit=0 bytes=20]
+ M src/click/core.py
+
+$ git diff --stat
+[exit=0 bytes=58]
+ src/click/core.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+### C3 dirty-at-capture: note written while core.py already had uncommitted edits; then edited further
+$ lab capture --root . --goal 'Add Parameter.spec property' --next-step 'Finish Parameter.spec draft at end of src/click/core.py' src/click/core.py tests/test_options.py > $WORK/handoff/caps/C3.json
+[exit=0 bytes=0]
+
+
+$ git status --short
+[exit=0 bytes=20]
+ M src/click/core.py
+
+$ lab check --root . $WORK/handoff/caps/C3.json
+[exit=1 bytes=142]
+{"evidence":[{"path":"src/click/core.py","status":"changed"},{"path":"tests/test_options.py","status":"unchanged"}],"fresh":false,"version":1}
+
+$ git status --short
+[exit=0 bytes=20]
+ M src/click/core.py
+
+$ git diff --stat
+[exit=0 bytes=59]
+ src/click/core.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+### C3b same dirty state, but edit undone back to note-time bytes
+$ lab check --root . $WORK/handoff/caps/C3.json
+[exit=0 bytes=143]
+{"evidence":[{"path":"src/click/core.py","status":"unchanged"},{"path":"tests/test_options.py","status":"unchanged"}],"fresh":true,"version":1}
+
+$ git status --short
+[exit=0 bytes=20]
+ M src/click/core.py
+
+### C3c plain-git equivalent for dirty-at-capture: record blob hashes in the note
+$ git hash-object src/click/core.py tests/test_options.py
+[exit=0 bytes=81]
+9a3ac713edf7a235973b49f7b75c05e856493727
+0656a0b549f6ad38236c8b9ab7205a21b47b2465
+

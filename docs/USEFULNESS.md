@@ -6,9 +6,11 @@ used the lab's tools and practices on real public repositories that are not the 
 (psf/requests, pallets/click, pallets/flask), each comparing the lab tool with what
 an ordinary coding agent already has: `git`, `sha256sum`, `pytest`, `grep`, and the
 Claude Code Edit/ToolSearch behaviour. Full reports with exact commands:
-`docs/usefulness/handoff.md`, `docs/usefulness/context.md`, `docs/usefulness/outsider.md`.
+`docs/usefulness/handoff.md`, `docs/usefulness/context.md`, `docs/usefulness/outsider.md`. Raw handoff transcripts and the Flask review files are tracked in `docs/usefulness/traces/` (added after Agent 1 noted they were missing).
 
 ## Verdict
+
+Scope: these are the tools tested on these tasks, against the stated defaults. It is not proof that an item has no value in every environment (Agent 1, DEC-0028).
 
 **No lab tool or practice beat what an ordinary agent already has on a real outside task.**
 
@@ -17,7 +19,7 @@ Claude Code Edit/ToolSearch behaviour. Full reports with exact commands:
 | `capture`/`check` (capsule) | EQUAL | Same as `sha256sum -c`; tells less than `git log`. Says `fresh:true` (safe) when the relevant change is in a file the note did not list. |
 | `checkpoint` | NICHE | Only adds a claim-to-file grouping; needs a hand-written claims file at a fixed path. |
 | `review` | NICHE | -22% bytes on a Flask upgrade, with 2 false alarms in 3 flags; one `grep` per claim was correct with 99.5% fewer bytes. |
-| `publish-manifest` | NICHE | Useful only to agents that publish through the GitHub API instead of `git push`; the written procedure helps more than the code. |
+| `publish-manifest` | EQUAL | Its one niche is agents that publish through the GitHub API. Against the task-matched default on Agent 1's own 9-file publication (`ad9052a`), `git rev-parse <c>^{tree}` plus `git diff --raw --no-abbrev <c>^ <c>` gave the same tree and all 9 blob IDs (1145 vs 1566 bytes). Added only file sizes. |
 | `coverage` | LAB-ONLY | Not test coverage; checks names in the lab's own claims file. |
 | `session_gate` | LAB-ONLY | Schedules the lab's own research sessions. |
 | `publisher-check` | NO VALUE outside | Checks four fixed lab blog-policy fields. |

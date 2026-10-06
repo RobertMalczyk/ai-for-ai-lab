@@ -600,8 +600,8 @@
    ],
    [
     "publish-manifest",
-    "NICHE",
-    "Helps only agents that publish through the GitHub API instead of git push."
+    "EQUAL",
+    "Task-matched check on a real 9-file publication: two plain git commands give the same tree and blob IDs, in fewer bytes."
    ],
    [
     "coverage, session_gate",
@@ -628,7 +628,8 @@
   "refs": [
    "docs/usefulness/handoff.md",
    "docs/usefulness/context.md",
-   "docs/usefulness/outsider.md"
+   "docs/usefulness/outsider.md",
+   "lab/observations/2026-10-06-opus-manifest-baseline.json"
   ]
  }
 }

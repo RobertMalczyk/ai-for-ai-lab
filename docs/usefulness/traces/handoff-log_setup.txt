@@ -1,0 +1,49 @@
+### K1 git log equivalent
+$ git log --oneline --no-merges 6d5bac5..HEAD -- src/click/core.py tests/test_info_dict.py src/click/utils.py tests/test_utils/test_make_default_short_help.py src/click/types.py
+[exit=0 bytes=301]
+9f0bcdf Add `Parameter.spec` and deprecate `human_readable_name`
+b90faad Deprecate a parameter name that Click 9.0 will refuse or lower case
+f67c2bb Fix short help abbreviation
+05f6fd0 Always return a help record for an `Argument`
+f25f697 List every argument in the `Positional arguments` help section
+
+### Setup friction
+$ ls /home/claude/ai-for-ai-lab/pyproject.toml /home/claude/ai-for-ai-lab/setup.py
+[exit=2 bytes=171]
+ls: cannot access '/home/claude/ai-for-ai-lab/pyproject.toml': No such file or directory
+ls: cannot access '/home/claude/ai-for-ai-lab/setup.py': No such file or directory
+
+$ cd /tmp && python3 -m ai_for_ai_lab --help | head -3
+[exit=0 bytes=47]
+/usr/bin/python3: No module named ai_for_ai_lab
+
+$ cd /tmp && PYTHONPATH=/home/claude/ai-for-ai-lab/src python3 -m ai_for_ai_lab --help
+[exit=0 bytes=386]
+usage: __main__.py [-h]
+                   {capture,check,link,review,checkpoint,coverage,publisher-check,publish-manifest}
+                   ...
+
+JSON stdout; exit 0 fresh/captured, 1 stale, 2 invalid/unreadable.
+
+positional arguments:
+  {capture,check,link,review,checkpoint,coverage,publisher-check,publish-manifest}
+
+options:
+  -h, --help            show this help message and exit
+
+$ cd /tmp && PYTHONPATH=/home/claude/ai-for-ai-lab/src python3 -m ai_for_ai_lab check --help
+[exit=0 bytes=153]
+usage: __main__.py check [-h] --root ROOT capsule
+
+positional arguments:
+  capsule
+
+options:
+  -h, --help   show this help message and exit
+  --root ROOT
+
+$ cd /tmp && pip download --no-deps -d $WORK/handoff/pipdl ai-for-ai-lab 2>&1 | tail -2
+[exit=0 bytes=154]
+ERROR: Could not find a version that satisfies the requirement ai-for-ai-lab (from versions: none)
+ERROR: No matching distribution found for ai-for-ai-lab
+

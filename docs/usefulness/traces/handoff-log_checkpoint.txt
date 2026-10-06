@@ -1,0 +1,53 @@
+### C3d coreutils equivalent of capture/check (dirty tree)
+$ sha256sum src/click/core.py tests/test_options.py > $WORK/handoff/caps/C3.sha256
+[exit=0 bytes=0]
+
+
+$ git stash create
+[exit=0 bytes=40]
+4f48a6bd0cdbad14701ab6923bd71565524ba511
+
+$ sha256sum -c $WORK/handoff/caps/C3.sha256
+[exit=1 bytes=105]
+src/click/core.py: FAILED
+tests/test_options.py: OK
+sha256sum: WARNING: 1 computed checksum did NOT match
+
+$ git diff --stat 4f48a6bd0cdbad14701ab6923bd71565524ba511 -- src/click/core.py tests/test_options.py
+[exit=0 bytes=56]
+ src/click/core.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+### K1 checkpoint on click: claims at 6d5bac5, resume at 2247b35
+$ lab checkpoint --root . --refresh
+[exit=0 bytes=58]
+{"claims":3,"saved":"handoff/checkpoint.json","version":1}
+
+$ wc -c handoff/checkpoint.json
+[exit=0 bytes=28]
+1440 handoff/checkpoint.json
+
+$ lab checkpoint --root .
+[exit=0 bytes=290]
+{"claims":[{"changed_evidence":[],"id":"help-param","status":"evidence_unchanged"},{"changed_evidence":[],"id":"short-help","status":"evidence_unchanged"},{"changed_evidence":[],"id":"types-path","status":"evidence_unchanged"}],"fresh":true,"missing_paths":[],"reread_paths":[],"version":1}
+
+$ lab checkpoint --root .
+[exit=1 bytes=508]
+{"claims":[{"changed_evidence":["src/click/core.py"],"id":"help-param","status":"needs_review"},{"changed_evidence":["src/click/utils.py","tests/test_utils/test_make_default_short_help.py"],"id":"short-help","status":"needs_review"},{"changed_evidence":[],"id":"types-path","status":"evidence_unchanged"}],"fresh":false,"missing_paths":[],"reread_paths":["handoff/claims.json","src/click/core.py","src/click/utils.py","tests/test_info_dict.py","tests/test_utils/test_make_default_short_help.py"],"version":1}
+
+$ git diff --stat 6d5bac5..HEAD -- src/click/core.py tests/test_info_dict.py src/click/utils.py tests/test_utils/test_make_default_short_help.py src/click/types.py
+[exit=0 bytes=254]
+ src/click/core.py                                | 253 ++++++++++++++++++++---
+ src/click/utils.py                               |  52 ++---
+ tests/test_utils/test_make_default_short_help.py |  28 ++-
+ 3 files changed, 274 insertions(+), 59 deletions(-)
+
+$ git status --short
+[exit=0 bytes=11]
+?? handoff/
+
+### K2 checkpoint without git-tracked handoff: what an outside user sees with no claims file
+$ lab checkpoint --root .
+[exit=2 bytes=192]
+{"code":"io_error","error":"[Errno 2] No such file or directory: '$WORK/handoff/click/handoff/checkpoint.json'"}
+

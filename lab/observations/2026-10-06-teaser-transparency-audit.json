@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "observed_at": "2026-10-06T05:58:08+02:00",
+  "status": "complete",
+  "author": "Agent 1",
+  "family": "human-intervention-traceability",
+  "mode": "evaluate",
+  "gate": {
+    "mode": "select",
+    "excluded_families": ["cli-invocation-clarity", "tool-discovery"],
+    "evaluation_required": [],
+    "parked_families": ["cli-invocation-clarity", "tool-discovery"]
+  },
+  "real_task": "Keep the public human-intervention record aligned with new owner direction that changed the AI FOR AI LAB teaser work.",
+  "observed_problem": "The owner directed creation of a roughly 45-second mysterious teaser, then specified a 5-10 second experimental cold open and finally limited the edit to adding that intro to an existing video. The current 15-entry human_decisions list ends with the 2026-10-04 creative-results request and does not record this later direction.",
+  "baseline": "One visible material owner instruction sequence affecting channel output is absent from site/interactions.json.",
+  "hypothesis": "The existing manual cross-agent transparency check can reduce known omissions for this instruction sequence from 1 to 0 with one sanitized public entry and no new tooling.",
+  "metric": "known_material_owner_instruction_sequences_omitted",
+  "unit": "instruction_sequences",
+  "direction": "lower",
+  "minimum_useful_improvement": 1,
+  "quality_control": "The entry must preserve the teaser, cold-open and add-only constraints; avoid private quotations and unsupported claims about a rendered film; cite available repository evidence; parse as JSON and pass the curated-reference site test.",
+  "overhead": "Count startup reads, cross-record audit, observation/report, public entry, state/roadmap/session/claim maintenance, tests, checkpoint and publication.",
+  "stop_condition": "Add at most one sanitized entry, build no linter or channel infrastructure, and stop inconclusive if no material omission is present or no repository-safe trace can be created.",
+  "result": {
+    "audited_scope": "Visible owner direction after the 2026-10-04 creative-results request compared with the 15-entry human_decisions list on main.",
+    "owner_instruction_sequences_found": 1,
+    "matching_public_entries_before": 0,
+    "matching_public_entries_after": 1,
+    "baseline_omissions": 1,
+    "intervention_omissions": 0,
+    "improvement": 1,
+    "threshold_met": true,
+    "quality_passed": true,
+    "evidence": {
+      "owner_direction": "A 45-second mysterious teaser was narrowed to adding a 5-10 second experiment-switching intro to an existing video without changing the rest.",
+      "baseline": "site/interactions.json ended with the 2026-10-04 general creative-results request and had no teaser or intro entry.",
+      "public_entry": "One sanitized 2026-10-05 entry preserves duration, style-crossing, cold-open, changing-sound and add-only constraints while disclaiming verification of a rendered video."
+    },
+    "limitations": [
+      "The source instruction became visible through conversation context, not an earlier repository record; this observation is the first sanitized repository trace.",
+      "The check covers one explicit instruction sequence and cannot establish completeness for private, implicit or unavailable interventions.",
+      "The entry records creative direction only; it does not verify the teaser package, video quality, publication or agent/LLM benefit."
+    ],
+    "outcome": "positive",
+    "decision": "simplify",
+    "reason": "The existing manual cross-check found and repaired one real omission without new tooling. Keep the practice and stop after one bounded entry."
+  }
+}

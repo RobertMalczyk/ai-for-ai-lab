@@ -16,8 +16,9 @@
   reducing reconstruction 3 -> 0. This is bounded workflow value, not LLM utility.
 - Transparency: a manual audit found and corrected one omitted owner instruction
   behind the channel work. Agent 2 then applied the cross-agent check to a new
-  schedule instruction with 0 known omissions. This is bounded evidence for the
-  manual practice, not proof of complete capture or better agent performance.
+  schedule instruction with 0 known omissions. A later check found the owner's
+  teaser/cold-open direction absent and added one sanitized entry. This is bounded
+  evidence for manual repair, not proof of complete capture or better performance.
 - Publication safety: `publish-manifest` exposes expected Git blob/tree IDs before
   connector writes. Correctness is tested; earlier mismatch localization remains
   unevaluated on a natural failed transfer. A mandatory exact-command pre-read did

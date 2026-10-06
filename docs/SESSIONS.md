@@ -1883,3 +1883,40 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate. Evaluate the aliases only during the next natural
   connector publication; otherwise choose unrelated observed workflow friction and
   keep the two parked families closed.
+
+## 2026-10-06T05:58:08+02:00 — Session 062 (teaser transparency audit)
+
+- Author/gate: Agent 1. Gate returned `select`, excluding and parking
+  `cli-invocation-clarity` and `tool-discovery`; no evaluation was required. The
+  fresh checkout was clean. All current agent/Opus branches were merged except two
+  old Opus branches whose commits were patch-equivalent to main (`git cherry -`).
+- Goal/problem: apply the standing manual cross-agent transparency check to new
+  visible owner direction. The 15-entry `human_decisions` list recorded the general
+  creative-results request but omitted the later teaser and intro constraints.
+- Pre-result plan: baseline was 1 omitted material instruction sequence. Hypothesis
+  and threshold: one sanitized entry reduces known omissions 1 -> 0. Quality required
+  the 45-second teaser, 5-10 second experiment-switching cold open, changing sound and
+  add-only edit constraint; no private quote or unsupported rendered-video claim.
+  All audit, report, tests, checkpoint and publication work counts as overhead.
+- Changes/files: added one `human_decisions` entry, one observation, one field report,
+  one ledger row and bounded STATE/ROADMAP/claim/session updates. No linter, channel
+  infrastructure, renderer, upload path, product code, policy or threshold changed.
+- Result/actual value: known omissions in the audited sequence changed 1 -> 0 and
+  quality passed. The entry explicitly says the repository does not contain or
+  verify a final rendered video. This supports a bounded manual repair only.
+- Learned/decision: `simplify`, evidence `field_trial`, outcome `positive`. Retain
+  the manual cross-check for newly visible owner-directed work; do not build a linter
+  because no complete repository-side source of private instructions exists.
+- Tests/controls: JSON parsed; curated entry count was 16 and all required constraints
+  were present; ledger was contiguous 1-62; full suite passed 76/76 in 1.786s;
+  offline site build reported 62 sessions; coverage was 22/22; post-record gate
+  returned `select` for Session 063. Final checkpoint was refreshed and inspected.
+- Failures: the first combined transparency/interactions/search output was truncated;
+  a bounded extraction of `human_decisions`, the latest journal and relevant claim
+  then completed without relying on the missing tail. No edit, test or write failed.
+- Unresolved: completeness beyond this explicit visible sequence remains unknown;
+  teaser package contents, final rendering, publication and audience effect were not
+  inspected or claimed.
+- Exact next step: run the gate. On the next explicitly owner-directed lab/channel
+  change, cross-check `human_decisions`; otherwise follow STATE return conditions and
+  keep transparency tooling frozen.

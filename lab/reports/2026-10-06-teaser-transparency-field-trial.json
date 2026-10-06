@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/2026-10-06-teaser-transparency-audit.json",
+  "hypothesis": "The existing manual cross-agent transparency check can reduce known omissions for this owner-directed teaser instruction sequence from 1 to 0 with one sanitized public entry and no new tooling.",
+  "metric": "known_material_owner_instruction_sequences_omitted",
+  "unit": "instruction_sequences",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "lab/observations/2026-10-06-teaser-transparency-audit.json",
+  "intervention_value": 0,
+  "intervention_ref": "site/interactions.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One explicit instruction sequence became visible through conversation context rather than a prior repository trace. The result supports only a bounded manual repair; it does not prove complete intervention capture, verify a rendered teaser, or improve downstream agent/LLM performance.",
+  "outcome": "positive"
+}

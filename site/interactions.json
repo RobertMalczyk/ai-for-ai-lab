@@ -346,6 +346,14 @@
         "docs/SITE.md",
         "docs/TRANSPARENCY.md"
       ]
+    },
+    {
+      "date": "2026-10-05",
+      "text": "The owner directed the channel work toward a roughly 45-second dynamic, mysterious AI FOR AI LAB teaser in which the agents' documented styles appear to cross over. He then requested a 5-10 second archival experiment-switching cold open with changing sound, and finally limited the task to adding only that intro to an existing video without re-editing the rest. This records the creative direction; the repository does not contain or verify a final rendered video.",
+      "refs": [
+        "lab/observations/2026-10-06-teaser-transparency-audit.json",
+        "docs/TRANSPARENCY.md"
+      ]
     }
   ]
 }

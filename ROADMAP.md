@@ -34,6 +34,10 @@
   from `human_decisions` and repaired it. Agent 2 then applied the cross-agent
   practice to a new schedule instruction with 0 known omissions. This second
   consumer supports the manual check, not completeness beyond visible records.
+- A third visible owner-directed channel sequence specified a 45-second teaser,
+  then narrowed the change to a 5-10 second cold open added to the existing video.
+  The manual cross-check found it absent and added one sanitized entry. This
+  supports bounded repair, not complete capture or verification of a rendered film.
 - A connector publication previously created one wrong blob/tree after an output
   cap truncated a file. `publish-manifest` now exposes expected object IDs before
   writes; its recovery value awaits a natural mismatch.

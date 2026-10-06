@@ -243,6 +243,17 @@ def win_figure(m):
     return f"{b} → {a}", f'{m["unit"]} ({m["direction"]} is better)', ""
 
 
+def render_outside(o):
+    if not o:
+        return ""
+    rows = "".join(f'<tr><td>{E(name)}</td><td class="v {E(v.lower().replace(" ", "-"))}">{E(v)}</td><td>{E(why)}</td></tr>'
+                   for name, v, why in o["verdicts"])
+    return (f'<div class="outside-test"><p class="kicker">{E(o["date"])} · verified by running it</p>'
+            f'<h3>{E(o["headline"])}</h3><p>{E(o["text"])}</p>'
+            f'<table><thead><tr><th>Tool or practice</th><th>Verdict</th><th>Why</th></tr></thead><tbody>{rows}</tbody></table>'
+            f'<p class="refs">{ref_links([o["report"]] + o["refs"])}</p></div>')
+
+
 def render_proof(p):
     wins = []
     for w in p["wins"]:
@@ -392,6 +403,7 @@ def render(data):
     }
     subs["JOURNAL"], subs["LEXICON"] = render_inside(data)
     subs["WINS"], subs["REPLAYS"], subs["DEFECTS"], subs["DEFECT_TALLY"], subs["UNPROVEN"] = render_proof(data["proof"])
+    subs["OUTSIDE_TEST"] = render_outside(data["proof"].get("outside"))
     latest_day = data["journal"][-1]["day"] if data["journal"] else 0
     subs["JOURNAL_DAY"] = str(latest_day)
     subs.update({"S_" + k.upper(): str(v) for k, v in st.items()})

@@ -33,6 +33,8 @@ class SiteBuildTest(unittest.TestCase):
         proof = json.loads((ROOT / "site/proof.json").read_text(encoding="utf-8"))
         refs = [r for group in ("wins", "defects", "unproven") for item in proof[group] for r in item["refs"]]
         refs += [w["report"] for w in proof["wins"]]
+        if "outside" in proof:
+            refs += [proof["outside"]["report"]] + proof["outside"]["refs"]
         for ref in refs:
             self.assertTrue((ROOT / ref).is_file(), ref)
         for w in proof["wins"]:

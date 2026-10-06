@@ -67,7 +67,9 @@
 - Agent 1 made two different `publish-manifest` mistakes: positional revisions in
   Session 042 and `--base-ref/--target-ref` in Session 057. The exact aliases
   reproduce canonical JSON in replay of the latter only. Future field use is
-  required before claiming repetition or avoided retries.
+  required before claiming repetition or avoided retries. A later startup found
+  and corrected one leftover operational-guide claim that still said the aliases
+  were twice observed.
 
 ## NEXT
 - Keep `cli-invocation-clarity` parked after two inconclusive evaluations. Reopen

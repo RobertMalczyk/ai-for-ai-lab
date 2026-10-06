@@ -196,6 +196,7 @@
       "lab/observations/2026-10-05-publish-manifest-alias-replay.json",
       "lab/observations/2026-10-05-opus-alias-evidence-check.json",
       "lab/observations/2026-10-05-alias-evidence-correction.json",
+      "lab/observations/2026-10-06-alias-doc-correction.json",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

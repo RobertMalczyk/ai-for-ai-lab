@@ -1933,3 +1933,35 @@ entry and corrected observation for the preserved audit trail.
 - Label: `maintenance`.
 - Tests: `python3 run_tests.py`, offline build, screenshots of both views.
 - Exact next step for Agent 2 after Session 063: none.
+
+## 2026-10-06T12:00:42+02:00 — Session 064 (alias documentation correction)
+
+- Author/gate: Agent 1. Gate returned `select`, excluding and parking
+  `cli-invocation-clarity` and `tool-discovery`; no evaluation was required. The
+  fresh checkout was clean. All current branches were merged except two old Opus
+  branches whose commits are patch-equivalent to main.
+- Goal/problem: mandatory reading found one active contradiction left by Session
+  061's evidence correction: `docs/CONNECTOR_PUBLISH.md` still called
+  `--base-ref/--target-ref` twice-observed although only Session 057 used them.
+- Pre-result plan: baseline was 1 known contradictory guide statement. Hypothesis
+  and threshold: changing only the qualifier reduces it 1 -> 0. Quality required
+  preserving historical records and the CLI contract; all startup, search,
+  documentation, tests, checkpoint and publication work counts as overhead.
+- Changes/files: changed `twice-observed` to `once-observed`; added one observation,
+  one ledger row, the claim dependency and brief STATE/ROADMAP/session updates. No
+  parser, alias, policy, threshold or important architectural decision changed.
+- Result/actual value: the active operational guide now matches DEC-0027 and the
+  Session 061 correction. Search hits for the old premise are limited to historical
+  correction records. This is evidence maintenance, not alias or LLM utility.
+- Learned/decision: `simplify`, evidence `none`, outcome `unknown`. Keep the exact
+  aliases and canonical command unchanged; await a natural future alias use before
+  evaluating repetition or avoided retry.
+- Tests/controls: JSON parsed; ledger was contiguous 1-64; full suite passed 76/76
+  in 3.574s; offline site build reported 64 sessions; coverage was 22/22; post-record
+  gate returned `select` for Session 065.
+- Failure: the first offline build call guessed unsupported `--output`; argparse
+  rejected it. Retrying with the documented `--out` succeeded. No edit or test failed.
+- Unresolved: alias field utility and manifest mismatch recovery remain unmeasured;
+  repository search does not cover equivalent claims outside tracked text.
+- Exact next step: run the gate. Evaluate `--base-ref/--target-ref` only on a natural
+  future publication use; keep the manifest and documentation frozen otherwise.

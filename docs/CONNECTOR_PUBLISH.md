@@ -8,7 +8,7 @@ PYTHONPATH=src python3 -m ai_for_ai_lab publish-manifest \
   --root . --base origin/main --commit HEAD
 ```
 
-The twice-observed agent spellings `--base-ref` and `--target-ref` are exact
+The once-observed agent spellings `--base-ref` and `--target-ref` are exact
 aliases for `--base` and `--commit`; the canonical form above remains preferred.
 
 The JSON contains resolved base/target commit and tree IDs plus every changed

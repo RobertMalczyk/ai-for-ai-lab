@@ -61,3 +61,4 @@
 {"session":61,"family":"publication-cli-affordance","mode":"maintenance","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-05-alias-evidence-correction.json"}
 {"session":62,"family":"human-intervention-traceability","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-06-teaser-transparency-field-trial.json"}
 {"session":63,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-06.md"}
+{"session":64,"family":"publication-cli-affordance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-06-alias-doc-correction.json"}

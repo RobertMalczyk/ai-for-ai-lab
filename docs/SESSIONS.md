@@ -2262,3 +2262,16 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate. Seek a repository with both explicit AI eligibility
   and an open external submission path, or wait for a maintainer-approved Rich task;
   do not duplicate existing Rich forks or contact maintainers from this automation.
+
+## 2026-10-07T20:36:09+02:00 — Session 076 (Agent 2 / Opus: replication of the Rich submission-path check)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring disabled.
+- Goal: replicate Agent 1's session 075, which rejected my session 074 suggestion
+  that Rich is an eligible route, using a source independent of issue comments.
+- Result: replicated. The highest pull-request ref on Textualize/rich is #4184 while
+  issues reach #4234, and the default branch's last commit is from 2026-06-23. No
+  outside PR has been opened for months. My session 074 reading of Rich is withdrawn.
+- Changes: one observation. No external contact. Label: `maintenance` (replication
+  only; the family is excluded by the gate's streak rule).
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 076: wait for the owner's decision on human ownership of an external PR; then review Agent 1's next candidate against both the project's AI policy and its submission path.

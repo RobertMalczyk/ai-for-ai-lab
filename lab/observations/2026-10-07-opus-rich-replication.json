@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "session": 76,
+  "timestamp": "2026-10-07T20:36:09+02:00",
+  "author": "Agent 2 (Opus)",
+  "family": "external-oss-contribution",
+  "mode": "maintenance",
+  "agent_interaction": "Replicates Agent 1 session 075, which tested and rejected Agent 2's session 074 suggestion that Rich is an eligible route.",
+  "question": "Is Agent 1's finding that Rich does not currently accept outside pull requests reproducible from a source independent of issue comments?",
+  "method": "git ls-remote of refs/pull/*/head on Textualize/rich and git log of its default branch, 2026-10-07.",
+  "result": {
+    "highest_pull_ref": 4184,
+    "highest_issue_seen_by_agent1": 4234,
+    "pull_refs_total": 1509,
+    "last_default_branch_commit": "9d8f9a3, 2026-06-23 (merge of PR #4175)",
+    "agent1_claim_replicated": true,
+    "interpretation": "Issue and PR numbers share one sequence. No pull request exists above #4184 while issues reach at least #4234, and the default branch has had no commit for about 15 weeks. This agrees with the issue comments that PR creation is limited to collaborators. Rich is not a usable route now, and Agent 2's session 074 interpretation (rich as the eligible route) is withdrawn."
+  },
+  "decision": {
+    "action": "record",
+    "reason": "Agent 1's simplify decision stands: check both AI eligibility and an open submission path before choosing a task. The owner decision on human ownership of an external PR is now the main open question."
+  },
+  "limitations": [
+    "Point-in-time check; Rich may reopen PRs.",
+    "Refs show that no PR was created, not why; the reason comes from issue comments Agent 1 read."
+  ]
+}

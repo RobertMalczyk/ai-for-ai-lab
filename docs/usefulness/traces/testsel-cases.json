@@ -1,0 +1,142 @@
+[
+ {
+  "id": "R1",
+  "repo": "requests",
+  "pkg": "requests",
+  "commit": "86b378d3",
+  "file": "src/requests/sessions.py",
+  "old": "return self.request(\"GET\", url, params=params, **kwargs)",
+  "new": "return self.request(\"GET\", url, **kwargs)",
+  "bug": "Session.get drops params (passes **kwargs only)",
+  "default": [
+   "tests/test_requests.py",
+   "-k",
+   "param or session"
+  ]
+ },
+ {
+  "id": "R2",
+  "repo": "requests",
+  "pkg": "requests",
+  "commit": "a044b020",
+  "file": "src/requests/auth.py",
+  "old": "return hashlib.md5(x, usedforsecurity=False).hexdigest()",
+  "new": "return hashlib.md5(x, usedforsecurity=False).hexdigest().upper()",
+  "bug": "MD5 digest helper returns uppercase hex",
+  "default": [
+   "tests",
+   "-k",
+   "digest"
+  ]
+ },
+ {
+  "id": "R3",
+  "repo": "requests",
+  "pkg": "requests",
+  "commit": "96ba401c",
+  "file": "src/requests/utils.py",
+  "old": "host = ri.hostname",
+  "new": "host = ri.netloc",
+  "bug": "netrc lookup uses netloc (host:port) instead of hostname",
+  "default": [
+   "tests",
+   "-k",
+   "netrc"
+  ],
+  "attempt2_result": "commit adds a single line (host = ri.hostname); no other changed line to try -> kept as full-suite-blind. Line has zero coverage contexts: no test reaches it (no ~/.netrc in test env; test_basicauth_with_netrc mocks get_netrc_auth)."
+ },
+ {
+  "id": "R4",
+  "repo": "requests",
+  "pkg": "requests",
+  "commit": "90fee087",
+  "file": "src/requests/adapters.py",
+  "old": "            conn.cert_reqs = \"CERT_REQUIRED\"",
+  "new": "            conn.cert_reqs = \"CERT_NONE\"",
+  "bug": "cert_verify sets cert_reqs CERT_NONE when verify is on",
+  "default": [
+   "tests/test_requests.py",
+   "-k",
+   "cert or verify or ca_bundle"
+  ],
+  "attempt1": {
+   "old": "            if not os.path.isdir(cert_loc):\n                conn.ca_certs",
+   "new": "            if os.path.isdir(cert_loc):\n                conn.ca_certs",
+   "bug": "cert_verify: flipped isdir condition (file bundle -> ca_cert_dir)",
+   "result": "full suite blind (595 ran, no new failures), default 15 pass, cov 155 pass"
+  }
+ },
+ {
+  "id": "C1",
+  "repo": "click",
+  "pkg": "click",
+  "commit": "9835b0f7",
+  "file": "src/click/_termui_impl.py",
+  "old": "cmd_filepath = shutil.which(cmd_parts[0])",
+  "new": "cmd_filepath = shutil.which(cmd_parts[-1])",
+  "bug": "_resolve_pager_command looks up last argv element instead of first (index bug)",
+  "default": [
+   "tests/test_termui.py",
+   "-k",
+   "pager"
+  ],
+  "attempt1": {
+   "old": "return Path(cmd_filepath).absolute(), cmd_parts[1:]",
+   "new": "return Path(cmd_filepath).absolute(), cmd_parts[2:]",
+   "bug": "_resolve_pager_command drops first pager argument (off-by-one)",
+   "result": "full suite blind (1971 tests pass), default 35 pass, cov 84 pass"
+  },
+  "attempt2_result": "second line also FULL-SUITE BLIND: full 1971 pass, default 35 pass, cov 84 pass -> kept as full-suite-blind case"
+ },
+ {
+  "id": "C2",
+  "repo": "click",
+  "pkg": "click",
+  "commit": "748a34d0",
+  "file": "src/click/shell_completion.py",
+  "old": "out.extend(lex)",
+  "new": "out.extend(list(lex)[:-1])",
+  "bug": "split_arg_string drops last complete token (off-by-one)",
+  "default": [
+   "tests/test_parser.py"
+  ]
+ },
+ {
+  "id": "C3",
+  "repo": "click",
+  "pkg": "click",
+  "commit": "8f300853",
+  "file": "src/click/core.py",
+  "old": "return True if self.is_flag else None",
+  "new": "return False if self.is_flag else None",
+  "bug": "Option.flag_activation_value returns False for flags without flag_value",
+  "default": [
+   "tests/test_options.py",
+   "tests/test_basic.py",
+   "tests/test_defaults.py",
+   "-k",
+   "flag"
+  ]
+ },
+ {
+  "id": "C4",
+  "repo": "click",
+  "pkg": "click",
+  "commit": "c040135a",
+  "file": "src/click/core.py",
+  "old": "        return f\"({label}: {deprecated})\"",
+  "new": "        return f\"({label})\"",
+  "bug": "_format_deprecated_label drops the deprecation reason string",
+  "default": [
+   "tests",
+   "-k",
+   "deprecated"
+  ],
+  "attempt1": {
+   "old": "        return f\" {deprecated}\"\n",
+   "new": "        return f\"{deprecated}\"\n",
+   "bug": "_format_deprecated_suffix loses leading space",
+   "result": "full suite blind (1510 pass), default 16 pass, cov 804 pass"
+  }
+ }
+]

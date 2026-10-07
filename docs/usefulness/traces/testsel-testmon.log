@@ -1,0 +1,86 @@
+pytest-testmon 2.2.0
+=== testmon 748a34d0
+1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 10.17s
+build-db secs: 11.342306582
+ src/click/shell_completion.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+FAILED tests/test_shell_completion.py::test_zsh_full_complete_with_colons[env1-plain\nc\\:d\ncee:dee\nplain\nc:e\n_\n]
+FAILED tests/test_shell_completion.py::test_full_complete[fish-env5-plain,b\tbee\n]
+FAILED tests/test_shell_completion.py::test_full_complete[zsh-env3-plain\nb\nbee\n]
+FAILED tests/test_shell_completion.py::test_full_complete[bash-env1-plain,b\n]
+FAILED tests/test_shell_completion.py::test_zsh_full_complete_with_colons[env2-plain\nc\\:d\ncee:dee\nplain\nc:e\n_\n]
+10 failed, 1662 passed, 24 skipped, 31000 deselected, 1 xfailed in 9.21s
+select+run secs: 10.694866232
+=== testmon 8f300853
+1902 passed, 24 skipped, 31000 deselected, 1 xfailed in 10.42s
+build-db secs: 11.503767809
+ src/click/core.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+FAILED tests/test_formatting.py::test_command_write_usage_no_args[none-options-metavar-no-params]
+FAILED tests/test_formatting.py::test_basic_functionality - AssertionError: a...
+FAILED tests/test_formatting.py::test_command_write_usage_no_args[empty-options-metavar-no-params]
+FAILED tests/test_formatting.py::test_wrapping_long_command_name - assert not...
+FAILED tests/test_formatting.py::test_wrapping_long_options_strings - assert ...
+167 failed, 1735 passed, 24 skipped, 31000 deselected, 1 xfailed in 17.14s
+select+run secs: 18.661839441
+=== testmon c040135a
+1510 passed, 23 skipped, 30000 deselected, 1 xfailed in 8.96s
+build-db secs: 10.348528693
+ src/click/core.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]
+FAILED tests/test_options.py::test_deprecated_usage[USE B INSTEAD] - Assertio...
+3 failed, 1507 passed, 23 skipped, 30000 deselected, 1 xfailed in 8.25s
+select+run secs: 9.778463283
+=== probe: testmon with cacheprovider enabled, no change, then bug only (no commit switch)
+1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 10.20s
+1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 8.99s
+10 failed, 1662 passed, 24 skipped, 31000 deselected, 1 xfailed in 9.46s
+
+real	0m11.092s
+user	0m10.570s
+sys	0m0.529s
+=== probe2: header lines, override addopts (-o addopts=) to drop -m 'not stress'
+testmon: selection automatically deactivated because -m was used, environment: default
+We'd like to hear from testmon users! Please go to https://testmon.org/survey to leave feedback.
+plugins: testmon-2.2.0, cov-7.1.0
+======== 1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 9.43s =========
+testmon: selection automatically deactivated because -m was used, environment: default
+plugins: testmon-2.2.0, cov-7.1.0
+collected 32697 items / 31000 deselected / 1697 selected
+======== 1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 8.80s =========
+FAILED tests/test_shell_completion.py::test_full_complete[fish-env5-plain,b\tbee\n]
+FAILED tests/test_shell_completion.py::test_full_complete[zsh-env3-plain\nb\nbee\n]
+=== 10 failed, 1662 passed, 24 skipped, 31000 deselected, 1 xfailed in 9.63s ===
+=== testmon with --testmon-forceselect (needed because click addopts has -m 'not stress')
+--- testmon 748a34d0
+1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 8.97s
+build-db at parent secs: 10.050653942
+FAILED tests/test_shell_completion.py::test_full_complete[bash-env1-plain,b\n]
+FAILED tests/test_shell_completion.py::test_full_complete[zsh-env3-plain\nb\nbee\n]
+FAILED tests/test_shell_completion.py::test_full_complete[fish-env5-plain,b\tbee\n]
+================ 10 failed, 6 passed, 31217 deselected in 1.88s ================
+commit+bug select+run secs: 3.000219384
+--- testmon 8f300853
+1902 passed, 24 skipped, 31000 deselected, 1 xfailed in 10.14s
+build-db at parent secs: 11.246785795
+FAILED tests/test_chain.py::test_chaining_help[args4-SDIST HELP] - AssertionE...
+FAILED tests/test_chain.py::test_chaining_help[args2-SDIST HELP] - AssertionE...
+FAILED tests/test_normalization.py::test_choice_normalization - AssertionErro...
+======== 167 failed, 1192 passed, 31261 deselected, 1 xfailed in 15.73s ========
+commit+bug select+run secs: 17.945938228
+--- testmon c040135a
+1510 passed, 23 skipped, 30000 deselected, 1 xfailed in 8.91s
+build-db at parent secs: 10.161550747
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]
+FAILED tests/test_options.py::test_deprecated_usage[USE B INSTEAD] - Assertio...
+========= 3 failed, 1201 passed, 30291 deselected, 1 xfailed in 7.27s ==========
+commit+bug select+run secs: 8.787094769
+--- testmon 9835b0f7
+1971 passed, 24 skipped, 31000 deselected, 1 xfailed in 11.21s
+build-db at parent secs: 12.423547781
+testmon: changed files: 4, unchanged files: 47, environment: default
+==================== 153 passed, 31239 deselected in 2.47s =====================
+commit+bug select+run secs: 3.588034569

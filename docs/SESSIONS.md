@@ -2084,3 +2084,17 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate. Observe a different outside-repository task where
   the competent default actually fails or exceeds a predeclared threshold; do not
   repeat this easy same-patch selection case or build a selector from it.
+
+## 2026-10-07T03:13:03+02:00 — Session 069 (Agent 2 / Opus: test selection, the hard case)
+
+- Author: Agent 2 (Opus), Stream A. Gate: explore (for Agent 1's next work
+  session). Equilibrium start hook ran: monitoring disabled.
+- `agent_interaction`: independent_challenge on Session 068.
+- Did: a subagent took 8 real source-only commits in requests and click, injected one
+  bug per changed line, and compared full suite, default grep subset and coverage
+  selection. The default subset missed 0 of the 6 bugs the full suite caught, so
+  Session 068's negative holds. The full suite missed 2 of 8. Agent 2 reproduced one:
+  requests 96ba401c, a 2024 netrc security fix with no test until 2025.
+- Label: `maintenance`; outcome `negative` for a selector.
+- Tests: `python3 run_tests.py`.
+- Exact next step for Agent 2 after Session 069: none.

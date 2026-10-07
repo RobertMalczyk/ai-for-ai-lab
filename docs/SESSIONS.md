@@ -2226,3 +2226,39 @@ entry and corrected observation for the preserved audit trail.
   approval of the approach.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 074: after the owner decides on human ownership, review Agent 1's next predeclared candidate against that project's AI policy first.
+
+## 2026-10-07T18:00:24+02:00 — Session 075 (Rich approval-path evaluation)
+
+- Author/gate: Agent 1. Gate required `evaluate` for
+  `external-oss-contribution`; the fresh checkout was clean and current branches
+  were merged except two old patch-equivalent Opus branches.
+- Goal/problem: test Agent 2's claim that Rich is an eligible autonomous-contribution
+  route before selecting another build. Rich requires exact maintainer solution
+  approval, but Session 074 had not checked a live task or the submission path.
+- Pre-result plan: inspect five current open, unassigned issues, all comments and
+  matching open PRs. Hypothesis/threshold: at least 1 issue has explicit maintainer
+  approval and no competing PR. Maintainer silence is not approval; evaluation mode
+  forbids implementation or external writes.
+- Actual result: all 5 issues remain open and unassigned and have 0 matching open
+  PRs, but 0 have maintainer approval. Three independent threads report that PR
+  creation is limited to collaborators; multiple ready forks are already waiting.
+  The threshold failed, so no duplicate patch, fork, comment or PR was created.
+- Changes/files: one observation, sanitized trace, exactly one ledger row and brief
+  STATE/ROADMAP/session updates. No product code, policy threshold or external
+  repository changed; no new durable decision record was needed.
+- Decision/result: `simplify`, evidence `none`, outcome `negative`. Require both
+  exact policy approval and a confirmed external submission path before cloning or
+  coding. This is an eligibility result, not a field trial or LLM utility claim.
+- Tests/controls: repository JSON parsed; ledger was contiguous 1-75; full suite
+  passed 76/76 in 3.097s; corrected offline site build reported 75 sessions;
+  coverage was 22/22. Post-record gate requires exploration for Session 076,
+  excludes this three-session family and still requires its next evaluation.
+- Verification failures: the first site command targeted nonexistent module
+  `ai_for_ai_lab.site`; the first coverage command omitted required `--root`.
+  Both failed explicitly, then the documented commands above succeeded.
+- Unresolved: the external accepted-PR milestone remains open. Rich may become
+  actionable after explicit approval or permission changes; the bounded sample does
+  not establish that no eligible project exists elsewhere.
+- Exact next step: run the gate. Seek a repository with both explicit AI eligibility
+  and an open external submission path, or wait for a maintainer-approved Rich task;
+  do not duplicate existing Rich forks or contact maintainers from this automation.

@@ -86,12 +86,18 @@
   commit `748a34d0`'s tracked lock, installed pytest 9.0.2 and passed 7/7 focused
   tests with zero collection errors. This supports lock-per-commit replay practice,
   not a compatibility tool or general utility claim.
+- Rich explicitly accepts disclosed AI PRs only after maintainer approval of the
+  exact solution. A current read of five open, unassigned issues found zero such
+  approvals and zero matching open PRs; three threads independently report that
+  external PR creation is collaborator-only. The policy route exists in principle
+  but is not actionable for this non-contacting automation today.
 
 ## NEXT
-- For the first external contribution, check the target project's AI policy before
-  issue predeclaration. Choose a current unclaimed issue only in a repository that
-  explicitly permits agent-assisted work, then hand the tested candidate to Agent 2
-  for adversarial review before any maintainer contact.
+- For the first external contribution, check both the AI policy and external PR
+  submission path before issue predeclaration. For Rich, require an exact
+  maintainer-approved solution before implementation; do not duplicate existing
+  tested forks or infer approval from silence. Then hand a tested candidate to
+  Agent 2 for adversarial review before submission.
 - Before any generic agent-tool build, observe friction in an outside repository
   and predeclare a comparison against the competent task-matched default. Preserve
   sanitized traces. Do not count a lab-only improvement as general usefulness.
@@ -189,6 +195,9 @@
 25. A technically suitable, unclaimed external issue can still be ineligible:
     Pallets forbids LLM/AI-generated contributions, so policy eligibility must be
     checked before implementation and before consuming maintainer attention.
+26. A repository can permit AI PRs in policy yet expose no actionable task: Rich
+    requires exact maintainer approval, five checked issues had none, and external
+    contributors report collaborator-only PR creation.
 
 ## REJECTED
 - Use `pallets/click#3847` for the first agent-authored external contribution:

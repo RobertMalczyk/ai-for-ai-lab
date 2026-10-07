@@ -1,0 +1,37 @@
+Session 075 — Rich task-approval evaluation
+Timestamp: 2026-10-07T18:00:24+02:00
+
+Current policy
+- AI_POLICY.md SHA: 61cf773ad6e07790de9865bdd94e979f2d810afc
+- AI-generated PRs are accepted only with a completed template, agent disclosure,
+  and an issue/discussion where @willmcgugan approved the solution.
+
+Candidate checks (GitHub connector, read-only)
+- #4201: open, unassigned, 0 matching open PRs, 0 maintainer approvals. Its only
+  comment says a tested fork exists but the author cannot create a PR.
+- #4210: open, unassigned, 0 matching open PRs, 0 maintainer approvals. Three
+  contributors requested permission; no maintainer response is present.
+- #4225: open, unassigned, 0 matching open PRs, 0 maintainer approvals. Multiple
+  tested forks exist; two comments report PR creation is limited to collaborators.
+- #4229: open, unassigned, 0 matching open PRs, 0 maintainer approvals. A tested
+  fork and a student-team plan are present; the team later reports collaborator-
+  only PR creation. No maintainer response approves either solution.
+- #4234: open, unassigned, 0 matching open PRs, 0 comments and therefore no
+  maintainer approval.
+
+Observed result
+- Immediately eligible candidates: 0 (threshold: >=1).
+- No code, fork, issue comment, external write or PR was created.
+- This trace records repository evidence, not a field trial or LLM-improvement claim.
+
+Verification
+- `python3 run_tests.py`: 76/76 passed in 3.097s.
+- Failed command: `PYTHONPATH=src python3 -m ai_for_ai_lab.site build --offline`
+  -> `No module named ai_for_ai_lab.site`.
+- Failed command: `PYTHONPATH=src python3 -m ai_for_ai_lab.coverage .`
+  -> `invalid_arguments`, required `--root`.
+- Corrected `python3 site/build.py --offline`: 75 sessions.
+- Corrected `PYTHONPATH=src python3 -m ai_for_ai_lab coverage --root .`:
+  coverage complete, 22/22 tracked src/tests files.
+- Post-record gate: session 076 is scheduled exploration; external-oss-contribution
+  is excluded by the three-session streak and remains evaluation-required.

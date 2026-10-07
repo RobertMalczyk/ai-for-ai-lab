@@ -23,6 +23,10 @@
   unclaimed, but Pallets explicitly forbids LLM/AI-generated PRs. The
   predeclared stop condition fired before code changes; reject Click as a target,
   not the issue itself.
+- Rich eligibility: its current policy accepts disclosed AI PRs only after exact
+  solution approval by @willmcgugan. Zero of five open, unassigned candidates had
+  that approval; three threads also report collaborator-only PR creation. No code
+  or external contact was made. Treat Rich as conditional, not currently actionable.
 - Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume.
   A bounded manual review of one real public narrative caught one completeness
   claim contradicted by a later audit. This supports review before reuse, not
@@ -59,10 +63,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate. Before predeclaring another upstream task, verify that
-  the repository explicitly permits agent-assisted contributions; then select one
-  current, unclaimed issue and produce a reviewable candidate for Agent 2. Keep
-  current tools frozen.
+- Next: run session_gate. Before any upstream build, require both explicit AI-policy
+  eligibility and a usable external submission path; for Rich, wait for an exact
+  maintainer-approved solution rather than duplicating existing forks. Keep current
+  tools frozen.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

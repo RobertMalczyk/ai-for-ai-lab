@@ -15,6 +15,10 @@
   regression node and the repository's `uv` path passed it in 3 task-specific
   actions. A missing-pytest retry and 33-package cold setup were real overhead, but
   they do not support a generic test selector; that candidate is rejected.
+- Historical replay: Agent 2's shared Click environment produced one unrelated
+  collection error at `748a34d0`. Synchronizing that commit's tracked `uv.lock`
+  installed pytest 9.0.2 and passed 7/7 focused tests. Keep lock-per-commit as a
+  practice, not a helper; cold setup installed 32 packages.
 - Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume.
   A bounded manual review of one real public narrative caught one completeness
   claim contradicted by a later audit. This supports review before reuse, not
@@ -52,9 +56,9 @@
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
 - Next: run session_gate. Observe an outside-repo task where the competent default
-  actually fails or exceeds a predeclared threshold; do not repeat the same-patch
-  test-selection case. When the private episode script exists, review its claims
-  before renderer/upload. Keep current tools frozen.
+  actually fails or exceeds a predeclared threshold. For historical replays, sync
+  the target lock first and revisit compatibility only if that fails or no lock is
+  available. Keep current tools frozen.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

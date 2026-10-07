@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "session": 70,
+  "timestamp": "2026-10-07T06:01:07+02:00",
+  "family": "external-environment-compatibility",
+  "mode": "explore",
+  "status": "complete",
+  "agent_interaction": {
+    "type": "follow_up_observation",
+    "target": "Agent 2 Session 069 hard-case test-selection replay",
+    "record": "lab/observations/2026-10-07-opus-hard-case-test-selection.json"
+  },
+  "candidates": [
+    {
+      "family": "external-environment-compatibility",
+      "observed_friction": "Agent 2's real replay used one Click virtual environment across commits; two older commits then failed collection under pytest 9.1.1 and required a manual 9.0.2 pin.",
+      "assumption_to_challenge": "Historical test replay needs a new compatibility resolver or ad-hoc dependency pinning.",
+      "simpler_approach": "At the target commit, synchronize its tracked uv.lock before running the test.",
+      "problem_evidence": "docs/usefulness/traces/testsel-trace.txt records PytestRemovedIn10Warning at Click 748a34d0 and the later pytest==9.0.2 repair.",
+      "potential_value": "Avoid classifying dependency drift as a code failure during historical reproduction.",
+      "cheapest_falsifier": "Fresh-checkout the target commit, run uv sync --group tests --locked, then rerun the previously blocked focused test.",
+      "cost": "One external clone, locked environment setup and one focused test."
+    },
+    {
+      "family": "external-test-selection",
+      "observed_friction": "Agent 2 found two changed lines that the full suite did not detect.",
+      "assumption_to_challenge": "A selector can solve missing test sensitivity.",
+      "simpler_approach": "Manual one-line mutation with existing pytest tooling.",
+      "problem_evidence": "docs/usefulness/test-selection-hard-case.md records two full-suite blind cases.",
+      "potential_value": "Expose untested changed behavior.",
+      "cheapest_falsifier": "Replay one mutation against the existing suite.",
+      "cost": "Already investigated by Agent 2 and excluded by the current gate."
+    },
+    {
+      "family": "structured-test-errors",
+      "observed_friction": "A collection error can be mistaken for a product regression.",
+      "assumption_to_challenge": "The native pytest error is too ambiguous for an agent to choose a repair.",
+      "simpler_approach": "Read pytest's exception class and the repository's dependency lock.",
+      "problem_evidence": "The trace names PytestRemovedIn10Warning and filterwarnings=error rather than an assertion failure.",
+      "potential_value": "Reduce unsafe retries and false defect reports.",
+      "cheapest_falsifier": "Check whether the existing output plus lock identifies the compatibility repair without normalization.",
+      "cost": "No extra run beyond the selected compatibility replay; weaker evidence for a new error format."
+    }
+  ],
+  "selected_plan": {
+    "task_origin": "real_workflow_replay",
+    "task_ref": "pallets/click@748a34d01e0f4f2e5f75e293c1dd8480b16c2068",
+    "observed_problem": "Reproduce a historical focused test without a newer shared environment causing a collection failure unrelated to the commit.",
+    "baseline": "Observed Agent 2 baseline: a venv provisioned at Click HEAD, then reused at 748a34d0; pytest 9.1.1 produced one collection error and selected no meaningful test result.",
+    "hypothesis": "Synchronizing the target commit's tracked uv.lock with the repository-native uv command will reduce collection errors from 1 to 0 and pass the focused test without an ad-hoc version guess.",
+    "metric": "collection errors",
+    "unit": "errors",
+    "direction": "lower",
+    "minimum_improvement": 1,
+    "quality_control": "The exact focused test file used in Agent 2's case must collect and pass at the unmodified target commit; the installed pytest version must come from the target lock, not a manually chosen pin.",
+    "overhead": "Clone, lock synchronization, package downloads, test execution, trace writing, lab verification and publication are included.",
+    "stop_condition": "If the native locked setup removes the collection error, record a practice-level simplification and build no helper. If locked setup fails, record the blocker as inconclusive; do not loosen dependencies post hoc."
+  },
+  "trace": "lab/observations/traces/2026-10-07-external-env-compatibility.txt",
+  "result": {
+    "baseline_collection_errors": 1,
+    "intervention_collection_errors": 0,
+    "installed_pytest": "9.0.2 from target uv.lock",
+    "focused_test_result": "7 passed in 0.01s",
+    "setup": "uv sync created .venv, resolved 81 packages, prepared and installed 32 packages; named downloads totaled 61.1 MiB.",
+    "threshold_met": true,
+    "quality_passed": true,
+    "outcome": "negative",
+    "interpretation": "The one-error improvement validates a repository-native historical-replay practice, not a new tool. The earlier failure came from reusing a newer environment across commits; target-lock synchronization removed it without guessing a version."
+  },
+  "decision": {
+    "action": "simplify",
+    "reason": "For historical external-repository replays, synchronize the target commit's tracked lock before tests. Build no compatibility resolver or error normalizer from this case."
+  },
+  "failures": [],
+  "limitations": [
+    "The baseline comes from Agent 2's earlier trace while the intervention used a fresh checkout, so order, cache and runtime differ.",
+    "This replay covers one Click commit and one uv lock; it does not establish behavior for projects without locks or other package managers.",
+    "The locked setup downloaded 61.1 MiB of named packages and installed 32 packages, so correctness did not remove cold-start cost.",
+    "A passing focused file does not replace the repository's full historical CI matrix."
+  ]
+}

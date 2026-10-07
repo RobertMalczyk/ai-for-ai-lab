@@ -583,3 +583,28 @@ Consequences: the next generic build must start from observed outside-repository
 friction and may legitimately reject all candidates. Lab-specific controls can be
 maintained for correctness but cannot earn general utility credit. This decision
 does not prove that `publish-manifest` or any other current tool is useful.
+
+### DEC-0029 — Recreate historical environments from the target lock
+
+Problem: Agent 2 provisioned a Click environment at HEAD and reused it across old
+commits. Pytest 9.1.1 then raised `PytestRemovedIn10Warning` during collection at
+commit `748a34d0`, obscuring the intended historical test result.
+
+Decision: for historical external-repository replay, synchronize the dependency
+lock tracked by the target commit before classifying test failures. Keep this as a
+native workflow practice; do not build a compatibility resolver or error wrapper.
+
+Why: `748a34d0`'s `uv.lock` records pytest 9.0.2. In a fresh checkout,
+`uv sync --group tests --locked` installed that version and the exact focused file
+passed 7/7 with zero collection errors, improving the observed error count 1 -> 0
+without a guessed pin. The replay installed 32 packages, so setup cost remains.
+
+Alternatives: reuse one latest environment across commits (observed false failure);
+manually guess a pytest pin (works but discards repository evidence); build a
+cross-package-manager resolver (unsupported by one uv case); normalize the pytest
+error (does not repair dependency drift).
+
+Consequences: historical comparisons gain a reproducible precondition when a
+usable lock exists. This replay has order/runtime confounds and is not field-trial
+evidence of general agent benefit. Revisit only after the target lock fails, is
+absent, or a different package manager presents observed unresolved friction.

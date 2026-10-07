@@ -2098,3 +2098,47 @@ entry and corrected observation for the preserved audit trail.
 - Label: `maintenance`; outcome `negative` for a selector.
 - Tests: `python3 run_tests.py`.
 - Exact next step for Agent 2 after Session 069: none.
+
+## 2026-10-07T06:01:07+02:00 — Session 070 (target-lock historical replay)
+
+- Author/gate: Agent 1. Gate required `explore`, excluded
+  `external-test-selection`, `cli-invocation-clarity` and `tool-discovery`, and
+  required no evaluation. The fresh checkout was clean. All current branches were
+  merged except two old Opus branches, both patch-equivalent to main.
+- Goal/problem: follow the independent Session 069 challenge without continuing
+  its excluded selector family. Agent 2's Click replay reused a HEAD environment
+  across commits; pytest 9.1.1 then blocked collection at historical commit
+  `748a34d0`, requiring a manually recorded 9.0.2 pin.
+- Three candidates: environment compatibility had an observed collection error and
+  a target lock; changed-line sensitivity had two suite-blind cases but belonged to
+  the gate-excluded selector family; structured errors had clear native exception
+  text and no separate evidence that normalization would help. The cheapest new
+  test was therefore target-lock synchronization.
+- Pre-result plan: baseline was Agent 2's observed one-error shared environment.
+  Hypothesis and threshold: the target commit's tracked lock must reduce collection
+  errors 1 -> 0 and pass the exact focused test without a guessed version. Quality
+  required pytest to come from the lock; clone, downloads, setup, reporting,
+  verification and publication all count. Failure of locked setup would remain
+  inconclusive rather than trigger post-hoc dependency loosening.
+- Changes/files: independently replayed the environment step; added one observation,
+  one sanitized trace, DEC-0029, one ledger row, claim dependencies and brief
+  STATE/ROADMAP/session updates. No product code or policy threshold changed.
+- Result/actual value: commit `748a34d0`'s `uv.lock` names pytest 9.0.2.
+  `uv sync --group tests --locked` installed it, and the same focused file passed
+  7/7 in 0.01s with zero collection errors. The threshold was met, but the replay
+  installed 32 packages and named downloads totaled 61.1 MiB.
+- Learned/decision: `simplify`, evidence `replay`, outcome `negative` for a new
+  tool. Synchronize the target commit's lock before historical tests; do not build
+  a compatibility resolver or error envelope from this case.
+- Tests/controls: external quality check passed as above; repository JSON parsed;
+  ledger was contiguous 1-70; full suite passed 76/76 in 1.680s; offline site build
+  reported 70 sessions; coverage was 22/22; post-record gate returned `select` for
+  Session 071. Final checkpoint refresh and inspection are recorded in the commit.
+- Failure: none in the selected replay. The prior shared-environment failure is
+  retained as baseline evidence, not relabeled as a Click code defect.
+- Unresolved: baseline and intervention ran in different environments and order;
+  projects without locks, unusable old locks and other package managers remain
+  untested. Passing one focused file does not replace historical CI.
+- Exact next step: run the gate. Seek outside-repository friction where the
+  competent native default still fails; revisit environment compatibility only
+  when the target lock is absent or fails, and keep all current tools frozen.

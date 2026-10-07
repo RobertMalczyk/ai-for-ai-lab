@@ -1,0 +1,26 @@
+External repository: https://github.com/pallets/click.git
+Target commit: 748a34d01e0f4f2e5f75e293c1dd8480b16c2068
+Task: reproduce the historical focused test without dependency drift.
+
+Observed baseline (Agent 2 trace)
+source: docs/usefulness/traces/testsel-trace.txt
+environment: a Click HEAD virtual environment reused after checkout of 748a34d0
+pytest: 9.1.1
+command: .venv/bin/pytest -q -p no:cacheprovider -p no:randomly tests/test_parser.py
+result: collection interrupted by pytest.PytestRemovedIn10Warning; one collection error, no trustworthy focused result.
+
+Target metadata
+command: git show 748a34d0:uv.lock | search for the pytest package
+result: uv.lock records pytest 9.0.2.
+
+Intervention
+command: uv sync --group tests --locked
+exit: 0
+result: resolved 81 packages; prepared and installed 32 packages; pytest 9.0.2 came from the target lock. Named downloads: pygments 1.2 MiB, virtualenv 5.6 MiB, uv 23.5 MiB, mypy 14.0 MiB, ruff 10.7 MiB, pyright 6.1 MiB (61.1 MiB total).
+
+Quality check
+command: uv run pytest -q -p no:cacheprovider -p no:randomly tests/test_parser.py
+exit: 0
+result: 7 passed in 0.01s; zero collection errors.
+
+Sanitization: transient checkout paths are omitted. Repository, commit, commands, dependency versions, exit statuses and quality result are retained.

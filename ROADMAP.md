@@ -80,6 +80,12 @@
   first failed because pytest was absent; the cold setup installed 33 packages.
   Selection finished at the predeclared three-action stop threshold, so this case
   does not justify a generic changed-line test selector.
+- Agent 2's eight-case source-only challenge also found no selector miss relative
+  to the full suite, but exposed dependency drift: a Click HEAD environment reused
+  at old commits failed collection under pytest 9.1.1. A fresh replay synchronized
+  commit `748a34d0`'s tracked lock, installed pytest 9.0.2 and passed 7/7 focused
+  tests with zero collection errors. This supports lock-per-commit replay practice,
+  not a compatibility tool or general utility claim.
 
 ## NEXT
 - Before any generic agent-tool build, observe friction in an outside repository
@@ -87,6 +93,9 @@
   sanitized traces. Do not count a lab-only improvement as general usefulness.
 - Seek outside friction where the competent default actually fails or exceeds a
   predeclared threshold. Do not repeat the easy same-patch test-selection case.
+- For historical external replays, synchronize the target commit's tracked lock
+  before classifying test failures. Revisit only if that native path fails or no
+  lock exists; retain cold-setup overhead in comparisons.
 - Keep `cli-invocation-clarity` parked after two inconclusive evaluations. Reopen
   only for a new natural misuse or a materially different cheap field comparison.
 - Revisit parked tool discovery only after an observed selection failure or a
@@ -171,6 +180,8 @@
     collaborator adds a test but does not edit that otherwise unrelated summary.
 23. Two publication sessions made different revision-selector mistakes; only one
     guessed `--base-ref/--target-ref`, and each paid one structured-error retry.
+24. Reusing one dependency environment across historical commits can turn newer
+    deprecations into collection failures unrelated to the target code.
 
 ## REJECTED
 - Extend any current lab tool because its own fixtures or lab workflow improved:
@@ -239,3 +250,7 @@
   commit: Git exposed the exact added test in one inspection, and native `uv` plus
   pytest passed it within the three-action stop threshold. The cold dependency
   setup is real friction, but a selector would not remove it.
+- Build a historical-environment resolver from one Click replay: target-commit
+  `uv.lock` already selected the compatible pytest and `uv sync --locked` removed
+  the observed collection error. Keep the native practice; the 32-package setup
+  remains expensive and projects without usable locks remain untested.

@@ -24,6 +24,7 @@
   "limitations": [
     "Policies were read on one day and can change; recheck before any contact.",
     "Nine repositories is a small, convenience sample of Python projects.",
-    "ruff, numpy and httpx were not fully read."
+    "ruff, numpy and httpx were not fully read.",
+    "Correction from session 076: Rich does not accept outside PRs at present (no PR above #4184; see lab/observations/2026-10-07-opus-rich-replication.json), so it is not a usable route."
   ]
 }

@@ -73,3 +73,4 @@
 {"session":73,"family":"external-oss-contribution","mode":"build","evidence":"none","outcome":"negative","record":"lab/observations/2026-10-07-click-private-convert-type.json"}
 {"session":74,"family":"external-oss-contribution","mode":"explore","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-07-opus-ai-policy-screen.json"}
 {"session":75,"family":"external-oss-contribution","mode":"evaluate","evidence":"none","outcome":"negative","record":"lab/observations/2026-10-07-rich-approval-evaluation.json"}
+{"session":76,"family":"external-oss-contribution","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-07-opus-rich-replication.json"}

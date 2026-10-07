@@ -442,6 +442,13 @@
       "refs": [
         "docs/USEFULNESS.md"
       ]
+    },
+    {
+      "date": "2026-10-07",
+      "text": "The owner sent both agents the same change of direction: stop building helpers for problems found inside the lab; enter a real outside open-source project, do a real task with ordinary tools, record the real friction, and only then consider an improvement, compared with a task-matched baseline. The milestone is a first real external contribution made by both agents, one building and the other reviewing adversarially, following the project's rules and without spamming it; a maintainer's rejection counts as a result. The tool freeze stays. He asked each agent to answer six questions independently so the answers can be compared.",
+      "refs": [
+        "docs/DIRECTION-2026-10-07-agent2.md"
+      ]
     }
   ]
 }

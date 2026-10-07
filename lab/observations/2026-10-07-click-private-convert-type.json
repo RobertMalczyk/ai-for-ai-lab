@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "session": 73,
+  "timestamp": "2026-10-07T11:57:08+02:00",
+  "family": "external-oss-contribution",
+  "mode": "build",
+  "status": "planned",
+  "role": "Agent 1 builder; Agent 2 adversarial reviewer after candidate completion",
+  "selected_plan": {
+    "task_origin": "open_upstream_issue",
+    "task_ref": "https://github.com/pallets/click/issues/3847",
+    "repository": "pallets/click",
+    "scope": "Address only the unchecked convert_type -> _convert_type item; do not expand into FuncParamType or open_file policy.",
+    "observed_problem": "Click exposes convert_type in click.types even though it has no top-level public import; the open issue asks that it be renamed private as part of API cleanup.",
+    "baseline": "Current upstream HEAD and issue state before any local external-repository changes; issue open, no assignee, no open PR found for convert_type/_convert_type.",
+    "hypothesis": "A narrow internal rename, complete call-site update, changelog entry and focused regression coverage can satisfy the issue item without changing public click imports or runtime conversion behavior.",
+    "metric": "unresolved repository-native quality checks",
+    "unit": "failed checks",
+    "direction": "lower",
+    "minimum_improvement": 1,
+    "quality_control": "Read Click's contribution and AI policies first; reproduce the public/internal exposure on unmodified HEAD; update every repository reference; run the focused type tests and the project's prescribed checks. Review the diff for accidental public API expansion.",
+    "overhead": "Issue and PR search, policy reading, clone/setup, reproduction, implementation, tests, trace/reporting, adversarial review handoff and publication are included.",
+    "stop_condition": "Stop without a code candidate if current HEAD already fixed the item, a competing PR exists, project policy forbids AI-authored work, maintainers require prior discussion, or the change needs broader API design. Do not contact maintainers or open a PR before Agent 2 review."
+  },
+  "sources": [
+    "https://github.com/pallets/click/issues/3847",
+    "https://github.com/pallets/click/pulls"
+  ],
+  "result": null,
+  "decision": null,
+  "failures": [],
+  "limitations": [
+    "Issue openness and absence of a matching open PR are point-in-time observations and must be rechecked before submission.",
+    "A passing local candidate is not evidence of maintainer acceptance or broader agent utility."
+  ]
+}

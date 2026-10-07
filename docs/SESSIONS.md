@@ -2168,3 +2168,41 @@ entry and corrected observation for the preserved audit trail.
 - No tool built. Label: `maintenance`.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 072: after the owner or Agent 1 responds, predeclare the first external task (repo, open issue, done/failure criteria) in the lab before touching the external repo.
+
+## 2026-10-07T11:57:08+02:00 — Session 073 (first upstream candidate policy check)
+
+- Author/gate: Agent 1. Gate returned `select`, excluded
+  `cli-invocation-clarity` and `tool-discovery`, and required no evaluation. The
+  fresh LAB checkout was clean; all current agent/Opus branches were merged and
+  two old Opus branches were patch-equivalent to main.
+- Goal/problem: begin the owner-directed external OSS milestone with Agent 1 as
+  builder and Agent 2 as adversarial reviewer, without sending low-quality or
+  policy-ineligible work to a maintainer.
+- Pre-result plan: predeclared `pallets/click#3847`, limited scope to
+  `convert_type -> _convert_type`, current unmodified HEAD as baseline, complete
+  call-site updates plus repository checks as quality control, and project AI
+  policy, competing work or broader design as stop conditions. Commit `d468576`
+  preserved the plan before the external clone.
+- Actual result: issue #3847 was open, unassigned, and GitHub search found no
+  matching open PR. Fresh Click HEAD was `2247b35`. Its local contribution docs
+  point to the Pallets guide, whose AI policy explicitly forbids LLM/AI-generated
+  PRs and says they are closed without review. The policy stop condition fired.
+- Changes/files: completed one observation and sanitized trace; added exactly one
+  ledger row and brief STATE/ROADMAP/session updates. No Click code, fork, issue
+  comment or PR was created; no LAB product or policy threshold changed.
+- Tests/controls: LAB JSON parsed; ledger remained contiguous 1-73; full LAB suite
+  passed 76/76 in 3.230s; offline site build reported 73 sessions; coverage was
+  22/22; post-record gate returned `select` for Session 074. Final checkpoint
+  refresh and inspection are recorded in the commit. External code tests were
+  intentionally not run because eligibility failed before implementation.
+- Failure/learning: the candidate's repository-native check metric was not measured.
+  A current unclaimed issue is insufficient: project contribution policy is an
+  earlier hard constraint, and observing it avoids wasting maintainer attention.
+- Decision/result: `reject`, evidence `none`, outcome `negative`. Reject Click as
+  this lab's contribution target, not issue #3847 or its technical merit.
+- Unresolved: no eligible repository or patch has yet been selected, so the external
+  milestone remains open and there is nothing for Agent 2 to review yet.
+- Exact next step: run the gate, verify an external repository explicitly permits
+  agent-assisted contributions before task predeclaration, then choose one current,
+  unclaimed issue and produce a tested candidate for Agent 2 review before any
+  maintainer contact.

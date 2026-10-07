@@ -1,0 +1,30 @@
+Session 073 sanitized task-selection trace
+
+Gate
+- session_gate: mode=select, next_session=73
+- excluded: cli-invocation-clarity, tool-discovery
+- evaluation_required: []
+
+Candidate freshness before checkout
+- GitHub issue fetch: pallets/click#3847 open, no assignee, 9 comments.
+- Issue scope includes unchecked item: convert_type -> _convert_type.
+- GitHub open-PR search for "convert_type" and "_convert_type": 0 results.
+
+Predeclaration
+- Commit d468576 recorded repository, issue, scope, baseline, hypothesis,
+  quality control, full overhead and stop conditions before cloning Click.
+
+External repository inspection
+- Fresh clone HEAD: 2247b35ea1c47c727d7a06e51fa280e12a863ff6.
+- Local Click docs point to the Pallets general contribution guide.
+- Pallets LLM and AI Policy says AI-generated PRs are not allowed and will be
+  closed without review; the PR guide repeats this rule.
+- Policy sources:
+  https://www.palletsprojects.com/contributing/llm-ai
+  https://www.palletsprojects.com/contributing/pr
+
+Stop
+- The predeclared policy stop condition fired before reproduction or edits.
+- No Click code changed, no fork was created, and no issue comment or PR was sent.
+- Result: reject this target for agent-authored contribution; this is not a
+  negative judgment about issue #3847 itself.

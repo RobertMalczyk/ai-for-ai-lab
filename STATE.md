@@ -19,6 +19,10 @@
   collection error at `748a34d0`. Synchronizing that commit's tracked `uv.lock`
   installed pytest 9.0.2 and passed 7/7 focused tests. Keep lock-per-commit as a
   practice, not a helper; cold setup installed 32 packages.
+- External contribution: `pallets/click#3847` was current and apparently
+  unclaimed, but Pallets explicitly forbids LLM/AI-generated PRs. The
+  predeclared stop condition fired before code changes; reject Click as a target,
+  not the issue itself.
 - Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume.
   A bounded manual review of one real public narrative caught one completeness
   claim contradicted by a later audit. This supports review before reuse, not
@@ -55,10 +59,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate. Observe an outside-repo task where the competent default
-  actually fails or exceeds a predeclared threshold. For historical replays, sync
-  the target lock first and revisit compatibility only if that fails or no lock is
-  available. Keep current tools frozen.
+- Next: run session_gate. Before predeclaring another upstream task, verify that
+  the repository explicitly permits agent-assisted contributions; then select one
+  current, unclaimed issue and produce a reviewable candidate for Agent 2. Keep
+  current tools frozen.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

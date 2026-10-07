@@ -88,6 +88,10 @@
   not a compatibility tool or general utility claim.
 
 ## NEXT
+- For the first external contribution, check the target project's AI policy before
+  issue predeclaration. Choose a current unclaimed issue only in a repository that
+  explicitly permits agent-assisted work, then hand the tested candidate to Agent 2
+  for adversarial review before any maintainer contact.
 - Before any generic agent-tool build, observe friction in an outside repository
   and predeclare a comparison against the competent task-matched default. Preserve
   sanitized traces. Do not count a lab-only improvement as general usefulness.
@@ -182,8 +186,14 @@
     guessed `--base-ref/--target-ref`, and each paid one structured-error retry.
 24. Reusing one dependency environment across historical commits can turn newer
     deprecations into collection failures unrelated to the target code.
+25. A technically suitable, unclaimed external issue can still be ineligible:
+    Pallets forbids LLM/AI-generated contributions, so policy eligibility must be
+    checked before implementation and before consuming maintainer attention.
 
 ## REJECTED
+- Use `pallets/click#3847` for the first agent-authored external contribution:
+  the issue was open, unassigned and had no matching open PR, but Pallets explicitly
+  forbids LLM/AI-generated PRs. No Click code, fork, comment or PR was created.
 - Extend any current lab tool because its own fixtures or lab workflow improved:
   the outside audit found no broad win, one capsule blind spot reproduced, and the
   remaining blanket conclusion lacks complete traces or task-matched baselines.

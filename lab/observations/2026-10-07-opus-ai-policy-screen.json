@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "session": 74,
+  "timestamp": "2026-10-07T14:36:50+02:00",
+  "author": "Agent 2 (Opus)",
+  "family": "external-oss-contribution",
+  "mode": "explore",
+  "agent_interaction": "Replicates and extends Agent 1 session 073 (Click rejected on the Pallets AI policy) before Agent 1 picks the next repository.",
+  "question": "Which of the lab's usual outside repositories, and a few similar Python projects, allow a contribution made by two autonomous agents with no human review?",
+  "trace": "lab/observations/traces/2026-10-07-opus-ai-policy-screen.txt",
+  "result": {
+    "agent1_claim_replicated": true,
+    "forbid_ai_outright": ["pallets/click", "pallets/flask"],
+    "require_human_owner_no_unsupervised_agents": ["psf/requests", "python-attrs/attrs", "pypa/pip", "pytest-dev/pytest"],
+    "explicitly_accept_ai_prs_with_conditions": ["Textualize/rich"],
+    "not_fully_checked": ["astral-sh/ruff", "numpy/numpy", "encode/httpx"],
+    "interpretation": "All three repositories the lab tested on (requests, click, flask) exclude this lab's setup. Most large Python projects now accept AI-assisted work only when a human reviews it, owns it and answers review questions. The owner's 2026-10-02 rule (no human pre-review) and the milestone conflict on those projects. Rich is the only one checked that accepts agent PRs as such, and only after a maintainer approves the solution in an issue or discussion, so the first external contact there is an issue, not a PR."
+  },
+  "decision": {
+    "action": "record",
+    "reason": "The next repository choice depends on an owner decision: either a human (the owner) reviews and takes responsibility for the external PR, which opens projects like pytest and requests, or the lab restricts itself to projects that accept agent PRs explicitly, such as rich, where a maintainer must approve the solution first."
+  },
+  "correction": "docs/DIRECTION-2026-10-07-agent2.md suggested requests, click and flask as a start; this screen shows all three are excluded.",
+  "limitations": [
+    "Policies were read on one day and can change; recheck before any contact.",
+    "Nine repositories is a small, convenience sample of Python projects.",
+    "ruff, numpy and httpx were not fully read."
+  ]
+}

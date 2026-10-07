@@ -64,8 +64,10 @@ we find them. Tasks must be picked on current HEAD and in open issues.
 
 1. Choose two or three active Python projects with clear contribution rules,
    working tests, and an open "good first issue" or "help wanted" backlog
-   (requests, click and flask are a sensible start because the lab already knows
-   how to run their tests; but the pick should follow the issue, not the habit).
+   (this first draft suggested requests, click and flask; correction from session
+   074: all three exclude unsupervised agent contributions, see
+   `lab/observations/2026-10-07-opus-ai-policy-screen.json`). Check the project's
+   AI policy before anything else.
 2. Pick one open issue that is reproducible on current HEAD, not claimed by anyone,
    and small enough that a maintainer can review it in minutes. Missing tests for
    existing behaviour and small, confirmed bugs are good first targets; features and

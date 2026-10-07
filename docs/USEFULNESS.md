@@ -51,5 +51,12 @@ measured outside the lab against plain `git`/`pytest`:
 3. Resuming after context loss in a real repo: a `git`-based resume summary that also
    catches changes in files the note did not list (the capsule's blind spot).
 
+Follow-up (2026-10-07, `docs/usefulness/test-selection-hard-case.md`): on 8 real
+source-only commits, test selection was not the problem. A default `grep` subset
+caught every bug the full suite caught. The full suite itself missed 2 of 8 injected
+bugs, including a reverted 2024 requests security fix whose tests were added upstream
+only in 2025. The gap worth closing is "no test notices if my changed line is
+wrong", which a one-line mutation check of changed lines exposes with existing tools.
+
 Rule from now on for Agent 2: a result counts as useful only if it beats the default
 agent on a repository that is not the lab.

@@ -1,0 +1,156 @@
+### requests 86b378d3  git grep -n -E 'params=' 86b378d3 -- tests/ | cut -c1-160 | head -25
+86b378d3:tests/test_requests.py:164:        request = requests.Request("GET", url, params={"a": "b"}).prepare()
+86b378d3:tests/test_requests.py:173:            "GET", "http://example.com/", params=param_ordered_dict
+86b378d3:tests/test_requests.py:180:            "GET", "http://example.com", params=b"test=foo"
+86b378d3:tests/test_requests.py:232:            params={"url": "post", "status_code": 307},
+86b378d3:tests/test_requests.py:244:            params={"url": "post", "status_code": 307},
+86b378d3:tests/test_requests.py:380:            httpbin("get") + "?test=true", params={"q": "test"}, headers=heads
+86b378d3:tests/test_requests.py:402:            params={"Set-Cookie": "foo=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT"},
+86b378d3:tests/test_requests.py:957:        requests.get(httpbin(url), params=params)
+86b378d3:tests/test_requests.py:1069:        r = requests.get(httpbin("get"), params={"test": ["foo", "baz"]})
+86b378d3:tests/test_requests.py:1085:                params={"blah": "asdf1234"},
+86b378d3:tests/test_requests.py:1617:        r = requests.get(httpbin("redirect-to"), params={"url": url})
+86b378d3:tests/test_requests.py:1741:        r = s.get(httpbin("get"), params={"FOO": "bar"})
+86b378d3:tests/test_requests.py:1900:            params={"url": httpbin("get")},
+86b378d3:tests/test_requests.py:2781:            requests.get(httpbin("redirect-to"), params={"url": url})
+86b378d3:tests/test_requests.py:2849:        r = requests.Request("GET", url=input, params=params)
+86b378d3:tests/test_utils.py:225:    @pytest.fixture(autouse=True, params=["no_proxy", "NO_PROXY"])
+(total hits: 16)
+### requests a044b020  git grep -n -E 'Digest|digest' a044b020 -- tests/ | cut -c1-160 | head -25
+a044b020:tests/test_lowlevel.py:127:def test_digestauth_401_count_reset_on_redirect():
+a044b020:tests/test_lowlevel.py:128:    """Ensure we correctly reset num_401_calls after a successful digest auth,
+a044b020:tests/test_lowlevel.py:129:    followed by a 302 redirect to another digest auth prompt.
+a044b020:tests/test_lowlevel.py:135:                b'WWW-Authenticate: Digest nonce="6bf5d6e4da1ce66918800195d6b9130d"'
+a044b020:tests/test_lowlevel.py:146:    expected_digest = (b'Authorization: Digest username="user", '
+a044b020:tests/test_lowlevel.py:150:    auth = requests.auth.HTTPDigestAuth('user', 'pass')
+a044b020:tests/test_lowlevel.py:152:    def digest_response_handler(sock):
+a044b020:tests/test_lowlevel.py:160:        assert expected_digest in request_content
+a044b020:tests/test_lowlevel.py:171:        assert expected_digest in request_content
+a044b020:tests/test_lowlevel.py:177:    server = Server(digest_response_handler, wait_to_close_event=close_server)
+a044b020:tests/test_lowlevel.py:186:        assert r.request.headers['Authorization'].startswith('Digest ')
+a044b020:tests/test_lowlevel.py:192:def test_digestauth_401_only_sent_once():
+a044b020:tests/test_lowlevel.py:198:                b'WWW-Authenticate: Digest nonce="6bf5d6e4da1ce66918800195d6b9130d"'
+a044b020:tests/test_lowlevel.py:202:    expected_digest = (b'Authorization: Digest username="user", '
+a044b020:tests/test_lowlevel.py:206:    auth = requests.auth.HTTPDigestAuth('user', 'pass')
+a044b020:tests/test_lowlevel.py:208:    def digest_failed_response_handler(sock):
+a044b020:tests/test_lowlevel.py:217:        assert expected_digest in request_content
+a044b020:tests/test_lowlevel.py:227:    server = Server(digest_failed_response_handler, wait_to_close_event=close_server)
+a044b020:tests/test_lowlevel.py:238:def test_digestauth_only_on_4xx():
+a044b020:tests/test_lowlevel.py:239:    """Ensure we only send digestauth on 4xx challenges.
+a044b020:tests/test_lowlevel.py:245:                     b'WWW-Authenticate: Digest nonce="6bf5d6e4da1ce66918800195d6b9130d"'
+a044b020:tests/test_lowlevel.py:249:    auth = requests.auth.HTTPDigestAuth('user', 'pass')
+a044b020:tests/test_lowlevel.py:251:    def digest_response_handler(sock):
+a044b020:tests/test_lowlevel.py:264:    server = Server(digest_response_handler, wait_to_close_event=close_server)
+a044b020:tests/test_requests.py:21:from requests.auth import HTTPDigestAuth, _basic_auth_str
+(total hits: 45)
+### requests 96ba401c  git grep -n -E 'netrc' 96ba401c -- tests/ | cut -c1-160 | head -25
+96ba401c:tests/test_requests.py:672:    def test_basicauth_with_netrc(self, httpbin):
+96ba401c:tests/test_requests.py:677:        old_auth = requests.sessions.get_netrc_auth
+96ba401c:tests/test_requests.py:681:            def get_netrc_auth_mock(url):
+96ba401c:tests/test_requests.py:684:            requests.sessions.get_netrc_auth = get_netrc_auth_mock
+96ba401c:tests/test_requests.py:686:            # Should use netrc and work.
+96ba401c:tests/test_requests.py:696:            # Should use netrc and work.
+96ba401c:tests/test_requests.py:705:            requests.sessions.get_netrc_auth = old_auth
+(total hits: 7)
+### requests 90fee087  git grep -n -E 'cert_verify|ca_cert|verify=' 90fee087 -- tests/ | cut -c1-160 | head -25
+90fee087:tests/test_requests.py:957:        requests.get(httpbin_secure("status", "301"), verify=httpbin_ca_bundle)
+90fee087:tests/test_requests.py:959:    def test_invalid_ca_certificate_path(self, httpbin_secure):
+90fee087:tests/test_requests.py:962:            requests.get(httpbin_secure(), verify=INVALID_PATH)
+90fee087:tests/test_requests.py:1014:                url=httpbin("get"), proxies={}, stream=False, verify=True, cert=None
+90fee087:tests/test_requests.py:1040:            requests.get(f"https://localhost:{port}/", verify=ca_bundle)
+90fee087:tests/test_requests.py:1889:            verify=httpbin_ca_bundle,
+90fee087:tests/test_requests.py:2895:            r1 = s.get(url, verify=False)
+90fee087:tests/test_requests.py:2928:            r1 = s.get(url, verify=False)
+90fee087:tests/test_requests.py:2933:                s.get(url, verify="tests/certs/expired/ca/ca.crt")
+90fee087:tests/test_requests.py:2961:            r1 = s.get(url, verify=False)
+90fee087:tests/test_requests.py:2964:            r2 = s.get(url, verify="tests/certs/valid/ca/ca.crt")
+90fee087:tests/test_requests.py:3001:            r1 = s.get(url, verify=False, cert=cert)
+(total hits: 12)
+### click 9835b0f7  git grep -n -E 'pager|PAGER' 9835b0f7 -- tests/ | cut -c1-160 | head -25
+Auto packing the repository in background for optimum performance.
+See "git help gc" for manual housekeeping.
+9835b0f7:tests/test_termui.py:471:        # PR #1477: pager/editor command with flags, like ``less -FRSX``.
+9835b0f7:tests/test_termui.py:606:    ("pager_env", "expected_parts"),
+9835b0f7:tests/test_termui.py:631:            "'/usr/local/bin/my pager'",
+9835b0f7:tests/test_termui.py:632:            ["/usr/local/bin/my pager"],
+9835b0f7:tests/test_termui.py:638:            "/usr/bin/my\\ pager",
+9835b0f7:tests/test_termui.py:639:            ["/usr/bin/my pager"],
+9835b0f7:tests/test_termui.py:651:def test_pager_shlex_split(pager_env, expected_parts):
+9835b0f7:tests/test_termui.py:652:    """Verify shlex.split produces the expected argv for PAGER values.
+9835b0f7:tests/test_termui.py:654:    Tests the splitting logic used by :func:`click._termui_impl.pager` to
+9835b0f7:tests/test_termui.py:655:    turn the ``PAGER`` environment variable into an ``argv`` list. See
+9835b0f7:tests/test_termui.py:658:    assert shlex.split(pager_env) == expected_parts
+9835b0f7:tests/test_termui.py:661:def _get_real_pager_command() -> str:
+9835b0f7:tests/test_termui.py:662:    """Return a real pager binary path used to exercise the pipe pager branch.
+9835b0f7:tests/test_termui.py:666:        through ``_tempfilepager`` rather than ``_pipepager``.
+9835b0f7:tests/test_termui.py:668:    pager_path = shutil.which("cat")
+9835b0f7:tests/test_termui.py:669:    assert pager_path is not None, "cat not available"
+9835b0f7:tests/test_termui.py:670:    return pager_path
+9835b0f7:tests/test_termui.py:673:def _run_get_pager_file_with_real_pager(monkeypatch, capfd, writer, color=False):
+9835b0f7:tests/test_termui.py:674:    """Run through the pipe pager backend selected by ``PAGER``."""
+9835b0f7:tests/test_termui.py:677:        click._termui_impl.os.environ, "PAGER", _get_real_pager_command()
+9835b0f7:tests/test_termui.py:680:    with click.get_pager_file(color=color) as pager:
+9835b0f7:tests/test_termui.py:681:        writer(pager)
+9835b0f7:tests/test_termui.py:683:    # The real pager writes to the process stdout; stderr should stay quiet.
+9835b0f7:tests/test_termui.py:689:def _write_pager_from_multiple_sites(pager):
+9835b0f7:tests/test_termui.py:690:    pager.write("prefix\n")
+(total hits: 177)
+### click 748a34d0  git grep -n -E 'split_arg_string' 748a34d0 -- tests/ | cut -c1-160 | head -25
+748a34d0:tests/test_parser.py:5:from click.shell_completion import split_arg_string
+748a34d0:tests/test_parser.py:18:def test_split_arg_string(value, expect):
+748a34d0:tests/test_parser.py:19:    assert split_arg_string(value) == expect
+(total hits: 3)
+### click 8f300853  git grep -n -E 'flag_value' 8f300853 -- tests/ | cut -c1-160 | head -25
+8f300853:tests/test_basic.py:365:        # Each option is returning its own flag_value, whatever the default is.
+8f300853:tests/test_basic.py:386:        # Special case: if default=True and flag_value is set, the value returned is the
+8f300853:tests/test_basic.py:387:        # flag_value, not the True Python value itself.
+8f300853:tests/test_basic.py:395:def test_flag_value_dual_options(runner, default, args, expected):
+8f300853:tests/test_basic.py:409:    @click.option("--upper", "case", flag_value="upper", default=default)
+8f300853:tests/test_basic.py:410:    @click.option("--lower", "case", flag_value="lower")
+8f300853:tests/test_basic.py:751:    @click.option("--eager-flag1", flag_value="eager1", is_eager=True, callback=memo)
+8f300853:tests/test_basic.py:752:    @click.option("--eager-flag2", flag_value="eager2", is_eager=True, callback=memo)
+8f300853:tests/test_basic.py:753:    @click.option("--eager-flag3", flag_value="eager3", is_eager=True, callback=memo)
+8f300853:tests/test_basic.py:754:    @click.option("--normal-flag1", flag_value="normal1", is_eager=False, callback=memo)
+8f300853:tests/test_basic.py:755:    @click.option("--normal-flag2", flag_value="normal2", is_eager=False, callback=memo)
+8f300853:tests/test_basic.py:756:    @click.option("--normal-flag3", flag_value="normal3", is_eager=False, callback=memo)
+8f300853:tests/test_defaults.py:97:    # flag due to flag_value
+8f300853:tests/test_defaults.py:98:    @click.option("-v", "v", flag_value=1, multiple=True)
+8f300853:tests/test_defaults.py:99:    @click.option("-q", "v", flag_value=-1, multiple=True)
+8f300853:tests/test_defaults.py:136:    """The first ``default=True`` wins when multiple ``flag_value`` options share
+8f300853:tests/test_defaults.py:140:        ``test_basic.py::test_flag_value_dual_options`` and
+8f300853:tests/test_defaults.py:148:    @click.option("--red", "color", flag_value="red")
+8f300853:tests/test_defaults.py:149:    @click.option("--green", "color", flag_value="green", default=True)
+8f300853:tests/test_defaults.py:154:    @click.option("--red", "color", flag_value="red", default=True)
+8f300853:tests/test_defaults.py:155:    @click.option("--green", "color", flag_value="green")
+8f300853:tests/test_defaults.py:467:    """Dummy callable used as a flag_value in default tests."""
+8f300853:tests/test_defaults.py:479:        # Static value in default_map overrides the auto-aligned flag_value.
+8f300853:tests/test_defaults.py:483:        # None in default_map overrides the flag_value.
+8f300853:tests/test_defaults.py:489:def test_default_map_with_callable_flag_value(runner, default_map, args, expected):
+(total hits: 412)
+### click c040135a  git grep -n -E 'deprecated' c040135a -- tests/ | cut -c1-160 | head -25
+c040135a:tests/test_arguments.py:298:def test_deprecated_usage(runner):
+c040135a:tests/test_arguments.py:300:    @click.argument("f", required=False, deprecated=True)
+c040135a:tests/test_arguments.py:309:@pytest.mark.parametrize("deprecated", [True, "USE B INSTEAD"])
+c040135a:tests/test_arguments.py:310:def test_deprecated_warning(runner, deprecated):
+c040135a:tests/test_arguments.py:313:        "my-argument", required=False, deprecated=deprecated, default="default argument"
+c040135a:tests/test_arguments.py:318:    # defaults should not give a deprecated warning
+c040135a:tests/test_arguments.py:321:    assert "is deprecated" not in result.output
+c040135a:tests/test_arguments.py:325:    assert "argument 'MY_ARGUMENT' is deprecated" in result.output
+c040135a:tests/test_arguments.py:327:    if isinstance(deprecated, str):
+c040135a:tests/test_arguments.py:328:        assert deprecated in result.output
+c040135a:tests/test_arguments.py:331:def test_deprecated_required(runner):
+c040135a:tests/test_arguments.py:332:    with pytest.raises(ValueError, match="is deprecated and still required"):
+c040135a:tests/test_arguments.py:333:        click.Argument(["a"], required=True, deprecated=True)
+c040135a:tests/test_commands.py:481:@pytest.mark.parametrize("deprecated", [True, "USE OTHER COMMAND INSTEAD"])
+c040135a:tests/test_commands.py:482:def test_deprecated_in_help_messages(runner, doc, deprecated):
+c040135a:tests/test_commands.py:483:    @click.command(deprecated=deprecated, help=doc)
+c040135a:tests/test_commands.py:490:    if isinstance(deprecated, str):
+c040135a:tests/test_commands.py:491:        assert deprecated in result.output
+c040135a:tests/test_commands.py:494:@pytest.mark.parametrize("deprecated", [True, "USE OTHER COMMAND INSTEAD"])
+c040135a:tests/test_commands.py:495:def test_deprecated_in_invocation(runner, deprecated):
+c040135a:tests/test_commands.py:496:    @click.command(deprecated=deprecated)
+c040135a:tests/test_commands.py:497:    def deprecated_cmd():
+c040135a:tests/test_commands.py:500:    result = runner.invoke(deprecated_cmd)
+c040135a:tests/test_commands.py:503:    if isinstance(deprecated, str):
+c040135a:tests/test_commands.py:504:        assert deprecated in result.output
+(total hits: 48)

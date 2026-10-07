@@ -1,0 +1,988 @@
+# SETUP (2026-10-07, Python 3.11.15, uv)
+git clone --filter=blob:none https://github.com/psf/requests.git
+git clone --filter=blob:none https://github.com/pallets/click.git
+cd requests && uv venv -p 3.11 .venv && VIRTUAL_ENV=.venv uv pip install -e '.[socks]' --group test pytest-testmon
+cd click    && uv venv -p 3.11 .venv && VIRTUAL_ENV=.venv uv pip install -e . --group tests pytest-cov pytest-testmon
+# HEAD baseline: requests 4 failed, 615 passed, 15 skipped (78.8s; 4 failures = TestTimeout connect tests needing outbound network)
+#                click 2262 passed, 24 skipped (4.9s)
+# Default-selection grep outputs (action 2 per case) are in default_greps.txt; chosen subsets fixed in cases.json BEFORE any buggy run.
+### requests 86b378d3  git grep -n -E 'params=' 86b378d3 -- tests/ | cut -c1-160 | head -25
+86b378d3:tests/test_requests.py:164:        request = requests.Request("GET", url, params={"a": "b"}).prepare()
+86b378d3:tests/test_requests.py:173:            "GET", "http://example.com/", params=param_ordered_dict
+86b378d3:tests/test_requests.py:180:            "GET", "http://example.com", params=b"test=foo"
+86b378d3:tests/test_requests.py:232:            params={"url": "post", "status_code": 307},
+86b378d3:tests/test_requests.py:244:            params={"url": "post", "status_code": 307},
+86b378d3:tests/test_requests.py:380:            httpbin("get") + "?test=true", params={"q": "test"}, headers=heads
+86b378d3:tests/test_requests.py:402:            params={"Set-Cookie": "foo=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT"},
+86b378d3:tests/test_requests.py:957:        requests.get(httpbin(url), params=params)
+86b378d3:tests/test_requests.py:1069:        r = requests.get(httpbin("get"), params={"test": ["foo", "baz"]})
+86b378d3:tests/test_requests.py:1085:                params={"blah": "asdf1234"},
+86b378d3:tests/test_requests.py:1617:        r = requests.get(httpbin("redirect-to"), params={"url": url})
+86b378d3:tests/test_requests.py:1741:        r = s.get(httpbin("get"), params={"FOO": "bar"})
+86b378d3:tests/test_requests.py:1900:            params={"url": httpbin("get")},
+86b378d3:tests/test_requests.py:2781:            requests.get(httpbin("redirect-to"), params={"url": url})
+86b378d3:tests/test_requests.py:2849:        r = requests.Request("GET", url=input, params=params)
+86b378d3:tests/test_utils.py:225:    @pytest.fixture(autouse=True, params=["no_proxy", "NO_PROXY"])
+(total hits: 16)
+### requests a044b020  git grep -n -E 'Digest|digest' a044b020 -- tests/ | cut -c1-160 | head -25
+a044b020:tests/test_lowlevel.py:127:def test_digestauth_401_count_reset_on_redirect():
+a044b020:tests/test_lowlevel.py:128:    """Ensure we correctly reset num_401_calls after a successful digest auth,
+a044b020:tests/test_lowlevel.py:129:    followed by a 302 redirect to another digest auth prompt.
+a044b020:tests/test_lowlevel.py:135:                b'WWW-Authenticate: Digest nonce="6bf5d6e4da1ce66918800195d6b9130d"'
+a044b020:tests/test_lowlevel.py:146:    expected_digest = (b'Authorization: Digest username="user", '
+a044b020:tests/test_lowlevel.py:150:    auth = requests.auth.HTTPDigestAuth('user', 'pass')
+a044b020:tests/test_lowlevel.py:152:    def digest_response_handler(sock):
+a044b020:tests/test_lowlevel.py:160:        assert expected_digest in request_content
+a044b020:tests/test_lowlevel.py:171:        assert expected_digest in request_content
+a044b020:tests/test_lowlevel.py:177:    server = Server(digest_response_handler, wait_to_close_event=close_server)
+a044b020:tests/test_lowlevel.py:186:        assert r.request.headers['Authorization'].startswith('Digest ')
+a044b020:tests/test_lowlevel.py:192:def test_digestauth_401_only_sent_once():
+a044b020:tests/test_lowlevel.py:198:                b'WWW-Authenticate: Digest nonce="6bf5d6e4da1ce66918800195d6b9130d"'
+a044b020:tests/test_lowlevel.py:202:    expected_digest = (b'Authorization: Digest username="user", '
+a044b020:tests/test_lowlevel.py:206:    auth = requests.auth.HTTPDigestAuth('user', 'pass')
+a044b020:tests/test_lowlevel.py:208:    def digest_failed_response_handler(sock):
+a044b020:tests/test_lowlevel.py:217:        assert expected_digest in request_content
+a044b020:tests/test_lowlevel.py:227:    server = Server(digest_failed_response_handler, wait_to_close_event=close_server)
+a044b020:tests/test_lowlevel.py:238:def test_digestauth_only_on_4xx():
+a044b020:tests/test_lowlevel.py:239:    """Ensure we only send digestauth on 4xx challenges.
+a044b020:tests/test_lowlevel.py:245:                     b'WWW-Authenticate: Digest nonce="6bf5d6e4da1ce66918800195d6b9130d"'
+a044b020:tests/test_lowlevel.py:249:    auth = requests.auth.HTTPDigestAuth('user', 'pass')
+a044b020:tests/test_lowlevel.py:251:    def digest_response_handler(sock):
+a044b020:tests/test_lowlevel.py:264:    server = Server(digest_response_handler, wait_to_close_event=close_server)
+a044b020:tests/test_requests.py:21:from requests.auth import HTTPDigestAuth, _basic_auth_str
+(total hits: 45)
+### requests 96ba401c  git grep -n -E 'netrc' 96ba401c -- tests/ | cut -c1-160 | head -25
+96ba401c:tests/test_requests.py:672:    def test_basicauth_with_netrc(self, httpbin):
+96ba401c:tests/test_requests.py:677:        old_auth = requests.sessions.get_netrc_auth
+96ba401c:tests/test_requests.py:681:            def get_netrc_auth_mock(url):
+96ba401c:tests/test_requests.py:684:            requests.sessions.get_netrc_auth = get_netrc_auth_mock
+96ba401c:tests/test_requests.py:686:            # Should use netrc and work.
+96ba401c:tests/test_requests.py:696:            # Should use netrc and work.
+96ba401c:tests/test_requests.py:705:            requests.sessions.get_netrc_auth = old_auth
+(total hits: 7)
+### requests 90fee087  git grep -n -E 'cert_verify|ca_cert|verify=' 90fee087 -- tests/ | cut -c1-160 | head -25
+90fee087:tests/test_requests.py:957:        requests.get(httpbin_secure("status", "301"), verify=httpbin_ca_bundle)
+90fee087:tests/test_requests.py:959:    def test_invalid_ca_certificate_path(self, httpbin_secure):
+90fee087:tests/test_requests.py:962:            requests.get(httpbin_secure(), verify=INVALID_PATH)
+90fee087:tests/test_requests.py:1014:                url=httpbin("get"), proxies={}, stream=False, verify=True, cert=None
+90fee087:tests/test_requests.py:1040:            requests.get(f"https://localhost:{port}/", verify=ca_bundle)
+90fee087:tests/test_requests.py:1889:            verify=httpbin_ca_bundle,
+90fee087:tests/test_requests.py:2895:            r1 = s.get(url, verify=False)
+90fee087:tests/test_requests.py:2928:            r1 = s.get(url, verify=False)
+90fee087:tests/test_requests.py:2933:                s.get(url, verify="tests/certs/expired/ca/ca.crt")
+90fee087:tests/test_requests.py:2961:            r1 = s.get(url, verify=False)
+90fee087:tests/test_requests.py:2964:            r2 = s.get(url, verify="tests/certs/valid/ca/ca.crt")
+90fee087:tests/test_requests.py:3001:            r1 = s.get(url, verify=False, cert=cert)
+(total hits: 12)
+### click 9835b0f7  git grep -n -E 'pager|PAGER' 9835b0f7 -- tests/ | cut -c1-160 | head -25
+Auto packing the repository in background for optimum performance.
+See "git help gc" for manual housekeeping.
+9835b0f7:tests/test_termui.py:471:        # PR #1477: pager/editor command with flags, like ``less -FRSX``.
+9835b0f7:tests/test_termui.py:606:    ("pager_env", "expected_parts"),
+9835b0f7:tests/test_termui.py:631:            "'/usr/local/bin/my pager'",
+9835b0f7:tests/test_termui.py:632:            ["/usr/local/bin/my pager"],
+9835b0f7:tests/test_termui.py:638:            "/usr/bin/my\\ pager",
+9835b0f7:tests/test_termui.py:639:            ["/usr/bin/my pager"],
+9835b0f7:tests/test_termui.py:651:def test_pager_shlex_split(pager_env, expected_parts):
+9835b0f7:tests/test_termui.py:652:    """Verify shlex.split produces the expected argv for PAGER values.
+9835b0f7:tests/test_termui.py:654:    Tests the splitting logic used by :func:`click._termui_impl.pager` to
+9835b0f7:tests/test_termui.py:655:    turn the ``PAGER`` environment variable into an ``argv`` list. See
+9835b0f7:tests/test_termui.py:658:    assert shlex.split(pager_env) == expected_parts
+9835b0f7:tests/test_termui.py:661:def _get_real_pager_command() -> str:
+9835b0f7:tests/test_termui.py:662:    """Return a real pager binary path used to exercise the pipe pager branch.
+9835b0f7:tests/test_termui.py:666:        through ``_tempfilepager`` rather than ``_pipepager``.
+9835b0f7:tests/test_termui.py:668:    pager_path = shutil.which("cat")
+9835b0f7:tests/test_termui.py:669:    assert pager_path is not None, "cat not available"
+9835b0f7:tests/test_termui.py:670:    return pager_path
+9835b0f7:tests/test_termui.py:673:def _run_get_pager_file_with_real_pager(monkeypatch, capfd, writer, color=False):
+9835b0f7:tests/test_termui.py:674:    """Run through the pipe pager backend selected by ``PAGER``."""
+9835b0f7:tests/test_termui.py:677:        click._termui_impl.os.environ, "PAGER", _get_real_pager_command()
+9835b0f7:tests/test_termui.py:680:    with click.get_pager_file(color=color) as pager:
+9835b0f7:tests/test_termui.py:681:        writer(pager)
+9835b0f7:tests/test_termui.py:683:    # The real pager writes to the process stdout; stderr should stay quiet.
+9835b0f7:tests/test_termui.py:689:def _write_pager_from_multiple_sites(pager):
+9835b0f7:tests/test_termui.py:690:    pager.write("prefix\n")
+(total hits: 177)
+### click 748a34d0  git grep -n -E 'split_arg_string' 748a34d0 -- tests/ | cut -c1-160 | head -25
+748a34d0:tests/test_parser.py:5:from click.shell_completion import split_arg_string
+748a34d0:tests/test_parser.py:18:def test_split_arg_string(value, expect):
+748a34d0:tests/test_parser.py:19:    assert split_arg_string(value) == expect
+(total hits: 3)
+### click 8f300853  git grep -n -E 'flag_value' 8f300853 -- tests/ | cut -c1-160 | head -25
+8f300853:tests/test_basic.py:365:        # Each option is returning its own flag_value, whatever the default is.
+8f300853:tests/test_basic.py:386:        # Special case: if default=True and flag_value is set, the value returned is the
+8f300853:tests/test_basic.py:387:        # flag_value, not the True Python value itself.
+8f300853:tests/test_basic.py:395:def test_flag_value_dual_options(runner, default, args, expected):
+8f300853:tests/test_basic.py:409:    @click.option("--upper", "case", flag_value="upper", default=default)
+8f300853:tests/test_basic.py:410:    @click.option("--lower", "case", flag_value="lower")
+8f300853:tests/test_basic.py:751:    @click.option("--eager-flag1", flag_value="eager1", is_eager=True, callback=memo)
+8f300853:tests/test_basic.py:752:    @click.option("--eager-flag2", flag_value="eager2", is_eager=True, callback=memo)
+8f300853:tests/test_basic.py:753:    @click.option("--eager-flag3", flag_value="eager3", is_eager=True, callback=memo)
+8f300853:tests/test_basic.py:754:    @click.option("--normal-flag1", flag_value="normal1", is_eager=False, callback=memo)
+8f300853:tests/test_basic.py:755:    @click.option("--normal-flag2", flag_value="normal2", is_eager=False, callback=memo)
+8f300853:tests/test_basic.py:756:    @click.option("--normal-flag3", flag_value="normal3", is_eager=False, callback=memo)
+8f300853:tests/test_defaults.py:97:    # flag due to flag_value
+8f300853:tests/test_defaults.py:98:    @click.option("-v", "v", flag_value=1, multiple=True)
+8f300853:tests/test_defaults.py:99:    @click.option("-q", "v", flag_value=-1, multiple=True)
+8f300853:tests/test_defaults.py:136:    """The first ``default=True`` wins when multiple ``flag_value`` options share
+8f300853:tests/test_defaults.py:140:        ``test_basic.py::test_flag_value_dual_options`` and
+8f300853:tests/test_defaults.py:148:    @click.option("--red", "color", flag_value="red")
+8f300853:tests/test_defaults.py:149:    @click.option("--green", "color", flag_value="green", default=True)
+8f300853:tests/test_defaults.py:154:    @click.option("--red", "color", flag_value="red", default=True)
+8f300853:tests/test_defaults.py:155:    @click.option("--green", "color", flag_value="green")
+8f300853:tests/test_defaults.py:467:    """Dummy callable used as a flag_value in default tests."""
+8f300853:tests/test_defaults.py:479:        # Static value in default_map overrides the auto-aligned flag_value.
+8f300853:tests/test_defaults.py:483:        # None in default_map overrides the flag_value.
+8f300853:tests/test_defaults.py:489:def test_default_map_with_callable_flag_value(runner, default_map, args, expected):
+(total hits: 412)
+### click c040135a  git grep -n -E 'deprecated' c040135a -- tests/ | cut -c1-160 | head -25
+c040135a:tests/test_arguments.py:298:def test_deprecated_usage(runner):
+c040135a:tests/test_arguments.py:300:    @click.argument("f", required=False, deprecated=True)
+c040135a:tests/test_arguments.py:309:@pytest.mark.parametrize("deprecated", [True, "USE B INSTEAD"])
+c040135a:tests/test_arguments.py:310:def test_deprecated_warning(runner, deprecated):
+c040135a:tests/test_arguments.py:313:        "my-argument", required=False, deprecated=deprecated, default="default argument"
+c040135a:tests/test_arguments.py:318:    # defaults should not give a deprecated warning
+c040135a:tests/test_arguments.py:321:    assert "is deprecated" not in result.output
+c040135a:tests/test_arguments.py:325:    assert "argument 'MY_ARGUMENT' is deprecated" in result.output
+c040135a:tests/test_arguments.py:327:    if isinstance(deprecated, str):
+c040135a:tests/test_arguments.py:328:        assert deprecated in result.output
+c040135a:tests/test_arguments.py:331:def test_deprecated_required(runner):
+c040135a:tests/test_arguments.py:332:    with pytest.raises(ValueError, match="is deprecated and still required"):
+c040135a:tests/test_arguments.py:333:        click.Argument(["a"], required=True, deprecated=True)
+c040135a:tests/test_commands.py:481:@pytest.mark.parametrize("deprecated", [True, "USE OTHER COMMAND INSTEAD"])
+c040135a:tests/test_commands.py:482:def test_deprecated_in_help_messages(runner, doc, deprecated):
+c040135a:tests/test_commands.py:483:    @click.command(deprecated=deprecated, help=doc)
+c040135a:tests/test_commands.py:490:    if isinstance(deprecated, str):
+c040135a:tests/test_commands.py:491:        assert deprecated in result.output
+c040135a:tests/test_commands.py:494:@pytest.mark.parametrize("deprecated", [True, "USE OTHER COMMAND INSTEAD"])
+c040135a:tests/test_commands.py:495:def test_deprecated_in_invocation(runner, deprecated):
+c040135a:tests/test_commands.py:496:    @click.command(deprecated=deprecated)
+c040135a:tests/test_commands.py:497:    def deprecated_cmd():
+c040135a:tests/test_commands.py:500:    result = runner.invoke(deprecated_cmd)
+c040135a:tests/test_commands.py:503:    if isinstance(deprecated, str):
+c040135a:tests/test_commands.py:504:        assert deprecated in result.output
+(total hits: 48)
+
+==================== CASE C1 click 9835b0f7 ====================
+$ (cd click) git checkout -q -f 9835b0f7
+$ (cd click) git show --stat --format=%H %ad %s --date=short 9835b0f7
+9835b0f7612d1b1ea180a975fd6d24cf16791ba8 2026-08-15 Resolve the pager command once, in `_pager_contextmanager`
+
+ src/click/_termui_impl.py | 151 ++++++++++++++++++++--------------------------
+ 1 file changed, 64 insertions(+), 87 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C1_clean.xml -o junit_family=xunit1 --cov=click --cov-context=test --cov-report=
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+....................................................                     [100%]
+1971 passed, 24 skipped, 31000 deselected, 1 xfailed in 18.76s
+baseline failures on clean commit: []
+$ (cd click) git diff -U0 9835b0f7^ 9835b0f7 -- src/
+changed lines: {'click/src/click/_termui_impl.py': [423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 453, 470, 472, 473, 474, 475, 476, 477, 479, 480, 481, 482, 483, 484, 485, 487, 488, 489, 490, 491, 492, 493, 509, 510, 511, 512, 513, 522, 523, 526, 531, 532, 539, 546, 547, 598, 599, 604, 605, 606, 607, 608, 610, 611, 634, 640, 641]}
+changed lines with covering test contexts: {'$WORK/click/src/click/_termui_impl.py:433': 78, '$WORK/click/src/click/_termui_impl.py:436': 78, '$WORK/click/src/click/_termui_impl.py:438': 78, '$WORK/click/src/click/_termui_impl.py:440': 78, '$WORK/click/src/click/_termui_impl.py:441': 5, '$WORK/click/src/click/_termui_impl.py:448': 73, '$WORK/click/src/click/_termui_impl.py:474': 77, '$WORK/click/src/click/_termui_impl.py:476': 1, '$WORK/click/src/click/_termui_impl.py:479': 1, '$WORK/click/src/click/_termui_impl.py:480': 1, '$WORK/click/src/click/_termui_impl.py:482': 78, '$WORK/click/src/click/_termui_impl.py:484': 78, '$WORK/click/src/click/_termui_impl.py:488': 73, '$WORK/click/src/click/_termui_impl.py:490': 73, '$WORK/click/src/click/_termui_impl.py:491': 5, '$WORK/click/src/click/_termui_impl.py:493': 68, '$WORK/click/src/click/_termui_impl.py:513': 84, '$WORK/click/src/click/_termui_impl.py:532': 68, '$WORK/click/src/click/_termui_impl.py:539': 68, '$WORK/click/src/click/_termui_impl.py:547': 68, '$WORK/click/src/click/_termui_impl.py:607': 5, '$WORK/click/src/click/_termui_impl.py:608': 5, '$WORK/click/src/click/_termui_impl.py:610': 5, '$WORK/click/src/click/_termui_impl.py:641': 10}
+$ (cd click) git diff
+diff --git a/src/click/_termui_impl.py b/src/click/_termui_impl.py
+index d1fd74e..0c32ff5 100644
+--- a/src/click/_termui_impl.py
++++ b/src/click/_termui_impl.py
+@@ -445,7 +445,7 @@ def _resolve_pager_command(cmd_parts: list[str]) -> tuple[Path, list[str]] | Non
+     # invoked through, so resolving less -> busybox makes them misbehave.
+     # See https://github.com/pallets/click/issues/2943 and
+     # https://github.com/pallets/click/pull/2944
+-    return Path(cmd_filepath).absolute(), cmd_parts[1:]
++    return Path(cmd_filepath).absolute(), cmd_parts[2:]
+ 
+ 
+ def _pager_contextmanager(
+--- buggy full: []
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C1_full.xml -o junit_family=xunit1
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+....................................................                     [100%]
+1971 passed, 24 skipped, 31000 deselected, 1 xfailed in 3.72s
+full: caught=False ran=1971 secs=4.3 new_failures=[]
+--- buggy default: ['tests/test_termui.py', '-k', 'pager']
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C1_default.xml -o junit_family=xunit1 tests/test_termui.py -k pager
+...................................                                      [100%]
+35 passed, 227 deselected in 0.13s
+default: caught=False ran=35 secs=0.4 new_failures=[]
+--- buggy coverage subset: 84 tests
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C1_cov.xml -o junit_family=xunit1 @$WORK/out/C1_covtests.txt
+........................................................................ [ 85%]
+............                                                             [100%]
+84 passed in 0.35s
+cov: caught=False ran=84 secs=0.6 new_failures=[]
+$ (cd click) git checkout -q -f 9835b0f7
+
+==================== CASE C2 click 748a34d0 ====================
+$ (cd click) git checkout -q -f 748a34d0
+$ (cd click) git show --stat --format=%H %ad %s --date=short 748a34d0
+748a34d01e0f4f2e5f75e293c1dd8480b16c2068 2026-06-22 optimize split_arg_string with extend(...) instead of a for loop system.
+
+ src/click/shell_completion.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C2_clean.xml -o junit_family=xunit1 --cov=click --cov-context=test --cov-report=
+=========================== short test summary info ============================
+ERROR tests/test_basic.py - pytest.PytestRemovedIn10Warning: Passing a non-Co...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+31000 deselected, 1 error in 4.00s
+baseline failures on clean commit: ['::tests.test_basic']
+$ (cd click) git diff -U0 748a34d0^ 748a34d0 -- src/
+changed lines: {'click/src/click/shell_completion.py': [508]}
+changed lines with covering test contexts: {}
+$ (cd click) git diff
+diff --git a/src/click/shell_completion.py b/src/click/shell_completion.py
+index 9d54a47..79fe1ee 100644
+--- a/src/click/shell_completion.py
++++ b/src/click/shell_completion.py
+@@ -505,7 +505,7 @@ def split_arg_string(string: str) -> list[str]:
+     out = []
+ 
+     try:
+-        out.extend(lex)
++        out.extend(list(lex)[:-1])
+     except ValueError:
+         # Raised when end-of-string is reached in an invalid state. Use
+         # the partial token as-is. The quote or escape character is in
+--- buggy full: []
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C2_full.xml -o junit_family=xunit1
+=========================== short test summary info ============================
+ERROR tests/test_basic.py - pytest.PytestRemovedIn10Warning: Passing a non-Co...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+31000 deselected, 1 error in 1.37s
+full: caught=False ran=1 secs=1.8 new_failures=[]
+--- buggy default: ['tests/test_parser.py']
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C2_default.xml -o junit_family=xunit1 tests/test_parser.py
+FAILED tests/test_parser.py::test_split_arg_string[cli 'my file'-expect2] - A...
+FAILED tests/test_parser.py::test_split_arg_string[cli my\\-expect3] - Assert...
+FAILED tests/test_parser.py::test_split_arg_string[cli my\\ file-expect4] - A...
+5 failed, 2 passed in 0.03s
+default: caught=True ran=7 secs=0.3 new_failures=["tests.test_parser::test_split_arg_string[cli 'my file'-expect2]", "tests.test_parser::test_split_arg_string[cli 'my file-expect1]", 'tests.test_parser::test_split_arg_string[cli a b c-expect0]', 'tests.test_parser::test_split_arg_string[cli my\\\\ file-expect4]', 'tests.test_parser::test_split_arg_string[cli my\\\\-expect3]']
+--- buggy coverage subset: 0 tests
+cov: caught=False ran=0 secs=0.0 new_failures=[]
+$ (cd click) git checkout -q -f 748a34d0
+
+==================== CASE C3 click 8f300853 ====================
+$ (cd click) git checkout -q -f 8f300853
+$ (cd click) git show --stat --format=%H %ad %s --date=short 8f300853
+8f300853dc5f33120d9872ea0e4c9e00318446b1 2026-05-08 Streamline option flag management
+
+ CHANGES.md        |   5 +
+ src/click/core.py | 389 ++++++++++++++++++++++++++++++++----------------------
+ 2 files changed, 234 insertions(+), 160 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C3_clean.xml -o junit_family=xunit1 --cov=click --cov-context=test --cov-report=
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+.......................................................                  [100%]
+1902 passed, 24 skipped, 31000 deselected, 1 xfailed in 17.54s
+baseline failures on clean commit: []
+$ (cd click) git diff -U0 8f300853^ 8f300853 -- src/
+changed lines: {'click/src/click/core.py': [909, 910, 1692, 2366, 2367, 2368, 2369, 2370, 2371, 2372, 2373, 2395, 2932, 2933, 2934, 2935, 2972, 2973, 2994, 2995, 2996, 2997, 2998, 2999, 3000, 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 3009, 3010, 3011, 3012, 3013, 3014, 3015, 3016, 3017, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027, 3028, 3029, 3030, 3031, 3032, 3033, 3034, 3035, 3036, 3037, 3038, 3039, 3040, 3041, 3042, 3043, 3044, 3045, 3046, 3047, 3048, 3049, 3050, 3051, 3052, 3053, 3054, 3055, 3056, 3057, 3058, 3059, 3060, 3061, 3064, 3066, 3067, 3069, 3070, 3071, 3073, 3074, 3075, 3076, 3078, 3080, 3081, 3082, 3083, 3084, 3085, 3086, 3087, 3088, 3089, 3090, 3091, 3092, 3093, 3094, 3095, 3096, 3097, 3098, 3100, 3101, 3103, 3104, 3105, 3107, 3108, 3109, 3110, 3111, 3112, 3113, 3114, 3115, 3116, 3117, 3118, 3119, 3120, 3121, 3122, 3123, 3124, 3125, 3126, 3127, 3128, 3129, 3130, 3131, 3132, 3133, 3134, 3135, 3136, 3137, 3138, 3139, 3140, 3141, 3143, 3144, 3146, 3147, 3148, 3149, 3150, 3151, 3152, 3153, 3154, 3155, 3156, 3157, 3158, 3159, 3160, 3161, 3162, 3163, 3167, 3168, 3169, 3170, 3171, 3172, 3178, 3182, 3193, 3194, 3195, 3196, 3197, 3198, 3200, 3201, 3202, 3203, 3204, 3207, 3208, 3211, 3212, 3213, 3214, 3215, 3216, 3217, 3218, 3219, 3220, 3317, 3318, 3319, 3320, 3501, 3557, 3558, 3559, 3560, 3561, 3562, 3563, 3564, 3566, 3567, 3568, 3569, 3596, 3597, 3598, 3600, 3604, 3606, 3609, 3610, 3611, 3619, 3620, 3621, 3622]}
+changed lines with covering test contexts: {'$WORK/click/src/click/core.py:909': 900, '$WORK/click/src/click/core.py:910': 900, '$WORK/click/src/click/core.py:2372': 73, '$WORK/click/src/click/core.py:2395': 13, '$WORK/click/src/click/core.py:2995': 1289, '$WORK/click/src/click/core.py:2996': 1289, '$WORK/click/src/click/core.py:3001': 1289, '$WORK/click/src/click/core.py:3011': 1289, '$WORK/click/src/click/core.py:3012': 1289, '$WORK/click/src/click/core.py:3013': 1289, '$WORK/click/src/click/core.py:3014': 7, '$WORK/click/src/click/core.py:3016': 1289, '$WORK/click/src/click/core.py:3017': 1289, '$WORK/click/src/click/core.py:3018': 1289, '$WORK/click/src/click/core.py:3019': 1289, '$WORK/click/src/click/core.py:3020': 1289, '$WORK/click/src/click/core.py:3023': 1289, '$WORK/click/src/click/core.py:3032': 1289, '$WORK/click/src/click/core.py:3043': 1190, '$WORK/click/src/click/core.py:3044': 1188, '$WORK/click/src/click/core.py:3045': 380, '$WORK/click/src/click/core.py:3059': 1289, '$WORK/click/src/click/core.py:3061': 1289, '$WORK/click/src/click/core.py:3064': 318, '$WORK/click/src/click/core.py:3066': 577, '$WORK/click/src/click/core.py:3067': 10, '$WORK/click/src/click/core.py:3069': 575, '$WORK/click/src/click/core.py:3070': 133, '$WORK/click/src/click/core.py:3071': 442, '$WORK/click/src/click/core.py:3073': 1194, '$WORK/click/src/click/core.py:3076': 23, '$WORK/click/src/click/core.py:3078': 1194, '$WORK/click/src/click/core.py:3094': 1289, '$WORK/click/src/click/core.py:3095': 365, '$WORK/click/src/click/core.py:3097': 1279, '$WORK/click/src/click/core.py:3098': 6, '$WORK/click/src/click/core.py:3100': 1276, '$WORK/click/src/click/core.py:3101': 289, '$WORK/click/src/click/core.py:3104': 1200, '$WORK/click/src/click/core.py:3105': 1197, '$WORK/click/src/click/core.py:3107': 112, '$WORK/click/src/click/core.py:3108': 112, '$WORK/click/src/click/core.py:3109': 112, '$WORK/click/src/click/core.py:3110': 108, '$WORK/click/src/click/core.py:3111': 28, '$WORK/click/src/click/core.py:3116': 13, '$WORK/click/src/click/core.py:3117': 100, '$WORK/click/src/click/core.py:3131': 1210, '$WORK/click/src/click/core.py:3132': 1169, '$WORK/click/src/click/core.py:3133': 1, '$WORK/click/src/click/core.py:3134': 1169, '$WORK/click/src/click/core.py:3135': 1168, '$WORK/click/src/click/core.py:3136': 548, '$WORK/click/src/click/core.py:3140': 35, '$WORK/click/src/click/core.py:3141': 526, '$WORK/click/src/click/core.py:3149': 1289, '$WORK/click/src/click/core.py:3151': 1289, '$WORK/click/src/click/core.py:3152': 1, '$WORK/click/src/click/core.py:3153': 1288, '$WORK/click/src/click/core.py:3154': 1, '$WORK/click/src/click/core.py:3155': 1287, '$WORK/click/src/click/core.py:3157': 1287, '$WORK/click/src/click/core.py:3159': 1287, '$WORK/click/src/click/core.py:3160': 7, '$WORK/click/src/click/core.py:3161': 1, '$WORK/click/src/click/core.py:3162': 6, '$WORK/click/src/click/core.py:3163': 1, '$WORK/click/src/click/core.py:3178': 7, '$WORK/click/src/click/core.py:3182': 7, '$WORK/click/src/click/core.py:3211': 1203, '$WORK/click/src/click/core.py:3212': 1203, '$WORK/click/src/click/core.py:3218': 1203, '$WORK/click/src/click/core.py:3219': 6, '$WORK/click/src/click/core.py:3220': 1203, '$WORK/click/src/click/core.py:3320': 1181, '$WORK/click/src/click/core.py:3501': 60, '$WORK/click/src/click/core.py:3564': 45, '$WORK/click/src/click/core.py:3566': 30, '$WORK/click/src/click/core.py:3567': 30, '$WORK/click/src/click/core.py:3568': 12, '$WORK/click/src/click/core.py:3569': 18, '$WORK/click/src/click/core.py:3606': 7, '$WORK/click/src/click/core.py:3619': 1, '$WORK/click/src/click/core.py:3620': 1, '$WORK/click/src/click/core.py:3621': 1}
+$ (cd click) git diff
+diff --git a/src/click/core.py b/src/click/core.py
+index b08f043..0c59457 100644
+--- a/src/click/core.py
++++ b/src/click/core.py
+@@ -3041,7 +3041,7 @@ class Option(Parameter):
+         sentinel for "did the user pass one?" introspection.
+         """
+         if self.flag_value is UNSET:
+-            return True if self.is_flag else None
++            return False if self.is_flag else None
+         return self.flag_value
+ 
+     def _infer_flag_kind(
+--- buggy full: []
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C3_full.xml -o junit_family=xunit1
+FAILED tests/test_options.py::test_choice_default_rendering[ColorInt-GREEN-GREEN]
+FAILED tests/test_options.py::test_custom_type_flag_value_standalone_option[opt_params4-args4-EngineType.OSS]
+FAILED tests/test_options.py::test_callable_flag_value_show_default - Asserti...
+167 failed, 1735 passed, 24 skipped, 31000 deselected, 1 xfailed in 8.63s
+full: caught=True ran=1902 secs=9.3 new_failures=['tests.test_arguments::test_argument_help', 'tests.test_arguments::test_argument_help_optional_metavar', 'tests.test_arguments::test_argument_help_options_only_no_arguments_section', 'tests.test_arguments::test_argument_metavar_marks_optional[kwargs0-FOO]', 'tests.test_arguments::test_argument_metavar_marks_optional[kwargs1-FOO]']
+--- buggy default: ['tests/test_options.py', 'tests/test_basic.py', 'tests/test_defaults.py', '-k', 'flag']
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C3_default.xml -o junit_family=xunit1 tests/test_options.py tests/test_basic.py tests/test_defaults.py -k flag
+FAILED tests/test_basic.py::test_boolean_flag[None-args4-True] - assert False...
+FAILED tests/test_defaults.py::test_multiple_flag_default - assert ((True, Fa...
+FAILED tests/test_defaults.py::test_flag_default_map - AssertionError: assert...
+24 failed, 411 passed, 356 deselected in 1.34s
+default: caught=True ran=435 secs=1.6 new_failures=['tests.test_basic::test_boolean_flag[False-args2-True]', 'tests.test_basic::test_boolean_flag[None-args4-True]', 'tests.test_basic::test_boolean_flag[True-args0-True]', 'tests.test_basic::test_param_named_help[custom-flags]', 'tests.test_defaults::test_flag_default_map']
+--- buggy coverage subset: 1298 tests
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C3_cov.xml -o junit_family=xunit1 @$WORK/out/C3_covtests.txt
+FAILED tests/test_options.py::test_show_envvar_auto_prefix - assert not TypeE...
+FAILED tests/test_options.py::test_show_envvar_auto_prefix_dash_in_command - ...
+FAILED tests/test_options.py::test_winstyle_options - AssertionError: assert ...
+167 failed, 1131 passed in 6.39s
+cov: caught=True ran=1298 secs=6.8 new_failures=['tests.test_arguments::test_argument_help', 'tests.test_arguments::test_argument_help_optional_metavar', 'tests.test_arguments::test_argument_help_options_only_no_arguments_section', 'tests.test_arguments::test_argument_metavar_marks_optional[kwargs0-FOO]', 'tests.test_arguments::test_argument_metavar_marks_optional[kwargs1-FOO]']
+$ (cd click) git checkout -q -f 8f300853
+
+==================== CASE C4 click c040135a ====================
+$ (cd click) git checkout -q -f c040135a
+$ (cd click) git show --stat --format=%H %ad %s --date=short c040135a
+c040135a74180d65c97c66614f234ea89c337ceb 2026-05-15 Deduplicate deprecated label translation
+
+ CHANGES.rst       |  4 ++++
+ src/click/core.py | 58 +++++++++++++++++++++++++------------------------------
+ 2 files changed, 30 insertions(+), 32 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_clean.xml -o junit_family=xunit1 --cov=click --cov-context=test --cov-report=
+=========================== short test summary info ============================
+ERROR tests/test_basic.py - pytest.PytestRemovedIn10Warning: Passing a non-Co...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+30000 deselected, 1 error in 3.43s
+baseline failures on clean commit: ['::tests.test_basic']
+$ (cd click) git diff -U0 c040135a^ c040135a -- src/
+changed lines: {'click/src/click/core.py': [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 1156, 1186, 1292, 1293, 1295, 1296, 1297, 1298, 2599, 2600, 2606, 2786, 2787]}
+changed lines with covering test contexts: {}
+$ (cd click) git diff
+diff --git a/src/click/core.py b/src/click/core.py
+index ac62ae9..20e1d3d 100644
+--- a/src/click/core.py
++++ b/src/click/core.py
+@@ -106,7 +106,7 @@ def _format_deprecated_suffix(deprecated: bool | str) -> str:
+     prefixed with a space, or an empty string when no reason was given.
+     """
+     if isinstance(deprecated, str):
+-        return f" {deprecated}"
++        return f"{deprecated}"
+     return ""
+--- buggy full: []
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_full.xml -o junit_family=xunit1
+=========================== short test summary info ============================
+ERROR tests/test_basic.py - pytest.PytestRemovedIn10Warning: Passing a non-Co...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+30000 deselected, 1 error in 1.32s
+full: caught=False ran=1 secs=1.8 new_failures=[]
+--- buggy default: ['tests', '-k', 'deprecated']
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_default.xml -o junit_family=xunit1 tests -k deprecated
+=========================== short test summary info ============================
+ERROR tests/test_basic.py - pytest.PytestRemovedIn10Warning: Passing a non-Co...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+31430 deselected, 1 error in 1.43s
+default: caught=False ran=1 secs=1.9 new_failures=[]
+--- buggy coverage subset: 0 tests
+cov: caught=False ran=0 secs=0.0 new_failures=[]
+$ (cd click) git checkout -q -f c040135a
+# click venv: pytest pinned to uv.lock version: VIRTUAL_ENV=.venv uv pip install pytest==9.0.2 (pytest 9.1.1 broke collection at older commits via PytestRemovedIn10Warning + filterwarnings=error)
+# C1 attempt 1 (cmd_parts[1:] -> cmd_parts[2:]) was FULL-SUITE BLIND: full 1971 passed, default 35 passed, cov 84 passed. Switched to second line per protocol.
+
+==================== CASE C1 click 9835b0f7 ====================
+$ (cd click) git checkout -q -f 9835b0f7
+$ (cd click) git show --stat --format=%H %ad %s --date=short 9835b0f7
+9835b0f7612d1b1ea180a975fd6d24cf16791ba8 2026-08-15 Resolve the pager command once, in `_pager_contextmanager`
+
+ src/click/_termui_impl.py | 151 ++++++++++++++++++++--------------------------
+ 1 file changed, 64 insertions(+), 87 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C1_clean.xml -o junit_family=xunit1 --cov=click --cov-context=test --cov-report=
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+....................................................                     [100%]
+1971 passed, 24 skipped, 31000 deselected, 1 xfailed in 18.71s
+baseline failures on clean commit: []
+$ (cd click) git diff -U0 9835b0f7^ 9835b0f7 -- src/
+changed lines: {'click/src/click/_termui_impl.py': [423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 453, 470, 472, 473, 474, 475, 476, 477, 479, 480, 481, 482, 483, 484, 485, 487, 488, 489, 490, 491, 492, 493, 509, 510, 511, 512, 513, 522, 523, 526, 531, 532, 539, 546, 547, 598, 599, 604, 605, 606, 607, 608, 610, 611, 634, 640, 641]}
+changed lines with covering test contexts (line: n_tests): {'_termui_impl.py:433': 78, '_termui_impl.py:436': 78, '_termui_impl.py:438': 78, '_termui_impl.py:440': 78, '_termui_impl.py:441': 5, '_termui_impl.py:448': 73, '_termui_impl.py:474': 77, '_termui_impl.py:476': 1, '_termui_impl.py:479': 1, '_termui_impl.py:480': 1, '_termui_impl.py:482': 78, '_termui_impl.py:484': 78, '_termui_impl.py:488': 73, '_termui_impl.py:490': 73, '_termui_impl.py:491': 5, '_termui_impl.py:493': 68, '_termui_impl.py:513': 84, '_termui_impl.py:532': 68, '_termui_impl.py:539': 68, '_termui_impl.py:547': 68, '_termui_impl.py:607': 5, '_termui_impl.py:608': 5, '_termui_impl.py:610': 5, '_termui_impl.py:641': 10}
+$ (cd click) git diff
+diff --git a/src/click/_termui_impl.py b/src/click/_termui_impl.py
+index d1fd74e..7890a5e 100644
+--- a/src/click/_termui_impl.py
++++ b/src/click/_termui_impl.py
+@@ -435,7 +435,7 @@ def _resolve_pager_command(cmd_parts: list[str]) -> tuple[Path, list[str]] | Non
+ 
+     import shutil
+ 
+-    cmd_filepath = shutil.which(cmd_parts[0])
++    cmd_filepath = shutil.which(cmd_parts[-1])
+ 
+     if not cmd_filepath:
+         return None
+--- buggy full: []
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C1_full.xml -o junit_family=xunit1
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+....................................................                     [100%]
+1971 passed, 24 skipped, 31000 deselected, 1 xfailed in 3.65s
+full: caught=False ran=1971 secs=4.4 new_failures=[]
+--- buggy default: ['tests/test_termui.py', '-k', 'pager']
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C1_default.xml -o junit_family=xunit1 tests/test_termui.py -k pager
+...................................                                      [100%]
+35 passed, 227 deselected in 0.10s
+default: caught=False ran=35 secs=0.4 new_failures=[]
+--- buggy coverage subset: 84 tests
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C1_cov.xml -o junit_family=xunit1 @$WORK/out/C1_covtests.txt
+........................................................................ [ 85%]
+............                                                             [100%]
+84 passed in 0.36s
+cov: caught=False ran=84 secs=0.7 new_failures=[]
+$ (cd click) git checkout -q -f 9835b0f7
+
+==================== CASE C2 click 748a34d0 ====================
+$ (cd click) git checkout -q -f 748a34d0
+$ (cd click) git show --stat --format=%H %ad %s --date=short 748a34d0
+748a34d01e0f4f2e5f75e293c1dd8480b16c2068 2026-06-22 optimize split_arg_string with extend(...) instead of a for loop system.
+
+ src/click/shell_completion.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C2_clean.xml -o junit_family=xunit1 --cov=click --cov-context=test --cov-report=
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+.........................................                                [100%]
+1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 17.23s
+baseline failures on clean commit: []
+$ (cd click) git diff -U0 748a34d0^ 748a34d0 -- src/
+changed lines: {'click/src/click/shell_completion.py': [508]}
+changed lines with covering test contexts (line: n_tests): {'shell_completion.py:508': 16}
+$ (cd click) git diff
+diff --git a/src/click/shell_completion.py b/src/click/shell_completion.py
+index 9d54a47..79fe1ee 100644
+--- a/src/click/shell_completion.py
++++ b/src/click/shell_completion.py
+@@ -505,7 +505,7 @@ def split_arg_string(string: str) -> list[str]:
+     out = []
+ 
+     try:
+-        out.extend(lex)
++        out.extend(list(lex)[:-1])
+     except ValueError:
+         # Raised when end-of-string is reached in an invalid state. Use
+         # the partial token as-is. The quote or escape character is in
+--- buggy full: []
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C2_full.xml -o junit_family=xunit1
+FAILED tests/test_shell_completion.py::test_full_complete[fish-env5-plain,b\tbee\n]
+FAILED tests/test_shell_completion.py::test_zsh_full_complete_with_colons[env1-plain\nc\\:d\ncee:dee\nplain\nc:e\n_\n]
+FAILED tests/test_shell_completion.py::test_zsh_full_complete_with_colons[env2-plain\nc\\:d\ncee:dee\nplain\nc:e\n_\n]
+10 failed, 1662 passed, 24 skipped, 31000 deselected, 1 xfailed in 4.00s
+full: caught=True ran=1672 secs=4.9 new_failures=["tests.test_parser::test_split_arg_string[cli 'my file'-expect2]", "tests.test_parser::test_split_arg_string[cli 'my file-expect1]", 'tests.test_parser::test_split_arg_string[cli a b c-expect0]', 'tests.test_parser::test_split_arg_string[cli my\\\\ file-expect4]', 'tests.test_parser::test_split_arg_string[cli my\\\\-expect3]']
+--- buggy default: ['tests/test_parser.py']
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C2_default.xml -o junit_family=xunit1 tests/test_parser.py
+FAILED tests/test_parser.py::test_split_arg_string[cli 'my file'-expect2] - A...
+FAILED tests/test_parser.py::test_split_arg_string[cli my\\-expect3] - Assert...
+FAILED tests/test_parser.py::test_split_arg_string[cli my\\ file-expect4] - A...
+5 failed, 2 passed in 0.04s
+default: caught=True ran=7 secs=0.3 new_failures=["tests.test_parser::test_split_arg_string[cli 'my file'-expect2]", "tests.test_parser::test_split_arg_string[cli 'my file-expect1]", 'tests.test_parser::test_split_arg_string[cli a b c-expect0]', 'tests.test_parser::test_split_arg_string[cli my\\\\ file-expect4]', 'tests.test_parser::test_split_arg_string[cli my\\\\-expect3]']
+--- buggy coverage subset: 16 tests
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C2_cov.xml -o junit_family=xunit1 @$WORK/out/C2_covtests.txt
+FAILED tests/test_shell_completion.py::test_full_complete[zsh-env3-plain\nb\nbee\n]
+FAILED tests/test_shell_completion.py::test_zsh_full_complete_with_colons[env1-plain\nc\\:d\ncee:dee\nplain\nc:e\n_\n]
+FAILED tests/test_shell_completion.py::test_zsh_full_complete_with_colons[env2-plain\nc\\:d\ncee:dee\nplain\nc:e\n_\n]
+10 failed, 6 passed in 0.11s
+cov: caught=True ran=16 secs=0.4 new_failures=["tests.test_parser::test_split_arg_string[cli 'my file'-expect2]", "tests.test_parser::test_split_arg_string[cli 'my file-expect1]", 'tests.test_parser::test_split_arg_string[cli a b c-expect0]', 'tests.test_parser::test_split_arg_string[cli my\\\\ file-expect4]', 'tests.test_parser::test_split_arg_string[cli my\\\\-expect3]']
+$ (cd click) git checkout -q -f 748a34d0
+
+==================== CASE C3 click 8f300853 ====================
+$ (cd click) git checkout -q -f 8f300853
+$ (cd click) git show --stat --format=%H %ad %s --date=short 8f300853
+8f300853dc5f33120d9872ea0e4c9e00318446b1 2026-05-08 Streamline option flag management
+
+ CHANGES.md        |   5 +
+ src/click/core.py | 389 ++++++++++++++++++++++++++++++++----------------------
+ 2 files changed, 234 insertions(+), 160 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C3_clean.xml -o junit_family=xunit1 --cov=click --cov-context=test --cov-report=
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+.......................................................                  [100%]
+1902 passed, 24 skipped, 31000 deselected, 1 xfailed in 17.52s
+baseline failures on clean commit: []
+$ (cd click) git diff -U0 8f300853^ 8f300853 -- src/
+changed lines: {'click/src/click/core.py': [909, 910, 1692, 2366, 2367, 2368, 2369, 2370, 2371, 2372, 2373, 2395, 2932, 2933, 2934, 2935, 2972, 2973, 2994, 2995, 2996, 2997, 2998, 2999, 3000, 3001, 3002, 3003, 3004, 3005, 3006, 3007, 3008, 3009, 3010, 3011, 3012, 3013, 3014, 3015, 3016, 3017, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027, 3028, 3029, 3030, 3031, 3032, 3033, 3034, 3035, 3036, 3037, 3038, 3039, 3040, 3041, 3042, 3043, 3044, 3045, 3046, 3047, 3048, 3049, 3050, 3051, 3052, 3053, 3054, 3055, 3056, 3057, 3058, 3059, 3060, 3061, 3064, 3066, 3067, 3069, 3070, 3071, 3073, 3074, 3075, 3076, 3078, 3080, 3081, 3082, 3083, 3084, 3085, 3086, 3087, 3088, 3089, 3090, 3091, 3092, 3093, 3094, 3095, 3096, 3097, 3098, 3100, 3101, 3103, 3104, 3105, 3107, 3108, 3109, 3110, 3111, 3112, 3113, 3114, 3115, 3116, 3117, 3118, 3119, 3120, 3121, 3122, 3123, 3124, 3125, 3126, 3127, 3128, 3129, 3130, 3131, 3132, 3133, 3134, 3135, 3136, 3137, 3138, 3139, 3140, 3141, 3143, 3144, 3146, 3147, 3148, 3149, 3150, 3151, 3152, 3153, 3154, 3155, 3156, 3157, 3158, 3159, 3160, 3161, 3162, 3163, 3167, 3168, 3169, 3170, 3171, 3172, 3178, 3182, 3193, 3194, 3195, 3196, 3197, 3198, 3200, 3201, 3202, 3203, 3204, 3207, 3208, 3211, 3212, 3213, 3214, 3215, 3216, 3217, 3218, 3219, 3220, 3317, 3318, 3319, 3320, 3501, 3557, 3558, 3559, 3560, 3561, 3562, 3563, 3564, 3566, 3567, 3568, 3569, 3596, 3597, 3598, 3600, 3604, 3606, 3609, 3610, 3611, 3619, 3620, 3621, 3622]}
+changed lines with covering test contexts (line: n_tests): {'core.py:909': 900, 'core.py:910': 900, 'core.py:2372': 73, 'core.py:2395': 13, 'core.py:2995': 1289, 'core.py:2996': 1289, 'core.py:3001': 1289, 'core.py:3011': 1289, 'core.py:3012': 1289, 'core.py:3013': 1289, 'core.py:3014': 7, 'core.py:3016': 1289, 'core.py:3017': 1289, 'core.py:3018': 1289, 'core.py:3019': 1289, 'core.py:3020': 1289, 'core.py:3023': 1289, 'core.py:3032': 1289, 'core.py:3043': 1190, 'core.py:3044': 1188, 'core.py:3045': 380, 'core.py:3059': 1289, 'core.py:3061': 1289, 'core.py:3064': 318, 'core.py:3066': 577, 'core.py:3067': 10, 'core.py:3069': 575, 'core.py:3070': 133, 'core.py:3071': 442, 'core.py:3073': 1194, 'core.py:3076': 23, 'core.py:3078': 1194, 'core.py:3094': 1289, 'core.py:3095': 365, 'core.py:3097': 1279, 'core.py:3098': 6, 'core.py:3100': 1276, 'core.py:3101': 289, 'core.py:3104': 1200, 'core.py:3105': 1197, 'core.py:3107': 112, 'core.py:3108': 112, 'core.py:3109': 112, 'core.py:3110': 108, 'core.py:3111': 28, 'core.py:3116': 13, 'core.py:3117': 100, 'core.py:3131': 1210, 'core.py:3132': 1169, 'core.py:3133': 1, 'core.py:3134': 1169, 'core.py:3135': 1168, 'core.py:3136': 548, 'core.py:3140': 35, 'core.py:3141': 526, 'core.py:3149': 1289, 'core.py:3151': 1289, 'core.py:3152': 1, 'core.py:3153': 1288, 'core.py:3154': 1, 'core.py:3155': 1287, 'core.py:3157': 1287, 'core.py:3159': 1287, 'core.py:3160': 7, 'core.py:3161': 1, 'core.py:3162': 6, 'core.py:3163': 1, 'core.py:3178': 7, 'core.py:3182': 7, 'core.py:3211': 1203, 'core.py:3212': 1203, 'core.py:3218': 1203, 'core.py:3219': 6, 'core.py:3220': 1203, 'core.py:3320': 1181, 'core.py:3501': 60, 'core.py:3564': 45, 'core.py:3566': 30, 'core.py:3567': 30, 'core.py:3568': 12, 'core.py:3569': 18, 'core.py:3606': 7, 'core.py:3619': 1, 'core.py:3620': 1, 'core.py:3621': 1}
+$ (cd click) git diff
+diff --git a/src/click/core.py b/src/click/core.py
+index b08f043..0c59457 100644
+--- a/src/click/core.py
++++ b/src/click/core.py
+@@ -3041,7 +3041,7 @@ class Option(Parameter):
+         sentinel for "did the user pass one?" introspection.
+         """
+         if self.flag_value is UNSET:
+-            return True if self.is_flag else None
++            return False if self.is_flag else None
+         return self.flag_value
+ 
+     def _infer_flag_kind(
+--- buggy full: []
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C3_full.xml -o junit_family=xunit1
+FAILED tests/test_options.py::test_choice_default_rendering[ColorInt-GREEN-GREEN]
+FAILED tests/test_options.py::test_custom_type_flag_value_standalone_option[opt_params4-args4-EngineType.OSS]
+FAILED tests/test_options.py::test_callable_flag_value_show_default - Asserti...
+167 failed, 1735 passed, 24 skipped, 31000 deselected, 1 xfailed in 8.19s
+full: caught=True ran=1902 secs=9.1 new_failures=['tests.test_arguments::test_argument_help', 'tests.test_arguments::test_argument_help_optional_metavar', 'tests.test_arguments::test_argument_help_options_only_no_arguments_section', 'tests.test_arguments::test_argument_metavar_marks_optional[kwargs0-FOO]', 'tests.test_arguments::test_argument_metavar_marks_optional[kwargs1-FOO]']
+--- buggy default: ['tests/test_options.py', 'tests/test_basic.py', 'tests/test_defaults.py', '-k', 'flag']
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C3_default.xml -o junit_family=xunit1 tests/test_options.py tests/test_basic.py tests/test_defaults.py -k flag
+FAILED tests/test_basic.py::test_boolean_flag[None-args4-True] - assert False...
+FAILED tests/test_defaults.py::test_multiple_flag_default - assert ((True, Fa...
+FAILED tests/test_defaults.py::test_flag_default_map - AssertionError: assert...
+24 failed, 411 passed, 356 deselected in 1.29s
+default: caught=True ran=435 secs=1.6 new_failures=['tests.test_basic::test_boolean_flag[False-args2-True]', 'tests.test_basic::test_boolean_flag[None-args4-True]', 'tests.test_basic::test_boolean_flag[True-args0-True]', 'tests.test_basic::test_param_named_help[custom-flags]', 'tests.test_defaults::test_flag_default_map']
+--- buggy coverage subset: 1298 tests
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C3_cov.xml -o junit_family=xunit1 @$WORK/out/C3_covtests.txt
+FAILED tests/test_options.py::test_show_envvar_auto_prefix - assert not TypeE...
+FAILED tests/test_options.py::test_show_envvar_auto_prefix_dash_in_command - ...
+FAILED tests/test_options.py::test_winstyle_options - AssertionError: assert ...
+167 failed, 1131 passed in 6.22s
+cov: caught=True ran=1298 secs=6.6 new_failures=['tests.test_arguments::test_argument_help', 'tests.test_arguments::test_argument_help_optional_metavar', 'tests.test_arguments::test_argument_help_options_only_no_arguments_section', 'tests.test_arguments::test_argument_metavar_marks_optional[kwargs0-FOO]', 'tests.test_arguments::test_argument_metavar_marks_optional[kwargs1-FOO]']
+$ (cd click) git checkout -q -f 8f300853
+
+==================== CASE C4 click c040135a ====================
+$ (cd click) git checkout -q -f c040135a
+$ (cd click) git show --stat --format=%H %ad %s --date=short c040135a
+c040135a74180d65c97c66614f234ea89c337ceb 2026-05-15 Deduplicate deprecated label translation
+
+ CHANGES.rst       |  4 ++++
+ src/click/core.py | 58 +++++++++++++++++++++++++------------------------------
+ 2 files changed, 30 insertions(+), 32 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_clean.xml -o junit_family=xunit1 --cov=click --cov-context=test --cov-report=
+........................................................................ [ 93%]
+........................................................................ [ 98%]
+......................                                                   [100%]
+1510 passed, 23 skipped, 30000 deselected, 1 xfailed in 15.04s
+baseline failures on clean commit: []
+$ (cd click) git diff -U0 c040135a^ c040135a -- src/
+changed lines: {'click/src/click/core.py': [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 1156, 1186, 1292, 1293, 1295, 1296, 1297, 1298, 2599, 2600, 2606, 2786, 2787]}
+changed lines with covering test contexts (line: n_tests): {'core.py:98': 9, 'core.py:99': 9, 'core.py:100': 4, 'core.py:101': 5, 'core.py:108': 6, 'core.py:109': 3, 'core.py:110': 3, 'core.py:1186': 4, 'core.py:1292': 797, 'core.py:1293': 2, 'core.py:1295': 2, 'core.py:1296': 2, 'core.py:1297': 2, 'core.py:2600': 4, 'core.py:2606': 4, 'core.py:2786': 5, 'core.py:2787': 5}
+$ (cd click) git diff
+diff --git a/src/click/core.py b/src/click/core.py
+index ac62ae9..20e1d3d 100644
+--- a/src/click/core.py
++++ b/src/click/core.py
+@@ -106,7 +106,7 @@ def _format_deprecated_suffix(deprecated: bool | str) -> str:
+     prefixed with a space, or an empty string when no reason was given.
+     """
+     if isinstance(deprecated, str):
+-        return f" {deprecated}"
++        return f"{deprecated}"
+     return ""
+--- buggy full: []
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_full.xml -o junit_family=xunit1
+........................................................................ [ 93%]
+........................................................................ [ 98%]
+......................                                                   [100%]
+1510 passed, 23 skipped, 30000 deselected, 1 xfailed in 3.08s
+full: caught=False ran=1510 secs=3.9 new_failures=[]
+--- buggy default: ['tests', '-k', 'deprecated']
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_default.xml -o junit_family=xunit1 tests -k deprecated
+................                                                         [100%]
+16 passed, 31518 deselected in 1.44s
+default: caught=False ran=16 secs=2.1 new_failures=[]
+--- buggy coverage subset: 804 tests
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_cov.xml -o junit_family=xunit1 @$WORK/out/C4_covtests.txt
+........................................................................ [ 89%]
+........................................................................ [ 98%]
+............                                                             [100%]
+804 passed in 1.74s
+cov: caught=False ran=804 secs=2.2 new_failures=[]
+$ (cd click) git checkout -q -f c040135a
+# C1 attempt 2 (shutil.which(cmd_parts[0]) -> cmd_parts[-1]) ALSO full-suite blind -> kept as full-suite-blind case.
+# C4 attempt 1 (_format_deprecated_suffix: ' {deprecated}' -> '{deprecated}') was FULL-SUITE BLIND: full 1510 pass, default 16 pass, cov 804 pass. Switched line.
+
+==================== CASE C4 click c040135a ====================
+$ (cd click) git checkout -q -f c040135a
+$ (cd click) git show --stat --format=%H %ad %s --date=short c040135a
+c040135a74180d65c97c66614f234ea89c337ceb 2026-05-15 Deduplicate deprecated label translation
+
+ CHANGES.rst       |  4 ++++
+ src/click/core.py | 58 +++++++++++++++++++++++++------------------------------
+ 2 files changed, 30 insertions(+), 32 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_clean.xml -o junit_family=xunit1 --cov=click --cov-context=test --cov-report=
+........................................................................ [ 93%]
+........................................................................ [ 98%]
+......................                                                   [100%]
+1510 passed, 23 skipped, 30000 deselected, 1 xfailed in 14.61s
+baseline failures on clean commit: []
+$ (cd click) git diff -U0 c040135a^ c040135a -- src/
+changed lines: {'click/src/click/core.py': [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 1156, 1186, 1292, 1293, 1295, 1296, 1297, 1298, 2599, 2600, 2606, 2786, 2787]}
+changed lines with covering test contexts (line: n_tests): {'core.py:98': 9, 'core.py:99': 9, 'core.py:100': 4, 'core.py:101': 5, 'core.py:108': 6, 'core.py:109': 3, 'core.py:110': 3, 'core.py:1186': 4, 'core.py:1292': 797, 'core.py:1293': 2, 'core.py:1295': 2, 'core.py:1296': 2, 'core.py:1297': 2, 'core.py:2600': 4, 'core.py:2606': 4, 'core.py:2786': 5, 'core.py:2787': 5}
+$ (cd click) git diff
+diff --git a/src/click/core.py b/src/click/core.py
+index ac62ae9..23852a9 100644
+--- a/src/click/core.py
++++ b/src/click/core.py
+@@ -97,7 +97,7 @@ def _format_deprecated_label(deprecated: bool | str) -> str:
+     """Return the parenthesized deprecation label shown in help text."""
+     label = _("deprecated").upper()
+     if isinstance(deprecated, str):
+-        return f"({label}: {deprecated})"
++        return f"({label})"
+     return f"({label})"
+--- buggy full: []
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_full.xml -o junit_family=xunit1
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]
+FAILED tests/test_options.py::test_deprecated_usage[USE B INSTEAD] - Assertio...
+3 failed, 1507 passed, 23 skipped, 30000 deselected, 1 xfailed in 3.10s
+full: caught=True ran=1510 secs=3.9 new_failures=['tests.test_commands::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]', 'tests.test_commands::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]', 'tests.test_options::test_deprecated_usage[USE B INSTEAD]']
+--- buggy default: ['tests', '-k', 'deprecated']
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_default.xml -o junit_family=xunit1 tests -k deprecated
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]
+FAILED tests/test_options.py::test_deprecated_usage[USE B INSTEAD] - Assertio...
+3 failed, 13 passed, 31518 deselected in 1.51s
+default: caught=True ran=16 secs=2.2 new_failures=['tests.test_commands::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]', 'tests.test_commands::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]', 'tests.test_options::test_deprecated_usage[USE B INSTEAD]']
+--- buggy coverage subset: 804 tests
+$ (cd click) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/C4_cov.xml -o junit_family=xunit1 @$WORK/out/C4_covtests.txt
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]
+FAILED tests/test_options.py::test_deprecated_usage[USE B INSTEAD] - Assertio...
+3 failed, 801 passed in 2.05s
+cov: caught=True ran=804 secs=2.5 new_failures=['tests.test_commands::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]', 'tests.test_commands::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]', 'tests.test_options::test_deprecated_usage[USE B INSTEAD]']
+$ (cd click) git checkout -q -f c040135a
+
+==================== CASE R1 requests 86b378d3 ====================
+$ (cd requests) git checkout -q -f 86b378d3
+$ (cd requests) git show --stat --format=%H %ad %s --date=short 86b378d3
+86b378d3f60f828daa13ca50aa82e287ff7b66b4 2026-05-11 Align Session.get parameters with requests.get (#7429)
+
+ src/requests/sessions.py | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R1_clean.xml -o junit_family=xunit1 --cov=requests --cov-context=test --cov-report=
+127.0.0.1 - - [07/Oct/2026 00:46:08] "GET /get HTTP/1.1" 200 277
+127.0.0.1 - - [07/Oct/2026 00:46:08] "GET /get HTTP/1.1" 200 277
+127.0.0.1 - - [07/Oct/2026 00:46:08] "POST /post HTTP/1.1" 200 435
+127.0.0.1 - - [07/Oct/2026 00:46:38] "GET /status/200 HTTP/1.1" 200 0
+baseline failures on clean commit: ['tests.test_requests.TestTimeout::test_connect_timeout[timeout0]', 'tests.test_requests.TestTimeout::test_connect_timeout[timeout1]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout0]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout1]']
+$ (cd requests) git diff -U0 86b378d3^ 86b378d3 -- src/
+changed lines: {'requests/src/requests/sessions.py': [655, 656, 657, 658, 659, 660, 664, 665, 671]}
+changed lines with covering test contexts (line: n_tests): {'sessions.py:671': 29}
+$ (cd requests) git diff
+diff --git a/src/requests/sessions.py b/src/requests/sessions.py
+index 8f13887d..ec7501fd 100644
+--- a/src/requests/sessions.py
++++ b/src/requests/sessions.py
+@@ -668,7 +668,7 @@ class Session(SessionRedirectMixin):
+         """
+ 
+         kwargs.setdefault("allow_redirects", True)
+-        return self.request("GET", url, params=params, **kwargs)
++        return self.request("GET", url, **kwargs)
+ 
+     def options(self, url: _t.UriType, **kwargs: Unpack[_t.RequestKwargs]) -> Response:
+         r"""Sends a OPTIONS request. Returns :class:`Response` object.
+--- buggy full: []
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R1_full.xml -o junit_family=xunit1
+127.0.0.1 - - [07/Oct/2026 00:47:28] "GET /get HTTP/1.1" 200 353
+127.0.0.1 - - [07/Oct/2026 00:47:28] "GET /get HTTP/1.1" 200 277
+127.0.0.1 - - [07/Oct/2026 00:47:28] "GET /get HTTP/1.1" 200 277
+127.0.0.1 - - [07/Oct/2026 00:47:28] "GET /status/204 HTTP/1.1" 204 0
+full: caught=True ran=617 secs=78.9 new_failures=['tests.test_requests.TestRequests::test_cookie_removed_on_expire', 'tests.test_requests.TestRequests::test_params_are_merged_case_sensitive']
+--- buggy default: ['tests/test_requests.py', '-k', 'param or session']
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R1_default.xml -o junit_family=xunit1 tests/test_requests.py -k param or session
+5 failed, 161 passed, 172 deselected, 8 warnings in 20.89s
+[2026-10-07 00:48:26,438] WARNING in core: flasgger is not installed; serving the static landing page at / and skipping the Swagger UI and /spec.json.
+127.0.0.1 - - [07/Oct/2026 00:48:26] "GET /relative-redirect/45 HTTP/1.1" 302 0
+127.0.0.1 - - [07/Oct/2026 00:48:26] "GET /digest-auth/auth/user/pass/SHA-512 HTTP/1.1" 200 46
+default: caught=True ran=166 secs=21.3 new_failures=['tests.test_requests.TestRequests::test_params_are_merged_case_sensitive']
+--- buggy coverage subset: 29 tests
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R1_cov.xml -o junit_family=xunit1 @$WORK/out/R1_covtests.txt
+127.0.0.1 - - [07/Oct/2026 00:48:55] "GET /cookies HTTP/1.1" 200 40
+127.0.0.1 - - [07/Oct/2026 00:48:55] "GET /get HTTP/1.1" 200 277
+127.0.0.1 - - [07/Oct/2026 00:48:55] "GET /cookies HTTP/1.1" 200 40
+127.0.0.1 - - [07/Oct/2026 00:48:56] "GET /status/200 HTTP/1.1" 200 0
+cov: caught=True ran=29 secs=9.0 new_failures=['tests.test_requests.TestRequests::test_cookie_removed_on_expire', 'tests.test_requests.TestRequests::test_params_are_merged_case_sensitive']
+$ (cd requests) git checkout -q -f 86b378d3
+
+==================== CASE R2 requests a044b020 ====================
+$ (cd requests) git checkout -q -f a044b020
+$ (cd requests) git show --stat --format=%H %ad %s --date=short a044b020
+a044b020dea43230585126901684a0f30ec635a8 2026-04-15 Move DigestAuth hash algorithms to use usedforsecurity=False (#7310)
+
+ src/requests/auth.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R2_clean.xml -o junit_family=xunit1 --cov=requests --cov-context=test --cov-report=
+127.0.0.1 - - [07/Oct/2026 00:49:32] "GET /basic-auth/user/pass HTTP/1.1" 401 0
+127.0.0.1 - - [07/Oct/2026 00:49:32] "POST /post HTTP/1.1" 200 361
+127.0.0.1 - - [07/Oct/2026 00:49:33] "GET /status/204 HTTP/1.1" 204 0
+127.0.0.1 - - [07/Oct/2026 00:50:03] "GET /redirect-to?url=http%3A%2F%2F%3A1 HTTP/1.1" 302 0
+baseline failures on clean commit: ['tests.test_lowlevel::test_use_proxy_from_environment[ALL_PROXY-https]', 'tests.test_lowlevel::test_use_proxy_from_environment[HTTPS_PROXY-https]', 'tests.test_lowlevel::test_use_proxy_from_environment[all_proxy-https]', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_get', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_self_prepared_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_session_prepared_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_with_redirects', 'tests.test_requests.TestTimeout::test_connect_timeout[timeout0]', 'tests.test_requests.TestTimeout::test_connect_timeout[timeout1]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout0]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout1]', 'tests.test_requests::test_proxy_env_vars_override_default[all_proxy-https://example.com-socks5://proxy.com:9876]', 'tests.test_utils.TestGetEnvironProxies::test_bypass[NO_PROXY-http://localhost.localdomain:5000/v1.0/]', 'tests.test_utils.TestGetEnvironProxies::test_not_bypass[NO_PROXY-http://192.168.1.1/]', 'tests.test_utils.TestGetEnvironProxies::test_not_bypass[NO_PROXY-http://192.168.1.1:5000/]', 'tests.test_utils::test_set_environ[no_proxy-None]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://172.16.1.1/-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://172.16.1.1:5000/-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://user:pass@172.16.1.1-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://user:pass@172.16.1.1:5000-172.16.1.1]']
+$ (cd requests) git diff -U0 a044b020^ a044b020 -- src/
+changed lines: {'requests/src/requests/auth.py': [148, 156, 164, 172, 205]}
+changed lines with covering test contexts (line: n_tests): {'auth.py:148': 8, 'auth.py:164': 6, 'auth.py:172': 6, 'auth.py:205': 8}
+$ (cd requests) git diff
+diff --git a/src/requests/auth.py b/src/requests/auth.py
+index 36082b5e..af65e474 100644
+--- a/src/requests/auth.py
++++ b/src/requests/auth.py
+@@ -145,7 +145,7 @@ class HTTPDigestAuth(AuthBase):
+             def md5_utf8(x):
+                 if isinstance(x, str):
+                     x = x.encode("utf-8")
+-                return hashlib.md5(x, usedforsecurity=False).hexdigest()
++                return hashlib.md5(x, usedforsecurity=False).hexdigest().upper()
+ 
+             hash_utf8 = md5_utf8
+         elif _algorithm == "SHA":
+--- buggy full: []
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R2_full.xml -o junit_family=xunit1
+127.0.0.1 - - [07/Oct/2026 00:51:07] "GET /get HTTP/1.1" 200 208
+127.0.0.1 - - [07/Oct/2026 00:51:07] "GET /html HTTP/1.1" 200 3741
+127.0.0.1 - - [07/Oct/2026 00:51:07] "GET /status/204 HTTP/1.1" 204 0
+127.0.0.1 - - [07/Oct/2026 00:51:37] "GET /status/500 HTTP/1.1" 500 0
+full: caught=True ran=603 secs=92.5 new_failures=['tests.test_requests.TestRequests::test_DIGEST_AUTH_RETURNS_COOKIE', 'tests.test_requests.TestRequests::test_DIGEST_HTTP_200_OK_GET', 'tests.test_requests.TestRequests::test_DIGEST_STREAM']
+--- buggy default: ['tests', '-k', 'digest']
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R2_default.xml -o junit_family=xunit1 tests -k digest
+FAILED tests/test_requests.py::TestRequests::test_DIGEST_STREAM - AssertionEr...
+3 failed, 6 passed, 610 deselected in 5.34s
+[2026-10-07 00:52:05,330] WARNING in core: flasgger is not installed; serving the static landing page at / and skipping the Swagger UI and /spec.json.
+127.0.0.1 - - [07/Oct/2026 00:52:10] "GET /digest-auth/auth/user/pass/MD5 HTTP/1.1" 401 0
+default: caught=True ran=9 secs=5.8 new_failures=['tests.test_requests.TestRequests::test_DIGEST_AUTH_RETURNS_COOKIE', 'tests.test_requests.TestRequests::test_DIGEST_HTTP_200_OK_GET', 'tests.test_requests.TestRequests::test_DIGEST_STREAM']
+--- buggy coverage subset: 8 tests
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R2_cov.xml -o junit_family=xunit1 @$WORK/out/R2_covtests.txt
+[2026-10-07 00:52:11,087] WARNING in core: flasgger is not installed; serving the static landing page at / and skipping the Swagger UI and /spec.json.
+127.0.0.1 - - [07/Oct/2026 00:52:14] "GET /digest-auth/auth/user/pass/MD5 HTTP/1.1" 401 0
+127.0.0.1 - - [07/Oct/2026 00:52:14] "GET /digest-auth/auth/user/pass/MD5/never HTTP/1.1" 401 0
+127.0.0.1 - - [07/Oct/2026 00:52:14] "GET /digest-auth/auth/user/pass/MD5 HTTP/1.1" 401 0
+cov: caught=True ran=8 secs=4.6 new_failures=['tests.test_requests.TestRequests::test_DIGEST_AUTH_RETURNS_COOKIE', 'tests.test_requests.TestRequests::test_DIGEST_HTTP_200_OK_GET', 'tests.test_requests.TestRequests::test_DIGEST_STREAM']
+$ (cd requests) git checkout -q -f a044b020
+
+==================== CASE R3 requests 96ba401c ====================
+$ (cd requests) git checkout -q -f 96ba401c
+$ (cd requests) git show --stat --format=%H %ad %s --date=short 96ba401c
+96ba401c1296ab1dda74a2365ef36d88f7d144ef 2024-09-25 Only use hostname to do netrc lookup instead of netloc
+
+ src/requests/utils.py | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R3_clean.xml -o junit_family=xunit1 --cov=requests --cov-context=test --cov-report=
+127.0.0.1 - - [07/Oct/2026 00:52:59] "GET /get HTTP/1.1" 200 272
+127.0.0.1 - - [07/Oct/2026 00:52:59] "GET /status/204 HTTP/1.1" 204 0
+127.0.0.1 - - [07/Oct/2026 00:53:29] "GET /status/200 HTTP/1.1" 200 0
+127.0.0.1 - - [07/Oct/2026 00:53:29] "GET /redirect-to?url=http%3A%2F%2F%3A1 HTTP/1.1" 302 0
+baseline failures on clean commit: ['tests.test_lowlevel::test_use_proxy_from_environment[ALL_PROXY-https]', 'tests.test_lowlevel::test_use_proxy_from_environment[HTTPS_PROXY-https]', 'tests.test_lowlevel::test_use_proxy_from_environment[all_proxy-https]', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_get', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_self_prepared_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_session_prepared_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_with_redirects', 'tests.test_requests.TestTimeout::test_connect_timeout[timeout0]', 'tests.test_requests.TestTimeout::test_connect_timeout[timeout1]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout0]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout1]', 'tests.test_requests::test_proxy_env_vars_override_default[all_proxy-https://example.com-socks5://proxy.com:9876]', 'tests.test_utils.TestGetEnvironProxies::test_bypass[NO_PROXY-http://localhost.localdomain:5000/v1.0/]', 'tests.test_utils.TestGetEnvironProxies::test_not_bypass[NO_PROXY-http://192.168.1.1/]', 'tests.test_utils.TestGetEnvironProxies::test_not_bypass[NO_PROXY-http://192.168.1.1:5000/]', 'tests.test_utils::test_set_environ[no_proxy-None]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://172.16.1.1/-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://172.16.1.1:5000/-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://user:pass@172.16.1.1-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://user:pass@172.16.1.1:5000-172.16.1.1]']
+$ (cd requests) git diff -U0 96ba401c^ 96ba401c -- src/
+changed lines: {'requests/src/requests/utils.py': [239]}
+changed lines with covering test contexts (line: n_tests): {}
+$ (cd requests) git diff
+diff --git a/src/requests/utils.py b/src/requests/utils.py
+index 8a307ca8..f0191a2a 100644
+--- a/src/requests/utils.py
++++ b/src/requests/utils.py
+@@ -236,7 +236,7 @@ def get_netrc_auth(url, raise_errors=False):
+             return
+ 
+         ri = urlparse(url)
+-        host = ri.hostname
++        host = ri.netloc
+ 
+         try:
+             _netrc = netrc(netrc_path).authenticators(host)
+--- buggy full: []
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R3_full.xml -o junit_family=xunit1
+127.0.0.1 - - [07/Oct/2026 00:54:33] "GET /status/204 HTTP/1.1" 204 0
+127.0.0.1 - - [07/Oct/2026 00:54:43] "GET /get HTTP/1.1" 200 272
+127.0.0.1 - - [07/Oct/2026 00:55:03] "GET /status/200 HTTP/1.1" 200 0
+127.0.0.1 - - [07/Oct/2026 00:55:03] "GET /redirect-to?url=http%3A%2F%2F%3A1 HTTP/1.1" 302 0
+full: caught=False ran=592 secs=92.4 new_failures=[]
+--- buggy default: ['tests', '-k', 'netrc']
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R3_default.xml -o junit_family=xunit1 tests -k netrc
+.                                                                        [100%]
+1 passed, 607 deselected in 0.61s
+[2026-10-07 00:55:31,167] WARNING in core: flasgger is not installed; serving the static landing page at / and skipping the Swagger UI and /spec.json.
+127.0.0.1 - - [07/Oct/2026 00:55:31] "GET /basic-auth/user/pass HTTP/1.1" 401 0
+default: caught=False ran=1 secs=1.0 new_failures=[]
+--- buggy coverage subset: 0 tests
+cov: caught=False ran=0 secs=0.0 new_failures=[]
+$ (cd requests) git checkout -q -f 96ba401c
+
+==================== CASE R4 requests 90fee087 ====================
+$ (cd requests) git checkout -q -f 90fee087
+$ (cd requests) git show --stat --format=%H %ad %s --date=short 90fee087
+90fee0876aea97c639b3bf698d83a12876d2f160 2025-06-13 Revert caching a default SSLContext (#6767)
+
+ src/requests/adapters.py | 55 ++++++++++++++----------------------------------
+ 1 file changed, 16 insertions(+), 39 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R4_clean.xml -o junit_family=xunit1 --cov=requests --cov-context=test --cov-report=
+127.0.0.1 - - [07/Oct/2026 00:56:08] "GET /get HTTP/1.1" 200 272
+127.0.0.1 - - [07/Oct/2026 00:56:08] "GET /get HTTP/1.1" 200 315
+127.0.0.1 - - [07/Oct/2026 00:56:08] "GET /get HTTP/1.1" 200 272
+127.0.0.1 - - [07/Oct/2026 00:56:38] "GET /status/200 HTTP/1.1" 200 0
+baseline failures on clean commit: ['tests.test_lowlevel::test_use_proxy_from_environment[ALL_PROXY-https]', 'tests.test_lowlevel::test_use_proxy_from_environment[HTTPS_PROXY-https]', 'tests.test_lowlevel::test_use_proxy_from_environment[all_proxy-https]', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_get', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_self_prepared_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_session_prepared_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_with_redirects', 'tests.test_requests.TestTimeout::test_connect_timeout[timeout0]', 'tests.test_requests.TestTimeout::test_connect_timeout[timeout1]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout0]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout1]', 'tests.test_requests::test_proxy_env_vars_override_default[all_proxy-https://example.com-socks5://proxy.com:9876]', 'tests.test_utils.TestExtractZippedPaths::test_zipped_paths_extracted', 'tests.test_utils.TestGetEnvironProxies::test_bypass[NO_PROXY-http://localhost.localdomain:5000/v1.0/]', 'tests.test_utils.TestGetEnvironProxies::test_not_bypass[NO_PROXY-http://192.168.1.1/]', 'tests.test_utils.TestGetEnvironProxies::test_not_bypass[NO_PROXY-http://192.168.1.1:5000/]', 'tests.test_utils::test_set_environ[no_proxy-None]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://172.16.1.1/-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://172.16.1.1:5000/-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://user:pass@172.16.1.1-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://user:pass@172.16.1.1:5000-172.16.1.1]']
+$ (cd requests) git diff -U0 90fee087^ 90fee087 -- src/
+changed lines: {'requests/src/requests/adapters.py': [29, 30, 75, 76, 87, 88, 90, 91, 293, 295, 296, 297, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 310, 311, 312, 313]}
+changed lines with covering test contexts (line: n_tests): {'adapters.py:88': 156, 'adapters.py:90': 4, 'adapters.py:91': 156, 'adapters.py:293': 13, 'adapters.py:296': 13, 'adapters.py:297': 13, 'adapters.py:299': 13, 'adapters.py:302': 13, 'adapters.py:303': 1, 'adapters.py:304': 1, 'adapters.py:305': 1, 'adapters.py:308': 12, 'adapters.py:310': 12, 'adapters.py:311': 12}
+$ (cd requests) git diff
+diff --git a/src/requests/adapters.py b/src/requests/adapters.py
+index 670c9276..6fa1c642 100644
+--- a/src/requests/adapters.py
++++ b/src/requests/adapters.py
+@@ -307,7 +307,7 @@ class HTTPAdapter(BaseAdapter):
+ 
+             conn.cert_reqs = "CERT_REQUIRED"
+ 
+-            if not os.path.isdir(cert_loc):
++            if os.path.isdir(cert_loc):
+                 conn.ca_certs = cert_loc
+             else:
+                 conn.ca_cert_dir = cert_loc
+--- buggy full: []
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R4_full.xml -o junit_family=xunit1
+127.0.0.1 - - [07/Oct/2026 00:57:42] "GET /get HTTP/1.1" 200 348
+127.0.0.1 - - [07/Oct/2026 00:57:42] "GET /get HTTP/1.1" 200 300
+127.0.0.1 - - [07/Oct/2026 00:57:42] "GET /get HTTP/1.1" 200 272
+127.0.0.1 - - [07/Oct/2026 00:57:42] "GET /get HTTP/1.1" 200 272
+full: caught=False ran=595 secs=92.3 new_failures=[]
+--- buggy default: ['tests/test_requests.py', '-k', 'cert or verify or ca_bundle']
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R4_default.xml -o junit_family=xunit1 tests/test_requests.py -k cert or verify or ca_bundle
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+15 passed, 317 deselected, 3 warnings in 7.63s
+[2026-10-07 00:58:40,296] WARNING in core: flasgger is not installed; serving the static landing page at / and skipping the Swagger UI and /spec.json.
+default: caught=False ran=15 secs=8.1 new_failures=[]
+--- buggy coverage subset: 156 tests
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R4_cov.xml -o junit_family=xunit1 @$WORK/out/R4_covtests.txt
+127.0.0.1 - - [07/Oct/2026 00:59:29] "GET /get HTTP/1.1" 200 272
+127.0.0.1 - - [07/Oct/2026 00:59:30] "GET /status/204 HTTP/1.1" 204 0
+127.0.0.1 - - [07/Oct/2026 00:59:30] "GET /html HTTP/1.1" 200 3741
+127.0.0.1 - - [07/Oct/2026 00:59:30] "GET /get?test=foo&test=baz HTTP/1.1" 200 338
+cov: caught=False ran=155 secs=76.3 new_failures=[]
+$ (cd requests) git checkout -q -f 90fee087
+# R3: only one added line in commit; FULL-SUITE BLIND (line never executed by any test: coverage contexts = 0). Kept as full-suite-blind case.
+# R4 attempt 1 (flip 'if not os.path.isdir(cert_loc)') FULL-SUITE BLIND: full 595 no new failures, default 15 pass, cov 155 pass. Switched line.
+
+==================== CASE R4 requests 90fee087 ====================
+$ (cd requests) git checkout -q -f 90fee087
+$ (cd requests) git show --stat --format=%H %ad %s --date=short 90fee087
+90fee0876aea97c639b3bf698d83a12876d2f160 2025-06-13 Revert caching a default SSLContext (#6767)
+
+ src/requests/adapters.py | 55 ++++++++++++++----------------------------------
+ 1 file changed, 16 insertions(+), 39 deletions(-)
+--- clean full suite with coverage contexts
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R4_clean.xml -o junit_family=xunit1 --cov=requests --cov-context=test --cov-report=
+127.0.0.1 - - [07/Oct/2026 01:01:08] "GET /get?foo=f%C3%B8%C3%B8 HTTP/1.1" 200 320
+127.0.0.1 - - [07/Oct/2026 01:01:08] "GET /get HTTP/1.1" 200 208
+127.0.0.1 - - [07/Oct/2026 01:01:09] "GET /get HTTP/1.1" 200 272
+127.0.0.1 - - [07/Oct/2026 01:01:39] "GET /status/500 HTTP/1.1" 500 0
+baseline failures on clean commit: ['tests.test_lowlevel::test_use_proxy_from_environment[ALL_PROXY-https]', 'tests.test_lowlevel::test_use_proxy_from_environment[HTTPS_PROXY-https]', 'tests.test_lowlevel::test_use_proxy_from_environment[all_proxy-https]', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_get', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_self_prepared_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_session_prepared_request', 'tests.test_requests.TestRequests::test_respect_proxy_env_on_send_with_redirects', 'tests.test_requests.TestTimeout::test_connect_timeout[timeout0]', 'tests.test_requests.TestTimeout::test_connect_timeout[timeout1]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout0]', 'tests.test_requests.TestTimeout::test_total_timeout_connect[timeout1]', 'tests.test_requests::test_proxy_env_vars_override_default[all_proxy-https://example.com-socks5://proxy.com:9876]', 'tests.test_utils.TestExtractZippedPaths::test_zipped_paths_extracted', 'tests.test_utils.TestGetEnvironProxies::test_bypass[NO_PROXY-http://localhost.localdomain:5000/v1.0/]', 'tests.test_utils.TestGetEnvironProxies::test_not_bypass[NO_PROXY-http://192.168.1.1/]', 'tests.test_utils.TestGetEnvironProxies::test_not_bypass[NO_PROXY-http://192.168.1.1:5000/]', 'tests.test_utils::test_set_environ[no_proxy-None]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://172.16.1.1/-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://172.16.1.1:5000/-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://user:pass@172.16.1.1-172.16.1.1]', 'tests.test_utils::test_should_bypass_proxies_pass_only_hostname[http://user:pass@172.16.1.1:5000-172.16.1.1]']
+$ (cd requests) git diff -U0 90fee087^ 90fee087 -- src/
+changed lines: {'requests/src/requests/adapters.py': [29, 30, 75, 76, 87, 88, 90, 91, 293, 295, 296, 297, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 310, 311, 312, 313]}
+changed lines with covering test contexts (line: n_tests): {'adapters.py:88': 156, 'adapters.py:90': 4, 'adapters.py:91': 156, 'adapters.py:293': 13, 'adapters.py:296': 13, 'adapters.py:297': 13, 'adapters.py:299': 13, 'adapters.py:302': 13, 'adapters.py:303': 1, 'adapters.py:304': 1, 'adapters.py:305': 1, 'adapters.py:308': 12, 'adapters.py:310': 12, 'adapters.py:311': 12}
+$ (cd requests) git diff
+diff --git a/src/requests/adapters.py b/src/requests/adapters.py
+index 670c9276..56f8a443 100644
+--- a/src/requests/adapters.py
++++ b/src/requests/adapters.py
+@@ -305,7 +305,7 @@ class HTTPAdapter(BaseAdapter):
+                     f"invalid path: {cert_loc}"
+                 )
+ 
+-            conn.cert_reqs = "CERT_REQUIRED"
++            conn.cert_reqs = "CERT_NONE"
+ 
+             if not os.path.isdir(cert_loc):
+                 conn.ca_certs = cert_loc
+--- buggy full: []
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R4_full.xml -o junit_family=xunit1
+127.0.0.1 - - [07/Oct/2026 01:02:42] "GET /get?test=true&q=test HTTP/1.1" 200 317
+127.0.0.1 - - [07/Oct/2026 01:02:42] "GET /digest-auth/auth/user/pass/SHA-512 HTTP/1.1" 200 46
+127.0.0.1 - - [07/Oct/2026 01:02:43] "GET /get HTTP/1.1" 200 272
+127.0.0.1 - - [07/Oct/2026 01:03:13] "GET /status/200 HTTP/1.1" 200 0
+full: caught=True ran=595 secs=104.0 new_failures=['tests.test_requests.TestPreparingURLs::test_different_connection_pool_for_mtls_settings', 'tests.test_requests.TestPreparingURLs::test_different_connection_pool_for_tls_settings_verify_True', 'tests.test_requests.TestPreparingURLs::test_different_connection_pool_for_tls_settings_verify_bundle_expired_cert', 'tests.test_requests.TestRequests::test_certificate_failure']
+--- buggy default: ['tests/test_requests.py', '-k', 'cert or verify or ca_bundle']
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R4_default.xml -o junit_family=xunit1 tests/test_requests.py -k cert or verify or ca_bundle
+FAILED tests/test_requests.py::TestPreparingURLs::test_different_connection_pool_for_tls_settings_verify_True
+FAILED tests/test_requests.py::TestPreparingURLs::test_different_connection_pool_for_tls_settings_verify_bundle_expired_cert
+3 failed, 12 passed, 317 deselected, 4 warnings in 18.63s
+[2026-10-07 01:03:52,660] WARNING in core: flasgger is not installed; serving the static landing page at / and skipping the Swagger UI and /spec.json.
+default: caught=True ran=15 secs=19.1 new_failures=['tests.test_requests.TestPreparingURLs::test_different_connection_pool_for_tls_settings_verify_True', 'tests.test_requests.TestPreparingURLs::test_different_connection_pool_for_tls_settings_verify_bundle_expired_cert', 'tests.test_requests.TestRequests::test_certificate_failure']
+--- buggy coverage subset: 156 tests
+$ (cd requests) .venv/bin/pytest -q -p no:cacheprovider -p no:randomly --junitxml=$WORK/out/R4_cov.xml -o junit_family=xunit1 @$WORK/out/R4_covtests.txt
+127.0.0.1 - - [07/Oct/2026 01:05:05] "GET /get?f%C3%B8%C3%B8=f%C3%B8%C3%B8 HTTP/1.1" 200 340
+127.0.0.1 - - [07/Oct/2026 01:05:05] "GET /get?foo=foo HTTP/1.1" 200 300
+127.0.0.1 - - [07/Oct/2026 01:05:05] "GET /user-agent HTTP/1.1" 200 60
+127.0.0.1 - - [07/Oct/2026 01:05:05] "GET /user-agent HTTP/1.1" 200 60
+cov: caught=True ran=155 secs=88.0 new_failures=['tests.test_requests.TestPreparingURLs::test_different_connection_pool_for_mtls_settings', 'tests.test_requests.TestPreparingURLs::test_different_connection_pool_for_tls_settings_verify_True', 'tests.test_requests.TestPreparingURLs::test_different_connection_pool_for_tls_settings_verify_bundle_expired_cert', 'tests.test_requests.TestRequests::test_certificate_failure']
+$ (cd requests) git checkout -q -f 90fee087
+pytest-testmon 2.2.0
+=== testmon 748a34d0
+1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 10.17s
+build-db secs: 11.342306582
+ src/click/shell_completion.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+FAILED tests/test_shell_completion.py::test_zsh_full_complete_with_colons[env1-plain\nc\\:d\ncee:dee\nplain\nc:e\n_\n]
+FAILED tests/test_shell_completion.py::test_full_complete[fish-env5-plain,b\tbee\n]
+FAILED tests/test_shell_completion.py::test_full_complete[zsh-env3-plain\nb\nbee\n]
+FAILED tests/test_shell_completion.py::test_full_complete[bash-env1-plain,b\n]
+FAILED tests/test_shell_completion.py::test_zsh_full_complete_with_colons[env2-plain\nc\\:d\ncee:dee\nplain\nc:e\n_\n]
+10 failed, 1662 passed, 24 skipped, 31000 deselected, 1 xfailed in 9.21s
+select+run secs: 10.694866232
+=== testmon 8f300853
+1902 passed, 24 skipped, 31000 deselected, 1 xfailed in 10.42s
+build-db secs: 11.503767809
+ src/click/core.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+FAILED tests/test_formatting.py::test_command_write_usage_no_args[none-options-metavar-no-params]
+FAILED tests/test_formatting.py::test_basic_functionality - AssertionError: a...
+FAILED tests/test_formatting.py::test_command_write_usage_no_args[empty-options-metavar-no-params]
+FAILED tests/test_formatting.py::test_wrapping_long_command_name - assert not...
+FAILED tests/test_formatting.py::test_wrapping_long_options_strings - assert ...
+167 failed, 1735 passed, 24 skipped, 31000 deselected, 1 xfailed in 17.14s
+select+run secs: 18.661839441
+=== testmon c040135a
+1510 passed, 23 skipped, 30000 deselected, 1 xfailed in 8.96s
+build-db secs: 10.348528693
+ src/click/core.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]
+FAILED tests/test_options.py::test_deprecated_usage[USE B INSTEAD] - Assertio...
+3 failed, 1507 passed, 23 skipped, 30000 deselected, 1 xfailed in 8.25s
+select+run secs: 9.778463283
+=== probe: testmon with cacheprovider enabled, no change, then bug only (no commit switch)
+1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 10.20s
+1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 8.99s
+10 failed, 1662 passed, 24 skipped, 31000 deselected, 1 xfailed in 9.46s
+
+real	0m11.092s
+user	0m10.570s
+sys	0m0.529s
+=== probe2: header lines, override addopts (-o addopts=) to drop -m 'not stress'
+testmon: selection automatically deactivated because -m was used, environment: default
+We'd like to hear from testmon users! Please go to https://testmon.org/survey to leave feedback.
+plugins: testmon-2.2.0, cov-7.1.0
+======== 1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 9.43s =========
+testmon: selection automatically deactivated because -m was used, environment: default
+plugins: testmon-2.2.0, cov-7.1.0
+collected 32697 items / 31000 deselected / 1697 selected
+======== 1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 8.80s =========
+FAILED tests/test_shell_completion.py::test_full_complete[fish-env5-plain,b\tbee\n]
+FAILED tests/test_shell_completion.py::test_full_complete[zsh-env3-plain\nb\nbee\n]
+=== 10 failed, 1662 passed, 24 skipped, 31000 deselected, 1 xfailed in 9.63s ===
+=== testmon with --testmon-forceselect (needed because click addopts has -m 'not stress')
+--- testmon 748a34d0
+1672 passed, 24 skipped, 31000 deselected, 1 xfailed in 8.97s
+build-db at parent secs: 10.050653942
+FAILED tests/test_shell_completion.py::test_full_complete[bash-env1-plain,b\n]
+FAILED tests/test_shell_completion.py::test_full_complete[zsh-env3-plain\nb\nbee\n]
+FAILED tests/test_shell_completion.py::test_full_complete[fish-env5-plain,b\tbee\n]
+================ 10 failed, 6 passed, 31217 deselected in 1.88s ================
+commit+bug select+run secs: 3.000219384
+--- testmon 8f300853
+1902 passed, 24 skipped, 31000 deselected, 1 xfailed in 10.14s
+build-db at parent secs: 11.246785795
+FAILED tests/test_chain.py::test_chaining_help[args4-SDIST HELP] - AssertionE...
+FAILED tests/test_chain.py::test_chaining_help[args2-SDIST HELP] - AssertionE...
+FAILED tests/test_normalization.py::test_choice_normalization - AssertionErro...
+======== 167 failed, 1192 passed, 31261 deselected, 1 xfailed in 15.73s ========
+commit+bug select+run secs: 17.945938228
+--- testmon c040135a
+1510 passed, 23 skipped, 30000 deselected, 1 xfailed in 8.91s
+build-db at parent secs: 10.161550747
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-CLI HELP]
+FAILED tests/test_commands.py::test_deprecated_in_help_messages[USE OTHER COMMAND INSTEAD-None]
+FAILED tests/test_options.py::test_deprecated_usage[USE B INSTEAD] - Assertio...
+========= 3 failed, 1201 passed, 30291 deselected, 1 xfailed in 7.27s ==========
+commit+bug select+run secs: 8.787094769
+--- testmon 9835b0f7
+1971 passed, 24 skipped, 31000 deselected, 1 xfailed in 11.21s
+build-db at parent secs: 12.423547781
+testmon: changed files: 4, unchanged files: 47, environment: default
+==================== 153 passed, 31239 deselected in 2.47s =====================
+commit+bug select+run secs: 3.588034569

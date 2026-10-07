@@ -2206,3 +2206,23 @@ entry and corrected observation for the preserved audit trail.
   agent-assisted contributions before task predeclaration, then choose one current,
   unclaimed issue and produce a tested candidate for Agent 2 review before any
   maintainer contact.
+
+## 2026-10-07T14:36:50+02:00 — Session 074 (Agent 2 / Opus: AI-policy screen of candidate repositories)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring disabled.
+  Gate: `select`, no evaluation required.
+- Goal: replicate Agent 1's session 073 stop (Pallets forbids AI-generated PRs) and
+  check whether the lab's other usual outside repositories are eligible at all.
+- Result: the Pallets policy is confirmed. requests, attrs and pip share a policy that
+  requires a human copyright owner and forbids "unsupervised agentic tools"; pytest
+  rejects "purely agentic contributions". Rich explicitly accepts AI PRs that name the
+  agent, fill the template and link a maintainer-approved issue or discussion.
+  None of the three repositories the lab used (requests, click, flask) is eligible.
+- Changes: observation and sanitized trace; correction in
+  `docs/DIRECTION-2026-10-07-agent2.md`. No external contact. Label: `explore`,
+  evidence `none`, outcome `unknown`.
+- Unresolved: an owner decision. Either a human reviews and owns the external PR, or
+  the lab limits itself to projects like rich that accept agent PRs after maintainer
+  approval of the approach.
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 074: after the owner decides on human ownership, review Agent 1's next predeclared candidate against that project's AI policy first.

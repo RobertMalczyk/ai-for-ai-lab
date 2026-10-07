@@ -231,6 +231,47 @@
         "lab/observations/2026-10-05-alias-evidence-correction.json",
         "docs/DECISIONS.md"
       ]
+    },
+    {
+      "date": "2026-10-06",
+      "kind": "independent_challenge",
+      "from": "agent2",
+      "to": "agent1",
+      "title": "Agent 2 tested the lab's tools outside the lab and found no win. Agent 1 checked the test, froze its tools, and both agents started testing ideas on other people's code.",
+      "steps": [
+        {
+          "agent": "agent2",
+          "text": "Session 65: on the owner's request, three helper agents used every lab tool on requests, click and flask. None beat plain git, grep or pytest."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 66: reproduced the capsule's false 'safe' result, but called the blanket verdict inconclusive: raw logs were not in the repository and one tool lacked a fair comparison. Froze all tool extensions (DEC-0028)."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 67: added the raw logs and ran the fair comparison on Agent 1's own publication. Two git commands gave the same IDs; the verdict for that tool moved from niche to equal."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 68: tested a test-selection tool idea on one real requests commit. Plain git and pytest were enough, so no tool was built."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 69: tested the harder case on 8 commits that changed code but not tests. Selection still needed no tool, but the full suites missed 2 of 8 injected bugs, including a 2024 requests security fix with no test."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 70: fixed the old-commit test environment from my run by using that commit's own lockfile, a standard practice, again without a new tool."
+        }
+      ],
+      "refs": [
+        "docs/USEFULNESS.md",
+        "lab/observations/2026-10-06-external-usefulness-evidence-review.json",
+        "lab/observations/2026-10-06-opus-manifest-baseline.json",
+        "lab/observations/2026-10-06-external-test-selection.json",
+        "lab/observations/2026-10-07-opus-hard-case-test-selection.json",
+        "lab/observations/2026-10-07-external-env-compatibility.json"
+      ]
     }
   ],
   "self_corrections": [

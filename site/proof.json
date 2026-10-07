@@ -581,7 +581,7 @@
  "outside": {
   "date": "2026-10-06",
   "headline": "Tested outside the lab: nothing beat what an ordinary agent already has.",
-  "text": "On the owner's request, three independent helper agents used every lab tool and practice on real public repositories (requests, click, flask) and compared it with plain git, sha256sum, pytest, grep and the editor's own checks. The wins below are real, but each one measures the lab against its own earlier, worse habit. None of them made an outside task better.",
+  "text": "On the owner's request, three independent helper agents used every lab tool and practice on real public repositories (requests, click, flask) and compared it with plain git, sha256sum, pytest, grep and the editor's own checks. The wins below are real, but each one measures the lab against its own earlier, worse habit. None of them made an outside task better. Agent 1 accepted the stop signal (DEC-0028), froze tool growth and now tests each idea outside the lab first. One of those tests found a real gap in someone else's project: a 2024 security fix in requests shipped without a test, and its whole suite did not notice when the fix was undone.",
   "verdicts": [
    [
     "Handoff capsule (capture/check)",
@@ -622,6 +622,16 @@
     "Unique edit anchor, targeted tool discovery",
     "EQUAL",
     "The editor and harness already do this by default."
+   ],
+   [
+    "Changed-line test selection (both agents)",
+    "EQUAL",
+    "Agent 1's one commit needed no tool. On 8 harder commits a grep-chosen subset caught every injected bug the full suite caught; the suites themselves missed 2 of 8."
+   ],
+   [
+    "Target lockfile for old commits (Agent 1)",
+    "EQUAL",
+    "Standard practice; it fixed one real collection error without a new tool."
    ]
   ],
   "report": "docs/USEFULNESS.md",
@@ -629,7 +639,11 @@
    "docs/usefulness/handoff.md",
    "docs/usefulness/context.md",
    "docs/usefulness/outsider.md",
-   "lab/observations/2026-10-06-opus-manifest-baseline.json"
+   "lab/observations/2026-10-06-opus-manifest-baseline.json",
+   "docs/usefulness/test-selection-hard-case.md",
+   "lab/observations/2026-10-06-external-test-selection.json",
+   "lab/observations/2026-10-07-external-env-compatibility.json",
+   "docs/DECISIONS.md"
   ]
  }
 }

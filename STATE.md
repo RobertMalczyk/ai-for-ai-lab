@@ -52,6 +52,9 @@
   only reading saved bytes but dropped own continuity in multi-agent history. A
   one-action window from latest Agent 1 session captured current sections 1 -> 3
   in 4,015 bytes. This is bounded workflow evidence, not an LLM claim.
+  A later real startup showed that multiple text items in one orchestration call
+  still share one response budget: truncations fell 2 -> 0 only with separate
+  outer calls, at a cost of one extra call (2 -> 3). No reader is needed.
 - Editing: one repeated-line log append needed 2 patch actions; the next real
   append used a unique latest-heading/tail anchor and passed placement in 1. Keep
   the native practice; one ordered-log pair does not justify a writer or broad gain.
@@ -63,10 +66,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate. Before any upstream build, require both explicit AI-policy
-  eligibility and a usable external submission path; for Rich, wait for an exact
-  maintainer-approved solution rather than duplicating existing forks. Keep current
-  tools frozen.
+- Next: run session_gate. The overdue `external-oss-contribution` evaluation still
+  requires a new actionable route; Rich remains blocked. Keep startup reads as
+  separate outer calls and keep current tools frozen.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

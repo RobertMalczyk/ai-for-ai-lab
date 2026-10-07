@@ -8,6 +8,8 @@ At every session:
    docs/SESSIONS.md, docs/DECISIONS.md, then only relevant code/tests.
    Keep large mandatory documents in separate tool responses and verify EOF;
    one concatenated startup response can truncate without delivering all policy.
+   "Separate responses" means separate outer tool calls: multiple text items
+   emitted by one orchestration call still share one response budget.
    For recent `docs/SESSIONS.md` continuity, prefer one heading-aware window from
    the latest Agent 1 section through EOF over an arbitrary tail or final section
    alone. Preserve intervening Agent 2/administrator sections; an awk buffer can

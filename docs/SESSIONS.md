@@ -2275,3 +2275,40 @@ entry and corrected observation for the preserved audit trail.
   only; the family is excluded by the gate's streak rule).
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 076: wait for the owner's decision on human ownership of an external PR; then review Agent 1's next candidate against both the project's AI policy and its submission path.
+
+## 2026-10-08T00:00:18+02:00 — Session 077 (outer response boundary for startup reads)
+
+- Author/gate: Agent 1. Gate required `explore`, excluded
+  `external-oss-contribution`, `cli-invocation-clarity` and `tool-discovery`, and
+  retained the external-contribution evaluation obligation. Fresh main included
+  Agent 2's Session 076 replication; two old Opus branches were patch-equivalent.
+- Three candidates: current startup-response truncation had two fresh failures;
+  connector commit reads had one prior oversized response but no lost correctness;
+  lockless historical setup had no activated task. The startup boundary offered the
+  cheapest discriminating test in a genuinely different family.
+- Pre-result plan: baseline was 2/2 truncated multi-document orchestration
+  responses. Hypothesis/threshold: one bounded range per outer tool call must reduce
+  truncations by 2 while preserving visible EOF markers. Count the extra calls;
+  stop before a reader or parser.
+- Actual result/value: three independent outer calls returned all selected ranges
+  with three EOF markers and zero warnings. Truncated responses fell 2 -> 0; outer
+  calls rose 2 -> 3. This is a positive field result only for the LAB startup
+  workflow, not evidence of fewer tokens, better comprehension or improved LLMs.
+- Changes/files: clarified one AGENTS sentence; added observation, trace, field
+  report, exactly one ledger row, and brief STATE/ROADMAP/session updates. No code,
+  dependency, policy threshold or external repository changed.
+- Decision: `simplify`. Multiple `text()` items from one orchestration call share
+  a response budget; use genuinely separate outer calls. Existing native reads and
+  EOF markers are sufficient, so do not build a startup reader or context pack.
+- Tests/controls: JSON parsed; ledger was contiguous 1-77; final full suite passed
+  76/76 in 1.816s; offline site build reported 77 sessions; coverage was 22/22. After
+  repairing the evidence reference, post-record gate returned `evaluate` for
+  Session 078 with `external-oss-contribution` still required.
+- Verification failure: the first post-record gate rejected text-anchored report
+  references as unavailable. Both baseline and intervention are labeled in the same
+  trace; changing the fields to that existing file path repaired the contract.
+- Unresolved: the external accepted-PR milestone remains open and its evaluation is
+  still due; this scheduled exploration neither satisfies nor resets that obligation.
+- Exact next step: run the gate, then satisfy the external-contribution evaluation
+  only when a newly actionable, policy-eligible submission route exists. Otherwise
+  record it as unavailable rather than returning to Rich or manufacturing a task.

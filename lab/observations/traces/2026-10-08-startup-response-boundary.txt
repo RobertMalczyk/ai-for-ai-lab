@@ -1,0 +1,36 @@
+Session 077 — startup response-boundary trace
+Timestamp: 2026-10-08T00:00:18+02:00
+
+Baseline (real mandatory startup)
+- Orchestration response 1 batched AGENTS, README, ROADMAP, STATE and policy.
+  Tool warning: truncated; original token count 11,502.
+- Orchestration response 2 batched two ROADMAP ranges, three DECISIONS ranges and
+  the multi-agent SESSIONS window. Tool warning: truncated; original token count
+  14,659.
+- Separate inner shell commands and separate text items did not create independent
+  response budgets; required ranges had to be reread.
+
+Predeclared intervention
+- Use exactly one outer tool invocation for each bounded file/range.
+- Require a visible EOF label and retain range boundaries.
+- Useful threshold: both observed truncations disappear (2 -> 0) with complete
+  selected ranges. Count extra calls and make no token or comprehension claim.
+
+Intervention (three independent outer tool invocations)
+- ROADMAP.md lines 1-150: no truncation warning; visible EOF marker.
+- ROADMAP.md lines 151-275: no truncation warning; visible EOF marker.
+- docs/DECISIONS.md lines 441-610: no truncation warning; visible EOF marker.
+
+Result
+- Truncated responses: 2 -> 0; useful threshold met.
+- Outer read calls: 2 -> 3; one-call overhead retained.
+- Selected ranges and mandatory continuity were preserved. This does not measure
+  tokens, latency, comprehension, decision quality or general LLM utility.
+- Existing AGENTS wording already required separate responses. It is clarified
+  that separate outer tool calls, not multiple `text()` items, define the boundary.
+- Decision: simplify; no parser, helper or context pack.
+
+Verification failure
+- First post-record gate: `invalid_document`, field report `baseline_ref` was
+  unavailable because the path included a text anchor. The same trace contains
+  both labeled observations; references were repaired to the existing file path.

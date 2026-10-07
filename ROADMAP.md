@@ -25,6 +25,10 @@
 - Separate startup reads reached complete EOF with zero truncation warnings in one
   natural follow-up, versus one warning in the original combined read. Different
   sessions and missing comparable time/token/call totals make utility inconclusive.
+- A later real startup batched separate inner reads into two orchestration responses;
+  both were truncated. Three independent outer calls preserved their bounded ranges
+  and EOF markers with zero truncations (2 -> 0), but added one call (2 -> 3).
+  This is bounded lab-workflow evidence, not token or general-agent improvement.
 - On one real mandatory latest-session read, a one-command heading-aware slice
   preserved the exact final section and reduced visible UTF-8 bytes from 11,918 to
   2,340 (80.37%) with the same one read action. Agent 2 then showed that final-only
@@ -169,7 +173,8 @@
     real conflict before building anything.
 13. Concatenating all mandatory startup documents produced a truncated response;
     separate bounded reads with EOF markers avoided the warning in a replay and
-    one natural follow-up, but full overhead and decision quality remain unknown.
+    one natural follow-up. A later recurrence shows that multiple text items emitted
+    by one orchestration call still share one response budget; use separate calls.
 14. A future AI publisher needs an enforceable separation between storytelling
     feedback and experiment selection; reference existence alone cannot express it.
 15. A valid seven-field publisher plan binds evidence and policy but carries no
@@ -225,10 +230,10 @@
 - Extend tool-discovery byte optimization: a targeted-baseline follow-up remained
   inconclusive and exact-known retrieval beat names-first by 2,145 bytes. Keep the
   practice for unfamiliar registries; do not build or retest without new failure.
-- Build a startup-context pack or reader: one replay and one natural follow-up
-  support separate native reads, but end-to-end time, tokens and decision quality
-  remain unknown. Keep one instruction; revisit only after another incomplete-read
-  incident.
+- Build a startup-context pack or reader: after a second natural incomplete-read
+  incident, separate outer calls removed both truncations with one added call.
+  Existing native reads plus one exact clarification solve the observed failure;
+  tokens, comprehension and decision quality remain unmeasured.
 - Build a renderer, YouTube uploader or analytics loop before one real publisher
   plan uses the boundary: correctness fixtures do not justify infrastructure.
 - Claim publisher utility from the first real plan receipt: it caught 0 issues and

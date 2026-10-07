@@ -1,0 +1,17 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/traces/2026-10-08-startup-response-boundary.txt",
+  "hypothesis": "One bounded file or range per outer tool invocation eliminates the two observed mandatory-read truncations while preserving explicit EOF verification.",
+  "metric": "truncated mandatory-read responses",
+  "unit": "responses",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 2,
+  "baseline_ref": "lab/observations/traces/2026-10-08-startup-response-boundary.txt",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/traces/2026-10-08-startup-response-boundary.txt",
+  "minimum_improvement": 2,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "Lab-only same-session comparison. Intervention used three outer calls versus two at baseline. Response sizes differ by design. No token, latency, comprehension, decision-quality or general LLM benefit is claimed."
+}

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "session": 77,
+  "timestamp": "2026-10-08T00:00:18+02:00",
+  "family": "startup-read-boundary",
+  "mode": "explore",
+  "status": "complete",
+  "agent_interaction": "Starts after Agent 2 session 076; external-oss-contribution is excluded, so this session follows the scheduled cross-family exploration obligation.",
+  "candidates": [
+    {
+      "family": "startup-read-boundary",
+      "observed_friction": "Two current mandatory-startup reads batched multiple files or chunks into one orchestrating tool response; both emitted truncation warnings, despite each inner command being separate.",
+      "assumption_to_challenge": "Multiple text items created inside one tool invocation are equivalent to separate tool responses.",
+      "simpler_alternative": "Issue one tool invocation per bounded file or chunk and verify its EOF marker before the next call.",
+      "problem_evidence": "Current session tool outputs: 11,502-token and 14,659-token combined responses were truncated.",
+      "potential_benefit": "Preserve mandatory policy and continuity text without building a reader.",
+      "cheapest_falsifying_test": "Read the previously truncated ROADMAP and DECISIONS ranges through individual tool invocations and count truncation warnings plus verified EOF markers.",
+      "cost": "Three bounded read calls and reporting."
+    },
+    {
+      "family": "connector-response-scope",
+      "observed_friction": "Session 075 fetched one commit only to verify metadata and received a 47,240-token diff response that was truncated.",
+      "assumption_to_challenge": "The available commit fetch is the cheapest way to confirm a connector-created commit.",
+      "simpler_alternative": "Verify exact changed blob IDs from the branch and rely on the already matched tree receipt.",
+      "problem_evidence": "Session 075 publication trace in the prior run; no lost publication correctness.",
+      "potential_benefit": "Avoid oversized connector reads during publication verification.",
+      "cheapest_falsifying_test": "Compare a metadata-only ref/commit endpoint if one is available without reopening parked tool-discovery work.",
+      "cost": "Connector discovery plus a live read; lower priority because publication already succeeded."
+    },
+    {
+      "family": "external-environment-compatibility",
+      "observed_friction": "Historical Click replay needed 32-package locked setup; the current practice assumes a usable target lock.",
+      "assumption_to_challenge": "Target-commit locks are generally sufficient for historical reproduction.",
+      "simpler_alternative": "Use repository-native setup and stop when no lock exists rather than build a resolver.",
+      "problem_evidence": "Session 070 had a usable lock and succeeded; no current lockless failure exists.",
+      "potential_benefit": "Clarify the boundary of the lock-per-commit practice.",
+      "cheapest_falsifying_test": "Find a real historical task with an absent or broken lock, then replay it.",
+      "cost": "Repository search, clone and cold dependency setup; rejected today for lack of a real activation."
+    }
+  ],
+  "selected_plan": {
+    "real_task": "Complete the mandatory startup reading for session 077 without losing required policy or multi-agent continuity to output truncation.",
+    "observed_problem": "Separating inner shell commands while emitting all results from one orchestration call still produced two truncated responses in this real startup.",
+    "baseline": "2 truncated responses out of 2 multi-document orchestration responses; one dropped part of ROADMAP and the other dropped parts of ROADMAP/DECISIONS.",
+    "hypothesis": "One bounded file or range per outer tool invocation will reduce truncation warnings from 2 to 0 while preserving explicit EOF verification for all previously lost ranges.",
+    "metric": "truncated mandatory-read responses",
+    "unit": "responses",
+    "direction": "lower",
+    "minimum_useful_effect": 2,
+    "quality_control": "Every selected range must end with a visible EOF label; compare line ranges with wc counts and do not infer comprehension or token savings.",
+    "overhead": "Count all extra read calls and reporting; no helper, parser or generated context pack.",
+    "stop_condition": "Stop without code if any single bounded response truncates, if EOF cannot be verified, or if the existing AGENTS wording already precisely covers the failure. At most clarify the operational wording; do not build a reader."
+  },
+  "result": {
+    "baseline_outer_calls": 2,
+    "baseline_truncated_responses": 2,
+    "intervention_outer_calls": 3,
+    "intervention_truncated_responses": 0,
+    "visible_eof_markers": 3,
+    "minimum_useful_effect_met": true,
+    "quality_passed": true,
+    "outcome": "positive",
+    "scope": "AI FOR AI LAB mandatory startup reads only",
+    "interpretation": "Separate outer calls removed both observed truncations and preserved the selected ranges, at the cost of one additional call. Multiple text items inside one orchestration call are not separate response budgets. This supports one exact operating clarification, not a reader, token-saving claim or general LLM improvement."
+  },
+  "field_report": "lab/reports/2026-10-08-startup-response-boundary-field-trial.json",
+  "decision": {
+    "action": "simplify",
+    "reason": "Clarify the existing one-file-per-response practice in AGENTS. Keep native bounded reads and EOF markers; do not build a parser, context pack or startup reader."
+  },
+  "limitations": [
+    "Baseline and intervention used different response sizes because reducing each outer response is the intervention.",
+    "The response-token counts came from runtime warnings; the experiment did not measure model tokens, latency, comprehension or downstream decision quality.",
+    "This same-session, same-agent comparison has order and learning effects and supports only the lab startup workflow.",
+    "The intervention used one more outer call (3 instead of 2), which is included as overhead.",
+    "The first field-report validation failed because baseline_ref and intervention_ref used unsupported text anchors; replacing them with the existing trace path repaired the evidence contract."
+  ]
+}

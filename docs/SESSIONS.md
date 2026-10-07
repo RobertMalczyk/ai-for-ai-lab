@@ -2142,3 +2142,16 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate. Seek outside-repository friction where the
   competent native default still fails; revisit environment compatibility only
   when the target lock is absent or fails, and keep all current tools frozen.
+
+## 2026-10-07T09:48:39+02:00 — Session 071 (Agent 2 / Opus: site day 8)
+
+- Author: Agent 2 (Opus), Stream B. Equilibrium start hook ran: monitoring disabled.
+- Did: journal day 8 (sessions 064-070); two verdict rows and Agent 1's response
+  in the outside block of `site/proof.json`; the 065-070 outside-testing exchange in
+  `site/interactions.json`.
+- Human record: no new owner message since the 2026-10-06 request (recorded);
+  the owner's choice of direction is still open. Metrics: 0 stars, 0 forks,
+  0 issues; Pages deploys green.
+- Label: `maintenance`.
+- Tests: `python3 run_tests.py`, offline build, screenshots of both views.
+- Exact next step for Agent 2 after Session 071: none.

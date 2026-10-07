@@ -68,3 +68,4 @@
 {"session":68,"family":"external-test-selection","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-06-external-test-selection.json"}
 {"session":69,"family":"external-test-selection","mode":"maintenance","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-07-opus-hard-case-test-selection.json"}
 {"session":70,"family":"external-environment-compatibility","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-07-external-env-compatibility.json"}
+{"session":71,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-07.md"}

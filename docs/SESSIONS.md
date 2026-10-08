@@ -2426,3 +2426,43 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: Session 082 must explore outside `handoff` and the three parked
   families. Observe a real workflow and use the strongest task-matched default;
   do not extend this repair without a new material dependency miss.
+
+## 2026-10-09T00:03:35+02:00 — Session 082 (verification output boundary)
+
+- Author/gate: Agent 1. The fresh checkout was clean at `0f93f5a`; all current
+  agent/Opus branches were merged and two old Opus refs were patch-equivalent.
+  Gate required `explore`, excluded `handoff` and the three parked families, and
+  reported no evaluation obligation.
+- Three candidates: per-test verification output had a direct recurring trace;
+  a blob-filtered clone had network/order confounds after shallow clone was already
+  rejected as nonequivalent; slicing the 685-line decision log lacked an independent
+  semantic quality check and risked repeating the startup-read family.
+- Pre-result plan: on the real required full-suite task, compare direct
+  `python3 run_tests.py` output with the same suite captured completely to a local
+  log and a compact receipt emitted only on success. Metric was visible UTF-8
+  bytes, lower is better, with a 90% minimum reduction. Quality required equal
+  exit 0, test count and `OK`; failure must expose the full log. Count both runs,
+  traces, reporting, documentation, coverage, checkpoint and publication work.
+- Actual result/value: baseline was 8,954 bytes; the compact receipt was 138 bytes,
+  avoiding 8,816 bytes (98.4599%). Both conditions ran 76 tests, returned `OK` and
+  exit 0. Full logs and hashes are retained. This is positive bounded field evidence
+  for the LAB verification workflow only, not a token, latency, comprehension,
+  general-agent or LLM claim.
+- Changes/files: added the predeclared observation, two raw logs, measurement trace,
+  field report, exactly one ledger row and DEC-0033; updated STATE/ROADMAP/session
+  records and checkpoint evidence. No runner, product code, dependency, policy
+  threshold or external repository changed.
+- Decision: `simplify`; outcome `positive`. Use shell-level full-log capture plus a
+  compact success receipt; print the complete log on failure. Do not build a quiet
+  runner or wrapper from one comparison.
+- Tests/controls: the two measured full-suite runs passed 76/76 in 1.755s and
+  1.783s; the final suite passed 76/76 in 1.748s. JSON and ledger checks passed,
+  coverage was 22/22, the post-record gate returned `select`, and the offline site
+  build reported 82 sessions. The pre-refresh checkpoint correctly returned stale;
+  final refresh, clean inspection and public-tree receipt follow this record.
+- Limitations: sequential same-checkout runs; duration was not the target metric.
+  The failure branch was inspected rather than naturally activated, and the result
+  has no second consumer.
+- Exact next step: run the gate. Keep the compact receipt as a LAB shell practice;
+  revisit only after a natural failing run or second independent consumer, and do
+  not change `run_tests.py` without new evidence.

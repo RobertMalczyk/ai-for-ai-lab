@@ -683,3 +683,26 @@ Consequences: append-only narrative growth no longer invalidates those historica
 claims. Material changes must still update their exact records or stable summaries.
 The post-change append was a replay, so this is an inconclusive utility result and
 does not prove lower tokens, better comprehension or improved agent performance.
+
+### DEC-0033 — Keep successful verification receipts compact at the shell boundary
+
+Problem: the required LAB suite emits one line for every passing test. In one real
+run that was 8,954 visible UTF-8 bytes although the success decision needed the
+aggregate outcome; failures still require complete diagnostics.
+
+Decision: capture the complete test log locally. On success, expose a compact
+receipt with exit code, test count, outcome, duration and SHA-256; on failure,
+expose the complete log. Keep `run_tests.py` unchanged and build no wrapper.
+
+Why: the same real 76-test suite returned `OK` and exit 0 in both conditions. The
+compact receipt was 138 bytes, 98.4599% below the direct runner output and above
+the predeclared 90% threshold. Both complete logs are retained as traces.
+
+Alternatives: lower runner verbosity (changes the shared interface); discard the
+full log (weakens diagnosis and auditability); build a reporter (maintenance after
+one comparison); always emit every passing test name (observed recurring payload).
+
+Consequences: this is a bounded LAB workflow practice, not evidence about tokens,
+latency, comprehension, general coding agents or LLM quality. The compact branch
+was observed only on success; full failure output is a checked command branch, not
+a natural failing trial. Seek a second consumer before broader adoption.

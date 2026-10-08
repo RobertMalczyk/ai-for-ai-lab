@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "session": 82,
+  "timestamp": "2026-10-09T00:03:35+02:00",
+  "family": "verification-output-boundary",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "handoff",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "verification-output-boundary",
+      "evidence": "run_tests.py uses unittest verbosity=2, so the required full-suite check emits one line per test before its result summary.",
+      "assumption_to_challenge": "A successful agent verification needs every passing test name in the tool response.",
+      "simpler_approach": "Keep the complete log locally; on success expose only exit status, test count, outcome, duration and log hash, while exposing the full log on failure.",
+      "potential_value": "Less response payload during a required recurring check without losing failure diagnostics.",
+      "cheapest_falsifying_test": "Run the real suite once per condition and compare visible UTF-8 bytes while requiring equal successful exit, test count and outcome.",
+      "cost": "Two full local suite runs plus trace and report maintenance.",
+      "novelty": "New family; it changes no runner behavior or test selection."
+    },
+    {
+      "family": "fresh-clone-cost",
+      "evidence": "The current fresh clone took about 20.8 seconds; Session 080 rejected shallow clone as nonequivalent for branch ancestry.",
+      "assumption_to_challenge": "A full object transfer is required before startup reads and branch auditing.",
+      "simpler_approach": "Compare a blob-filtered full-history clone with the ordinary clone.",
+      "potential_value": "Lower startup transfer or disk cost while retaining history.",
+      "cheapest_falsifying_test": "Clone once with --filter=blob:none and require identical commit, tree, remote refs and branch classifications after mandatory reads.",
+      "cost": "Another network clone with cache and ordering confounds.",
+      "novelty": "Different family, but lower-value and less comparable in this run."
+    },
+    {
+      "family": "decision-log-boundary",
+      "evidence": "docs/DECISIONS.md is 685 lines and must currently be read in full at every startup.",
+      "assumption_to_challenge": "Every historical decision must be retransmitted to select the next task.",
+      "simpler_approach": "Use native heading ranges for current decisions and retain the file as canonical history.",
+      "potential_value": "Smaller startup context while preserving current constraints.",
+      "cheapest_falsifying_test": "Define required-decision coverage before slicing and compare exact retained headings and bytes.",
+      "cost": "Semantic coverage judgment is not independent and risks repeating the recently simplified startup-read family.",
+      "novelty": "Distinct documentation family, but evidence quality is weaker."
+    }
+  ],
+  "selection": "verification-output-boundary",
+  "real_task": "Run the repository's required complete verification suite before publishing this session.",
+  "observed_problem": "The canonical runner emits a line for every passing test, although a successful agent decision needs the aggregate result and failures need the detailed log.",
+  "baseline": "Direct python3 run_tests.py output, captured byte-for-byte from one real suite run.",
+  "hypothesis": "Retaining the complete log locally and emitting a compact success receipt reduces agent-visible UTF-8 bytes by at least 90% while preserving exit status, test count, outcome, duration and an auditable log hash; failures remain full-output.",
+  "metric": "agent-visible successful verification output",
+  "unit": "UTF-8 bytes",
+  "direction": "lower",
+  "minimum_useful_effect": "At least 90% fewer visible bytes than the direct runner output.",
+  "quality_control": "Both conditions must exit 0 and report the same test count and OK outcome; the intervention must retain the complete raw log, publish its SHA-256 and use a branch that prints the full log on nonzero exit.",
+  "overhead": "Count both suite runs, receipt construction, raw trace storage, documentation, coverage, checkpoint refresh and publication verification.",
+  "stop_condition": "Stop without runner code or a helper if reduction is below 90%, results differ, the log is incomplete, or failure output would be suppressed.",
+  "scope": "A LAB workflow comparison only. Bytes are not tokens, latency, comprehension or general coding-agent benefit.",
+  "result": {
+    "baseline_visible_bytes": 8954,
+    "baseline_exit_code": 0,
+    "baseline_tests": 76,
+    "baseline_outcome": "OK",
+    "baseline_seconds": 1.755,
+    "baseline_log_sha256": "958b76bc2a959dfaa20949abfadf206b2a6382499a9e3bd805f6fb37ae6df2cc",
+    "intervention_visible_bytes": 138,
+    "intervention_exit_code": 0,
+    "intervention_tests": 76,
+    "intervention_outcome": "OK",
+    "intervention_seconds": 1.783,
+    "intervention_log_sha256": "15aaa3a96faf245f89ffd327897fc62abbf5f5b3e3993526db317ad3f4be6375",
+    "avoided_visible_bytes": 8816,
+    "reduction_percent": 98.4599,
+    "quality_passed": true,
+    "threshold_met": true
+  },
+  "decision": "simplify",
+  "outcome": "positive",
+  "decision_reason": "Use shell-level full-log capture with a compact success receipt for this recurring LAB check. Keep the canonical runner unchanged, emit the complete log on failure, and do not build a wrapper from one comparison.",
+  "limitations": "Two sequential full-suite runs in one checkout; duration differed and is not the target metric. The conditions necessarily expose different text, and the compact branch was observed only on success. Full failure output is an inspected branch of the command, not a naturally failing run. The result is not evidence about tokens, latency, comprehension, general agents or LLM quality."
+}

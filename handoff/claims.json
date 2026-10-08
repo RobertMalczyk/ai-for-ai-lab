@@ -235,6 +235,18 @@
     ]
   },
   {
+    "id": "verification-output-boundary",
+    "text": "The LAB verification-output comparison and its bounded shell-practice claim are represented by exact traces and reports.",
+    "evidence": [
+      "run_tests.py",
+      "lab/observations/2026-10-09-verification-output-boundary.json",
+      "lab/observations/traces/2026-10-09-verification-output-baseline.txt",
+      "lab/observations/traces/2026-10-09-verification-output-intervention.txt",
+      "lab/observations/traces/2026-10-09-verification-output-measurement.json",
+      "lab/reports/2026-10-09-verification-output-boundary-field-trial.json"
+    ]
+  },
+  {
     "id": "public-cooperation-protocol",
     "text": "The public cooperation protocol and shared artifact schema preserve existing selection policies and contain no private service data.",
     "evidence": [

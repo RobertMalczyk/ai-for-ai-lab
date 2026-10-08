@@ -107,6 +107,10 @@
   made four unrelated historical claims request 18 rereads on a clean clone.
   Removing that broad dependency retained each exact record; a disposable append
   replay produced 0 affected claims. This is correctness replay, not field utility.
+- One real required full-suite check emitted 8,954 visible UTF-8 bytes. Capturing
+  the complete log and exposing a 138-byte success receipt retained exit code,
+  76-test count, `OK`, duration and log hash (98.46% less). This supports only a
+  LAB shell practice; the failure branch and a second consumer remain unevaluated.
 
 ## NEXT
 - Keep external contribution parked. Reopen only when current official evidence
@@ -150,6 +154,9 @@
 - Keep append-only global logs out of historical claim dependency sets when the
   exact observation/report and stable summary already represent the claim. Reopen
   only if a material session detail becomes unavailable through those sources.
+- Keep full verification logs locally and emit a compact receipt only on success;
+  expose the complete log on failure. Do not change `run_tests.py` or build a
+  wrapper. Revisit after a natural failure or a second independent consumer.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -310,3 +317,5 @@
 - Change checkpoint code after one broad-dependency false alarm: the claim manifest
   already supports exact paths, and removing four redundant log edges solved the
   replay without a new matcher, parser or policy exception.
+- Build a quiet test runner after one successful output comparison: shell-level
+  capture retained the full log and produced the bounded LAB benefit without code.

@@ -1,0 +1,17 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/2026-10-09-verification-output-boundary.json",
+  "hypothesis": "Retaining the complete log locally and emitting a compact success receipt reduces agent-visible UTF-8 bytes by at least 90% while preserving exit status, test count, outcome, duration and an auditable log hash; failures remain full-output.",
+  "metric": "agent-visible successful verification output",
+  "unit": "UTF-8 bytes",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 8954,
+  "baseline_ref": "lab/observations/traces/2026-10-09-verification-output-measurement.json",
+  "intervention_value": 138,
+  "intervention_ref": "lab/observations/traces/2026-10-09-verification-output-measurement.json",
+  "minimum_improvement": 8058.6,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One LAB workflow and two sequential full-suite runs. Full overhead includes both runs, receipt construction, raw trace storage, reporting, documentation, coverage, checkpoint refresh and publication checks. Duration is reported but not compared. The compact branch was observed on success; full failure output is an inspected command branch rather than a naturally failing trial. Visible UTF-8 bytes are not tokens, network bytes, latency, comprehension, general agent performance or LLM quality."
+}

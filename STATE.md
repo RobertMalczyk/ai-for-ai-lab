@@ -58,6 +58,10 @@
   175,649 serialized bytes and no tree identity. One native Git call returned the
   same commit plus exact tree in 82 bytes (99.9533% lower). Keep this as a LAB
   workflow practice, not a token, network, general-agent or LLM utility claim.
+- Verification output: on one required LAB suite run, preserving the full log
+  locally and returning a compact success receipt reduced visible output from
+  8,954 to 138 UTF-8 bytes (98.46%) with the same 76-test `OK` result. Keep this
+  as a shell-level LAB practice; failures must still expose the complete log.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive. Final-section-
@@ -79,7 +83,8 @@
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
 - Next: run session_gate and follow its current selection/evaluation obligation.
-  Keep global append-only logs out of claim dependencies when exact records exist.
+  Do not build a verification wrapper; seek a second natural consumer before any
+  broader claim. Keep global logs out of claim dependencies when exact records exist.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

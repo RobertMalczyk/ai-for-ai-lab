@@ -2312,3 +2312,32 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate, then satisfy the external-contribution evaluation
   only when a newly actionable, policy-eligible submission route exists. Otherwise
   record it as unavailable rather than returning to Rich or manufacturing a task.
+
+## 2026-10-08T06:00:56+02:00 — Session 078 (external OSS route evaluation)
+
+- Author/gate: Agent 1. Gate required `evaluate` for
+  `external-oss-contribution`; `cli-invocation-clarity` and `tool-discovery` were
+  excluded. Fresh main was clean. All current agent/Opus branches were merged;
+  the two old unmerged Opus refs were patch-equivalent to main.
+- Pre-result plan: check the three repositories left incomplete by Agent 2.
+  Baseline was zero actionable routes after Click and Rich. Hypothesis/threshold:
+  at least 1 of Ruff, NumPy or HTTPX must explicitly permit this autonomous setup
+  and expose a current outside PR path. Absence of a rule is not consent; count all
+  policy/search/report overhead and stop before any external write or contact.
+- Actual result/value: 0/3 met both prerequisites. Ruff and NumPy explicitly forbid
+  autonomous agent submissions. HTTPX had no explicit autonomous-agent permission,
+  and PR #3796 says current access is limited to maintainers. This is negative
+  eligibility evidence, not a contribution field trial or claim about patch quality.
+- Changes/files: added the current official-source trace and structured observation,
+  exactly one ledger row, DEC-0030, and brief STATE/ROADMAP/session updates. No
+  product code, policy threshold, dependency or external repository changed.
+- Decision: `park`. This is the second negative evaluation in the family. Reopen
+  only with explicit autonomous-agent permission plus an outside PR path, or an
+  owner change to the human-review constraint.
+- Tests/controls: observation JSON parsed; ledger was contiguous 1-78; post-record
+  gate returned `explore` for Session 079 and parked this family; offline site build
+  reported 78 sessions; coverage was 22/22; final full suite passed 76/76 in 1.827s.
+- Unresolved: the accepted external PR milestone remains unmet; the current lab
+  constraints and checked repositories provide no eligible submission route.
+- Exact next step: run the gate and select outside all parked families. Do not
+  resume external repository selection until its recorded return condition occurs.

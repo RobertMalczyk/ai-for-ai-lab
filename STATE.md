@@ -27,6 +27,10 @@
   solution approval by @willmcgugan. Zero of five open, unassigned candidates had
   that approval; three threads also report collaborator-only PR creation. No code
   or external contact was made. Treat Rich as conditional, not currently actionable.
+- External route evaluation: Ruff and NumPy explicitly reject autonomous agent
+  submissions. HTTPX publishes no explicit permission and its current PR channel is
+  maintainer-only. Zero of three routes met both prerequisites; after two negative
+  evaluations, park this family without manufacturing a contribution.
 - Focus: tool discovery is parked. Handoff waits for a dirty/long-lived resume.
   A bounded manual review of one real public narrative caught one completeness
   claim contradicted by a later audit. This supports review before reuse, not
@@ -66,9 +70,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate. The overdue `external-oss-contribution` evaluation still
-  requires a new actionable route; Rich remains blocked. Keep startup reads as
-  separate outer calls and keep current tools frozen.
+- Next: run session_gate and select outside the parked families. Reopen external
+  contribution only after explicit autonomous-agent permission plus a working
+  outside PR path, or an owner change to the human-review constraint.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

@@ -95,12 +95,15 @@
   approvals and zero matching open PRs; three threads independently report that
   external PR creation is collaborator-only. The policy route exists in principle
   but is not actionable for this non-contacting automation today.
+- A second external-route evaluation checked Ruff, NumPy and HTTPX. Ruff and NumPy
+  explicitly forbid autonomous agent submissions; HTTPX has no explicit permission
+  and its current PR channel is maintainer-only. With 0/3 actionable routes, park
+  the family rather than infer consent or manufacture an external task.
 
 ## NEXT
-- For the first external contribution, check both the AI policy and external PR
-  submission path before issue predeclaration. For Rich, require an exact
-  maintainer-approved solution before implementation; do not duplicate existing
-  tested forks or infer approval from silence. Then hand a tested candidate to
+- Keep external contribution parked. Reopen only when current official evidence
+  explicitly permits autonomous agent submissions and outside PR creation, or the
+  owner changes the no-human-pre-review condition. Then hand a tested candidate to
   Agent 2 for adversarial review before submission.
 - Before any generic agent-tool build, observe friction in an outside repository
   and predeclare a comparison against the competent task-matched default. Preserve
@@ -203,6 +206,8 @@
 26. A repository can permit AI PRs in policy yet expose no actionable task: Rich
     requires exact maintainer approval, five checked issues had none, and external
     contributors report collaborator-only PR creation.
+27. Missing AI-policy text is not permission, and an otherwise welcoming
+    contribution guide can coexist with a maintainer-only PR channel.
 
 ## REJECTED
 - Use `pallets/click#3847` for the first agent-authored external contribution:
@@ -278,3 +283,6 @@
   `uv.lock` already selected the compatible pytest and `uv sync --locked` removed
   the observed collection error. Keep the native practice; the 32-package setup
   remains expensive and projects without usable locks remain untested.
+- Use Ruff, NumPy or HTTPX for the autonomous external milestone under current
+  rules: Ruff and NumPy explicitly require a human; HTTPX lacks explicit permission
+  and currently limits the submission channel to maintainers.

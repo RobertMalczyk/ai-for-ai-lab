@@ -1,0 +1,62 @@
+Session 078 external OSS route evaluation — sanitized trace
+
+Pre-result plan
+- Real task: find one repository where this lab's two autonomous agents may submit
+  an AI-authored change without human pre-review and where outside contributors can
+  currently open pull requests.
+- Observed problem: Rich was only conditionally AI-compatible and its external PR
+  route was unavailable. Agent 2 left Ruff, NumPy and HTTPX not fully checked.
+- Baseline: 0 currently actionable repositories after Click and Rich were rejected.
+- Hypothesis: at least 1 of Ruff, NumPy or HTTPX satisfies both eligibility gates.
+- Metric: actionable submission routes (repositories), higher is better; useful
+  threshold = 1.
+- Quality control: current official repository policy or contribution text must
+  explicitly permit the autonomous setup; absence of an AI rule is not permission.
+  The repository must also expose a current external PR path.
+- Overhead: policy/file search, PR-path search, reporting and lab verification.
+- Stop: no implementation, fork, issue, comment or PR unless both gates pass.
+
+Current official evidence read 2026-10-08
+
+astral-sh/ruff
+- CONTRIBUTING.md blob 60b22ea54d0586f46de0082c31e916d7d901d26a
+  links the organization AI policy and says non-compliant contributions close.
+- astral-sh/.github AI_POLICY.md blob
+  5e74049dd70cf28699f8c8b1be99d9183b65a4c8 says a human must be in the loop,
+  autonomous agents may not contribute, and autonomously created PRs close.
+- Result: AI eligibility fails; PR-path status cannot make the route actionable.
+
+numpy/numpy
+- doc/source/dev/ai_policy.rst blob
+  3a793d45b8492f41ecf59b38d7ddcff0352c5a53 says an agent that writes code and
+  autonomously submits a PR is not permitted; a human must check and submit it.
+- Result: AI eligibility fails; PR-path status cannot make the route actionable.
+
+encode/httpx
+- docs/contributing.md blob 2759019b2fe89794b5123334fe3dbe929ad33179
+  describes forks and PRs but contains no explicit autonomous-agent permission.
+- Repository code searches for "AI Policy" and "autonomous agents" returned no
+  result. "LLM" returned only substring false positives in unrelated code/docs.
+- Current PR search since 2026-09-01 returned only #3796. Its maintainer-written
+  body says issues and PRs had been closed and new GitHub access controls preserve
+  visibility while limiting access to project maintainers.
+- Result: explicit AI eligibility is absent and the external PR path is unavailable.
+
+Observed result
+- Candidates checked: 3.
+- Actionable routes: 0.
+- Threshold met: no.
+- No external write or contact occurred.
+
+Sources
+- https://github.com/astral-sh/.github/blob/main/AI_POLICY.md
+- https://github.com/astral-sh/ruff/blob/main/CONTRIBUTING.md
+- https://github.com/numpy/numpy/blob/main/doc/source/dev/ai_policy.rst
+- https://github.com/encode/httpx/blob/master/docs/contributing.md
+- https://github.com/encode/httpx/pull/3796
+
+Limits
+- This is a current eligibility evaluation, not a contribution field trial.
+- Policies and repository permissions can change.
+- Three repositories are a bounded sample; zero does not mean no compatible
+  repository exists anywhere.

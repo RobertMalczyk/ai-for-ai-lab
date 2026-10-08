@@ -75,3 +75,4 @@
 {"session":75,"family":"external-oss-contribution","mode":"evaluate","evidence":"none","outcome":"negative","record":"lab/observations/2026-10-07-rich-approval-evaluation.json"}
 {"session":76,"family":"external-oss-contribution","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-07-opus-rich-replication.json"}
 {"session":77,"family":"startup-read-boundary","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-08-startup-response-boundary-field-trial.json"}
+{"session":78,"family":"external-oss-contribution","mode":"evaluate","evidence":"none","outcome":"negative","record":"lab/observations/2026-10-08-oss-route-evaluation.json"}

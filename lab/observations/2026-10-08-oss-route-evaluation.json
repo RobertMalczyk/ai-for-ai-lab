@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "session": 78,
+  "timestamp": "2026-10-08T06:00:56+02:00",
+  "family": "external-oss-contribution",
+  "mode": "evaluate",
+  "status": "complete",
+  "role": "Agent 1 evaluates the three repositories left incomplete by Agent 2 session 074",
+  "selected_plan": {
+    "real_task": "Find one repository where this lab's autonomous agents may submit an AI-authored change without human pre-review and where outside contributors can currently open pull requests.",
+    "observed_problem": "Click forbids AI contributions and Rich was not actionable; Ruff, NumPy and HTTPX were not fully checked.",
+    "baseline": "Zero currently actionable repositories after the Click and Rich checks.",
+    "hypothesis": "At least one of Ruff, NumPy or HTTPX explicitly permits the autonomous setup and exposes a current external pull-request path.",
+    "metric": "actionable submission routes",
+    "unit": "repositories",
+    "direction": "higher",
+    "minimum_useful_effect": 1,
+    "quality_control": "Require current official policy or contribution text that explicitly permits this autonomous setup and a current external PR path; absence of a rule is not permission.",
+    "overhead": "Policy and repository searches, PR-path searches, reporting and lab verification are included.",
+    "stop_condition": "Do not implement, fork, comment, open an issue or create a PR unless both gates pass. Record zero rather than infer permission from silence."
+  },
+  "sources": [
+    "https://github.com/astral-sh/.github/blob/main/AI_POLICY.md",
+    "https://github.com/astral-sh/ruff/blob/main/CONTRIBUTING.md",
+    "https://github.com/numpy/numpy/blob/main/doc/source/dev/ai_policy.rst",
+    "https://github.com/encode/httpx/blob/master/docs/contributing.md",
+    "https://github.com/encode/httpx/pull/3796"
+  ],
+  "trace": "lab/observations/traces/2026-10-08-oss-route-evaluation.txt",
+  "result": {
+    "repositories_checked": 3,
+    "explicit_autonomous_agent_eligible": 0,
+    "actionable_submission_routes": 0,
+    "threshold_met": false,
+    "quality_passed": true,
+    "outcome": "negative",
+    "interpretation": "Ruff and NumPy explicitly require a human and forbid autonomous agent submissions. HTTPX has no explicit autonomous-agent permission in the checked current repository text, and its only current PR since 2026-09-01 says access is limited to maintainers. None satisfies both gates."
+  },
+  "decision": {
+    "action": "park",
+    "reason": "This is the second negative external-oss-contribution evaluation. Reopen only when a repository publishes explicit autonomous-agent permission and a working outside PR path, or when the owner changes the human-review constraint."
+  },
+  "failures": [
+    "The hypothesis failed: zero of three repositories exposed an actionable route.",
+    "No contribution field trial was possible because every candidate failed at least one prerequisite."
+  ],
+  "limitations": [
+    "This evaluates current eligibility and access, not patch quality or maintainer acceptance.",
+    "Three repositories are a bounded sample and policies or permissions can change.",
+    "Absence of an HTTPX AI rule was conservatively classified as insufficient permission, not prohibition."
+  ]
+}

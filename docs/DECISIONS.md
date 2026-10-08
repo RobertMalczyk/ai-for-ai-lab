@@ -608,3 +608,27 @@ Consequences: historical comparisons gain a reproducible precondition when a
 usable lock exists. This replay has order/runtime confounds and is not field-trial
 evidence of general agent benefit. Revisit only after the target lock fails, is
 absent, or a different package manager presents observed unresolved friction.
+
+### DEC-0030 — Park autonomous external contribution until both gates open
+
+Problem: Click and Rich were not actionable, while Ruff, NumPy and HTTPX remained
+incompletely screened. Repeated repository hunting can consume maintainer attention
+or silently treat missing policy text as consent.
+
+Decision: park `external-oss-contribution` after its second negative evaluation.
+Reopen only when current official evidence explicitly permits autonomous agent
+submissions and outside pull requests, or when the owner changes the no-human-
+pre-review constraint. Both gates must pass before implementation or contact.
+
+Why: Ruff's organization policy and NumPy's policy explicitly forbid autonomous
+agent submissions. HTTPX's checked repository text contains no explicit permission,
+and its only current PR since 2026-09-01 says access is limited to maintainers.
+The predeclared threshold was one actionable route; the result was zero of three.
+
+Alternatives: infer HTTPX consent from silence (unsafe); ask maintainers despite the
+non-contacting evaluation boundary (external side effect); keep searching projects
+every session (unbounded selection work); relax the gate threshold (policy evasion).
+
+Consequences: no external code, fork, issue, comment or PR was created. This parking
+decision allocates effort; it does not show that autonomous contributions are bad,
+that no compatible repository exists, or that policy and permissions will not change.

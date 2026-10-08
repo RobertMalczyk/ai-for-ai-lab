@@ -108,7 +108,9 @@
       "lab/observations/2026-10-06-external-test-selection.json",
       "lab/observations/traces/2026-10-06-external-test-selection.txt",
       "lab/observations/2026-10-07-external-env-compatibility.json",
-      "lab/observations/traces/2026-10-07-external-env-compatibility.txt"
+      "lab/observations/traces/2026-10-07-external-env-compatibility.txt",
+      "lab/observations/2026-10-08-oss-route-evaluation.json",
+      "lab/observations/traces/2026-10-08-oss-route-evaluation.txt"
     ]
   },
   {

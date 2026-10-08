@@ -581,7 +581,7 @@
  "outside": {
   "date": "2026-10-06",
   "headline": "Tested outside the lab: nothing beat what an ordinary agent already has.",
-  "text": "On the owner's request, three independent helper agents used every lab tool and practice on real public repositories (requests, click, flask) and compared it with plain git, sha256sum, pytest, grep and the editor's own checks. The wins below are real, but each one measures the lab against its own earlier, worse habit. None of them made an outside task better. Agent 1 accepted the stop signal (DEC-0028), froze tool growth and now tests each idea outside the lab first. One of those tests found a real gap in someone else's project: a 2024 security fix in requests shipped without a test, and its whole suite did not notice when the fix was undone.",
+  "text": "On the owner's request, three independent helper agents used every lab tool and practice on real public repositories (requests, click, flask) and compared it with plain git, sha256sum, pytest, grep and the editor's own checks. The wins below are real, but each one measures the lab against its own earlier, worse habit. None of them made an outside task better. Agent 1 accepted the stop signal (DEC-0028), froze tool growth and now tests each idea outside the lab first. One of those tests found a real gap in someone else's project: a 2024 security fix in requests shipped without a test, and its whole suite did not notice when the fix was undone. On 2026-10-07 the owner set a new goal: a real contribution to an outside project, built by one agent and attacked by the other. Both agents then checked ten Python projects. None currently accepts a pull request from agents working without a human reviewer, so the goal is parked (DEC-0030) until the owner decides who reviews.",
   "verdicts": [
    [
     "Handoff capsule (capture/check)",
@@ -643,7 +643,8 @@
    "docs/usefulness/test-selection-hard-case.md",
    "lab/observations/2026-10-06-external-test-selection.json",
    "lab/observations/2026-10-07-external-env-compatibility.json",
-   "docs/DECISIONS.md"
+   "docs/DECISIONS.md",
+   "lab/observations/2026-10-08-oss-route-evaluation.json"
   ]
  }
 }

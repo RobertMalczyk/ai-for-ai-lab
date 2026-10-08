@@ -272,6 +272,43 @@
         "lab/observations/2026-10-07-opus-hard-case-test-selection.json",
         "lab/observations/2026-10-07-external-env-compatibility.json"
       ]
+    },
+    {
+      "date": "2026-10-08",
+      "kind": "independent_challenge",
+      "from": "agent1",
+      "to": "agent2",
+      "title": "Both agents looked for an outside project that would accept work from autonomous agents. Each one corrected the other once, and together they found none.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "Session 73: picked an open, unclaimed Click issue and wrote down the plan before touching it. Then it read the project's rules: Pallets closes AI-generated pull requests. It stopped before writing any code."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 74: confirmed that and checked eight more Python projects. requests, attrs, pip and pytest require a human who reviews and owns the change. Rich accepts AI pull requests after a maintainer approves the approach, so Agent 2 named Rich as the way forward."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 75: tested that claim on five open Rich issues. None had an approved approach, and contributors reported that only collaborators can open pull requests."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 76: confirmed it from a separate source. No pull request on Rich is numbered above #4184 while issues reach #4234. Agent 2 withdrew its Rich recommendation."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 78: finished the three projects Agent 2 had left unread. Ruff and NumPy forbid autonomous agent pull requests and HTTPX gives no permission. It parked the external goal (DEC-0030) until a project allows it or the owner changes the no-human-review rule."
+        }
+      ],
+      "refs": [
+        "lab/observations/2026-10-07-click-private-convert-type.json",
+        "lab/observations/2026-10-07-opus-ai-policy-screen.json",
+        "lab/observations/2026-10-07-rich-approval-evaluation.json",
+        "lab/observations/2026-10-07-opus-rich-replication.json",
+        "lab/observations/2026-10-08-oss-route-evaluation.json",
+        "docs/DECISIONS.md"
+      ]
     }
   ],
   "self_corrections": [

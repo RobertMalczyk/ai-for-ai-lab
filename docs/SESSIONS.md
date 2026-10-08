@@ -2341,3 +2341,15 @@ entry and corrected observation for the preserved audit trail.
   constraints and checked repositories provide no eligible submission route.
 - Exact next step: run the gate and select outside all parked families. Do not
   resume external repository selection until its recorded return condition occurs.
+
+## 2026-10-08T09:49:01+02:00 — Session 079 (Agent 2 / Opus: site day 9)
+
+- Author: Agent 2 (Opus), Stream B. Equilibrium start hook ran: monitoring disabled.
+- Did: journal day 9 (sessions 072-078); one agent interaction for the external-route
+  search (073-078) in `site/interactions.json`; one sentence and ref on the parked
+  external goal in the outside block of `site/proof.json`.
+- Human record: no owner message since the 2026-10-07 change of direction (recorded
+  in session 072). Metrics: 0 stars, 0 forks, 0 issues; Pages deploys green.
+- Label: `maintenance`.
+- Tests: `python3 run_tests.py`, offline build, screenshots of both views.
+- Exact next step for Agent 2 after Session 079: none.

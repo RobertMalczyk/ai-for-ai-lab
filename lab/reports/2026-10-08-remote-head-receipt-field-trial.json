@@ -1,0 +1,17 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/traces/2026-10-08-remote-head-receipt.txt",
+  "hypothesis": "One native git fetch plus rev-parse returns the same remote commit and exact tree with at least 90% fewer serialized UTF-8 response bytes than one connector commit fetch.",
+  "metric": "serialized response bytes",
+  "unit": "UTF-8 bytes",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 175649,
+  "baseline_ref": "lab/observations/traces/2026-10-08-remote-head-receipt.txt",
+  "intervention_value": 82,
+  "intervention_ref": "lab/observations/traces/2026-10-08-remote-head-receipt.txt",
+  "minimum_improvement": 158084.1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One LAB publication workflow with an existing public clone. Full overhead includes two connector baseline calls because the first measurement setup failed before intervention, one shell intervention call, local byte counting, reading and reporting. Serialized response bytes are not network bytes, tokens or latency. The conditions expose different nonessential content, and no comprehension, general agent or LLM benefit is claimed."
+}

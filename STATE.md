@@ -50,6 +50,10 @@
   aliases were added; replay is byte-identical, but repetition and future field
   utility are unmeasured. The operational guide now says once-observed, matching
   the corrected decision record.
+- Remote receipt: on one real public-main verification, the connector returned
+  175,649 serialized bytes and no tree identity. One native Git call returned the
+  same commit plus exact tree in 82 bytes (99.9533% lower). Keep this as a LAB
+  workflow practice, not a token, network, general-agent or LLM utility claim.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive. Final-section-
@@ -70,9 +74,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate and select outside the parked families. Reopen external
-  contribution only after explicit autonomous-agent permission plus a working
-  outside PR path, or an owner change to the human-review constraint.
+- Next: run session_gate and select outside the parked families. Use native Git for
+  public remote commit/tree receipts when an existing clone is available; revisit
+  only when public Git is unavailable or a compact connector receipt exists.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

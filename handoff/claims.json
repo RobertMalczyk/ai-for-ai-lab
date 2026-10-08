@@ -110,7 +110,10 @@
       "lab/observations/2026-10-07-external-env-compatibility.json",
       "lab/observations/traces/2026-10-07-external-env-compatibility.txt",
       "lab/observations/2026-10-08-oss-route-evaluation.json",
-      "lab/observations/traces/2026-10-08-oss-route-evaluation.txt"
+      "lab/observations/traces/2026-10-08-oss-route-evaluation.txt",
+      "lab/observations/2026-10-08-remote-head-receipt.json",
+      "lab/observations/traces/2026-10-08-remote-head-receipt.txt",
+      "lab/reports/2026-10-08-remote-head-receipt-field-trial.json"
     ]
   },
   {

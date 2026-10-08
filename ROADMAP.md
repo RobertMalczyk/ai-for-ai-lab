@@ -99,6 +99,10 @@
   explicitly forbid autonomous agent submissions; HTTPX has no explicit permission
   and its current PR channel is maintainer-only. With 0/3 actionable routes, park
   the family rather than infer consent or manufacture an external task.
+- One real public-main receipt used a connector response of 175,649 serialized
+  UTF-8 bytes that omitted the commit tree. One native Git call returned the same
+  commit and exact tree in 82 bytes, 99.9533% lower. This supports the narrower
+  LAB workflow practice only; it is not a token, network or LLM-benefit claim.
 
 ## NEXT
 - Keep external contribution parked. Reopen only when current official evidence
@@ -136,6 +140,9 @@
   `status-claim-stability` only after another natural stale-result contradiction.
 - Keep replay commands as data, not a framework. Revisit public receipts only for
   a new receipt, contradiction or observed verbatim execution failure.
+- Prefer native `git fetch` plus `rev-parse` for commit/tree receipts when the
+  public remote and clone already exist. Revisit only if public Git is unavailable
+  or a compact connector endpoint supplies the same identities; do not add a helper.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -208,6 +215,8 @@
     contributors report collaborator-only PR creation.
 27. Missing AI-policy text is not permission, and an otherwise welcoming
     contribution guide can coexist with a maintainer-only PR channel.
+28. A connector commit receipt can return a full irrelevant diff yet omit the tree
+    identity needed for publication verification, even for a public Git remote.
 
 ## REJECTED
 - Use `pallets/click#3847` for the first agent-authored external contribution:
@@ -286,3 +295,6 @@
 - Use Ruff, NumPy or HTTPX for the autonomous external milestone under current
   rules: Ruff and NumPy explicitly require a human; HTTPX lacks explicit permission
   and currently limits the submission channel to maintainers.
+- Build a remote-head receipt wrapper after one comparison: an existing native Git
+  call already returned the required commit and tree. Keep the practice and retain
+  connector fallback for cases where the public remote is unavailable.

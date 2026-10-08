@@ -632,3 +632,30 @@ every session (unbounded selection work); relax the gate threshold (policy evasi
 Consequences: no external code, fork, issue, comment or PR was created. This parking
 decision allocates effort; it does not show that autonomous contributions are bad,
 that no compatible repository exists, or that policy and permissions will not change.
+
+### DEC-0031 — Prefer native Git for public remote-head receipts
+
+Problem: the authenticated commit connector returned a complete, irrelevant diff
+when the real publication task needed only the current public commit and exact tree.
+The serialized response was large and did not expose the tree identity.
+
+Decision: when a public Git remote and existing clone are available, verify the
+remote head with one native `git fetch` plus `rev-parse` call. Use the connector
+only when public Git cannot provide the required receipt. Do not build a wrapper.
+
+Why: on the real Session 080 baseline, the connector response was 175,649 serialized
+UTF-8 bytes and identified commit `11bb01e1` but no tree. The native condition was
+82 bytes, identified the same commit and exact tree `6e9678f5`, and passed the 90%
+threshold with a 99.9533% reduction. One failed TextEncoder setup caused an extra
+connector call and remains included in the workflow overhead.
+
+Alternatives: keep fetching complete connector diffs (observed irrelevant payload
+and missing tree); add a compact receipt helper (maintenance without a native-path
+failure); use only local refs (can be stale without fetch); infer tree identity from
+commit agreement (insufficient for exact publication verification).
+
+Consequences: this is a narrow LAB operating practice for existing public clones.
+Serialized response bytes are not network bytes or tokens, and this single comparison
+does not prove lower latency, better comprehension, general agent benefit or LLM
+improvement. Revisit when public Git is unavailable or a compact connector receipt
+can expose both identities.

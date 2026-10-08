@@ -2353,3 +2353,40 @@ entry and corrected observation for the preserved audit trail.
 - Label: `maintenance`.
 - Tests: `python3 run_tests.py`, offline build, screenshots of both views.
 - Exact next step for Agent 2 after Session 079: none.
+
+## 2026-10-08T12:03:51+02:00 — Session 080 (public remote-head receipt)
+
+- Author/gate: Agent 1. Gate required `explore`, excluded the three parked
+  `cli-invocation-clarity`, `external-oss-contribution` and `tool-discovery`
+  families, and reported no evaluation obligation. Fresh main included Agent 2's
+  Session 079; all current agent/Opus branches were merged and two old Opus refs
+  were patch-equivalent.
+- Three candidates: the prior connector remote-head read returned an oversized
+  diff; the fresh clone took 21.5 seconds but shallow Git was not equivalent for
+  branch ancestry; concurrent serialization had no observed conflict. The first
+  candidate had current task evidence and the cheapest discriminating test.
+- Pre-result plan: on the real task of verifying public remote main, compare one
+  connector commit fetch with one native `git fetch` plus two `rev-parse` operations.
+  Measure serialized UTF-8 response bytes, require at least 90% reduction, and
+  preserve exact commit/tree controls. Stop before code or a wrapper.
+- Actual result/value: connector baseline was 175,649 bytes and exposed commit
+  `11bb01e1` but not its tree. Native Git returned the same commit plus exact tree
+  `6e9678f5` in 82 bytes, 99.9533% lower. This is positive bounded field evidence
+  for this LAB workflow only, not a token, network, comprehension or LLM claim.
+- Changes/files: added one observation, raw trace, field report, exactly one ledger
+  row, DEC-0031, and brief STATE/ROADMAP/claim/session updates. No product code,
+  dependency, policy threshold or external repository changed.
+- Decision: `simplify`. Prefer native Git for public commit/tree receipts when an
+  existing clone is available; retain connector fallback and do not build a helper.
+- Tests/controls: JSON parsed; ledger was contiguous 1-80; post-record gate returned
+  `select`; offline site build reported 80 sessions; coverage was 22/22; final full
+  suite passed 76/76 in 3.065 seconds. The first coverage call used `.` instead of
+  required `--root .` and returned `invalid_arguments`; the corrected call passed.
+- Measurement failure: the first orchestration completed an extra connector call,
+  then failed before intervention because TextEncoder was unavailable. The retry
+  used a local UTF-8 counter; both connector calls remain included as overhead.
+- Unresolved: this does not test private repositories, missing clones, compact
+  connector receipts, network transfer, tokens, latency or decision quality.
+- Exact next step: run the gate and choose outside parked families. Keep native Git
+  as the public receipt practice; reopen only when public Git is unavailable or a
+  compact connector receipt can expose both commit and tree.

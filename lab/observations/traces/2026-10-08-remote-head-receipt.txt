@@ -1,0 +1,26 @@
+Session 080 remote-head receipt trace
+
+Pre-result plan is recorded in the companion observation JSON before either
+comparison call. The real task is to verify the current public remote main commit
+and tree. Baseline: one connector commit fetch. Intervention: one shell call that
+runs git fetch and two rev-parse operations. Primary metric is serialized UTF-8
+response bytes, lower is better; useful threshold is at least 90% reduction. Both
+must agree on commit 11bb01e1a8b83a11a443f3f4b64cbd95e0afa55f and tree
+6e9678f54ffe22e082bd1179fe8764ace636593f. No token, latency or LLM claim.
+
+Observed result
+
+- Baseline connector response: 175,649 serialized UTF-8 bytes; commit
+  11bb01e1a8b83a11a443f3f4b64cbd95e0afa55f; no commit-tree identity exposed.
+- Intervention shell response: 82 UTF-8 bytes; the same commit and tree
+  6e9678f54ffe22e082bd1179fe8764ace636593f; exit 0.
+- Reduction: 99.9533%; the 90% threshold passed and both identity controls passed.
+- Failure retained: the first measurement orchestration completed an extra
+  connector baseline call, then failed before the intervention because TextEncoder
+  was unavailable. The retry used a local UTF-8 byte counter.
+- Full overhead: two connector baseline calls, one shell intervention call, local
+  byte counting, reading and reporting. Bytes are not tokens, network transfer,
+  latency, comprehension or general LLM utility.
+- Decision: simplify. For this existing public clone, use native Git for the remote
+  commit/tree receipt. Use the connector only when public Git cannot supply the
+  required data. Do not build a helper.

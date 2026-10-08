@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "session": 80,
+  "timestamp": "2026-10-08T12:03:51+02:00",
+  "family": "remote-head-receipt",
+  "mode": "explore",
+  "status": "complete",
+  "agent_interaction": "Starts from Agent 2 session 079 on main; its merged maintenance commit is the live remote head used for the verification task.",
+  "candidates": [
+    {
+      "family": "remote-head-receipt",
+      "observed_friction": "The previous real publication verification fetched a complete commit diff only to obtain the remote main SHA; the response was 50,475 tokens and truncated.",
+      "assumption_to_challenge": "The authenticated commit endpoint is the appropriate verification baseline even when a public Git remote is already available.",
+      "simpler_alternative": "Use one native git fetch followed by rev-parse of the remote commit and tree.",
+      "problem_evidence": "Session 078 connector fetch of main returned the required SHA with an oversized truncated diff.",
+      "potential_value": "A bounded remote-head receipt without irrelevant patch content or another wrapper.",
+      "cheapest_falsifying_test": "Measure serialized response bytes and identity agreement on the current remote main.",
+      "cost": "Two observed one-call conditions plus reporting."
+    },
+    {
+      "family": "fresh-clone-cost",
+      "observed_friction": "The current full fresh clone and branch listing took 21.5 seconds.",
+      "assumption_to_challenge": "A full clone is required before every read-only branch audit.",
+      "simpler_alternative": "A shallow or filtered clone followed by explicit branch fetches.",
+      "problem_evidence": "Current startup timing, but branch ancestry and git cherry quality requirements make the substitute non-equivalent.",
+      "potential_value": "Lower repeated setup latency.",
+      "cheapest_falsifying_test": "Clone shallowly and verify all merged/no-merged and patch-equivalence classifications.",
+      "cost": "Another network clone and a more complex quality check; not selected."
+    },
+    {
+      "family": "concurrent-session-serialization",
+      "observed_friction": "Agent 2 advanced main between Agent 1 sessions, while continuity files remain single-writer artifacts.",
+      "assumption_to_challenge": "Fresh main plus fast-forward publication is sufficient to avoid every two-agent conflict.",
+      "simpler_alternative": "Keep current fresh-clone and expected-SHA lease checks.",
+      "problem_evidence": "No actual conflict occurred; the current clone already included Agent 2 session 079.",
+      "potential_value": "Prevent lost ledger or checkpoint updates.",
+      "cheapest_falsifying_test": "Observe the first real conflicting write rather than manufacture one.",
+      "cost": "No valid test today; rejected for lack of activation."
+    }
+  ],
+  "selected_plan": {
+    "real_task": "Verify the current public remote main commit and exact tree before using it as the session baseline.",
+    "observed_problem": "The previous connector verification returned the right commit SHA together with a large irrelevant diff that was truncated.",
+    "baseline": "One github_fetch_commit call for ref main; measure the complete serialized tool result without printing its diff.",
+    "hypothesis": "One native git fetch plus rev-parse returns the same commit and tree with at least 90% fewer serialized UTF-8 response bytes and no truncation.",
+    "metric": "serialized response bytes",
+    "unit": "UTF-8 bytes",
+    "direction": "lower",
+    "minimum_useful_effect": "90% reduction",
+    "quality_control": "Both conditions must identify the same remote commit; obtain the exact tree and match it to origin/main^{tree}; preserve call counts and do not infer token or LLM gains.",
+    "overhead": "Count one connector call, one shell call, local serialization measurement and reporting.",
+    "stop_condition": "Stop without code if identities disagree, the native command needs more than one outer call, or the existing Git remote is unavailable. Do not build a wrapper."
+  },
+  "result": {
+    "baseline_bytes": 175649,
+    "baseline_commit": "11bb01e1a8b83a11a443f3f4b64cbd95e0afa55f",
+    "baseline_tree_exposed": false,
+    "intervention_bytes": 82,
+    "intervention_commit": "11bb01e1a8b83a11a443f3f4b64cbd95e0afa55f",
+    "intervention_tree": "6e9678f54ffe22e082bd1179fe8764ace636593f",
+    "commit_match": true,
+    "expected_tree_match": true,
+    "reduction_percent": 99.9533,
+    "threshold_met": true
+  },
+  "measurement_failure": "The first orchestration completed an extra connector baseline call but failed before the intervention because TextEncoder was unavailable. The retry used a local UTF-8 byte counter. This failed setup call is retained as overhead and the trace does not claim latency or token savings.",
+  "decision": "simplify",
+  "decision_reason": "For a public repository with an existing clone, native git fetch plus rev-parse returned the exact commit and tree in one outer call with 99.9533% fewer serialized response bytes. Keep this as a workflow practice; use the connector only when public Git cannot supply the required receipt, and do not build a wrapper.",
+  "limitations": "One LAB publication workflow with an existing public clone. Serialized tool-response bytes are not network bytes or model tokens. The connector baseline exposed a full diff but not the tree; the native condition exposed only the two required identities. This does not establish general agent or LLM benefit."
+}

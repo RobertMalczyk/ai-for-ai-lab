@@ -77,3 +77,4 @@
 {"session":77,"family":"startup-read-boundary","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-08-startup-response-boundary-field-trial.json"}
 {"session":78,"family":"external-oss-contribution","mode":"evaluate","evidence":"none","outcome":"negative","record":"lab/observations/2026-10-08-oss-route-evaluation.json"}
 {"session":79,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-08.md"}
+{"session":80,"family":"remote-head-receipt","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-08-remote-head-receipt-field-trial.json"}

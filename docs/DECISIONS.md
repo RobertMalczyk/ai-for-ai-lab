@@ -659,3 +659,27 @@ Serialized response bytes are not network bytes or tokens, and this single compa
 does not prove lower latency, better comprehension, general agent benefit or LLM
 improvement. Revisit when public Git is unavailable or a compact connector receipt
 can expose both identities.
+
+### DEC-0032 — Do not use the global session log as redundant claim evidence
+
+Problem: a timing-only edit to `docs/SESSIONS.md` after checkpoint refresh made a
+clean clone mark four unrelated historical claims `needs_review` and return 18
+reread paths. Reconstructing the prior timing value reproduced the saved hash.
+
+Decision: remove `docs/SESSIONS.md` from those four claim dependency sets. Retain
+their exact observation/report files, ledger links where applicable, and stable
+STATE/ROADMAP/DECISIONS summaries. Refresh only after every real session record.
+
+Why: the four claims retained respectively 6, 2, 1 and 2 exact records. In a
+disposable copy, an unrelated session-log append then changed affected claims from
+4 to 0 and reread paths from 18 to 0. No checkpoint code or threshold was needed.
+
+Alternatives: keep the global dependency and reread 18 paths after routine appends
+(observed noise); special-case append-only Markdown in code (semantic complexity);
+exclude the log while dropping exact records (weakens evidence); treat freshness as
+proof that the claims remain true (outside the checkpoint contract).
+
+Consequences: append-only narrative growth no longer invalidates those historical
+claims. Material changes must still update their exact records or stable summaries.
+The post-change append was a replay, so this is an inconclusive utility result and
+does not prove lower tokens, better comprehension or improved agent performance.

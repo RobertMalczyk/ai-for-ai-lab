@@ -103,6 +103,10 @@
   UTF-8 bytes that omitted the commit tree. One native Git call returned the same
   commit and exact tree in 82 bytes, 99.9533% lower. This supports the narrower
   LAB workflow practice only; it is not a token, network or LLM-benefit claim.
+- A final timing-only edit after checkpoint refresh changed `docs/SESSIONS.md` and
+  made four unrelated historical claims request 18 rereads on a clean clone.
+  Removing that broad dependency retained each exact record; a disposable append
+  replay produced 0 affected claims. This is correctness replay, not field utility.
 
 ## NEXT
 - Keep external contribution parked. Reopen only when current official evidence
@@ -143,6 +147,9 @@
 - Prefer native `git fetch` plus `rev-parse` for commit/tree receipts when the
   public remote and clone already exist. Revisit only if public Git is unavailable
   or a compact connector endpoint supplies the same identities; do not add a helper.
+- Keep append-only global logs out of historical claim dependency sets when the
+  exact observation/report and stable summary already represent the claim. Reopen
+  only if a material session detail becomes unavailable through those sources.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -217,6 +224,8 @@
     contribution guide can coexist with a maintainer-only PR channel.
 28. A connector commit receipt can return a full irrelevant diff yet omit the tree
     identity needed for publication verification, even for a public Git remote.
+29. A single post-refresh edit to an append-only global log can invalidate several
+    unrelated historical claims when their manifests cite that log wholesale.
 
 ## REJECTED
 - Use `pallets/click#3847` for the first agent-authored external contribution:
@@ -298,3 +307,6 @@
 - Build a remote-head receipt wrapper after one comparison: an existing native Git
   call already returned the required commit and tree. Keep the practice and retain
   connector fallback for cases where the public remote is unavailable.
+- Change checkpoint code after one broad-dependency false alarm: the claim manifest
+  already supports exact paths, and removing four redundant log edges solved the
+  replay without a new matcher, parser or policy exception.

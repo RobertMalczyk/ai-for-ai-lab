@@ -89,7 +89,8 @@
       "lab/observations/2026-10-04-edit-anchor-safety.json",
       "lab/reports/2026-10-04-edit-anchor-safety-field-trial.json",
       "lab/observations/2026-10-05-state-count-drift.json",
-      "lab/reports/2026-10-05-state-count-drift-field-trial.json"
+      "lab/reports/2026-10-05-state-count-drift-field-trial.json",
+      "lab/observations/2026-10-08-checkpoint-log-dependency.json"
     ]
   },
   {
@@ -127,7 +128,6 @@
       "lab/reports/2026-09-29-web-tool-discovery-field-trial.json",
       "lab/observations/2026-09-30-opus-tool-discovery-audit.json",
       "lab/observations/2026-09-30-targeted-tool-discovery-trace.json",
-      "docs/SESSIONS.md",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"
@@ -139,7 +139,6 @@
     "evidence": [
       "lab/observations/2026-09-29-fresh-clone-checkpoint-trace.json",
       "lab/reports/2026-09-29-fresh-clone-checkpoint-field-trial.json",
-      "docs/SESSIONS.md",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"
@@ -152,7 +151,6 @@
       "AGENTS.md",
       "lab/observations/2026-09-29-branch-audit-trace.json",
       "lab/sessions.jsonl",
-      "docs/SESSIONS.md",
       "ROADMAP.md",
       "STATE.md"
     ]
@@ -167,7 +165,6 @@
       "lab/observations/2026-09-30-test-entrypoint-replay.json",
       "lab/observations/2026-09-30-test-entrypoint-field-trace.json",
       "lab/sessions.jsonl",
-      "docs/SESSIONS.md",
       "ROADMAP.md",
       "STATE.md"
     ]

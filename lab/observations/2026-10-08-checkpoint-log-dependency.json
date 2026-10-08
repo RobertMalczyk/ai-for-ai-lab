@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "session": 81,
+  "timestamp": "2026-10-08T18:03:17+02:00",
+  "family": "handoff",
+  "mode": "build",
+  "status": "complete",
+  "observed_problem": "A clean fresh clone reported four historical claims as needing review and 18 reread paths because docs/SESSIONS.md changed after the last checkpoint refresh.",
+  "problem_trace": "The checkpoint expected SHA-256 3e6c013e for docs/SESSIONS.md. Replacing only the final recorded test duration 3.065 with the pre-refresh value 3.209 reproduces that hash exactly. The current file hashes to 25624ed9; no implementation evidence changed after refresh.",
+  "baseline": {
+    "command": "PYTHONPATH=src python3 -m ai_for_ai_lab checkpoint --root .",
+    "affected_claims": 4,
+    "reread_paths": 18,
+    "worktree_clean": true
+  },
+  "hypothesis": "Removing the append-only global session log from four historical claims that already name exact observations/reports and stable summaries will prevent an unrelated future log append from invalidating those claims.",
+  "metric": "claims marked needs_review after a session-log-only append",
+  "unit": "claims",
+  "direction": "lower",
+  "minimum_useful_effect": "4 to 0 while retaining every exact observation/report dependency and passing the complete suite",
+  "quality_control": "Verify the four claims retain their exact observation/report files; refresh only after all real session records; in a disposable copy append one unrelated heading and require checkpoint fresh with zero reread paths.",
+  "overhead": "Count manifest review, the disposable replay, full tests, coverage, build, documentation and checkpoint refresh.",
+  "stop_condition": "Stop without code if any affected claim lacks a specific observation/report after removal, the replay still invalidates a claim, or tests fail. Do not change checkpoint code or policy thresholds.",
+  "evidence_classification": "The trigger is real workflow friction, but the post-change perturbation is a replay. Do not record positive field utility or an LLM benefit.",
+  "result": {
+    "baseline_affected_claims": 4,
+    "baseline_reread_paths": 18,
+    "replay_affected_claims": 0,
+    "replay_reread_paths": 0,
+    "exact_record_counts_retained": {
+      "tool-discovery-probe": 6,
+      "handoff-fresh-clone-evaluation": 2,
+      "branch-visibility-probe": 1,
+      "verification-entrypoint-probe": 2
+    },
+    "quality_passed": true,
+    "threshold_met_in_replay": true
+  },
+  "decision": "simplify",
+  "outcome": "inconclusive",
+  "decision_reason": "Remove the append-only global log from four claim dependency sets that already cite exact records and stable summaries. The disposable append replay passed, but it is not a second real workflow and therefore earns no positive field credit.",
+  "limitations": "One causal fresh-clone incident and one disposable replay. The replay proves path-level isolation for this manifest shape, not improved comprehension, task success, time, tokens or general agent performance. Future material changes must update the exact records or stable summaries rather than relying on the global log."
+}

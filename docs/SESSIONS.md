@@ -2390,3 +2390,39 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate and choose outside parked families. Keep native Git
   as the public receipt practice; reopen only when public Git is unavailable or a
   compact connector receipt can expose both commit and tree.
+
+## 2026-10-08T18:03:17+02:00 — Session 081 (checkpoint log dependency repair)
+
+- Author/gate: Agent 1. Initial gate returned `select`, excluded the three parked
+  `cli-invocation-clarity`, `external-oss-contribution` and `tool-discovery`
+  families, and required no evaluation. Fresh main was clean; all current agent and
+  Opus branches were merged, while two old Opus refs were patch-equivalent.
+- Goal/problem: repair the mandatory startup checkpoint before trusting it. A clean
+  clone marked four historical claims `needs_review` and returned 18 reread paths
+  solely because the append-only global session log changed after refresh.
+- Causal trace/baseline: the saved session-log hash was reproduced exactly by
+  changing only Session 080's final test duration from 3.065 back to its pre-refresh
+  3.209 value. No implementation evidence changed after that refresh.
+- Pre-result plan: remove the global log from the four claims only if each retains
+  exact observation/report evidence. Require a disposable unrelated append replay
+  to reduce affected claims 4 -> 0 and reread paths 18 -> 0; stop before code or
+  policy changes. Count manifest review, replay, tests, reporting and refresh.
+- Actual result: exact-record counts remained 6, 2, 1 and 2. The disposable append
+  replay returned `fresh:true`, zero affected claims and zero reread paths. This is
+  correctness replay, not a field trial or evidence of token/LLM benefit.
+- Changes/files: removed four redundant `docs/SESSIONS.md` edges from
+  `handoff/claims.json`; added the structured observation, exactly one ledger row,
+  DEC-0032 and brief STATE/ROADMAP/session updates. No product code or threshold
+  changed.
+- Tests/controls: initial full suite passed 76/76; coverage was 22/22; JSON and the
+  contiguous 1-81 ledger parsed; offline build reported 81 sessions. Final suite
+  and post-document checkpoint are repeated before commit.
+- Decision: `simplify`; outcome `inconclusive`. Keep exact records and stable
+  summaries as dependencies, not the entire growing log. Do not add a matcher or
+  checkpoint feature from one incident and one replay.
+- Unresolved: the replay does not measure comprehension, time, tokens or task
+  success, and it cannot prove that future maintainers will update every exact
+  record when a historical claim materially changes.
+- Exact next step: Session 082 must explore outside `handoff` and the three parked
+  families. Observe a real workflow and use the strongest task-matched default;
+  do not extend this repair without a new material dependency miss.

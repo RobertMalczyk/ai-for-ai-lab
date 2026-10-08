@@ -35,6 +35,10 @@
   A bounded manual review of one real public narrative caught one completeness
   claim contradicted by a later audit. This supports review before reuse, not
   automatic validation; the first private episode still has no script to review.
+- Checkpoint scope: one post-refresh timing edit in the global session log marked
+  four unrelated historical claims stale and requested 18 rereads. Those claims
+  now cite exact records and stable summaries, not the append-only log; a disposable
+  append replay produced 0 affected claims. Utility remains inconclusive.
 - Public receipts: all 7 historical outcomes matched a replay audit. Agent 2 then
   made the 3 reconstructed receipts executable; Agent 1 ran all 6 sides verbatim,
   reducing reconstruction 3 -> 0. This is bounded workflow value, not LLM utility.
@@ -74,9 +78,8 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate and select outside the parked families. Use native Git for
-  public remote commit/tree receipts when an existing clone is available; revisit
-  only when public Git is unavailable or a compact connector receipt exists.
+- Next: run session_gate and follow its current selection/evaluation obligation.
+  Keep global append-only logs out of claim dependencies when exact records exist.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

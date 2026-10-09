@@ -2603,3 +2603,56 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate and pivot away from
   `external-bug-reproduction` after three consecutive work sessions. Do not turn
   this diagnosis into an upstream patch while contribution remains parked.
+
+## 2026-10-09T17:55:07+02:00 — Session 088 (evidence artifact availability)
+
+- Author/gate: Agent 1. Fresh main was clean at `8812e61` with tree
+  `e375c7bf`; 86 agent/Opus refs were merged and the two remaining old Opus refs
+  were patch-equivalent. Gate returned `explore`, excluded
+  `external-bug-reproduction` after a three-session streak, required no family
+  evaluation, and retained the three parked families.
+- Three candidates: (1) fresh `evidence-artifact-completeness` friction—the latest
+  causal record claimed preserved raw outputs but exposed only prose receipts and
+  hashes; (2) challenge the `no-merged` means unfinished-work assumption, rejected
+  because the same two patch-equivalent refs and native practice are already
+  documented; (3) compare broad exception-name counts with native summary lines,
+  deferred because the same raw log was unavailable and recreating it would repeat
+  the excluded pytest family. Candidate 1 had the strongest new trace and cheapest
+  falsifying test.
+- Goal/problem: determine whether a future agent can independently verify the two
+  exact raw-output hashes behind Session 087's reported baseline/intervention
+  counts from a fresh canonical checkout.
+- Pre-result plan: enumerate and hash every tracked file at main `8812e61`; require
+  2/2 underlying outputs and 2/2 reproduced hashes. Prose summaries, byte counts
+  and stored hash strings do not count as source bytes. Stop after resolving the
+  pair; do not rerun pytest, synthesize logs or build infrastructure. Metric:
+  available and hash-verifiable artifacts; unit: artifacts; higher is better;
+  threshold: 2/2. Count all startup, audit, documentation, test and publication
+  overhead.
+- Actual result: the two SHA-256 strings occur in the condensed receipt, but 0/2
+  tracked files match either hash and 0/2 raw outputs can be independently
+  rehashed. Searching all fetched commit text finds `8812e61` because it introduced
+  the hash references, not the underlying logs. The quality check passed because
+  all tracked files were hashed without filename assumptions; the threshold failed.
+- Changes/files: added one predeclared observation and one exact audit trace;
+  updated STATE/ROADMAP with the bounded evidence gap; appended exactly one ledger
+  row. No product code, external repository or prior evidence record was changed.
+- Decision: `simplify`; outcome `negative`; evidence `replay`. Reject the
+  assumption that a receipt plus hashes makes absent source bytes independently
+  auditable. For future count evidence, retain the smallest sanitized native
+  excerpts or explicitly label raw logs ephemeral. Do not build an evidence
+  manager. This does not refute Session 087's causal diagnosis or measure agent/LLM
+  utility.
+- Tests/controls: observation JSON parsed; ledger was contiguous 1-88; full LAB
+  suite passed 76/76 in 3.035 seconds; offline site build reported 88 sessions;
+  coverage/checkpoint and post-record gate are rechecked before commit.
+- Failures/overhead: the first targeted read guessed a nonexistent observation
+  filename and returned file-not-found. A later combined discovery command was
+  truncated, so the relevant records were read in bounded follow-ups. Neither
+  failure changed the predeclared threshold or produced substitute evidence.
+- Unresolved: the original output bytes and exact native pytest summary lines are
+  unavailable, so their recorded hashes and counts cannot be independently
+  recomputed. Truthfulness at creation time was not tested.
+- Exact next step: run the gate and choose a natural allowed family. Revisit
+  evidence availability only when a new experiment claims preserved source bytes;
+  do not rerun pytest #14775 or create an artifact manager.

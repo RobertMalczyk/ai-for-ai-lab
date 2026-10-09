@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "session": 88,
+  "timestamp": "2026-10-09T17:55:07+02:00",
+  "family": "evidence-artifact-completeness",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ],
+    "reasons": [
+      "scheduled_exploration",
+      "family_streak_limit"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "evidence-artifact-completeness",
+      "kind": "fresh_observed_friction",
+      "observed_friction": "Session 087 says raw baseline and intervention outputs were preserved and publishes their byte counts and SHA-256 values, but the referenced tracked trace contains only prose receipts; a fresh checkout has no named raw-output artifacts to hash.",
+      "evidence": "lab/observations/2026-10-09-pytest-14775-cause-validation.json and lab/observations/traces/2026-10-09-pytest-14775-cause-validation.txt",
+      "potential_agent_value": "A later agent can distinguish an independently auditable experiment from a receipt whose source bytes disappeared, avoiding unsupported reclassification of summarized counts.",
+      "cheapest_falsifying_test": "In a fresh checkout, resolve the two claimed raw outputs to tracked files and recompute both published SHA-256 values.",
+      "simpler_alternative": "When full logs are too noisy, track only the sanitized native summary excerpts whose exact counts support the claim; do not add an evidence manager.",
+      "cost": "One bounded availability/hash audit plus documentation.",
+      "novelty": "The latest external diagnosis is the first selected case where a quality-control statement can be checked directly against the fresh-checkout artifact boundary."
+    },
+    {
+      "family": "branch-work-classification",
+      "kind": "old_assumption_to_challenge",
+      "observed_friction": "The required no-merged audit still lists two Opus refs even though git cherry marks both patch-equivalent to main.",
+      "evidence": "Current branch audit plus repeated prior session records.",
+      "potential_agent_value": "Avoid treating rebased or cherry-picked work as unfinished.",
+      "cheapest_falsifying_test": "Compare the no-merged set with git cherry for both refs.",
+      "simpler_alternative": "Retain the existing native two-step practice.",
+      "cost": "Two git queries.",
+      "novelty": "Low: the same two refs and practice have already been documented repeatedly, so this candidate is rejected as repetition."
+    },
+    {
+      "family": "test-result-classification",
+      "kind": "different_simple_approach",
+      "observed_friction": "Exception names can appear several times in a pytest traceback, so broad substring counts may not equal summary error counts.",
+      "evidence": "The Session 087 receipt reports one AssertionError while its original raw output is not present in the fresh checkout.",
+      "potential_agent_value": "Use native short-summary entries for exact outcome counts rather than adding a parser.",
+      "cheapest_falsifying_test": "Compare broad substring counts with anchored native summary-line counts on the same preserved real log.",
+      "simpler_alternative": "Read the short test summary manually for a two-test case.",
+      "cost": "One comparison if the original log exists.",
+      "novelty": "Potentially new, but the required same-log evidence is unavailable; testing it now would require manufacturing or rerunning the excluded pytest family."
+    }
+  ],
+  "selected_candidate": "evidence-artifact-completeness",
+  "real_task": "Audit whether a future agent can independently verify the exact baseline/intervention counts supporting Session 087's causal diagnosis from a fresh canonical checkout.",
+  "observed_problem": "The observation's quality control says to preserve outputs, while its tracked trace supplies hashes and prose summaries but does not name tracked raw-output paths.",
+  "problem_trace": "lab/observations/2026-10-09-pytest-14775-cause-validation.json and lab/observations/traces/2026-10-09-pytest-14775-cause-validation.txt",
+  "baseline": "Treat the published observation plus condensed trace and hashes as sufficient evidence availability without resolving the underlying bytes.",
+  "hypothesis": "A fresh-checkout artifact audit will show that both claimed raw outputs are available as tracked files and reproduce their published SHA-256 values.",
+  "metric": "claimed raw outputs available and hash-verifiable in the fresh checkout",
+  "unit": "artifacts",
+  "direction": "higher",
+  "minimum_useful_effect": "Both 2 of 2 raw outputs must be available and reproduce their published hashes; anything less rejects the sufficiency assumption.",
+  "quality_control": "Use the clean checkout at main 8812e61; search tracked paths and the two explicit evidence records; require actual bytes for sha256sum rather than accepting prose, byte counts or hashes as substitutes.",
+  "overhead": "Count startup reading, candidate comparison, tracked-file search, record inspection, documentation, LAB tests, checkpoint refresh and publication.",
+  "stop_condition": "Stop after resolving or failing to resolve the two claimed outputs. Do not recreate the pytest environment, rerun the excluded bug family, synthesize logs, or build an evidence tool.",
+  "result": {
+    "main_commit": "8812e61b46c9c91dcf2157c66c7234cb8194e07e",
+    "claimed_raw_outputs": 2,
+    "tracked_raw_outputs_found": 0,
+    "published_hashes_reproduced": 0,
+    "hash_references_found": 2,
+    "minimum_useful_effect_met": false,
+    "quality_passed": true,
+    "trace": "lab/observations/traces/2026-10-09-evidence-artifact-availability.txt"
+  },
+  "decision": "simplify",
+  "outcome": "negative",
+  "decision_reason": "Reject the assumption that a condensed receipt plus hashes makes the underlying outputs independently auditable. Keep no new helper: for future count-based evidence, track the small sanitized native summary excerpts whose bytes support the counts, or state explicitly that raw outputs were ephemeral.",
+  "failures": [
+    "Neither published SHA-256 value matched any tracked file in the fresh checkout.",
+    "The raw-output files were ephemeral and unavailable; the audit therefore cannot independently verify the reported category counts from source bytes."
+  ],
+  "limitations": "This availability audit does not contradict Session 087's causal diagnosis and did not rerun pytest. It checks only whether the two stated raw outputs are independently auditable from the canonical repository, not whether their recorded hashes or prose summaries were truthful when created."
+}

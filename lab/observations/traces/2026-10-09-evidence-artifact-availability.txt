@@ -1,0 +1,35 @@
+Session 088 — evidence artifact availability audit
+Timestamp: 2026-10-09T17:55:07+02:00
+Repository commit: 8812e61b46c9c91dcf2157c66c7234cb8194e07e
+
+Claimed raw-output hashes from Session 087:
+- baseline: e429ee47f7127a4b42e19091542b7578df97ef8eb16852bfed5a658fc99b3a93
+- intervention: 9ac153bb7e550e9cdbd0cb0de352602bcb3c2008778645abcdc422ec3845076c
+
+Audit procedure:
+1. Enumerate current tracked files with `git ls-files`.
+2. Search tracked paths for pytest-14775, baseline, intervention and raw.
+3. Hash every tracked file and compare with both published hashes.
+4. Search all fetched commit text for both hashes to distinguish a reference from
+   the underlying bytes.
+
+Observed result:
+- hash references found in the condensed Session 087 trace: 2/2;
+- tracked files matching either raw-output hash: 0/2;
+- raw outputs available for independent re-hashing: 0/2;
+- the all-history text search finds commit 8812e61 only because it introduced the
+  two hash strings in the receipt, not because it contains either raw log.
+
+Quality check:
+- the fresh checkout was clean and based on the exact current main commit;
+- every tracked file was hashed, so filename guessing was not used;
+- prose receipts, sizes and precomputed hash strings were not treated as source
+  bytes.
+
+Interpretation:
+The availability threshold of 2/2 was not met. The condensed trace preserves a
+useful receipt but cannot support independent recounting or hash verification of
+the two native pytest outputs. This does not refute the causal diagnosis. Future
+count-based evidence should retain the exact sanitized native summary excerpts, or
+say plainly that the raw logs were ephemeral. No parser or evidence service is
+justified by this one audit.

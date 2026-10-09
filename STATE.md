@@ -66,6 +66,10 @@
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
+- Evidence availability: the follow-up fresh-checkout audit found references to
+  both Session 087 raw-output hashes but 0/2 underlying tracked files. The causal
+  diagnosis is unchanged; future count-based evidence should retain exact
+  sanitized native excerpts or label raw logs ephemeral. No helper is warranted.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive. Final-section-
@@ -86,9 +90,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate and obey the expected family pivot after three consecutive
-  external-bug-reproduction work sessions. Do not turn the confirmed pytest cause
-  into an upstream patch while external contribution remains parked.
+- Next: run session_gate and choose a natural allowed family. Do not rerun pytest
+  #14775, build an evidence manager, or revisit this availability audit without a
+  new claim that preserved source bytes are independently auditable.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

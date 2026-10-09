@@ -119,6 +119,10 @@
   test changed warning+internal-assertion into two intended warning errors by
   moving fixture resolution into the existing failure-cache block. This confirms
   the narrow ordering hypothesis, not a complete or upstream-ready fix.
+- A fresh-checkout audit of that causal experiment found both published SHA-256
+  references but 0/2 underlying raw-output artifacts. The receipt remains useful,
+  but its exact counts cannot be independently recomputed from canonical files.
+  This is an evidence-boundary failure, not a refutation of the diagnosis.
 
 ## NEXT
 - Keep external contribution parked. Reopen only when current official evidence
@@ -168,6 +172,9 @@
 - Stop pytest #14775 work at the confirmed causal diagnosis. Do not prepare or
   submit an upstream patch while `external-oss-contribution` remains parked; the
   next session must follow the gate's family pivot.
+- For future count-based experiment evidence, track the smallest sanitized native
+  excerpts that support the counts, or state that source logs were ephemeral.
+  Revisit only after a new preservation claim fails; do not build a manager.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -246,6 +253,8 @@
     unrelated historical claims when their manifests cite that log wholesale.
 30. A shallow clone can be non-equivalent for a setuptools_scm project: current
     pytest resolved as `0.1.dev1` and rejected its own test run before collection.
+31. A receipt can publish byte counts and SHA-256 values for ephemeral raw outputs
+    while leaving a fresh checkout unable to recompute either hash or count.
 
 ## REJECTED
 - Use `pallets/click#3847` for the first agent-authored external contribution:
@@ -337,3 +346,6 @@
 - Treat the one-line-ordering experiment for pytest #14775 as an upstream-ready
   fix: it passed one MWE only and did not run pytest's regression suite, alternate
   fixture scopes or plugin interactions.
+- Build an evidence artifact manager after one availability failure: exact
+  sanitized native excerpts or an explicit ephemeral label address the observed
+  boundary without new infrastructure.

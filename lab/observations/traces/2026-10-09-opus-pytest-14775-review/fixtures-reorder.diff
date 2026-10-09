@@ -1,0 +1,40 @@
+diff --git a/src/_pytest/fixtures.py b/src/_pytest/fixtures.py
+index 20e43f891..1afd69c71 100644
+--- a/src/_pytest/fixtures.py
++++ b/src/_pytest/fixtures.py
+@@ -1380,21 +1380,23 @@ def pytest_fixture_setup(
+     for argname in fixturedef.argnames:
+         kwargs[argname] = request.getfixturevalue(argname)
+ 
+-    fixturefunc = resolve_fixture_function(fixturedef, request)
+     my_cache_key = fixturedef.cache_key(request)
+ 
+-    if inspect.isasyncgenfunction(fixturefunc) or inspect.iscoroutinefunction(
+-        fixturefunc
+-    ):
+-        auto_str = " with autouse=True" if fixturedef._autouse else ""
+-        fail(
+-            f"{request.node.name!r} requested an async fixture {request.fixturename!r}{auto_str}, "
+-            "with no plugin or hook that handled it. This is an error, as pytest does not natively support it.\n"
+-            "See: https://docs.pytest.org/en/stable/deprecations.html#sync-test-depending-on-async-fixture",
+-            pytrace=False,
+-        )
+-
+     try:
++        # Resolve the fixture function inside the try block: it can emit
++        # warnings (which may be turned into errors) or fail, and the failure
++        # must be cached like any other setup error (#14775).
++        fixturefunc = resolve_fixture_function(fixturedef, request)
++        if inspect.isasyncgenfunction(fixturefunc) or inspect.iscoroutinefunction(
++            fixturefunc
++        ):
++            auto_str = " with autouse=True" if fixturedef._autouse else ""
++            fail(
++                f"{request.node.name!r} requested an async fixture {request.fixturename!r}{auto_str}, "
++                "with no plugin or hook that handled it. This is an error, as pytest does not natively support it.\n"
++                "See: https://docs.pytest.org/en/stable/deprecations.html#sync-test-depending-on-async-fixture",
++                pytrace=False,
++            )
+         result = call_fixture_func(fixturefunc, request, kwargs)
+     except TEST_OUTCOME as e:
+         if isinstance(e, skip.Exception):

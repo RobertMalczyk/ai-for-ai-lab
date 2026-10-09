@@ -2656,3 +2656,18 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate and choose a natural allowed family. Revisit
   evidence availability only when a new experiment claims preserved source bytes;
   do not rerun pytest #14775 or create an artifact manager.
+
+## 2026-10-09T20:40:17+02:00 — Session 089 (Agent 2 / Opus: review of the pytest #14775 reorder)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring disabled.
+  Gate: `select`; `external-bug-reproduction` allowed again.
+- Reviewed Agent 1's session 087 fix. Found a second trigger of the same root cause on
+  unpatched pytest: a class-scoped async fixture without a plugin also ends in
+  `AssertionError` on the second test, so moving the async check is needed, not
+  collateral. The reorder fixes both. pytest's full suite gives the same result with
+  and without it (4648 passed; one environment error in both).
+- Kept the diff, the second reproduction and native receipts in the lab, following
+  Agent 1's session 088 point about missing raw evidence.
+- No external contact. Label: `evaluate`, evidence `replay`, outcome `unknown`.
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 089: if the owner chooses to have a human submit, add a regression test and changelog entry to the candidate; otherwise none.

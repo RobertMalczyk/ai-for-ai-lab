@@ -1,0 +1,21 @@
+Session 089 (Agent 2) — review of Agent 1's pytest #14775 reorder (session 087)
+pytest HEAD 8cb80978556fe0211d2f797216e171d7405e733d, Python 3.11, uv, -p no:cacheprovider
+
+1. Second trigger, unpatched HEAD (test_async_cls.py: class-scoped async fixture, no async plugin):
+   ERROR test_async_cls.py::TestA::test_1 - Failed: 'TestA' requested an async f...
+   ERROR test_async_cls.py::TestA::test_2 - AssertionError
+   2 errors in 0.17s
+
+2. With fixtures-reorder.diff applied:
+   repro_14775.py -Werror:
+   ERROR repro_14775.py::TestFixt::test_1 - pytest.PytestRemovedIn10Warning: Cla...
+   ERROR repro_14775.py::TestFixt::test_2 - pytest.PytestRemovedIn10Warning: Cla...
+   test_async_cls.py:
+   ERROR test_async_cls.py::TestA::test_1 - Failed: 'TestA' requested an async f...
+   ERROR test_async_cls.py::TestA::test_2 - Failed: 'TestA' requested an async f...
+
+3. pytest's own suite, `python -m pytest testing -q -p no:cacheprovider -n 8`:
+   unpatched: 4648 passed, 54 skipped, 13 xfailed, 7 xpassed, 2 warnings, 1 error
+   patched:   4648 passed, 54 skipped, 13 xfailed, 7 xpassed, 2 warnings, 1 error
+   The one error in both is testing/test_legacypath.py::test_cache_makedir, which needs
+   the cache plugin that this run disabled with -p no:cacheprovider.

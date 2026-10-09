@@ -83,3 +83,4 @@
 {"session":83,"family":"external-oss-contribution","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-09-opus-drift-and-lab-candidate.json"}
 {"session":84,"family":"external-bug-reproduction","mode":"build","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-09-pytest-14775-reproduction.json"}
 {"session":85,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-09-opus-pytest-14775-replication.json"}
+{"session":86,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-09.md"}

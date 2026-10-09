@@ -247,6 +247,14 @@
     ]
   },
   {
+    "id": "external-bug-reproduction",
+    "text": "The bounded pytest issue reproduction attempt and its inconclusive environment result are represented by exact records.",
+    "evidence": [
+      "lab/observations/2026-10-09-pytest-14775-reproduction.json",
+      "lab/observations/traces/2026-10-09-pytest-14775-reproduction.txt"
+    ]
+  },
+  {
     "id": "public-cooperation-protocol",
     "text": "The public cooperation protocol and shared artifact schema preserve existing selection policies and contain no private service data.",
     "evidence": [

@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "session": 84,
+  "timestamp": "2026-10-09T05:57:04+02:00",
+  "family": "external-bug-reproduction",
+  "mode": "select",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ]
+  },
+  "selection_reason": "Agent 2 challenged three consecutive LAB-internal Agent 1 sessions. A current open pytest bug supplies a real outside task while stopping before the parked contribution/contact boundary.",
+  "real_task": "Verify whether pytest-dev/pytest issue 14775 still reproduces on the current upstream default branch and identify the first project source location of any unintended internal AssertionError.",
+  "observed_problem": "Issue 14775 reports that treating the intended class-scoped fixture deprecation as an error also produces a second internal AssertionError while setting up the next test.",
+  "problem_trace": "https://github.com/pytest-dev/pytest/issues/14775, returned open and unassigned by the current GitHub issue search on 2026-10-09.",
+  "baseline": "The issue's observed command on commit ced9022 reports two setup errors: the intended PytestRemovedIn10Warning and one unintended internal AssertionError at src/_pytest/fixtures.py.",
+  "hypothesis": "The exact minimal example on current upstream HEAD still produces one unintended internal AssertionError in addition to the intended warning under Python 3.14; if the exact interpreter is unavailable, the result is inconclusive rather than extrapolated from another Python version.",
+  "metric": "unintended internal AssertionError occurrences in the exact reproduction",
+  "unit": "errors",
+  "direction": "lower",
+  "minimum_useful_effect": "For a fix signal, reduce 1 to 0 while still surfacing the intended warning. For triage, exact reproduction with 1 error is useful current-status evidence but not a utility improvement.",
+  "quality_control": "Use a fresh upstream clone, record exact commit and Python/pytest versions, preserve the MWE and raw output, and locate the first project source frame. Do not substitute Python 3.11/3.13 for the issue's Python 3.14 condition without labeling it non-equivalent.",
+  "overhead": "Count clone, environment setup, reproduction, source inspection, LAB tests, documentation, checkpoint and publication.",
+  "stop_condition": "Stop after three task-specific actions or immediately if Python 3.14/current pytest cannot run. Do not patch upstream, fork, open a PR, contact maintainers or reinterpret this as reopening external-oss-contribution.",
+  "scope": "External diagnosis only. A reproduced bug is not a contribution, agent-utility gain or maintainer acceptance signal.",
+  "result": {
+    "upstream_commit": "8cb80978556fe0211d2f797216e171d7405e733d",
+    "upstream_tree": "1aec60177bcd41d223f95bcb6ed94e88c9c63d9a",
+    "python": "3.14.8",
+    "resolved_pytest": "0.1.dev1+g8cb809785",
+    "command_exit_code": 4,
+    "reproduction_reached": false,
+    "unintended_assertion_errors": null,
+    "quality_passed": false,
+    "stop_condition_fired": true,
+    "blocker": "The depth-1 clone lacked version history/tags needed by setuptools_scm, so pytest identified itself as 0.1.dev1 and its own minversion=2.0 check stopped collection."
+  },
+  "decision": "continue",
+  "outcome": "inconclusive",
+  "decision_reason": "The exact Python 3.14 environment was available, but the cheapest clone was not semantically equivalent for pytest's SCM-derived version. Preserve the failure and test one full-history/tag-aware checkout next time; do not classify issue 14775 or build a patch yet.",
+  "failures": [
+    "The exact reproduction exited 4 before collection because the shallow clone resolved pytest as version 0.1.dev1, below the repository's configured minversion 2.0."
+  ],
+  "limitations": "No issue behavior was observed, no source frame was localized and the metric was not measured. One setup attempt installed Python 3.14.8 and 25 packages; this overhead is retained. The result says nothing about whether issue 14775 is fixed, reproducible, suitable for a patch or accepted by maintainers."
+}

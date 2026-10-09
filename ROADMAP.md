@@ -111,6 +111,10 @@
   the complete log and exposing a 138-byte success receipt retained exit code,
   76-test count, `OK`, duration and log hash (98.46% less). This supports only a
   LAB shell practice; the failure branch and a second consumer remain unevaluated.
+- The first current-head reproduction attempt for pytest #14775 used exact Python
+  3.14 but stopped before collection: a depth-1 clone made setuptools_scm resolve
+  pytest as `0.1.dev1`, below its own `minversion=2.0`. This is an environment
+  failure, not evidence that the reported bug reproduces or is fixed.
 
 ## NEXT
 - Keep external contribution parked. Reopen only when current official evidence
@@ -157,6 +161,9 @@
 - Keep full verification logs locally and emit a compact receipt only on success;
   expose the complete log on failure. Do not change `run_tests.py` or build a
   wrapper. Revisit after a natural failure or a second independent consumer.
+- If the gate permits, retry pytest #14775 once with full SCM version evidence
+  (full history or sufficient tags), Python 3.14 and the exact MWE. Stop after
+  reproduction plus first source frame; no upstream patch or contact.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -233,6 +240,8 @@
     identity needed for publication verification, even for a public Git remote.
 29. A single post-refresh edit to an append-only global log can invalidate several
     unrelated historical claims when their manifests cite that log wholesale.
+30. A shallow clone can be non-equivalent for a setuptools_scm project: current
+    pytest resolved as `0.1.dev1` and rejected its own test run before collection.
 
 ## REJECTED
 - Use `pallets/click#3847` for the first agent-authored external contribution:
@@ -319,3 +328,5 @@
   replay without a new matcher, parser or policy exception.
 - Build a quiet test runner after one successful output comparison: shell-level
   capture retained the full log and produced the bounded LAB benefit without code.
+- Classify pytest #14775 from the first attempt: collection never began, so neither
+  reproduction nor absence of the internal AssertionError was observed.

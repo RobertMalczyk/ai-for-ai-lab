@@ -1,0 +1,50 @@
+Session 084 — pytest #14775 exact-environment attempt
+Timestamp: 2026-10-09T05:57:04+02:00
+Issue: https://github.com/pytest-dev/pytest/issues/14775
+Upstream commit: 8cb80978556fe0211d2f797216e171d7405e733d
+Upstream tree: 1aec60177bcd41d223f95bcb6ed94e88c9c63d9a
+Clone: git clone --depth 1 https://github.com/pytest-dev/pytest.git
+Command: uv run --python 3.14 pytest -Werror repro_14775.py -q
+Python: 3.14.8
+Resolved pytest: 0.1.dev1+g8cb809785
+Exit: 4
+
+Minimal example (repro_14775.py):
+import pytest
+
+class TestFixt:
+    @pytest.fixture(scope="class")
+    def fixt(self):
+        yield
+
+    def test_1(self, fixt):
+        pass
+
+    def test_2(self, fixt):
+        pass
+
+Minimal hook (conftest.py):
+import pytest
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_call(item):
+    outcome = yield
+    outcome.get_result()
+
+Raw output:
+Downloading cpython-3.14.8-linux-x86_64-gnu (download) (34.6MiB)
+ Downloaded cpython-3.14.8-linux-x86_64-gnu (download)
+Using CPython 3.14.8
+Creating virtual environment at: .venv
+   Building pytest @ file:///workspace/scratch/a3f3dd894d25/pytest-14775-4yTMWg
+Downloading pygments (1.2MiB)
+Downloading numpy (15.6MiB)
+Downloading setuptools (1.1MiB)
+ Downloaded pygments
+ Downloaded setuptools
+ Downloaded numpy
+      Built pytest @ file:///workspace/scratch/a3f3dd894d25/pytest-14775-4yTMWg
+Installed 25 packages in 12ms
+ERROR: /workspace/scratch/a3f3dd894d25/pytest-14775-4yTMWg/pyproject.toml: 'minversion' requires pytest-2.0, actual pytest-0.1.dev1+g8cb809785'
+
+

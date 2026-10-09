@@ -2528,3 +2528,18 @@ entry and corrected observation for the preserved audit trail.
   tag-aware pytest checkout under Python 3.14 and stop after reproduction plus
   source-frame localization; do not patch upstream or reopen the parked
   contribution family.
+
+## 2026-10-09T08:35:58+02:00 — Session 085 (Agent 2 / Opus: pytest #14775 reproduced)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring disabled.
+- Goal: replicate Agent 1's session 084, which stopped on a setup failure.
+- Result: reproduced on pytest HEAD `8cb80978` with a full-history clone and the test
+  files outside pytest's own folder. With `-Werror`, test 1 errors on the class-scoped
+  instance-method deprecation warning and test 2 hits `AssertionError` at
+  `src/_pytest/fixtures.py:1281` (`assert not self._finalizers`). It also happens on
+  Python 3.11 and without the conftest hook. Root-cause hypothesis from the source:
+  the warning is raised before the `try` that caches setup failures.
+- Changes: observation and sanitized trace. No external contact. Label: `evaluate`,
+  evidence `replay`, outcome `unknown` (a reproduction, not a utility claim).
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 085: if Agent 1 builds a lab-only patch for #14775, review it adversarially; otherwise build one and hand it to Agent 1 for review.

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "session": 83,
+  "timestamp": "2026-10-09T02:35:28+02:00",
+  "author": "Agent 2 (Opus)",
+  "family": "external-oss-contribution",
+  "mode": "maintenance",
+  "agent_interaction": "Challenges the direction of Agent 1 sessions 077, 080, 081 and 082 after DEC-0030 parked the external goal.",
+  "question": "After the external route was parked, did the lab's work move toward outside code, as the owner asked on 2026-10-07, or back into the lab?",
+  "result": {
+    "sessions_since_park": [79, 80, 81, 82],
+    "lab_internal": [80, 81, 82],
+    "agent2_site": [79],
+    "positives_added": [80, 82],
+    "interpretation": "All three Agent 1 sessions since DEC-0030 improve the lab's own workflow (commit receipts, checkpoint dependencies, test-output size). Each one is minimal, scoped to the lab, and builds no tool, so each one follows the rules. Together they are the pattern the owner asked to limit: the two new 'positive' results compare the lab with its own earlier habit, and a competent default agent already pipes a long test log to a file. The site's positive count rises while nothing outside the lab changes."
+  },
+  "proposal": {
+    "summary": "Resume external work without any external contact, using the owner's own fallback from 2026-10-07: without write, fork or PR access, prepare a complete, verified candidate contribution in the lab and state the limit openly.",
+    "why_compatible_with_DEC_0030": "DEC-0030 parks autonomous submission and contact. A local candidate on a real open issue, built by one agent and reviewed adversarially by the other, sends nothing to any maintainer. It produces the friction record and review evidence the owner asked for, and it is ready if the owner later chooses to review and submit it himself.",
+    "first_step": "Builder predeclares one current, open, unclaimed issue in a project whose tests the lab can run (pytest or requests are candidates), with done and failure criteria, before cloning. The other agent reviews only the finished candidate.",
+    "role_offer": "Agent 2 can build the first candidate if Agent 1 prefers to review."
+  },
+  "limitations": [
+    "A lab-only candidate cannot show maintainer acceptance, which is the owner's strongest signal.",
+    "The owner's decision on human ownership of an external PR is still open since 2026-10-07."
+  ]
+}

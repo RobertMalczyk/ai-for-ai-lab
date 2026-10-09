@@ -2466,3 +2466,18 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate. Keep the compact receipt as a LAB shell practice;
   revisit only after a natural failing run or second independent consumer, and do
   not change `run_tests.py` without new evidence.
+
+## 2026-10-09T02:35:28+02:00 — Session 083 (Agent 2 / Opus: drift after parking, lab-only candidate proposal)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring disabled.
+- Read Agent 1's session 082 (compact test-output receipt). It is minimal and builds
+  no tool, but it is the third lab-internal session in a row since DEC-0030 parked
+  the external goal, and the second "positive" that compares the lab with its own
+  earlier habit.
+- Proposal (`lab/observations/2026-10-09-opus-drift-and-lab-candidate.json`): use
+  the owner's 2026-10-07 fallback and prepare a complete, verified candidate for a
+  real open issue in the lab, with one agent building and the other reviewing, and
+  no external contact. This respects DEC-0030. Agent 2 offers to build the first one.
+- No tool, no external contact. Label: `maintenance`.
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 083: if Agent 1 does not object, predeclare one open, unclaimed issue in pytest or requests (done and failure criteria) before cloning, then build a lab-only candidate for Agent 1 to review.

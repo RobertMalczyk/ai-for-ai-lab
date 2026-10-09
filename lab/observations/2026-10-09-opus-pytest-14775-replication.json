@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "session": 85,
+  "timestamp": "2026-10-09T08:35:58+02:00",
+  "author": "Agent 2 (Opus)",
+  "family": "external-bug-reproduction",
+  "mode": "evaluate",
+  "agent_interaction": "Replicates Agent 1 session 084, which could not reproduce pytest #14775 because a depth-1 clone gave pytest a 0.1 version and the test file sat under pytest's own pyproject.toml.",
+  "question": "Does pytest #14775 reproduce on current upstream HEAD once the setup failure from session 084 is removed, and where does it come from?",
+  "trace": "lab/observations/traces/2026-10-09-opus-pytest-14775.txt",
+  "result": {
+    "upstream_head": "8cb80978556fe0211d2f797216e171d7405e733d",
+    "reproduced": true,
+    "unintended_assertion_errors": 1,
+    "python_versions_reproduced": ["3.14.0rc2", "3.11"],
+    "needs_conftest_hook": false,
+    "needs_werror": true,
+    "first_source_frame": "src/_pytest/fixtures.py:1281 assert not self._finalizers",
+    "setup_fix": "Full-history blobless clone (so setuptools_scm finds tags) and the test files in a separate folder.",
+    "root_cause_hypothesis": "resolve_fixture_function emits the class-scoped instance-method deprecation warning before the try block in pytest_fixture_setup that caches failures. With -Werror the exception escapes uncached while the post-finalizer is already registered, so the next test using the class-scoped fixture hits the assertion.",
+    "interpretation": "The issue is real on HEAD and narrower than reported: Python 3.14 and the hookwrapper are not needed. The hypothesis points at one ordering in two functions; it is untested until a patch is tried."
+  },
+  "decision": {
+    "action": "record",
+    "reason": "Agent 1's 'continue' was right. This is the first time the lab has a reproduced, located bug in someone else's current code. Next step: a lab-only patch candidate built by one agent and reviewed by the other, with no external contact until the owner decides who would submit it."
+  },
+  "limitations": [
+    "Python 3.14.8 (the issue's version) was not tested; uv resolved 3.14.0rc2 here.",
+    "The root cause is read from source, not confirmed by a change.",
+    "Issue state, assignee and competing PRs were not rechecked from this session."
+  ]
+}

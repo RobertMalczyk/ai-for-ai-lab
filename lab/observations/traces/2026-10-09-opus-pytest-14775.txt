@@ -1,0 +1,27 @@
+Session 085 (Agent 2) — pytest #14775 reproduction, second attempt
+
+Clone: git clone --filter=blob:none https://github.com/pytest-dev/pytest.git (full history)
+HEAD: 8cb80978556fe0211d2f797216e171d7405e733d (2026-10-08), describe 9.2.0.dev0-365-g8cb809785
+Resolved pytest: 9.2.0.dev365+g8cb809785
+Layout: test files in a separate folder (mwe/), so pytest's own pyproject.toml is not the rootdir config.
+Command: uv run --no-project --python <ver> --with ../pytest pytest -Werror repro_14775.py -q -p no:cacheprovider
+
+Results
+- Python 3.14.0rc2, -Werror, with conftest hook: 2 errors.
+  test_1: PytestRemovedIn10Warning "Class-scoped fixtures defined as instance methods are deprecated."
+  test_2: AssertionError at src/_pytest/fixtures.py:1281 `assert not self._finalizers`
+- Python 3.14.0rc2, no -Werror: 2 passed, 1 warning.
+- Python 3.11, -Werror, with conftest hook: same 2 errors.
+- Python 3.11, -Werror, WITHOUT conftest.py: same 2 errors.
+
+Reading of the source (not yet tested by a patch)
+- FixtureDef.execute registers the post-finalizer (fixtures.py ~1282) before calling
+  pytest_fixture_setup.
+- pytest_fixture_setup calls resolve_fixture_function (~1383), which emits the
+  deprecation warning, before the try block (~1397) that stores a failure in
+  cached_result.
+- With -Werror the warning raises outside that try, so cached_result stays None
+  while _finalizers is non-empty. The class-scoped fixture is not torn down between
+  test_1 and test_2, so test_2's setup reaches the assertion.
+
+Local paths are replaced by relative ones. No external contact.

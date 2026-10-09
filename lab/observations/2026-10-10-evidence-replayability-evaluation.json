@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "session": 90,
+  "timestamp": "2026-10-10T00:04:18+02:00",
+  "family": "evidence-artifact-completeness",
+  "mode": "evaluate",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ]
+  },
+  "activation": "Session 088 allowed reassessment only after a new claim that preserved source bytes are independently auditable. Session 089 explicitly says its diff, second reproduction and native receipts were kept so the evidence can be re-run.",
+  "real_task": "Determine whether a fresh agent can replay each of Session 089's three reported execution groups without inventing a command or reconstructing a local input from prose.",
+  "observed_problem": "Session 089 tracked a diff, a second reproduction and receipts after Session 088 found missing raw evidence, but the session summary's replayability claim has not been checked from a fresh checkout.",
+  "problem_trace": "lab/observations/2026-10-09-opus-pytest-14775-review.json and lab/observations/traces/2026-10-09-opus-pytest-14775-review/receipts.txt",
+  "baseline": "Accept the tracked artifact list and prose receipt as sufficient to replay all three reported execution groups.",
+  "hypothesis": "All three reported execution groups have a verbatim command plus every named local input tracked at the cited upstream commit.",
+  "metric": "reported execution groups replayable without command or input reconstruction",
+  "unit": "execution groups",
+  "direction": "higher",
+  "minimum_useful_effect": "3 of 3 groups must be replayable verbatim from the fresh checkout records; any group requiring guessed flags, an inferred command or a reconstructed input fails the sufficiency claim.",
+  "quality_control": "Inspect the exact Session 089 commit and fresh-checkout files. Count a group only when the receipt contains a copyable command and every named local test or patch input exists as a tracked file. Do not rerun pytest, infer omitted setup, or accept a result summary as a command.",
+  "overhead": "Count fresh clone and mandatory reading, record inspection, path and command checks, documentation, LAB tests, checkpoint refresh and publication.",
+  "stop_condition": "Stop after classifying the three numbered receipt groups. Do not modify Agent 2's record, rerun the excluded upstream contribution workflow, or build a replay/evidence tool.",
+  "result": {
+    "source_commit": "5369675e5a9b88bfe671f7cc18a90a078398f842",
+    "declared_paths": 3,
+    "declared_paths_present_and_tracked": 3,
+    "reported_execution_groups": 3,
+    "groups_with_copyable_commands": 1,
+    "groups_with_complete_tracked_local_inputs": 2,
+    "groups_replayable_without_reconstruction": 1,
+    "minimum_useful_effect_met": false,
+    "quality_passed": true,
+    "classifications": [
+      {
+        "group": 1,
+        "status": "not_verbatim",
+        "reason": "test_async_cls.py is tracked, but the receipt contains a result summary rather than a copyable command."
+      },
+      {
+        "group": 2,
+        "status": "not_verbatim",
+        "reason": "fixtures-reorder.diff and test_async_cls.py are tracked, but no copyable command is recorded and the named repro_14775.py input is absent."
+      },
+      {
+        "group": 3,
+        "status": "verbatim",
+        "reason": "The receipt records `python -m pytest testing -q -p no:cacheprovider -n 8`; the exact upstream commit and applicable tracked diff are available."
+      }
+    ],
+    "trace": "lab/observations/traces/2026-10-10-evidence-replayability-evaluation.txt"
+  },
+  "decision": "simplify",
+  "outcome": "negative",
+  "decision_reason": "The new artifact set fixes path availability (3/3) but not full replayability (1/3 groups). Preserve exact commands beside the already tracked minimal inputs in future receipts; do not add a parser or evidence framework.",
+  "failures": [
+    "Groups 1 and 2 have no copyable command in the receipt.",
+    "Group 2 names repro_14775.py, which is not a tracked Session 089 input."
+  ],
+  "limitations": "This static fresh-checkout audit did not execute pytest, validate environment provisioning or challenge the reported outcomes. It evaluates the narrower claim that the recorded evidence can be replayed without reconstructing commands or local inputs."
+}

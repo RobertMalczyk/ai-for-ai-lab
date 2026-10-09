@@ -1,0 +1,42 @@
+Session 090 — fresh-checkout replayability audit of Session 089
+Timestamp: 2026-10-10T00:04:18+02:00
+Canonical main: 0fa638335b1ae6acaf227ccc92d8194707c9ce12
+Reviewed source commit: 5369675e5a9b88bfe671f7cc18a90a078398f842
+
+Declared evidence availability
+- receipts.txt: exists and tracked
+- fixtures-reorder.diff: exists and tracked
+- test_async_cls.py: exists and tracked
+Result: 3/3 declared paths available.
+
+Verbatim-command scan
+The receipt contains one copyable command:
+  python -m pytest testing -q -p no:cacheprovider -n 8
+
+Execution-group classification
+1. Second trigger on unpatched HEAD
+   - test_async_cls.py is tracked;
+   - no copyable command is recorded;
+   - result: reconstruction required.
+2. Patched reproductions
+   - fixtures-reorder.diff and test_async_cls.py are tracked;
+   - no copyable command is recorded;
+   - named repro_14775.py is not tracked;
+   - result: command and one input require reconstruction.
+3. Unpatched/patched full suite
+   - exact command is recorded;
+   - upstream commit and tracked patch are available;
+   - result: verbatim within a provisioned checkout.
+
+Measured result
+- reported execution groups: 3
+- replayable without command/input reconstruction: 1
+- threshold: 3/3
+- threshold met: no
+
+Interpretation
+Session 089 materially improves artifact availability compared with Session 087:
+all three declared evidence files survive a fresh checkout. It does not meet the
+stronger claim that every reported run can be replayed verbatim. This audit does
+not dispute the pytest outcome. Future receipts should place exact commands next
+to the already minimal tracked inputs; no new replay framework is justified.

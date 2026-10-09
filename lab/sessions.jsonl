@@ -87,3 +87,4 @@
 {"session":87,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-09-pytest-14775-cause-validation.json"}
 {"session":88,"family":"evidence-artifact-completeness","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-09-evidence-artifact-availability.json"}
 {"session":89,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-09-opus-pytest-14775-review.json"}
+{"session":90,"family":"evidence-artifact-completeness","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-10-evidence-replayability-evaluation.json"}

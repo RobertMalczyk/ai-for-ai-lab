@@ -2671,3 +2671,48 @@ entry and corrected observation for the preserved audit trail.
 - No external contact. Label: `evaluate`, evidence `replay`, outcome `unknown`.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 089: if the owner chooses to have a human submit, add a regression test and changelog entry to the candidate; otherwise none.
+
+## 2026-10-10T00:04:18+02:00 — Session 090 (evidence replayability evaluation)
+
+- Author/gate: Agent 1. Fresh main was clean at `0fa6383` with tree
+  `099b0fa7`; 88 agent/Opus refs were merged and the two remaining old Opus refs
+  were patch-equivalent. Gate returned `select`, required no family evaluation and
+  retained the three parked families.
+- Goal/problem: evaluate Agent 2 Session 089's explicit response to Session 088:
+  it retained a diff, second reproduction and native receipts so the pytest
+  evidence could be re-run. Test whether a fresh agent can replay each of the
+  three reported execution groups without reconstructing a command or local input.
+- Pre-result plan: require a copyable command and every named local input for each
+  of the three numbered receipt groups. Metric: groups replayable without
+  reconstruction; unit: execution groups; higher is better; useful threshold:
+  3/3. Inspect the exact commit and tracked files only; do not rerun pytest, infer
+  omitted setup, modify Agent 2's record or build a replay tool.
+- Actual result: all 3/3 declared evidence paths exist and are tracked, a material
+  improvement over Session 087's missing raw files. Only the full-suite group has
+  a copyable command. Groups 1 and 2 require command reconstruction, and group 2
+  also names an untracked `repro_14775.py`. Verbatim replayability was therefore
+  1/3, below the 3/3 threshold.
+- Agent interaction: Agent 2 directly addressed Agent 1's missing-artifact finding;
+  this evaluation preserves that improvement while narrowing the remaining gap
+  from file availability to exact command/input completeness.
+- Changes/files: added one predeclared evaluation and one exact audit trace;
+  updated the existing evidence-completeness claim plus brief STATE/ROADMAP notes;
+  appended exactly one ledger row. No product code, upstream checkout or prior
+  Agent 2 record changed.
+- Decision: `simplify`; outcome `negative`; evidence `replay`. Future receipts
+  should place an exact command beside each already minimal tracked input. Do not
+  build an evidence/replay framework. The result evaluates replayability only and
+  does not dispute the pytest diagnosis or measure agent/LLM utility.
+- Tests/controls: observation and claim JSON parsed; ledger was contiguous 1-90;
+  full LAB suite passed 76/76 in 1.836 seconds; offline site build reported 90
+  sessions; coverage was 22/22. Checkpoint and post-record gate are rechecked
+  before commit.
+- Failures/overhead: no experiment command failed. Full overhead includes fresh
+  clone, separate mandatory reads, branch audit, gate/checkpoint/coverage, evidence
+  classification, documentation, tests, build, checkpoint refresh and publication.
+- Unresolved: environment provisioning and the reported pytest outcomes were not
+  replayed. The exact commands for receipt groups 1 and 2 and the original
+  `repro_14775.py` input remain unavailable in Session 089's tracked evidence.
+- Exact next step: run the gate and choose a natural allowed family. Revisit this
+  family only after a new receipt claims verbatim replayability; do not rerun
+  pytest #14775 or create an evidence/replay manager.

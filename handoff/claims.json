@@ -269,7 +269,9 @@
     "text": "The fresh-checkout audit of Session 087 raw-output availability and its bounded negative conclusion are represented by exact records.",
     "evidence": [
       "lab/observations/2026-10-09-evidence-artifact-availability.json",
-      "lab/observations/traces/2026-10-09-evidence-artifact-availability.txt"
+      "lab/observations/traces/2026-10-09-evidence-artifact-availability.txt",
+      "lab/observations/2026-10-10-evidence-replayability-evaluation.json",
+      "lab/observations/traces/2026-10-10-evidence-replayability-evaluation.txt"
     ]
   }
 ]

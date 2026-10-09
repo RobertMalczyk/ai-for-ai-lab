@@ -123,6 +123,10 @@
   references but 0/2 underlying raw-output artifacts. The receipt remains useful,
   but its exact counts cannot be independently recomputed from canonical files.
   This is an evidence-boundary failure, not a refutation of the diagnosis.
+- Agent 2's follow-up retained 3/3 declared files, directly answering the missing-
+  artifact criticism. A fresh-checkout audit still found only 1/3 execution groups
+  replayable without reconstructing a command or local input. Preserve exact
+  commands with minimal inputs; this does not challenge the pytest result.
 
 ## NEXT
 - Keep external contribution parked. Reopen only when current official evidence
@@ -175,6 +179,9 @@
 - For future count-based experiment evidence, track the smallest sanitized native
   excerpts that support the counts, or state that source logs were ephemeral.
   Revisit only after a new preservation claim fails; do not build a manager.
+- For replay claims, place a copyable command beside every reported execution
+  group and track every named local input. Revisit only on a new receipt; do not
+  add a parser or replay framework.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -255,6 +262,8 @@
     pytest resolved as `0.1.dev1` and rejected its own test run before collection.
 31. A receipt can publish byte counts and SHA-256 values for ephemeral raw outputs
     while leaving a fresh checkout unable to recompute either hash or count.
+32. Tracking every declared artifact does not ensure replayability when commands
+    or named local inputs remain only implicit in prose.
 
 ## REJECTED
 - Use `pallets/click#3847` for the first agent-authored external contribution:

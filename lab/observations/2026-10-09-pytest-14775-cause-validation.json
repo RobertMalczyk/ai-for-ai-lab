@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "session": 87,
+  "timestamp": "2026-10-09T11:59:20+02:00",
+  "family": "external-bug-reproduction",
+  "mode": "evaluate",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ]
+  },
+  "agent_interaction": "Adversarially tests Agent 2 Session 085's source-ordering hypothesis after its independent reproduction completed Agent 1 Session 084's blocked task.",
+  "real_task": "Determine whether the source-ordering hypothesis for pytest issue 14775 causally explains the second internal AssertionError on current upstream HEAD.",
+  "observed_problem": "Agent 2 reproduced one intended warning error followed by an unintended AssertionError at fixtures.py:1281 and inferred that resolve_fixture_function warns before pytest_fixture_setup's failure-caching try block.",
+  "problem_trace": "lab/observations/2026-10-09-opus-pytest-14775-replication.json and lab/observations/traces/2026-10-09-opus-pytest-14775.txt",
+  "baseline": "On upstream 8cb809785 under -Werror, Agent 2 observed two setup errors: the intended PytestRemovedIn10Warning and one unintended AssertionError. Re-run that baseline under exact Python 3.14.8 before intervention.",
+  "hypothesis": "Moving resolve_fixture_function into pytest_fixture_setup's existing try block will cache the warning exception, so the second test reuses the intended failure instead of reaching the internal assertion.",
+  "metric": "unintended internal AssertionError occurrences across the two-test MWE",
+  "unit": "errors",
+  "direction": "lower",
+  "minimum_useful_effect": "Reduce unintended AssertionError occurrences from 1 to 0 while both tests still fail with the intended PytestRemovedIn10Warning under -Werror.",
+  "quality_control": "Fresh full-history/tag-aware checkout at the same upstream commit; exact Python 3.14.8; identical MWE and command before/after; preserve outputs and minimal local diff. This is causal diagnosis only, not an upstream-ready fix or utility claim.",
+  "overhead": "Count clone, Python/dependency setup, both runs, local edit, trace review, LAB tests, documentation, checkpoint and publication.",
+  "stop_condition": "Stop after one baseline and one minimal ordering intervention, or immediately if the exact baseline does not reproduce. Do not create a fork, PR, issue comment, upstream commit or reusable patch artifact.",
+  "result": {
+    "upstream_commit": "8cb80978556fe0211d2f797216e171d7405e733d",
+    "upstream_describe": "9.2.0.dev0-365-g8cb809785",
+    "python": "3.14.8",
+    "baseline_exit_code": 1,
+    "baseline_warning_errors": 1,
+    "baseline_assertion_errors": 1,
+    "intervention_exit_code": 1,
+    "intervention_warning_errors": 2,
+    "intervention_assertion_errors": 0,
+    "quality_passed": true,
+    "minimum_useful_effect_met": true,
+    "intervention": "Move resolve_fixture_function and the existing async-fixture check into pytest_fixture_setup's existing TEST_OUTCOME try block so the warning-as-error is cached."
+  },
+  "trace": "lab/observations/traces/2026-10-09-pytest-14775-cause-validation.txt",
+  "decision": "simplify",
+  "outcome": "inconclusive",
+  "decision_reason": "The one-change causal test confirms Agent 2's ordering hypothesis and removes the unintended assertion while retaining the intended failures. Stop at diagnosis: the experiment did not run pytest's regression suite, establish patch completeness, create an upstream-ready change or measure agent utility.",
+  "failures": [
+    "The first trace read guessed a filename instead of following the observation's explicit trace field and returned file-not-found; the exact referenced trace was then read.",
+    "Both pytest commands correctly exited 1 because -Werror turns the intended deprecation warning into test setup errors."
+  ],
+  "limitations": "One MWE and one source ordering were tested. Moving the async-fixture check was incidental to expanding the existing try block and was not independently evaluated. No pytest regression suite, alternate fixture scopes or plugin interactions were tested. The source change was not committed outside scratch and is not an upstream-ready patch or utility result."
+}

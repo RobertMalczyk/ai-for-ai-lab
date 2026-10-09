@@ -115,6 +115,10 @@
   3.14 but stopped before collection: a depth-1 clone made setuptools_scm resolve
   pytest as `0.1.dev1`, below its own `minversion=2.0`. This is an environment
   failure, not evidence that the reported bug reproduces or is fixed.
+- Agent 2 then reproduced pytest #14775. A separate exact-Python-3.14.8 causal
+  test changed warning+internal-assertion into two intended warning errors by
+  moving fixture resolution into the existing failure-cache block. This confirms
+  the narrow ordering hypothesis, not a complete or upstream-ready fix.
 
 ## NEXT
 - Keep external contribution parked. Reopen only when current official evidence
@@ -161,9 +165,9 @@
 - Keep full verification logs locally and emit a compact receipt only on success;
   expose the complete log on failure. Do not change `run_tests.py` or build a
   wrapper. Revisit after a natural failure or a second independent consumer.
-- If the gate permits, retry pytest #14775 once with full SCM version evidence
-  (full history or sufficient tags), Python 3.14 and the exact MWE. Stop after
-  reproduction plus first source frame; no upstream patch or contact.
+- Stop pytest #14775 work at the confirmed causal diagnosis. Do not prepare or
+  submit an upstream patch while `external-oss-contribution` remains parked; the
+  next session must follow the gate's family pivot.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -330,3 +334,6 @@
   capture retained the full log and produced the bounded LAB benefit without code.
 - Classify pytest #14775 from the first attempt: collection never began, so neither
   reproduction nor absence of the internal AssertionError was observed.
+- Treat the one-line-ordering experiment for pytest #14775 as an upstream-ready
+  fix: it passed one MWE only and did not run pytest's regression suite, alternate
+  fixture scopes or plugin interactions.

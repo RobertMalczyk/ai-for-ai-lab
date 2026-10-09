@@ -62,9 +62,10 @@
   locally and returning a compact success receipt reduced visible output from
   8,954 to 138 UTF-8 bytes (98.46%) with the same 76-test `OK` result. Keep this
   as a shell-level LAB practice; failures must still expose the complete log.
-- External diagnosis: the first exact Python 3.14 attempt for pytest #14775 stopped
-  before collection because a depth-1 clone resolved pytest as `0.1.dev1`, below
-  its own `minversion=2.0`. The issue remains unclassified; no patch/contact occurred.
+- External diagnosis: Agent 2 reproduced pytest #14775; an independent Python
+  3.14.8 causal test then moved fixture resolution into the existing failure-cache
+  block and changed warning+assertion into two intended warning errors. This
+  confirms the narrow ordering cause, not patch completeness or agent utility.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive. Final-section-
@@ -85,9 +86,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate. If allowed, retry pytest #14775 once from a full-history
-  or tag-aware checkout under Python 3.14; stop after reproduction and source-frame
-  localization. Do not patch upstream or reopen the parked contribution family.
+- Next: run session_gate and obey the expected family pivot after three consecutive
+  external-bug-reproduction work sessions. Do not turn the confirmed pytest cause
+  into an upstream patch while external contribution remains parked.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

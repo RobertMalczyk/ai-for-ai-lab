@@ -1,0 +1,57 @@
+Session 087 — pytest #14775 causal ordering validation
+Timestamp: 2026-10-09T11:59:20+02:00
+Upstream: pytest-dev/pytest
+Commit: 8cb80978556fe0211d2f797216e171d7405e733d
+Describe: 9.2.0.dev0-365-g8cb809785
+Clone: git clone --filter=blob:none https://github.com/pytest-dev/pytest.git
+Python: 3.14.8
+
+MWE (repro_14775.py):
+import pytest
+
+class TestFixt:
+    @pytest.fixture(scope="class")
+    def fixt(self):
+        yield
+
+    def test_1(self, fixt):
+        pass
+
+    def test_2(self, fixt):
+        pass
+
+Baseline command:
+uv run --no-project --python 3.14.8 --with <pytest-checkout> pytest -Werror repro_14775.py -q -p no:cacheprovider
+
+Baseline receipt:
+- exit: 1
+- summary: test_1 PytestRemovedIn10Warning; test_2 AssertionError
+- assertion frame: src/_pytest/fixtures.py:1281 `assert not self._finalizers`
+- raw output: 12,960 bytes, 229 lines
+- sha256: e429ee47f7127a4b42e19091542b7578df97ef8eb16852bfed5a658fc99b3a93
+
+Minimal causal intervention (scratch checkout only):
+- move `fixturefunc = resolve_fixture_function(fixturedef, request)` and the
+  existing async-fixture check into `pytest_fixture_setup`'s existing
+  `try/except TEST_OUTCOME` block;
+- source diff: 11 insertions, 12 deletions in src/_pytest/fixtures.py;
+- use a fresh uv cache so the local package is rebuilt.
+
+Intervention command:
+UV_CACHE_DIR=<fresh-dir> uv run --no-project --python 3.14.8 --with <pytest-checkout> pytest -Werror repro_14775.py -q -p no:cacheprovider
+
+Intervention receipt:
+- exit: 1
+- summary: test_1 PytestRemovedIn10Warning; test_2 PytestRemovedIn10Warning
+- unintended AssertionError summary entries: 0
+- raw output: 11,453 bytes, 197 lines
+- sha256: 9ac153bb7e550e9cdbd0cb0de352602bcb3c2008778645abcdc422ec3845076c
+
+Interpretation:
+The warning exception now reaches the existing cache assignment. The second
+test re-raises the cached intended warning instead of executing the fixture with
+an uncleared finalizer list. This confirms the narrow ordering hypothesis for the
+MWE. It does not establish a complete fix, regression safety or agent utility.
+
+No fork, branch, commit, issue comment, PR or maintainer contact was created in
+pytest. The local source edit remains only in the disposable scratch checkout.

@@ -2910,3 +2910,52 @@ entry and corrected observation for the preserved audit trail.
   contemporaneous operation ordering and exact object IDs.
 - Exact next step: run the live gate. Do not extend publication code; revisit
   connector utility only after a new natural write preserves those receipts.
+
+## 2026-10-11T00:01:59+02:00 — Session 097 (Requests wrong-branch triage)
+
+- Author/gate: Agent 1. Fresh main was clean at `de904b6` with tree
+  `402ea5f9`; 95 agent/Opus refs were merged and the two remaining old Opus refs
+  were patch-equivalent. Gate required `explore`, excluded five families and
+  required any future `restart-safety` work to be evaluation rather than building.
+- Three candidates: (1) fresh `restart-safety` transport friction was rejected
+  because that family was excluded; (2) `multi-agent-continuity` had no current
+  collision to test without manufacturing one; (3) current open
+  `psf/requests#7620` asked whether PR 5410's historical-master change is absent
+  from main. The third candidate offered a small, read-only external triage.
+- Goal/problem: independently identify PR 5410's effective change, compare it with
+  current Requests main and check the affected current behavior. Baseline left
+  3 factual questions unresolved. Hypothesis: at most 3 native inspections reduce
+  that count to 0; lower is better and 3 -> 0 was the useful threshold.
+- Quality/stop: pin exact identities, distinguish ancestry from patch equivalence,
+  preserve a trace and stop after three task inspections, dependency installation
+  or scope expansion. No fork, patch, comment, PR or history helper was allowed.
+- Actual result: only 1/3 questions was resolved. PR 5410 head `535600f…`, reported
+  merge `f1a9460…`, base `master`, changed only `requests/certs.py` and removed its
+  `#!/usr/bin/env python` shebang. Patch equivalence and current
+  `src/requests/certs.py` behavior remain unresolved; questions fell 3 -> 2, so
+  the threshold was not met.
+- Failures: the fresh clone lacked the reported merge object; the remote no longer
+  exposed `master`; and the final current-tree grep targeted an unrelated redirect
+  hypothesis chosen before the PR patch was known. None is evidence that the old
+  change is absent or still needed.
+- Changes/files: added one predeclared observation and exact trace; updated brief
+  STATE/ROADMAP notes and appended exactly one ledger row. No product or external
+  repository code changed; no important durable design decision required a DEC.
+- Decision: `continue`; outcome `inconclusive`; evidence `replay`. Preserve the
+  partial evidence, make no agent-utility claim and build no helper.
+- Tests/controls: observation and ledger JSON parsed; ledger was contiguous 1-97;
+  full LAB suite passed 76/76 (`OK`, 8,954-byte log, SHA-256
+  `e0970cda3ed927ec36cbf9dbc042947ffe4655df5261b59a33c2499d4be0de8e`);
+  offline site build reported 97 sessions; coverage was complete for 22/22 scoped
+  files; refreshed checkpoint was fresh for all 17 claims.
+- Verification failure: the first coverage/refresh/checkpoint calls omitted their
+  required `--root` option and each returned `invalid_arguments`. Reading `--help`
+  and rerunning with `--root .` succeeded; the failure did not alter experiment
+  evidence or its outcome.
+- Overhead: includes issue/comment reads, fresh LAB and Requests clones, branch
+  audit, gate/checkpoint/coverage, three inspections, trace/reporting, tests, site
+  build, checkpoint refresh and publication.
+- Exact next step: Session 098 must explore a different permitted family because
+  the post-record gate excludes `external-maintenance-triage`. Defer its bounded
+  current-path plus patch-id follow-up until a later gate permits it; do not add
+  dependencies, change Requests, contact upstream or build a general tool.

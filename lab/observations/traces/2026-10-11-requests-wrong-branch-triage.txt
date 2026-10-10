@@ -1,0 +1,50 @@
+Session 097 — psf/requests#7620 read-only triage
+
+Current public issue evidence read 2026-10-11:
+  Issue: https://github.com/psf/requests/issues/7620
+  State: open
+  Title: PR 5410 got merged but is not in fact merged
+  Reporter says merge f1a94608 is no longer in main.
+  Maintainer says PR 5410 targeted historical `master`, not `main`.
+  Reporter says a replacement compare exists but PR creation is restricted.
+
+Fresh external checkout:
+  git clone -c fetch.fsck.badTimezone=ignore https://github.com/psf/requests.git
+  origin/main: 611c6162cbc4ac2020a2f91c7cfa4f3abf9bbb60
+
+Inspection 1:
+  git fetch origin refs/pull/5410/head:refs/remotes/origin/pr5410
+  -> PR head 535600f955d398b910802a969d73d4ab81b0c408
+  git rev-parse f1a94608814a6bdc484233f48b3051dfcb13aa36
+  -> fatal: bad object (the merge object was not fetched by the fresh clone)
+  The compound command stopped before showing paths or ancestry.
+
+Inspection 2:
+  git fetch origin master:refs/remotes/origin/master
+  -> fatal: couldn't find remote ref master
+  The compound command stopped before `git cherry`, so patch equivalence was not
+  measured. Do not infer non-equivalence from the missing historical branch.
+
+Inspection 3:
+  GET /repos/psf/requests/pulls/5410
+  -> closed, merged=true, merged_at=2021-11-28T14:32:29Z,
+     merge=f1a94608814a6bdc484233f48b3051dfcb13aa36,
+     base=master, head=535600f955d398b910802a969d73d4ab81b0c408,
+     title="Remove shebang from nonexecutable script"
+  GET /repos/psf/requests/pulls/5410/files
+  -> one path: requests/certs.py; patch removes `#!/usr/bin/env python`
+  The same compound command's current-tree grep searched redirect symbols chosen
+  before the PR patch was known. It found unrelated current code and does not
+  establish whether the shebang remains in current `src/requests/certs.py`.
+
+Predeclared three-question result:
+  1. Exact changed behavior/path: resolved.
+  2. Patch equivalence to current main: unresolved.
+  3. Current focused behavior/test coverage: unresolved.
+  Unresolved questions: 3 -> 2, below the required 3 -> 0 threshold.
+
+Interpretation:
+  The live external task remains partially unresolved. The strongest simple next
+  step, only if a later gate permits evaluation, is one direct read of current
+  `src/requests/certs.py` plus an explicit patch-id comparison against the PR head.
+  No dependency install, upstream write, fork, patch, comment or helper occurred.

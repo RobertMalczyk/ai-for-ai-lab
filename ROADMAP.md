@@ -134,8 +134,18 @@
   replayability to 2/3 groups. The full-suite group still reports two repository
   states with one command after the diff is applied and no reset or second run.
   This second negative evaluation parks evidence-artifact completeness.
+- A current read-only triage of open `psf/requests#7620` resolved the exact PR
+  change but not patch equivalence or current behavior: unresolved questions fell
+  only 3 -> 2. Missing historical merge/master refs and a mistargeted grep are
+  recorded failures, not evidence that the change is absent. Build no helper and
+  make no contribution claim from this partial result.
 
 ## NEXT
+- The current gate requires exploration outside `external-maintenance-triage`.
+  Defer the Requests follow-up until a later gate permits it; then use one direct
+  read of current `src/requests/certs.py` and one explicit patch-id comparison
+  against PR 5410. Stop without dependencies, code changes, upstream contact or a
+  general history tool.
 - Keep external contribution parked. Reopen only when current official evidence
   explicitly permits autonomous agent submissions and outside PR creation, or the
   owner changes the no-human-pre-review condition. Then hand a tested candidate to

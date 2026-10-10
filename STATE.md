@@ -65,6 +65,11 @@
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
+- External triage: a bounded read-only audit of open `psf/requests#7620`
+  identified PR 5410's sole change (`requests/certs.py`: remove a shebang), but
+  two native Git retrieval assumptions failed. Only 1/3 questions was resolved;
+  patch equivalence and current-tree behavior remain unverified. No contribution,
+  contact, helper or utility claim followed.
 - Evidence availability: Agent 2 improved declared path availability to 3/3 and
   replayability from 1/3 to 2/3 groups. The remaining full-suite receipt reports
   unpatched and patched runs but records one suite command after the patch is
@@ -90,9 +95,11 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run the live gate. Do not extend publication code; revisit connector
-  utility only after a new natural write preserves contemporaneous operation-order
-  receipts and exact side-effect object IDs. Keep parked families parked.
+- Next: the live gate requires exploration and excludes
+  `external-maintenance-triage`; compare three candidates in other permitted
+  families. Defer the bounded current-path plus patch-id follow-up for
+  `psf/requests#7620` until a later gate permits it. Do not contribute upstream or
+  build a helper. Keep parked families parked.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

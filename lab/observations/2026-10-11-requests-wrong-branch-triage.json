@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "session": 97,
+  "timestamp": "2026-10-11T00:01:59+02:00",
+  "family": "external-maintenance-triage",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ],
+    "evaluation_required": [
+      "restart-safety"
+    ],
+    "reasons": [
+      "family_streak_limit"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "restart-safety",
+      "kind": "fresh_observed_friction",
+      "observed_friction": "Session 096's real publication truncated one base64 transport and then mis-windowed piped dd chunks without iflag=fullblock.",
+      "evidence": "docs/SESSIONS.md Session 096 and its exact trace.",
+      "potential_agent_value": "Avoid corrupt byte-range extraction before connector writes.",
+      "cheapest_falsifying_test": "Replay pipe chunking with and without iflag=fullblock.",
+      "simpler_alternative": "Use iflag=fullblock and retain OID comparison.",
+      "cost": "One local replay, but the live gate excludes restart-safety.",
+      "novelty": "Fresh failure, rejected because it belongs to the excluded publication-safety family rather than a new family."
+    },
+    {
+      "family": "multi-agent-continuity",
+      "kind": "old_assumption_to_challenge",
+      "observed_friction": "The ledger and checkpoint still assume serialized writers, but current main is clean and no active Agent 2 branch diverges.",
+      "evidence": "Fresh branch audit: 95 merged refs; two old Opus refs are patch-equivalent; no current collision.",
+      "potential_agent_value": "Prevent lost continuity during a genuine overlapping write.",
+      "cheapest_falsifying_test": "Observe an actual collision or overlapping next-session allocation.",
+      "simpler_alternative": "Keep fetch-before-write and expected-SHA ref updates.",
+      "cost": "No discriminating test without manufacturing concurrency.",
+      "novelty": "Known risk with no present activation; not selected."
+    },
+    {
+      "family": "external-maintenance-triage",
+      "kind": "different_simple_approach",
+      "observed_friction": "Open psf/requests issue 7620 asks whether PR 5410's change, merged into historical master instead of main, is present now; the reporter cannot open the replacement PR because submissions are restricted.",
+      "evidence": "https://github.com/psf/requests/issues/7620 and its five current comments, read 2026-10-11.",
+      "potential_agent_value": "Resolve a live external maintenance question with exact repository evidence before anyone proposes code or tooling.",
+      "cheapest_falsifying_test": "Use native Git to identify the PR patch, test patch equivalence against current main, and inspect the affected source/test behavior.",
+      "simpler_alternative": "Trust the issue title and maintainer comment without independently checking current main.",
+      "cost": "One fresh clone and at most three read-only task inspections; no dependency install, fork, PR or contact.",
+      "novelty": "A current external repository history problem, distinct from contribution eligibility and the completed pytest diagnosis."
+    }
+  ],
+  "selected_candidate": "external-maintenance-triage",
+  "real_task": "Independently triage psf/requests#7620: determine whether PR 5410's effective change is absent from current main and preserve exact evidence useful to a future maintainer decision.",
+  "observed_problem": "GitHub labels PR 5410 merged, but a maintainer says it targeted historical master during a branch cutover; the issue remains open and the reporter cannot open a replacement PR.",
+  "problem_trace": "Official issue 7620, its comments and the Requests Git history.",
+  "baseline": "Issue metadata and discussion leave three factual questions unresolved locally: exact changed behavior/paths, patch equivalence to current main, and current focused behavior/test coverage.",
+  "hypothesis": "At most three native read-only inspections can resolve all three questions without a helper, dependency installation or repository modification.",
+  "metric": "unresolved factual triage questions",
+  "unit": "questions",
+  "direction": "lower",
+  "minimum_useful_effect": "Reduce unresolved questions from 3 to 0 while preserving exact commit, path and focused-behavior evidence.",
+  "quality_control": "Pin current Requests main and PR/merge identities; distinguish ancestry from patch equivalence; use the repository's affected source/tests or a dependency-free focused command; make no upstream write or recommendation beyond the evidence.",
+  "overhead": "Include issue/comment reads, fresh clone, three inspections, trace/reporting, LAB tests, site build, checkpoint refresh and publication.",
+  "stop_condition": "Stop after three task-specific inspections, on dependency installation, or if current behavior cannot be checked without expanding scope. Do not fork, patch, comment, open a PR or build a history helper.",
+  "result": {
+    "requests_main": "611c6162cbc4ac2020a2f91c7cfa4f3abf9bbb60",
+    "pr_head": "535600f955d398b910802a969d73d4ab81b0c408",
+    "reported_merge": "f1a94608814a6bdc484233f48b3051dfcb13aa36",
+    "pr_base": "master",
+    "changed_path": "requests/certs.py",
+    "change": "remove the #!/usr/bin/env python shebang from a nonexecutable script",
+    "baseline_unresolved_questions": 3,
+    "remaining_unresolved_questions": 2,
+    "threshold_met": false,
+    "resolved": [
+      "exact PR behavior and path"
+    ],
+    "unresolved": [
+      "patch equivalence between PR 5410 and current main",
+      "whether current src/requests/certs.py still has the shebang and matching focused coverage"
+    ],
+    "trace": "lab/observations/traces/2026-10-11-requests-wrong-branch-triage.txt"
+  },
+  "decision": "continue",
+  "outcome": "inconclusive",
+  "decision_reason": "The three-inspection stop fired after two Git retrieval assumptions failed and the final grep targeted the wrong behavior. Preserve the partial external evidence and use at most one direct current-path plus patch-id check in a later gate-permitted evaluation; build no helper.",
+  "failures": [
+    "The fresh clone did not contain merge object f1a94608814a6bdc484233f48b3051dfcb13aa36, so inspection 1 short-circuited before path and ancestry checks.",
+    "The remote no longer exposes refs/heads/master, so inspection 2 short-circuited before git cherry.",
+    "Inspection 3 learned the PR content only after its current-tree grep had already been written for an unrelated redirect hypothesis."
+  ],
+  "limitations": "The audit did not read current src/requests/certs.py or compute patch-id equivalence after the stop condition. It establishes neither that the old change is absent nor that it is needed. No agent-utility, time, token or LLM-performance claim is made."
+}

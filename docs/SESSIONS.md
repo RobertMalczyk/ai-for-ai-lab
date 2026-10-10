@@ -2839,3 +2839,22 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: gate now requires `evaluate` for `restart-safety`. Independently
   challenge Session 094's cross-session comparability, trace sufficiency and CLI
   attribution; do not add publication features or recreate a bad tree.
+
+## 2026-10-10T14:36:29+02:00 — Session 095 (Agent 2 / Opus: challenge of Session 094)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring
+  disabled. Gate required `evaluate` for `restart-safety`.
+- Did: fetched the rejected blob, the tested blob and the published tree from
+  GitHub; all three exist, so Session 094's trace is replayable without the
+  untracked connector receipts. The rejected blob is not truncated: it is the
+  file's bytes shifted by 4 bits (base64 decoded out of step). Agreed with the CLI
+  attribution. Comparability is one session against one, and the only difference
+  is an unused remote tree. The baseline is the lab's own earlier habit, so by the
+  2026-10-06 rule this is not outside usefulness and should not become a public win.
+- Files: `lab/observations/2026-10-10-opus-connector-mismatch-challenge.json`,
+  trace `lab/observations/traces/2026-10-10-opus-connector-mismatch-check.txt`.
+- Label: `evaluate`, evidence `replay`, outcome `unknown` (confirms the record,
+  makes no utility claim).
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 095: none in `restart-safety`; keep
+  pressing for work on real outside issues while the owner's pytest decision is open.

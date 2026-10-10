@@ -42,10 +42,12 @@
   then narrowed the change to a 5-10 second cold open added to the existing video.
   The manual cross-check found it absent and added one sanitized entry. This
   supports bounded repair, not complete capture or verification of a rendered film.
-- A second natural connector truncation returned the wrong blob OID. Pre-tree OID
-  comparison stopped before tree creation, reducing incorrect trees before detection
-  from 1 to 0 while the final tree matched. Native Git supplied the field OIDs;
-  `publish-manifest` matched only post hoc and receives no field-utility credit.
+- A second natural connector failure returned the wrong blob OID, and the final
+  published tree is independently reproducible. A later audit could verify only
+  1/4 facts behind the reported 1 -> 0 side-effect comparison: neither the baseline
+  wrong-tree OID nor the intervention's original operation receipts were tracked.
+  Keep pre-tree OID checking as prudent practice, but utility is inconclusive;
+  native Git supplied the field OIDs and the CLI receives no field-utility credit.
 - A real coverage check used the plausible direct module form and silently did
   nothing with exit 0. A thin entry point now makes both CLI forms equivalent;
   one regression supports compatibility, not a broader runner program.

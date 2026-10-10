@@ -751,3 +751,31 @@ wrapper (no remaining failure); treat final-tree equality alone as early detecti
 Consequences: retain both per-blob and final-tree checks in the publication practice.
 The result says nothing about time, tokens or LLM quality and does not show that the
 CLI is better than `git rev-parse`; no product-code change follows.
+
+### DEC-0036 — Downgrade the connector side-effect comparison to inconclusive
+
+Problem: Session 095 confirmed that the rejected blob, corrected blob and final
+tree exist, but immutable object existence cannot prove whether an unreferenced
+tree side effect did or did not occur. Session 094's positive 1 -> 0 comparison
+depends on operation receipts that were not preserved in the repository.
+
+Decision: retain pre-tree OID comparison as a prudent publication practice, but
+downgrade the current utility summary from positive to inconclusive. Preserve
+Session 094 and ledger row 94 as historical records; append the later evaluation
+instead of rewriting them. Keep `publish-manifest` frozen.
+
+Why: only final-tree equality was independently reproducible among four required
+facts. Session 026 names no wrong-tree OID, Session 092's own record contains no
+connector event, and Session 094 cites untracked automation receipts for the
+claim that tree creation stopped. Absence of a tracked CLI invocation likewise
+cannot prove nonuse, although it supplies no reason to credit the CLI.
+
+Alternatives: accept the retrospective trace as independently complete (confuses
+self-report with recomputation); reject OID checking itself (the safety invariant
+is still sound); recreate a bad tree (manufactures a side effect); rewrite the
+positive ledger row (breaks append-only history).
+
+Consequences: current summaries no longer present the 1 -> 0 count as established
+utility. A future comparison needs contemporaneous sanitized call ordering and
+exact side-effect object IDs. This evidence correction changes no product code and
+does not claim that the reported Session 092 sequence was false.

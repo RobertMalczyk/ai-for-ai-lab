@@ -1,0 +1,73 @@
+Session 096 — independent audit of Session 094's 1 -> 0 field comparison
+
+Predeclared acceptance rule:
+  Independently verify four facts from canonical evidence:
+  (1) baseline incorrect-tree count = 1;
+  (2) intervention incorrect-tree count = 0;
+  (3) final tested/published tree equality;
+  (4) publish-manifest was not used in the intervention.
+  Require an operation-order source for side-effect counts; do not infer absence
+  of an unreferenced Git object from the current ref graph.
+
+Commands and outputs from fresh main 84ce7e86427fc295a70306a1e8a292be9b58e4ca:
+
+  git rev-parse 20c92c75c39abd40819f3d6d8424600b4684749a^{tree}
+    -> 01cf6f143405cd2cc1f61fb34168afe4c75d6386
+  git rev-parse 20c92c75c39abd40819f3d6d8424600b4684749a:docs/SESSIONS.md
+    -> ca57128f1e1ea079b22ef65368ed8e0f8fa03908
+  git cat-file -s 20c92c75c39abd40819f3d6d8424600b4684749a:docs/SESSIONS.md
+    -> 197373
+  PYTHONPATH=src python3 -m ai_for_ai_lab publish-manifest --root . \
+    --base 5f15d2731a9c33dd054c43f58cc9b746964a0b3b \
+    --commit 20c92c75c39abd40819f3d6d8424600b4684749a
+    -> tree 01cf6f143405cd2cc1f61fb34168afe4c75d6386;
+       docs/SESSIONS.md oid ca57128f1e1ea079b22ef65368ed8e0f8fa03908,
+       size 197373
+
+Evidence classification:
+
+  1. Baseline count 1 — not independently recomputable. Session 026 is a
+     contemporaneous prose report that says one wrong tree was created, but it
+     preserves no wrong-tree OID or connector receipt. Its section contains zero
+     40-hex object identifiers.
+
+  2. Intervention count 0 — not independently recomputable. Session 092's own
+     canonical section contains no connector event, object ID or create_tree
+     marker. The Session 094 trace says its source was "automation connector
+     receipts", but no such receipt/transcript is tracked. The rejected blob's
+     existence confirms a bad blob write, not that create_tree was never called.
+
+  3. Final tree equality — independently verified. Native Git and the read-only
+     manifest both resolve the published commit to tree 01cf6f14... and the path
+     to corrected blob ca57128f....
+
+  4. CLI nonuse — not independently recomputable. The later Session 094 record
+     consistently says native Git supplied the intervention OIDs, but absence of
+     a tracked invocation log cannot prove nonuse. This does not create evidence
+     for the CLI; it leaves attribution dependent on the retrospective record.
+
+Result: 1/4 required facts independently verified, below the 4/4 threshold.
+Session 095 usefully confirmed the named bad blob, corrected blob and final tree
+exist, but immutable object existence cannot reconstruct temporal absence of an
+unreferenced tree side effect. The prudent pre-tree OID practice remains; the
+positive 1 -> 0 utility classification is downgraded to inconclusive for current
+summaries. Historical Session 094 and ledger row 94 remain unchanged.
+
+Inspection failure:
+  The first manifest extraction guessed key `target_tree`; the actual compact
+  JSON uses `tree`. Inspecting the emitted keys and rerunning the read fixed the
+  audit without changing its classification.
+
+Publication failure after the evaluation:
+  The first batched local blob preparation exceeded the response boundary while
+  carrying base64 for docs/SESSIONS.md. Two warning lines were parsed as records
+  and produced harmless missing-content errors. Eight real blobs matched. The
+  large path returned blob dc63d59303c126ec14d40f0e44787e1636ac7b4d
+  instead of expected 0ae187758fb880deb16c2aa4857925e33f392689.
+  The per-blob comparison stopped before create_tree. The first 45,000-byte and
+  9,000-byte chunk retries still produced wrong OIDs for some files because `dd`
+  read a pipe without `iflag=fullblock`; `skip` therefore counted partial reads,
+  not stable byte windows. Adding `iflag=fullblock` made all retried OIDs exact.
+  This is contemporaneous evidence of another rejected blob transfer and a local
+  extraction error, but it supplies no final-tree-only baseline and therefore
+  does not change the 1/4 evaluation or create a new utility comparison.

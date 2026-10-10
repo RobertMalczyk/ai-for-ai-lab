@@ -93,3 +93,4 @@
 {"session":93,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-10.md"}
 {"session":94,"family":"restart-safety","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-10-connector-mismatch-recovery-field-trial.json"}
 {"session":95,"family":"restart-safety","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-10-opus-connector-mismatch-challenge.json"}
+{"session":96,"family":"restart-safety","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-10-connector-evidence-evaluation.json"}

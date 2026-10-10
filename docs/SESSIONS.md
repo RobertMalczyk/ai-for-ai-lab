@@ -2858,3 +2858,55 @@ entry and corrected observation for the preserved audit trail.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 095: none in `restart-safety`; keep
   pressing for work on real outside issues while the owner's pytest decision is open.
+
+## 2026-10-10T18:05:00+02:00 — Session 096 (connector evidence evaluation)
+
+- Author/gate: Agent 1. Fresh main was clean at `84ce7e8` with tree
+  `38d1eb9`; 94 agent/Opus refs were merged and the two remaining old Opus refs
+  were patch-equivalent. Gate required `evaluate` for `restart-safety` and
+  excluded four parked families.
+- Goal/problem: independently determine whether canonical artifacts can recompute
+  both operands of Session 094's positive 1 -> 0 connector side-effect comparison,
+  rather than merely confirming that its named blobs and final tree exist.
+- Pre-result plan: accept the field result only if 4/4 facts were independently
+  supported: baseline count 1, intervention count 0, final-tree equality and CLI
+  nonuse. Side-effect counts required operation-order evidence; absence of an
+  unreferenced Git object could not establish that no tree was created. Stop
+  without connector writes, recreated bad trees or publication-code changes.
+- Actual result: 1/4 facts passed. Native Git and a post-hoc manifest both resolve
+  commit `20c92c7` to tree `01cf6f14…` and `docs/SESSIONS.md` blob `ca57128f…`.
+  Session 026 preserves no wrong-tree OID; Session 092's own record contains no
+  connector event; Session 094 cites untracked automation receipts for the
+  stop-before-tree ordering. CLI nonuse is consistently reported later but is not
+  independently provable from an absent invocation log.
+- Agent interaction: Session 095 materially confirmed that the rejected blob,
+  corrected blob and final tree exist. This evaluation narrows that conclusion:
+  object existence verifies content identities, not temporal absence of a tree
+  side effect. It does not claim Agent 2's inspection or Session 092's sequence is
+  false.
+- Changes/files: added one predeclared evaluation and exact trace; updated the
+  publication-safety claim plus brief STATE/ROADMAP summaries; recorded DEC-0036
+  and exactly one ledger row. No product code or connector write changed.
+- Decision: `simplify`; outcome `inconclusive`; evidence `replay`. Keep pre-tree
+  OID comparison as prudent practice and `publish-manifest` frozen, but downgrade
+  the current utility summary. Historical Session 094 remains unchanged.
+- Tests/controls: observation/claim/ledger JSON parsed; ledger was contiguous
+  1-96; the full LAB suite passed 76/76 (`OK`, 8,954-byte log, SHA-256
+  `81c538bc81a34a050e06d3f5aa5162dc463d765d878045c8c618d1ee981b5bcf`);
+  offline site build reported 96 sessions; coverage was complete for 22/22 scoped
+  files. Refreshed checkpoint and final gate are rechecked before commit.
+- Failures/overhead: the first manifest inspection guessed `target_tree`; emitted
+  JSON uses `tree`, and the corrected read succeeded. During publication, batched
+  base64 preparation truncated `docs/SESSIONS.md`; eight blobs matched, while that
+  path returned `dc63d593…` instead of `0ae18775…`. OID comparison stopped before
+  tree creation. Initial chunk retries omitted `dd iflag=fullblock` and therefore
+  mis-windowed piped input; adding it made the OIDs exact. This later event lacks
+  a final-tree-only baseline and does not change the evaluation.
+  Full overhead includes fresh clone, separate mandatory reads, branch/gate/
+  checkpoint/coverage, evidence audit, documentation, tests, site build,
+  checkpoint refresh and publication.
+- Lessons/unresolved: Git object identity proves what exists, not that no other
+  immutable object was created. A future side-effect comparison needs preserved
+  contemporaneous operation ordering and exact object IDs.
+- Exact next step: run the live gate. Do not extend publication code; revisit
+  connector utility only after a new natural write preserves those receipts.

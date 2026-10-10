@@ -192,7 +192,7 @@
   },
   {
     "id": "connector-publication-safety",
-    "text": "Pre-tree connector blob-OID checking prevented one incorrect tree in a real mismatch; publish-manifest itself matched only post hoc and has no field-utility credit.",
+    "text": "Pre-tree connector blob-OID checking remains prudent, but a later audit independently verified only the final tree, not both side-effect counts; utility is inconclusive and publish-manifest has no field-utility credit.",
     "evidence": [
       "src/ai_for_ai_lab/publish_manifest.py",
       "src/ai_for_ai_lab/__main__.py",
@@ -209,6 +209,10 @@
       "lab/observations/2026-10-10-connector-mismatch-recovery.json",
       "lab/observations/traces/2026-10-10-connector-mismatch-recovery.txt",
       "lab/reports/2026-10-10-connector-mismatch-recovery-field-trial.json",
+    "lab/observations/2026-10-10-opus-connector-mismatch-challenge.json",
+    "lab/observations/traces/2026-10-10-opus-connector-mismatch-check.txt",
+    "lab/observations/2026-10-10-connector-evidence-evaluation.json",
+    "lab/observations/traces/2026-10-10-connector-evidence-evaluation.txt",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

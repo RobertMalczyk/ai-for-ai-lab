@@ -48,10 +48,11 @@
   teaser/cold-open direction absent and added one sanitized entry. This is bounded
   evidence for manual repair, not proof of complete capture or better performance.
 - Publication safety: `publish-manifest` exposes expected Git blob/tree IDs before
-  connector writes. In a natural second truncation, pre-tree OID checking reduced
-  incorrect trees before detection from 1 to 0 and retained exact final-tree
-  equality. The field intervention used native Git OIDs; the CLI matched only in
-  post-hoc replay, so keep it frozen and credit the practice, not the command.
+  connector writes. A later audit independently verified the correct final tree,
+  but only 1/4 required facts behind the reported 1 -> 0 side-effect comparison:
+  the wrong-tree OID and original connector receipts were not preserved. Keep
+  pre-tree OID checking as prudent practice and the CLI frozen; utility is
+  inconclusive, and native Git—not the CLI—supplied the field OIDs.
 - Remote receipt: on one real public-main verification, the connector returned
   175,649 serialized bytes and no tree identity. One native Git call returned the
   same commit plus exact tree in 82 bytes (99.9533% lower). Keep this as a LAB
@@ -89,9 +90,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: gate requires `evaluate` for `restart-safety`. Independently challenge the
-  Session 094 cross-session field comparison and its CLI-attribution boundary;
-  do not add publication code. Keep evidence-artifact completeness parked.
+- Next: run the live gate. Do not extend publication code; revisit connector
+  utility only after a new natural write preserves contemporaneous operation-order
+  receipts and exact side-effect object IDs. Keep parked families parked.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

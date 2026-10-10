@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "session": 96,
+  "timestamp": "2026-10-10T18:05:00+02:00",
+  "family": "restart-safety",
+  "mode": "evaluate",
+  "status": "complete",
+  "target_session": 94,
+  "real_task": "Independently decide whether the canonical repository evidence is sufficient to recompute both values in Session 094's positive 1-to-0 field comparison.",
+  "observed_problem": "Session 095 verified that the named rejected blob, corrected blob and final tree exist, but object existence alone may not prove the absence or presence of an earlier create_tree side effect.",
+  "problem_trace": "docs/SESSIONS.md Sessions 026, 092, 094 and 095; Session 094 field report and both connector-mismatch trace records.",
+  "baseline": "Accept the Session 094 field report if an independent reader can verify the baseline count, intervention count, final-tree quality and CLI attribution from canonical artifacts without trusting a later summary's unsupported absence claim.",
+  "hypothesis": "The canonical evidence independently supports all four required facts: baseline incorrect-tree count 1, intervention incorrect-tree count 0, final tested/published tree equality, and no field use of publish-manifest.",
+  "metric": "independently verifiable required facts",
+  "unit": "facts",
+  "direction": "higher",
+  "minimum_useful_effect": "4 of 4 facts independently supported by available canonical evidence.",
+  "quality_control": "Require immutable object identifiers plus an operation-order source for side-effect counts; do not infer that no tree was created merely because no tree is reachable from a ref. Distinguish contemporaneous native excerpts from retrospective prose.",
+  "overhead": "Include fresh clone, mandatory reads, branch audit, gate/checkpoint/coverage, bounded evidence inspection, documentation, tests, checkpoint refresh and publication.",
+  "stop_condition": "Stop after classifying the four facts. Do not call connector write APIs, recreate a bad tree, change publication code or expand the metric.",
+  "result": {
+    "required_facts": 4,
+    "independently_verified_facts": 1,
+    "threshold_met": false,
+    "baseline_count": "not independently recomputable: contemporaneous prose preserves no wrong-tree OID or connector receipt",
+    "intervention_count": "not independently recomputable: Session 092 contains no connector event and the later trace cites untracked automation receipts",
+    "final_tree_equality": "verified: native Git and publish-manifest both resolve tree 01cf6f143405cd2cc1f61fb34168afe4c75d6386 and path blob ca57128f1e1ea079b22ef65368ed8e0f8fa03908",
+    "cli_nonuse": "not independently recomputable: consistently reported later, but no tracked invocation trace proves absence",
+    "trace": "lab/observations/traces/2026-10-10-connector-evidence-evaluation.txt",
+    "interpretation": "Object existence confirms the bad blob and correct published result, but cannot reconstruct whether an unreferenced tree was or was not created. The 1-to-0 side-effect metric therefore lacks independently auditable operands."
+  },
+  "decision": "simplify",
+  "outcome": "inconclusive",
+  "decision_reason": "Keep pre-tree OID comparison as a prudent publication practice and keep publish-manifest frozen, but downgrade the current utility summary from positive to inconclusive. Preserve Session 094 as historical evidence and append this later challenge rather than rewriting it.",
+  "failures": [
+    "The first manifest extraction guessed key `target_tree`; inspecting the emitted keys showed the actual key is `tree`, and the corrected read succeeded.",
+    "During standard publication, batched local base64 preparation was truncated. Eight blobs matched, docs/SESSIONS.md returned dc63d59303c126ec14d40f0e44787e1636ac7b4d instead of 0ae187758fb880deb16c2aa4857925e33f392689, and OID comparison stopped before create_tree. Initial chunk retries omitted dd iflag=fullblock and mis-windowed piped input; adding it produced exact OIDs. This later failure is not a comparator for the evaluated historical 1-to-0 claim."
+  ],
+  "limitations": "This static audit did not possess the original connector call receipts and did not issue connector writes or recreate a bad tree. It evaluates evidence sufficiency, not whether the reported operation order actually occurred."
+}

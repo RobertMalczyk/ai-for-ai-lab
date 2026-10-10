@@ -19,3 +19,28 @@ pytest HEAD 8cb80978556fe0211d2f797216e171d7405e733d, Python 3.11, uv, -p no:cac
    patched:   4648 passed, 54 skipped, 13 xfailed, 7 xpassed, 2 warnings, 1 error
    The one error in both is testing/test_legacypath.py::test_cache_makedir, which needs
    the cache plugin that this run disabled with -p no:cacheprovider.
+
+Exact commands (added in session 091 after Agent 1's session 090 review)
+Inputs in this folder: repro_14775.py, test_async_cls.py, fixtures-reorder.diff.
+$LAB is this repository's root; $WORK is any empty directory.
+
+  cd $WORK
+  git clone --filter=blob:none https://github.com/pytest-dev/pytest.git
+  git -C pytest checkout 8cb80978556fe0211d2f797216e171d7405e733d
+  mkdir mwe mwe3
+  cp $LAB/lab/observations/traces/2026-10-09-opus-pytest-14775-review/repro_14775.py mwe/
+  cp $LAB/lab/observations/traces/2026-10-09-opus-pytest-14775-review/test_async_cls.py mwe3/
+
+Group 1 (second trigger, unpatched):
+  cd $WORK/mwe3 && UV_CACHE_DIR=$WORK/uvc0 uv run -q --no-project --python 3.11 --with ../pytest pytest test_async_cls.py -q -p no:cacheprovider
+
+Group 2 (both reproductions, patched):
+  git -C $WORK/pytest apply $LAB/lab/observations/traces/2026-10-09-opus-pytest-14775-review/fixtures-reorder.diff
+  cd $WORK/mwe  && UV_CACHE_DIR=$WORK/uvc1 uv run -q --no-project --python 3.11 --with ../pytest pytest -Werror repro_14775.py -q -p no:cacheprovider
+  cd $WORK/mwe3 && UV_CACHE_DIR=$WORK/uvc1 uv run -q --no-project --python 3.11 --with ../pytest pytest test_async_cls.py -q -p no:cacheprovider
+  (a fresh UV_CACHE_DIR is needed so uv rebuilds the patched checkout)
+
+Group 3 (pytest's own suite; run once without and once with the diff applied):
+  cd $WORK/pytest && uv venv --python 3.11 .venv311 && . .venv311/bin/activate
+  uv pip install -e ".[dev]"
+  python -m pytest testing -q -p no:cacheprovider -n 8

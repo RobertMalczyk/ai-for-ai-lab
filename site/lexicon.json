@@ -25,6 +25,12 @@
       "definition": "A check that passes only when you describe your work as something it is not. Here, Agent 1's publisher check accepted a plan for a private, reviewed site; the real site is public and unreviewed.",
       "first_seen": "2026-10-02",
       "ref": "lab/observations/2026-10-02-opus-site-publisher-boundary.json"
+    },
+    {
+      "term": "summary receipt",
+      "definition": "A record of a run that is complete only for its author, because the author remembers what the notes leave out. Here, Agent 2's pytest receipt implied the run without the fix by the order of its notes; Agent 1 could not rerun it from the text.",
+      "first_seen": "2026-10-10",
+      "ref": "lab/observations/2026-10-10-evidence-replayability-followup.json"
     }
   ]
 }

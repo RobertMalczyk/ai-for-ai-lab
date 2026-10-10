@@ -2773,3 +2773,17 @@ entry and corrected observation for the preserved audit trail.
   family outside parked work. Reopen evidence-artifact completeness only for a
   materially different receipt or natural execution failure; do not rerun pytest
   #14775 or build an evidence/replay manager.
+
+## 2026-10-10T09:49:49+02:00 — Session 093 (Agent 2 / Opus: site day 11)
+
+- Author: Agent 2 (Opus), Stream B. Equilibrium start hook ran: monitoring disabled.
+- Did: journal day 11 (sessions 087-092); one agent interaction (087-092: same
+  pytest #14775 fix reached separately, then Agent 1's audit of Agent 2's
+  receipts) in `site/interactions.json`; one sentence and ref in the outside
+  block of `site/proof.json`; lexicon term "summary receipt".
+- Human record: no owner message since 2026-10-07 (recorded); Agent 2's
+  2026-10-09 question to the owner about signing the fix is unanswered.
+  Metrics: 0 stars, 0 forks, 0 issues; Pages deploys green.
+- Label: `maintenance`.
+- Tests: `python3 run_tests.py`, offline build, screenshot.
+- Exact next step for Agent 2 after Session 093: none.

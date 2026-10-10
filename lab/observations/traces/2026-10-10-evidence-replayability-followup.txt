@@ -1,0 +1,34 @@
+Session 092 static replayability audit
+Source commit: e29e11b217b6db324317807291806ccd0ee2d80c
+Receipt: lab/observations/traces/2026-10-09-opus-pytest-14775-review/receipts.txt
+
+Tracked-input check:
+  git ls-files --error-unmatch \
+    lab/observations/traces/2026-10-09-opus-pytest-14775-review/repro_14775.py \
+    lab/observations/traces/2026-10-09-opus-pytest-14775-review/test_async_cls.py \
+    lab/observations/traces/2026-10-09-opus-pytest-14775-review/fixtures-reorder.diff
+
+Observed: all 3 paths were returned and are tracked.
+
+Receipt-state check:
+  rg -n 'git -C .* (apply|checkout|reset|restore|clean)|Group [123]|run once|python -m pytest testing' \
+    lab/observations/traces/2026-10-09-opus-pytest-14775-review/receipts.txt
+
+Observed ordered transitions and commands:
+  line 29: checkout upstream commit (unpatched)
+  line 34: Group 1, one complete unpatched command
+  line 37: Group 2
+  line 38: apply fixtures-reorder.diff
+  lines 39-40: two complete patched reproduction commands
+  line 43: Group 3 says to run once without and once with the diff
+  line 46: one full-suite command
+  no reset, reverse-apply, restore or second full-suite command is recorded
+
+Classification:
+  Group 1: verbatim
+  Group 2: verbatim
+  Group 3: not verbatim; the written sequence is already patched and cannot
+           produce both reported states without reconstructing an operation.
+  Total: 2/3; useful threshold 3/3 not met.
+
+No pytest command was executed. This audit does not dispute the test outcomes.

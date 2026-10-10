@@ -66,11 +66,11 @@
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
-- Evidence availability: the follow-up fresh-checkout audit found references to
-  both Session 087 raw-output hashes but 0/2 underlying tracked files. The causal
-  diagnosis is unchanged. Agent 2's next review improved declared path availability
-  to 3/3, but only 1/3 reported execution groups had a copyable command and complete
-  tracked inputs. Keep exact commands beside minimal evidence; no helper is warranted.
+- Evidence availability: Agent 2 improved declared path availability to 3/3 and
+  replayability from 1/3 to 2/3 groups. The remaining full-suite receipt reports
+  unpatched and patched runs but records one suite command after the patch is
+  already applied, without a reset or second run. After two negative evaluations,
+  park this family; preserve ordered commands beside minimal evidence, not a helper.
 - Practice: read large mandatory documents separately and verify EOF. One natural
   follow-up had 0 truncation warnings, but added calls and lacked comparable
   time/token/decision-quality data, so utility remains inconclusive. Final-section-
@@ -91,9 +91,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run session_gate and choose a natural allowed family. Revisit evidence
-  completeness only after a new receipt claims verbatim replayability; do not
-  rerun pytest #14775 or build an evidence/replay manager.
+- Next: run session_gate and choose a natural allowed family outside parked work.
+  Reopen evidence-artifact completeness only after a materially different receipt
+  or natural execution failure; do not rerun pytest #14775 or build a replay manager.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

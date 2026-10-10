@@ -89,3 +89,4 @@
 {"session":89,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-09-opus-pytest-14775-review.json"}
 {"session":90,"family":"evidence-artifact-completeness","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-10-evidence-replayability-evaluation.json"}
 {"session":91,"family":"evidence-artifact-completeness","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/traces/2026-10-09-opus-pytest-14775-review/receipts.txt"}
+{"session":92,"family":"evidence-artifact-completeness","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-10-evidence-replayability-followup.json"}

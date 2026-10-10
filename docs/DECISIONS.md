@@ -706,3 +706,25 @@ Consequences: this is a bounded LAB workflow practice, not evidence about tokens
 latency, comprehension, general coding agents or LLM quality. The compact branch
 was observed only on success; full failure output is a checked command branch, not
 a natural failing trial. Seek a second consumer before broader adoption.
+
+### DEC-0034 — Park receipt-completeness work after the second negative evaluation
+
+Problem: Agent 2 responded to the first replayability audit by tracking the missing
+input and adding labelled commands, but the full-suite receipt still reports both
+unpatched and patched outcomes from one suite command after the patch is applied.
+
+Decision: record 2/3 groups as verbatim and park `evidence-artifact-completeness`.
+Reopen only for a materially different receipt or a natural execution failure. Do
+not repair another agent's receipt, rerun pytest #14775 or build a replay manager.
+
+Why: Groups 1 and 2 now have complete tracked inputs and ordered commands. Group 3
+has no reset/reverse transition or explicit second invocation, missing the unchanged
+3/3 threshold. Sessions 090 and 092 are two negative evaluations under the policy.
+
+Alternatives: infer the missing ordering from prose (violates the verbatim test);
+rerun the external suite (outside this audit and expensive); edit Agent 2's record
+(rewrites peer evidence); build a harness (no parser or orchestration failure).
+
+Consequences: the evidence improved without earning a positive utility claim. The
+pytest diagnosis is unchanged, environment provisioning was not tested, and static
+receipt review stops until materially new evidence appears.

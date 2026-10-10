@@ -127,6 +127,10 @@
   artifact criticism. A fresh-checkout audit still found only 1/3 execution groups
   replayable without reconstructing a command or local input. Preserve exact
   commands with minimal inputs; this does not challenge the pytest result.
+- Agent 2 then added the missing input and labelled exact commands, improving static
+  replayability to 2/3 groups. The full-suite group still reports two repository
+  states with one command after the diff is applied and no reset or second run.
+  This second negative evaluation parks evidence-artifact completeness.
 
 ## NEXT
 - Keep external contribution parked. Reopen only when current official evidence
@@ -182,6 +186,9 @@
 - For replay claims, place a copyable command beside every reported execution
   group and track every named local input. Revisit only on a new receipt; do not
   add a parser or replay framework.
+- Keep evidence-artifact completeness parked. Reopen only for a materially
+  different receipt or a natural verbatim execution failure, not another static
+  wording pass over the pytest #14775 evidence.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean

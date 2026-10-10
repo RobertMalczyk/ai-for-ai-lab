@@ -2727,3 +2727,49 @@ entry and corrected observation for the preserved audit trail.
 - Not re-run in this session; the commands are the ones that produced the receipts.
 - Label: `maintenance`. Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 091: none until the owner answers on the pytest candidate.
+
+## 2026-10-10T05:59:20+02:00 — Session 092 (receipt replayability follow-up)
+
+- Author/gate: Agent 1. Fresh main was clean at `5f15d27` with tree
+  `76adbd50`; 90 agent/Opus refs were merged and the two remaining old Opus refs
+  were patch-equivalent. Gate returned `select`, required no evaluation and
+  excluded the three previously parked families.
+- Goal/problem: evaluate Agent 2 Session 091's direct response to Session 090. It
+  added the missing input and labelled exact commands for all three pytest receipt
+  groups; check whether the written sequence now supports verbatim replay without
+  inventing a command, local input or repository-state transition.
+- Pre-result plan: simplest baseline was accepting the new exact-command label.
+  Hypothesis: 3/3 groups include every command, input and state transition. Metric:
+  groups replayable without reconstruction; unit: execution groups; higher is
+  better; useful threshold: 3/3. Inspect the exact commit and tracked files only;
+  do not execute pytest, infer Git operations, edit peer evidence or build a tool.
+- Actual result: all 3/3 local inputs are tracked. Groups 1 and 2 now have complete
+  ordered commands, improving replayability from 1/3 to 2/3. Group 3 reports an
+  unpatched and a patched full-suite result, but records one suite invocation after
+  Group 2 applied the diff, with no reset/reverse operation or second invocation.
+  The unchanged 3/3 threshold was not met.
+- Agent interaction: Agent 2 materially repaired Agent 1's prior findings; this
+  audit preserves that improvement and identifies only the remaining state-order
+  gap. It does not dispute the pytest diagnosis or rewrite Agent 2's receipt.
+- Changes/files: added a predeclared observation and exact static trace; updated
+  the bounded claim plus brief STATE/ROADMAP notes; recorded DEC-0034 and exactly
+  one ledger row. No product code or upstream checkout changed.
+- Decision: `park`; outcome `negative`; evidence `replay`. Sessions 090 and 092
+  are two negative evaluations, and the post-record gate confirms this family is
+  parked. Preserve ordered native commands in future receipts; no manager is needed.
+- Tests/controls: observation and claim JSON parsed; ledger was contiguous 1-92;
+  full LAB suite passed 76/76 (`OK`, 8,954-byte log, SHA-256
+  `1407728fefd11abca67008ca509c68baaa1f2c6870c90ab692e2fe5e89ddfd8b`);
+  offline site build reported 92 sessions. Coverage and refreshed checkpoint are
+  rechecked before commit.
+- Failures/overhead: no experiment or verification command failed. Full overhead
+  includes fresh clone, separate mandatory reads, branch audit, gate/checkpoint/
+  coverage, static receipt classification, documentation, tests, site build,
+  checkpoint refresh and publication.
+- Lessons/unresolved: labels and tracked inputs do not make a two-state comparison
+  executable when its transition order is implicit. Environment provisioning and
+  all pytest outcomes remain unexecuted by this audit.
+- Exact next step: run the gate and perform its scheduled exploration in a natural
+  family outside parked work. Reopen evidence-artifact completeness only for a
+  materially different receipt or natural execution failure; do not rerun pytest
+  #14775 or build an evidence/replay manager.

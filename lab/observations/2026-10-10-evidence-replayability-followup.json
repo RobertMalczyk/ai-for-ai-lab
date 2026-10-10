@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "session": 92,
+  "timestamp": "2026-10-10T05:59:20+02:00",
+  "family": "evidence-artifact-completeness",
+  "mode": "evaluate",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "external-oss-contribution",
+      "tool-discovery"
+    ]
+  },
+  "activation": "Session 091 explicitly responds to Session 090's 1/3 replayability result by adding the missing input and exact command blocks for all three receipt groups.",
+  "real_task": "Determine whether a fresh agent can now replay each of Session 089's three reported execution groups without inventing a command, reconstructing a local input or guessing the required repository state.",
+  "observed_problem": "The new receipt labels every group with exact commands, but the claim has not been checked as an executable sequence from the fresh canonical checkout.",
+  "problem_trace": "Agent 2 commit e29e11b217b6db324317807291806ccd0ee2d80c and lab/observations/traces/2026-10-09-opus-pytest-14775-review/receipts.txt",
+  "baseline": "Accept the newly labelled exact-command blocks and tracked inputs as sufficient for verbatim replay of all three groups.",
+  "hypothesis": "All three reported execution groups now provide every command, local input and repository-state transition needed for verbatim replay.",
+  "metric": "reported execution groups replayable without command, input or repository-state reconstruction",
+  "unit": "execution groups",
+  "direction": "higher",
+  "minimum_useful_effect": "3 of 3 groups must be replayable verbatim; any omitted reset, patch transition, command or local input fails the sufficiency claim.",
+  "quality_control": "Inspect the exact Agent 2 commit and tracked receipt inputs from a fresh checkout. Follow the blocks in their written order and count a group only if every named run and required repository state can be reached with copyable commands. Do not execute pytest, infer omitted Git operations or accept prose such as 'run once' as a command.",
+  "overhead": "Count fresh clone and mandatory reading, branch/gate/checkpoint/coverage checks, exact receipt and path inspection, documentation, LAB tests, checkpoint refresh and publication.",
+  "stop_condition": "Stop after classifying the three numbered groups. Do not rerun pytest #14775, repair Agent 2's receipt or build a replay/evidence manager.",
+  "result": {
+    "source_commit": "e29e11b217b6db324317807291806ccd0ee2d80c",
+    "declared_local_inputs": 3,
+    "declared_local_inputs_present_and_tracked": 3,
+    "reported_execution_groups": 3,
+    "groups_replayable_without_reconstruction": 2,
+    "minimum_useful_effect_met": false,
+    "quality_passed": true,
+    "classifications": [
+      {
+        "group": 1,
+        "status": "verbatim",
+        "reason": "The unpatched checkout state, tracked test_async_cls.py input and complete uv/pytest command are explicit."
+      },
+      {
+        "group": 2,
+        "status": "verbatim",
+        "reason": "The diff application, both tracked reproduction inputs and both patched uv/pytest commands are explicit."
+      },
+      {
+        "group": 3,
+        "status": "not_verbatim",
+        "reason": "The receipt reports both unpatched and patched suite results but supplies one test command after Group 2 has already applied the diff; it has no reset/reverse transition and no explicit second run command."
+      }
+    ],
+    "trace": "lab/observations/traces/2026-10-10-evidence-replayability-followup.txt"
+  },
+  "decision": "park",
+  "outcome": "negative",
+  "decision_reason": "The follow-up improves replayability from 1/3 to 2/3 but misses the unchanged 3/3 threshold. This is the second negative evaluation in the family, so park it under the existing policy. Future receipts should preserve an exact ordered command for every compared run; no framework is warranted.",
+  "failures": [
+    "Group 3 requires an unpatched and a patched full-suite run, but the recorded sequence reaches Group 3 only after applying the diff and contains one suite command.",
+    "No copyable reset/reverse-patch and second suite invocation is recorded for Group 3."
+  ],
+  "limitations": "This static fresh-checkout audit did not execute pytest, validate environment provisioning or challenge the reported outcomes. It evaluates only whether the recorded sequence can reproduce every reported comparison without reconstructing commands or repository state."
+}

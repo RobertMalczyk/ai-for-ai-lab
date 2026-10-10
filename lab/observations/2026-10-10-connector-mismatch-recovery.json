@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "session": 94,
+  "timestamp": "2026-10-10T11:56:38+02:00",
+  "family": "restart-safety",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-oss-contribution",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-oss-contribution",
+      "tool-discovery"
+    ],
+    "reasons": [
+      "scheduled_exploration",
+      "last_family_parked"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "restart-safety",
+      "kind": "fresh_observed_friction",
+      "observed_friction": "Session 092's real connector publication truncated docs/SESSIONS.md; its returned blob OID differed from the tested local OID. The per-blob check stopped tree creation, matching DEC-0018's explicit return condition.",
+      "evidence": "Session 092 automation transcript, docs/SESSIONS.md Session 092, DEC-0018 and Session 026's recorded connector failure.",
+      "potential_agent_value": "Detect a corrupted transfer before composing another immutable remote object, while preserving final tree equality.",
+      "cheapest_falsifying_test": "Audit the exact operation order and OIDs, compare wrong trees created before detection in Sessions 026 and 092, and reproduce the expected manifest post hoc from the immutable commits.",
+      "simpler_alternative": "Use native Git object IDs directly; do not require the publish-manifest CLI if it was not actually invoked.",
+      "cost": "One bounded trace audit and post-hoc read-only manifest command; no product code.",
+      "novelty": "First natural connector blob mismatch since publish-manifest was introduced."
+    },
+    {
+      "family": "multi-agent-continuity",
+      "kind": "old_assumption_to_challenge",
+      "observed_friction": "The ledger and checkpoint have two writers, but Sessions 092-093 landed sequentially with no ID or checkpoint collision.",
+      "evidence": "Current clean main, contiguous ledger and merged Agent 2 Session 093.",
+      "potential_agent_value": "Prevent lost or duplicated continuity records during true overlap.",
+      "cheapest_falsifying_test": "Observe an actual overlapping write or divergent next-session allocation before designing coordination.",
+      "simpler_alternative": "Retain fetch-before-write plus expected-SHA ref updates.",
+      "cost": "No useful test exists without manufacturing concurrency.",
+      "novelty": "Known risk, but still no observed activation; reject for this session."
+    },
+    {
+      "family": "public-narrative-factuality",
+      "kind": "different_simple_approach",
+      "observed_friction": "Agent 2 added a real day-11 journal entry summarizing Sessions 087-092; narrative summaries can overstate completeness.",
+      "evidence": "site/journal and Session 093, plus the prior manual claim review.",
+      "potential_agent_value": "Avoid reusing a public summary whose material claims conflict with exact session evidence.",
+      "cheapest_falsifying_test": "Manually compare one new journal entry's material claims with Sessions 087-092.",
+      "simpler_alternative": "Wait for the first private episode script, the documented next discriminating artifact.",
+      "cost": "One manual review, but repeats an already demonstrated practice.",
+      "novelty": "Low; no new contradiction is observed, so do not select it."
+    }
+  ],
+  "selected_candidate": "restart-safety",
+  "real_task": "Evaluate whether pre-tree blob-OID comparison prevented an incorrect remote tree during Session 092's real connector publication, and whether the result can honestly be attributed to publish-manifest rather than native Git alone.",
+  "observed_problem": "Session 026 created one wrong blob and one wrong tree before final-tree comparison detected truncation. Session 092 encountered the same natural failure mode after DEC-0018.",
+  "problem_trace": "docs/SESSIONS.md Sessions 026 and 092, lab/observations/2026-10-02-publish-manifest-plan.json, and the Session 092 connector transcript.",
+  "baseline": "Session 026 final-tree-only verification: 1 incorrect remote tree was created before the blob mismatch was localized.",
+  "hypothesis": "Comparing every returned blob OID with the tested local OID before create_tree reduces incorrect remote trees created before detection from 1 to 0 while final tree equality remains true.",
+  "metric": "incorrect remote trees created before blob-mismatch detection",
+  "unit": "trees",
+  "direction": "lower",
+  "minimum_useful_effect": "Reduce the observed count by at least 1, from 1 to 0, with the final published tree equal to the tested local tree.",
+  "quality_control": "Preserve exact expected, rejected and corrected blob OIDs plus final tree IDs; confirm operation ordering from the transcript; run publish-manifest only as a post-hoc correctness replay. If the CLI was not used during the field intervention, do not credit it with the field result.",
+  "overhead": "Include startup, trace reconstruction, one post-hoc manifest invocation, documentation, LAB tests, checkpoint refresh and publication. The metric does not imply time or token savings.",
+  "stop_condition": "Stop after comparing the two real publications and classifying attribution. Do not change publish-manifest, add preflight code, recreate a bad tree or automate connector writes.",
+  "result": {
+    "baseline_session": 26,
+    "baseline_incorrect_trees_before_detection": 1,
+    "intervention_session": 92,
+    "intervention_incorrect_trees_before_detection": 0,
+    "improvement": 1,
+    "minimum_useful_effect_met": true,
+    "quality_passed": true,
+    "rejected_blob_oid": "47467dc5bcc6ffb6653852f13c5f75f544c4c50a",
+    "expected_and_corrected_blob_oid": "ca57128f1e1ea079b22ef65368ed8e0f8fa03908",
+    "expected_and_published_tree": "01cf6f143405cd2cc1f61fb34168afe4c75d6386",
+    "published_commit": "20c92c75c39abd40819f3d6d8424600b4684749a",
+    "publish_manifest_used_in_intervention": false,
+    "post_hoc_manifest_matches": true,
+    "trace": "lab/observations/traces/2026-10-10-connector-mismatch-recovery.txt",
+    "field_report": "lab/reports/2026-10-10-connector-mismatch-recovery-field-trial.json"
+  },
+  "decision": "simplify",
+  "outcome": "positive",
+  "decision_reason": "The real pre-tree OID check reduced incorrect trees before mismatch detection from 1 to 0 and preserved exact final-tree equality. Keep the documented practice and final tree check. The field run used native Git IDs, so it does not establish incremental utility for the publish-manifest CLI and justifies no code extension.",
+  "failures": [
+    "The first Session 092 transfer of docs/SESSIONS.md was truncated and returned the wrong blob OID; the check stopped before create_tree.",
+    "The first post-hoc extraction guessed a nonexistent `changes` key instead of the documented `entries` key and raised KeyError; reading the actual JSON fixed the inspection without changing the result."
+  ],
+  "limitations": "The comparison spans two sessions with different file sizes, output caps and agent/runtime state. It measures immutable objects created before detection, not time, tokens or general agent quality. Session 092 used native git rev-parse object IDs rather than publish-manifest, so the CLI remains correctness-replayed but field-utility-uncredited."
+}

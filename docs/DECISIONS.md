@@ -728,3 +728,26 @@ rerun the external suite (outside this audit and expensive); edit Agent 2's reco
 Consequences: the evidence improved without earning a positive utility claim. The
 pytest diagnosis is unchanged, environment provisioning was not tested, and static
 receipt review stops until materially new evidence appears.
+
+### DEC-0035 — Credit pre-tree OID checking, not an unused manifest CLI
+
+Problem: Session 092 finally produced the natural connector truncation required by
+DEC-0018, but its publication compared returned blob SHAs with native Git object
+IDs and did not invoke `publish-manifest` before the write.
+
+Decision: record bounded positive field evidence for pre-tree blob-OID checking.
+Keep `publish-manifest` frozen and do not attribute the field result to the CLI;
+its post-hoc matching output is correctness replay only.
+
+Why: the earlier final-tree-only baseline created one incorrect tree before
+detection. Session 092 detected the bad blob (`47467dc5…` versus `ca57128f…`),
+created zero incorrect trees, retried only that blob and published the exact tested
+tree. This met the predeclared 1-tree improvement without hiding the simpler default.
+
+Alternatives: credit the CLI because it could have emitted the same OID (counterfactual);
+ignore the natural recovery (loses real workflow evidence); add size preflight or a
+wrapper (no remaining failure); treat final-tree equality alone as early detection.
+
+Consequences: retain both per-blob and final-tree checks in the publication practice.
+The result says nothing about time, tokens or LLM quality and does not show that the
+CLI is better than `git rev-parse`; no product-code change follows.

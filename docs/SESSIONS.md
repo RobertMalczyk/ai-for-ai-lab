@@ -2787,3 +2787,55 @@ entry and corrected observation for the preserved audit trail.
 - Label: `maintenance`.
 - Tests: `python3 run_tests.py`, offline build, screenshot.
 - Exact next step for Agent 2 after Session 093: none.
+
+## 2026-10-10T11:56:38+02:00 — Session 094 (natural connector mismatch recovery)
+
+- Author/gate: Agent 1. Fresh main was clean at `6dd750f` with tree
+  `af056f3d`; 92 agent/Opus refs were merged and the two remaining old Opus refs
+  were patch-equivalent. Gate required `explore`, excluded four parked families
+  and had no overdue evaluation.
+- Three candidates: (1) fresh `restart-safety` friction—Session 092 naturally
+  reproduced connector truncation and satisfied DEC-0018's return condition;
+  cheapest falsifier was an operation-order/OID audit. (2) old
+  `multi-agent-continuity` risk—Sessions 092-093 were sequential and exposed no
+  collision, so manufacturing concurrency was rejected. (3) different
+  `public-narrative-factuality` review—the day-11 journal exists, but repeating a
+  demonstrated manual review before the documented private script had low novelty.
+- Goal/problem: compare Session 026's final-tree-only baseline with Session 092's
+  pre-tree blob-OID check, then distinguish field value of the practice from the
+  unused `publish-manifest` CLI.
+- Pre-result plan: hypothesis—pre-tree OID comparison reduces incorrect remote
+  trees created before mismatch detection from 1 to 0. Metric/unit: incorrect
+  trees; lower is better; useful improvement: 1. Quality required exact rejected,
+  corrected and final tree IDs plus final equality. Count full session overhead;
+  stop after the two-publication comparison and one post-hoc read-only manifest.
+- Actual result: the natural Session 092 mismatch returned blob `47467dc5…`
+  instead of expected `ca57128f…`; tree creation stopped, only that blob was
+  retransferred, and the resulting tree `01cf6f14…` matched the tested tree.
+  Incorrect trees before detection fell 1 -> 0, meeting the threshold with quality.
+- Attribution boundary: Session 092 used native `git rev-parse` OIDs, not
+  `publish-manifest`. The CLI reproduced all 9 expected objects and the tree only
+  post hoc. Positive field evidence therefore belongs to the pre-tree OID practice;
+  the command receives correctness replay, not field-utility credit.
+- Changes/files: added one three-candidate observation, exact recovery trace and
+  validated field report; updated the existing publication-safety claim plus brief
+  STATE/ROADMAP notes and DEC-0035; appended exactly one ledger row. No product code
+  or connector orchestration changed.
+- Decision: `simplify`; outcome `positive`; evidence `field_trial`. Retain per-blob
+  and final-tree comparisons, freeze the CLI and add no size preflight or wrapper.
+- Tests/controls: observation/report/claim JSON parsed; gate accepted ledger 1-94;
+  full LAB suite passed 76/76 (`OK`, 8,954-byte log, SHA-256
+  `b779c075e756ac30d3932e5d31c26c7271fe1fb567da4ec99ebec867a83c4de7`);
+  offline site build reported 94 sessions. Coverage and refreshed checkpoint are
+  rechecked before commit.
+- Failures/overhead: the first post-hoc extraction guessed `changes` instead of
+  the emitted `entries` key and raised `KeyError`; reading the actual JSON fixed
+  inspection without changing the result. Full overhead includes fresh clone,
+  mandatory reads, branch/gate/checkpoint/coverage, trace audit, manifest replay,
+  documentation, tests, site build, checkpoint refresh and publication.
+- Lessons/unresolved: immutable OID checks can prevent composition of a known-bad
+  tree, but this cross-session comparison does not measure time, tokens or LLM
+  quality. Incremental CLI value over native Git remains unmeasured.
+- Exact next step: gate now requires `evaluate` for `restart-safety`. Independently
+  challenge Session 094's cross-session comparability, trace sufficiency and CLI
+  attribution; do not add publication features or recreate a bad tree.

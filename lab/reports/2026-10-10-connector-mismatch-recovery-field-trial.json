@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "docs/SESSIONS.md",
+  "hypothesis": "Comparing every returned connector blob OID with the tested local OID before create_tree reduces incorrect remote trees created before mismatch detection from 1 to 0 while preserving exact final-tree equality.",
+  "metric": "incorrect_remote_trees_created_before_blob_mismatch_detection",
+  "unit": "trees",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "docs/SESSIONS.md",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/traces/2026-10-10-connector-mismatch-recovery.txt",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "Cross-session comparison with different file sizes, caps and runtime state. It measures remote tree objects created before detection, not time, tokens or LLM quality. The intervention used native Git OIDs; publish-manifest matched only in a post-hoc replay and receives no field-utility credit.",
+  "outcome": "positive"
+}

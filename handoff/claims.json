@@ -192,7 +192,7 @@
   },
   {
     "id": "connector-publication-safety",
-    "text": "The read-only connector publication manifest and its bounded unevaluated claim are represented by these files.",
+    "text": "Pre-tree connector blob-OID checking prevented one incorrect tree in a real mismatch; publish-manifest itself matched only post hoc and has no field-utility credit.",
     "evidence": [
       "src/ai_for_ai_lab/publish_manifest.py",
       "src/ai_for_ai_lab/__main__.py",
@@ -206,6 +206,9 @@
       "lab/observations/2026-10-05-opus-alias-evidence-check.json",
       "lab/observations/2026-10-05-alias-evidence-correction.json",
       "lab/observations/2026-10-06-alias-doc-correction.json",
+      "lab/observations/2026-10-10-connector-mismatch-recovery.json",
+      "lab/observations/traces/2026-10-10-connector-mismatch-recovery.txt",
+      "lab/reports/2026-10-10-connector-mismatch-recovery-field-trial.json",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

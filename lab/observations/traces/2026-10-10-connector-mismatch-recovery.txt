@@ -1,0 +1,52 @@
+Session 094 connector mismatch recovery audit
+
+Baseline — Session 026, real connector publication:
+  Source: docs/SESSIONS.md, Session 026
+  Observed path: docs/SESSIONS.md
+  Transfer cap: 20k output
+  Incorrect blob created before detection: 1
+  Incorrect tree created before detection: 1
+  Detection point: final local/remote tree comparison
+  Quality: no commit used the incorrect tree; a complete reread produced a match
+
+Intervention — Session 092, real connector publication:
+  Source: automation connector receipts and docs/SESSIONS.md, Session 092
+  Base commit: 5f15d2731a9c33dd054c43f58cc9b746964a0b3b
+  Target commit: 20c92c75c39abd40819f3d6d8424600b4684749a
+  Path: docs/SESSIONS.md
+  First returned blob OID: 47467dc5bcc6ffb6653852f13c5f75f544c4c50a
+  Tested local blob OID: ca57128f1e1ea079b22ef65368ed8e0f8fa03908
+  Action after mismatch: stop before create_tree; retry only this blob with a
+    larger output limit
+  Corrected returned blob OID: ca57128f1e1ea079b22ef65368ed8e0f8fa03908
+  Incorrect trees created before detection: 0
+  Tree created after all 9 blob checks:
+    01cf6f143405cd2cc1f61fb34168afe4c75d6386
+  Tested local tree:
+    01cf6f143405cd2cc1f61fb34168afe4c75d6386
+  Published main commit:
+    20c92c75c39abd40819f3d6d8424600b4684749a
+
+Post-hoc read-only replay in Session 094:
+  PYTHONPATH=src python3 -m ai_for_ai_lab publish-manifest --root . \
+    --base 5f15d2731a9c33dd054c43f58cc9b746964a0b3b \
+    --commit 20c92c75c39abd40819f3d6d8424600b4684749a
+
+  Manifest docs/SESSIONS.md entry:
+    mode=100644
+    oid=ca57128f1e1ea079b22ef65368ed8e0f8fa03908
+    operation=upsert
+    size=197373
+    type=blob
+  Manifest target tree:
+    01cf6f143405cd2cc1f61fb34168afe4c75d6386
+
+Attribution boundary:
+  Session 092 compared connector blob SHAs with native `git rev-parse HEAD:path`
+  values. It did not invoke publish-manifest during the intervention. The field
+  result therefore supports pre-tree OID checking, not incremental utility of the
+  CLI. The post-hoc CLI replay establishes matching output only.
+
+Observed inspection failure:
+  A first Python extraction used p['changes'] and raised KeyError. The emitted
+  contract uses p['entries']; corrected extraction returned the entry above.

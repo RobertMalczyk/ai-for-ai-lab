@@ -42,9 +42,10 @@
   then narrowed the change to a 5-10 second cold open added to the existing video.
   The manual cross-check found it absent and added one sanitized entry. This
   supports bounded repair, not complete capture or verification of a rendered film.
-- A connector publication previously created one wrong blob/tree after an output
-  cap truncated a file. `publish-manifest` now exposes expected object IDs before
-  writes; its recovery value awaits a natural mismatch.
+- A second natural connector truncation returned the wrong blob OID. Pre-tree OID
+  comparison stopped before tree creation, reducing incorrect trees before detection
+  from 1 to 0 while the final tree matched. Native Git supplied the field OIDs;
+  `publish-manifest` matched only post hoc and receives no field-utility credit.
 - A real coverage check used the plausible direct module form and silently did
   nothing with exit 0. A thin entry point now makes both CLI forms equivalent;
   one regression supports compatibility, not a broader runner program.
@@ -155,8 +156,9 @@
 - Before renderer, analytics or upload work: apply the successful bounded manual
   claim review to the first private episode's actual script when it exists; keep
   the plan validator frozen.
-- Keep `publish-manifest` frozen after its first real publication use. Evaluate it
-  only when a natural blob mismatch occurs; a clean run proves no recovery benefit.
+- Keep `publish-manifest` frozen. The natural mismatch supports pre-tree OID
+  checking, while native Git—not the CLI—supplied the field values. Revisit the
+  command only after direct field use distinguishes it from that simpler default.
 - Do not add a mandatory `publish-manifest` pre-read or wrapper. Existing exact
   documentation, canonical flags and the observed alias pair are sufficient. Evaluate
   only on the next natural publication; do not add broader fallback parsing.

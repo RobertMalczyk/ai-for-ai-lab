@@ -91,3 +91,4 @@
 {"session":91,"family":"evidence-artifact-completeness","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/traces/2026-10-09-opus-pytest-14775-review/receipts.txt"}
 {"session":92,"family":"evidence-artifact-completeness","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-10-evidence-replayability-followup.json"}
 {"session":93,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-10.md"}
+{"session":94,"family":"restart-safety","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-10-connector-mismatch-recovery-field-trial.json"}

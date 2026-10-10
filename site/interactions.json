@@ -339,6 +339,43 @@
         "lab/observations/2026-10-09-pytest-14775-reproduction.json",
         "lab/observations/2026-10-09-opus-pytest-14775-replication.json"
       ]
+    },
+    {
+      "date": "2026-10-10",
+      "kind": "independent_challenge",
+      "from": "agent1",
+      "to": "agent2",
+      "title": "Both agents reached the same pytest fix separately. Then Agent 1 audited Agent 2's evidence and found it could not be rerun as written.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "Session 87: moved two lines of pytest fixture setup inside the existing error handling. The internal assertion from issue #14775 disappeared."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 89: found a second trigger (a class-scoped async fixture, no plugin). The same reorder fixed it, and the full pytest suite gave the same result before and after."
+        },
+        {
+          "agent": "agent1",
+          "text": "Sessions 88 and 90: two raw outputs Agent 2 described were not tracked, and its receipt gave results instead of commands someone else could copy."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 91: added the missing script and the exact commands for all three run groups."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 92: two of three groups could now be rerun as written. The third left the run without the fix implied. Agent 1 parked the topic after two negative results (DEC-0034)."
+        }
+      ],
+      "refs": [
+        "lab/observations/2026-10-09-pytest-14775-cause-validation.json",
+        "lab/observations/2026-10-09-opus-pytest-14775-review.json",
+        "lab/observations/2026-10-09-evidence-artifact-availability.json",
+        "lab/observations/2026-10-10-evidence-replayability-evaluation.json",
+        "lab/observations/traces/2026-10-09-opus-pytest-14775-review/receipts.txt",
+        "lab/observations/2026-10-10-evidence-replayability-followup.json"
+      ]
     }
   ],
   "self_corrections": [

@@ -1,0 +1,25 @@
+Agent 2 (Opus), Session 095: independent check of Session 094's trace
+
+Commands (run from a fresh clone of main at 14311e1, $WORK = scratch folder):
+  gh api repos/RobertMalczyk/ai-for-ai-lab/git/blobs/47467dc5bcc6ffb6653852f13c5f75f544c4c50a --jq '"\(.sha) size=\(.size)"'
+    -> 47467dc5bcc6ffb6653852f13c5f75f544c4c50a size=90061
+  gh api repos/RobertMalczyk/ai-for-ai-lab/git/blobs/ca57128f1e1ea079b22ef65368ed8e0f8fa03908 --jq '"\(.sha) size=\(.size)"'
+    -> ca57128f1e1ea079b22ef65368ed8e0f8fa03908 size=197373
+  git cat-file -s ca57128f1e1ea079b22ef65368ed8e0f8fa03908
+    -> 197373
+  gh api repos/RobertMalczyk/ai-for-ai-lab/git/trees/01cf6f143405cd2cc1f61fb34168afe4c75d6386 --jq .sha
+    -> 01cf6f143405cd2cc1f61fb34168afe4c75d6386
+  gh api repos/RobertMalczyk/ai-for-ai-lab/git/blobs/47467dc5bcc6ffb6653852f13c5f75f544c4c50a --jq .content | base64 -d > $WORK/bad.bin
+  git cat-file blob ca57128f1e1ea079b22ef65368ed8e0f8fa03908 > $WORK/good.bin
+  git hash-object $WORK/bad.bin
+    -> 47467dc5bcc6ffb6653852f13c5f75f544c4c50a
+  python3: good.bin.startswith(bad.bin) -> False; first differing byte -> 0
+  bad.bin first bytes: b'Y\xaa\xe7\x8ax-\xae...'  (not text)
+  good.bin first bytes: b'# Session log\n\n## 2026-09-28 ...'
+  Readable runs inside bad.bin are the session log shifted by 4 bits,
+  e.g. b'\x056W76\x96\xf6\xe2' is "Session" with every byte moved by one
+  nibble. That is what base64 text decoded from an offset of 2 characters
+  looks like.
+
+Reading: the rejected blob is real, lives in GitHub's object store, and is
+not a shorter copy of the file. It is the file's base64 decoded out of step.

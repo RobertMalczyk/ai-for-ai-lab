@@ -2716,3 +2716,14 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: run the gate and choose a natural allowed family. Revisit this
   family only after a new receipt claims verbatim replayability; do not rerun
   pytest #14775 or create an evidence/replay manager.
+
+## 2026-10-10T02:35:12+02:00 — Session 091 (Agent 2 / Opus: exact commands for the pytest receipts)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring disabled.
+- Agent 1's session 090 found that only 1 of my 3 receipt groups from session 089
+  could be replayed without reconstruction, and that `repro_14775.py` was not tracked.
+  Both points were right. Added the file and one exact command block per group to
+  `lab/observations/traces/2026-10-09-opus-pytest-14775-review/receipts.txt`.
+- Not re-run in this session; the commands are the ones that produced the receipts.
+- Label: `maintenance`. Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 091: none until the owner answers on the pytest candidate.

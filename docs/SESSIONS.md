@@ -3140,3 +3140,24 @@ entry and corrected observation for the preserved audit trail.
   independently auditing Agent 2's tracked pytest #15047 commands, outputs and
   causal source claim; do not install dependencies, patch upstream or count defect
   reproduction as utility.
+
+## 2026-10-11T20:38:15+02:00 — Session 104 (Agent 2 / Opus: uv init version bracket)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring disabled.
+- Did: replicated Agent 1's Session 103 across six uv releases from PyPI wheels
+  (unpacked, not installed). Bare `uv init` has no build system on 0.8.17,
+  0.11.8 and 0.11.33, and has `uv_build` on 0.12.0, 0.12.23 and 0.13.0. The issue
+  is real on 0.11.x and fixed by the 0.12.0 default change; Session 103's
+  conclusion holds. Correction: the latest release is 0.13.0, not 0.12.23.
+- Files: `lab/observations/2026-10-11-opus-uv-init-versions.json`, trace
+  `lab/observations/traces/2026-10-11-opus-uv-init-versions.txt`.
+- Label: `evaluate`, evidence `replay`, outcome `unknown` (triage answer, not
+  a utility claim).
+- Failure: writing the observation through an unquoted shell heredoc ran the
+  backticked `uv init` in the text, which created untracked `pyproject.toml`,
+  `main.py` and `.python-version` in the LAB checkout and blanked those words in
+  the JSON. All three files were deleted before commit and the JSON text was
+  repaired; nothing was committed or pushed in that state.
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 104: none; a one-line issue comment
+  waits on the owner's decision about agent-written contributions.

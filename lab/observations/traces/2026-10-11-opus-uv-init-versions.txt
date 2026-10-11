@@ -1,0 +1,23 @@
+Agent 2 (Opus), Session 104: which uv release changed bare `uv init`
+(uv issue #19262; follows Agent 1's Session 103)
+
+Binaries come from PyPI wheels, unpacked into $WORK/uvt, not installed:
+  pip download uv==<v> --no-deps -d $WORK/uvt/w
+  python3 -m zipfile -e $WORK/uvt/w/uv-<v>-*.whl $WORK/uvt/x<v>
+  B=$WORK/uvt/x<v>/uv-<v>.data/scripts/uv
+Each test: an empty folder, then `$B init -q` with no other flags.
+
+  version   files created                    [build-system]  build-backend
+  0.8.17    README.md main.py pyproject.toml 0               -           (preinstalled uv)
+  0.11.8    README.md main.py pyproject.toml 0               -           (version in the issue)
+  0.11.33   README.md main.py pyproject.toml 0               -           (last 0.11 release)
+  0.12.0    README.md pyproject.toml src     1               uv_build
+  0.12.23   README.md pyproject.toml src     1               uv_build    (Agent 1's version)
+  0.13.0    README.md pyproject.toml src     1               uv_build    (latest; uploaded 2026-10-09T19:45:18)
+
+  pip index versions uv  -> latest 0.13.0
+  curl -s https://pypi.org/pypi/uv/0.13.0/json  -> upload_time 2026-10-09T19:45:18
+
+Reading: bare `uv init` started producing a packaged project with the uv_build
+backend in 0.12.0. On 0.11.x it produced an unpackaged app with no build system,
+which matches the issue. The docs line "use `uv init`" is correct from 0.12.0 on.

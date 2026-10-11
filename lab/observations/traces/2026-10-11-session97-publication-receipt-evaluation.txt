@@ -1,0 +1,34 @@
+Session 099 — tracked publication-receipt evaluation
+
+Target:
+  Session 097 remote commit ff25f1dc8863c1bc21259a9d22aad9265bfc9b99
+  Required by DEC-0036: contemporaneous sanitized operation ordering and exact
+  side-effect object IDs.
+
+Inspection 1 — tracked references:
+  git grep for the full Session 097 commit/tree IDs and Session 097 labels found
+  the session heading and Requests follow-up records, but no full commit/tree ID
+  or connector-operation receipt. This absence does not prove which calls ran.
+
+Inspection 2 — immutable Git state:
+  commit: ff25f1dc8863c1bc21259a9d22aad9265bfc9b99
+  tree:   15cccf20a86b2505b246616c7419a20e847489fb
+  parent: de904b610fb45d0e80cc8c0b0f7ddfff43430945
+  origin/agent/2026-10-11-requests-branch-triage points to the commit.
+  The commit is an ancestor of current origin/main.
+  This supports final object identity and ancestry, not connector call order or
+  update_ref parameters.
+
+Inspection 3 — Session 097 tracked change and record:
+  Changed paths were ROADMAP.md, STATE.md, docs/SESSIONS.md,
+  handoff/checkpoint.json, the Requests observation/trace and lab/sessions.jsonl.
+  The observation mentions publication only as overhead and contains no returned
+  blob OIDs, create-tree receipt, force flag or expected-SHA lease receipt.
+  No receipt-like Session 097 publication path was present in that commit tree.
+
+Result:
+  1/4 required facts independently supported.
+  Supported: branch commit/tree/parent.
+  Unsupported: pre-tree blob comparisons, create-tree ordering, and force-disabled
+  expected-SHA main update.
+  Do not infer that the safety actions were omitted; the evidence is unavailable.

@@ -2975,3 +2975,46 @@ entry and corrected observation for the preserved audit trail.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 098: none; the one-line fix waits on
   the owner's decision about who signs agent-written PRs.
+
+## 2026-10-11T06:03:48+02:00 — Session 099 (Session 097 publication receipt evaluation)
+
+- Author/gate: Agent 1. Fresh main was clean at `12308b8` with tree
+  `182350bd`; 97 agent/Opus refs were merged and the two remaining old Opus refs
+  were patch-equivalent. Gate required `evaluate` for `restart-safety`, excluded
+  four parked families and assigned session 99.
+- Goal/problem: test whether Session 097's real connector publication satisfied
+  DEC-0036's return condition by preserving tracked contemporaneous operation
+  ordering and exact side-effect IDs, rather than relying on its later summary.
+- Pre-result plan: simplest baseline was the summary plus immutable Git state.
+  Hypothesis: three read-only inspections support 4/4 facts—pre-tree blob checks,
+  create-tree ordering, branch commit/tree/parent and force-disabled expected-SHA
+  main update. Metric: independently supported facts; higher is better; useful
+  threshold: 4/4. Temporal facts required a tracked receipt; stop after 3 reads.
+- Actual result: 1/4 facts passed. Git independently resolves commit `ff25f1d` to
+  tree `15cccf20…`, parent `de904b6`, the named agent branch and current-main
+  ancestry. No tracked Session 097 record contains returned blob OIDs, create-tree
+  order, `force=false` or the expected-SHA lease. Final state cannot prove them.
+- Agent interaction: Agent 2's Session 098 completed the Requests factual triage;
+  STATE/ROADMAP now reflect that answer. This evaluation does not alter Agent 2's
+  evidence or turn the identified one-line change into an upstream contribution.
+- Changes/files: added one predeclared evaluation and exact trace; updated the
+  publication-safety claim, brief STATE/ROADMAP summaries and DEC-0037; appended
+  exactly one ledger row. No product or connector code changed.
+- Decision: `park`; outcome `negative`; evidence `replay`. Sessions 096 and 099
+  are two non-positive evaluations. Retain native OID checks as prudent practice,
+  freeze the CLI and reopen only for a natural tracked operation receipt.
+- Verification failure: the first bookkeeping read treated `handoff/claims.json`
+  as an object with a `claims` key, but it is a top-level list. Reading its actual
+  shape corrected the command without changing the experiment.
+- Tests/controls: observation/claims JSON parsed; ledger was contiguous 1-99;
+  full LAB suite passed 76/76 (`OK`, 8,954-byte log, SHA-256
+  `cca242843f3fe344d8b01a25f1eb0506f24e76ce09fcd6a717263c9e8af2b1ac`);
+  offline site build reported 99 sessions; coverage was complete for 22/22 scoped
+  files; refreshed checkpoint was fresh for all 17 claims.
+- Lessons/unresolved: immutable Git proves object identity and ancestry, not API
+  call order or request flags. The result does not claim Session 097 skipped a
+  safety step or published incorrectly.
+- Exact next step: Session 100 must `explore` by comparing three candidates outside
+  the five parked families. Do not continue Requests factual triage,
+  publication-safety evaluation or external contribution without their recorded
+  return conditions.

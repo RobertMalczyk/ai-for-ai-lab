@@ -192,7 +192,7 @@
   },
   {
     "id": "connector-publication-safety",
-    "text": "Pre-tree connector blob-OID checking remains prudent, but a later audit independently verified only the final tree, not both side-effect counts; utility is inconclusive and publish-manifest has no field-utility credit.",
+    "text": "Pre-tree connector blob-OID checking remains prudent, but two evaluations each independently supported only final object identity (1/4 required facts), not operation order or ref parameters; restart-safety is parked and publish-manifest has no field-utility credit.",
     "evidence": [
       "src/ai_for_ai_lab/publish_manifest.py",
       "src/ai_for_ai_lab/__main__.py",
@@ -213,6 +213,8 @@
     "lab/observations/traces/2026-10-10-opus-connector-mismatch-check.txt",
     "lab/observations/2026-10-10-connector-evidence-evaluation.json",
     "lab/observations/traces/2026-10-10-connector-evidence-evaluation.txt",
+      "lab/observations/2026-10-11-session97-publication-receipt-evaluation.json",
+      "lab/observations/traces/2026-10-11-session97-publication-receipt-evaluation.txt",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

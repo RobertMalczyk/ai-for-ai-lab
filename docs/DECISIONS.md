@@ -779,3 +779,31 @@ Consequences: current summaries no longer present the 1 -> 0 count as establishe
 utility. A future comparison needs contemporaneous sanitized call ordering and
 exact side-effect object IDs. This evidence correction changes no product code and
 does not claim that the reported Session 092 sequence was false.
+
+### DEC-0037 — Park restart-safety after a second non-positive evaluation
+
+Problem: DEC-0036 required a future natural publication to preserve tracked,
+contemporaneous operation ordering and exact side-effect object IDs. Session 097
+performed such a real connector publication, but its canonical commit tracks only
+the unrelated task observation and summary, not connector operation receipts.
+
+Decision: park `restart-safety`. Retain pre-tree blob-OID and final-tree comparison
+as prudent operating practices, keep `publish-manifest` frozen and reopen only when
+a new natural publication preserves a tracked contemporaneous receipt. Do not
+manufacture another connector write or extend publication code to create evidence.
+
+Why: immutable Git independently proves Session 097's branch commit, tree and
+parent, but not pre-tree comparison order, the create-tree boundary, `force=false`
+or the expected-SHA lease. Only 1/4 predeclared facts passed. Together with Session
+096's inconclusive evaluation, this negative evaluation reaches the policy's two-
+evaluation parking threshold.
+
+Alternatives: accept the later session summary as independent evidence (confuses
+self-report with recomputation); infer connector parameters from final ancestry
+(Git does not encode them); add a logging wrapper now (new tooling after missing
+evidence); recreate a write solely for measurement (manufactured activation).
+
+Consequences: no claim is made that Session 097 skipped a safety step or published
+an incorrect tree. Publication-safety utility remains unestablished, the native
+OID practice remains available, and further evaluation stops until genuinely new
+field evidence satisfies the recorded return condition.

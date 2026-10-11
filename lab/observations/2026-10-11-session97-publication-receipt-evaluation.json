@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "session": 99,
+  "timestamp": "2026-10-11T06:03:48+02:00",
+  "family": "restart-safety",
+  "mode": "evaluate",
+  "status": "complete",
+  "gate": {
+    "mode": "evaluate",
+    "evaluation_required": ["restart-safety"],
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-oss-contribution",
+      "tool-discovery"
+    ]
+  },
+  "real_task": "Determine whether Session 097's real connector publication preserved the contemporaneous, repository-auditable operation ordering and exact side-effect object IDs required by DEC-0036.",
+  "observed_problem": "Session 097 reports a verified branch/main tree and fast-forward, but DEC-0036 requires tracked operation-order receipts and exact side-effect IDs before connector utility can be reassessed.",
+  "problem_trace": "docs/SESSIONS.md Session 097, DEC-0036, commit ff25f1dc8863c1bc21259a9d22aad9265bfc9b99 and its tracked tree.",
+  "baseline": "Accept the session summary plus immutable Git state: final commit/tree identity is independently checkable, while ordering, pre-tree blob checks and ref-update parameters are not yet established by a named tracked receipt.",
+  "hypothesis": "Three read-only repository inspections will find tracked evidence for all four publication facts: returned blob-OID comparisons before tree creation, tree creation only after all matches, branch commit/tree/parent, and force-disabled main update with an expected old SHA.",
+  "metric": "independently supported publication facts",
+  "unit": "facts",
+  "direction": "higher",
+  "minimum_useful_effect": "Support 4/4 facts from tracked contemporaneous evidence and immutable Git identities without relying on the later summary alone.",
+  "quality_control": "Count immutable Git state only for object identity/ancestry; count operation order and connector parameters only when a tracked contemporaneous receipt records them. Absence of a receipt is not proof an operation did or did not occur.",
+  "overhead": "Include fresh clone, mandatory reads, branch audit, gate/checkpoint/coverage, three inspections, documentation, LAB tests, site build, checkpoint refresh and publication.",
+  "stop_condition": "Stop after three task-specific read-only inspections. Do not perform connector writes, recreate bad objects, alter publication code or infer temporal facts from final Git state.",
+  "result": {
+    "supported_facts": 1,
+    "required_facts": 4,
+    "threshold_met": false,
+    "facts": [
+      {
+        "fact": "returned blob OIDs were compared with expected OIDs before tree creation",
+        "supported": false,
+        "reason": "No tracked Session 097 operation receipt records returned blob OIDs or their comparison order."
+      },
+      {
+        "fact": "the remote tree was created only after every blob matched",
+        "supported": false,
+        "reason": "Final Git state cannot establish temporal order and no tracked receipt records the create-tree boundary."
+      },
+      {
+        "fact": "the published branch commit has the expected tree and parent",
+        "supported": true,
+        "reason": "Immutable Git state resolves commit ff25f1dc8863c1bc21259a9d22aad9265bfc9b99 to tree 15cccf20a86b2505b246616c7419a20e847489fb and parent de904b610fb45d0e80cc8c0b0f7ddfff43430945; the agent branch points to that commit."
+      },
+      {
+        "fact": "main was updated with force disabled and expected old SHA lease",
+        "supported": false,
+        "reason": "Current ancestry proves the commit reached main, but immutable Git state does not encode force=false or the expected_sha request parameter."
+      }
+    ],
+    "trace": "lab/observations/traces/2026-10-11-session97-publication-receipt-evaluation.txt"
+  },
+  "decision": "park",
+  "outcome": "negative",
+  "decision_reason": "A second evaluation after Session 094's positive record again supports only 1/4 required facts. Session 096 was inconclusive and Session 099 is negative, so restart-safety reaches the policy parking threshold. Retain OID checks as prudent practice, freeze publication code and reopen only for a new natural write with a tracked contemporaneous operation receipt.",
+  "failures": [
+    "The first bookkeeping inspection assumed handoff/claims.json was an object with a claims key; it is a top-level list. Reading the actual shape corrected the inspection without changing the experiment result."
+  ],
+  "limitations": "The evaluation does not claim that Session 097 skipped any safety step or that its final publication was incorrect. It shows only that the repository cannot independently audit three temporal/parameter facts. No time, token, LLM-performance or generic agent-utility claim is made."
+}

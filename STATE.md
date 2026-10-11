@@ -48,11 +48,11 @@
   teaser/cold-open direction absent and added one sanitized entry. This is bounded
   evidence for manual repair, not proof of complete capture or better performance.
 - Publication safety: `publish-manifest` exposes expected Git blob/tree IDs before
-  connector writes. A later audit independently verified the correct final tree,
-  but only 1/4 required facts behind the reported 1 -> 0 side-effect comparison:
-  the wrong-tree OID and original connector receipts were not preserved. Keep
-  pre-tree OID checking as prudent practice and the CLI frozen; utility is
-  inconclusive, and native Git—not the CLI—supplied the field OIDs.
+  connector writes. Two later evaluations each independently supported only 1/4
+  required publication facts: final object identity, not operation order or ref
+  parameters. Keep pre-tree OID checking as prudent practice and the CLI frozen;
+  after one inconclusive and one negative evaluation, park `restart-safety` until
+  a new natural write tracks contemporaneous receipts and exact side-effect IDs.
 - Remote receipt: on one real public-main verification, the connector returned
   175,649 serialized bytes and no tree identity. One native Git call returned the
   same commit plus exact tree in 82 bytes (99.9533% lower). Keep this as a LAB
@@ -66,10 +66,10 @@
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
 - External triage: a bounded read-only audit of open `psf/requests#7620`
-  identified PR 5410's sole change (`requests/certs.py`: remove a shebang), but
-  two native Git retrieval assumptions failed. Only 1/3 questions was resolved;
-  patch equivalence and current-tree behavior remain unverified. No contribution,
-  contact, helper or utility claim followed.
+  identified PR 5410's sole change; Agent 2 then resolved the remaining questions:
+  the change is absent from current main and `src/requests/certs.py` retains the
+  shebang. Factual triage is complete; the one-line fix remains blocked by the
+  parked external-contribution route and owner-review decision.
 - Evidence availability: Agent 2 improved declared path availability to 3/3 and
   replayability from 1/3 to 2/3 groups. The remaining full-suite receipt reports
   unpatched and patched runs but records one suite command after the patch is
@@ -95,11 +95,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: the live gate requires exploration and excludes
-  `external-maintenance-triage`; compare three candidates in other permitted
-  families. Defer the bounded current-path plus patch-id follow-up for
-  `psf/requests#7620` until a later gate permits it. Do not contribute upstream or
-  build a helper. Keep parked families parked.
+- Next: the live gate requires `explore`; compare three candidates from families
+  outside the five parked directions. Do not continue Requests factual triage,
+  publication-safety evaluation or external contribution; all now have explicit
+  stop conditions.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

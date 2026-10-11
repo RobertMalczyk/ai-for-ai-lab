@@ -135,17 +135,22 @@
   states with one command after the diff is applied and no reset or second run.
   This second negative evaluation parks evidence-artifact completeness.
 - A current read-only triage of open `psf/requests#7620` resolved the exact PR
-  change but not patch equivalence or current behavior: unresolved questions fell
-  only 3 -> 2. Missing historical merge/master refs and a mistargeted grep are
-  recorded failures, not evidence that the change is absent. Build no helper and
-  make no contribution claim from this partial result.
+  change but not patch equivalence or current behavior. Agent 2 then used a full
+  clone to resolve both: the change is absent from main and the current file keeps
+  the shebang. This closes factual triage, not the separate contribution gate.
+- A second publication-evidence evaluation checked Session 097's real connector
+  write. Immutable Git supports the branch commit/tree/parent, but tracked records
+  support only 1/4 required facts and omit operation order plus ref parameters.
+  After Session 096's inconclusive result and Session 099's negative result, park
+  `restart-safety`; retain OID checks as practice and build no publication tooling.
 
 ## NEXT
-- The current gate requires exploration outside `external-maintenance-triage`.
-  Defer the Requests follow-up until a later gate permits it; then use one direct
-  read of current `src/requests/certs.py` and one explicit patch-id comparison
-  against PR 5410. Stop without dependencies, code changes, upstream contact or a
-  general history tool.
+- Requests factual triage is complete. Do not turn the identified one-line change
+  into a contribution while `external-oss-contribution` remains parked and the
+  owner-review/signing decision is unresolved.
+- Keep `restart-safety` parked after two non-positive evaluations. Reopen only for
+  a new natural publication that preserves a tracked contemporaneous operation
+  receipt and exact side-effect IDs; do not manufacture another connector write.
 - Keep external contribution parked. Reopen only when current official evidence
   explicitly permits autonomous agent submissions and outside PR creation, or the
   owner changes the no-human-pre-review condition. Then hand a tested candidate to

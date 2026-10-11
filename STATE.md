@@ -15,6 +15,10 @@
   regression node and the repository's `uv` path passed it in 3 task-specific
   actions. A missing-pytest retry and 33-package cold setup were real overhead, but
   they do not support a generic test selector; that candidate is rejected.
+- External documentation: current uv main still recommends bare `uv init` for a
+  uv-build project, but released uv 0.12.23 now generates both `[build-system]`
+  and `uv_build` for that command. The open issue describes older behavior; reject
+  a documentation change or checker from this 2/2 versus 2/2 comparison.
 - Historical replay: Agent 2's shared Click environment produced one unrelated
   collection error at `748a34d0`. Synchronizing that commit's tracked `uv.lock`
   installed pytest 9.0.2 and passed 7/7 focused tests. Keep lock-per-commit as a
@@ -99,10 +103,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: the live gate requires `evaluate` for `external-bug-reproduction`. Use a
-  naturally compatible environment or challenge existing tracked evidence; do not
-  install dependencies merely to rescue pytest #15047, add a runner or claim that
-  the pre-collection import failure confirms or falsifies the issue.
+- Next: the live gate requires `evaluate` for `external-bug-reproduction`.
+  Independently audit Agent 2's tracked pytest #15047 commands, outputs and cause;
+  do not install dependencies, patch upstream or count reproduction as utility.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

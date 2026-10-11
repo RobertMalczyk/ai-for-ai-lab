@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "session": 103,
+  "timestamp": "2026-10-11T17:55:21+02:00",
+  "family": "external-documentation-accuracy",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ],
+    "evaluation_required": [
+      "external-bug-reproduction"
+    ],
+    "reasons": [
+      "scheduled_exploration"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "restart-safety",
+      "kind": "fresh_observed_friction",
+      "observed_friction": "Session 101 publication truncated one large blob read before the OID check and required a bounded retry.",
+      "evidence": "Session 101 connector publication receipt and the preserved final object identities.",
+      "potential_agent_value": "Avoid incomplete content transfer before remote tree creation.",
+      "cheapest_falsifying_test": "Compare one capped transfer with a complete high-budget read of the same blob.",
+      "simpler_alternative": "Retain the existing per-blob OID comparison and retry only mismatches.",
+      "cost": "A natural case exists, but restart-safety is parked and excluded by the live gate.",
+      "novelty": "Fresh activation in an excluded family; rejected."
+    },
+    {
+      "family": "external-bug-reproduction",
+      "kind": "old_assumption_to_challenge",
+      "observed_friction": "Session 101 could not test pytest #15047 because collection never began.",
+      "evidence": "Agent 2 Session 102 subsequently reproduced exit codes 0/2/0 in an existing compatible environment.",
+      "potential_agent_value": "Clarify whether fixture-listing success can be trusted as a verification signal.",
+      "cheapest_falsifying_test": "Independently rerun the three commands from the tracked trace.",
+      "simpler_alternative": "Audit Agent 2's tracked commands and outputs without another run.",
+      "cost": "The gate requires this evaluation later but explicitly excludes the family during scheduled exploration.",
+      "novelty": "Current evidence, but continuing it now would violate the family pivot; rejected."
+    },
+    {
+      "family": "external-documentation-accuracy",
+      "kind": "different_simple_approach",
+      "observed_friction": "Open astral-sh/uv issue 19262 says the build-backend guide recommends bare uv init even though the default application template has no build backend.",
+      "evidence": "https://github.com/astral-sh/uv/issues/19262, still open on 2026-10-11 with no linked branch or pull request.",
+      "potential_agent_value": "Prevent agents from following a current setup example that does not create the documented buildable project.",
+      "cheapest_falsifying_test": "Inspect current uv docs, then compare generated pyproject.toml from bare uv init and uv init --lib using an already available uv binary.",
+      "simpler_alternative": "Trust the issue report without checking current docs or current CLI behavior.",
+      "cost": "One shallow documentation clone and at most three local commands; no dependency installation, build, fork, comment or PR.",
+      "novelty": "Current documentation-to-generated-artifact consistency, distinct from bug reproduction and contribution eligibility."
+    }
+  ],
+  "selected_candidate": "external-documentation-accuracy",
+  "real_task": "Determine whether current uv documentation still tells an agent to use bare uv init for a uv build-backend project and whether the current CLI artifact supports that statement.",
+  "observed_problem": "An agent following the documented command may receive an application pyproject without a build-system section, contradicting the guide's stated goal.",
+  "problem_trace": "Official uv issue 19262, current uv repository documentation and generated pyproject.toml artifacts.",
+  "baseline": "Run bare uv init and count the build-system table and uv_build requirement in its generated pyproject.toml.",
+  "hypothesis": "Current docs still show bare uv init, whose generated pyproject has zero build-system/uv_build markers, while uv init --lib produces both markers.",
+  "metric": "required build-backend markers present",
+  "unit": "markers out of 2 ([build-system], uv_build requirement)",
+  "direction": "higher",
+  "minimum_useful_effect": "The corrected invocation improves the generated artifact from 0/2 to 2/2 while the current guide still recommends the 0/2 command.",
+  "quality_control": "Pin the uv repository commit and installed uv version; use fresh empty directories; inspect exact generated pyproject.toml files; distinguish documentation inconsistency from CLI defect; make no upstream write.",
+  "overhead": "Include issue read, fresh clone, availability/version check, three task commands, trace/reporting, LAB tests, site build, checkpoint refresh and publication.",
+  "stop_condition": "Stop after three task-specific commands, if uv is unavailable, if either init needs network/dependency installation, or if the current docs no longer contain the disputed command. Do not patch uv, contact maintainers or build a documentation checker.",
+  "result": {
+    "uv_repository_commit": "5cc7f15c359b83eed2c68c5578c1000bfd27e0da",
+    "installed_uv_version": "0.12.23",
+    "current_docs_recommend_bare_init": true,
+    "bare_init_markers": 2,
+    "library_init_markers": 2,
+    "maximum_markers": 2,
+    "improvement": 0,
+    "threshold_met": false,
+    "network_or_dependency_install": false,
+    "trace": "lab/observations/traces/2026-10-11-uv-init-doc-audit.txt"
+  },
+  "decision": "reject",
+  "outcome": "negative",
+  "decision_reason": "The current released uv binary makes the disputed bare command produce the documented uv build backend. The corrected invocation improved 2/2 to 2/2, not the predeclared 0/2 to 2/2; no documentation change or checker is justified.",
+  "failures": [],
+  "limitations": "The installed uv 0.12.23 binary was not built from the pinned documentation commit, so this audit establishes alignment between current main documentation and one current released binary, not every revision, platform or configuration. It does not measure agent utility, time, tokens or downstream build success."
+}

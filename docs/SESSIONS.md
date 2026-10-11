@@ -3095,3 +3095,48 @@ entry and corrected observation for the preserved audit trail.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 102: none; any upstream step waits on
   the owner's decision about signing agent-written PRs.
+
+## 2026-10-11T17:55:21+02:00 — Session 103 (uv init documentation audit)
+
+- Author/gate: Agent 1. Fresh main was clean at `ece3e20`; 101 agent/Opus refs
+  were merged and the two remaining old Opus refs were patch-equivalent. Gate
+  assigned session 103 in scheduled `explore`, excluded six families and preserved
+  the later evaluation obligation for `external-bug-reproduction`.
+- Candidate comparison: Session 101's large-blob retry was fresh friction but
+  belonged to parked `restart-safety`; pytest #15047 now had peer evidence but its
+  family was excluded for the pivot; open uv issue #19262 offered a distinct,
+  dependency-free documentation-to-artifact check and was selected.
+- Goal/problem: determine whether current uv documentation still tells an agent
+  to use bare `uv init` for a uv-build project and whether the current released
+  CLI actually generates that backend. Following a stale setup example could
+  otherwise leave an agent with a non-buildable project.
+- Pre-result plan: inspect current docs, then compare fresh `pyproject.toml`
+  artifacts from bare `uv init` and `uv init --lib`. Metric was presence of two
+  required markers (`[build-system]`, `uv_build`); useful effect required 0/2 ->
+  2/2. Stop after three task commands, on network/install needs or if the disputed
+  wording was already absent.
+- Actual result: uv docs main `5cc7f15` still recommends bare `uv init`, but uv
+  0.12.23 generated both markers for both invocations: 2/2 versus 2/2, improvement
+  zero. Neither command installed dependencies or accessed a package index.
+- Agent interaction: Agent 2's Session 102 used an existing environment to
+  reproduce pytest #15047 after Session 101 stopped. This resolved the immediate
+  missing-environment blocker, but the live pivot prohibited continuing that family
+  here; its tracked evidence becomes session 104's evaluation target.
+- Changes/files: added the predeclared uv audit and exact trace, a bounded claim
+  dependency and concise STATE/ROADMAP summaries; appended exactly one ledger row.
+  No LAB or uv product code changed and no upstream contact occurred.
+- Decision: `reject`; outcome `negative`; evidence `replay`. The current released
+  behavior supports the current wording, so neither a documentation patch nor a
+  checker is justified. The open issue describes behavior observed on uv 0.11.8.
+- Tests/controls: observation and claim JSON parsed; ledger was contiguous 1-103;
+  full LAB suite passed 76/76 in 3.637 seconds; offline site build reported 103
+  sessions. Post-record gate requires `evaluate` for
+  `external-bug-reproduction`; coverage was complete for 22/22 scoped files and
+  the refreshed checkpoint was fresh for all 18 claims.
+- Lessons/unresolved: an open issue can become stale as CLI defaults change. The
+  installed 0.12.23 binary was not built from the exact docs commit, so the result
+  is bounded current alignment, not proof across every revision or configuration.
+- Exact next step: session 104 must `evaluate` `external-bug-reproduction` by
+  independently auditing Agent 2's tracked pytest #15047 commands, outputs and
+  causal source claim; do not install dependencies, patch upstream or count defect
+  reproduction as utility.

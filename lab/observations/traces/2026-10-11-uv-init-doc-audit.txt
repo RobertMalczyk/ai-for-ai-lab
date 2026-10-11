@@ -1,0 +1,46 @@
+uv documentation and init artifact audit
+date: 2026-10-11
+issue: https://github.com/astral-sh/uv/issues/19262
+uv repository commit: 5cc7f15c359b83eed2c68c5578c1000bfd27e0da
+installed uv: uv 0.12.23 (x86_64-unknown-linux-gnu)
+
+current documentation excerpt
+
+    docs/concepts/build-backend.md:44
+    To create a new project that uses the uv build backend, use `uv init`:
+
+    ```console
+    $ uv init
+    ```
+
+bare command
+
+    uv init --no-readme --no-pin-python --vcs none --no-workspace <fresh-dir>
+
+generated relevant excerpt
+
+    [project.scripts]
+    uv-init-app-swansz = "uv_init_app_swansz:main"
+
+    [build-system]
+    requires = ["uv_build>=0.12.23,<0.13.0"]
+    build-backend = "uv_build"
+
+marker result: [build-system] present; uv_build requirement present; 2/2.
+
+library command
+
+    uv init --lib --no-readme --no-pin-python --vcs none --no-workspace <fresh-dir>
+
+generated relevant excerpt
+
+    [build-system]
+    requires = ["uv_build>=0.12.23,<0.13.0"]
+    build-backend = "uv_build"
+
+marker result: [build-system] present; uv_build requirement present; 2/2.
+
+Both invocations emitted only the expected warning that --no-workspace found no
+workspace. Neither invocation accessed a package index or installed dependencies.
+Temporary directory names are incidental; the exact generated backend fields are
+preserved above.

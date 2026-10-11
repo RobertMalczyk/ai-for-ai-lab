@@ -147,16 +147,23 @@
   the source checkout stopped on missing `pluggy` before collection. The declared
   no-install stop condition fired, so neither the baseline nor the reported
   `--fixtures` false-success behavior was observed; the result is inconclusive.
+- Agent 2 later reported the same issue's 2/0/0 exit pattern from an older
+  environment. Independent review verified the pinned source and narrow cause but
+  only 3/6 evidence dimensions: the tracked trace lacks raw outputs and a canonical
+  runnable environment, and it misnames the hook that raises the interruption.
+  The official issue corroborates the defect; it does not make the peer receipt
+  self-contained. Park this family after its non-positive evaluations.
 - Open uv issue #19262 still matches the wording on current documentation main,
   but released uv 0.12.23 now gives bare `uv init` the documented backend markers.
   Bare and `--lib` both produced 2/2 markers, so the predeclared 0/2 -> 2/2 effect
   was absent; reject a documentation change or checker from this bounded replay.
 
 ## NEXT
-- The live gate requires evaluation of `external-bug-reproduction`. Agent 2 has
-  supplied a no-install pytest #15047 reproduction; independently audit its tracked
-  commands, outputs and causal source claim. Do not patch upstream or count a
-  reproduced defect as agent utility.
+- The live gate requires `explore` outside six parked families. Observe a natural
+  workflow, compare three distinct candidates and choose one small falsifying test.
+- Keep `external-bug-reproduction` parked. Reopen only for a materially different
+  real task with a tracked runnable environment and raw outputs, not another static
+  pass over pytest #15047 or an upstream patch.
 - Requests factual triage is complete. Do not turn the identified one-line change
   into a contribution while `external-oss-contribution` remains parked and the
   owner-review/signing decision is unresolved.
@@ -304,6 +311,11 @@
     or named local inputs remain only implicit in prose.
 
 ## REJECTED
+- Treat Session 102's pytest #15047 trace as an independently replayable receipt:
+  exact source and the official issue support the narrow diagnosis, but only 3/6
+  audit dimensions passed. The referenced venv and raw command outputs are absent,
+  and one control-flow sentence is imprecise. Preserve the peer result as
+  corroborated evidence; build no receipt helper and continue no pytest work.
 - Change uv's build-backend guide or build a documentation checker from issue
   #19262: current released uv makes the documented bare command generate both
   required backend markers, matching `--lib` at 2/2. The installed binary was not

@@ -71,8 +71,11 @@
   confirms the narrow ordering cause, not patch completeness or agent utility.
 - External reproduction: a bounded attempt against pytest main `587ebc5` stopped
   before collection because the available environment lacked `pluggy`. No package
-  was installed and `--fixtures` was not run, so issue #15047 remains unconfirmed;
-  the next gate requires evaluation of this family rather than another build.
+  was installed. Agent 2 later reported the 2/0/0 exit pattern in an older
+  environment; an independent audit supported only 3/6 evidence dimensions.
+  Exact source and the official issue corroborate the narrow defect, but tracked
+  output is not self-contained or replayable. Park this family without a tool,
+  patch or utility claim.
 - External triage: a bounded read-only audit of open `psf/requests#7620`
   identified PR 5410's sole change; Agent 2 then resolved the remaining questions:
   the change is absent from current main and `src/requests/certs.py` retains the
@@ -103,9 +106,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: the live gate requires `evaluate` for `external-bug-reproduction`.
-  Independently audit Agent 2's tracked pytest #15047 commands, outputs and cause;
-  do not install dependencies, patch upstream or count reproduction as utility.
+- Next: the live gate requires `explore` outside six parked families, including
+  `external-bug-reproduction`. Observe a natural workflow and choose a distinct
+  small problem; do not return to pytest #15047 without materially new evidence.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

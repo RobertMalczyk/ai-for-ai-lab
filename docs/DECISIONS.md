@@ -807,3 +807,32 @@ Consequences: no claim is made that Session 097 skipped a safety step or publish
 an incorrect tree. Publication-safety utility remains unestablished, the native
 OID practice remains available, and further evaluation stops until genuinely new
 field evidence satisfies the recorded return condition.
+
+### DEC-0038 — Park external bug reproduction after evidence-boundary failure
+
+Problem: Agent 2 reported a successful pytest #15047 reproduction after Agent 1's
+fresh checkout stopped before collection. The peer record pins a commit and lists
+three commands and exit codes, but its prior virtual environment and raw outputs
+are not tracked, and one causal sentence names the wrong hook.
+
+Decision: park `external-bug-reproduction`. Preserve the result as corroborated
+peer evidence because the exact source and official issue support the narrow
+defect, but do not call the LAB receipt independently replayable. Add no helper,
+pytest patch or upstream contact. Reopen only for a materially different real task
+with a tracked runnable environment and raw outputs.
+
+Why: only 3/6 predeclared audit dimensions passed. The commit, invalid input and
+scoped collection-error cause were independently supported; runnable canonical
+commands, recomputable outputs and precise control-flow wording were not. A
+no-install replay stopped on the checkout's missing generated `_pytest/_version.py`.
+The gate then parked the family after its accumulated non-positive evaluations.
+
+Alternatives: infer raw output from the summary (not independent); install a new
+environment after the stop condition (moves the boundary); treat the official
+issue as the missing LAB artifact (changes provenance); build a replay manager or
+prepare an upstream patch (outside the evidence task and parked contribution path).
+
+Consequences: the pytest defect is credible, but reproducing a defect remains
+different from demonstrating agent utility. Existing records stay append-only;
+future exploration must use another family until materially new evidence satisfies
+the return condition.

@@ -1,0 +1,51 @@
+Session 105 independent audit of Agent 2 Session 102
+
+Target record:
+  lab/observations/2026-10-11-opus-pytest-15047-reproduction.json
+Target trace:
+  lab/observations/traces/2026-10-11-opus-pytest-15047.txt
+
+Pinned source checkout:
+  repository: https://github.com/pytest-dev/pytest.git
+  commit: 587ebc501ba292539202a1aac3a7f5b0112a08ec
+
+No-install replay attempt:
+  PYTHONPATH=src /usr/bin/python3 -m pytest -p no:cacheprovider --collect-only audit_repro/test_bad.py
+  exit: 1
+  stopped before collection: ModuleNotFoundError: No module named '_pytest._version'
+
+The generated _pytest/_version.py and Agent 2's earlier .venv311 are not tracked
+in the LAB repository. No dependency was installed and the two fixture commands
+were not run after this predeclared stop condition fired.
+
+Tracked-evidence audit (binary dimensions):
+  1. pinned revision: PASS; the commit exists and was checked out exactly
+  2. exact invalid input: PASS; the trace includes the printf command and bytes
+  3. runnable commands from canonical evidence: FAIL; $WORK and venv activation
+     are not defined, and the referenced earlier environment is unavailable
+  4. recomputable command outputs: FAIL; only exit codes and the phrase "1 error"
+     are retained, not stdout/stderr or hashes of available raw logs
+  5. scoped collection-error cause: PASS; exact source confirms both fixture
+     helpers call perform_collect(), return None, and wrap_session applies
+     `doit(config, session) or 0`
+  6. precise control-flow wording: FAIL; the trace says pytest_collection raises
+     the collection interruption, but pytest_runtestloop does so. It also omits
+     fixtures.py:1676-1682, where pytest_cmdline_main discards both helper return
+     values and explicitly returns 0.
+
+Result: 3/6 dimensions independently supported; threshold was 6/6.
+
+Exact source anchors at the pinned commit:
+  fixtures.py:1676-1682  pytest_cmdline_main ignores helper results and returns 0
+  fixtures.py:2403-2406  show_fixtures_per_test delegates to wrap_session
+  fixtures.py:2451-2454  helper calls session.perform_collect()
+  fixtures.py:2500-2509  showfixtures delegates; helper performs collection
+  main.py:333            session.exitstatus = doit(config, session) or 0
+  main.py:383-390        normal _main checks testsfailed after hooks
+  main.py:400-404        pytest_runtestloop raises on collection errors
+
+Official issue corroboration (not a substitute for tracked raw output):
+  https://github.com/pytest-dev/pytest/issues/15047
+  The issue reports the same 2/0/0 exit-code pattern and describes both the
+  discarded helper return and the missing testsfailed conversion.
+

@@ -3161,3 +3161,57 @@ entry and corrected observation for the preserved audit trail.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 104: none; a one-line issue comment
   waits on the owner's decision about agent-written contributions.
+
+## 2026-10-11T23:59:14+02:00 — Session 105 (pytest #15047 evidence audit)
+
+- Author/gate: Agent 1. Fresh main was clean at `df910b6`; all current Agent 1
+  and Agent 2 branches except two old patch-equivalent Opus refs were merged.
+  Gate required `evaluate` for `external-bug-reproduction`, so the pending
+  independent audit of Agent 2's Session 102 was selected.
+- Goal/problem: determine whether another agent can independently verify the
+  three pytest #15047 exit-code results and scoped cause from canonical evidence,
+  without installing dependencies or relying on Agent 2's prior environment.
+- Pre-result plan: score six binary dimensions—pinned revision, exact input,
+  runnable commands, recomputable outputs, scoped source cause and precise
+  control-flow wording. Useful evidence required 6/6 with exact-commit source
+  inspection and at most one no-install replay attempt.
+- Plan-order failure: the JSON plan was persisted after the first source excerpt
+  had already been inspected. This violates the requested pre-result ordering;
+  it is recorded explicitly and prevents positive credit regardless of outcome.
+- Actual result: 3/6 dimensions passed. Commit `587ebc5`, the invalid input and
+  the narrow collection-error cause are independently supported. The tracked
+  trace does not define its old venv or retain raw stdout/stderr, so its 2/0/0
+  exit pattern cannot be recomputed from the repository. A no-install replay
+  stopped before collection on missing generated `_pytest/_version.py`.
+- Source challenge: both fixture helpers do call `perform_collect()`, return
+  `None`, and reach `doit(...) or 0`. However, the trace says
+  `pytest_collection` raises the interruption; the pinned source shows that
+  `pytest_runtestloop` raises it. The trace also omits the command hook that
+  discards both helper return values and explicitly returns zero.
+- Corroboration boundary: official pytest issue #15047 independently reports
+  the same exit pattern and both causal layers. This makes the defect credible,
+  but it cannot retroactively supply Agent 2's missing canonical raw outputs.
+- Agent interaction: this audit accepts Agent 2's narrow diagnosis while
+  rejecting the stronger implication that its receipt is self-contained. No
+  peer history was edited and no upstream contact occurred.
+- Changes/files: added the audit plan/result and exact trace, updated the
+  external-bug claim dependencies and concise STATE/ROADMAP summaries, recorded
+  DEC-0038 and appended exactly one ledger row. No product or pytest code changed.
+- Decision: `simplify`; evidence `replay`; outcome `negative`. Preserve the
+  reproduction as corroborated peer evidence, build no helper, patch or replay
+  environment, and park `external-bug-reproduction` after its accumulated
+  non-positive evaluations.
+- Tests/controls: observation and claim JSON parsed; ledger was contiguous 1-105
+  with one row for 105; the full LAB suite passed twice, with final 76/76 (`OK`)
+  in 2.797 seconds and log SHA-256
+  `1a1d36bbbbda13c0992b7fc3855e62a8b47e95db2a596d5576cf956aa9ed03f0`;
+  final offline site build reported 105 sessions. Coverage was complete for
+  22/22 scoped files and the refreshed checkpoint was fresh for all 18 claims.
+- Lessons/unresolved: source inspection can validate a causal hypothesis without
+  making ephemeral command output replayable. The official issue is stronger
+  primary corroboration than the LAB receipt, but neither demonstrates agent or
+  LLM utility.
+- Exact next step: session 106 must follow gate mode `explore` outside six parked
+  families. Observe a natural workflow, compare three distinct candidates and
+  choose one small falsifying test; do not continue pytest #15047 without
+  materially new tracked environment and output evidence.

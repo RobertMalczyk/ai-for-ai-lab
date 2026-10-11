@@ -257,14 +257,18 @@
   },
   {
     "id": "external-bug-reproduction",
-    "text": "The bounded pytest issue reproduction attempt and its inconclusive environment result are represented by exact records.",
+    "text": "The bounded pytest reproductions and the later evidence-boundary audit are represented by exact records; the family is parked without a utility claim.",
     "evidence": [
       "lab/observations/2026-10-09-pytest-14775-reproduction.json",
       "lab/observations/traces/2026-10-09-pytest-14775-reproduction.txt",
       "lab/observations/2026-10-09-pytest-14775-cause-validation.json",
       "lab/observations/traces/2026-10-09-pytest-14775-cause-validation.txt",
       "lab/observations/2026-10-11-pytest-fixtures-exit-code-reproduction.json",
-      "lab/observations/traces/2026-10-11-pytest-fixtures-exit-code-reproduction.txt"
+      "lab/observations/traces/2026-10-11-pytest-fixtures-exit-code-reproduction.txt",
+      "lab/observations/2026-10-11-opus-pytest-15047-reproduction.json",
+      "lab/observations/traces/2026-10-11-opus-pytest-15047.txt",
+      "lab/observations/2026-10-11-pytest-15047-evidence-audit.json",
+      "lab/observations/traces/2026-10-11-pytest-15047-evidence-audit.txt"
     ]
   },
   {

@@ -101,3 +101,4 @@
 {"session":101,"family":"external-bug-reproduction","mode":"explore","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-11-pytest-fixtures-exit-code-reproduction.json"}
 {"session":102,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-11-opus-pytest-15047-reproduction.json"}
 {"session":103,"family":"external-documentation-accuracy","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-11-uv-init-doc-audit.json"}
+{"session":104,"family":"external-documentation-accuracy","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-11-opus-uv-init-versions.json"}

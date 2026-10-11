@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "session": 104,
+  "timestamp": "2026-10-11T20:38:15+02:00",
+  "author": "Agent 2 (Opus)",
+  "family": "external-documentation-accuracy",
+  "mode": "evaluate",
+  "agent_interaction": {
+    "from": "agent2",
+    "to": "agent1",
+    "kind": "independent_replication",
+    "target_session": 103,
+    "target_record": "lab/observations/2026-10-11-uv-init-doc-audit.json"
+  },
+  "question": "Session 103 found that uv 0.12.23 makes bare `uv init` produce the uv_build backend, so the docs are right, while the issue was filed on 0.11.8. Does the issue's behavior really exist on 0.11.x, when did it change, and is 0.12.23 the current release?",
+  "trace": "lab/observations/traces/2026-10-11-opus-uv-init-versions.txt",
+  "artifacts": [
+    "lab/observations/traces/2026-10-11-opus-uv-init-versions.txt"
+  ],
+  "result": {
+    "versions_tested": [
+      "0.8.17",
+      "0.11.8",
+      "0.11.33",
+      "0.12.0",
+      "0.12.23",
+      "0.13.0"
+    ],
+    "build_backend_present": {
+      "0.8.17": false,
+      "0.11.8": false,
+      "0.11.33": false,
+      "0.12.0": true,
+      "0.12.23": true,
+      "0.13.0": true
+    },
+    "change_introduced_in": "0.12.0",
+    "latest_release": "0.13.0",
+    "session_103_conclusion": "holds. The issue's behavior is real on 0.11.x and gone from 0.12.0 through the latest 0.13.0.",
+    "session_103_correction": "0.12.23 was not the latest release; 0.13.0 was uploaded 2026-10-09. The conclusion is unchanged on 0.13.0.",
+    "triage_answer": "Issue #19262 describes pre-0.12 behavior. Upgrading to uv 0.12.0 or later resolves it, and the docs need no change for current releases."
+  },
+  "decision": "Record the version bracket. A useful upstream step would be one comment on the issue saying the behavior changed in 0.12.0; nothing is posted, because contact waits on the owner's decision about agent-written contributions.",
+  "limitations": "Linux x86_64 wheels only, bare `uv init` with no user config, one run per version. Downloading wheels used the network, which Session 103 avoided; nothing was installed into an environment."
+}

@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "session": 101,
+  "timestamp": "2026-10-11T12:02:05+02:00",
+  "family": "external-bug-reproduction",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "reasons": [
+      "last_family_parked"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "branch-visibility",
+      "kind": "fresh_observed_friction",
+      "observed_friction": "The fresh LAB startup reported two remote Opus refs as not merged by ancestry.",
+      "evidence": "git branch -r --no-merged origin/main listed two refs, while git cherry marked every commit patch-equivalent with '-'.",
+      "potential_agent_value": "Avoid treating already-integrated peer work as unfinished.",
+      "cheapest_falsifying_test": "Compare the ancestry list with git cherry for those exact refs.",
+      "simpler_alternative": "Keep the existing two-check native Git practice recorded in AGENTS.md.",
+      "cost": "Already resolved during mandatory startup; another test would repeat the same stable case.",
+      "novelty": "Known behavior with no new failure; rejected."
+    },
+    {
+      "family": "multi-agent-continuity",
+      "kind": "old_assumption_to_challenge",
+      "observed_friction": "The ledger and checkpoint still assume serialized writers, but current main and the worktree are clean.",
+      "evidence": "Session 100 was already merged before this run and no current overlapping branch or ledger collision was observed.",
+      "potential_agent_value": "Prevent a lost update during genuinely concurrent work.",
+      "cheapest_falsifying_test": "Observe a natural overlapping write or conflicting session allocation.",
+      "simpler_alternative": "Retain fetch-before-write and expected-SHA publication checks.",
+      "cost": "No discriminating test without manufacturing concurrency.",
+      "novelty": "Known risk without current activation; rejected."
+    },
+    {
+      "family": "external-bug-reproduction",
+      "kind": "different_simple_approach",
+      "observed_friction": "Open pytest issue 15047 reports that --fixtures and --fixtures-per-test can return success even when collection fails.",
+      "evidence": "https://github.com/pytest-dev/pytest/issues/15047, read 2026-10-11; the issue includes a minimal syntax-error reproducer against recent main.",
+      "potential_agent_value": "Give agents a trustworthy interpretation of a common introspection command's exit status before they use it as a verification signal.",
+      "cheapest_falsifying_test": "Run the same invalid test once with --collect-only and once with --fixtures from a pinned fresh pytest main checkout.",
+      "simpler_alternative": "Trust the issue report without independently checking the current source revision.",
+      "cost": "One fresh clone and at most three task-specific commands; no dependency install, patch, fork, comment or PR.",
+      "novelty": "A current external command-contract bug, distinct from the completed pytest fixture-order diagnosis."
+    }
+  ],
+  "selected_candidate": "external-bug-reproduction",
+  "real_task": "Determine whether pytest main still lets --fixtures report exit 0 for a file with a collection-time SyntaxError while the task-matched --collect-only baseline reports failure.",
+  "observed_problem": "An agent can mistake a fixture inventory command for a successful verification even though collection failed.",
+  "problem_trace": "Official pytest issue 15047 and a fresh pinned pytest main checkout.",
+  "baseline": "Run python -m pytest --collect-only on the invalid file and record its process exit code and collection result.",
+  "hypothesis": "On the same checkout and file, --collect-only exits nonzero but --fixtures exits 0 despite the same collection error.",
+  "metric": "incorrect successful exit statuses",
+  "unit": "commands",
+  "direction": "higher confirms the reported defect; zero falsifies it",
+  "minimum_useful_effect": "Reproduce one incorrect success with identical input while both commands visibly report the collection error.",
+  "quality_control": "Pin the pytest commit; use one invalid file for both commands; capture stdout/stderr and exit codes; verify that the error is a collection SyntaxError; make no external write.",
+  "overhead": "Include issue discovery, clone, command output capture, trace/reporting, LAB tests, site build, checkpoint refresh and publication.",
+  "stop_condition": "Stop after three task-specific commands, any dependency installation requirement, or failure to run current pytest directly from source. Do not patch pytest, contact maintainers or build a runner.",
+  "result": {
+    "pytest_commit": "587ebc501ba292539202a1aac3a7f5b0112a08ec",
+    "baseline_command": "PYTHONPATH=src python3 -m pytest --collect-only -q repro/test_bad.py",
+    "baseline_exit": 1,
+    "collection_started": false,
+    "blocking_error": "ModuleNotFoundError: No module named 'pluggy'",
+    "dependency_install_performed": false,
+    "intervention_run": false,
+    "incorrect_successes_observed": null,
+    "threshold_met": false,
+    "trace": "lab/observations/traces/2026-10-11-pytest-fixtures-exit-code-reproduction.txt"
+  },
+  "decision": "reject",
+  "outcome": "inconclusive",
+  "decision_reason": "The dependency-installation stop condition fired before collection. Reject this candidate for the bounded session rather than installing packages or treating the import failure as evidence about issue 15047.",
+  "failures": [
+    "The fresh source checkout imported pytest only as far as _pytest._code.code, then failed because pluggy was unavailable.",
+    "The baseline and intervention could not be compared, so the reported incorrect success count remains unobserved."
+  ],
+  "limitations": "This result neither confirms nor falsifies pytest issue 15047 and says nothing about task time, tokens, agent utility or LLM performance. A future attempt requires a naturally available compatible pytest environment or a separately justified dependency setup."
+}

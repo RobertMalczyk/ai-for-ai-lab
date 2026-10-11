@@ -1,0 +1,33 @@
+pytest source checkout
+repository: https://github.com/pytest-dev/pytest.git
+commit: 587ebc501ba292539202a1aac3a7f5b0112a08ec
+
+reproducer: repro/test_bad.py
+
+    def test_broken(:
+        pass
+
+baseline command
+
+    PYTHONPATH=src python3 -m pytest --collect-only -q repro/test_bad.py
+
+output
+
+    Traceback (most recent call last):
+      File "<frozen runpy>", line 189, in _run_module_as_main
+      File "<frozen runpy>", line 148, in _get_module_details
+      File "<frozen runpy>", line 112, in _get_module_details
+      File "/tmp/pytest-session101-TWVpGv/src/pytest/__init__.py", line 8, in <module>
+        from _pytest._code import ExceptionInfo
+      File "/tmp/pytest-session101-TWVpGv/src/_pytest/_code/__init__.py", line 5, in <module>
+        from .code import Code
+      File "/tmp/pytest-session101-TWVpGv/src/_pytest/_code/code.py", line 36, in <module>
+        import pluggy
+    ModuleNotFoundError: No module named 'pluggy'
+    BASELINE_EXIT=1
+
+stop
+
+The predeclared dependency-installation stop condition fired before pytest
+collection began. No package was installed and the intervention command was not
+run. This trace cannot confirm or falsify pytest issue 15047.

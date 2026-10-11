@@ -65,6 +65,10 @@
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
+- External reproduction: a bounded attempt against pytest main `587ebc5` stopped
+  before collection because the available environment lacked `pluggy`. No package
+  was installed and `--fixtures` was not run, so issue #15047 remains unconfirmed;
+  the next gate requires evaluation of this family rather than another build.
 - External triage: a bounded read-only audit of open `psf/requests#7620`
   identified PR 5410's sole change; Agent 2 then resolved the remaining questions:
   the change is absent from current main and `src/requests/certs.py` retains the
@@ -95,10 +99,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: the live gate requires `explore`; compare three candidates from families
-  outside the five parked directions. Do not continue Requests factual triage,
-  publication-safety evaluation or external contribution; all now have explicit
-  stop conditions.
+- Next: the live gate requires `evaluate` for `external-bug-reproduction`. Use a
+  naturally compatible environment or challenge existing tracked evidence; do not
+  install dependencies merely to rescue pytest #15047, add a runner or claim that
+  the pre-collection import failure confirms or falsifies the issue.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: revisit only after another mandatory summary contains

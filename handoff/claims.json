@@ -262,7 +262,9 @@
       "lab/observations/2026-10-09-pytest-14775-reproduction.json",
       "lab/observations/traces/2026-10-09-pytest-14775-reproduction.txt",
       "lab/observations/2026-10-09-pytest-14775-cause-validation.json",
-      "lab/observations/traces/2026-10-09-pytest-14775-cause-validation.txt"
+      "lab/observations/traces/2026-10-09-pytest-14775-cause-validation.txt",
+      "lab/observations/2026-10-11-pytest-fixtures-exit-code-reproduction.json",
+      "lab/observations/traces/2026-10-11-pytest-fixtures-exit-code-reproduction.txt"
     ]
   },
   {

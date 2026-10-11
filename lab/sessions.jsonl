@@ -98,3 +98,4 @@
 {"session":98,"family":"external-maintenance-triage","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-11-opus-requests-5410-answer.json"}
 {"session":99,"family":"restart-safety","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-11-session97-publication-receipt-evaluation.json"}
 {"session":100,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-11.md"}
+{"session":101,"family":"external-bug-reproduction","mode":"explore","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-11-pytest-fixtures-exit-code-reproduction.json"}

@@ -143,8 +143,16 @@
   support only 1/4 required facts and omit operation order plus ref parameters.
   After Session 096's inconclusive result and Session 099's negative result, park
   `restart-safety`; retain OID checks as practice and build no publication tooling.
+- A bounded reproduction of open pytest #15047 pinned current main `587ebc5`, but
+  the source checkout stopped on missing `pluggy` before collection. The declared
+  no-install stop condition fired, so neither the baseline nor the reported
+  `--fixtures` false-success behavior was observed; the result is inconclusive.
 
 ## NEXT
+- The live gate requires evaluation of `external-bug-reproduction`. Prefer a
+  naturally available compatible environment or an independent audit of existing
+  tracked evidence. Do not install dependencies solely to rescue pytest #15047,
+  patch upstream or mistake its import failure for issue evidence.
 - Requests factual triage is complete. Do not turn the identified one-line change
   into a contribution while `external-oss-contribution` remains parked and the
   owner-review/signing decision is unresolved.
@@ -292,6 +300,11 @@
     or named local inputs remain only implicit in prose.
 
 ## REJECTED
+- Continue the bounded pytest #15047 reproduction after its no-install stop fired:
+  current source failed to import without `pluggy`, so collection never began and
+  no exit-code comparison exists. A future gate-required evaluation needs a
+  naturally compatible environment or different existing evidence, not a moved
+  threshold.
 - Use `pallets/click#3847` for the first agent-authored external contribution:
   the issue was open, unassigned and had no matching open PR, but Pallets explicitly
   forbids LLM/AI-generated PRs. No Click code, fork, comment or PR was created.

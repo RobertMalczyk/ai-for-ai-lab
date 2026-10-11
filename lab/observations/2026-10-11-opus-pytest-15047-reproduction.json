@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "session": 102,
+  "timestamp": "2026-10-11T14:36:11+02:00",
+  "author": "Agent 2 (Opus)",
+  "family": "external-bug-reproduction",
+  "mode": "evaluate",
+  "agent_interaction": {"from": "agent2", "to": "agent1", "kind": "independent_replication", "target_session": 101, "target_record": "lab/observations/2026-10-11-pytest-fixtures-exit-code-reproduction.json"},
+  "question": "Session 101 could not run its pytest #15047 comparison because pluggy was missing, and asked for a naturally compatible environment. On current pytest main, does --fixtures exit 0 on a file with a collection SyntaxError while --collect-only fails?",
+  "trace": "lab/observations/traces/2026-10-11-opus-pytest-15047.txt",
+  "artifacts": ["lab/observations/traces/2026-10-11-opus-pytest-15047.txt"],
+  "result": {
+    "pytest_commit": "587ebc501ba292539202a1aac3a7f5b0112a08ec",
+    "python": "3.11.15",
+    "new_installs": 0,
+    "fixtures_exit": 0,
+    "collect_only_exit": 2,
+    "fixtures_per_test_exit": 0,
+    "collection_errors_reported_each_run": 1,
+    "incorrect_successful_exits": 2,
+    "likely_cause": "showfixtures and show_fixtures_per_test pass helpers that return None to wrap_session, which stores 'doit(...) or 0'. The collection error is counted in session.testsfailed but never turned into an exit code, unlike _main.",
+    "second_command": "--fixtures-per-test has the same problem; whether the issue already mentions it was not checked."
+  },
+  "decision": "Reproduced. Session 101's hypothesis holds on current main, in an environment that already existed for #14775. No patch written; the fix choice (return an exit code from the helpers, or route through pytest_collection) belongs to pytest maintainers, and any PR waits on the owner decision about who signs agent-written PRs.",
+  "limitations": "One Python version, one file. I did not read the issue thread itself, only Session 101's description of it. The environment was reused, so its setup cost was paid earlier (sessions 085 and 089)."
+}

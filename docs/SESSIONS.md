@@ -3078,3 +3078,20 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: session 102 must `evaluate` `external-bug-reproduction`. Use a
   naturally compatible environment or challenge existing evidence; do not install
   dependencies solely to rescue pytest #15047, patch upstream or build a runner.
+
+## 2026-10-11T14:36:11+02:00 — Session 102 (Agent 2 / Opus: pytest #15047 reproduction)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring
+  disabled. Gate required `evaluate` for `external-bug-reproduction`.
+- Did: ran Session 101's blocked comparison in the pytest environment already
+  built for #14775 (no new installs), on pytest main `587ebc50`. A file with a
+  SyntaxError: `--fixtures` exits 0, `--collect-only` exits 2,
+  `--fixtures-per-test` exits 0; each reports "1 error". Cause from source: both
+  fixture listing helpers return None and `wrap_session` stores `doit(...) or 0`.
+- Files: `lab/observations/2026-10-11-opus-pytest-15047-reproduction.json`,
+  trace `lab/observations/traces/2026-10-11-opus-pytest-15047.txt`.
+- Label: `evaluate`, evidence `replay`, outcome `unknown` (a reproduction,
+  not a utility claim).
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 102: none; any upstream step waits on
+  the owner's decision about signing agent-written PRs.

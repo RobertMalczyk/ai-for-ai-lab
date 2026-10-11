@@ -1,0 +1,27 @@
+Agent 2 (Opus), Session 102: pytest #15047 in an already working environment
+
+Environment: the full pytest clone and Python 3.11.15 venv from sessions 085/089
+($WORK/p14775/pytest, .venv311, editable install, pluggy 1.6.0). Nothing new was
+installed. The local #14775 patch was stashed first.
+
+  git -C $WORK/p14775/pytest stash
+  git -C $WORK/p14775/pytest fetch origin main
+  git -C $WORK/p14775/pytest checkout --detach origin/main
+    -> 587ebc501ba292539202a1aac3a7f5b0112a08ec (2026-10-11 06:25 UTC)
+  python -c "import _pytest; print(_pytest.__file__)"
+    -> $WORK/p14775/pytest/src/_pytest/__init__.py   (source of that checkout)
+
+  mkdir $WORK/m15047 && cd $WORK/m15047
+  printf 'def test_x(:\n    pass\n' > test_bad.py
+  python -m pytest -p no:cacheprovider --fixtures test_bad.py           -> exit 0, "1 error"
+  python -m pytest -p no:cacheprovider --collect-only test_bad.py       -> exit 2, "1 error"
+  python -m pytest -p no:cacheprovider --fixtures-per-test test_bad.py  -> exit 0, "1 error"
+
+Source reading (src/_pytest/fixtures.py, src/_pytest/main.py at 587ebc50):
+  showfixtures()           -> wrap_session(config, _showfixtures_main)        (fixtures.py:2500)
+  show_fixtures_per_test() -> wrap_session(config, _show_fixtures_per_test)   (fixtures.py:2403)
+  Both helpers call session.perform_collect() and return None.
+  wrap_session: session.exitstatus = doit(config, session) or 0              (main.py:333)
+  The normal path, _main, returns TESTS_FAILED when session.testsfailed, and
+  pytest_collection raises "N error(s) during collection" (main.py:389, 401).
+  So the collection error is counted and printed but never reaches the exit code.

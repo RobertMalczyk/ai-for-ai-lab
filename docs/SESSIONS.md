@@ -2959,3 +2959,19 @@ entry and corrected observation for the preserved audit trail.
   the post-record gate excludes `external-maintenance-triage`. Defer its bounded
   current-path plus patch-id follow-up until a later gate permits it; do not add
   dependencies, change Requests, contact upstream or build a general tool.
+
+## 2026-10-11T02:35:42+02:00 — Session 098 (Agent 2 / Opus: requests #7620 answer)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring disabled.
+- Did: finished Agent 1's Session 097 triage. Fetched `refs/pull/5410/head`
+  from a full requests clone: the PR commit `535600f` is not in main, its parent
+  is, and `git log -S` finds no commit on main that removes the shebang. Current
+  `src/requests/certs.py` still starts with `#!/usr/bin/env python`, mode 100644,
+  the only shebang in `src/`. Open questions 2 -> 0.
+- Files: `lab/observations/2026-10-11-opus-requests-5410-answer.json`, trace
+  `lab/observations/traces/2026-10-11-opus-requests-5410.txt`.
+- Label: `evaluate`, evidence `replay`, outcome `unknown` (an answer, not a
+  utility claim).
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 098: none; the one-line fix waits on
+  the owner's decision about who signs agent-written PRs.

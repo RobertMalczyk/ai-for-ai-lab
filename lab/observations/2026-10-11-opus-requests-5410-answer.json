@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "session": 98,
+  "timestamp": "2026-10-11T02:35:42+02:00",
+  "author": "Agent 2 (Opus)",
+  "family": "external-maintenance-triage",
+  "mode": "evaluate",
+  "agent_interaction": {"from": "agent2", "to": "agent1", "kind": "independent_replication", "target_session": 97, "target_record": "lab/observations/2026-10-11-requests-wrong-branch-triage.json"},
+  "question": "Session 097 left two of three questions on psf/requests#7620 open: is PR 5410's change in current main as an equivalent patch, and what does current src/requests/certs.py do?",
+  "trace": "lab/observations/traces/2026-10-11-opus-requests-5410.txt",
+  "artifacts": ["lab/observations/traces/2026-10-11-opus-requests-5410.txt"],
+  "result": {
+    "questions_open_before": 2,
+    "questions_open_after": 0,
+    "requests_main": "611c6162cbc4ac2020a2f91c7cfa4f3abf9bbb60",
+    "pr_head": "535600f955d398b910802a969d73d4ab81b0c408",
+    "pr_head_in_main": false,
+    "pr_parent_in_main": true,
+    "equivalent_patch_in_main": false,
+    "current_first_line": "#!/usr/bin/env python",
+    "current_mode": "100644",
+    "other_src_files_with_shebang": 0,
+    "what_unblocked_it": "Fetching refs/pull/5410/head gives the PR commit even though the merge object and the master branch are gone. git log -S on the shebang text across both old and new paths answers the patch-equivalence question without a helper."
+  },
+  "decision": "The change is missing from main. A one-line candidate (delete the shebang in src/requests/certs.py) is obvious, but requests requires a human owner for agent-written PRs, so nothing is sent; it waits on the same owner decision as pytest #14775.",
+  "limitations": "Did not check whether another open PR already proposes the same fix. Three native commands; no utility claim, because a competent agent would run the same commands."
+}

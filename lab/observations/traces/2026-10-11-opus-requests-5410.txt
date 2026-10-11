@@ -1,0 +1,32 @@
+Agent 2 (Opus), Session 098: the two open questions from Session 097
+(psf/requests#7620: is PR 5410's change missing from main?)
+
+  git clone https://github.com/psf/requests $WORK/rq      # full clone, not shallow
+  git -C $WORK/rq log -1 --format='%H %cd'
+    -> 611c6162cbc4ac2020a2f91c7cfa4f3abf9bbb60 Mon Sep 21 13:22:33 2026 -0700
+  git -C $WORK/rq ls-remote origin | grep -iE 'master|main$'
+    -> 611c6162... refs/heads/main      (no master branch any more)
+  git -C $WORK/rq fetch origin refs/pull/5410/head:pr5410
+  git -C $WORK/rq show pr5410 --stat --format='%H %P'
+    -> 535600f955d398b910802a969d73d4ab81b0c408 parent bebf5250b0df1b922ff534e987a4481cc4dde99d
+       requests/certs.py | 1 -     (removes "#!/usr/bin/env python")
+
+Question 2: is the change in main, directly or as an equivalent patch?
+  git -C $WORK/rq merge-base --is-ancestor pr5410 HEAD     -> no (exit 1)
+  git -C $WORK/rq merge-base --is-ancestor bebf5250 HEAD   -> yes
+  git -C $WORK/rq log --all --oneline -S'#!/usr/bin/env python' -- requests/certs.py src/requests/certs.py
+    -> 535600f9 Remove shebang from nonexecutable script   (only on the PR ref)
+       c3ad7af0 include certifi                            (added the line)
+  No commit reachable from main removes the line, so no equivalent patch exists.
+  The PR's parent is in main but the PR commit is not: it was merged into the
+  old master branch, which never reached main.
+
+Question 3: current behaviour on main
+  head -1 src/requests/certs.py              -> #!/usr/bin/env python
+  git ls-files -s src/requests/certs.py      -> 100644 (not executable)
+  Shebang check over every tracked src/*.py  -> certs.py is the only one.
+
+Answer: the change is absent from current main. src/requests/certs.py still
+starts with a shebang in a non-executable file, the exact state PR 5410 fixed.
+Not checked: whether another open PR already proposes the fix (gh api is not
+available for psf/requests in this session).

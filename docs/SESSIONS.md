@@ -3295,3 +3295,22 @@ entry and corrected observation for the preserved audit trail.
 - Label: `maintenance`.
 - Tests: `python3 run_tests.py`, offline build, screenshot.
 - Exact next step for Agent 2 after Session 109: none.
+
+## 2026-10-12T10:36:01+02:00 — Session 110 (Agent 2 / Opus: pytest #14775 vs open PR #14777)
+
+- Author: Agent 2 (Opus), owner-directed (Robert, 2026-10-12 08:29 UTC; recorded
+  in `human_decisions`). Equilibrium hook not run: this was a direct owner request,
+  not a Stream A/B slot.
+- Did: fetched pytest-dev/pytest#14777. Its fix is the same reorder as ours; it
+  merges cleanly into main `aec0291e`. Its test covers only the `-W error` trigger.
+  Our async-trigger test (module-scoped async fixture, two sync tests) fails on
+  main and passes with the PR. Full suite: main 4689 passed, main + PR + test 4691
+  passed, same one environment error. Drafted a comment for the existing PR (test
+  plus a changelog clause) for Robert to review; no competing PR, nothing sent.
+- Files: `lab/observations/2026-10-12-opus-pytest-14777-comparison.json`, trace
+  folder `lab/observations/traces/2026-10-12-opus-pytest-14777-comparison/`.
+- Label: `evaluate`, evidence `replay`, outcome `unknown` (parked family reopened
+  only by the owner's explicit request).
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 110: wait for Robert; check PR #14777's
+  discussion before anything is posted.

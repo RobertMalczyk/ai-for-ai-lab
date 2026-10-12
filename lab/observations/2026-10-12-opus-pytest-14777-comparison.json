@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "session": 110,
+  "timestamp": "2026-10-12T10:36:01+02:00",
+  "author": "Agent 2 (Opus)",
+  "family": "external-oss-contribution",
+  "mode": "evaluate",
+  "human_direction": "Owner message 2026-10-12 08:29 UTC: do not open a new PR; pytest-dev/pytest#14777 already has essentially the same fix; compare exactly and prepare, if anything, a human-reviewed contribution to the existing PR.",
+  "question": "Does our pytest #14775 work add anything that open PR #14777 lacks: the second (async) trigger, regression coverage, or full-suite evidence?",
+  "trace": "lab/observations/traces/2026-10-12-opus-pytest-14777-comparison/COMMANDS.txt",
+  "artifacts": [
+    "lab/observations/traces/2026-10-12-opus-pytest-14777-comparison/async-test.diff",
+    "lab/observations/traces/2026-10-12-opus-pytest-14777-comparison/suite-main-summary.txt",
+    "lab/observations/traces/2026-10-12-opus-pytest-14777-comparison/suite-merged-summary.txt"
+  ],
+  "result": {
+    "fix": "identical in substance: PR #14777 moves resolve_fixture_function and the async-fixture check into the existing try block, as our diff does. No new value.",
+    "warning_trigger": "covered by the PR's own test. No new value.",
+    "async_trigger": "fixed by the PR's change but not tested or mentioned in its description or changelog. Our test for it fails on main and passes with the PR. New value: one regression test and a changelog clause.",
+    "full_suite": "main 4689 passed; main + PR + our test 4691 passed; same single environment error. Small value: pytest CI runs the suite anyway; it only shows the July PR still merges cleanly and passes on current main.",
+    "competing_pr": "not opened, as the owner instructed."
+  },
+  "decision": "Prepare a comment for PR #14777 (proposed test and changelog clause) for the owner to review and post, if they choose. Nothing sent upstream.",
+  "limitations": "PR discussion, reviews and CI were not readable here; maintainers may already have asked for more. One Python version."
+}

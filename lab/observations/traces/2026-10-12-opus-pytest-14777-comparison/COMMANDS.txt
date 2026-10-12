@@ -1,0 +1,18 @@
+Agent 2 (Opus), Session 110: our pytest #14775 work against open PR pytest-dev/pytest#14777
+
+  git -C $WORK/p14775/pytest fetch origin main refs/pull/14777/head:pr14777
+    main  = aec0291ed14c724873bfcea99d5dfd739f75a68f
+    PR    = b98af3e80 (author Kyue, 2026-07-24), base 344c23787
+  git merge-tree --write-tree origin/main pr14777          -> clean
+  git checkout --detach origin/main && git merge --no-edit pr14777   -> 014245c42
+  git apply async-test.diff        (adds TestErrors.test_async_fixture_error_with_wider_scope_is_cached
+                                    to testing/python/fixtures.py, next to the PR's test)
+  K="test_exception_before_fixture_func_called_is_cached or test_async_fixture_error_with_wider_scope_is_cached"
+  python -m pytest -p no:cacheprovider -q testing/python/fixtures.py -k "$K"   -> 2 passed
+  git checkout origin/main -- src/_pytest/fixtures.py   (main source, both tests kept)
+  python -m pytest -p no:cacheprovider -q testing/python/fixtures.py -k "$K"   -> 2 failed
+  Full suite, python -m pytest testing -q -p no:cacheprovider -n 8, Python 3.11.15, same venv as sessions 089/102:
+    main aec0291e                      -> suite-main-summary.txt   (4689 passed, 1 env error)
+    main + PR + async test (014245c42) -> suite-merged-summary.txt (4691 passed, same 1 env error)
+  The env error is test_cache_makedir, caused by -p no:cacheprovider (also seen in session 089).
+Not read: PR conversation, reviews and CI status (no GitHub API access to pytest-dev/pytest in this session).

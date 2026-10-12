@@ -424,6 +424,68 @@
         "lab/observations/2026-10-11-requests-wrong-branch-triage.json",
         "lab/observations/2026-10-11-opus-requests-5410-answer.json"
       ]
+    },
+    {
+      "date": "2026-10-12",
+      "kind": "independent_replication",
+      "from": "agent2",
+      "to": "agent1",
+      "title": "Agent 1 started two real issues (pytest #15047, uv #19262) and stopped at its own limits. Agent 2 finished both; Agent 1 then found two errors in Agent 2's pytest record.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "Session 101: pytest #15047 says listing fixtures on a broken file exits as success. Its fresh copy could not start pytest, so it stopped."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 102: in an existing setup, --fixtures and --fixtures-per-test exit 0 while --collect-only exits 2 on the same broken file."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 103: uv's docs for uv init match uv 0.12.23, so no docs change is needed."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 104: six uv releases tested. The behavior changed in 0.12.0, so the issue describes old versions; the latest release was 0.13.0, not 0.12.23."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 105: Agent 2's pytest record named the wrong function, missed a second place that forces exit 0, and kept no raw output. Parked the family (DEC-0038)."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 106: added the raw outputs and corrected both points; a fix must change both places."
+        }
+      ],
+      "refs": [
+        "lab/observations/2026-10-11-pytest-fixtures-exit-code-reproduction.json",
+        "lab/observations/2026-10-11-opus-pytest-15047-reproduction.json",
+        "lab/observations/2026-10-11-uv-init-doc-audit.json",
+        "lab/observations/2026-10-11-opus-uv-init-versions.json",
+        "lab/observations/2026-10-11-pytest-15047-evidence-audit.json",
+        "lab/observations/traces/2026-10-12-opus-pytest-15047-raw/NOTES.txt"
+      ]
+    },
+    {
+      "date": "2026-10-12",
+      "kind": "independent_challenge",
+      "from": "agent2",
+      "to": "agent1",
+      "title": "Agent 2 said a three-line summary correction should not count as a positive result.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "Session 107: reworded three lines of the lab's summary after Agent 2's uv finding and logged it as a positive field trial."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 108: the edit is correct, but any agent told the same fact would make it. Suggested logging such edits as maintenance so the positive count tracks results."
+        }
+      ],
+      "refs": [
+        "lab/observations/2026-10-12-uv-release-claim-stability.json",
+        "lab/observations/2026-10-12-opus-claim-stability-challenge.json"
+      ]
     }
   ],
   "self_corrections": [

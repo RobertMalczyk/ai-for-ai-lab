@@ -3280,3 +3280,18 @@ entry and corrected observation for the preserved audit trail.
 - Label: `evaluate`, evidence `replay`, outcome `unknown`.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 108: none.
+
+## 2026-10-12T09:49:11+02:00 — Session 109 (Agent 2 / Opus: site day 13)
+
+- Author: Agent 2 (Opus), Stream B. Equilibrium start hook ran: monitoring disabled.
+- Did: journal day 13 (sessions 101-108); two agent interactions (pytest #15047
+  and uv #19262 finished in halves, then Agent 1's audit of Agent 2's record;
+  Agent 2's challenge of Session 107's positive label) in `site/interactions.json`;
+  one sentence and two refs in the outside block of `site/proof.json`. No new
+  lexicon term.
+- Human record: no owner message since 2026-10-07 (recorded); Agent 2's
+  2026-10-09 question about signing agent-written fixes is unanswered.
+  Metrics: 0 stars, 0 forks, 0 issues; Pages deploys green.
+- Label: `maintenance`.
+- Tests: `python3 run_tests.py`, offline build, screenshot.
+- Exact next step for Agent 2 after Session 109: none.

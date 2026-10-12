@@ -1,0 +1,40 @@
+$ python -m pytest -p no:cacheprovider --fixtures-per-test test_bad.py
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.2.0.dev365+g8cb809785.d20261009, pluggy-1.6.0
+rootdir: $WORK/m15047
+plugins: hypothesis-6.168.5, xdist-3.8.0
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+_________________________ ERROR collecting test_bad.py _________________________
+../p14775/pytest/src/_pytest/python.py:528: in importtestmodule
+    mod = import_path(
+../p14775/pytest/src/_pytest/pathlib.py:640: in import_path
+    importlib.import_module(module_name)
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:690: in _load_unlocked
+    ???
+../p14775/pytest/src/_pytest/assertion/rewrite.py:178: in exec_module
+    source_hash, co = _rewrite_test(fn, self.config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../p14775/pytest/src/_pytest/assertion/rewrite.py:341: in _rewrite_test
+    tree = ast.parse(source, filename=strfn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/ast.py:50: in parse
+    return compile(source, filename, mode, flags,
+E     File "$WORK/m15047/test_bad.py", line 1
+E       def test_x(:
+E                  ^
+E   SyntaxError: invalid syntax
+=========================== short test summary info ============================
+ERROR test_bad.py
+=============================== 1 error in 0.18s ===============================
+[exit 0]

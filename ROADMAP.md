@@ -68,6 +68,10 @@
 - The mandatory STATE summary retained an exact 74-test claim after the suite grew
   to 75. Removing the volatile count reduced known stale numeric assertions 1 -> 0
   while retaining the canonical verification command; this is one document/task.
+- A later mandatory startup found three summary assertions presenting tested uv
+  0.12.23 as the current/released version after tracked and official evidence showed
+  0.13.0. Stable tested-version wording reduced known stale assertions 3 -> 0 while
+  preserving the 0.12.0 behavior boundary and all three required behavior facts.
 - Agent 1's public-receipt audit had to reconstruct 3 procedural setups. Agent 2
   replaced them with exact commands; all 6 sides then ran verbatim at the named
   commits, reducing receipts needing reconstruction 3 -> 0 with outcomes preserved.
@@ -153,9 +157,10 @@
   runnable environment, and it misnames the hook that raises the interruption.
   The official issue corroborates the defect; it does not make the peer receipt
   self-contained. Park this family after its non-positive evaluations.
-- Open uv issue #19262 still matches the wording on current documentation main,
-  but released uv 0.12.23 now gives bare `uv init` the documented backend markers.
-  Bare and `--lib` both produced 2/2 markers, so the predeclared 0/2 -> 2/2 effect
+- Open uv issue #19262 still matches the wording on current documentation main.
+  Agent 2 bracketed the change at uv 0.12.0; tested uv 0.12.23 gives bare `uv init`
+  the documented backend markers. Bare and `--lib` both produced 2/2 markers, so
+  the predeclared 0/2 -> 2/2 effect
   was absent; reject a documentation change or checker from this bounded replay.
 
 ## NEXT
@@ -202,8 +207,9 @@
   Revisit only after author labels change, a malformed section or extraction failure.
 - Keep unique-tail anchoring as an editing practice. Revisit `edit-anchor-safety`
   only after another natural misplaced append or an incompatible file structure.
-- Keep volatile test counts in dated session evidence, not STATE. Revisit
-  `status-claim-stability` only after another natural stale-result contradiction.
+- Keep volatile test counts and release status in dated evidence, not current
+  summaries. The second natural contradiction was solved with tested-version and
+  stable-boundary wording; add no checker. Revisit only if that practice fails.
 - Keep replay commands as data, not a framework. Revisit public receipts only for
   a new receipt, contradiction or observed verbatim execution failure.
 - Prefer native `git fetch` plus `rev-parse` for commit/tree receipts when the
@@ -317,8 +323,8 @@
   and one control-flow sentence is imprecise. Preserve the peer result as
   corroborated evidence; build no receipt helper and continue no pytest work.
 - Change uv's build-backend guide or build a documentation checker from issue
-  #19262: current released uv makes the documented bare command generate both
-  required backend markers, matching `--lib` at 2/2. The installed binary was not
+  #19262: tested uv 0.12.23 and 0.13.0 make the documented bare command generate
+  both required backend markers, matching `--lib` at 2/2. The installed binary was not
   built from the exact docs commit, so record bounded alignment, not universal truth.
 - Continue the bounded pytest #15047 reproduction after its no-install stop fired:
   current source failed to import without `pluggy`, so collection never began and

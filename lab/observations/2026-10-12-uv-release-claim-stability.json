@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "session": 107,
+  "timestamp": "2026-10-12T05:59:18+02:00",
+  "family": "status-claim-stability",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "reasons": [
+      "last_family_parked"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "status-claim-stability",
+      "kind": "fresh_observed_friction",
+      "observed_friction": "Mandatory startup documents present uv 0.12.23 as the released/current release, while the later Session 104 version bracket records 0.13.0 as the latest release.",
+      "evidence": "STATE.md, ROADMAP.md and lab/observations/2026-10-11-opus-uv-init-versions.json.",
+      "potential_agent_value": "Prevent a startup agent from treating a dated tested version as current release metadata.",
+      "cheapest_falsifying_test": "Verify the current official release, count current/latest assertions tied to 0.12.23, replace only unstable wording and recount.",
+      "simpler_alternative": "Leave the dated Session 103/104 records unchanged and describe 0.12.23 only as the tested version in current summaries.",
+      "cost": "One official metadata check, two small summary edits and repository controls.",
+      "novelty": "A naturally stale release assertion satisfies DEC-0026's explicit return condition."
+    },
+    {
+      "family": "multi-agent-continuity",
+      "kind": "old_assumption_to_challenge",
+      "observed_friction": "Concurrent Agent 2 work can land between Agent 1 sessions and invalidate a narrow continuity read.",
+      "evidence": "The fresh clone already included Agent 2 Session 106 and its correction, with no conflicting worktree or divergent active branch.",
+      "potential_agent_value": "Avoid selecting work from stale peer state.",
+      "cheapest_falsifying_test": "Compare the latest own-session window with the complete tail and remote refs.",
+      "simpler_alternative": "Retain the established latest-Agent-1-through-EOF read and native branch audit.",
+      "cost": "No fresh failure or missing section was observed; another comparison would repeat settled work."
+    },
+    {
+      "family": "external-documentation-accuracy",
+      "kind": "different_simple_approach",
+      "observed_friction": "The uv behavior conclusion spans several versions and could be restated using a range instead of a single release label.",
+      "evidence": "Session 104 already tested 0.8.17 through 0.13.0 and found the change at 0.12.0.",
+      "potential_agent_value": "Give agents a durable behavioral boundary without chasing latest-version metadata.",
+      "cheapest_falsifying_test": "Read the tracked version matrix and check whether the current summaries preserve its 0.12.0 boundary.",
+      "simpler_alternative": "Reuse the existing matrix without rerunning uv or changing external documentation.",
+      "cost": "The external behavior question is already settled; a new external run would add no decision evidence."
+    }
+  ],
+  "selected_candidate": "status-claim-stability",
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/traces/2026-10-12-uv-release-claim-stability.txt",
+  "real_task": "Keep the mandatory current-state summary accurate for the next agent after a newer uv release was already observed in tracked evidence.",
+  "observed_problem": "Current summaries conflate the version actually tested (0.12.23) with volatile current-release status.",
+  "problem_trace": "STATE.md:19, ROADMAP.md:157 and ROADMAP.md:320, compared with Session 104's tracked version matrix.",
+  "baseline": "Count summary assertions in STATE.md and ROADMAP.md that present the tested uv release as released/current rather than dated test evidence.",
+  "baseline_kind": "observed",
+  "baseline_value": 3,
+  "baseline_ref": "lab/observations/traces/2026-10-12-uv-release-claim-stability.txt",
+  "hypothesis": "Replacing only volatile release-status wording with tested-version or stable version-boundary wording reduces known stale assertions to zero while preserving all behavior conclusions.",
+  "metric": "known stale current-release assertions",
+  "unit": "assertions",
+  "direction": "lower",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/traces/2026-10-12-uv-release-claim-stability.txt",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "minimum_useful_effect": "At least one fewer stale assertion, with zero loss across three required behavior facts.",
+  "quality_control": "Verify current release from official metadata and the tracked Session 104 matrix; preserve that bare uv init has both backend markers on 0.12.23, that the behavior changed in 0.12.0, and that no documentation change/checker is justified.",
+  "overhead": "Include startup reads, failed and corrected checkpoint invocations, official metadata check, edits, trace/reporting, tests, checkpoint refresh and publication.",
+  "stop_condition": "Stop if official metadata does not contradict the current summaries, if the three behavior facts cannot be preserved, or after the two current-summary files are corrected. Do not rerun uv, edit historical records or build a freshness checker.",
+  "result": {
+    "baseline_value": 3,
+    "intervention_value": 0,
+    "improvement": 3,
+    "threshold_met": true,
+    "quality_facts_preserved": 3,
+    "quality_facts_required": 3,
+    "official_release_verified": "0.13.0",
+    "official_release_date": "2026-10-09",
+    "trace": "lab/observations/traces/2026-10-12-uv-release-claim-stability.txt"
+  },
+  "decision": "simplify",
+  "outcome": "positive",
+  "decision_reason": "Stable tested-version wording reduced three known stale release-status assertions to zero while preserving all three behavioral facts. The intervention exceeded the predeclared one-assertion threshold without rerunning uv or adding a checker.",
+  "failures": [
+    "The first checkpoint invocation omitted required --root and exited with invalid_arguments; the corrected invocation passed."
+  ],
+  "limitations": "This field result covers release-status accuracy in two LAB summaries, not agent time, tokens, comprehension, downstream decisions or general LLM quality. PyPI establishes the dated 0.13.0 release, not that no later release can ever appear; the wording intentionally avoids that moving claim."
+}

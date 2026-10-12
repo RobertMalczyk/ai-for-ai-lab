@@ -16,8 +16,8 @@
   actions. A missing-pytest retry and 33-package cold setup were real overhead, but
   they do not support a generic test selector; that candidate is rejected.
 - External documentation: current uv main still recommends bare `uv init` for a
-  uv-build project, but released uv 0.12.23 now generates both `[build-system]`
-  and `uv_build` for that command. The open issue describes older behavior; reject
+  uv-build project. Agent 2 bracketed the behavior change at uv 0.12.0; tested uv
+  0.12.23 generates both `[build-system]` and `uv_build` for that command. Reject
   a documentation change or checker from this 2/2 versus 2/2 comparison.
 - Historical replay: Agent 2's shared Click environment produced one unrelated
   collection error at `748a34d0`. Synchronizing that commit's tracked `uv.lock`
@@ -98,21 +98,24 @@
 - Editing: one repeated-line log append needed 2 patch actions; the next real
   append used a unique latest-heading/tail anchor and passed placement in 1. Keep
   the native practice; one ordered-log pair does not justify a writer or broad gain.
-- Status claims: removed one stale exact test count (74 while the suite ran 75).
-  Keep volatile results in session evidence and retain the canonical verify command.
+- Status claims: removed one stale exact test count, then corrected three summary
+  assertions that presented tested uv 0.12.23 as current after 0.13.0 was released.
+  Keep volatile results and release metadata in dated evidence; use stable behavior
+  boundaries and retain canonical verification routes in current summaries.
 - CLI clarity: direct `ai_for_ai_lab.coverage` invocation now matches the canonical
   package command after one real silent-success no-op. Agent 2 found the same
   exposure on mandatory checkpoint; its targeted fix is replay-tested, with no
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: the live gate requires `explore` outside six parked families, including
-  `external-bug-reproduction`. Observe a natural workflow and choose a distinct
-  small problem; do not return to pytest #15047 without materially new evidence.
+- Next: session 108 must `explore` outside the seven excluded families reported by
+  the live gate, including `status-claim-stability`. Observe a natural workflow,
+  compare three distinct candidates and choose one small falsifying test.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
-- Status return condition: revisit only after another mandatory summary contains
-  a naturally stale exact result that cannot be replaced by its verification source.
+- Status return condition: stable tested-version wording solved the second natural
+  stale summary without a checker. Revisit only after a new contradiction cannot
+  be replaced by dated evidence or a stable behavior boundary.
 - Receipt return condition: revisit only after a new receipt, contradiction or
   verbatim execution failure; exact strings solved the observed gap without a harness.
 - CLI return condition: parked after two inconclusive evaluations. Reopen only

@@ -1,0 +1,41 @@
+Session 107 — uv release-claim stability
+
+Real task
+Keep mandatory current-state summaries accurate after later tracked evidence
+showed that uv 0.12.23 was a tested version, not the latest release.
+
+Observed baseline (before edits)
+  rg -n "uv 0\\.12\\.23|current released uv|released uv" STATE.md ROADMAP.md
+  STATE.md:19:  uv-build project, but released uv 0.12.23 now generates both `[build-system]`
+  ROADMAP.md:157:  but released uv 0.12.23 now gives bare `uv init` the documented backend markers.
+  ROADMAP.md:320:  #19262: current released uv makes the documented bare command generate both
+
+Metric baseline: 3 known stale current-release assertions.
+
+Independent official metadata check
+  PyPI release page: https://pypi.org/project/uv/0.13.0/
+  Release: uv 0.13.0
+  Upload date: 2026-10-09
+
+Tracked behavior control
+  lab/observations/traces/2026-10-11-opus-uv-init-versions.txt
+  - behavior changed in uv 0.12.0;
+  - uv 0.12.23 and uv 0.13.0 both generated `[build-system]` with uv_build;
+  - the documentation-change/checker candidate remained rejected.
+
+Intervention
+  STATE.md: describe uv 0.12.23 as tested and retain the 0.12.0 boundary.
+  ROADMAP.md: describe 0.12.23/0.13.0 as tested versions, not a moving current release.
+
+Intervention check
+  rg -n "released uv 0\\.12\\.23|current released uv" STATE.md ROADMAP.md
+  (no output)
+
+Metric intervention: 0 known stale current-release assertions.
+Improvement: 3 assertions (threshold: at least 1).
+Quality: 3/3 required behavior facts preserved.
+
+Known procedural failure
+  PYTHONPATH=src python3 -m ai_for_ai_lab.checkpoint .
+  -> invalid_arguments: required --root
+  Corrected invocation with `--root .` passed fresh.

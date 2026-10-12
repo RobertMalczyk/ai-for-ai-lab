@@ -3231,3 +3231,37 @@ entry and corrected observation for the preserved audit trail.
 - Label: `maintenance` (record correction in a parked family; no new evaluation).
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 106: none.
+
+## 2026-10-12T06:01:12+02:00 — Session 107 (stable uv release claims)
+
+- Author/gate: Agent 1. Fresh main was clean at `b6c08ce`; 104 current Agent/Opus
+  refs were merged and the two remaining old Opus refs were patch-equivalent.
+  Gate assigned `explore` outside six parked families with no evaluation due.
+- Candidate comparison: the mandatory summaries contained a fresh stale release
+  claim; the established multi-agent continuity read had no new failure; and the
+  external uv behavior question was already settled by a six-version bracket.
+  `status-claim-stability` was selected under DEC-0026's natural-return condition.
+- Goal/problem: keep mandatory current-state summaries accurate after tracked
+  evidence showed that uv 0.12.23 was the tested version, not the latest release.
+  Three lines conflated dated test evidence with moving current-release metadata.
+- Pre-result plan: verify official metadata, count stale current-release assertions,
+  replace only unstable wording and require at least one fewer assertion with all
+  three behavior facts preserved. Stop before rerunning uv or building a checker.
+- Actual result: official PyPI metadata dates uv 0.13.0 to 2026-10-09, matching
+  Agent 2's tracked version matrix. Stable tested-version and 0.12.0-boundary wording
+  reduced known stale assertions 3 -> 0; all 3/3 behavior facts remained present.
+- Changes/files: updated `STATE.md` and `ROADMAP.md`; added the predeclared result
+  and exact trace; appended exactly one ledger row. Historical session records and
+  uv were unchanged, and no new decision or product code was needed.
+- Decision: `simplify`; evidence `field_trial`; outcome `positive` for this bounded
+  LAB summary task. This does not establish time, token, comprehension, downstream
+  decision or general LLM improvement.
+- Failure: the first mandatory checkpoint call omitted `--root` and returned
+  `invalid_arguments`; the corrected invocation passed. The family is parked for
+  the next scheduled pivot, so this CLI error did not reopen parked CLI work.
+- Tests/controls: JSON and contiguous ledger checks passed; the full LAB suite
+  passed 76/76 in 5.403 seconds; offline build reported 107 sessions; coverage was
+  complete for 22/22 scoped files. Final checkpoint was refreshed only after review.
+- Exact next step: session 108 must `explore` outside the seven excluded families
+  reported by the live gate, including `status-claim-stability`; observe a natural
+  workflow, compare three distinct candidates and choose one small falsifying test.

@@ -3324,3 +3324,37 @@ entry and corrected observation for the preserved audit trail.
   reproduction are on the board, `lab/tasks/EXTERNAL.md`.
 - Proposed roles: Agent 1 builds, Agent 2 reviews.
 - Exact next step for Agent 2 after Session 111: wait for Agent 1's independent check; review the build when it lands.
+
+## 2026-10-12T12:06:57+02:00 — Session 112 (Agent 1: distutils #433 build)
+
+- Goal/problem: independently check the owner-selected WIP=1 task and, only if its
+  five pre-flight answers still passed, build the smallest reviewable fix for
+  `pypa/distutils#433`. Current `build_py.byte_compile` raised
+  `NotImplementedError` when `sys.implementation.cache_tag` was `None`.
+- Selection/policy: the live gate required `explore` and excluded the contribution
+  family. The owner's staged builder/reviewer/human-review work mode is an explicit
+  task exception, recorded in DEC-0039 without changing gate thresholds. Three
+  candidates were compared before work; the existing Markdown board remained the
+  simpler coordination approach and housekeeping-only evidence work was rejected.
+- Independent check: on pinned upstream `3ed42426`, the official issue was open and
+  unclaimed, no current PR addressed it, the source remained unguarded, no project
+  AI policy prohibited a human-reviewed contribution and outside fork PRs existed.
+- Baseline/hypothesis/result: the unpatched focused scenario completed 0/1 and
+  raised the reported exception. A one-condition guard, one regression test and one
+  newsfragment changed it to 1/1; all 8 build_py tests passed. This replay supports
+  review of the patch, not LLM utility or an upstream-ready claim.
+- Changes/files: recorded the exact patch and execution trace; completed the
+  predeclared observation; moved `lab/tasks/EXTERNAL.md` to BUILD COMPLETE; updated
+  STATE/ROADMAP and added DEC-0039. No fork, PR, issue comment or message was made.
+- Tests/failures: the first environment lacked stdlib `test.support`, producing 8
+  setup errors. A system-Python venv passed focused tests 8/8. The broader suite
+  produced 229 passed, 28 skipped and 12 environment-linked failures outside
+  test_build_py (missing CPython development files or platform-dependent egg-info
+  names), so it is not reported as green. `git diff --check` passed.
+- Decision/outcome: `continue`, replay evidence, outcome `unknown`. Full setup,
+  reading, reporting and two 33-package environment installs are included as
+  overhead. The family is not credited with positive utility.
+- Unresolved/exact next step: Agent 2 adversarially reviews the tracked patch at
+  `lab/observations/traces/2026-10-12-distutils-433.patch`, especially whether the
+  issue scope should remain build_py-only. If it passes, mark READY FOR HUMAN
+  REVIEW; do not open a PR or contact maintainers before human approval.

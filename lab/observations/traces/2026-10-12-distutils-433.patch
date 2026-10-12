@@ -1,0 +1,41 @@
+diff --git a/distutils/command/build_py.py b/distutils/command/build_py.py
+index 712ecc45..a7cf7685 100644
+--- a/distutils/command/build_py.py
++++ b/distutils/command/build_py.py
+@@ -385,7 +385,7 @@ class build_py(Command):
+                 self.build_module(module, module_file, package)
+ 
+     def byte_compile(self, files) -> None:
+-        if sys.dont_write_bytecode:
++        if sys.dont_write_bytecode or sys.implementation.cache_tag is None:
+             self.warn('byte-compiling is disabled, skipping.')
+             return
+ 
+diff --git a/distutils/tests/test_build_py.py b/distutils/tests/test_build_py.py
+index b316ed43..eda1a46d 100644
+--- a/distutils/tests/test_build_py.py
++++ b/distutils/tests/test_build_py.py
+@@ -160,6 +160,16 @@ class TestBuildPy(support.TempdirManager):
+ 
+         assert 'byte-compiling is disabled' in caplog.records[0].message
+ 
++    def test_byte_compile_without_cache_tag(self, monkeypatch, caplog):
++        dist = self.create_dist()[1]
++        cmd = build_py(dist)
++        cmd.compile = True
++        monkeypatch.setattr(sys.implementation, 'cache_tag', None)
++
++        cmd.byte_compile(['module.py'])
++
++        assert 'byte-compiling is disabled' in caplog.records[0].message
++
+     def test_namespace_package_does_not_warn(self, caplog):
+         """
+         Originally distutils implementation did not account for PEP 420
+diff --git a/newsfragments/433.bugfix.rst b/newsfragments/433.bugfix.rst
+new file mode 100644
+index 00000000..843751f3
+--- /dev/null
++++ b/newsfragments/433.bugfix.rst
+@@ -0,0 +1 @@
++Skip bytecode generation when ``sys.implementation.cache_tag`` is ``None``.

@@ -1,0 +1,39 @@
+upstream: https://github.com/pypa/distutils
+issue: https://github.com/pypa/distutils/issues/433
+commit: 3ed42426ce6f41e9d07dc63f3315d85f19e25618
+
+Independent pre-flight (2026-10-12):
+- issue open, no comments, labels, assignee or linked branch/PR
+- 24 current open PRs inspected; none concerns build_py/cache_tag
+- current build_py still checks only sys.dont_write_bytecode
+- no repository AI-contribution policy found; outside fork PRs exist
+
+Baseline reproducer, before patch:
+  .venv/bin/python <inline build_py.byte_compile reproducer>
+  NotImplementedError: sys.implementation.cache_tag is None
+  focused scenarios completing successfully: 0/1
+
+Environment setup:
+  uv sync --extra test
+  Result: 33 packages installed in .venv, but this Python distribution lacks test.support.
+  .venv/bin/pytest distutils/tests/test_build_py.py -q
+  Result: 8 setup errors, all ModuleNotFoundError: No module named 'test'.
+  uv venv --python /usr/bin/python3.12 .venv-system
+  uv pip install --python .venv-system/bin/python -e '.[test]'
+  Result: 33 packages installed with the system stdlib test package available.
+
+Intervention:
+  .venv-system/bin/pytest distutils/tests/test_build_py.py -q
+  Result: 8 passed in 0.17s; new regression 1/1 and existing behavior controls passed.
+  git diff --check
+  Result: pass.
+
+Broader control:
+  .venv-system/bin/pytest -q
+  Result: 229 passed, 28 skipped, 12 failed, 1125 warnings in 2.95s.
+  All 12 failures were outside test_build_py and environment-linked: missing Python.h,
+  missing /usr/include/python3.12/{pyconfig.h,Makefile}, or platform-dependent egg-info
+  naming. The full suite is therefore environment-limited, not reported as green.
+
+No fork, PR, issue comment or maintainer message was created. The patch is awaiting
+Agent 2's required adversarial review and then human review.

@@ -164,8 +164,10 @@
   was absent; reject a documentation change or checker from this bounded replay.
 
 ## NEXT
-- The live gate requires `explore` outside six parked families. Observe a natural
-  workflow, compare three distinct candidates and choose one small falsifying test.
+- Under the owner's WIP=1 exception, Agent 2 adversarially reviews the tracked
+  `pypa/distutils#433` patch against pinned upstream `3ed42426`. Check issue scope,
+  regression quality, newsfragment and environment-limited full-suite failures.
+  If it passes, mark READY FOR HUMAN REVIEW; do not open a PR or contact maintainers.
 - Keep `external-bug-reproduction` parked. Reopen only for a materially different
   real task with a tracked runnable environment and raw outputs, not another static
   pass over pytest #15047 or an upstream patch.
@@ -175,10 +177,9 @@
 - Keep `restart-safety` parked after two non-positive evaluations. Reopen only for
   a new natural publication that preserves a tracked contemporaneous operation
   receipt and exact side-effect IDs; do not manufacture another connector write.
-- Keep external contribution parked. Reopen only when current official evidence
-  explicitly permits autonomous agent submissions and outside PR creation, or the
-  owner changes the no-human-pre-review condition. Then hand a tested candidate to
-  Agent 2 for adversarial review before submission.
+- External contribution is reopened only for the owner-directed WIP=1 staged path.
+  Distutils #433 passed pre-flight and focused build; keep every other candidate
+  parked and require Agent 2 adversarial review plus human review before submission.
 - Before any generic agent-tool build, observe friction in an outside repository
   and predeclare a comparison against the competent task-matched default. Preserve
   sanitized traces. Do not count a lab-only improvement as general usefulness.

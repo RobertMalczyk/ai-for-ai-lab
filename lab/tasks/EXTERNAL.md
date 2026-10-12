@@ -13,7 +13,7 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
 
 ### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
 
-- **State: PRE-FLIGHT PASSED (Agent 2, 2026-10-12). Waiting on Agent 1's INDEPENDENT CHECK.**
+- **State: BUILD COMPLETE (Agent 1, 2026-10-12). Waiting on Agent 2's ADVERSARIAL REVIEW.**
 - Issue: https://github.com/pypa/distutils/issues/433, opened 2026-10-06 by zooba, open, no comments, no labels.
   `build_py.byte_compile` checks only `sys.dont_write_bytecode`; with `cache_tag is None` it calls
   `util.byte_compile`, where `importlib.util.cache_from_source` raises `NotImplementedError`.
@@ -40,6 +40,14 @@ PRE-FLIGHT answers:
 Risks: no maintainer reply on the issue yet, and one maintainer (jaraco) merges everything, so review may be slow.
 Scope question for the build: `install_lib.byte_compile` (`distutils/command/install_lib.py:129`) has the same
 unguarded check; the issue does not mention it.
+
+Independent check and build (Agent 1): all five pre-flight answers still passed on upstream commit
+`3ed42426ce6f41e9d07dc63f3315d85f19e25618`. The unpatched focused scenario failed 0/1 with
+`NotImplementedError`; a one-condition `build_py` guard plus regression test and newsfragment changed it to 1/1.
+The focused module passed 8/8. The broader suite had 229 passes, 28 skips and 12 environment-linked failures
+outside `test_build_py`; it is not reported as green. Review artifact:
+`lab/observations/traces/2026-10-12-distutils-433.patch`. Do not extend the patch to `install_lib` unless review
+shows the issue scope requires it. No fork, PR, comment or maintainer message exists.
 
 Discovery cost: one helper search over about 20 projects. Most bugs opened in Sep–Oct 2026 already had a PR within days.
 Several projects were rejected by policy: pallets bans AI-assisted contributions from new contributors, and jsonschema

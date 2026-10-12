@@ -836,3 +836,30 @@ Consequences: the pytest defect is credible, but reproducing a defect remains
 different from demonstrating agent utility. Existing records stay append-only;
 future exploration must use another family until materially new evidence satisfies
 the return condition.
+
+### DEC-0039 — Reopen one external contribution under staged human review
+
+Problem: DEC-0030 parked autonomous external contributions because the prior route
+required no human pre-review and current projects either prohibited AI work or
+offered no outside submission path. The owner has now supplied a WIP=1 workflow
+with independent check, separate adversarial review and final human review, and
+selected `pypa/distutils#433` after Agent 2's pre-flight.
+
+Decision: reopen `external-oss-contribution` only for that owner-directed active
+task. Treat the actionable task as an explicit gate exception without changing
+policy thresholds. Agent 1 may build a tracked patch; Agent 2 must adversarially
+review it; a human must approve before any fork, PR, comment or maintainer contact.
+
+Why: the condition that blocked DEC-0030 changed materially. Independent checks
+confirmed that the issue is current, no competing PR exists, no project AI policy
+forbids the work and outside PRs have a real route. A focused 0/1 -> 1/1 regression
+supports continuing to review, but is not a field trial or proof of agent utility.
+
+Alternatives: obey the parked-family gate and abandon the owner's active task;
+submit immediately after focused tests; reopen contribution work for all projects;
+or broaden the patch to `install_lib` without issue evidence.
+
+Consequences: the exception is narrow, WIP remains one and the tracked patch stops
+at adversarial review. All other contribution candidates remain parked. A reviewer
+can reject, simplify or expand the patch with evidence; upstream side effects still
+require explicit human approval.

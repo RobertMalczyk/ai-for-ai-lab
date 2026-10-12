@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "session": 112,
+  "timestamp": "2026-10-12T12:06:57+02:00",
+  "family": "external-oss-contribution",
+  "mode": "explore",
+  "status": "complete",
+  "explicit_task_exception": "The owner's 2026-10-12 WIP=1 work mode says an actionable external task is not interrupted by the session gate. It also changes the former no-human-review condition to a staged human-reviewed contribution path.",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "reasons": [
+      "last_family_parked"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "external-oss-contribution",
+      "kind": "fresh_observed_friction",
+      "observed_friction": "pypa/distutils#433 reports that build_py compilation crashes when sys.implementation.cache_tag is None; Agent 2's pre-flight reports a current reproduction and no competing PR.",
+      "evidence": "lab/tasks/EXTERNAL.md and the official issue; independent verification is still required before build.",
+      "potential_agent_value": "Deliver one narrowly tested external bug fix through the owner-mandated builder/reviewer workflow.",
+      "cheapest_falsifying_test": "Reproduce at the pinned upstream head, verify issue/PR/policy state, then add one regression test and the proposed one-condition guard.",
+      "simpler_alternative": "Stop after independent check if the issue is stale, duplicated, policy-blocked or not reproducible.",
+      "cost": "One external clone, one focused test, one minimal patch and an auditable patch artifact; no PR or upstream message."
+    },
+    {
+      "family": "status-claim-stability",
+      "kind": "old_assumption_to_challenge",
+      "observed_friction": "Agent 2 correctly challenges Session 107's field-trial label as lab housekeeping rather than outside usefulness.",
+      "evidence": "lab/observations/2026-10-12-opus-claim-stability-challenge.json.",
+      "potential_agent_value": "Prevent inflated public positive counts.",
+      "cheapest_falsifying_test": "Audit the field-report task origin and append a correction without rewriting row 107.",
+      "simpler_alternative": "Preserve the challenge for a later evidence-accounting correction.",
+      "cost": "This is explicitly excluded now and the owner prohibited sessions devoted only to lab counters or audits."
+    },
+    {
+      "family": "agent-workflow-coordination",
+      "kind": "different_simple_approach",
+      "observed_friction": "Two agents need a single visible WIP state and rotating builder/reviewer roles.",
+      "evidence": "lab/tasks/EXTERNAL.md already records one active task and role assignment.",
+      "potential_agent_value": "Avoid duplicate builds and late blocker discovery.",
+      "cheapest_falsifying_test": "Use the existing task board through one build/review transition and observe whether state becomes ambiguous.",
+      "simpler_alternative": "Update the Markdown board; build no coordinator or queue.",
+      "cost": "No coordination failure is currently observed, so software would be speculative."
+    }
+  ],
+  "selected_candidate": "external-oss-contribution",
+  "real_task": "Independently validate pypa/distutils#433 and, only if all pre-flight conditions still pass, produce a minimal tested patch for Agent 2's adversarial review.",
+  "observed_problem": "build_py.byte_compile may call importlib.util.cache_from_source when sys.implementation.cache_tag is None, which raises NotImplementedError instead of skipping byte compilation.",
+  "problem_trace": "lab/tasks/EXTERNAL.md and https://github.com/pypa/distutils/issues/433",
+  "baseline": "Run one focused regression reproducer against a pinned current distutils commit and observe whether the build_py command completes.",
+  "hypothesis": "Guarding build_py.byte_compile when cache_tag is None changes the focused scenario from one NotImplementedError to successful completion without creating bytecode, while existing focused tests remain green.",
+  "metric": "focused regression scenarios completing successfully",
+  "unit": "scenarios out of 1",
+  "direction": "higher",
+  "minimum_useful_effect": "Improve 0/1 to 1/1 with no failure in the existing build_py tests.",
+  "quality_control": "Pin upstream commit; preserve behavior when cache_tag is present; run the new regression, the existing build_py module and the upstream standard test command available without paid services; retain exact diff and outputs.",
+  "overhead": "Include mandatory LAB startup, independent pre-flight, external clone/setup, focused and broader tests, patch artifact, LAB reporting/checkpoint and publication.",
+  "stop_condition": "Stop before code if any pre-flight answer fails. After code, stop at one issue-scoped guard and regression test; do not expand to install_lib, open a PR, fork, message maintainers or alter project policy without Agent 2 review and human approval.",
+  "result": {
+    "upstream_commit": "3ed42426ce6f41e9d07dc63f3315d85f19e25618",
+    "independent_preflight": "5/5 passed",
+    "baseline": "0/1: the pinned unpatched source raised NotImplementedError when cache_tag was None",
+    "intervention": "1/1: the new regression completed and the focused module passed 8/8",
+    "patch": "lab/observations/traces/2026-10-12-distutils-433.patch",
+    "trace": "lab/observations/traces/2026-10-12-distutils-433.txt",
+    "broader_test": "229 passed, 28 skipped, 12 environment-linked failures outside test_build_py",
+    "external_side_effects": "none"
+  },
+  "decision": "continue",
+  "outcome": "unknown",
+  "decision_reason": "The issue still exists and the minimal patch meets the focused threshold, but the owner-mandated workflow requires Agent 2 adversarial review and human review before any upstream action. This build/replay is not a field trial or a utility result.",
+  "failures": [
+    "The primary runtime's Python 3.12 omitted test.support, causing eight focused setup errors before switching to /usr/bin/python3.12.",
+    "The broader upstream suite retained 12 environment-linked failures caused by absent CPython development files or platform-dependent egg-info naming."
+  ],
+  "limitations": "No maintainer has replied, no upstream CI ran, and no PR was opened. The patch has not yet received the required adversarial or human review."
+}

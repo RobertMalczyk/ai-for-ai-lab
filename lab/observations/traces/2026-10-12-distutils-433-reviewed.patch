@@ -1,0 +1,112 @@
+diff --git a/distutils/command/build_py.py b/distutils/command/build_py.py
+index 712ecc45..0e6b9934 100644
+--- a/distutils/command/build_py.py
++++ b/distutils/command/build_py.py
+@@ -315,7 +315,7 @@ class build_py(Command):
+             package = package.split('.')
+             filename = self.get_module_outfile(self.build_lib, package, module)
+             outputs.append(filename)
+-            if include_bytecode:
++            if include_bytecode and sys.implementation.cache_tag is not None:
+                 if self.compile:
+                     outputs.append(
+                         importlib.util.cache_from_source(filename, optimization='')
+@@ -385,7 +385,7 @@ class build_py(Command):
+                 self.build_module(module, module_file, package)
+ 
+     def byte_compile(self, files) -> None:
+-        if sys.dont_write_bytecode:
++        if sys.dont_write_bytecode or sys.implementation.cache_tag is None:
+             self.warn('byte-compiling is disabled, skipping.')
+             return
+ 
+diff --git a/distutils/command/install_lib.py b/distutils/command/install_lib.py
+index fa5684c4..0e77fa69 100644
+--- a/distutils/command/install_lib.py
++++ b/distutils/command/install_lib.py
+@@ -126,7 +126,7 @@ class install_lib(Command):
+         return outfiles
+ 
+     def byte_compile(self, files) -> None:
+-        if sys.dont_write_bytecode:
++        if sys.dont_write_bytecode or sys.implementation.cache_tag is None:
+             self.warn('byte-compiling is disabled, skipping.')
+             return
+ 
+@@ -171,6 +171,8 @@ class install_lib(Command):
+ 
+     def _bytecode_filenames(self, py_filenames):
+         bytecode_files = []
++        if sys.implementation.cache_tag is None:
++            return bytecode_files
+         for py_file in py_filenames:
+             # Since build_py handles package data installation, the
+             # list of outputs can contain more than just .py files.
+diff --git a/distutils/tests/test_build_py.py b/distutils/tests/test_build_py.py
+index b316ed43..d8f82979 100644
+--- a/distutils/tests/test_build_py.py
++++ b/distutils/tests/test_build_py.py
+@@ -160,6 +160,24 @@ class TestBuildPy(support.TempdirManager):
+ 
+         assert 'byte-compiling is disabled' in caplog.records[0].message
+ 
++    def test_byte_compile_without_cache_tag(self, monkeypatch, caplog):
++        # cache_tag is None when bytecode caching is disabled (#433)
++        project_dir, dist = self.create_dist(py_modules=['boiledeggs'])
++        os.chdir(project_dir)
++        self.write_file('boiledeggs.py', 'import antigravity')
++        cmd = build_py(dist)
++        cmd.compile = True
++        cmd.optimize = 1
++        cmd.build_lib = 'here'
++        cmd.finalize_options()
++        monkeypatch.setattr(sys.implementation, 'cache_tag', None)
++
++        cmd.run()
++
++        assert os.listdir(cmd.build_lib) == ['boiledeggs.py']
++        assert cmd.get_outputs() == [os.path.join('here', 'boiledeggs.py')]
++        assert any('byte-compiling is disabled' in msg for msg in caplog.messages)
++
+     def test_namespace_package_does_not_warn(self, caplog):
+         """
+         Originally distutils implementation did not account for PEP 420
+diff --git a/distutils/tests/test_install_lib.py b/distutils/tests/test_install_lib.py
+index f685a579..a81b6fda 100644
+--- a/distutils/tests/test_install_lib.py
++++ b/distutils/tests/test_install_lib.py
+@@ -93,6 +93,27 @@ class TestInstallLib(
+         inputs = cmd.get_inputs()
+         assert len(inputs) == 2, inputs
+ 
++    def test_without_cache_tag(self, monkeypatch, caplog):
++        # cache_tag is None when bytecode caching is disabled (#433)
++        project_dir, dist = self.create_dist()
++        os.chdir(project_dir)
++        os.mkdir('spam')
++        init = os.path.join(project_dir, 'spam', '__init__.py')
++        self.write_file(init, '# python package')
++        cmd = install_lib(dist)
++        cmd.compile = cmd.optimize = 1
++        cmd.install_dir = self.mkdtemp()
++        cmd.distribution.packages = ['spam']
++        cmd.distribution.script_name = 'setup.py'
++        monkeypatch.setattr(sys.implementation, 'cache_tag', None)
++
++        cmd.byte_compile([init])
++
++        assert 'byte-compiling is disabled' in caplog.messages[0]
++        assert cmd.get_outputs() == [
++            os.path.join(cmd.install_dir, 'spam', '__init__.py')
++        ]
++
+     def test_dont_write_bytecode(self, caplog):
+         # makes sure byte_compile is not used
+         dist = self.create_dist()[1]
+diff --git a/newsfragments/433.bugfix.rst b/newsfragments/433.bugfix.rst
+new file mode 100644
+index 00000000..99bb2077
+--- /dev/null
++++ b/newsfragments/433.bugfix.rst
+@@ -0,0 +1 @@
++Skip bytecode compilation in ``build_py`` and ``install_lib``, and leave bytecode files out of their outputs, when ``sys.implementation.cache_tag`` is ``None``.

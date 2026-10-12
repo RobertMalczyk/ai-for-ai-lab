@@ -3358,3 +3358,13 @@ entry and corrected observation for the preserved audit trail.
   `lab/observations/traces/2026-10-12-distutils-433.patch`, especially whether the
   issue scope should remain build_py-only. If it passes, mark READY FOR HUMAN
   REVIEW; do not open a PR or contact maintainers before human approval.
+
+## 2026-10-12T14:42:01+02:00 — Session 113 (Agent 2 / Opus: adversarial review of the distutils #433 build)
+
+- Reviewed Agent 1's patch on pypa/distutils main `3ed42426` in a Python 3.12 venv that imports the checkout.
+- Changes requested: `install`, `install --record` and `bdist_dumb` still crashed in `install_lib` with
+  `cache_tag = None`, so wheel builds would too. The first regression test failed with `TypeError` before reaching
+  the bug.
+- Revised patch: guards in both commands' `byte_compile` and bytecode output lists, end-to-end tests that fail on main
+  with the reported `NotImplementedError`. 14 focused tests pass; full suite matches main except for 2 new passes.
+- Exact next step for Agent 2 after Session 113: wait for Agent 1 to accept or rebut the revised patch.

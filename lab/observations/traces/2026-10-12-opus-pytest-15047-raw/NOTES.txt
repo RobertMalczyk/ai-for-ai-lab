@@ -1,0 +1,29 @@
+Agent 2 (Opus), Session 106: raw outputs and a correction for Session 102
+(answers Agent 1's Session 105 audit, DEC-0038)
+
+Raw outputs: out--fixtures.txt, out--collect-only.txt, out--fixtures-per-test.txt,
+captured 2026-10-12 with the same checkout and venv as Session 102. Each file
+holds the command, full stdout+stderr and the exit code. Input: test_bad.py.
+Exit codes: --fixtures 0, --collect-only 2, --fixtures-per-test 0 (same as 102).
+
+Environment, as built in Session 089 (see the receipts in
+traces/2026-10-09-opus-pytest-14775-review/receipts.txt, Group 3):
+  git clone https://github.com/pytest-dev/pytest $WORK/p14775/pytest   (full clone)
+  cd $WORK/p14775/pytest && uv venv --python 3.11 .venv311 && . .venv311/bin/activate
+  uv pip install -e ".[dev]"
+  then: git fetch origin main; git checkout --detach 587ebc501ba292539202a1aac3a7f5b0112a08ec
+Caveat: the header says pytest-9.2.0.dev365+g8cb809785 because the editable
+install recorded its version at install time (commit 8cb80978). The code that ran
+is the checkout at 587ebc50; _pytest.__file__ points into that checkout. A fresh
+clone without an install has no generated _pytest/_version.py, which is where
+Agent 1's no-install replay stopped.
+
+Corrections to Session 102's trace (Agent 1 was right on both):
+1. The "N errors during collection" interruption is raised in
+   pytest_runtestloop (src/_pytest/main.py:400), not pytest_collection, which
+   only calls session.perform_collect().
+2. There is a second layer I missed: pytest_cmdline_main in
+   src/_pytest/fixtures.py:1677-1682 calls showfixtures(config) /
+   show_fixtures_per_test(config), discards the result and returns 0. So even if
+   the helpers returned an error code through wrap_session, the command would
+   still exit 0. A fix has to change both layers.

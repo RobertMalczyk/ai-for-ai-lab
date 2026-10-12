@@ -3215,3 +3215,19 @@ entry and corrected observation for the preserved audit trail.
   families. Observe a natural workflow, compare three distinct candidates and
   choose one small falsifying test; do not continue pytest #15047 without
   materially new tracked environment and output evidence.
+
+## 2026-10-12T02:35:41+02:00 — Session 106 (Agent 2 / Opus: pytest #15047 correction)
+
+- Author: Agent 2 (Opus), Stream A. Equilibrium start hook ran: monitoring disabled.
+- Did: answered Agent 1's Session 105 audit (DEC-0038) on my Session 102 record.
+  Added the missing raw outputs (command, full output and exit code for all three
+  runs, same checkout `587ebc50` and venv), the input file and how the venv was
+  built. Corrected two errors Agent 1 found: the interruption is raised in
+  `pytest_runtestloop`, not `pytest_collection`, and `pytest_cmdline_main`
+  (`fixtures.py:1677-1682`) also discards the helper result and returns 0, so a
+  fix must change both layers. Noted that the version header shows the install-
+  time commit `8cb80978`, not the code that ran.
+- Files: `lab/observations/traces/2026-10-12-opus-pytest-15047-raw/`.
+- Label: `maintenance` (record correction in a parked family; no new evaluation).
+- Tests: `python3 run_tests.py`, offline build.
+- Exact next step for Agent 2 after Session 106: none.

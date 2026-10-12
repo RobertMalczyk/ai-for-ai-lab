@@ -1,0 +1,114 @@
+$ python -m pytest -p no:cacheprovider --fixtures test_bad.py
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.2.0.dev365+g8cb809785.d20261009, pluggy-1.6.0
+rootdir: $WORK/m15047
+plugins: hypothesis-6.168.5, xdist-3.8.0
+collected 0 items / 1 error
+capsys -- .../_pytest/capture.py:1012
+    Enable text capturing of writes to ``sys.stdout`` and ``sys.stderr``.
+
+capteesys -- .../_pytest/capture.py:1040
+    Enable simultaneous text capturing and pass-through of writes
+    to ``sys.stdout`` and ``sys.stderr`` as defined by ``--capture=``.
+
+capsysbinary -- .../_pytest/capture.py:1075
+    Enable bytes capturing of writes to ``sys.stdout`` and ``sys.stderr``.
+
+capfd -- .../_pytest/capture.py:1103
+    Enable text capturing of writes to file descriptors ``1`` and ``2``.
+
+capfdbinary -- .../_pytest/capture.py:1131
+    Enable bytes capturing of writes to file descriptors ``1`` and ``2``.
+
+doctest_namespace [session scope] -- .../_pytest/doctest.py:737
+    Fixture that returns a :py:class:`dict` that will be injected into the
+    namespace of doctests.
+
+pytestconfig [session scope] -- .../_pytest/fixtures.py:1635
+    Session-scoped fixture that returns the session's :class:`pytest.Config`
+    object.
+
+record_property -- .../_pytest/junitxml.py:321
+    Add extra properties to the calling test.
+
+record_xml_attribute -- .../_pytest/junitxml.py:344
+    Add extra xml attributes to the tag for the calling test.
+
+record_testsuite_property [session scope] -- .../_pytest/junitxml.py:382
+    Record a new ``<property>`` tag as child of the root ``<testsuite>``.
+
+tmpdir_factory [session scope] -- .../_pytest/legacypath.py:297
+    Return a :class:`pytest.TempdirFactory` instance for the test session.
+
+tmpdir -- .../_pytest/legacypath.py:304
+    Return a temporary directory (as `legacy_path`_ object)
+    which is unique to each test function invocation.
+    The temporary directory is created as a subdirectory
+    of the base temporary directory, with configurable retention,
+    as discussed in :ref:`temporary directory location and retention`.
+
+caplog -- .../_pytest/logging.py:621
+    Access and control log capturing.
+
+monkeypatch -- .../_pytest/monkeypatch.py:35
+    A convenient fixture for monkey-patching.
+
+recwarn -- .../_pytest/recwarn.py:36
+    Return a :class:`WarningsRecorder` instance that records all warnings emitted by test functions.
+
+subtests -- .../_pytest/subtests.py:136
+    Provides subtests functionality.
+
+tmp_path_factory [session scope] -- .../_pytest/tmpdir.py:269
+    Return a :class:`pytest.TempPathFactory` instance for the test session.
+
+tmp_path -- .../_pytest/tmpdir.py:284
+    Return a temporary directory (as :class:`pathlib.Path` object)
+    which is unique to each test function invocation.
+    The temporary directory is created as a subdirectory
+    of the base temporary directory, with configurable retention,
+    as discussed in :ref:`temporary directory location and retention`.
+
+
+---------------------- fixtures defined from xdist.plugin ----------------------
+worker_id [session scope] -- ../p14775/pytest/.venv311/lib/python3.11/site-packages/xdist/plugin.py:391
+    Return the id of the current worker ('gw0', 'gw1', etc) or 'master'
+    if running on the master node.
+
+testrun_uid [session scope] -- ../p14775/pytest/.venv311/lib/python3.11/site-packages/xdist/plugin.py:400
+    Return the unique id of the current test.
+
+
+==================================== ERRORS ====================================
+_________________________ ERROR collecting test_bad.py _________________________
+../p14775/pytest/src/_pytest/python.py:528: in importtestmodule
+    mod = import_path(
+../p14775/pytest/src/_pytest/pathlib.py:640: in import_path
+    importlib.import_module(module_name)
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:690: in _load_unlocked
+    ???
+../p14775/pytest/src/_pytest/assertion/rewrite.py:178: in exec_module
+    source_hash, co = _rewrite_test(fn, self.config)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../p14775/pytest/src/_pytest/assertion/rewrite.py:341: in _rewrite_test
+    tree = ast.parse(source, filename=strfn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/ast.py:50: in parse
+    return compile(source, filename, mode, flags,
+E     File "$WORK/m15047/test_bad.py", line 1
+E       def test_x(:
+E                  ^
+E   SyntaxError: invalid syntax
+=========================== short test summary info ============================
+ERROR test_bad.py
+=============================== 1 error in 0.92s ===============================
+[exit 0]

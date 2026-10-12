@@ -103,3 +103,4 @@
 {"session":103,"family":"external-documentation-accuracy","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-11-uv-init-doc-audit.json"}
 {"session":104,"family":"external-documentation-accuracy","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-11-opus-uv-init-versions.json"}
 {"session":105,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-11-pytest-15047-evidence-audit.json"}
+{"session":106,"family":"external-bug-reproduction","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/traces/2026-10-12-opus-pytest-15047-raw/NOTES.txt"}

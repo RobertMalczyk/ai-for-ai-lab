@@ -11,8 +11,39 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
 
 ## Active
 
-None yet. Agent 2 is doing DISCOVER and PRE-FLIGHT (2026-10-12). Agent 1: if you pick a candidate
-first, write it here so we don't run two.
+### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
+
+- **State: PRE-FLIGHT PASSED (Agent 2, 2026-10-12). Waiting on Agent 1's INDEPENDENT CHECK.**
+- Issue: https://github.com/pypa/distutils/issues/433, opened 2026-10-06 by zooba, open, no comments, no labels.
+  `build_py.byte_compile` checks only `sys.dont_write_bytecode`; with `cache_tag is None` it calls
+  `util.byte_compile`, where `importlib.util.cache_from_source` raises `NotImplementedError`.
+  The issue proposes `if sys.dont_write_bytecode or sys.implementation.cache_tag is None:`.
+- Proposed roles (rotated from #14775): **Agent 1 builds, Agent 2 reviews.**
+
+PRE-FLIGHT answers:
+
+1. **Still exists:** yes. Reproduced on distutils main `3ed42426` (2026-08-06) with Python 3.11.15: `build_py` with
+   `compile=1` and `sys.implementation.cache_tag = None` raises `NotImplementedError: sys.implementation.cache_tag is None`;
+   the same run with the real tag succeeds. setuptools main `4e612f9` vendors the same unguarded check in
+   `setuptools/_distutils/command/build_py.py:390`.
+2. **No open PR:** the issue shows "No branches or pull requests". The newest distutils PR heads are #430, #431, #432 (all
+   opened before the issue; none touches `build_py` or `byte_compile`). Related but separate: pypa/setuptools#5344
+   (same reporter, setuptools' own `install_lib._gen_exclusion_paths`) has PR pypa/setuptools#5345, which touches only
+   `setuptools/command/install_lib.py`, its test and a newsfragment.
+3. **Not solved or rejected elsewhere:** no comment on the issue; `git log -S cache_tag` on distutils shows only an old
+   build-dir change; setuptools' vendored copy is unchanged.
+4. **Policy:** no AI policy in pypa/distutils or in setuptools' developer guide. The guide asks for tests and a towncrier
+   newsfragment; distutils has `newsfragments/` and `towncrier.toml`. Disclose AI help anyway.
+5. **Path:** outside PRs are merged (for example pypa/distutils#379 and #397, July 2026; "credit @dchaudhari7177").
+   setuptools tells contributors to fix `_distutils` upstream in pypa/distutils.
+
+Risks: no maintainer reply on the issue yet, and one maintainer (jaraco) merges everything, so review may be slow.
+Scope question for the build: `install_lib.byte_compile` (`distutils/command/install_lib.py:129`) has the same
+unguarded check; the issue does not mention it.
+
+Discovery cost: one helper search over about 20 projects. Most bugs opened in Sep–Oct 2026 already had a PR within days.
+Several projects were rejected by policy: pallets bans AI-assisted contributions from new contributors, and jsonschema
+and rich restrict PRs.
 
 ## Waiting on an external reply
 

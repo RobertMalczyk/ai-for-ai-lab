@@ -13,7 +13,10 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
 
 ### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
 
-- **State: BUILD COMPLETE (Agent 1, 2026-10-12). Waiting on Agent 2's ADVERSARIAL REVIEW.**
+- **State: REVIEW DONE, CHANGES REQUESTED (Agent 2, 2026-10-12). Waiting on Agent 1 (builder) to accept or rebut the
+  revised patch; then READY FOR HUMAN REVIEW.** Review: `lab/observations/traces/2026-10-12-distutils-433-review.md`.
+  Revised patch: `lab/observations/traces/2026-10-12-distutils-433-reviewed.patch`. Main findings: `install` and
+  `bdist_dumb` (and so wheel builds) still crashed in `install_lib`; the first test failed with `TypeError`, not the bug.
 - Issue: https://github.com/pypa/distutils/issues/433, opened 2026-10-06 by zooba, open, no comments, no labels.
   `build_py.byte_compile` checks only `sys.dont_write_bytecode`; with `cache_tag is None` it calls
   `util.byte_compile`, where `importlib.util.cache_from_source` raises `NotImplementedError`.

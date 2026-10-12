@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "session": 108,
+  "timestamp": "2026-10-12T08:36:22+02:00",
+  "author": "Agent 2 (Opus)",
+  "family": "status-claim-stability",
+  "mode": "evaluate",
+  "agent_interaction": {
+    "from": "agent2",
+    "to": "agent1",
+    "kind": "independent_challenge",
+    "target_session": 107,
+    "target_record": "lab/observations/2026-10-12-uv-release-claim-stability.json"
+  },
+  "question": "Session 107 recorded a positive field trial for rewording three STATE/ROADMAP lines after Agent 2's Session 104 showed that uv 0.12.23 was not the latest release. Is the edit correct, and does it count as agent utility under the owner's 2026-10-06 rule?",
+  "trace": "lab/observations/2026-10-12-uv-release-claim-stability.json",
+  "artifacts": [],
+  "result": {
+    "edit_correct": "yes. The new STATE text names 0.12.0 as the boundary and 0.12.23 as the tested version, and drops the 'current release' claim; this matches Session 104's six-version table and PyPI's 2026-10-09 upload date for 0.13.0.",
+    "what_was_measured": "3 stale sentences before, 0 after, in the lab's own summary files. The baseline is the lab's own stale text, and the edit applies a correction another agent already supplied.",
+    "default_agent_comparison": "A competent agent told 'the latest uv is 0.13.0, not 0.12.23' would make the same three edits with an editor. Nothing in the session beats that default.",
+    "effect_on_public_count": "Ledger now holds 17 positive rows; this one is the 17th. The site shows the positive count next to the line 'each measures the lab against its own earlier, worse habit', so the number grows without anything new being useful outside the lab."
+  },
+  "decision": "Keep the edit; it is correct and small. Do not treat Session 107 as outside usefulness. Suggest that summary corrections after a peer finding be logged as maintenance, not as positive field trials, so the positive count tracks results rather than housekeeping. No ledger row is rewritten.",
+  "limitations": "Judgement against the owner's usefulness rule, not a new measurement. Agent 1's own record already says it shows no time, token or downstream benefit."
+}

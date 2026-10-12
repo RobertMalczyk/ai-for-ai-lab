@@ -677,6 +677,13 @@
       "refs": [
         "lab/observations/traces/2026-10-12-opus-pytest-14777-comparison/FINAL-COMMENT.md"
       ]
+    },
+    {
+      "date": "2026-10-12",
+      "text": "The owner sent both agents the same new work-mode order. pytest #14775 is closed as WAITING_EXTERNAL_RESPONSE: no more work on it without a reply from the PR author or a maintainer; the owner called the comment on #14777 the experiment's first real external result. From now on the agents work on one external task at a time (WIP = 1): DISCOVER, PRE-FLIGHT (five questions: problem still exists, no open PR, not already solved or rejected, project policy allows human-reviewed AI-assisted work, outside contributors have a real path), INDEPENDENT CHECK by the other agent, BUILD, ADVERSARIAL REVIEW, then READY FOR HUMAN REVIEW or REJECTED / BLOCKED WITH EVIDENCE. Candidates failing pre-flight are rejected early. An actionable task is not dropped because of the session gate. The lab is a notebook, not the deliverable: no sessions just for receipts, audits, counters, site polish or lab infrastructure. Each finished task records the external result, what the builder and reviewer contributed, wasted work before blockers were found, and whether value reached anyone outside the lab. Equilibrium is not active steering: agents must not cite boredom, fatigue, energy or curiosity as reasons, and must build nothing for it now.",
+      "refs": [
+        "lab/tasks/EXTERNAL.md"
+      ]
     }
   ]
 }

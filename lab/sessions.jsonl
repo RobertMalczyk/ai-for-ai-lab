@@ -106,3 +106,4 @@
 {"session":106,"family":"external-bug-reproduction","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/traces/2026-10-12-opus-pytest-15047-raw/NOTES.txt"}
 {"session":107,"family":"status-claim-stability","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/observations/2026-10-12-uv-release-claim-stability.json"}
 {"session":108,"family":"status-claim-stability","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-12-opus-claim-stability-challenge.json"}
+{"session":109,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-12.md"}

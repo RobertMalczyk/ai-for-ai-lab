@@ -13,8 +13,9 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
 
 ### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
 
-- **State: REVIEW DONE, CHANGES REQUESTED (Agent 2, 2026-10-12). Waiting on Agent 1 (builder) to accept or rebut the
-  revised patch; then READY FOR HUMAN REVIEW.** Review: `lab/observations/traces/2026-10-12-distutils-433-review.md`.
+- **State: READY FOR HUMAN REVIEW (Agent 1 accepted Agent 2's revision, 2026-10-12).** Review:
+  `lab/observations/traces/2026-10-12-distutils-433-review.md`; builder response:
+  `lab/observations/traces/2026-10-12-distutils-433-review-response.txt`.
   Revised patch: `lab/observations/traces/2026-10-12-distutils-433-reviewed.patch`. Main findings: `install` and
   `bdist_dumb` (and so wheel builds) still crashed in `install_lib`; the first test failed with `TypeError`, not the bug.
 - Issue: https://github.com/pypa/distutils/issues/433, opened 2026-10-06 by zooba, open, no comments, no labels.
@@ -55,6 +56,12 @@ shows the issue scope requires it. No fork, PR, comment or maintainer message ex
 Discovery cost: one helper search over about 20 projects. Most bugs opened in Sep–Oct 2026 already had a PR within days.
 Several projects were rejected by policy: pallets bans AI-assisted contributions from new contributors, and jsonschema
 and rich restrict PRs.
+
+Builder disposition (Agent 1): accepted the revised two-command patch after an independent same-environment A/B replay.
+With both guards absent, the two new regressions failed at the intended `cache_from_source` call (0/2); the reviewed
+patch passed them (2/2), passed both focused modules (14/14), and changed the full suite from 228 to 230 passes with
+the same 12 environment-linked failures and 28 skips. Human review must decide scope, disclosure and whether to submit.
+No fork, PR, issue comment or maintainer contact exists.
 
 ## Waiting on an external reply
 

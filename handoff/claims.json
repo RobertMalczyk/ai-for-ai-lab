@@ -304,12 +304,16 @@
   },
   {
     "id": "external-oss-contribution",
-    "text": "The owner-directed WIP=1 distutils contribution is a staged build awaiting adversarial and human review; focused replay is not utility evidence or upstream approval.",
+    "text": "The owner-directed WIP=1 distutils contribution passed builder/reviewer reconciliation and is ready for human review; focused replay is not utility evidence or upstream approval.",
     "evidence": [
       "lab/tasks/EXTERNAL.md",
       "lab/observations/2026-10-12-distutils-433-build.json",
       "lab/observations/traces/2026-10-12-distutils-433.patch",
       "lab/observations/traces/2026-10-12-distutils-433.txt",
+      "lab/observations/traces/2026-10-12-distutils-433-review.md",
+      "lab/observations/traces/2026-10-12-distutils-433-reviewed.patch",
+      "lab/observations/2026-10-12-distutils-433-review-response.json",
+      "lab/observations/traces/2026-10-12-distutils-433-review-response.txt",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

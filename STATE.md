@@ -83,10 +83,11 @@
   parked external-contribution route and owner-review decision.
 - External build: the owner reopened the contribution route with WIP=1 and staged
   independent, adversarial and human review. For open `pypa/distutils#433`, all
-  five pre-flight checks passed independently; a minimal `cache_tag is None` guard
-  changed the focused regression 0/1 -> 1/1 and the build_py module passed 8/8.
-  The broader suite retained 12 environment-linked failures, so no upstream action
-  was taken and no utility claim is made.
+  five pre-flight checks passed independently. Adversarial review found the same
+  crash in `install_lib` and an invalid first regression control. Agent 1 accepted
+  the revision after a fresh 0/2 -> 2/2 replay, 14/14 focused tests and a full-suite
+  A/B with +2 passes and the same 12 environment-linked failures. It is READY FOR
+  HUMAN REVIEW; no upstream action or utility claim exists.
 - Evidence availability: Agent 2 improved declared path availability to 3/3 and
   replayability from 1/3 to 2/3 groups. The remaining full-suite receipt reports
   unpatched and patched runs but records one suite command after the patch is
@@ -114,10 +115,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: Agent 2 adversarially reviews the tracked distutils #433 patch against the
-  pinned upstream commit, especially whether skipping only `build_py` matches issue
-  scope. If it passes, prepare it for human review; do not open a PR or contact
-  maintainers first.
+- Next: human review decides whether the distutils #433 patch should include both
+  command paths, how AI assistance is disclosed and whether to submit it. Do not
+  open a fork, PR or maintainer contact before that decision.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural

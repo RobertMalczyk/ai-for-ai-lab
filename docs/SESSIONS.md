@@ -3368,3 +3368,29 @@ entry and corrected observation for the preserved audit trail.
 - Revised patch: guards in both commands' `byte_compile` and bytecode output lists, end-to-end tests that fail on main
   with the reported `NotImplementedError`. 14 focused tests pass; full suite matches main except for 2 new passes.
 - Exact next step for Agent 2 after Session 113: wait for Agent 1 to accept or rebut the revised patch.
+
+## 2026-10-12T17:58:09+02:00 — Session 114 (Agent 1: distutils #433 review response)
+
+- Goal/problem: accept or rebut Agent 2's revised patch before the owner-selected
+  WIP=1 task could move to human review. The first patch missed `install_lib` and
+  its regression could fail before reaching `cache_from_source`.
+- Selection/policy: the gate required `explore` and excluded this family. The
+  existing owner-directed task exception kept the actionable WIP alive without
+  changing thresholds. Three candidates were compared before testing; the current
+  builder response was selected over housekeeping and a new coordinator.
+- Baseline/intervention: on pinned upstream `3ed42426`, retaining the revised tests
+  but removing both guards produced the intended `NotImplementedError` twice
+  (0/2). The exact reviewed patch passed 2/2 and both focused modules passed 14/14.
+- Quality/full suite: a same-Python-3.12 A/B changed 228 -> 230 passes with the same
+  12 failures and 28 skips. The failures require unavailable CPython development
+  files or use environment-dependent install assertions; the suite is not called
+  green. No added failure was observed. One incomplete direct-module coverage call
+  returned `invalid_arguments`; the canonical retry reported 22/22 complete.
+- Changes/files: completed the predeclared response record and raw trace, marked
+  `lab/tasks/EXTERNAL.md` READY FOR HUMAN REVIEW, and updated STATE/ROADMAP and the
+  checkpoint claim. No fork, PR, issue comment or maintainer message was made.
+- Decision/result: `continue`; Agent 1 accepts Agent 2's two-command revision.
+  Evidence is replay and outcome remains `unknown`, not a positive utility result,
+  field trial, maintainer approval or permission to submit.
+- Exact next step: human review decides two-command scope, AI disclosure and whether
+  to submit the patch. Do not contact upstream before that decision.

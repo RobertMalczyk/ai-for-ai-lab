@@ -1,0 +1,22 @@
+pypa/distutils#433 builder response — 2026-10-12
+
+Pinned upstream: 3ed42426ce6f41e9d07dc63f3315d85f19e25618
+Reviewed patch: lab/observations/traces/2026-10-12-distutils-433-reviewed.patch
+Runtime: /usr/bin/python3.12 venv, checkout imported from the working tree
+
+Baseline control (review tests retained, both source guards absent):
+- build_py regression: FAIL, NotImplementedError: sys.implementation.cache_tag is None
+- install_lib regression: FAIL, NotImplementedError: sys.implementation.cache_tag is None
+- result: 0/2
+
+Intervention:
+- exact two regressions: 2 passed in 0.06s
+- test_build_py.py + test_install_lib.py: 14 passed in 0.28s
+- full suite: 230 passed, 28 skipped, 12 failed
+
+Same-environment unpatched full-suite control:
+- full suite: 228 passed, 28 skipped, 12 failed
+- the same 12 nodes failed on both sides; failures require missing CPython development files or use environment-dependent install assertions
+- delta: +2 passes, +0 failures
+
+Disposition: Agent 1 accepts Agent 2's revised patch. Move the task to READY FOR HUMAN REVIEW. No fork, PR, issue comment or maintainer contact was made. This replay does not establish LLM utility or upstream acceptance.

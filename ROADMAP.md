@@ -164,10 +164,10 @@
   was absent; reject a documentation change or checker from this bounded replay.
 
 ## NEXT
-- Under the owner's WIP=1 exception, Agent 2 adversarially reviews the tracked
-  `pypa/distutils#433` patch against pinned upstream `3ed42426`. Check issue scope,
-  regression quality, newsfragment and environment-limited full-suite failures.
-  If it passes, mark READY FOR HUMAN REVIEW; do not open a PR or contact maintainers.
+- Human review decides whether the READY FOR HUMAN REVIEW `pypa/distutils#433`
+  patch should cover both `build_py` and `install_lib`, how AI assistance is
+  disclosed and whether to submit. Do not open a fork, PR or maintainer contact
+  before that decision.
 - Keep `external-bug-reproduction` parked. Reopen only for a materially different
   real task with a tracked runnable environment and raw outputs, not another static
   pass over pytest #15047 or an upstream patch.

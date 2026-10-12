@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "session": 114,
+  "timestamp": "2026-10-12T17:58:09+02:00",
+  "family": "external-oss-contribution",
+  "mode": "explore",
+  "status": "complete",
+  "explicit_task_exception": "The owner's WIP=1 workflow says an actionable task is not interrupted by the session gate. Session 113 requests the builder's accept-or-rebut response before human review; thresholds are unchanged.",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "reasons": [
+      "family_streak_limit",
+      "last_family_parked"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "external-oss-contribution",
+      "kind": "fresh_observed_friction",
+      "observed_friction": "Agent 2's adversarial review shows that the builder patch leaves install_lib crashes and that its regression test can fail before reaching cache_from_source.",
+      "evidence": "lab/observations/traces/2026-10-12-distutils-433-review.md",
+      "potential_agent_value": "Reject a false-ready patch and produce one independently checked candidate for human review.",
+      "cheapest_falsifying_test": "Apply the revised patch to pinned upstream, remove only its guards to confirm both tests reach the reported NotImplementedError, then run focused and available full tests.",
+      "simpler_alternative": "Rebut or reject the revision if its claimed failures or controls do not reproduce.",
+      "cost": "One fresh upstream clone, one existing test environment, focused and full tests, and LAB reporting; no upstream side effect."
+    },
+    {
+      "family": "status-claim-stability",
+      "kind": "old_assumption_to_challenge",
+      "observed_friction": "Session 108 disputes Session 107's positive field-trial classification.",
+      "evidence": "lab/observations/2026-10-12-opus-claim-stability-challenge.json",
+      "potential_agent_value": "Avoid inflated utility summaries.",
+      "cheapest_falsifying_test": "Audit task origin and append a correction without rewriting history.",
+      "simpler_alternative": "Retain the existing challenge until the active external WIP closes.",
+      "cost": "This is housekeeping rather than the owner-selected external task and cannot interrupt WIP=1."
+    },
+    {
+      "family": "agent-workflow-coordination",
+      "kind": "different_simple_approach",
+      "observed_friction": "Builder and reviewer need one visible disposition after changes are requested.",
+      "evidence": "lab/tasks/EXTERNAL.md already carries the role and state transition.",
+      "potential_agent_value": "Prevent submission of an unaccepted reviewer patch.",
+      "cheapest_falsifying_test": "Use the existing Markdown board for this response and observe whether ambiguity remains.",
+      "simpler_alternative": "Update the board; build no coordinator.",
+      "cost": "One status edit after technical verification."
+    }
+  ],
+  "selected_candidate": "external-oss-contribution",
+  "real_task": "Accept or rebut Agent 2's revised distutils #433 patch before it can move to human review.",
+  "observed_problem": "The first patch covered build_py only and its test did not prove it reached the reported cache_from_source failure.",
+  "problem_trace": "lab/observations/traces/2026-10-12-distutils-433-review.md",
+  "baseline": "On pinned upstream, run the revised tests with their guards absent and observe whether both fail with the reported NotImplementedError; compare the original patch's install behavior documented by the reviewer.",
+  "hypothesis": "The revised two-command patch makes both end-to-end regressions pass, preserves focused tests and adds no failures relative to the same environment's unpatched full-suite baseline.",
+  "metric": "new regressions passing with no added full-suite failures",
+  "unit": "regressions out of 2 and added failures",
+  "direction": "higher regressions, lower added failures",
+  "minimum_useful_effect": "Improve 0/2 to 2/2 with 0 added full-suite failures and clean format/diff checks.",
+  "quality_control": "Fresh clone at the pinned commit; exact reviewed patch; both tests must fail for the reported NotImplementedError when guards are absent; compare focused and full-suite outcomes; inspect command-level scope.",
+  "overhead": "Include mandatory LAB startup, fresh clone and environment setup, baseline and intervention tests, reporting, checkpoint and publication.",
+  "stop_condition": "Reject or rebut if either test fails for another reason, any new full-suite failure appears, or scope expands beyond build_py/install_lib command handling. Stop before any fork, PR, issue comment or maintainer contact.",
+  "result": {
+    "pinned_upstream": "3ed42426ce6f41e9d07dc63f3315d85f19e25618",
+    "baseline": "With both guards removed, both new tests failed at the intended cache_from_source call with NotImplementedError: sys.implementation.cache_tag is None (0/2).",
+    "intervention": "The exact reviewed patch passed both new regressions (2/2) and both focused modules (14/14).",
+    "full_suite_ab": "On the same Python 3.12 environment, unpatched upstream had 228 passed, 28 skipped and 12 failures; the reviewed patch had 230 passed, 28 skipped and the same 12 failures. Added failures: 0.",
+    "scope": "The install_lib guard is required because install, install --record, bdist_dumb and wheel paths otherwise reach the same unsupported bytecode operation. No upstream side effect was made."
+  },
+  "decision": "continue",
+  "outcome": "unknown",
+  "decision_reason": "Agent 1 accepts Agent 2's revision: it fixes both independently reproduced command paths, improves the predeclared regressions 0/2 -> 2/2 and adds no full-suite failures in a same-environment A/B comparison. Move the task to human review, not submission.",
+  "agent_interaction": "Agent 2 challenged the original patch's scope and test validity; Agent 1 independently reproduced both findings and accepted the revised patch.",
+  "failures": [
+    "The available system-Python full suite has 12 failures on both sides because CPython development files are absent and several install assertions are environment-dependent; the suite is not reported as green.",
+    "The first LAB coverage check used the incomplete direct-module form and returned invalid_arguments; the canonical package command then reported 22/22 complete."
+  ],
+  "limitations": "This is replay evidence for patch review, not a field trial, LLM-utility result, maintainer approval or authorization to publish upstream."
+}

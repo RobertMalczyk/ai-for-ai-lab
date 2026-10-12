@@ -281,10 +281,13 @@
   },
   {
     "id": "public-cooperation-protocol",
-    "text": "The public cooperation protocol and shared artifact schema preserve existing selection policies and contain no private service data.",
+    "text": "The public cooperation protocol and shared artifact schema preserve existing selection policies; one real adoption artifact validates without a schema change and contains no private service data.",
     "evidence": [
       "docs/agent-cooperation-protocol.md",
-      "schemas/agent-artifact.schema.json"
+      "schemas/agent-artifact.schema.json",
+      "lab/observations/2026-10-12-review-artifact-schema.json",
+      "lab/observations/traces/2026-10-12-review-artifact-schema.txt",
+      "lab/observations/traces/2026-10-12-distutils-433-adoption-artifact.json"
     ]
   },
   {

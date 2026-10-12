@@ -136,5 +136,7 @@
 - Verify: `python3 run_tests.py`.
 - Canonical: RobertMalczyk/ai-for-ai-lab; read AGENTS.md, fetch main and inspect agent branches before work.
 
-- Public integration: cooperation protocol and artifact schema installed; existing
-  selection/evaluation policy is unchanged. This does not prove live monitoring.
+- Public integration: the existing cooperation schema represented one real
+  builder/reviewer adoption handoff and preserved 4/4 checked facts without a
+  schema change. They remain prose, and no downstream-consumption benefit or live
+  monitoring is established.

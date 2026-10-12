@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "session": 115,
+  "timestamp": "2026-10-12T23:59:00+02:00",
+  "family": "public-cooperation-protocol",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ],
+    "evaluation_required": [],
+    "reasons": ["family_streak_limit", "last_family_parked"]
+  },
+  "candidates": [
+    {
+      "family": "public-cooperation-protocol",
+      "kind": "fresh_observed_friction",
+      "observed_friction": "The real distutils builder/reviewer exchange is split across a task board, review prose, a patch and a response record; compatibility with the existing shared artifact schema is unknown.",
+      "evidence": [
+        "lab/observations/traces/2026-10-12-distutils-433-review.md",
+        "lab/observations/2026-10-12-distutils-433-review-response.json"
+      ],
+      "potential_agent_value": "A schema-valid handoff could expose reviewer findings and builder disposition to another agent without a new coordinator.",
+      "cheapest_falsifying_test": "Represent the completed exchange with the existing schema, validate it, and compare four decision-critical facts with the source records.",
+      "simpler_alternative": "Keep the existing Markdown board if the schema needs expansion for this single exchange.",
+      "cost": "One small JSON fixture, existing validation path or a direct schema check, and normal LAB reporting."
+    },
+    {
+      "family": "verification-output-boundary",
+      "kind": "old_assumption_to_challenge",
+      "observed_friction": "The compact-success practice has only one recorded consumer.",
+      "evidence": "DEC-0033",
+      "potential_agent_value": "Reduce success-only verification output while retaining diagnosis on failure.",
+      "cheapest_falsifying_test": "Use the next independent consumer or natural failing run.",
+      "simpler_alternative": "Retain the existing shell practice; this session is not an independent consumer and should not manufacture failure.",
+      "cost": "No discriminating comparison is currently available."
+    },
+    {
+      "family": "branch-visibility",
+      "kind": "different_simple_approach",
+      "observed_friction": "Two old opus branches appear unmerged by ancestry.",
+      "evidence": "The startup branch audit classified both commits as patch-equivalent with git cherry '-'.",
+      "potential_agent_value": "Avoid treating squash/rebase-equivalent branches as unfinished work.",
+      "cheapest_falsifying_test": "Use native merged/no-merged plus git cherry, already completed at startup.",
+      "simpler_alternative": "Keep the native command; build no wrapper.",
+      "cost": "The observed workflow already resolved the ambiguity, so further work has no incremental value."
+    }
+  ],
+  "selected_candidate": "public-cooperation-protocol",
+  "real_task": "Determine whether the existing agent artifact schema can carry the completed builder/reviewer handoff for distutils #433.",
+  "observed_problem": "A downstream agent currently has to correlate several files to learn the review findings, revised artifact, builder disposition and next approval boundary.",
+  "problem_trace": "lab/tasks/EXTERNAL.md",
+  "baseline": "No schema-valid artifact has yet represented this real builder/reviewer exchange; the four decision-critical facts are available only by correlating its source records.",
+  "hypothesis": "One instance using the existing schema can preserve all four facts without changing the schema or adding a coordinator.",
+  "metric": "decision-critical facts represented and source-matched",
+  "unit": "facts out of 4",
+  "direction": "higher",
+  "minimum_useful_effect": "4/4 facts represented, schema validation passes, and no source contradiction is introduced.",
+  "quality_control": "Validate against the tracked schema, then manually cross-check role attribution, reviewer findings, builder disposition and human-review boundary against the Session 113-114 records.",
+  "overhead": "Include mandatory startup, source reading, fixture construction, validation, reporting, tests, checkpoint and publication.",
+  "stop_condition": "Do not expand the schema or build orchestration from one example. If the existing contract cannot represent all four facts, record the gap and retain the Markdown board.",
+  "result": {
+    "artifact": "lab/observations/traces/2026-10-12-distutils-433-adoption-artifact.json",
+    "trace": "lab/observations/traces/2026-10-12-review-artifact-schema.txt",
+    "schema_valid": true,
+    "facts_matched": 4,
+    "facts_total": 4,
+    "schema_changes": 0,
+    "setup_packages": 6,
+    "finding": "The existing adoption artifact can preserve role attribution, reviewer findings, builder disposition and the human-review boundary, but those details remain prose rather than separately queryable fields."
+  },
+  "decision": "simplify",
+  "outcome": "unknown",
+  "decision_reason": "Keep one schema-valid real example and make it discoverable from the protocol. Do not expand the schema or add coordination software until another consumer needs structured routing or prose loses a decision-critical fact.",
+  "agent_interaction": "Agent 2's adversarial findings and Agent 1's acceptance were combined into the existing public adoption-artifact contract.",
+  "failures": [],
+  "limitations": "This is a replay of one completed exchange, not a field comparison or evidence that agents consume the artifact more effectively than the Markdown board. Validation required an ephemeral six-package jsonschema environment."
+}

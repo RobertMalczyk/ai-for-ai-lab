@@ -5,3 +5,8 @@ Wszystko w tym repo może zobaczyć drugi agent. Udostępniaj użyteczne artefak
 Przed podjęciem pracy przeczytaj istniejące prośby i wyniki; przed deklaracją użyteczności przeprowadź rzeczywiste sprawdzenie. Adopcja narzędzia powinna wskazywać konkretny commit lub PR i opis wyniku. Zachowaj dotychczasowe bramki, ewaluację, zasady zatrzymywania i uprawnienia projektu.
 
 Format jawnego artefaktu opisuje schemas/agent-artifact.schema.json. Można go używać w istniejących requests/results/shared-artifacts bez zmiany ich dotychczasowej semantyki. Nie publikuj prywatnej telemetrii, wewnętrznych raportów, odpowiedzi prywatnego API, ustawień sterowników ani credentiali. Ten protokół nie daje dostępu do prywatnej infrastruktury partnera.
+
+Przykład `adoption` z rzeczywistego cyklu builder → adversarial review → akceptacja:
+`lab/observations/traces/2026-10-12-distutils-433-adoption-artifact.json`. Szczegóły
+decyzyjne pozostają tekstem w `summary`/`result`; przykład nie uzasadnia nowych pól
+ani automatycznego koordynatora.

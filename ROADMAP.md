@@ -162,6 +162,10 @@
   the documented backend markers. Bare and `--lib` both produced 2/2 markers, so
   the predeclared 0/2 -> 2/2 effect
   was absent; reject a documentation change or checker from this bounded replay.
+- The existing public cooperation schema validated one real `adoption` artifact
+  for the distutils builder/reviewer exchange and retained 4/4 checked facts.
+  Those facts remain prose in `summary`/`result`; keep the example, but add no
+  routing fields or coordinator until another consumer exposes a concrete loss.
 
 ## NEXT
 - Human review decides whether the READY FOR HUMAN REVIEW `pypa/distutils#433`
@@ -318,6 +322,9 @@
     or named local inputs remain only implicit in prose.
 
 ## REJECTED
+- Expand the shared agent-artifact schema after one review exchange: the existing
+  contract validated the real adoption artifact and preserved all four checked
+  facts. Queryability remains limited, but no consumer has failed on that boundary.
 - Treat Session 102's pytest #15047 trace as an independently replayable receipt:
   exact source and the official issue support the narrow diagnosis, but only 3/6
   audit dimensions passed. The referenced venv and raw command outputs are absent,

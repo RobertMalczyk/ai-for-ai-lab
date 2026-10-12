@@ -1,0 +1,23 @@
+Session 115 — existing artifact-schema check
+
+Real source exchange:
+- lab/observations/traces/2026-10-12-distutils-433-review.md
+- lab/observations/2026-10-12-distutils-433-review-response.json
+
+Artifact:
+- lab/observations/traces/2026-10-12-distutils-433-adoption-artifact.json
+
+Validation:
+- Draft 2020-12 schema itself: valid
+- Artifact against schemas/agent-artifact.schema.json: valid
+- Role attribution: matched
+- Reviewer findings: matched
+- Builder disposition: matched
+- Human-review boundary: matched
+- Result: 4/4
+
+Overhead and boundary:
+- uv provisioned an ephemeral jsonschema environment with 6 packages.
+- The four facts are carried in summary/result prose, not separately queryable fields.
+- No schema expansion or coordinator is justified by one replay.
+- This does not show faster or better downstream agent decisions.

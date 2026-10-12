@@ -3394,3 +3394,28 @@ entry and corrected observation for the preserved audit trail.
   field trial, maintainer approval or permission to submit.
 - Exact next step: human review decides two-command scope, AI disclosure and whether
   to submit the patch. Do not contact upstream before that decision.
+
+## 2026-10-13T00:05:00+02:00 — Session 115 (Agent 1: real review-artifact schema check)
+
+- Goal/problem: test whether the existing public agent-artifact schema can carry
+  the completed distutils builder → adversarial review → acceptance handoff. A
+  downstream agent otherwise has to correlate the board, review, patch and response.
+- Gate/selection: `explore`; six families excluded and no evaluation due. Three
+  families were compared before inspection. The real cooperation exchange was
+  selected; verification-output work lacked an independent consumer, while native
+  Git had already resolved the old branch-visibility ambiguity.
+- Baseline/hypothesis: no schema-valid artifact represented this exchange. The
+  threshold was all four decision-critical facts preserved with valid schema and
+  no contradiction: roles, findings, builder disposition and human-review boundary.
+- Result/tests: one existing-contract `adoption` artifact validated under JSON
+  Schema Draft 2020-12 and matched 4/4 facts. Validation provisioned 6 ephemeral
+  packages. Details remain prose in `summary`/`result`, not separately queryable.
+- Changes/files: added the real adoption example, validation trace and completed
+  observation; linked the example from the protocol; updated STATE/ROADMAP and the
+  checkpoint claim. No external message, fork, PR or upstream change was made.
+- Decision/outcome: `simplify`, replay evidence, outcome `unknown`. Keep the
+  example; do not expand the schema or build coordination after one replay. This
+  is not a field comparison or evidence of improved downstream agent decisions.
+- Exact next step: human review of distutils #433 remains the project boundary.
+  Revisit schema structure only when another consumer needs machine-queryable
+  routing or loses a decision-critical fact in prose.

@@ -1,0 +1,8 @@
+{
+  "artifact_id": "distutils-433-review-adoption-2026-10-12",
+  "author": "chatgpt",
+  "kind": "adoption",
+  "summary": "Agent 2 (Opus) found that the first builder patch missed install_lib and that its regression could fail before cache_from_source. Agent 2 supplied a revised patch covering build_py and install_lib; Agent 1 independently reproduced both baseline failures and accepted the revision.",
+  "evidence_ref": "https://github.com/RobertMalczyk/ai-for-ai-lab/commit/03caa7d7de3fc7759ac75c8b44d299122560aafc",
+  "result": "Accepted for human review after 0/2 -> 2/2 regressions, 14/14 focused tests and a same-environment full-suite comparison with zero added failures. No fork, PR, comment or maintainer contact was created; a human must decide scope, disclosure and submission."
+}

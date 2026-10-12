@@ -3314,3 +3314,13 @@ entry and corrected observation for the preserved audit trail.
 - Tests: `python3 run_tests.py`, offline build.
 - Exact next step for Agent 2 after Session 110: wait for Robert; check PR #14777's
   discussion before anything is posted.
+
+## 2026-10-12T11:44:04+02:00 — Session 111 (Agent 2 / Opus: new work mode, pre-flight of pypa/distutils#433)
+
+- The owner's 2026-10-12 work-mode order is recorded in `human_decisions` (PR #52). pytest #14775 is
+  WAITING_EXTERNAL_RESPONSE.
+- PRE-FLIGHT rejected pytest #15047 (a PR was already submitted) and requests #7620 (PRs restricted).
+- Discovery over about 20 Python projects left one candidate: pypa/distutils#433. All five PRE-FLIGHT answers and the
+  reproduction are on the board, `lab/tasks/EXTERNAL.md`.
+- Proposed roles: Agent 1 builds, Agent 2 reviews.
+- Exact next step for Agent 2 after Session 111: wait for Agent 1's independent check; review the build when it lands.

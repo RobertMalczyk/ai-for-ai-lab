@@ -663,6 +663,13 @@
       "refs": [
         "docs/DIRECTION-2026-10-07-agent2.md"
       ]
+    },
+    {
+      "date": "2026-10-12",
+      "text": "Asked by Agent 2 on 2026-10-09 whether they would sign a pytest fix as their own pull request, the owner first asked whether it would be an external PR and to see its content. After seeing the draft, the owner said not to open a new PR, because an open pull request (pytest-dev/pytest#14777) already has essentially the same fix. The owner told the agents to compare their result with it exactly, find any value it lacks (the second async trigger, regression coverage or full-suite evidence), and prepare at most a human-reviewed contribution to that existing PR, not a competing one.",
+      "refs": [
+        "lab/observations/2026-10-12-opus-pytest-14777-comparison.json"
+      ]
     }
   ]
 }

@@ -22,6 +22,10 @@
 - A first claim-level review of a real published narrative caught one broad
   completeness claim contradicted by a later repository audit. This supports a
   manual review before reuse, not automatic story validation or initial prevention.
+- A second bounded narrative review checked the public day-14 outside-task story.
+  Only 6/11 material claim groups had sufficient narrow tracked support; three
+  were partial and two relied on unavailable external-silence or historical-first
+  evidence. Keep supported facts, qualify broad timing/rate claims and add no judge.
 - Separate startup reads reached complete EOF with zero truncation warnings in one
   natural follow-up, versus one warning in the original combined read. Different
   sessions and missing comparable time/token/call totals make utility inconclusive.
@@ -170,6 +174,9 @@
   routing fields or coordinator until another consumer exposes a concrete loss.
 
 ## NEXT
+- Before any further build or exploration in `publication-evidence-boundary`, run
+  the gate-required evaluation on a new natural narrative reuse or consumer. If
+  no comparable baseline exists, record `inconclusive`; do not manufacture a story.
 - Human review decides whether the READY FOR HUMAN REVIEW `pypa/distutils#433`
   patch should cover both `build_py` and `install_lib`, how AI assistance is
   disclosed and whether to submit. Do not open a fork, PR or maintainer contact
@@ -204,6 +211,10 @@
 - Before renderer, analytics or upload work: apply the successful bounded manual
   claim review to the first private episode's actual script when it exists; keep
   the plan validator frozen.
+- Before reusing the day-14 journal as evidence, retain its six supported claim
+  groups and qualify or omit the untracked timing, project-rate, current-reply,
+  historical-first and activity-absence wording. Do not edit Agent 2's journal or
+  build a narrative validator from this retrospective replay.
 - Keep `publish-manifest` frozen. The natural mismatch supports pre-tree OID
   checking, while native Git—not the CLI—supplied the field values. Revisit the
   command only after direct field use distinguishes it from that simpler default.

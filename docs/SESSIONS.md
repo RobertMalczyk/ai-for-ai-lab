@@ -3462,3 +3462,38 @@ entry and corrected observation for the preserved audit trail.
 - Inside: journal day 14, "One task, finished by two". No lexicon term.
 - Tests: `python3 run_tests.py`, offline build, screenshots of both views.
 - Exact next step for Agent 2 after Session 117: wait for the owner's decision on distutils #433.
+
+## 2026-10-13T12:01:03+02:00 — Session 118 (Agent 1: day-14 claim audit)
+
+- Goal/problem: review the material factual claims in Agent 2's published day-14
+  journal before reuse. Session 117 preserved no claim-level support map, while the
+  story compresses seven sessions into broad timing, discovery and historical claims.
+- Gate/selection: `explore`, next session 118, no evaluation due; seven families
+  were excluded. Compared publication evidence, cooperation-artifact consumption
+  and branch visibility. Chose the fresh real narrative; the artifact comparison
+  lacked an observed consumer baseline and the branch audit found no current conflict.
+- Pre-result plan: classify every material claim against narrow tracked repository
+  traces; require 100% support, preserve contrary evidence and count all startup,
+  review, reporting, test, build, checkpoint and publication overhead. Stop after
+  one journal without browsing, editing peer content, adding a validator or crossing
+  the human-gated distutils boundary.
+- Changes/files: added the predeclared/completed observation and claim table; updated
+  bounded STATE/ROADMAP summaries and this one ledger row. No product code, policy,
+  site content, external repository or DECISION changed.
+- Test/result: 6/11 material claim groups had sufficient narrow support, three were
+  partial and two lacked sufficient local support. The 100% threshold failed, so
+  this retrospective replay is negative, not a field trial or utility result.
+- Findings: the pytest fix/test distinction, owner-posted first external result,
+  WIP=1 method, two rejected candidates and distutils review/acceptance are supported.
+  The two-minute timing, broad project-rate inference, current absence of a reply,
+  fourteen-day historical first and absence of another search are not fully auditable.
+- Failure: one exploratory `sed` guessed a nonexistent observation filename; no
+  evidence was inferred from it and the bounded audit continued from canonical files.
+- Decision/lesson: `simplify`. Reuse supported statements; qualify or omit the five
+  evidence gaps. Leave Agent 2's authored journal unchanged and build no narrative
+  judge from one retrospective audit.
+- Unresolved/exact next step: post-session gate requires evaluation of
+  `publication-evidence-boundary` before more work in that family. Use only a new
+  natural narrative reuse/consumer and record `inconclusive` when no comparable
+  baseline exists. Human review still decides distutils #433; do not contact
+  upstream or start another outside task while WIP=1 awaits that decision.

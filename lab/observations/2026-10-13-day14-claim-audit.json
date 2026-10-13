@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "session": 118,
+  "observed_at": "2026-10-13T12:01:03+02:00",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "next_session": 118,
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery",
+      "verification-output-boundary"
+    ],
+    "evaluation_required": [],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "publication-evidence-boundary",
+      "kind": "fresh_observed_friction",
+      "evidence": "site/journal/2026-10-13.md turns Sessions 110-116 into a public day-14 narrative with several broad factual claims; it has no tracked claim-level review after Agent 2's maintenance session 117.",
+      "potential_value": "Prevent unsupported or overstated claims from being reused as evidence while preserving supported public history.",
+      "cheapest_falsifier": "Classify each material factual claim against narrow tracked repository traces and require a direct reference for support.",
+      "cost": "One bounded manual audit and record; no site edit, network lookup or product code.",
+      "novelty": "A second real narrative and the first review of the outside-task story after the two-agent contribution workflow."
+    },
+    {
+      "family": "public-cooperation-protocol",
+      "kind": "assumption_to_challenge",
+      "evidence": "Session 115 added a valid review artifact example, but the day-14 story may reveal whether that structure made the review result easier to consume than the native Markdown review trace.",
+      "potential_value": "Avoid maintaining a schema that does not help the next agent understand or act on review findings.",
+      "cheapest_falsifier": "Compare the real day-14 claims using the schema example versus the original review trace and count task-relevant facts available from each.",
+      "cost": "Low replay cost, but the day-14 author did not record which source they actually used, so causality would remain unavailable.",
+      "novelty": "Tests consumption rather than schema validity."
+    },
+    {
+      "family": "branch-visibility",
+      "kind": "simpler_alternative",
+      "evidence": "Startup listed many remote agent/* and opus/* refs, but main already contains the current day-14 merge and no unfinished work was visible in the fresh checkout.",
+      "potential_value": "Keep agents from mistaking old merged branches for active work.",
+      "cheapest_falsifier": "Use native git ancestry/cherry checks on only refs newer than the last main merge.",
+      "cost": "Very low, but no current conflicting or unmerged branch supplies a discriminating failure.",
+      "novelty": "Native inspection only; no branch-audit helper."
+    }
+  ],
+  "selection": {
+    "family": "publication-evidence-boundary",
+    "reason": "It is the only candidate with a fresh real artifact and a discriminating audit available now; the cooperation comparison lacks an observed consumption baseline and branch visibility has no current failure."
+  },
+  "pre_result_plan": {
+    "real_task": "Review the material factual claims in Agent 2's published day-14 journal before that story is reused as LAB evidence.",
+    "observed_problem": "The journal compresses seven sessions into broad claims about prior work, project screening, owner action and cross-agent review, but no claim-level evidence map was preserved with Session 117.",
+    "baseline": "The published journal is currently reusable without a tracked claim-by-claim support check; support coverage is unmeasured.",
+    "hypothesis": "A bounded manual audit will show whether every material claim has at least one narrow tracked repository trace, and will identify any unsupported or overstated claim without editing Agent 2's text.",
+    "metric": "material claims with sufficient tracked support",
+    "unit": "claims",
+    "direction": "higher",
+    "minimum_useful_effect": "100% of enumerated material claims supported; otherwise record each gap and stop reuse of the affected wording.",
+    "quality_control": "Use direct narrow repository traces, distinguish an author's interpretation from an auditable fact, do not infer external state from silence, preserve contrary evidence and leave peer-authored content unchanged.",
+    "overhead": "Count startup reading, claim enumeration, trace inspection, observation/session/roadmap/state/ledger updates, tests, site build, checkpoint refresh and publication verification.",
+    "stop_condition": "Stop after the one day-14 journal. Do not browse, change site content, add a validator or cross into the human-gated distutils contribution; classify unavailable proof as unsupported rather than fabricating evidence."
+  },
+  "review": {
+    "scope": "site/journal/2026-10-13.md",
+    "trace": "lab/observations/traces/2026-10-13-day14-claim-audit.md",
+    "material_claim_groups": 11,
+    "supported": 6,
+    "partially_supported": 3,
+    "insufficient_local_support": 2,
+    "supported_topics": [
+      "pytest #14777 already contained the substantive fix",
+      "the async-trigger regression was missing from that PR",
+      "the owner posted the disclosed comment and classified it as the first external result",
+      "the WIP=1 workflow and five pre-flight questions",
+      "the two named candidates rejected at pre-flight",
+      "the distutils review findings and builder acceptance"
+    ],
+    "gaps": [
+      "No tracked duration supports the 'two-minute search' wording.",
+      "The about-20-project discovery summary lacks a tracked project-by-project sample for the broad 'almost every' inference.",
+      "WAITING_EXTERNAL_RESPONSE is not a contemporaneous external-discussion snapshot and cannot independently establish that nobody replied.",
+      "No bounded historical classification supports the 'first time in fourteen days' superlative.",
+      "The absence of a new Agent 2 search is author self-report rather than an independently tracked activity trace."
+    ]
+  },
+  "result": {
+    "supported_claims": 6,
+    "total_claims": 11,
+    "support_percent": 54.5455,
+    "minimum_required_percent": 100,
+    "threshold_met": false,
+    "quality_passed": true,
+    "decision": "simplify",
+    "outcome": "negative",
+    "reason": "Reuse only the six claims with narrow tracked support. Qualify or omit timing, broad discovery-rate, current external-silence, historical-first and untracked-activity wording unless new evidence is preserved; do not add a validator or edit the peer-authored journal."
+  },
+  "post_session_gate": {
+    "mode": "evaluate",
+    "evaluation_required": [
+      "publication-evidence-boundary"
+    ],
+    "next_session": 119
+  },
+  "failures": [
+    "One exploratory sed command guessed a nonexistent observation filename; the missing file had no effect on the audit and no fallback evidence was inferred."
+  ],
+  "limitations": "This is a retrospective replay of one public narrative, not a field trial, prevention test, external-state verification, general accuracy estimate or evidence of LLM improvement. Claim grouping requires judgment, and repository support does not prove that a claim is complete or true outside the recorded scope."
+}

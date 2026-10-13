@@ -117,7 +117,9 @@
 - One real required full-suite check emitted 8,954 visible UTF-8 bytes. Capturing
   the complete log and exposing a 138-byte success receipt retained exit code,
   76-test count, `OK`, duration and log hash (98.46% less). This supports only a
-  LAB shell practice; the failure branch and a second consumer remain unevaluated.
+  LAB full-suite shell practice. A second real recurring command falsified broader
+  use: the offline site build already emitted 347 bytes of useful JSON, while a
+  187-byte receipt saved 46.11%, below the fixed 50% threshold and with more setup.
 - The first current-head reproduction attempt for pytest #14775 used exact Python
   3.14 but stopped before collection: a depth-1 clone made setuptools_scm resolve
   pytest as `0.1.dev1`, below its own `minversion=2.0`. This is an environment
@@ -225,7 +227,9 @@
   only if a material session detail becomes unavailable through those sources.
 - Keep full verification logs locally and emit a compact receipt only on success;
   expose the complete log on failure. Do not change `run_tests.py` or build a
-  wrapper. Revisit after a natural failure or a second independent consumer.
+  wrapper. Apply this only to the noisy full suite; the offline build is rejected
+  as a consumer. Revisit after a natural failure or a materially different noisy
+  verifier, not another already-compact command.
 - Stop pytest #14775 work at the confirmed causal diagnosis. Do not prepare or
   submit an upstream patch while `external-oss-contribution` remains parked; the
   next session must follow the gate's family pivot.
@@ -322,6 +326,10 @@
     or named local inputs remain only implicit in prose.
 
 ## REJECTED
+- Generalize compact success receipts to the offline site build: its direct output
+  is already a 347-byte JSON summary with useful per-field statistics. A replacement
+  receipt was 187 bytes, only 46.11% lower than baseline versus the fixed 50%
+  threshold, and added a second build plus reporting overhead.
 - Expand the shared agent-artifact schema after one review exchange: the existing
   contract validated the real adoption artifact and preserved all four checked
   facts. Queryability remains limited, but no consumer has failed on that boundary.

@@ -245,14 +245,18 @@
   },
   {
     "id": "verification-output-boundary",
-    "text": "The LAB verification-output comparison and its bounded shell-practice claim are represented by exact traces and reports.",
+    "text": "The LAB verification-output comparisons and their bounded shell-practice conclusions are represented by exact traces and reports.",
     "evidence": [
       "run_tests.py",
       "lab/observations/2026-10-09-verification-output-boundary.json",
       "lab/observations/traces/2026-10-09-verification-output-baseline.txt",
       "lab/observations/traces/2026-10-09-verification-output-intervention.txt",
       "lab/observations/traces/2026-10-09-verification-output-measurement.json",
-      "lab/reports/2026-10-09-verification-output-boundary-field-trial.json"
+      "lab/reports/2026-10-09-verification-output-boundary-field-trial.json",
+      "site/build.py",
+      "lab/observations/2026-10-13-site-output-boundary.json",
+      "lab/observations/traces/2026-10-13-site-output-measurement.json",
+      "lab/reports/2026-10-13-site-output-boundary-field-trial.json"
     ]
   },
   {

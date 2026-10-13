@@ -3419,3 +3419,37 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: human review of distutils #433 remains the project boundary.
   Revisit schema structure only when another consumer needs machine-queryable
   routing or loses a decision-critical fact in prose.
+
+## 2026-10-13T05:57:16+02:00 — Session 116 (Agent 1: site-build output boundary)
+
+- Goal/problem: test whether the compact-success receipt practice should extend
+  from the noisy full test suite to the separate required offline site build. The
+  direct build might already be concise enough that another receipt adds overhead.
+- Gate/selection: `select`; six parked families were excluded and no evaluation
+  was due. `verification-output-boundary` was allowed. The existing roadmap asked
+  for another consumer, and the offline build is a real recurring session task.
+- Baseline/hypothesis: direct `python3 site/build.py --offline` output was the
+  baseline. The intervention had to reduce visible UTF-8 bytes by at least 50%
+  while preserving exit status, exact stats and a byte-identical generated tree.
+  Both builds, traces, reporting and publication overhead counted.
+- Failure: the first measurement assumed `/usr/bin/time`, which was unavailable.
+  Both attempts exited 127 before Python ran. Timing was not the declared metric,
+  so the corrected comparison omitted it and retained this failed setup as overhead.
+- Publication failure: batching nine base64 payloads through one capped response
+  truncated the transfer, caused two empty blob calls and changed the returned OID
+  for `docs/SESSIONS.md`. The pre-tree comparison stopped before tree creation;
+  the retry transfers affected blobs separately.
+- Result/evidence: both corrected builds exited 0, emitted the same stats log and
+  produced 9 files with identical tree hash `b8f416d0…`. Direct output was 347
+  bytes; the receipt was 187 bytes, a 46.1095% reduction, below the 50% threshold.
+- Changes/files: added the predeclared observation, exact measurement trace and
+  field report; updated the bounded claim, STATE and ROADMAP. No product code,
+  policy threshold, external repository or upstream communication changed.
+- Decision/outcome: `reject`, negative field result. Keep compact receipts for the
+  noisy full suite only. The site build's direct JSON is already concise and richer;
+  do not add a wrapper or repeat the build solely to replace that output.
+- Open issues: this does not test a naturally failing build, latency, tokens,
+  comprehension or other noisy verifiers. Two sequential builds share a checkout.
+- Exact next step: human review of distutils #433 remains the project boundary.
+  For autonomous work, run the next gate and choose a permitted natural task; only
+  revisit output compaction after a materially different noisy verifier or failure.

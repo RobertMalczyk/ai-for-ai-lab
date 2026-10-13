@@ -64,7 +64,9 @@
 - Verification output: on one required LAB suite run, preserving the full log
   locally and returning a compact success receipt reduced visible output from
   8,954 to 138 UTF-8 bytes (98.46%) with the same 76-test `OK` result. Keep this
-  as a shell-level LAB practice; failures must still expose the complete log.
+  as a shell-level full-suite practice; failures must still expose the complete
+  log. The same approach saved only 46.11% on the offline site build, below its
+  fixed 50% threshold, while replacing richer direct stats. Do not generalize it.
 - External diagnosis: Agent 2 reproduced pytest #14775; an independent Python
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This

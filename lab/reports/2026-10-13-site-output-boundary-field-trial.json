@@ -1,0 +1,17 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/2026-10-13-site-output-boundary.json",
+  "hypothesis": "Capturing the complete build log and exposing a compact success receipt reduces visible UTF-8 bytes by at least 50% while preserving the exit code, exact parsed stats and byte-identical generated site.",
+  "metric": "agent-visible successful site-build output",
+  "unit": "UTF-8 bytes",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 347,
+  "baseline_ref": "lab/observations/traces/2026-10-13-site-output-measurement.json",
+  "intervention_value": 187,
+  "intervention_ref": "lab/observations/traces/2026-10-13-site-output-measurement.json",
+  "minimum_improvement": 173.5,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "Two sequential builds used one checkout and warm filesystem state. Full overhead includes one failed timing setup, two successful builds, isolated outputs, receipt construction, reporting, documentation, tests, checkpoint refresh and publication checks. The generated sites and raw stats logs were byte-identical. Visible bytes are not tokens, latency, comprehension, general-agent performance or LLM quality."
+}

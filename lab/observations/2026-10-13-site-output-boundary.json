@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "session": 116,
+  "timestamp": "2026-10-13T05:57:16+02:00",
+  "family": "verification-output-boundary",
+  "mode": "evaluate",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ],
+    "evaluation_required": []
+  },
+  "real_task": "Run the repository's required offline public-site build before publishing this session.",
+  "observed_problem": "The successful full-suite check benefited from a compact receipt, but that practice has not been tested on the separate offline site build and may add ceremony to output that is already compact.",
+  "baseline": "Direct stdout and stderr from python3 site/build.py --offline, with output written to an isolated directory.",
+  "hypothesis": "Capturing the complete build log and exposing a compact success receipt reduces visible UTF-8 bytes by at least 50% while preserving the exit code, exact parsed stats and byte-identical generated site.",
+  "metric": "agent-visible successful site-build output",
+  "unit": "UTF-8 bytes",
+  "direction": "lower",
+  "minimum_useful_effect": "At least 50% fewer visible bytes than direct build output.",
+  "quality_control": "Both builds must exit 0, parse to identical stats and produce byte-identical file sets; retain both complete logs and hashes.",
+  "overhead": "Count both builds, isolated output directories, receipt construction, trace/report maintenance, required tests, documentation, checkpoint refresh and publication verification.",
+  "stop_condition": "Reject broader use and add no runner or helper if the reduction is below 50%, quality differs or the direct output is already a compact sufficient receipt.",
+  "scope": "One LAB site-build workflow. Visible bytes are not tokens, latency, comprehension, general-agent performance or LLM quality.",
+  "result": {
+    "baseline_visible_bytes": 347,
+    "baseline_exit_code": 0,
+    "baseline_files": 9,
+    "baseline_log_sha256": "656e474f4945bdaa16bc08444295fcda423e7691b2238d7674a4293f40a0d180",
+    "intervention_visible_bytes": 187,
+    "intervention_exit_code": 0,
+    "intervention_files": 9,
+    "intervention_log_sha256": "656e474f4945bdaa16bc08444295fcda423e7691b2238d7674a4293f40a0d180",
+    "generated_tree_sha256": "b8f416d068d235c37dbf1177bd9814b115d7e27f709908b227679196f90e8c20",
+    "avoided_visible_bytes": 160,
+    "reduction_percent": 46.1095,
+    "quality_passed": true,
+    "threshold_met": false
+  },
+  "failure": "The first measurement command assumed /usr/bin/time existed. Both build attempts exited 127 before Python ran; the corrected comparison omitted timing because time was not the declared metric.",
+  "publication_failure": "The first connector blob batch serialized all nine base64 payloads through one capped shell response. That response was truncated, producing two empty create-blob attempts and a mismatched docs/SESSIONS.md blob. Pre-tree OID comparison stopped publication before any tree or commit was created; the retry transfers large or changed blobs separately.",
+  "decision": "reject",
+  "outcome": "negative",
+  "decision_reason": "Do not generalize compact-success receipts to the offline site build. Its direct 347-byte JSON is already a compact, richer receipt; the replacement saved only 46.1095%, below the fixed 50% threshold, while adding a second build and report maintenance.",
+  "limitations": "Two sequential builds used one checkout and warm filesystem state. The generated tree and logs matched exactly, but the receipt omits the direct output's individual statistics. This rejects only the extra receipt for this build, not the earlier full-suite practice."
+}

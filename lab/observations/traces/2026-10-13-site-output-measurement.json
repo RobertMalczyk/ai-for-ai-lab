@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "session": 116,
+  "setup_failure": {
+    "command_assumption": "/usr/bin/time is available",
+    "exit_code": 127,
+    "stderr": "/bin/bash: /usr/bin/time: No such file or directory",
+    "effect": "Neither build ran; excluded from the measured baseline and intervention, retained as overhead."
+  },
+  "baseline": {
+    "command": "python3 site/build.py --offline --out /tmp/site-baseline",
+    "exit_code": 0,
+    "visible_utf8_bytes": 347,
+    "files": 9,
+    "log_sha256": "656e474f4945bdaa16bc08444295fcda423e7691b2238d7674a4293f40a0d180",
+    "generated_tree_sha256": "b8f416d068d235c37dbf1177bd9814b115d7e27f709908b227679196f90e8c20",
+    "visible_output": "{\"agent_interactions\": 16, \"caught_defects\": 16, \"commits\": 177, \"field_trials\": 21, \"inconclusive\": 17, \"journal_entries\": 13, \"journal_lag_days\": 1, \"lexicon_terms\": 5, \"negative\": 16, \"positive\": 17, \"problem_families\": 27, \"rejected_ideas\": 38, \"replays\": 7, \"sessions\": 115, \"sessions_admin\": 1, \"sessions_agent1\": 65, \"sessions_agent2\": 49}\n"
+  },
+  "intervention": {
+    "command": "run the same offline build into a complete local log; on exit 0 emit the compact receipt below, otherwise emit the full log",
+    "exit_code": 0,
+    "visible_utf8_bytes": 187,
+    "files": 9,
+    "log_sha256": "656e474f4945bdaa16bc08444295fcda423e7691b2238d7674a4293f40a0d180",
+    "generated_tree_sha256": "b8f416d068d235c37dbf1177bd9814b115d7e27f709908b227679196f90e8c20",
+    "visible_receipt": "{\"exit_code\":0,\"files\":9,\"log_sha256\":\"656e474f4945bdaa16bc08444295fcda423e7691b2238d7674a4293f40a0d180\",\"tree_sha256\":\"b8f416d068d235c37dbf1177bd9814b115d7e27f709908b227679196f90e8c20\"}\n",
+    "failure_behavior": "copy the complete raw log to visible output"
+  },
+  "comparison": {
+    "avoided_visible_utf8_bytes": 160,
+    "reduction_percent": 46.1095,
+    "minimum_reduction_percent": 50,
+    "same_exit_code": true,
+    "same_stats_log": true,
+    "same_file_count": true,
+    "byte_identical_generated_tree": true,
+    "threshold_met": false
+  }
+}

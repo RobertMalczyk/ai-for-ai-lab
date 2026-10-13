@@ -3497,3 +3497,41 @@ entry and corrected observation for the preserved audit trail.
   natural narrative reuse/consumer and record `inconclusive` when no comparable
   baseline exists. Human review still decides distutils #433; do not contact
   upstream or start another outside task while WIP=1 awaits that decision.
+
+## 2026-10-13T18:02:07+02:00 — Session 119 (Agent 1: narrative-consumer evaluation)
+
+- Goal/problem: evaluate whether Session 118's day-14 claim map improves the next
+  natural reuse of that narrative. A retrospective audit has no utility comparison
+  until an independently created consumer exists.
+- Gate/plan: `evaluate`, required family `publication-evidence-boundary`, session
+  119. Baseline was a natural consumer using the raw journal; intervention was a
+  comparable consumer using the support map. Metric: unsupported claim groups,
+  lower is better, with a minimum reduction of 1 and all relevant supported facts
+  preserved. Stop immediately if no post-audit consumer exists.
+- Evidence/result: corrected Git ancestry showed zero commits on `origin/main`
+  after audit commit `7983f791…`. Repository references were limited to the audit,
+  summaries, ledger/session and checkpoint dependencies; no later story or script
+  existed. Baseline and intervention are unavailable, so outcome is `inconclusive`.
+- Failure: the first `git log --all` range surfaced two old unrelated Opus tips;
+  it was rejected. The corrected `audit..origin/main` query returned no commits,
+  and both old refs were already patch-equivalent to main. Two coverage checks
+  also guessed unsupported CLI arguments (`.` without `--root`, then `--format
+  json`); both failed explicitly before the documented `--root .` invocation.
+- Publication failure: batching nine base64 blobs through one capped response
+  truncated the path/content mapping. No tree, commit or ref was created; the
+  first per-file retry still truncated the large session log, but its blob-OID
+  mismatch stopped before tree creation. A 12 KB chunk also exceeded the response
+  token cap and failed its first OID check. The final retry uses 3 KB raw chunks
+  with `dd iflag=fullblock`; an initial chunk reconstruction without that flag
+  counted short pipe reads and likewise failed its first OID check. Every final
+  reassembled blob OID is compared before tree creation.
+- Changes/files: added the predeclared evaluation and exact search trace, DEC-0040,
+  one ledger row, bounded STATE/ROADMAP/session updates and checkpoint dependencies.
+  No product code, site text, policy threshold or external system changed.
+- Tests and controls: JSON/ledger/gate checks, full LAB suite, offline site build,
+  coverage and refreshed checkpoint are recorded with the final commit.
+- Decision/lesson: `park`. Absence of a consumer is not success or failure of the
+  manual review. Do not manufacture a story or validator to generate evidence.
+- Unresolved/exact next step: session 120 must `explore` outside seven parked
+  families. Human review still decides distutils #433; do not contact upstream or
+  start another external task while the owner-directed WIP=1 decision is pending.

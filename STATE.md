@@ -41,7 +41,9 @@
   automatic validation. A second review found sufficient narrow support for 6/11
   day-14 claim groups; qualify timing, broad-rate, current-reply, historical-first
   and untracked-activity wording before reuse. No validator or site edit follows.
-  The first private episode still has no script to review.
+  A required follow-up found no later natural consumer, so comparison was unavailable
+  and the family is parked until one exists. The first private episode still has no
+  script to review.
 - Checkpoint scope: one post-refresh timing edit in the global session log marked
   four unrelated historical claims stale and requested 18 rereads. Those claims
   now cite exact records and stable summaries, not the append-only log; a disposable
@@ -120,10 +122,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: the gate requires evaluation of `publication-evidence-boundary` before
-  more work in that family; use only a new natural narrative reuse/consumer and
-  record `inconclusive` if no comparator exists. Human review still decides the
-  distutils #433 scope, disclosure and submission; do not contact upstream first.
+- Next: session 120 explores outside seven parked families. Human review still
+  decides the distutils #433 scope, disclosure and submission; do not contact
+  upstream or start another external task before that decision.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural

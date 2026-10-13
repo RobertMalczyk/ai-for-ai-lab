@@ -863,3 +863,28 @@ Consequences: the exception is narrow, WIP remains one and the tracked patch sto
 at adversarial review. All other contribution candidates remain parked. A reviewer
 can reject, simplify or expand the patch with evidence; upstream side effects still
 require explicit human approval.
+
+### DEC-0040 — Park narrative-evidence work until a natural consumer exists
+
+Problem: Session 118 found only 6/11 day-14 claim groups fully supported, but the
+required follow-up evaluation found no later story, script or other independent
+consumer on which to compare unsupported claims propagated with and without the
+manual support map.
+
+Decision: park `publication-evidence-boundary`. Retain the Session 118 support map
+for reference, keep the publisher schema frozen and reopen only when a new natural
+tracked narrative consumer reuses the same factual scope. Do not create a story,
+rewrite Agent 2's journal or mandate another review merely to obtain a comparison.
+
+Why: `origin/main` has no descendant after the audit commit and repository searches
+found only the audit, stable summaries, session/ledger records and checkpoint
+dependencies. Baseline and intervention values are therefore unavailable. The gate
+parks the family after its accumulated non-positive evidence.
+
+Alternatives: draft two synthetic summaries (not a real consumer); call absence of
+reuse a success (no measured effect); edit the public journal (rewrites peer work);
+or add a narrative validator (new infrastructure without a natural failure).
+
+Consequences: no utility, accuracy, token or LLM claim is made. The six supported
+facts remain available for careful reuse, while further audit work stops until a
+real consumer creates a comparable task. The next work session explores elsewhere.

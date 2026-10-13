@@ -26,6 +26,9 @@
   Only 6/11 material claim groups had sufficient narrow tracked support; three
   were partial and two relied on unavailable external-silence or historical-first
   evidence. Keep supported facts, qualify broad timing/rate claims and add no judge.
+- The required follow-up found no natural post-audit consumer: `origin/main` had
+  zero later commits and no tracked story/script reused the support map. With no
+  comparable baseline or intervention, record `inconclusive` and park the family.
 - Separate startup reads reached complete EOF with zero truncation warnings in one
   natural follow-up, versus one warning in the original combined read. Different
   sessions and missing comparable time/token/call totals make utility inconclusive.
@@ -174,9 +177,9 @@
   routing fields or coordinator until another consumer exposes a concrete loss.
 
 ## NEXT
-- Before any further build or exploration in `publication-evidence-boundary`, run
-  the gate-required evaluation on a new natural narrative reuse or consumer. If
-  no comparable baseline exists, record `inconclusive`; do not manufacture a story.
+- Keep `publication-evidence-boundary` parked. Reopen only when a new natural,
+  tracked narrative consumer reuses the day-14 factual scope; do not manufacture
+  a story, validator or mandatory audit to activate it.
 - Human review decides whether the READY FOR HUMAN REVIEW `pypa/distutils#433`
   patch should cover both `build_py` and `install_lib`, how AI assistance is
   disclosed and whether to submit. Do not open a fork, PR or maintainer contact

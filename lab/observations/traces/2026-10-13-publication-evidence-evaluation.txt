@@ -1,0 +1,34 @@
+Session 119 natural-consumer search
+
+Canonical audit commit:
+  7983f7919f633f63e926754a6c0a50720199a736
+
+Correct descendant check:
+  git log --format='%H %cI %s' 7983f7919f633f63e926754a6c0a50720199a736..origin/main
+  -> no output
+
+Refs containing the audit commit:
+  git for-each-ref --format='%(refname:short) %(objectname)' --contains=7983f7919f633f63e926754a6c0a50720199a736 refs/remotes/origin
+  -> origin 7983f7919f633f63e926754a6c0a50720199a736
+  -> origin/agent/2026-10-13-day14-claim-audit 7983f7919f633f63e926754a6c0a50720199a736
+  -> origin/main 7983f7919f633f63e926754a6c0a50720199a736
+
+Repository reference search:
+  rg -l '2026-10-13-day14-claim-audit|6/11|day-14 claim' ...
+  -> only the audit itself, its trace, current summaries/session/ledger and
+     checkpoint dependency records; no later story, script or consumer output.
+
+Branch audit:
+  the only refs not merged by ancestry are two 2026-09-30 Opus refs; git cherry
+  marks both commits with '-', so they are patch-equivalent to main and predate
+  the day-14 audit.
+
+Failed search retained:
+  git log --all 7983f791.. listed the two old unmerged refs because --all includes
+  unrelated reachable tips outside the range's excluded ancestry. It was not used
+  as evidence of later work; the corrected origin/main descendant check is above.
+
+Conclusion: no natural post-audit consumer exists. Baseline/intervention and the
+declared unsupported-claims metric cannot be observed without manufacturing a
+consumer, so the evaluation is inconclusive.
+

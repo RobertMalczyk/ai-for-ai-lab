@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "session": 119,
+  "timestamp": "2026-10-13T18:02:07+02:00",
+  "family": "publication-evidence-boundary",
+  "mode": "evaluate",
+  "status": "complete",
+  "gate": {
+    "mode": "evaluate",
+    "next_session": 119,
+    "evaluation_required": [
+      "publication-evidence-boundary"
+    ],
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "restart-safety",
+      "tool-discovery"
+    ]
+  },
+  "real_task": "Determine whether the day-14 claim audit improves the next natural agent reuse of that narrative.",
+  "observed_problem": "Session 118 found only 6/11 claim groups fully supported, but a retrospective audit is useful only if a later real consumer uses it and avoids propagating unsupported wording.",
+  "baseline": "A natural consumer relying on the raw day-14 journal without the Session 118 support map, measured by unsupported claim groups propagated in its tracked output.",
+  "hypothesis": "A comparable natural consumer using the Session 118 support map propagates at least one fewer unsupported claim group while preserving the six supported facts.",
+  "metric": "unsupported day-14 claim groups propagated by a natural consumer",
+  "unit": "claims",
+  "direction": "lower",
+  "minimum_useful_effect": "At least 1 fewer unsupported claim group, with all six supported groups preserved when relevant.",
+  "quality_control": "The consumer must exist independently of this evaluation, have a tracked output, reuse the same day-14 factual scope and permit direct claim classification. Do not count this evaluation's own report as a consumer.",
+  "overhead": "Count mandatory startup reading, branch and commit inspection, consumer search, reporting, tests, site build, checkpoint maintenance and publication.",
+  "stop_condition": "If no post-Session-118 natural consumer exists, record inconclusive immediately. Do not draft a synthetic story, edit Agent 2's journal, add validation code or cross the distutils human-review boundary.",
+  "result": {
+    "trace": "lab/observations/traces/2026-10-13-publication-evidence-evaluation.txt",
+    "canonical_audit_commit": "7983f7919f633f63e926754a6c0a50720199a736",
+    "later_main_commits": 0,
+    "natural_consumers": 0,
+    "baseline_value": null,
+    "intervention_value": null,
+    "threshold_tested": false,
+    "quality_passed": false,
+    "finding": "No tracked story, script or other natural consumer exists after Session 118. Current references are the audit itself, stable summaries, ledger/session records and checkpoint dependencies, not independent consumers."
+  },
+  "decision": "park",
+  "outcome": "inconclusive",
+  "decision_reason": "Retain the manual support map, but park the family until a new natural narrative consumer exists. The absence of a consumer prevents a comparable baseline and intervention; it is not evidence that the audit helps or fails.",
+  "post_session_gate": {
+    "mode": "explore",
+    "next_session": 120,
+    "evaluation_required": [],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "publication-evidence-boundary",
+      "restart-safety",
+      "tool-discovery"
+    ]
+  },
+  "failures": [
+    "The first git log range combined --all with the audit range and surfaced two old unrelated Opus tips. A corrected origin/main descendant query returned no commits; the mistaken output was excluded from the result.",
+    "Two coverage checks guessed unsupported CLI arguments: the first omitted --root and the second added unsupported --format json. Both exited with invalid_arguments before the documented coverage --root . invocation.",
+    "The first publication transfer batched nine base64 blobs through one capped response, truncating the path/content mapping. No tree, commit or ref was created. A per-file retry still truncated the large session log, a 12 KB chunk exceeded the response token cap, and the first 3 KB reconstruction omitted dd iflag=fullblock so short pipe reads shifted chunks. Each blob-OID mismatch stopped before tree creation. The final retry uses full 3 KB raw blocks and compares every reassembled blob OID."
+  ],
+  "limitations": "One unavailable comparison. No claim about task success, time, tokens, narrative accuracy, agent performance or LLM improvement follows. A future evaluation needs an independently created tracked consumer with the same factual scope."
+}

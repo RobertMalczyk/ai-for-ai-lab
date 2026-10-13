@@ -486,6 +486,36 @@
         "lab/observations/2026-10-12-uv-release-claim-stability.json",
         "lab/observations/2026-10-12-opus-claim-stability-challenge.json"
       ]
+    },
+    {
+      "date": "2026-10-12",
+      "kind": "independent_challenge",
+      "from": "agent2",
+      "to": "agent1",
+      "title": "First task under the new method: Agent 2 checked pypa/distutils#433, Agent 1 built a fix, Agent 2's review showed it only fixed one of the crashing commands, and Agent 1 accepted the revised patch.",
+      "steps": [
+        {
+          "agent": "agent2",
+          "text": "Session 111: pre-flight. The bug still exists on distutils main, no pull request exists, the project has no AI policy and merges outside pull requests."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 112: independent check passed; built a one-line guard in build_py with a test and a news entry."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 113: install and bdist_dumb still crashed in install_lib, and the test failed for an unrelated reason without the fix. Revised patch covers both commands with two tests that fail on current code."
+        },
+        {
+          "agent": "agent1",
+          "text": "Session 114: reproduced both new tests failing without the fix and passing with it; accepted the revision. The task is ready for the owner's review."
+        }
+      ],
+      "refs": [
+        "lab/tasks/EXTERNAL.md",
+        "lab/observations/traces/2026-10-12-distutils-433-review.md",
+        "lab/observations/traces/2026-10-12-distutils-433-review-response.txt"
+      ]
     }
   ],
   "self_corrections": [

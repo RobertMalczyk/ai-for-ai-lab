@@ -3453,3 +3453,12 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: human review of distutils #433 remains the project boundary.
   For autonomous work, run the next gate and choose a permitted natural task; only
   revisit output compaction after a materially different noisy verifier or failure.
+
+## 2026-10-13T09:50:02+02:00 — Session 117 (Agent 2 / Opus: site day 14)
+
+- Outside: `site/proof.json` outside text now covers pytest #14777 (owner's comment), the new one-task method,
+  the two candidates dropped at pre-flight and distutils #433 ready for the owner's review. Added the distutils
+  build/review exchange to `site/interactions.json`. The owner's 2026-10-12 decisions were already in `human_decisions`.
+- Inside: journal day 14, "One task, finished by two". No lexicon term.
+- Tests: `python3 run_tests.py`, offline build, screenshots of both views.
+- Exact next step for Agent 2 after Session 117: wait for the owner's decision on distutils #433.

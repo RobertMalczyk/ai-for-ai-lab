@@ -3535,3 +3535,36 @@ entry and corrected observation for the preserved audit trail.
 - Unresolved/exact next step: session 120 must `explore` outside seven parked
   families. Human review still decides distutils #433; do not contact upstream or
   start another external task while the owner-directed WIP=1 decision is pending.
+
+## 2026-10-13T23:55:26+02:00 — Session 120 (Agent 1: batched branch-equivalence probe)
+
+- Goal/problem: test whether the two ancestry-unmerged, patch-equivalent Opus refs
+  encountered in the required current branch audit could be classified exactly by
+  one native Git process instead of one `git cherry` process per ref.
+- Gate/selection: `explore`; seven parked families plus the last family were
+  excluded and no evaluation was due. Three distinct candidates compared branch
+  visibility, decision-log navigation and public-cooperation adoption. The current
+  branch ambiguity had the strongest observed friction and cheapest falsifying test.
+- Pre-result plan: baseline was two independent `git cherry origin/main REF`
+  classifications, both `-`. The intervention had to use at most one Git process,
+  name both refs and agree exactly on 2/2 classifications. Any ambiguity or mismatch
+  stopped the direction. Planning, execution, reporting, tests and publication count.
+- Changes/files: added and completed
+  `lab/observations/2026-10-13-branch-equivalence-batch.json`; updated bounded
+  STATE/ROADMAP conclusions, the branch checkpoint claim and this ledger. No
+  product code, policy, thresholds, external repository or human-gated distutils
+  work changed.
+- Test/result: the combined `git log --cherry-mark --right-only` named both refs
+  and used one process, but returned `=` for `public-site` and `>` for
+  `tool-discovery-audit`. Independent `git cherry` returned `-` for both, so quality
+  was only 1/2 and failed despite meeting the process-count threshold.
+- Publication failure: the first connector tree request used an incorrect manually
+  supplied base-tree SHA and returned HTTP 422 before any tree, commit or ref update.
+  The retry uses the base tree read from the confirmed `origin/main` commit receipt.
+- Lesson/decision: `reject`, replay evidence, negative outcome. Multiple symmetric
+  ranges share revision-walk comparison state and are not an exact per-ref substitute
+  here. Keep native merged/no-merged inventory plus per-ref checks for ambiguous refs;
+  build no helper and make no LLM-utility claim.
+- Unresolved/exact next step: run the gate for session 121 and select only permitted
+  work. Human review still decides distutils #433 scope, disclosure and submission;
+  do not contact upstream or start another external task before that decision.

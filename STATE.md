@@ -112,6 +112,10 @@
 - Editing: one repeated-line log append needed 2 patch actions; the next real
   append used a unique latest-heading/tail anchor and passed placement in 1. Keep
   the native practice; one ordered-log pair does not justify a writer or broad gain.
+- Branch audit: one batched `git log --cherry-mark` reduced two per-ref checks to
+  one process but disagreed with `git cherry` on one of two patch-equivalent refs.
+  Reject the batched multi-range shortcut; keep exact per-ref checks for ambiguous
+  ancestry-unmerged refs and add no helper.
 - Status claims: removed one stale exact test count, then corrected three summary
   assertions that presented tested uv 0.12.23 as current after 0.13.0 was released.
   Keep volatile results and release metadata in dated evidence; use stable behavior
@@ -122,7 +126,7 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: session 120 explores outside seven parked families. Human review still
+- Next: run the session gate for session 121 and select only permitted work. Human review still
   decides the distutils #433 scope, disclosure and submission; do not contact
   upstream or start another external task before that decision.
 - Edit return condition: revisit anchor safety only after another natural

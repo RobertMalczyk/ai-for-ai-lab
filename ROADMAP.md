@@ -175,6 +175,10 @@
   for the distutils builder/reviewer exchange and retained 4/4 checked facts.
   Those facts remain prose in `summary`/`result`; keep the example, but add no
   routing fields or coordinator until another consumer exposes a concrete loss.
+- A current branch audit found two ancestry-unmerged Opus refs that were each
+  patch-equivalent to main under per-ref `git cherry`. One combined
+  `git log --cherry-mark` process agreed on only 1/2, so reject the batched
+  multi-range shortcut and retain exact per-ref checks for this rare ambiguity.
 
 ## NEXT
 - Keep `publication-evidence-boundary` parked. Reopen only when a new natural,
@@ -256,6 +260,10 @@
 - Keep evidence-artifact completeness parked. Reopen only for a materially
   different receipt or a natural verbatim execution failure, not another static
   wording pass over the pytest #14775 evidence.
+- Keep branch classification native: use merged/no-merged filters for inventory
+  and per-ref `git cherry` only for ambiguous refs. Revisit batching only if Git
+  offers an exact per-ref primitive or repeated ambiguous sets make the baseline
+  materially costly; do not infer equivalence from a combined symmetric walk.
 
 ## EXPERIMENTS
 - H1: evidence-aware checkpoint improves resume work. It failed the clean
@@ -338,8 +346,14 @@
     while leaving a fresh checkout unable to recompute either hash or count.
 32. Tracking every declared artifact does not ensure replayability when commands
     or named local inputs remain only implicit in prose.
+33. Combining multiple symmetric ranges in one `git log --cherry-mark` walk can
+    change per-ref patch-equivalence classification even when every ref is named.
 
 ## REJECTED
+- Batch patch-equivalence checks for several ancestry-unmerged refs into one
+  `git log --cherry-mark` walk: it used one process instead of two but matched
+  only 1/2 independent `git cherry` classifications. Exactness outranks the
+  narrow process reduction; add no helper or API.
 - Generalize compact success receipts to the offline site build: its direct output
   is already a 347-byte JSON summary with useful per-field statistics. A replacement
   receipt was 187 bytes, only 46.11% lower than baseline versus the fixed 50%

@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "session_id": 120,
+  "recorded_at": "2026-10-13T23:55:26+02:00",
+  "mode": "explore",
+  "status": "completed",
+  "candidates": [
+    {
+      "family": "branch-visibility",
+      "observed_friction": "The required current branch audit found two old opus refs that are ancestry-unmerged but patch-equivalent to main; resolving them required one git cherry invocation per ref after discovery.",
+      "assumption_to_challenge": "Exact patch-equivalence classification requires a separate Git process for every ancestry-unmerged ref.",
+      "simpler_alternative": "Use one native git log --cherry-mark invocation over both symmetric ranges.",
+      "problem_evidence": "Current Session 120 startup trace: origin/opus/2026-09-30-public-site and origin/opus/2026-09-30-tool-discovery-audit were the only ancestry-unmerged refs and each returned '-' from git cherry.",
+      "potential_benefit": "Agents could finish the rare ambiguous-ref portion of the mandatory branch audit with one process while preserving exact per-ref status.",
+      "cheapest_falsifying_test": "Compare one batched git log result with the already observed two per-ref git cherry results.",
+      "cost": "One planned observation artifact and one batched Git command; no product code.",
+      "novelty": "Tests multi-ref patch-equivalence attribution, not the already evaluated merged/no-merged inventory optimization."
+    },
+    {
+      "family": "decision-log-continuity",
+      "observed_friction": "The mandatory decision log is 890 lines and required three bounded reads in this session.",
+      "assumption_to_challenge": "A generated decision index would materially improve task selection.",
+      "simpler_alternative": "Keep the required full read and use rg on DEC identifiers only for later lookup.",
+      "problem_evidence": "Current startup line count and read trace; no missed decision was observed.",
+      "potential_benefit": "Faster later navigation, but no evidence that selection quality is currently impaired.",
+      "cheapest_falsifying_test": "Check whether rg locates a known decision without adding an index.",
+      "cost": "Low, but it cannot replace the user-required full read and would not test decision quality.",
+      "novelty": "New family label, but weak evidence and a high risk of self-referential policy work."
+    },
+    {
+      "family": "public-cooperation-protocol",
+      "observed_friction": "The public adoption artifact has no recorded downstream consumer response.",
+      "assumption_to_challenge": "More structure in the adoption fields would cause external participation.",
+      "simpler_alternative": "Wait for a natural downstream consumer instead of adding schema.",
+      "problem_evidence": "STATE records one adoption artifact and no maintained upstream acceptance or consumer reuse.",
+      "potential_benefit": "Could improve handoff clarity if a real consumer appears.",
+      "cheapest_falsifying_test": "Observe a natural consumer using the existing prose fields; unavailable in this session.",
+      "cost": "High activation cost and no ethical way to manufacture adoption evidence.",
+      "novelty": "Low until a new natural consumer exists."
+    }
+  ],
+  "selected_family": "branch-visibility",
+  "pre_result_plan": {
+    "real_task": "Classify the two ancestry-unmerged remote refs encountered during the required current repository audit.",
+    "observed_problem": "The candidate set was small but the exact patch-equivalence baseline used two separate git cherry processes.",
+    "baseline": "Two per-ref git cherry invocations classified both refs as patch-equivalent ('-').",
+    "hypothesis": "One batched native Git invocation can classify both refs with the same result and retain exact ref attribution.",
+    "metric": {
+      "name": "Git processes after candidate discovery",
+      "unit": "processes",
+      "direction": "lower",
+      "baseline": 2,
+      "useful_effect_threshold": "at most 1 process"
+    },
+    "quality_control": "The batched output must name both refs and agree with each per-ref git cherry classification; ambiguous or missing attribution fails quality.",
+    "full_overhead": "Count planning, command execution, interpretation, documentation, tests, checkpoint, commit and publication; do not infer agent-level benefit from process count alone.",
+    "stop_condition": "Stop and reject the direction if one native call cannot provide unambiguous per-ref classification without per-ref verification."
+  },
+  "execution": {
+    "baseline_command": "for ref in origin/opus/2026-09-30-public-site origin/opus/2026-09-30-tool-discovery-audit; do git cherry origin/main \"$ref\"; done",
+    "baseline_output": [
+      "- ede8d71498ea97faf6654445e5fdd922caf00a2c",
+      "- f774db295d5de8adc8612f85aa86c6d4354017eb"
+    ],
+    "intervention_command": "git log --cherry-mark --right-only --format='%m%x09%D%x09%H' origin/main...origin/opus/2026-09-30-public-site origin/main...origin/opus/2026-09-30-tool-discovery-audit",
+    "intervention_output": [
+      "=\\torigin/opus/2026-09-30-public-site\\tede8d71498ea97faf6654445e5fdd922caf00a2c",
+      ">\\torigin/opus/2026-09-30-tool-discovery-audit\\tf774db295d5de8adc8612f85aa86c6d4354017eb"
+    ]
+  },
+  "result": {
+    "baseline_processes": 2,
+    "intervention_processes": 1,
+    "useful_effect_threshold_met": true,
+    "refs_named": 2,
+    "classifications_matching_baseline": 1,
+    "quality_passed": false,
+    "outcome": "negative",
+    "decision": "reject",
+    "reason": "The combined revision walk changed one independently patch-equivalent ref from '-' to '>'; process reduction is unusable when classification changes."
+  },
+  "overhead_and_limits": {
+    "included": [
+      "startup audit",
+      "three-candidate comparison",
+      "plan artifact",
+      "baseline replay",
+      "batched command",
+      "interpretation",
+      "documentation",
+      "tests",
+      "checkpoint",
+      "commit and publication"
+    ],
+    "limitations": [
+      "The comparison covers two specific one-commit remote refs.",
+      "Process count is not latency, token use, decision quality or LLM utility.",
+      "This replay does not establish behavior for other multi-range graph shapes."
+    ]
+  },
+  "publication_failures": {
+    "failed_tree_attempts": 1,
+    "detail": "The first connector create-tree call used an incorrect manually supplied base-tree SHA and returned HTTP 422 before creating a tree, commit or ref update. The retry must use the tree SHA read from the confirmed origin/main commit receipt."
+  }
+}

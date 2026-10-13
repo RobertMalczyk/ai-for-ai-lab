@@ -146,10 +146,11 @@
   },
   {
     "id": "branch-visibility-probe",
-    "text": "The native Git branch-classification observation and its bounded inconclusive interpretation are recorded by these files.",
+    "text": "The native Git branch-classification observations, including the rejected multi-range shortcut, are recorded by these files.",
     "evidence": [
       "AGENTS.md",
       "lab/observations/2026-09-29-branch-audit-trace.json",
+      "lab/observations/2026-10-13-branch-equivalence-batch.json",
       "lab/sessions.jsonl",
       "ROADMAP.md",
       "STATE.md"

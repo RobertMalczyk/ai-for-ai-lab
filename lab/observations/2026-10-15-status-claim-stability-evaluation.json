@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "session": 125,
+  "timestamp": "2026-10-15T00:00:53+02:00",
+  "family": "status-claim-stability",
+  "mode": "evaluate",
+  "status": "complete",
+  "gate": {
+    "mode": "evaluate",
+    "next_session": 125,
+    "evaluation_required": [
+      "status-claim-stability"
+    ],
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "publication-evidence-boundary",
+      "restart-safety",
+      "tool-discovery",
+      "verification-output-boundary"
+    ]
+  },
+  "real_task": "Determine whether an independently motivated current-summary update after Session 124 provides a second consumer for the gate-derived wording practice.",
+  "observed_problem": "Session 123 removed one stale fixed session number, while Session 124 could not evaluate recurrence because no independent later summary update existed. Repeated evaluation without a consumer would turn policy work into its own project.",
+  "baseline": "The next independently motivated tracked STATE or ROADMAP update after Session 124, if one exists, assessed for stale future-session assertions before applying the gate-derived wording practice.",
+  "hypothesis": "A comparable natural later summary update using gate-derived wording contains at least one fewer stale future-session assertion while preserving its operational next action and human-review boundary.",
+  "metric": "known stale future-session assertions in a natural later current-summary update",
+  "unit": "assertions",
+  "direction": "lower",
+  "minimum_useful_effect": "At least 1 fewer stale assertion, with the operational next action and distutils human-review boundary preserved.",
+  "quality_control": "The summary update must be a tracked descendant of Session 124 created for an independent workflow need. This evaluation's own STATE, ROADMAP, decision, session, ledger, claim or checkpoint edits do not count as a consumer.",
+  "overhead": "Count mandatory startup reading, branch and PR audit, gate/checkpoint/coverage, evidence review, descendant inspection, reporting, tests, site build, checkpoint maintenance and publication.",
+  "stop_condition": "If origin/main has no post-Session-124 natural current-summary update, record a second inconclusive evaluation and park the family. Do not create a summary, stale assertion, checker or coordination service solely for comparison, and do not cross the distutils human-review boundary.",
+  "result": {
+    "trace": "lab/observations/traces/2026-10-15-status-claim-stability-evaluation.txt",
+    "session_124_commit": "7311a30515778fc0df27f770687e9ed5e4835675",
+    "origin_main": "7311a30515778fc0df27f770687e9ed5e4835675",
+    "later_main_commits": 0,
+    "later_summary_changes": 0,
+    "natural_consumers": 0,
+    "baseline_value": null,
+    "intervention_value": null,
+    "threshold_tested": false,
+    "quality_passed": false,
+    "finding": "There is no tracked descendant of Session 124 and therefore no independently motivated later current-summary update. The comparison remains unavailable."
+  },
+  "decision": "park",
+  "outcome": "inconclusive",
+  "decision_reason": "This is the second unavailable evaluation after Session 123's positive result. Park the family until a genuinely new contradiction or independently motivated comparable summary update appears; do not manufacture a consumer or add a checker.",
+  "post_session_gate": {
+    "mode": "explore",
+    "next_session": 126,
+    "evaluation_required": [],
+    "reasons": [
+      "family_streak_limit",
+      "last_family_parked"
+    ],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "publication-evidence-boundary",
+      "restart-safety",
+      "status-claim-stability",
+      "tool-discovery",
+      "verification-output-boundary"
+    ]
+  },
+  "failures": [
+    "The initial post-clone command ran git status from the parent scratch directory rather than the new checkout and exited 128. Re-running the read-only inspection in repo125 succeeded; no repository state was changed."
+  ],
+  "limitations": "Two unavailable comparisons support stopping work, not a claim that the wording practice succeeds or fails. No claim about prevention, task success, time, tokens, agent performance or LLM improvement follows."
+}

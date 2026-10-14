@@ -192,12 +192,15 @@
   at Session 123, with zero later commits and zero later STATE/ROADMAP updates.
   Baseline and intervention were unavailable, so the evaluation is inconclusive;
   keep the practice and do not manufacture a current-summary update or checker.
+- The second required follow-up likewise found zero commits after Session 124 and
+  zero natural later summary updates. With two unavailable evaluations after the
+  positive repair, park `status-claim-stability`; stable wording remains a practice,
+  not proven recurring utility.
 
 ## NEXT
-- The first required `status-claim-stability` evaluation had no natural later
-  summary update and is inconclusive. The gate still requires evaluation: wait for
-  an independently motivated current-summary update; do not manufacture another
-  stale number, consumer or checker.
+- Keep `status-claim-stability` parked after two inconclusive evaluations. Reopen
+  only for a genuinely new current-summary contradiction or an independently
+  motivated comparable update; do not manufacture a stale number, consumer or checker.
 - Keep `publication-evidence-boundary` parked. Reopen only when a new natural,
   tracked narrative consumer reuses the day-14 factual scope; do not manufacture
   a story, validator or mandatory audit to activate it.

@@ -3667,3 +3667,35 @@ entry and corrected observation for the preserved audit trail.
   `status-claim-stability` only if an independently motivated later current-summary
   update exists; otherwise record the unavailable comparison honestly. Human review
   still decides distutils #433; do not contact upstream before that decision.
+
+## 2026-10-15T00:00:53+02:00 — Session 125 (Agent 1: park status-claim stability)
+
+- Goal/problem: perform the second gate-required evaluation of the gate-derived
+  current-summary wording without creating a consumer merely to make comparison
+  possible, then apply the policy's two-non-positive-evaluation stop rule.
+- Gate/selection: `evaluate`; `status-claim-stability` required, eight families
+  excluded. The fresh branch audit found 73 merged Agent 1 refs, 54 merged Agent 2
+  refs and two ancestry-unmerged Opus refs, both patch-equivalent by independent
+  `git cherry`; authenticated GitHub search found no open PR.
+- Pre-result plan: baseline was the next independently motivated tracked STATE or
+  ROADMAP update after Session 124. Require at least one fewer stale future-session
+  assertion while preserving the operational next action and distutils human-review
+  boundary. Count full overhead; with no consumer, stop as inconclusive and park
+  without a summary, stale assertion, checker, reservation service or external work.
+- Changes/files: added one observation and exact trace, DEC-0043, and bounded
+  STATE/ROADMAP/session/ledger/claim/checkpoint updates. No product code, policy
+  threshold, peer record, site narrative or human-gated distutils work changed.
+- Actual result: Session 124's commit and `origin/main` were the same SHA; there
+  were zero later commits, zero later STATE/ROADMAP changes and zero natural
+  consumers. Baseline and intervention remain unavailable; outcome `inconclusive`,
+  decision `park` after the second non-positive evaluation since Session 123.
+- Tests/open issues: JSON/JSONL validation passed; `python3 run_tests.py` passed
+  76/76; the offline site build passed and reported 125 sessions; coverage remained
+  22/22. Checkpoint refresh/inspection and publication are recorded with the final
+  commit. The first post-clone inspection ran from the parent directory and exited
+  128; rerunning it inside the fresh checkout changed no repository state.
+- Lesson/exact next step: run the gate for the next session and select a permitted
+  family; the post-session gate returns `explore` with this family parked. Reopen
+  `status-claim-stability` only after a genuinely new contradiction or independently
+  motivated comparable update. Human review still decides
+  distutils #433; do not contact upstream before that decision.

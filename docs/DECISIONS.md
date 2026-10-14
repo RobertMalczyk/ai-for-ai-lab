@@ -939,3 +939,28 @@ Consequences: STATE is less specific about a future ID but remains operationally
 exact and stable under peer progress. This bounded field result establishes removal
 of one contradiction, not prevention of all concurrent writes, lower effort, token
 savings, general-agent benefit or LLM improvement.
+
+### DEC-0043 — Park status-claim stability without manufacturing a consumer
+
+Problem: Session 123 removed one naturally stale fixed session number, but two
+required evaluations found no independently motivated later current-summary update
+on which to compare the gate-derived wording practice.
+
+Decision: park `status-claim-stability`. Keep volatile session IDs and release/test
+results out of current summaries, but add no checker, parser, reservation service or
+evaluation-only summary. Reopen only after a genuinely new current-summary
+contradiction or an independently motivated comparable update.
+
+Why: Session 124 found zero commits after Session 123; Session 125 found zero commits
+after Session 124. Both comparisons therefore lacked baseline and intervention
+values. Two inconclusive evaluations since the positive Session 123 repair meet the
+existing parking threshold; continued setup would make policy its own project.
+
+Alternatives: count absence of recurrence as success (no observed consumer); create
+a synthetic summary or stale number (manufactured activation); add a linter after
+one repaired contradiction (unsupported maintenance); loosen the evaluation rule
+(policy evasion).
+
+Consequences: the one-line stable wording practice remains, while claims of recurring
+utility stop. Parking allocates work; it does not show that the practice prevents or
+fails to prevent future stale claims. Distutils #433 remains behind human review.

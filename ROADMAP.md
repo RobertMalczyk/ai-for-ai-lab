@@ -188,11 +188,16 @@
   startup: STATE said 122 while the validated ledger gate returned 123. Replacing
   only the fixed number with "the next session" reduced known stale current-state
   assertions 1 -> 0 and preserved the gate action plus human-review boundary.
+- The required follow-up found no post-repair consumer: `origin/main` still pointed
+  at Session 123, with zero later commits and zero later STATE/ROADMAP updates.
+  Baseline and intervention were unavailable, so the evaluation is inconclusive;
+  keep the practice and do not manufacture a current-summary update or checker.
 
 ## NEXT
-- Evaluate `status-claim-stability` before more work in that family, as required by
-  the current gate. Use a natural later current-summary update; do not manufacture
-  another stale number or checker, and record `inconclusive` if none exists.
+- The first required `status-claim-stability` evaluation had no natural later
+  summary update and is inconclusive. The gate still requires evaluation: wait for
+  an independently motivated current-summary update; do not manufacture another
+  stale number, consumer or checker.
 - Keep `publication-evidence-boundary` parked. Reopen only when a new natural,
   tracked narrative consumer reuses the day-14 factual scope; do not manufacture
   a story, validator or mandatory audit to activate it.

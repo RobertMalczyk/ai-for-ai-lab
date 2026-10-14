@@ -259,7 +259,9 @@
       "lab/observations/2026-10-14-state-next-session-drift.json",
       "lab/observations/traces/2026-10-14-state-next-session-baseline.json",
       "lab/observations/traces/2026-10-14-state-next-session-intervention.json",
-      "lab/reports/2026-10-14-state-next-session-drift-field-trial.json"
+      "lab/reports/2026-10-14-state-next-session-drift-field-trial.json",
+      "lab/observations/2026-10-14-status-claim-stability-evaluation.json",
+      "lab/observations/traces/2026-10-14-status-claim-stability-evaluation.txt"
     ]
   },
   {

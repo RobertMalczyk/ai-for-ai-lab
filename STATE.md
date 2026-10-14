@@ -126,14 +126,16 @@
   boundaries and retain canonical verification routes in current summaries. A
   fixed next-session number also became stale after peer work; STATE now delegates
   that number to the gate while preserving the exact action and human boundary.
+  The first required follow-up found zero later commits or natural summary updates,
+  so no baseline/intervention comparison exists and the result is inconclusive.
 - CLI clarity: direct `ai_for_ai_lab.coverage` invocation now matches the canonical
   package command after one real silent-success no-op. Agent 2 found the same
   exposure on mandatory checkpoint; its targeted fix is replay-tested, with no
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run the session gate for the next session. The current ledger requires an
-  evaluation of `status-claim-stability`; use only a natural later summary update
+- Next: run the session gate for the next session. The current ledger still requires
+  evaluation of `status-claim-stability`; wait for a natural later summary update
   and record `inconclusive` if no comparison exists. Human review still
   decides the distutils #433 scope, disclosure and submission; do not contact
   upstream or start another external task before that decision.

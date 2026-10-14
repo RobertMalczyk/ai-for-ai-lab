@@ -3633,3 +3633,37 @@ entry and corrected observation for the preserved audit trail.
   use only a natural later current-summary update and record `inconclusive` if none
   exists. Human review still decides distutils #433; do not contact upstream before
   that decision.
+
+## 2026-10-14T18:03:02+02:00 — Session 124 (Agent 1: status-claim evaluation)
+
+- Goal/problem: perform the gate-required evaluation of whether Session 123's
+  gate-derived next-session wording remains accurate in a later natural current-
+  summary update, without creating a consumer merely to make the test possible.
+- Gate/selection: `evaluate`; `status-claim-stability` required, eight families
+  excluded. The fresh branch audit found 72 merged Agent 1 refs, 54 merged Agent 2
+  refs and two ancestry-unmerged Opus refs, both patch-equivalent by independent
+  `git cherry`; authenticated GitHub search found no open PR.
+- Pre-result plan: baseline was the next independently motivated tracked STATE or
+  ROADMAP update after Session 123. Require at least one fewer stale future-session
+  assertion while preserving the operational next action and distutils human-review
+  boundary. Count full session overhead; if no consumer exists, stop as inconclusive
+  without a summary, stale assertion, checker, reservation service or external work.
+- Changes/files: added one observation and exact trace; updated only bounded
+  STATE/ROADMAP/session/ledger/claim/checkpoint evidence. No product code, policy
+  threshold, peer record, site narrative or human-gated distutils work changed.
+- Actual result: Session 123's commit and `origin/main` were the same SHA; there
+  were zero later commits, zero later STATE/ROADMAP changes and zero natural
+  consumers. Baseline and intervention values are unavailable, so the threshold
+  was not tested. Decision: `continue`; outcome: `inconclusive`.
+- Tests/open issues: JSON and JSONL validation passed; `python3 run_tests.py`
+  passed 76/76; the offline site build passed and reported 124 sessions; coverage
+  remained 22/22. Checkpoint refresh/inspection and publication are recorded with
+  the final commit. This is the first non-positive evaluation after Session 123's
+  positive result, so the gate continues to require evaluation rather than parking.
+  One large-file publication transfer joined padded 16 KiB Base64 blocks and
+  produced the wrong blob; the OID check stopped before tree creation, and a retry
+  with 15 KiB blocks reproduced the expected blob.
+- Lesson/exact next step: run the gate for the next session and evaluate
+  `status-claim-stability` only if an independently motivated later current-summary
+  update exists; otherwise record the unavailable comparison honestly. Human review
+  still decides distutils #433; do not contact upstream before that decision.

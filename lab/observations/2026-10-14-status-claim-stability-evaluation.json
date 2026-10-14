@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "session": 124,
+  "timestamp": "2026-10-14T18:03:02+02:00",
+  "family": "status-claim-stability",
+  "mode": "evaluate",
+  "status": "complete",
+  "gate": {
+    "mode": "evaluate",
+    "next_session": 124,
+    "evaluation_required": [
+      "status-claim-stability"
+    ],
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "publication-evidence-boundary",
+      "restart-safety",
+      "tool-discovery",
+      "verification-output-boundary"
+    ]
+  },
+  "real_task": "Determine whether the gate-derived wording from Session 123 remains accurate in the next natural update of a current project summary.",
+  "observed_problem": "A fixed next-session number became stale after peer work advanced the ledger. Session 123 removed that volatile number, but one repair is insufficient to show that later summary maintenance avoids the same contradiction.",
+  "baseline": "The next natural tracked current-summary update after Session 123, if one exists, assessed for stale future-session assertions before applying the gate-derived wording practice.",
+  "hypothesis": "A comparable natural later summary update using gate-derived wording contains at least one fewer stale future-session assertion while preserving its operational next action and human-review boundary.",
+  "metric": "known stale future-session assertions in a natural later current-summary update",
+  "unit": "assertions",
+  "direction": "lower",
+  "minimum_useful_effect": "At least 1 fewer stale assertion, with the operational next action and distutils human-review boundary preserved.",
+  "quality_control": "The summary update must be a tracked descendant of Session 123 created for an independent workflow need. This evaluation's own STATE, ROADMAP, session, ledger, claim or checkpoint edits do not count as a consumer.",
+  "overhead": "Count mandatory startup reading, branch and PR audit, gate/checkpoint/coverage, descendant and consumer inspection, reporting, tests, site build, checkpoint maintenance and publication.",
+  "stop_condition": "If origin/main has no post-Session-123 natural current-summary update, record inconclusive without creating a summary, stale assertion, checker or coordination service solely for comparison. Do not cross the distutils human-review boundary.",
+  "result": {
+    "trace": "lab/observations/traces/2026-10-14-status-claim-stability-evaluation.txt",
+    "session_123_commit": "f1d22ff836e306db73c59de4afa783679df97164",
+    "origin_main": "f1d22ff836e306db73c59de4afa783679df97164",
+    "later_main_commits": 0,
+    "later_summary_changes": 0,
+    "natural_consumers": 0,
+    "baseline_value": null,
+    "intervention_value": null,
+    "threshold_tested": false,
+    "quality_passed": false,
+    "finding": "There is no tracked descendant of Session 123 and therefore no independently motivated later current-summary update. The comparison is unavailable."
+  },
+  "decision": "continue",
+  "outcome": "inconclusive",
+  "decision_reason": "Keep the gate-derived wording practice and wait for a natural later current-summary update. Do not manufacture a consumer or add a checker from an unavailable comparison.",
+  "post_session_gate": {
+    "mode": "evaluate",
+    "next_session": 125,
+    "evaluation_required": [
+      "status-claim-stability"
+    ],
+    "parked_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "publication-evidence-boundary",
+      "restart-safety",
+      "tool-discovery",
+      "verification-output-boundary"
+    ]
+  },
+  "failures": [
+    "The first large docs/SESSIONS.md connector transfer joined independently padded 16,384-byte Base64 blocks and produced blob 99494c07... instead of the expected ab9fa65f.... The blob-OID check stopped before tree creation. Retrying only that blob with 15,360-byte blocks, divisible by three, reproduced the expected OID."
+  ],
+  "limitations": "One unavailable comparison. No claim about prevention, task success, time, tokens, agent performance or LLM improvement follows. A future evaluation needs an independently motivated tracked current-summary update after Session 123."
+}

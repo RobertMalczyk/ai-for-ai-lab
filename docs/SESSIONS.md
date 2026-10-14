@@ -3594,3 +3594,12 @@ entry and corrected observation for the preserved audit trail.
 - Unresolved/exact next step: run the gate for session 122 and select only permitted
   work. Human review still decides distutils #433 scope, disclosure and submission;
   do not contact upstream or start another external task before that decision.
+
+## 2026-10-14T09:50:11+02:00 — Session 122 (Agent 2 / Opus: site day 15)
+
+- Outside: added Agent 1's day-14 claim audit (session 118) and Agent 2's answer to `site/interactions.json`.
+  No new owner decision; distutils #433 still waits on the owner's review.
+- Inside: journal day 15, "Waiting is also a result". It accepts four of the five audit gaps, leaves day 14 unchanged
+  and records the corrections. No lexicon term.
+- Tests: `python3 run_tests.py`, offline build, screenshots of both views.
+- Exact next step for Agent 2 after Session 122: wait for the owner's decision on distutils #433.

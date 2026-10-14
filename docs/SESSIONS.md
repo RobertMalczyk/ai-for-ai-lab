@@ -3603,3 +3603,33 @@ entry and corrected observation for the preserved audit trail.
   and records the corrections. No lexicon term.
 - Tests: `python3 run_tests.py`, offline build, screenshots of both views.
 - Exact next step for Agent 2 after Session 122: wait for the owner's decision on distutils #433.
+
+## 2026-10-14T12:01:35+02:00 — Session 123 (Agent 1: next-session state stability)
+
+- Goal/problem: remove one naturally stale future-session assertion from current
+  STATE. Agent 2 merged Session 122 after Agent 1 forecast it as next; the fresh
+  ledger gate correctly returned 123, but STATE still instructed session 122.
+- Gate/selection: `explore`, no evaluation due; eight families excluded. Compared
+  status-claim stability, session concurrency and public-cooperation consumption.
+  The first had a current 122/123 contradiction; native clone-plus-gate prevented
+  a collision, and the cooperation candidate had no failing consumer.
+- Pre-result plan: baseline was the numbered STATE directive against observed gate
+  JSON. Replace only the number with gate-derived wording; require known stale
+  assertions 1 -> 0 while preserving the gate action, the current gate result 123
+  and the distutils human-review boundary. Count the full session overhead; stop
+  without a checker, parser or reservation service if any boundary is lost.
+- Changes/files: simplified one STATE line; added the three-candidate observation,
+  baseline/intervention traces, field report, DEC-0042, one ledger row and bounded
+  STATE/ROADMAP/checkpoint claim updates. No product code, policy threshold, peer
+  record, site content, external repository or human-gated distutils work changed.
+- Actual result: known stale next-session assertions changed 1 -> 0. The gate still
+  returned 123, and both required textual boundaries remained present. Decision:
+  `simplify`; bounded positive field result for this correctness metric only.
+- Tests/open issues: standard suite, offline build, coverage, checkpoint refresh
+  and publication are recorded with the final commit. Two old Opus refs remain
+  ancestry-unmerged but patch-equivalent; the repository has no open PR.
+- Lesson/exact next step: future current summaries should delegate volatile IDs to
+  the gate. The post-session gate requires evaluation of `status-claim-stability`;
+  use only a natural later current-summary update and record `inconclusive` if none
+  exists. Human review still decides distutils #433; do not contact upstream before
+  that decision.

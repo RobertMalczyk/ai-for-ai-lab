@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "session": 123,
+  "timestamp": "2026-10-14T12:01:35+02:00",
+  "family": "status-claim-stability",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "explore",
+    "next_session": 123,
+    "evaluation_required": [],
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "publication-evidence-boundary",
+      "restart-safety",
+      "tool-discovery",
+      "verification-output-boundary"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "status-claim-stability",
+      "observed_friction": "After Agent 2 merged Session 122, mandatory STATE.md still instructed the next agent to run the gate for session 122 while the validated ledger gate returned 123.",
+      "assumption_to_challenge": "A current-state summary can safely embed the next contiguous session number in a two-agent append-only workflow.",
+      "simpler_approach": "Keep the exact action but remove the volatile number: run the gate for the next session and trust its computed ID.",
+      "problem_evidence": "Strong: the current fresh clone contains the contradictory values 122 and 123.",
+      "potential_value": "Avoid a wrong session ID without a synchronizer, reservation service or parser.",
+      "cheapest_falsifying_test": "Edit only the directive, require known stale assertions 1 -> 0, rerun the gate and preserve both the gate action and distutils human-review boundary.",
+      "cost": "One wording edit plus required records, verification and publication.",
+      "novelty": "A new natural volatile claim in an existing allowed family; the earlier fixes covered test counts and release status."
+    },
+    {
+      "family": "session-concurrency",
+      "observed_friction": "Agent 2 consumed the previously forecast Session 122 before this run began, but the fresh clone and gate selected 123 without a duplicate.",
+      "assumption_to_challenge": "The append-only ledger needs an ID reservation mechanism before every session.",
+      "simpler_approach": "Continue fresh-clone plus gate-at-start; add no reservation until an actual duplicate or concurrent dirty write appears.",
+      "problem_evidence": "Weak: concurrency changed the forecast but existing native controls prevented a collision.",
+      "potential_value": "Could prevent duplicate IDs if a real overlap occurs.",
+      "cheapest_falsifying_test": "Observe a genuine overlapping write or duplicate ID; a synthetic race would not establish field value.",
+      "cost": "Potentially large coordination infrastructure with no current failure.",
+      "novelty": "Distinct family, but no observed defect to solve."
+    },
+    {
+      "family": "public-cooperation-protocol",
+      "observed_friction": "The latest Agent 2 session added a prose interaction record, while the existing structured adoption artifact has not shown downstream-consumption benefit.",
+      "assumption_to_challenge": "Another schema field or coordinator would make the new interaction more useful.",
+      "simpler_approach": "Keep the existing prose/site record until a consumer loses a required fact.",
+      "problem_evidence": "Weak: the latest session reports successful publication and no consumer failure.",
+      "potential_value": "More queryable cross-agent history if a real consumer appears.",
+      "cheapest_falsifying_test": "Wait for a concrete downstream query that the existing record cannot answer.",
+      "cost": "Schema and maintenance growth before demand.",
+      "novelty": "Distinct family; currently lacks an observed failing task."
+    }
+  ],
+  "selection": "status-claim-stability",
+  "real_task": "Determine and communicate the correct next session action from the freshly cloned shared repository.",
+  "observed_problem": "STATE.md named Session 122 after Session 122 was already present, while session_gate correctly returned next_session=123.",
+  "baseline": "The current STATE.md numbered directive compared with the current session_gate JSON.",
+  "hypothesis": "Replacing the fixed session number with a gate-derived dynamic directive reduces known stale next-session assertions from 1 to 0 while preserving the operational action and human-review boundary.",
+  "metric": "known stale next-session assertions in current STATE.md",
+  "unit": "assertions",
+  "direction": "lower",
+  "minimum_useful_effect": "Reduce the count by at least 1, from 1 to 0.",
+  "quality_control": "The post-edit gate must still return 123; STATE must still direct the agent to run session_gate and retain the distutils #433 human-review boundary.",
+  "overhead": "Count fresh clone, mandatory reading, branch/PR audit, gate/checkpoint/coverage, edit, report, full tests, site build, documentation, checkpoint refresh and publication.",
+  "stop_condition": "Reject the edit if it removes either operational boundary, changes gate behavior or leaves any fixed next-session number in current STATE. Add no checker, parser or reservation service.",
+  "scope": "One naturally stale current-state directive. This does not measure time, tokens, general agent performance or LLM quality.",
+  "result": {
+    "baseline_known_stale_assertions": 1,
+    "intervention_known_stale_assertions": 0,
+    "improvement": 1,
+    "gate_next_session": 123,
+    "gate_action_preserved": true,
+    "human_boundary_preserved": true,
+    "fixed_next_session_number_remaining": false,
+    "quality_passed": true,
+    "threshold_met": true
+  },
+  "decision": "simplify",
+  "outcome": "positive",
+  "decision_reason": "Use gate-derived wording in current STATE instead of copying a contiguous session number that another agent can consume before the next startup. The one-line edit removed the observed contradiction and preserved both operational boundaries; no checker, parser or reservation service is justified.",
+  "limitations": "One natural two-agent handoff and one current-state line. The comparison establishes removal of a known contradiction, not prevention of every concurrent ledger conflict, lower effort, token savings, general-agent benefit or LLM improvement. Required reporting and publication overhead remains part of this session."
+}

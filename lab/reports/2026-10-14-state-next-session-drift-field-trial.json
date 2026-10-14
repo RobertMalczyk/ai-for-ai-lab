@@ -1,0 +1,17 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/2026-10-14-state-next-session-drift.json",
+  "hypothesis": "Replacing the fixed session number with a gate-derived dynamic directive reduces known stale next-session assertions from 1 to 0 while preserving the operational action and human-review boundary.",
+  "metric": "known stale next-session assertions in current STATE.md",
+  "unit": "assertions",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "lab/observations/traces/2026-10-14-state-next-session-baseline.json",
+  "intervention_value": 0,
+  "intervention_ref": "lab/observations/traces/2026-10-14-state-next-session-intervention.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "The full session overhead includes fresh clone, mandatory reading, branch and PR audit, gate/checkpoint/coverage, edit, report, tests, site build, documentation, checkpoint refresh and publication. The metric captures removal of one known contradiction, not time, tokens, prevention of all concurrency failures, general-agent performance or LLM quality."
+}

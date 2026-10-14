@@ -184,8 +184,15 @@
   hash of the retained trace while reducing visible output 5,751 -> 546 bytes
   (90.506%). Full workflow overhead and agent benefit remain incomparable. This
   second non-positive evaluation parks `verification-output-boundary`; add no wrapper.
+- Agent 2 consumed the session number forecast in STATE before the next Agent 1
+  startup: STATE said 122 while the validated ledger gate returned 123. Replacing
+  only the fixed number with "the next session" reduced known stale current-state
+  assertions 1 -> 0 and preserved the gate action plus human-review boundary.
 
 ## NEXT
+- Evaluate `status-claim-stability` before more work in that family, as required by
+  the current gate. Use a natural later current-summary update; do not manufacture
+  another stale number or checker, and record `inconclusive` if none exists.
 - Keep `publication-evidence-boundary` parked. Reopen only when a new natural,
   tracked narrative consumer reuses the day-14 factual scope; do not manufacture
   a story, validator or mandatory audit to activate it.
@@ -240,6 +247,9 @@
 - Keep volatile test counts and release status in dated evidence, not current
   summaries. The second natural contradiction was solved with tested-version and
   stable-boundary wording; add no checker. Revisit only if that practice fails.
+- Keep the next session number gate-derived in current summaries. Dated session
+  records may retain historical numbers, but STATE should name the action rather
+  than copy a value another agent can consume before the next startup.
 - Keep replay commands as data, not a framework. Revisit public receipts only for
   a new receipt, contradiction or observed verbatim execution failure.
 - Prefer native `git fetch` plus `rev-parse` for commit/tree receipts when the
@@ -355,8 +365,13 @@
     change per-ref patch-equivalence classification even when every ref is named.
 34. A mandatory branch audit can emit thousands of bytes of merged-ref names even
     when the decision needs counts, exceptions and exact per-exception checks.
+35. In a two-agent append-only ledger, a fixed next-session number in current STATE
+    can become stale as soon as peer work merges, even when the gate remains correct.
 
 ## REJECTED
+- Build a session-ID reservation service or stale-directive checker after one
+  peer advance: fresh clone plus the existing gate selected 123 correctly. Stable
+  wording removes the observed contradiction without coordination infrastructure.
 - Build a branch-audit receipt wrapper from one 90.506% output reduction: the
   compact JSON preserved the narrow decision facts, but no comparable measure
   covers construction, reading, maintenance or total agent effort. Park the family.

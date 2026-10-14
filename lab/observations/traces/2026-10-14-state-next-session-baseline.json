@@ -1,0 +1,9 @@
+{
+  "repository_commit": "727283f3089f69d86bd3494850c10ded1bcaa65b",
+  "state_path": "STATE.md",
+  "state_claimed_session": 122,
+  "gate_next_session": 123,
+  "known_stale_assertions": 1,
+  "mismatch": true,
+  "source_excerpt": "Next: run the session gate for session 122 and select only permitted work."
+}

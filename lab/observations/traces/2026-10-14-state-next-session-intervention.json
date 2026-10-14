@@ -1,0 +1,10 @@
+{
+  "repository_commit": "727283f3089f69d86bd3494850c10ded1bcaa65b",
+  "state_path": "STATE.md",
+  "state_uses_fixed_session_number": false,
+  "gate_next_session": 123,
+  "known_stale_assertions": 0,
+  "gate_action_preserved": true,
+  "human_boundary_preserved": true,
+  "source_excerpt": "Next: run the session gate for the next session and select only permitted work."
+}

@@ -915,3 +915,27 @@ Consequences: the earlier full-suite compact-success practice remains available,
 and failures must still expose full diagnostics. The site-build generalization stays
 rejected, the branch receipt remains evidence rather than product code, and future
 sessions must select another permitted family unless materially new evidence appears.
+
+### DEC-0042 — Keep next-session numbers gate-derived in current state
+
+Problem: Agent 1 ended with a forecast that Session 122 was next. Agent 2 then
+merged Session 122 before the following Agent 1 startup, leaving STATE's numbered
+directive stale while the append-only ledger gate correctly returned 123.
+
+Decision: current STATE names the stable action—run the gate for the next session—
+without copying its volatile numeric result. Dated session records retain historical
+IDs. Add no checker, parser, lock or reservation service.
+
+Why: on this real two-agent handoff, the one-line edit reduced known stale next-
+session assertions from 1 to 0 and preserved both the operational gate instruction
+and the distutils human-review boundary. Fresh clone plus the existing gate already
+prevented a duplicate ID.
+
+Alternatives: update 122 to 123 (repeats the race); reserve IDs before work (new
+coordination infrastructure without a collision); add a stale-state checker (the
+gate is already authoritative); remove the next action entirely (loses continuity).
+
+Consequences: STATE is less specific about a future ID but remains operationally
+exact and stable under peer progress. This bounded field result establishes removal
+of one contradiction, not prevention of all concurrent writes, lower effort, token
+savings, general-agent benefit or LLM improvement.

@@ -3568,3 +3568,29 @@ entry and corrected observation for the preserved audit trail.
 - Unresolved/exact next step: run the gate for session 121 and select only permitted
   work. Human review still decides distutils #433 scope, disclosure and submission;
   do not contact upstream or start another external task before that decision.
+
+## 2026-10-14T06:00:30+02:00 — Session 121 (Agent 1: branch-audit output evaluation)
+
+- Goal/problem: evaluate a compact result for the required current branch audit.
+  The direct audit printed every merged ref although the decision used counts, the
+  complete unmerged set and exact per-ref patch-equivalence classifications.
+- Gate/plan: `select`, no evaluation required; chose an allowed evaluation of
+  `verification-output-boundary`. Baseline was the real heading-delimited audit;
+  intervention retained the full trace and exposed JSON. The fixed threshold was
+  at least 80% fewer visible UTF-8 bytes with an exact inventory partition, every
+  unmerged ref, matching `git cherry` lines and a full-trace SHA-256.
+- Changes/files: added the predeclared/completed observation, exact baseline and
+  receipt traces, field report, DEC-0041, one ledger row and bounded claim,
+  STATE/ROADMAP/session updates. No product code, policy threshold, external
+  repository or human-gated distutils work changed.
+- Test/result: the receipt reduced visible output 5,751 -> 546 bytes (90.506%) and
+  preserved 70 merged plus 0 unmerged agent refs, 53 merged plus 2 unmerged Opus
+  refs, both negative `git cherry` lines and the full-trace hash. Quality and the
+  narrow byte threshold passed.
+- Actual outcome/lesson: `inconclusive`, decision `park`. The comparison does not
+  measure construction, reading, maintenance, total session effort, comprehension,
+  tokens or LLM quality, so the narrow reduction is not positive net utility. This
+  is the family's second non-positive evaluation; no wrapper is justified.
+- Unresolved/exact next step: run the gate for session 122 and select only permitted
+  work. Human review still decides distutils #433 scope, disclosure and submission;
+  do not contact upstream or start another external task before that decision.

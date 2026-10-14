@@ -888,3 +888,30 @@ or add a narrative validator (new infrastructure without a natural failure).
 Consequences: no utility, accuracy, token or LLM claim is made. The six supported
 facts remain available for careful reuse, while further audit work stops until a
 real consumer creates a comparable task. The next work session explores elsewhere.
+
+### DEC-0041 — Park verification-output work after a byte-only branch result
+
+Problem: a real mandatory branch audit emitted 5,751 visible UTF-8 bytes, mostly
+merged-ref names. A compact representation could retain the decision boundary, but
+visible bytes alone do not measure its construction, reading or maintenance cost.
+
+Decision: park `verification-output-boundary` and add no wrapper. Retain the
+546-byte JSON receipt as a bounded branch-audit practice example because it preserves
+the exact inventory partition, both unmerged refs, their `git cherry` classifications
+and the full-trace hash. Reopen only after a natural failure permits comparable full-
+overhead measurement.
+
+Why: the receipt passed its fixed 80% threshold with a 90.506% reduction and all
+quality controls, but net agent utility is unavailable. Session 116 was already a
+negative evaluation in this family; this inconclusive evaluation reaches the
+policy's two-non-positive-evaluation parking threshold.
+
+Alternatives: call the byte reduction positive utility (ignores required overhead);
+ship a helper now (adds maintenance without a demonstrated net benefit); discard the
+trace (loses auditability); or continue representation tests (extends a byte-only
+program after its evidence boundary is known).
+
+Consequences: the earlier full-suite compact-success practice remains available,
+and failures must still expose full diagnostics. The site-build generalization stays
+rejected, the branch receipt remains evidence rather than product code, and future
+sessions must select another permitted family unless materially new evidence appears.

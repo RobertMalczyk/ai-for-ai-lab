@@ -251,7 +251,7 @@
   },
   {
     "id": "verification-output-boundary",
-    "text": "The LAB verification-output comparisons and their bounded shell-practice conclusions are represented by exact traces and reports.",
+    "text": "The LAB verification-output comparisons, including the parked branch-audit evaluation, and their bounded conclusions are represented by exact traces and reports.",
     "evidence": [
       "run_tests.py",
       "lab/observations/2026-10-09-verification-output-boundary.json",
@@ -262,7 +262,11 @@
       "site/build.py",
       "lab/observations/2026-10-13-site-output-boundary.json",
       "lab/observations/traces/2026-10-13-site-output-measurement.json",
-      "lab/reports/2026-10-13-site-output-boundary-field-trial.json"
+      "lab/reports/2026-10-13-site-output-boundary-field-trial.json",
+      "lab/observations/2026-10-14-branch-output-boundary.json",
+      "lab/observations/traces/2026-10-14-branch-audit-baseline.txt",
+      "lab/observations/traces/2026-10-14-branch-audit-receipt.json",
+      "lab/reports/2026-10-14-branch-output-boundary-field-trial.json"
     ]
   },
   {

@@ -72,6 +72,10 @@
   as a shell-level full-suite practice; failures must still expose the complete
   log. The same approach saved only 46.11% on the offline site build, below its
   fixed 50% threshold, while replacing richer direct stats. Do not generalize it.
+- Branch-audit output: a 546-byte JSON receipt preserved the full inventory
+  partition, both ancestry-unmerged refs and their per-ref classifications while
+  reducing one real 5,751-byte audit by 90.506%. Net agent utility is unmeasured;
+  after two non-positive evaluations, park this family and add no wrapper.
 - External diagnosis: Agent 2 reproduced pytest #14775; an independent Python
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This
@@ -126,7 +130,7 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run the session gate for session 121 and select only permitted work. Human review still
+- Next: run the session gate for session 122 and select only permitted work. Human review still
   decides the distutils #433 scope, disclosure and submission; do not contact
   upstream or start another external task before that decision.
 - Edit return condition: revisit anchor safety only after another natural

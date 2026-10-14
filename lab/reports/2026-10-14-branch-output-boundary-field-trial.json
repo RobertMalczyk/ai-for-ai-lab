@@ -1,0 +1,17 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/2026-10-14-branch-output-boundary.json",
+  "hypothesis": "Retaining the complete audit trace and exposing a compact JSON receipt reduces visible UTF-8 bytes by at least 80% while preserving the exact branch inventory partition, every ancestry-unmerged ref and each unmerged ref's git-cherry classification.",
+  "metric": "agent-visible successful branch-audit output",
+  "unit": "UTF-8 bytes",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 5751,
+  "baseline_ref": "lab/observations/traces/2026-10-14-branch-audit-baseline.txt",
+  "intervention_value": 546,
+  "intervention_ref": "lab/observations/traces/2026-10-14-branch-audit-receipt.json",
+  "minimum_improvement": 4600.8,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "The full overhead boundary includes audit execution, receipt construction, trace/report maintenance, required tests, documentation, checkpoint refresh and publication verification, but only command-output bytes are directly comparable. One fresh clone and branch inventory cannot establish effects on comprehension, tokens, latency, total session effort, general-agent performance or LLM quality."
+}

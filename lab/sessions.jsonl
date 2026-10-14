@@ -118,3 +118,4 @@
 {"session":118,"family":"publication-evidence-boundary","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-13-day14-claim-audit.json"}
 {"session":119,"family":"publication-evidence-boundary","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-13-publication-evidence-evaluation.json"}
 {"session":120,"family":"branch-visibility","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-13-branch-equivalence-batch.json"}
+{"session":121,"family":"verification-output-boundary","mode":"evaluate","evidence":"field_trial","outcome":"inconclusive","record":"lab/reports/2026-10-14-branch-output-boundary-field-trial.json"}

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "session": 121,
+  "timestamp": "2026-10-14T06:00:30+02:00",
+  "family": "verification-output-boundary",
+  "mode": "evaluate",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "publication-evidence-boundary",
+      "restart-safety",
+      "tool-discovery"
+    ],
+    "evaluation_required": []
+  },
+  "real_task": "Classify every remote agent/* and opus/* branch against origin/main before starting this session.",
+  "observed_problem": "The mandatory audit printed every merged branch even though the decision depended on counts, the complete unmerged set and per-unmerged-ref patch-equivalence results.",
+  "baseline": "Direct heading-delimited branch lists plus git cherry output from the current fresh clone.",
+  "hypothesis": "Retaining the complete audit trace and exposing a compact JSON receipt reduces visible UTF-8 bytes by at least 80% while preserving the exact branch inventory partition, every ancestry-unmerged ref and each unmerged ref's git-cherry classification.",
+  "metric": "agent-visible successful branch-audit output",
+  "unit": "UTF-8 bytes",
+  "direction": "lower",
+  "minimum_useful_effect": "At least 80% fewer visible bytes than the direct audit output.",
+  "quality_control": "Recompute both conditions from the same refs; require exact merged/unmerged counts, every unmerged ref, matching git-cherry lines and a SHA-256 link to the retained full trace.",
+  "overhead": "Count audit execution, receipt construction, trace/report maintenance, required tests, documentation, checkpoint refresh and publication verification.",
+  "stop_condition": "Add no wrapper and park the family if the threshold or quality control fails, or if the narrow byte result cannot establish net agent utility after full overhead.",
+  "scope": "One real LAB startup audit. Visible bytes are not tokens, latency, comprehension, total session cost, general-agent performance or LLM quality.",
+  "result": {
+    "baseline_visible_bytes": 5751,
+    "intervention_visible_bytes": 546,
+    "avoided_visible_bytes": 5205,
+    "reduction_percent": 90.506,
+    "agent_merged_count": 70,
+    "agent_unmerged_count": 0,
+    "opus_merged_count": 53,
+    "opus_unmerged_count": 2,
+    "full_trace_sha256": "185cd314fe282f06697d9eba34f5fd897e6fb86b90d7baf27d5926f24da9aa92",
+    "inventory_partition_exact": true,
+    "unmerged_refs_preserved": true,
+    "cherry_classifications_preserved": true,
+    "quality_passed": true,
+    "threshold_met": true
+  },
+  "decision": "park",
+  "outcome": "inconclusive",
+  "decision_reason": "The receipt passed the narrow byte and fidelity checks, but the comparison measures only visible command output and cannot establish net agent utility after audit execution, receipt construction, reading, reporting, maintenance and publication. This is the family's second non-positive evaluation, so policy parks it instead of authorizing a wrapper or more feature work.",
+  "limitations": "One fresh-clone branch inventory at one commit. The same checkout and refs were used for both representations. The receipt is manually constructed evidence, not a shipped command. No comparable measures exist for comprehension, tokens, latency, errors, total session effort or LLM quality."
+}

@@ -179,6 +179,11 @@
   patch-equivalent to main under per-ref `git cherry`. One combined
   `git log --cherry-mark` process agreed on only 1/2, so reject the batched
   multi-range shortcut and retain exact per-ref checks for this rare ambiguity.
+- A compact JSON receipt for that same real branch audit preserved the exact
+  inventory partition, both unmerged refs, their per-ref `git cherry` lines and a
+  hash of the retained trace while reducing visible output 5,751 -> 546 bytes
+  (90.506%). Full workflow overhead and agent benefit remain incomparable. This
+  second non-positive evaluation parks `verification-output-boundary`; add no wrapper.
 
 ## NEXT
 - Keep `publication-evidence-boundary` parked. Reopen only when a new natural,
@@ -243,11 +248,11 @@
 - Keep append-only global logs out of historical claim dependency sets when the
   exact observation/report and stable summary already represent the claim. Reopen
   only if a material session detail becomes unavailable through those sources.
-- Keep full verification logs locally and emit a compact receipt only on success;
-  expose the complete log on failure. Do not change `run_tests.py` or build a
-  wrapper. Apply this only to the noisy full suite; the offline build is rejected
-  as a consumer. Revisit after a natural failure or a materially different noisy
-  verifier, not another already-compact command.
+- Keep `verification-output-boundary` parked after two non-positive evaluations.
+  The full-suite receipt remains a bounded practice; the site-build generalization
+  failed and the branch-audit receipt did not establish net agent utility. Reopen
+  only after a natural failure with comparable full overhead, not another byte-only
+  representation test.
 - Stop pytest #14775 work at the confirmed causal diagnosis. Do not prepare or
   submit an upstream patch while `external-oss-contribution` remains parked; the
   next session must follow the gate's family pivot.
@@ -348,8 +353,13 @@
     or named local inputs remain only implicit in prose.
 33. Combining multiple symmetric ranges in one `git log --cherry-mark` walk can
     change per-ref patch-equivalence classification even when every ref is named.
+34. A mandatory branch audit can emit thousands of bytes of merged-ref names even
+    when the decision needs counts, exceptions and exact per-exception checks.
 
 ## REJECTED
+- Build a branch-audit receipt wrapper from one 90.506% output reduction: the
+  compact JSON preserved the narrow decision facts, but no comparable measure
+  covers construction, reading, maintenance or total agent effort. Park the family.
 - Batch patch-equivalence checks for several ancestry-unmerged refs into one
   `git log --cherry-mark` walk: it used one process instead of two but matched
   only 1/2 independent `git cherry` classifications. Exactness outranks the

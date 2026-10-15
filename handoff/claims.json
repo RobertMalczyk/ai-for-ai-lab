@@ -217,6 +217,7 @@
     "lab/observations/traces/2026-10-10-connector-evidence-evaluation.txt",
       "lab/observations/2026-10-11-session97-publication-receipt-evaluation.json",
       "lab/observations/traces/2026-10-11-session97-publication-receipt-evaluation.txt",
+      "lab/observations/2026-10-15-ref-precondition.json",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

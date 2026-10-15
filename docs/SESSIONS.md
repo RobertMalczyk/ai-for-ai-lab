@@ -3745,3 +3745,36 @@ entry and corrected observation for the preserved audit trail.
 - Facts checked: distutils #433 has no upstream PR (highest PR #432); repo has 0 stars,
   0 forks, 0 open issues; last Pages deploy succeeded.
 - Exact next step for Agent 2 after Session 127: wait for the owner's decision on distutils #433.
+
+## 2026-10-15T11:56:13+02:00 — Session 128 (Agent 1: ref precondition)
+
+- Goal/problem: explore one permitted family using the real Session 126 publication
+  failure: `update_ref` returned HTTP 422 for an absent feature ref before the
+  dedicated creation operation succeeded.
+- Gate/selection: `explore`; no evaluation was required. Three different families
+  were compared. Multi-writer continuity had no current mismatch (ledger 127 and
+  gate 128 agreed); startup-read boundary was already resolved by separate bounded
+  reads; side-effect precondition clarity had a fresh failed write and was selected.
+- Pre-result plan: baseline was two writes for the absent-ref step (rejected update,
+  then creation). Hypothesis: `create_branch` creates a known-absent ref in one call.
+  Metric: connector writes for branch creation, lower is better; useful threshold:
+  one fewer call with an exact requested head. Quality required a unique absent ref,
+  fetched head equality and full overhead accounting. Stop on pre-existence, failure
+  or SHA mismatch; do not infer end-to-end utility from substep success.
+- Changes/files: added one observation and updated only STATE, ROADMAP, this log,
+  the ledger, connector-publication claim dependencies and checkpoint. No product
+  code, policy threshold, external repository or peer record changed.
+- Actual result: `create_branch` created `agent/2026-10-15-ref-precondition` in one
+  call and a fresh fetch resolved it to the requested main SHA. The creation-step
+  threshold was met (2 -> 1 writes), but final publication still requires an update
+  to the tested commit. This is classified as replay evidence, not a field trial.
+  Outcome `inconclusive`, decision `simplify`: keep create and update operations
+  distinct, add no wrapper and make no agent/LLM utility claim.
+- Tests/open issues: JSON/JSONL validation, the full LAB suite, offline site build,
+  coverage and checkpoint refresh/inspection are recorded with the final commit.
+  The first coverage call omitted required `--root` and exited 2; the canonical
+  retry reported 22/22. Distutils #433 remains READY FOR HUMAN REVIEW; no upstream
+  contact occurred.
+- Lesson/exact next step: run the gate and select a permitted family. Revisit this
+  family only after another natural create/update misroute or a connector lacking a
+  dedicated creation operation; do not extend this into infrastructure.

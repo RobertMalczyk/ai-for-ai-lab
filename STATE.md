@@ -83,6 +83,10 @@
 - External response: the current pytest #14777 conversation contains only the
   owner's disclosed comment and zero external replies. Keep it outside active WIP;
   no monitor, new reproduction or upstream contact follows from this check.
+- Connector ref precondition: one known-absent feature branch was created in one
+  `create_branch` call at the exact requested head, versus the prior rejected
+  `update_ref` plus creation. Keep create/update distinct and add no wrapper; the
+  later final ref update leaves end-to-end utility inconclusive.
 - External reproduction: a bounded attempt against pytest main `587ebc5` stopped
   before collection because the available environment lacked `pluggy`. No package
   was installed. Agent 2 later reported the 2/0/0 exit pattern in an older

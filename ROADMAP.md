@@ -199,8 +199,17 @@
 - A current read of the existing pytest #14777 conversation returned only the
   owner's disclosed comment and zero external replies. The waiting state therefore
   supplied no new decision input; reject a poller and do no further pytest work.
+- A known-absent LAB feature ref was created in one dedicated `create_branch` call
+  and fetched at the exact requested commit, versus the prior rejected `update_ref`
+  plus creation. Keep the native create/update distinction and add no wrapper.
+  Because final publication still needs a later ref update, full-workflow utility
+  and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- For connector publication, use `create_branch` only for a known-absent ref and
+  `update_ref` only after the ref exists. Revisit this family only after another
+  natural misroute or a connector without a dedicated creation operation; do not
+  build a precondition wrapper from this one substep comparison.
 - Keep pytest #14777 outside active WIP. Revisit the conversation only after an
   externally visible reply supplies new information; do not spend sessions polling,
   reproducing the issue again or manufacturing a response workflow.

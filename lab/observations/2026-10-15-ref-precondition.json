@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "session": 128,
+  "timestamp": "2026-10-15T11:56:13+02:00",
+  "family": "side-effect-precondition-clarity",
+  "mode": "explore",
+  "status": "complete",
+  "candidates": [
+    {
+      "family": "side-effect-precondition-clarity",
+      "kind": "fresh_observed_friction",
+      "evidence": "Session 126 records an HTTP 422 after update_ref was used for an absent feature branch; create_branch then succeeded.",
+      "assumption_to_challenge": "An operation whose branch_name field says create or update can create a missing Git ref.",
+      "simpler_approach": "Use create_branch for an absent ref and reserve update_ref for an existing ref.",
+      "potential_value": "Avoid one failed write attempt and its diagnosis during connector publication.",
+      "cheapest_falsifying_test": "Create this session's known-absent feature ref once with create_branch and verify its exact head.",
+      "cost": "One reversible ref creation and one verification; the later final ref update still counts as workflow overhead.",
+      "selection": "selected"
+    },
+    {
+      "family": "multi-writer-continuity",
+      "kind": "old_assumption_challenge",
+      "evidence": "Agent 2 advanced the ledger from session 126 to 127 and the gate selected 128 without conflict.",
+      "assumption_to_challenge": "Concurrent writers are currently causing session-number or handoff ambiguity.",
+      "simpler_approach": "Trust the fresh ledger and gate unless an actual mismatch appears.",
+      "potential_value": "Avoid unnecessary coordination machinery.",
+      "cheapest_falsifying_test": "Compare the ledger tail with the gate's next_session value.",
+      "cost": "Already covered by mandatory startup checks; no problem was observed.",
+      "selection": "rejected_no_problem"
+    },
+    {
+      "family": "startup-read-boundary",
+      "kind": "different_simple_approach",
+      "evidence": "One combined startup read exceeded an outer output boundary; separate bounded reads completed the required documents.",
+      "assumption_to_challenge": "A new helper is needed to make startup reading reliable.",
+      "simpler_approach": "Keep separate bounded reads for large documents.",
+      "potential_value": "Preserve complete evidence without adding code.",
+      "cheapest_falsifying_test": "Repeat separate bounded reads only when another real truncation occurs.",
+      "cost": "The documented practice already resolved the event, so another product change has no supported value.",
+      "selection": "rejected_already_solved"
+    }
+  ],
+  "pre_result_plan": {
+    "real_task": "Publish this session on a new feature branch without routing an absent ref through an update-only operation.",
+    "observed_problem": "Session 126 incurred one rejected connector write because update_ref was called before the feature ref existed.",
+    "baseline": "The observed absent-ref step used two write calls: one rejected update_ref call followed by one successful create_branch call.",
+    "hypothesis": "Calling create_branch directly for a known-absent ref will create the ref in one write call at the requested commit.",
+    "metric": "write calls for the absent-ref creation step",
+    "unit": "connector write calls",
+    "direction": "lower",
+    "minimum_useful_effect": "One fewer write call for the branch-creation step, with the ref head exactly matching the requested base commit.",
+    "quality_control": "Use a unique agent branch, confirm it is absent from fetched refs, create it from the verified main SHA, then fetch and compare the exact head.",
+    "overhead": "Count startup reading, gate and branch audits, schema inspection, branch creation, later final ref update, reporting, tests, checkpoint maintenance and publication.",
+    "stop_condition": "If the ref already exists, creation fails, or the fetched head differs, record negative evidence and do not generalize. Even on success, do not claim full-workflow utility without a comparable end-to-end reduction including the later update."
+  },
+  "result": {
+    "branch": "agent/2026-10-15-ref-precondition",
+    "branch_was_absent": true,
+    "requested_sha": "912c32a2c1aebeec7f3a532dfbd305d3384bf17d",
+    "create_branch_calls": 1,
+    "fetched_sha": "912c32a2c1aebeec7f3a532dfbd305d3384bf17d",
+    "exact_head_match": true,
+    "baseline_absent_ref_write_calls": 2,
+    "intervention_absent_ref_write_calls": 1,
+    "minimum_effect_met_for_creation_step": true,
+    "full_publication_comparison_available": false,
+    "finding": "The dedicated creation operation avoided the previously observed rejected update attempt and produced the exact requested head. The branch must still be updated to the final tested commit, so this ordering does not establish a lower end-to-end publication cost."
+  },
+  "decision": "simplify",
+  "outcome": "inconclusive",
+  "decision_reason": "Adopt the native operation distinction as a practice: create absent refs and update existing refs. Add no wrapper or product code, and claim no full-workflow or LLM benefit because the later final ref update and all session overhead remain.",
+  "failures": [
+    "The first coverage check omitted the required --root argument and exited 2 with invalid_arguments. The canonical retry with --root . reported 22/22 tracked files covered."
+  ],
+  "limitations": "One repository, one absent feature ref and a historical baseline from the immediately preceding Agent 1 publication. The substep comparison is not a contemporaneous randomized trial, and the required later update prevents an end-to-end action-count conclusion."
+}

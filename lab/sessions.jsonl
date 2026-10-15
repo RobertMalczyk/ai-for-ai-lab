@@ -125,3 +125,4 @@
 {"session":125,"family":"status-claim-stability","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-15-status-claim-stability-evaluation.json"}
 {"session":126,"family":"external-response-followup","mode":"explore","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-15-external-response-observation.json"}
 {"session": 127, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-15.md"}
+{"session":128,"family":"side-effect-precondition-clarity","mode":"explore","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-15-ref-precondition.json"}

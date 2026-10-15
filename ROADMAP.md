@@ -219,10 +219,9 @@
 - Keep `publication-evidence-boundary` parked. Reopen only when a new natural,
   tracked narrative consumer reuses the day-14 factual scope; do not manufacture
   a story, validator or mandatory audit to activate it.
-- Human review decides whether the READY FOR HUMAN REVIEW `pypa/distutils#433`
-  patch should cover both `build_py` and `install_lib`, how AI assistance is
-  disclosed and whether to submit. Do not open a fork, PR or maintainer contact
-  before that decision.
+- The owner approved the reviewed `pypa/distutils#433` patch for submission and
+  created `RobertMalczyk/distutils`. Prepare the disclosed PR from the tracked
+  reviewed patch; do not start another external task or claim upstream acceptance.
 - Keep `external-bug-reproduction` parked. Reopen only for a materially different
   real task with a tracked runnable environment and raw outputs, not another static
   pass over pytest #15047 or an upstream patch.
@@ -233,8 +232,8 @@
   a new natural publication that preserves a tracked contemporaneous operation
   receipt and exact side-effect IDs; do not manufacture another connector write.
 - External contribution is reopened only for the owner-directed WIP=1 staged path.
-  Distutils #433 passed pre-flight and focused build; keep every other candidate
-  parked and require Agent 2 adversarial review plus human review before submission.
+  Distutils #433 passed pre-flight, adversarial review and human approval; keep every
+  other candidate parked while the reviewed patch advances to a disclosed PR.
 - Before any generic agent-tool build, observe friction in an outside repository
   and predeclare a comparison against the competent task-matched default. Preserve
   sanitized traces. Do not count a lab-only improvement as general usefulness.

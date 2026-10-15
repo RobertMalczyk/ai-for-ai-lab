@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "session": 129,
+  "timestamp": "2026-10-15T17:56:13+02:00",
+  "family": "human-intervention-transparency",
+  "mode": "explore",
+  "status": "complete",
+  "gate": {
+    "mode": "select",
+    "next_session": 129,
+    "evaluation_required": [],
+    "excluded_families": [
+      "cli-invocation-clarity",
+      "evidence-artifact-completeness",
+      "external-bug-reproduction",
+      "external-oss-contribution",
+      "publication-evidence-boundary",
+      "restart-safety",
+      "status-claim-stability",
+      "tool-discovery",
+      "verification-output-boundary"
+    ]
+  },
+  "candidates": [
+    {
+      "family": "human-intervention-transparency",
+      "kind": "fresh_observed_friction",
+      "evidence": "The visible owner decision accepts the reviewed distutils #433 patch for submission and confirms the fork exists, while the public decision list and canonical task state still stop at human review.",
+      "assumption_to_challenge": "The current repository already exposes every owner decision that changes the external-task boundary.",
+      "simpler_approach": "Append one sanitized human_decisions entry and update existing current-state records; add no linter or coordination service.",
+      "potential_value": "Prevent the next agent from treating an approved task as still blocked and preserve the public intervention record.",
+      "cheapest_falsifying_test": "Count this known missing decision before and after the bounded edit, validate the JSON and rebuild the site.",
+      "cost": "One manual cross-check, a bounded documentation edit, standard verification and publication.",
+      "selection": "selected"
+    },
+    {
+      "family": "side-effect-precondition-clarity",
+      "kind": "old_assumption_challenge",
+      "evidence": "Session 128 already distinguished create_branch from update_ref and recorded no remaining natural misroute.",
+      "assumption_to_challenge": "Another connector precondition test is needed immediately.",
+      "simpler_approach": "Use the documented native distinction and wait for a new failure.",
+      "potential_value": "Avoid extending an inconclusive substep study.",
+      "cheapest_falsifying_test": "Observe the next natural publication rather than manufacture a ref failure.",
+      "cost": "No test is warranted now.",
+      "selection": "rejected_no_new_evidence"
+    },
+    {
+      "family": "external-response-followup",
+      "kind": "different_simple_approach",
+      "evidence": "pytest #14777 remains outside active WIP until an external reply is visible.",
+      "assumption_to_challenge": "Polling the thread again would create decision value.",
+      "simpler_approach": "Do not poll without an external signal.",
+      "potential_value": "Avoid repeated no-change checks.",
+      "cheapest_falsifying_test": "Wait for a visible reply notification or repository evidence.",
+      "cost": "Zero current work.",
+      "selection": "rejected_stop_condition"
+    }
+  ],
+  "pre_result_plan": {
+    "real_task": "Synchronize an owner decision that changes the active distutils #433 handoff boundary into the public transparency record and canonical current state.",
+    "observed_problem": "The owner approved the reviewed patch for submission and confirmed creation of RobertMalczyk/distutils, but human_decisions has no entry and current LAB records still say the task awaits human review.",
+    "baseline": "One known material owner-decision sequence is omitted; four current-state surfaces retain the obsolete human-review boundary: STATE, ROADMAP, lab/tasks/EXTERNAL and the external-oss-contribution handoff claim.",
+    "hypothesis": "One sanitized decision entry plus bounded current-state edits will reduce known omitted decision sequences from 1 to 0 and obsolete current-state surfaces from 4 to 0.",
+    "metric": "known material owner-decision sequences omitted",
+    "unit": "decision sequences",
+    "direction": "lower",
+    "minimum_useful_effect": "Reduce omissions by 1 while preserving patch provenance, the requirement to disclose AI assistance and the fact that no PR has yet been opened.",
+    "quality_control": "Verify the fork via public Git, verify no matching open upstream PR, keep historical records unchanged, validate JSON, rebuild the site and require the canonical task to say READY TO SUBMIT rather than submitted.",
+    "overhead": "Count startup reads, gate and branch audit, public fork/PR checks, record editing, site rebuild, tests, checkpoint maintenance and publication.",
+    "stop_condition": "Stop without changing state if the fork is absent, an open PR already exists, or the visible owner decision does not explicitly approve submission. Do not create an upstream branch, commit, PR, comment or maintainer message in this LAB synchronization session."
+  },
+  "result": {
+    "owner_decision_recorded": true,
+    "fork_url": "https://github.com/RobertMalczyk/distutils",
+    "fork_main_sha": "3ed42426ce6f41e9d07dc63f3315d85f19e25618",
+    "reviewed_upstream_sha": "3ed42426ce6f41e9d07dc63f3315d85f19e25618",
+    "fork_base_match": true,
+    "matching_open_upstream_prs": 0,
+    "known_omitted_decision_sequences_before": 1,
+    "known_omitted_decision_sequences_after": 0,
+    "obsolete_current_state_surfaces_before": 4,
+    "obsolete_current_state_surfaces_after": 0,
+    "quality_passed": true,
+    "upstream_side_effects": 0
+  },
+  "decision": "continue",
+  "outcome": "positive",
+  "decision_reason": "The bounded manual transparency check repaired one known omitted owner-decision sequence and removed the obsolete block from all four canonical current-state surfaces. Continue the already approved WIP=1 task at PR preparation; add no linter or new coordination infrastructure.",
+  "failures": [],
+  "limitations": "This proves repair of one visible omission, not complete capture of private instructions or improved downstream agent/LLM performance. Public Git confirmed the fork base and a connector search found no matching open PR at this snapshot; neither establishes future state or upstream acceptance."
+}

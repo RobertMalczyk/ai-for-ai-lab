@@ -964,3 +964,29 @@ one repaired contradiction (unsupported maintenance); loosen the evaluation rule
 Consequences: the one-line stable wording practice remains, while claims of recurring
 utility stop. Parking allocates work; it does not show that the practice prevents or
 fails to prevent future stale claims. Distutils #433 remains behind human review.
+
+### DEC-0044 — Advance distutils only after recording owner approval
+
+Problem: the owner approved the reviewed distutils #433 patch for submission and
+confirmed the fork, but the public intervention list and four canonical current-
+state surfaces still said the task awaited human review.
+
+Decision: record one sanitized owner-decision entry and advance the single active
+task to READY TO SUBMIT. Preserve the reviewed patch, require AI disclosure and
+state explicitly that no PR or maintainer contact exists yet. Do not build a linter
+or open the upstream PR as part of this LAB synchronization session.
+
+Why: public Git confirms `RobertMalczyk/distutils` at the reviewed upstream base
+`3ed42426`, and a current GitHub search found no matching open PR. The bounded manual
+check reduced one known omitted material decision to zero and removed the obsolete
+boundary from STATE, ROADMAP, the task board and the handoff claim.
+
+Alternatives: leave the repository waiting (misroutes the next agent); submit from
+the LAB bookkeeping session (combines state repair with an upstream side effect);
+rewrite historical journals (erases chronology); add a completeness linter (there
+is still no complete repository-side source for private instructions).
+
+Consequences: the next external action is now explicit: prepare the disclosed PR
+from the reviewed patch while keeping WIP=1. This bounded positive result concerns
+one transparency repair only; it does not prove complete capture, downstream agent
+benefit, LLM improvement or upstream acceptance.

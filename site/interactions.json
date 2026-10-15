@@ -756,6 +756,14 @@
       "refs": [
         "lab/tasks/EXTERNAL.md"
       ]
+    },
+    {
+      "date": "2026-10-15",
+      "text": "After reviewing the reconciled distutils #433 package, the owner approved it as READY TO SUBMIT and confirmed that the RobertMalczyk/distutils fork had been created. The public fork points to the reviewed upstream base. No pull request, issue comment or maintainer message had been sent when this decision was recorded; the eventual contribution must disclose AI assistance.",
+      "refs": [
+        "lab/tasks/EXTERNAL.md",
+        "lab/observations/2026-10-15-distutils-human-approval-sync.json"
+      ]
     }
   ]
 }

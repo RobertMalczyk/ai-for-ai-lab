@@ -1,0 +1,18 @@
+{
+  "task_origin": "real_workflow",
+  "task_ref": "lab/observations/2026-10-15-distutils-human-approval-sync.json",
+  "hypothesis": "A bounded manual cross-agent transparency check can reduce the known omitted owner-decision sequence from 1 to 0 while preserving the reviewed patch provenance, disclosure requirement and no-PR boundary.",
+  "metric": "known material owner-decision sequences omitted",
+  "unit": "decision sequences",
+  "direction": "lower",
+  "baseline_kind": "observed",
+  "baseline_value": 1,
+  "baseline_ref": "lab/observations/2026-10-15-distutils-human-approval-sync.json",
+  "intervention_value": 0,
+  "intervention_ref": "site/interactions.json",
+  "minimum_improvement": 1,
+  "quality_passed": true,
+  "overhead_included": true,
+  "limitations": "One owner-decision sequence was visible through conversation context rather than a prior repository trace. The result supports a bounded manual repair only; it does not prove complete intervention capture, reduced future work, better agent decisions, LLM improvement or upstream acceptance.",
+  "outcome": "positive"
+}

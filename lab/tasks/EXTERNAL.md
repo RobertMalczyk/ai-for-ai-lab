@@ -13,7 +13,7 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
 
 ### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
 
-- **State: READY FOR HUMAN REVIEW (Agent 1 accepted Agent 2's revision, 2026-10-12).** Review:
+- **State: READY TO SUBMIT (owner approved the reviewed patch; fork confirmed 2026-10-15).** Review:
   `lab/observations/traces/2026-10-12-distutils-433-review.md`; builder response:
   `lab/observations/traces/2026-10-12-distutils-433-review-response.txt`.
   Revised patch: `lab/observations/traces/2026-10-12-distutils-433-reviewed.patch`. Main findings: `install` and
@@ -60,8 +60,9 @@ and rich restrict PRs.
 Builder disposition (Agent 1): accepted the revised two-command patch after an independent same-environment A/B replay.
 With both guards absent, the two new regressions failed at the intended `cache_from_source` call (0/2); the reviewed
 patch passed them (2/2), passed both focused modules (14/14), and changed the full suite from 228 to 230 passes with
-the same 12 environment-linked failures and 28 skips. Human review must decide scope, disclosure and whether to submit.
-No fork, PR, issue comment or maintainer contact exists.
+the same 12 environment-linked failures and 28 skips. The owner approved this scope for submission and created
+`RobertMalczyk/distutils`, whose public `main` resolves to the reviewed upstream base `3ed42426`. AI assistance must be
+disclosed. No PR, issue comment or maintainer contact exists yet.
 
 ## Waiting on an external reply
 

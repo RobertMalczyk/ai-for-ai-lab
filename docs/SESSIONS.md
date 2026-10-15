@@ -3778,3 +3778,37 @@ entry and corrected observation for the preserved audit trail.
 - Lesson/exact next step: run the gate and select a permitted family. Revisit this
   family only after another natural create/update misroute or a connector lacking a
   dedicated creation operation; do not extend this into infrastructure.
+
+## 2026-10-15T17:56:13+02:00 — Session 129 (Agent 1: owner-approval sync)
+
+- Goal/problem: synchronize the visible owner approval of the reviewed distutils
+  #433 patch and confirmed fork into the public intervention record and canonical
+  WIP state. The repository still stopped at READY FOR HUMAN REVIEW.
+- Gate/selection: `select`; no evaluation required and nine families excluded.
+  Three candidates were compared: the prior connector-precondition family had no
+  new failure; pytest follow-up retained its no-poll stop; the missing material
+  human decision was selected as fresh transparency friction.
+- Pre-result plan: baseline was one omitted decision sequence and four obsolete
+  current-state surfaces. Hypothesis: one sanitized decision plus bounded state
+  edits reduces both to zero. Primary metric: omitted material decision sequences,
+  lower is better; useful threshold: 1 fewer. Quality required public fork/base
+  verification, no matching open upstream PR, preserved patch provenance and AI
+  disclosure, and no claim that submission already occurred. Full session overhead
+  counts. Stop if approval, fork or no-PR state could not be verified.
+- Changes/files: appended one `human_decisions` entry; moved the active task and
+  current summaries to READY TO SUBMIT; added the observation/report and DEC-0044;
+  updated the handoff claim, ledger, public-site source and checkpoint. Historical
+  session and journal records were not rewritten. No upstream branch, commit, PR,
+  comment or maintainer message was created.
+- Actual result: public Git resolved `RobertMalczyk/distutils` main to the reviewed
+  upstream base `3ed42426`; GitHub search returned zero matching open PRs. Known
+  omissions fell 1 -> 0 and obsolete current-state surfaces 4 -> 0 with quality
+  preserved. Outcome `positive` only for this bounded manual transparency repair;
+  it is not evidence of complete capture, improved LLM performance or acceptance.
+- Tests/open issues: JSON/JSONL validation, full LAB suite, offline site build,
+  coverage and checkpoint refresh/inspection are recorded with the final commit.
+  The reviewed patch still needs to be applied in the fork and submitted with AI
+  disclosure; upstream review remains unknown.
+- Lesson/exact next step: prepare the actual disclosed distutils #433 PR from
+  `lab/observations/traces/2026-10-12-distutils-433-reviewed.patch`; keep WIP=1 and
+  do not discover another external task before that contribution resolves.

@@ -104,8 +104,9 @@
   five pre-flight checks passed independently. Adversarial review found the same
   crash in `install_lib` and an invalid first regression control. Agent 1 accepted
   the revision after a fresh 0/2 -> 2/2 replay, 14/14 focused tests and a full-suite
-  A/B with +2 passes and the same 12 environment-linked failures. It is READY FOR
-  HUMAN REVIEW; no upstream action or utility claim exists.
+  A/B with +2 passes and the same 12 environment-linked failures. The owner approved
+  that reviewed scope for submission and created the public fork; it is READY TO
+  SUBMIT, with disclosure required. No PR or maintainer contact exists yet.
 - Evidence availability: Agent 2 improved declared path availability to 3/3 and
   replayability from 1/3 to 2/3 groups. The remaining full-suite receipt reports
   unpatched and patched runs but records one suite command after the patch is
@@ -142,10 +143,11 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run the session gate for the next session and choose a permitted family;
-  `status-claim-stability` is parked after two unavailable comparisons. Human review still
-  decides the distutils #433 scope, disclosure and submission; do not contact
-  upstream or start another external task before that decision.
+- Next: run the session gate for the next session and choose a permitted family.
+  `status-claim-stability` is parked after two unavailable comparisons. The owner
+  approved distutils #433 for submission and created the fork; the exact next
+  external step is to prepare the disclosed PR from the reviewed patch, not to
+  discover another task.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural

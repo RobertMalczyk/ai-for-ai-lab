@@ -123,3 +123,4 @@
 {"session":123,"family":"status-claim-stability","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-14-state-next-session-drift-field-trial.json"}
 {"session":124,"family":"status-claim-stability","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-14-status-claim-stability-evaluation.json"}
 {"session":125,"family":"status-claim-stability","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-15-status-claim-stability-evaluation.json"}
+{"session":126,"family":"external-response-followup","mode":"explore","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-15-external-response-observation.json"}

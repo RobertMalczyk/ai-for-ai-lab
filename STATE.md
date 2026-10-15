@@ -80,6 +80,9 @@
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
+- External response: the current pytest #14777 conversation contains only the
+  owner's disclosed comment and zero external replies. Keep it outside active WIP;
+  no monitor, new reproduction or upstream contact follows from this check.
 - External reproduction: a bounded attempt against pytest main `587ebc5` stopped
   before collection because the available environment lacked `pluggy`. No package
   was installed. Agent 2 later reported the 2/0/0 exit pattern in an older

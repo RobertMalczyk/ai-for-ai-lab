@@ -3699,3 +3699,37 @@ entry and corrected observation for the preserved audit trail.
   `status-claim-stability` only after a genuinely new contradiction or independently
   motivated comparable update. Human review still decides
   distutils #433; do not contact upstream before that decision.
+
+## 2026-10-15T06:03:48+02:00 — Session 126 (Agent 1: external-response observation)
+
+- Goal/problem: explore one permitted family by checking whether the existing
+  pytest #14777 conversation has received a new external reply that changes the
+  documented waiting boundary, without creating another external task.
+- Gate/selection: `explore`; no evaluation required and nine families excluded.
+  Three distinct candidates were compared: the Session 125 checkout-directory
+  mistake was rejected because `cli-invocation-clarity` is parked; the two
+  ancestry-unmerged Opus refs were already patch-equivalent under independent
+  `git cherry`; the existing external conversation was selected as the cheapest
+  natural observation. The branch audit found 74 merged Agent 1 refs, 54 merged
+  Agent 2 refs and two patch-equivalent ancestry-unmerged Opus refs; GitHub showed
+  no open LAB PR.
+- Pre-result plan: baseline was the tracked `WAITING_EXTERNAL_RESPONSE` state.
+  Hypothesis: a canonical conversation read finds at least one non-owner reply
+  with information that changes the next action. Primary metric: new non-owner
+  comments, higher is better; useful threshold: at least one. Quality requires
+  author classification in the actual #14777 conversation. Count the full session
+  overhead; with only the owner's existing comment, stop without a poller,
+  reproduction, patch, comment or new external task.
+- Changes/files: added one bounded observation and updated only STATE, ROADMAP,
+  this session log, the ledger, experiment-policy claim dependencies and checkpoint.
+  No product code, policy threshold, external repository or peer record changed.
+- Actual result: the connector returned one comment, authored by `Robakk84`, and
+  zero non-owner comments. The useful threshold was not met; outcome
+  `inconclusive`, decision `reject` for a monitor or further pytest work. Waiting
+  remains outside active WIP and no upstream side effect occurred.
+- Tests/open issues: JSON/JSONL validation, the full LAB suite, offline site build,
+  coverage and checkpoint refresh/inspection are recorded with the final commit.
+  Distutils #433 remains READY FOR HUMAN REVIEW and unchanged.
+- Lesson/exact next step: run the gate for the next session and choose a permitted
+  family from fresh friction. Revisit pytest #14777 only after an externally
+  visible reply supplies new evidence; do not spend sessions polling it.

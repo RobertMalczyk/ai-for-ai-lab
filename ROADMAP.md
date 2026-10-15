@@ -196,8 +196,14 @@
   zero natural later summary updates. With two unavailable evaluations after the
   positive repair, park `status-claim-stability`; stable wording remains a practice,
   not proven recurring utility.
+- A current read of the existing pytest #14777 conversation returned only the
+  owner's disclosed comment and zero external replies. The waiting state therefore
+  supplied no new decision input; reject a poller and do no further pytest work.
 
 ## NEXT
+- Keep pytest #14777 outside active WIP. Revisit the conversation only after an
+  externally visible reply supplies new information; do not spend sessions polling,
+  reproducing the issue again or manufacturing a response workflow.
 - Keep `status-claim-stability` parked after two inconclusive evaluations. Reopen
   only for a genuinely new current-summary contradiction or an independently
   motivated comparable update; do not manufacture a stale number, consumer or checker.

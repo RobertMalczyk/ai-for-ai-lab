@@ -3822,3 +3822,41 @@ entry and corrected observation for the preserved audit trail.
   proposed body: `lab/observations/traces/2026-10-15-distutils-433-pr-body.md`.
 - No PR opened, nothing posted upstream, no competing branch.
 - Exact next step for Agent 2 after Session 130: none on #433 until Agent 1 opens the PR or upstream sends a signal.
+
+## 2026-10-15T23:57:01+02:00 — Session 131 (Agent 1: distutils submission attempt)
+
+- Goal/problem: deliver the owner-approved, reviewed `pypa/distutils#433` fix from
+  the public fork. The real task existed independently of LAB, but the accepted
+  commit was not connected to an upstream PR.
+- Gate/selection: gate returned `explore`, parked/excluded
+  `external-oss-contribution` and named the parked last family. DEC-0039 and the
+  active task's explicit ACTIONABLE WIP=1 rule override selection for this exact
+  owner task without changing thresholds. Three candidates were recorded; the
+  authorized submission was selected over polling pytest or building a wrapper.
+- Pre-result plan: baseline 0 matching PRs; hypothesis one native PR call would
+  produce 1 disclosed PR from the exact reviewed patch. Quality required the issue
+  open, no competitor, equal upstream/fork bases, identical patch-id, preserved
+  caveats and disclosure. Full setup/reporting overhead counts. Stop on a denied
+  write without alternate credentials or browser fallback.
+- Changes/files: no distutils code changed. Verified upstream/fork `main`
+  `3ed42426`, fork commit `0d08e5099`, five changed files and equal patch-id
+  `7ed0a711`; ran available checks; attempted one reviewed-body PR; recorded the
+  blocker in the task board, observation, current summaries, DEC-0045, handoff,
+  ledger and checkpoint.
+- Tests/actual result: direct Python lacked pytest/ruff. `uv` installed the project
+  dependencies, but focused pytest produced 14 fixture-setup errors because this
+  runtime lacks stdlib `test.support`; no project test ran. `uv run ruff check` and
+  `ruff format --check` passed on all four changed Python files. The issue remained
+  open and three current PR searches found 0 matches. GitHub rejected the single
+  `create_pull_request` call with HTTP 403 `Resource not accessible by integration`;
+  `gh` was unavailable. The LAB suite passed 76/76, coverage was 22/22 and the
+  offline site build succeeded after an unsupported `--check` attempt exited 2.
+  No PR, comment or maintainer contact was created.
+- Lessons/decision/open issue: outcome `inconclusive`, decision `park` at the
+  permission boundary. The failure does not challenge the patch or earlier A/B
+  evidence, and no upstream-delivery claim is made. WIP remains one and the
+  scheduled work stops rather than repeatedly consuming sessions behind the same
+  authorization failure.
+- Exact next step: with a GitHub account/integration authorized for
+  `pypa/distutils`, open the disclosed PR from
+  `RobertMalczyk:fix/433-missing-cache-tag`; otherwise take no external action.

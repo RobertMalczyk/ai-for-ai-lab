@@ -340,7 +340,7 @@
   },
   {
     "id": "external-oss-contribution",
-    "text": "The owner-directed WIP=1 distutils contribution passed builder/reviewer reconciliation and human approval, and its public fork exists at the reviewed base; it is ready to submit with AI disclosure, but no PR or upstream acceptance exists yet.",
+    "text": "The owner-directed WIP=1 distutils contribution passed builder/reviewer reconciliation and human approval, and its reviewed fork commit remains ready; one upstream PR attempt was rejected with HTTP 403, so no PR, maintainer contact or upstream acceptance exists.",
     "evidence": [
       "lab/tasks/EXTERNAL.md",
       "lab/observations/2026-10-12-distutils-433-build.json",
@@ -352,6 +352,7 @@
       "lab/observations/traces/2026-10-12-distutils-433-review-response.txt",
       "lab/observations/2026-10-15-distutils-human-approval-sync.json",
       "lab/reports/2026-10-15-distutils-human-approval-sync-field-trial.json",
+      "lab/observations/2026-10-15-distutils-433-submit-attempt.json",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

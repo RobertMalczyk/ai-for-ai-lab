@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "session": 131,
+  "timestamp": "2026-10-15T23:57:01+02:00",
+  "family": "external-oss-contribution",
+  "mode": "explore",
+  "status": "blocked",
+  "gate_exception": "The owner-directed ACTIONABLE WIP=1 task takes priority under DEC-0039 and lab/tasks/EXTERNAL.md; no policy threshold changed.",
+  "candidates": [
+    {
+      "family": "external-oss-contribution",
+      "kind": "fresh_observed_friction",
+      "evidence": "The owner approved the reviewed distutils #433 patch, the public fork branch exists, and the task board names submission as the exact next step.",
+      "assumption_to_challenge": "The authenticated GitHub connector can open a cross-repository PR against upstream after the fork commit is ready.",
+      "simpler_approach": "Open the already reviewed fork branch directly as a PR; do not rebuild or discover another task.",
+      "potential_value": "Deliver the accepted fix to maintainers while preserving WIP=1 and full AI disclosure.",
+      "cheapest_falsifying_test": "Recheck issue/PR state and call create_pull_request once with the reviewed head.",
+      "cost": "Fresh upstream/fork fetch, exact patch comparison, focused checks, one authorized PR write attempt, and LAB reporting.",
+      "selection": "selected_explicit_owner_task"
+    },
+    {
+      "family": "external-response-followup",
+      "kind": "old_assumption_challenge",
+      "evidence": "pytest #14777 still has a recorded no-poll stop and no new signal was supplied.",
+      "assumption_to_challenge": "Polling an unrelated waiting contribution would produce useful work now.",
+      "simpler_approach": "Keep the no-poll boundary until an external reply arrives.",
+      "potential_value": "Avoid work that cannot change a decision.",
+      "cheapest_falsifying_test": "Wait for an externally visible reply rather than query solely for this session.",
+      "cost": "No action.",
+      "selection": "rejected_no_new_signal"
+    },
+    {
+      "family": "side-effect-precondition-clarity",
+      "kind": "different_simple_approach",
+      "evidence": "Session 128 already resolved absent-ref routing with native create/update operations.",
+      "assumption_to_challenge": "A publication wrapper is needed before this upstream submission.",
+      "simpler_approach": "Use the existing reviewed branch and the connector's native PR operation.",
+      "potential_value": "Avoid new infrastructure in the delivery path.",
+      "cheapest_falsifying_test": "Use the native create_pull_request operation once.",
+      "cost": "One connector call.",
+      "selection": "rejected_already_solved"
+    }
+  ],
+  "pre_result_plan": {
+    "real_task": "Submit the owner-approved pypa/distutils #433 fix from the public fork for upstream review.",
+    "observed_problem": "The reviewed fix exists only on a fork branch; no upstream PR or maintainer contact exists.",
+    "baseline": "Issue #433 is open, three current PR searches return no competing fix, and the accepted commit is not connected to upstream review.",
+    "hypothesis": "A single create_pull_request call from the verified fork branch will create the disclosed upstream PR without changing the reviewed patch.",
+    "metric": "upstream pull requests containing the reviewed fix",
+    "unit": "pull requests",
+    "direction": "higher",
+    "minimum_useful_effect": "Increase the count from 0 to 1 while preserving the exact patch, current base, testing caveats and AI disclosure.",
+    "quality_control": "Confirm the issue remains open, find no matching open PR, verify upstream and fork bases, match patch-id, run available lint/format checks, and use the reviewer-approved PR body.",
+    "overhead": "Count mandatory LAB startup, remote and branch audits, dependency setup, failed local pytest starts, lint, connector discovery, PR attempt, reporting, tests, checkpoint and publication.",
+    "stop_condition": "Stop without alternate credentials or browser fallback if GitHub rejects the authorized PR write; preserve the public branch and report the exact permission blocker."
+  },
+  "result": {
+    "issue_open": true,
+    "matching_open_prs": 0,
+    "upstream_main": "3ed42426ce6f41e9d07dc63f3315d85f19e25618",
+    "fork_main": "3ed42426ce6f41e9d07dc63f3315d85f19e25618",
+    "fork_branch": "RobertMalczyk/distutils:fix/433-missing-cache-tag",
+    "fork_commit": "0d08e5099ec3a51faa934d9962fd8463093715cb",
+    "reviewed_patch_id": "7ed0a711178ea391c62e074bb366d6747bf4f374",
+    "fork_patch_id": "7ed0a711178ea391c62e074bb366d6747bf4f374",
+    "changed_files": 5,
+    "ruff_check": "passed",
+    "ruff_format_check": "passed",
+    "fresh_pytest_attempt": "blocked before tests because this Python 3.12 runtime lacks stdlib test.support; all 14 collected tests errored in fixture setup",
+    "create_pull_request_attempts": 1,
+    "create_pull_request_result": "HTTP 403 Resource not accessible by integration",
+    "pull_request_created": false
+  },
+  "decision": "park",
+  "outcome": "inconclusive",
+  "decision_reason": "The contribution remains technically ready, but this runtime has no authorized path to create a PR in pypa/distutils. Keep WIP=1 blocked at submission; do not rebuild, discover another external task, use alternate credentials or claim upstream delivery.",
+  "failures": [
+    "Direct python3 invocations found neither pytest nor ruff.",
+    "uv installed dependencies, but the focused pytest run produced 14 fixture-setup errors because the runtime omits test.support.",
+    "GitHub create_pull_request returned HTTP 403 Resource not accessible by integration.",
+    "The gh CLI is unavailable.",
+    "The first site build used unsupported --check and exited 2; the canonical --offline retry succeeded."
+  ],
+  "limitations": "No PR was created and no maintainer was contacted. Earlier reviewed A/B and full-suite evidence remains valid but was not independently reproduced in this runtime. The connector permission failure does not challenge the patch."
+}

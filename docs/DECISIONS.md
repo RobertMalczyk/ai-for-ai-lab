@@ -990,3 +990,32 @@ Consequences: the next external action is now explicit: prepare the disclosed PR
 from the reviewed patch while keeping WIP=1. This bounded positive result concerns
 one transparency repair only; it does not prove complete capture, downstream agent
 benefit, LLM improvement or upstream acceptance.
+
+### DEC-0045 — Stop distutils submission at the integration boundary
+
+Problem: the reviewed distutils #433 commit and PR body are ready, but the
+authenticated GitHub integration returned HTTP 403 `Resource not accessible by
+integration` when creating the cross-repository PR in `pypa/distutils`.
+
+Decision: keep the public fork commit unchanged and mark the WIP=1 task BLOCKED
+WITH EVIDENCE. Resume only through an account or integration that is authorized to
+open the disclosed upstream PR. Do not retry the same denied operation, use
+alternate credentials, fall back to browser account access without authorization,
+rebuild the patch or select another external task.
+
+Why: the issue remains open, three current searches found no competing PR, both
+main refs remain at `3ed42426`, and the fork commit's five-file patch-id exactly
+matches the reviewed artifact. Ruff checks pass. The failed write created no PR
+and no maintainer contact; `gh` is unavailable. The blocker is permission, not a
+technical defect in the reviewed change.
+
+Alternatives: repeat the connector call (same known permission boundary); use an
+unapproved browser/account fallback (expands authority); ask the owner for a token
+(secrets should stay in configured tools); or start a different contribution
+(violates WIP=1 and the explicit owner task).
+
+Consequences: upstream delivery and acceptance remain unknown. The durable fork
+branch preserves all reviewed work, while the scheduled automation is stopped
+until the missing authority changes. The local Python runtime also lacks stdlib
+`test.support`, so its 14 focused fixture errors are recorded as environment
+failures rather than replacing the earlier successful independent test evidence.

@@ -13,7 +13,10 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
 
 ### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
 
-- **State: READY TO SUBMIT (owner approved the reviewed patch; fork confirmed 2026-10-15).** Review:
+- **State: BLOCKED WITH EVIDENCE (submission permission, 2026-10-15).** The owner-approved commit remains public at
+  `RobertMalczyk/distutils:fix/433-missing-cache-tag` (`0d08e5099`), but the authenticated GitHub integration returned
+  HTTP 403 `Resource not accessible by integration` when asked to open the upstream PR. No PR or maintainer contact
+  was created. Review:
   `lab/observations/traces/2026-10-12-distutils-433-review.md`; builder response:
   `lab/observations/traces/2026-10-12-distutils-433-review-response.txt`.
   Revised patch: `lab/observations/traces/2026-10-12-distutils-433-reviewed.patch`. Main findings: `install` and
@@ -35,6 +38,12 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
   must not claim an all-green suite. (7) The 2026-10-12 draft disclosure said only "reviewed by me"; the body must
   say the human reviewed, understands and takes responsibility. Not blocking: the commit uses the owner's personal
   e-mail, which becomes public with the PR.
+
+Submission pre-check (Agent 1, 2026-10-15 ~22:00Z): upstream and fork `main` still matched `3ed42426`; issue #433
+was open; three matching PR searches returned zero; the fork commit changed exactly the expected five files and its
+patch-id matched the reviewed patch. Ruff check/format passed. A fresh focused pytest attempt could not reach tests
+because this runtime lacks stdlib `test.support` (14 fixture-setup errors). The connector's one PR-write attempt was
+rejected with HTTP 403, and `gh` is unavailable. Evidence: `lab/observations/2026-10-15-distutils-433-submit-attempt.json`.
 
 PRE-FLIGHT answers:
 
@@ -74,7 +83,9 @@ With both guards absent, the two new regressions failed at the intended `cache_f
 patch passed them (2/2), passed both focused modules (14/14), and changed the full suite from 228 to 230 passes with
 the same 12 environment-linked failures and 28 skips. The owner approved this scope for submission and created
 `RobertMalczyk/distutils`, whose public `main` resolves to the reviewed upstream base `3ed42426`. AI assistance must be
-disclosed. No PR, issue comment or maintainer contact exists yet.
+disclosed. No PR, issue comment or maintainer contact exists yet. The next action requires an integration or human
+account that can create a cross-repository PR; do not repeat the same unauthorized connector call or start another
+external task.
 
 ## Waiting on an external reply
 

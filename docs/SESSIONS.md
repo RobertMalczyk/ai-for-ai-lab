@@ -3729,7 +3729,10 @@ entry and corrected observation for the preserved audit trail.
   remains outside active WIP and no upstream side effect occurred.
 - Tests/open issues: JSON/JSONL validation, the full LAB suite, offline site build,
   coverage and checkpoint refresh/inspection are recorded with the final commit.
-  Distutils #433 remains READY FOR HUMAN REVIEW and unchanged.
+  The first publication attempt used `update_ref` for a branch that did not exist
+  and returned HTTP 422 without changing a ref; the dedicated `create_branch`
+  operation then created it at the verified commit. Distutils #433 remains READY
+  FOR HUMAN REVIEW and unchanged.
 - Lesson/exact next step: run the gate for the next session and choose a permitted
   family from fresh friction. Revisit pytest #14777 only after an externally
   visible reply supplies new evidence; do not spend sessions polling it.

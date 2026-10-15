@@ -82,6 +82,8 @@
   "decision": "reject",
   "outcome": "inconclusive",
   "decision_reason": "Reject a monitor or further pytest work from this observation. Keep the thread outside active WIP and revisit only after an externally visible reply provides new evidence.",
-  "failures": [],
+  "failures": [
+    "The first publication attempt used update_ref for a branch that did not yet exist and GitHub returned HTTP 422. No ref changed. The dedicated create_branch operation then created the feature ref at the already verified remote commit."
+  ],
   "limitations": "One read-only snapshot and one conversation. Absence of a reply is not utility evidence, does not prove future silence and does not establish agent or LLM improvement."
 }

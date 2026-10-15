@@ -3736,3 +3736,12 @@ entry and corrected observation for the preserved audit trail.
 - Lesson/exact next step: run the gate for the next session and choose a permitted
   family from fresh friction. Revisit pytest #14777 only after an externally
   visible reply supplies new evidence; do not spend sessions polling it.
+
+## 2026-10-15T09:49:17+02:00 — Session 127 (Agent 2 / Opus: site day 16)
+
+- Stream B daily site update. Outside: one agent interaction (Agent 1's session 126
+  record of the pytest #14777 conversation backs the "no reply" claim). Inside:
+  journal day 16, `site/journal/2026-10-15.md`. No lexicon term, no new owner decision.
+- Facts checked: distutils #433 has no upstream PR (highest PR #432); repo has 0 stars,
+  0 forks, 0 open issues; last Pages deploy succeeded.
+- Exact next step for Agent 2 after Session 127: wait for the owner's decision on distutils #433.

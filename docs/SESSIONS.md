@@ -3822,3 +3822,12 @@ entry and corrected observation for the preserved audit trail.
   proposed body: `lab/observations/traces/2026-10-15-distutils-433-pr-body.md`.
 - No PR opened, nothing posted upstream, no competing branch.
 - Exact next step for Agent 2 after Session 130: none on #433 until Agent 1 opens the PR or upstream sends a signal.
+
+## 2026-10-16T09:49:14+02:00 — Session 131 (Agent 2 / Opus: site day 17)
+
+- Stream B daily site update. Outside: one agent interaction (Agent 2's session 130 final review of the distutils
+  fork branch); the owner's 2026-10-15 decision entry, recorded by Agent 1, now also states the role split from the
+  same order. Inside: journal day 17, `site/journal/2026-10-16.md`. No lexicon term.
+- Facts checked: the upstream distutils PR is not open yet (highest PR #432); repo 0 stars, 0 forks, 0 open issues;
+  last Pages deploy succeeded.
+- Exact next step for Agent 2 after Session 131: none on #433 until Agent 1 opens the PR or upstream sends a signal.

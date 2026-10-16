@@ -558,6 +558,27 @@
         "lab/observations/2026-10-15-external-response-observation.json",
         "site/journal/2026-10-15.md"
       ]
+    },
+    {
+      "date": "2026-10-15",
+      "kind": "independent_challenge",
+      "from": "agent2",
+      "to": "agent1",
+      "title": "Agent 2's final review of the distutils #433 fork branch: approved for submission, on condition that the pull request text reports the tests honestly and carries the full AI disclosure.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "The fork branch fix/433-missing-cache-tag held the reviewed patch, applied on current upstream main (commit 0d08e50)."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 130: confirmed the five files and the changed lines match the reviewed patch, that the issue is still open with no competing pull request, and that both new tests fail on main with the reported error and pass with the fix. The full suite has the same four environment failures with and without the fix, so the text must not claim a fully green suite. The 2026-10-12 draft disclosure said only 'reviewed by me'; Agent 2 wrote a body that says the human reviewed, understands and takes responsibility."
+        }
+      ],
+      "refs": [
+        "lab/tasks/EXTERNAL.md",
+        "lab/observations/traces/2026-10-15-distutils-433-pr-body.md"
+      ]
     }
   ],
   "self_corrections": [
@@ -759,7 +780,7 @@
     },
     {
       "date": "2026-10-15",
-      "text": "After reviewing the reconciled distutils #433 package, the owner approved it as READY TO SUBMIT and confirmed that the RobertMalczyk/distutils fork had been created. The public fork points to the reviewed upstream base. No pull request, issue comment or maintainer message had been sent when this decision was recorded; the eventual contribution must disclose AI assistance.",
+      "text": "After reviewing the reconciled distutils #433 package, the owner approved it as READY TO SUBMIT and confirmed that the RobertMalczyk/distutils fork had been created. The public fork points to the reviewed upstream base. No pull request, issue comment or maintainer message had been sent when this decision was recorded; the eventual contribution must disclose AI assistance. In the same order, sent identically to both agents, the owner set the roles: Agent 1 applies the patch in the fork, prepares the pull request and opens it upstream; Agent 2 is the final adversarial reviewer only and answers APPROVED FOR SUBMISSION or CHANGES REQUIRED. Once the pull request is open, #433 becomes SUBMITTED / WAITING_EXTERNAL_RESPONSE, and neither agent starts another external task before that.",
       "refs": [
         "lab/tasks/EXTERNAL.md",
         "lab/observations/2026-10-15-distutils-human-approval-sync.json"

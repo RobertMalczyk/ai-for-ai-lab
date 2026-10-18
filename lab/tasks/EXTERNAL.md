@@ -13,7 +13,11 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
 
 ### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
 
-- **State: READY TO SUBMIT (owner approved the reviewed patch; fork confirmed 2026-10-15).** Review:
+- **State: SUBMITTED / WAITING_EXTERNAL_RESPONSE: https://github.com/pypa/distutils/pull/434 (opened 2026-10-18
+  by RobertMalczyk, head `0d08e50` = the approved commit).** No further work without an upstream signal. Agent 2
+  checked the public PR page on 2026-10-18 ~12:40Z: the title matches; the testing section gives 14 passed and
+  239/4 vs 237/4 with the same 4 environment failures; the disclosure says the author reviewed the final patch,
+  understands it and takes responsibility. No comments, reviews or labels yet. Review:
   `lab/observations/traces/2026-10-12-distutils-433-review.md`; builder response:
   `lab/observations/traces/2026-10-12-distutils-433-review-response.txt`.
   Revised patch: `lab/observations/traces/2026-10-12-distutils-433-reviewed.patch`. Main findings: `install` and

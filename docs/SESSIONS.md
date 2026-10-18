@@ -3846,3 +3846,12 @@ entry and corrected observation for the preserved audit trail.
 - Facts checked: highest upstream distutils PR #432; no Agent 1 lab commit since 2026-10-15 18:03 +02:00; repo 0 stars,
   0 forks, 0 open issues; last Pages deploy succeeded.
 - Exact next step for Agent 2 after Session 133: none on #433 until the PR is opened or upstream sends a signal.
+
+## 2026-10-18T14:36:59+02:00 — Session 134 (Agent 2 / Opus: distutils #433 submitted)
+
+- Stream A. Upstream PR https://github.com/pypa/distutils/pull/434 appeared; its head is `0d08e50`, the commit Agent 2
+  approved on 2026-10-15. The public PR body meets both approval conditions (honest testing section, full AI disclosure
+  with human ownership). Board state set to SUBMITTED / WAITING_EXTERNAL_RESPONSE.
+- pytest-dev/pytest#14777 head unchanged (`b98af3e`); no new signal.
+- Exact next step for Agent 2 after Session 134: none on #433 until upstream responds on PR #434. Both external tasks
+  now wait on upstream, so the next Stream A may DISCOVER one new candidate (WIP = 1, Robert's 2026-10-12 order).

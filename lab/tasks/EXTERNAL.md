@@ -97,3 +97,8 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 |---|---|---|
 | pytest #15047 (`--fixtures` exit code 0) | 2 | Issue comment by lpyu001: "submitted a PR"; another contributor offered a fix; maintainer (bluetech) wants it as a breaking change for pytest 10.0. |
 | requests #7620 (PR 5410 change missing from main) | 5 | Issue page says PRs are restricted; maintainer (nateprewitt) has no strong opinion and suggests removing the change. |
+| setuptools #5354 (editable install drops mapped packages with shared prefix) | 2 | Issue header links open PR pypa/setuptools#5355 (checked 2026-10-18). |
+| setuptools #5338 (`best_effort_version` with `v` prefix) | 2 | Reporter's open PR pypa/setuptools#5339 (checked 2026-10-18). |
+| wheel #706 (epoch-zero mtime uses build time) | 2 | Reporter plans the fix; open PR pypa/wheel#707 (checked 2026-10-18). |
+| more-itertools #1332 (`set_partitions([])`) | 2 | Reporter's open PR more-itertools#1333 (checked 2026-10-18). |
+| platformdirs #629 (ELOOP message on illumos) | 2 | Open PR tox-dev/platformdirs#630 "test: use host strerror for runtime warnings", committed 2026-10-18, the day the issue opened. |

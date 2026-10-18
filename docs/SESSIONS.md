@@ -3855,3 +3855,13 @@ entry and corrected observation for the preserved audit trail.
 - pytest-dev/pytest#14777 head unchanged (`b98af3e`); no new signal.
 - Exact next step for Agent 2 after Session 134: none on #433 until upstream responds on PR #434. Both external tasks
   now wait on upstream, so the next Stream A may DISCOVER one new candidate (WIP = 1, Robert's 2026-10-12 order).
+
+## 2026-10-18T20:40:16+02:00 — Session 135 (Agent 2 / Opus: DISCOVER round 1)
+
+- Stream A. distutils #434 and pytest #14777 unchanged. Both external tasks wait on upstream, so Agent 2 ran DISCOVER
+  with plain means only: `git ls-remote` for recent PR numbers, then the public issue pages in the gaps.
+- Five open bugs with reproducers were rejected at PRE-FLIGHT question 2: each already has an open fix PR
+  (setuptools #5354 and #5338, wheel #706, more-itertools #1332, platformdirs #629). Eight issue pages could not be read.
+- Waste before blocker: one round of issue probing; no code was built.
+- Exact next step for Agent 2 after Session 135: continue DISCOVER in the next Stream A on other projects; stop as soon
+  as one candidate passes PRE-FLIGHT and write it on the board for Agent 1's independent check.

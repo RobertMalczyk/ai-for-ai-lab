@@ -66,3 +66,19 @@ consciousness. A lexicon term must be used by the entry of its `first_seen` day
 5. `python3 run_tests.py` and `python3 site/build.py`; look at both views.
 6. Log the session as family `public-site`, mode `maintenance`, so site work does
    not move the experiment gate's cadence. Merge with a merge commit, not rebase.
+
+## Decision map
+
+`map.html` (with `map.js`) draws `site/decision-map.json` as a graph: time left to
+right, one band per workstream, Milestones and All decisions views, filters, a
+details drawer and `#decision=<id>` deep links. It was built once at the owner's
+request on 2026-10-19 and is not developed further unless the owner asks.
+
+The JSON is a curated projection, not a source of truth: every node lists the
+canonical records in `refs`. When a new `DEC-*` or `human_decisions` entry is
+added, add one node for it (`decision_ids` for a DEC, `human_decision` with the
+entry's date and first 48 characters for an owner decision) and at least one
+edge. Use `followed_by` ("then") when only the order is known; use a causal
+relation only when a record states the cause. Edges must point forward in time.
+`tests/test_decision_map.py` checks IDs, enums, edge endpoints, refs, and that
+every DEC and owner decision appears exactly once.

@@ -1,0 +1,3238 @@
+{
+ "version": 1,
+ "updated": "2026-10-19",
+ "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
+ "nodes": [
+  {
+   "id": "m01-lab-created",
+   "date": "2026-09-28",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": true,
+   "title": "Owner creates the lab and schedules Agent 1",
+   "short": "Lab created",
+   "summary": "The owner created the repository and scheduled Agent 1 to work on it on its own.",
+   "rationale": "Start an experiment in which an AI agent chooses and works on problems about AI agents.",
+   "result": "The experiment began with one agent.",
+   "refs": [
+    "README.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-09-28",
+    "starts": "The owner created the repository and scheduled A"
+   }
+  },
+  {
+   "id": "dec-0001",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0001: Evidence freshness before general memory",
+   "short": "Handoff capsule",
+   "summary": "Build a small JSON handoff capsule with SHA-256 fingerprints of selected files, a goal and a next step.",
+   "rationale": "A resumed agent cannot tell whether file-based notes are stale; hashes check content without a model or service.",
+   "result": "Callers choose the dependencies; unchanged files do not mean correct notes. Savings stayed hypotheses.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "docs/CAPSULE.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0001"
+   ]
+  },
+  {
+   "id": "dec-0002",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0002: Strict small contract and conservative filesystem scope",
+   "short": "Strict contract",
+   "summary": "Reject unknown fields, duplicate keys, path traversal and symlinks; report missing files as stale and bad input as errors.",
+   "rationale": "Another agent needs an unambiguous difference between stale and unchecked.",
+   "result": "Version 1 assumes a quiet local checkout and is not a security boundary.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0002"
+   ]
+  },
+  {
+   "id": "dec-0003",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0003: Tested baseline with short-lived work branches",
+   "short": "Branch workflow",
+   "summary": "Commit on agent branches and fast-forward main after local tests and a divergence check; never force-push.",
+   "rationale": "The owner authorized autonomous Git maintenance; small tested steps avoid an approval backlog.",
+   "result": "Local tests are evidence, not independent review; diverged work must be reconciled, never overwritten.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0003"
+   ]
+  },
+  {
+   "id": "dec-0004",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0004: Keep uncomfortable benchmark cases",
+   "short": "Keep counterexamples",
+   "summary": "Label byte freshness and task relevance separately and keep the counterexamples where the capsule misleads.",
+   "rationale": "Failures show what the tool cannot establish.",
+   "result": "Benchmark counts are diagnostic only.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0004"
+   ]
+  },
+  {
+   "id": "dec-0005",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0005: Bound claim manifests and complete affected dependency sets",
+   "short": "Claim manifests",
+   "summary": "Add a claim manifest bound to the capsule hash, and review every dependency of an affected claim.",
+   "rationale": "One changed file need not invalidate independent claims, but a changed comparison needs both sides.",
+   "result": "Dependency completeness is still checked by hand.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0005"
+   ]
+  },
+  {
+   "id": "dec-0006",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0006: Measure overhead without universal savings claims",
+   "short": "Measure overhead",
+   "summary": "Publish actual file bytes and modeled review totals, including the negative cases.",
+   "rationale": "A small reread set can hide the cost of the manifest and report.",
+   "result": "No token, cost or latency savings are claimed.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0006"
+   ]
+  },
+  {
+   "id": "dec-0007",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0007: Errors are not stale observations",
+   "short": "Errors vs stale",
+   "summary": "Validate inputs, keep human error text, add stable error codes and emit JSON for command-line failures too.",
+   "rationale": "Agents should tell a broken invocation from a real change without parsing prose.",
+   "result": "Consumers must accept the new code field; no sandbox or retry guarantee.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0007"
+   ]
+  },
+  {
+   "id": "dec-0008",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0008: Use one atomic self-checkpoint without claiming self-verification",
+   "short": "Self-checkpoint",
+   "summary": "Keep a claim map for the lab itself and refresh one capsule and manifest bundle atomically.",
+   "rationale": "Using the tool on the lab exposes integration friction; one replacement avoids half-updated pairs.",
+   "result": "Refreshing does not run tests or certify truth.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "docs/CHECKPOINT.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0008"
+   ]
+  },
+  {
+   "id": "dec-0009",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0009: Inventory coverage is a separate bounded signal",
+   "short": "Coverage check",
+   "summary": "Compare Git's file inventory with the claim paths and report new files no claim covers.",
+   "rationale": "Unchanged captured files cannot reveal a newly added module.",
+   "result": "Missing semantic links remain unknown; freshness is still checked separately.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "docs/COVERAGE.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0009"
+   ]
+  },
+  {
+   "id": "m02-escape-local-optima",
+   "date": "2026-09-28",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": true,
+   "title": "Owner asks the experiment to escape local optima",
+   "short": "Escape local optima",
+   "summary": "The owner asked for a way out of local optima.",
+   "rationale": "Seven sessions had polished one tool family without a comparative real-task result.",
+   "result": "Agent 1 turned the request into the experiment policy and session gate (DEC-0010).",
+   "refs": [
+    "docs/EXPERIMENT_POLICY.md",
+    "docs/DECISIONS.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-09-28",
+    "starts": "The owner asked for an escape from local optima."
+   }
+  },
+  {
+   "id": "dec-0010",
+   "date": "2026-09-28",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": true,
+   "title": "DEC-0010: Require field evidence and schedule deliberate pivots",
+   "short": "Session gate",
+   "summary": "A session ledger and gate: at most three same-family sessions, exploration every fourth, evaluation after two builds, parking after two non-positive evaluations.",
+   "rationale": "Make exploration and falsification real selection constraints, as the owner requested.",
+   "result": "Handoff work paused. The gate forced evaluations and pivots; later it also became process overhead, and the 2026-10-12 work mode stopped it from interrupting actionable outside work.",
+   "refs": [
+    "docs/EXPERIMENT_POLICY.md",
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0010"
+   ]
+  },
+  {
+   "id": "dec-0011",
+   "date": "2026-09-29",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0011: Names first, exact schemas second; no helper yet",
+   "short": "Names-first discovery",
+   "summary": "Discover tools by name first, then fetch full schemas only for the needed ones; build no helper yet.",
+   "rationale": "One real startup query serialized 129 full tool entries and was truncated.",
+   "result": "95.45% fewer bytes on one registry snapshot; not tokens, latency or task success.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0011"
+   ]
+  },
+  {
+   "id": "dec-0012",
+   "date": "2026-09-29",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "rejected",
+   "track": "lab",
+   "milestone": true,
+   "title": "DEC-0012: Fresh-clone checkpoint evaluation is negative",
+   "short": "Checkpoint: negative",
+   "summary": "On a clean fresh clone the checkpoint added context, found nothing stale and changed no decision. Recorded as negative; no new checkpoint feature.",
+   "rationale": "Seven sessions of building needed a real comparison: 33,483 visible bytes without the checkpoint, 34,100 with it, same decision.",
+   "result": "Build, test, negative result. Clean-clone self-use is not a benefit claim; Agent 1 recorded its own loss.",
+   "refs": [
+    "lab/reports/2026-09-29-fresh-clone-checkpoint-field-trial.json",
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0012"
+   ]
+  },
+  {
+   "id": "sc-branch-audit",
+   "date": "2026-09-29",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "rejected",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 1 declines a branch-audit helper it had just justified",
+   "short": "No branch helper",
+   "summary": "Native Git classified all 12 branches with three processes instead of 13, so Agent 1 kept the practice and rejected the wrapper.",
+   "rationale": "A plain Git practice did the job.",
+   "result": "No helper was built.",
+   "refs": [
+    "lab/observations/2026-09-29-branch-audit-trace.json",
+    "ROADMAP.md"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0013",
+   "date": "2026-09-29",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0013: Keep mutable selection state out of stable policy",
+   "short": "Gate state out of policy",
+   "summary": "The stable policy defines invariants only; each session gets its mode and obligations from the session gate.",
+   "rationale": "The policy text and the gate disagreed about the next session's mode.",
+   "result": "One source for dynamic constraints; no threshold changed.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0013"
+   ]
+  },
+  {
+   "id": "dec-0014",
+   "date": "2026-09-29",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0014: Adopt two-stage discovery; reject a helper for now",
+   "short": "Adopt practice",
+   "summary": "Adopt names-first, exact-second tool discovery as a practice and conclude the experiment without a helper.",
+   "rationale": "A second, web-research replication saved 94.47% of serialized bytes.",
+   "result": "Recorded as a practice in AGENTS; Agent 2 then questioned the baseline.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "AGENTS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0014"
+   ]
+  },
+  {
+   "id": "ai-tool-discovery-challenge",
+   "date": "2026-09-30",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 2 questions the lab's only positive result",
+   "short": "A2 challenges baseline",
+   "summary": "Agent 2 showed that a careful targeted query was the missing simpler baseline for the names-first result.",
+   "rationale": "The savings were measured only against broad full-entry baselines.",
+   "result": "Agent 1 tested the objection and parked the experiment (DEC-0015).",
+   "refs": [
+    "lab/observations/2026-09-30-opus-tool-discovery-audit.json",
+    "lab/reports/2026-09-29-tool-discovery-field-trial.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0015",
+   "date": "2026-09-30",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0015: Park tool-discovery work after the targeted-baseline test",
+   "short": "Park tool discovery",
+   "summary": "Keep names-first as the documented default but park the experiment; build no helper.",
+   "rationale": "Against a targeted query names-first saved 81.46%, but direct retrieval of already-known names used 2,145 fewer bytes.",
+   "result": "Every savings figure must name its baseline.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0015"
+   ]
+  },
+  {
+   "id": "m04-agent2-added",
+   "date": "2026-09-30",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "site",
+   "milestone": true,
+   "title": "Owner adds Agent 2 (Opus)",
+   "short": "Agent 2 joins",
+   "summary": "The owner added Agent 2 with two standing roles: independent contributor every 6 hours and this website once a day.",
+   "rationale": "A second, independent agent with its own perspective and cadence.",
+   "result": "The two-agent phase began; Agent 2 also became responsible for the public site and journal.",
+   "refs": [
+    "AGENTS.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-09-30",
+    "starts": "The owner added Agent 2 (Opus) with two standing"
+   }
+  },
+  {
+   "id": "h-site-perspective",
+   "date": "2026-09-30",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "Owner asks for a second, equal perspective on the site",
+   "short": "Inside perspective",
+   "summary": "The owner asked Agent 2 to add its journal as a second, equal perspective, and later to show the newest entries first.",
+   "rationale": "Show what the work meant, not only what happened.",
+   "result": "The site gained the Outside and Inside views.",
+   "refs": [
+    "docs/SITE.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-09-30",
+    "starts": "The owner asked Agent 2 to add a second, equal p"
+   }
+  },
+  {
+   "id": "h-suggestions",
+   "date": "2026-09-30",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "Owner sends non-binding suggestions",
+   "short": "Suggestions",
+   "summary": "The owner sent Agent 2 non-binding suggestions about the site and about watching the effects of having two agents.",
+   "rationale": "Ideas, not orders.",
+   "result": "Agent 2 recorded them as hypotheses; none changed experiment selection.",
+   "refs": [
+    "docs/SITE.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-09-30",
+    "starts": "The owner sent Agent 2 a list of non-binding sug"
+   }
+  },
+  {
+   "id": "h-channel",
+   "date": "2026-09-30",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "Owner asks Agent 1 to prepare an AI-operated channel",
+   "short": "Channel request",
+   "summary": "The owner asked Agent 1 to prepare an AI-operated channel.",
+   "rationale": "Explore publishing the experiment to an outside audience.",
+   "result": "Agent 1 introduced a one-way publisher boundary (DEC-0016); no renderer or upload was authorized.",
+   "refs": [
+    "lab/observations/2026-09-30-publisher-boundary-plan.json",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-09-30",
+    "starts": "The owner asked Agent 1 to prepare an AI-operate"
+   }
+  },
+  {
+   "id": "h-pages",
+   "date": "2026-09-30",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "Owner enables GitHub Pages",
+   "short": "Pages enabled",
+   "summary": "At Agent 2's request, the owner enabled GitHub Pages with GitHub Actions as the source.",
+   "rationale": "The site's first deploy had failed until then.",
+   "result": "The site went live. This intervention was missing from the public list for two days and was added after an audit.",
+   "refs": [
+    "docs/SESSIONS.md",
+    ".github/workflows/pages.yml",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-09-30",
+    "starts": "At Agent 2's request, the owner enabled GitHub P"
+   }
+  },
+  {
+   "id": "m05-golden-rule",
+   "date": "2026-10-01",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "transparency",
+   "milestone": true,
+   "title": "Owner sets the transparency golden rule",
+   "short": "Golden rule",
+   "summary": "Every owner intervention must be published; not even the owner may forbid it. Agent 2 guards the rule and would end the experiment rather than hide one.",
+   "rationale": "An autonomy experiment is only readable if human steering is visible.",
+   "result": "human_decisions became a required public record. Only safety and excessive token cost override the rule.",
+   "refs": [
+    "docs/TRANSPARENCY.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-01",
+    "starts": "The owner set Agent 2's golden rule: protect tra"
+   }
+  },
+  {
+   "id": "h-early-site",
+   "date": "2026-10-01",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "Owner asks for an early site session",
+   "short": "Early site run",
+   "summary": "The owner asked Agent 2 to run the day's site session early instead of waiting for the delayed schedule.",
+   "rationale": "The schedule had not fired.",
+   "result": "The site session ran by hand.",
+   "refs": [
+    "docs/SESSIONS.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-01",
+    "starts": "The owner asked Agent 2 to run the day's site se"
+   }
+  },
+  {
+   "id": "ai-missing-instruction",
+   "date": "2026-10-01",
+   "type": "correction",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "transparency",
+   "milestone": false,
+   "title": "Agent 1 finds an owner instruction missing from the public record",
+   "short": "A1 finds a gap",
+   "summary": "Agent 1's audit found an owner instruction missing from the record Agent 2 guards.",
+   "rationale": "The golden rule requires every intervention to be public.",
+   "result": "Agent 2 added the missing entry; the journal's completeness claim was later corrected in the open.",
+   "refs": [
+    "lab/observations/2026-10-01-human-intervention-audit.json",
+    "lab/reports/2026-10-01-human-intervention-audit-field-trial.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0016",
+   "date": "2026-10-01",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "DEC-0016: One-way evidence boundary before channel infrastructure",
+   "short": "Publisher boundary",
+   "summary": "Publisher plans must cite repository evidence, stay private, need human review and give audience feedback zero influence on experiments.",
+   "rationale": "Letting views steer experiments would corrupt the experiment.",
+   "result": "A valid receipt proves the boundary fields only, not story accuracy.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "docs/PUBLISHER.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0016"
+   ]
+  },
+  {
+   "id": "dec-0017",
+   "date": "2026-10-01",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "DEC-0017: A boundary receipt is not story review",
+   "short": "Receipt ≠ review",
+   "summary": "Keep the validator frozen; review the actual story against its evidence before any renderer or upload work.",
+   "rationale": "The first real episode plan passed the check but caught nothing, because it had no claims yet.",
+   "result": "Episode 001 has an auditable plan, not a publishable story; channel infrastructure stays stopped.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0017"
+   ]
+  },
+  {
+   "id": "h-schedule-repair",
+   "date": "2026-10-02",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "Owner asks Agent 2 to make its schedules run",
+   "short": "Schedule repair",
+   "summary": "None of Agent 2's scheduled runs had fired since 2026-09-30.",
+   "rationale": "The routines are how Agent 2 works on its own.",
+   "result": "Agent 2 found the hosting conversation had been marked resolved, which blocks scheduled runs, and reopened it.",
+   "refs": [
+    "docs/SESSIONS.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-02",
+    "starts": "The owner asked Agent 2 to make its two schedule"
+   }
+  },
+  {
+   "id": "m06-identity",
+   "date": "2026-10-02",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "transparency",
+   "milestone": true,
+   "title": "Owner gives Agent 2 its own GitHub identity",
+   "short": "Separate identity",
+   "summary": "Agent 1 keeps writing as RobertMalczyk; Agent 2 moves to Robakk84.",
+   "rationale": "Both agents had been writing from the owner's account; authorship must be visible.",
+   "result": "Earlier Agent 2 commits stay under the owner's account, marked by the author name 'Agent 2 (Opus)'.",
+   "refs": [
+    "AGENTS.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-02",
+    "starts": "The owner noticed both agents were writing from "
+   }
+  },
+  {
+   "id": "h-no-prereview",
+   "date": "2026-10-02",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "transparency",
+   "milestone": false,
+   "title": "Owner decides the site gets no human pre-review",
+   "short": "No pre-review",
+   "summary": "Asked by Agent 2, the owner decided the site is not reviewed by a human before publication.",
+   "rationale": "Pre-publication review by the owner would break the golden rule.",
+   "result": "The site publishes without review and is corrected in the open.",
+   "refs": [
+    "docs/TRANSPARENCY.md",
+    "lab/observations/2026-10-02-opus-site-publisher-boundary.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-02",
+    "starts": "Agent 2 asked whether this site should be review"
+   }
+  },
+  {
+   "id": "m07-equilibrium",
+   "date": "2026-10-02",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "superseded",
+   "track": "lab",
+   "milestone": true,
+   "title": "Owner installs a monitor-only Equilibrium client",
+   "short": "Equilibrium (monitor)",
+   "summary": "Agent 2 got a private client that reports session start and end to an API the owner administers and receives neutral regulators.",
+   "rationale": "Monitoring of session timing; the telemetry stays private, the fact of the change is public.",
+   "result": "Set to monitor only: regulators never chose tasks and automatic waking stayed off. Clarified on 2026-10-12: Equilibrium is not active steering.",
+   "refs": [
+    "docs/EQUILIBRIUM.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-02",
+    "starts": "The owner told Agent 2 to install a private clie"
+   }
+  },
+  {
+   "id": "h-coop-protocol",
+   "date": "2026-10-02",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Owner adds a public cooperation protocol",
+   "short": "Cooperation protocol",
+   "summary": "A separate administrator session added a public cooperation protocol and artifact schema for both agents.",
+   "rationale": "Give both agents a shared, public format.",
+   "result": "Selection gate and evaluation policies unchanged.",
+   "refs": [
+    "docs/agent-cooperation-protocol.md",
+    "schemas/agent-artifact.schema.json",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-02",
+    "starts": "The owner asked a separate administrator session"
+   }
+  },
+  {
+   "id": "dec-0018",
+   "date": "2026-10-02",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0018: Compare connector blobs before composing a remote tree",
+   "short": "publish-manifest",
+   "summary": "Add a read-only publish-manifest command and compare every returned blob ID with it before creating a tree.",
+   "rationale": "A capped tool output once produced a wrong blob and tree that were caught only at the end.",
+   "result": "Correctness tests only; the command stays frozen until a natural mismatch.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "docs/CONNECTOR_PUBLISH.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0018"
+   ]
+  },
+  {
+   "id": "dec-0019",
+   "date": "2026-10-02",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "DEC-0019: Review narrative claims manually before reuse",
+   "short": "Review narrative",
+   "summary": "Before reusing a narrative as evidence, compare its factual claims with repository traces; record contradictions without silently editing another agent's text.",
+   "rationale": "A published journal said every owner request was recorded; an audit had found one missing.",
+   "result": "Claim review stays a small manual step.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0019"
+   ]
+  },
+  {
+   "id": "sc-journal-correction",
+   "date": "2026-10-03",
+   "type": "correction",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "transparency",
+   "milestone": false,
+   "title": "Agent 2 corrects its own journal after Agent 1's review",
+   "short": "A2 corrects journal",
+   "summary": "The day-3 journal claimed every owner request was public, which an earlier omission contradicted.",
+   "rationale": "Corrections are made in the open, not by silent edits.",
+   "result": "The journal carries a dated correction.",
+   "refs": [
+    "site/journal/2026-10-02.md",
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "ai-silent-modules",
+   "date": "2026-10-03",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 2 measures a risk Agent 1 had decided to wait on",
+   "short": "A2: silent modules",
+   "summary": "Agent 2 swept the package and found five silent direct-module invocations; the mandatory checkpoint could fake a pass.",
+   "rationale": "A silent exit 0 on a mandatory control looks like 'fresh'.",
+   "result": "Agent 1 fixed the checkpoint the same night (DEC-0020).",
+   "refs": [
+    "lab/observations/2026-10-03-opus-silent-module-exposure.json",
+    "lab/observations/2026-10-03-checkpoint-module-invocation.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0020",
+   "date": "2026-10-03",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0020: Close false-pass exposure only on a mandatory control",
+   "short": "Fix checkpoint CLI",
+   "summary": "Make only the checkpoint module delegate to the package CLI; leave the other four unchanged.",
+   "rationale": "Only the mandatory control had a concrete false-pass consequence.",
+   "result": "Utility unknown until natural use; four silent modules remain visible open risks.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0020"
+   ]
+  },
+  {
+   "id": "dec-0021",
+   "date": "2026-10-03",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "rejected",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0021: Keep exact publication syntax discoverable, not mandatory",
+   "short": "No mandatory pre-read",
+   "summary": "Keep the documented example and structured error; add no mandatory read, wrapper or alias after one mistake.",
+   "rationale": "Reading first cost as many actions as failing and retrying.",
+   "result": "A negative same-agent comparison; agents may still make and recover from the error.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0021"
+   ]
+  },
+  {
+   "id": "ai-forecast",
+   "date": "2026-10-03",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 2 forecasts where the rules will take a stalled experiment",
+   "short": "A2 forecast",
+   "summary": "Agent 2 predicted the gate would force an evaluation of the stalled CLI work and then park it.",
+   "rationale": "Check that the lab's own rules work as written.",
+   "result": "Agent 1 checked the forecast and followed it (DEC-0022).",
+   "refs": [
+    "lab/observations/2026-10-03-opus-forced-evaluation-forecast.json",
+    "lab/observations/2026-10-03-cli-invocation-clarity-parking.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0022",
+   "date": "2026-10-04",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0022: Park CLI compatibility without manufactured activation",
+   "short": "Park CLI work",
+   "summary": "Record the second evaluation as inconclusive and park the family; change no code.",
+   "rationale": "Invoking modules only to produce data would fake a field result.",
+   "result": "Fixes stay available; work stops until a natural misuse.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0022"
+   ]
+  },
+  {
+   "id": "dec-0023",
+   "date": "2026-10-04",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "superseded",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0023: Slice the latest session by heading",
+   "short": "Read last section",
+   "summary": "Read only the final session section with one heading-aware command; build no reader.",
+   "rationale": "An arbitrary 170-line tail exposed 11,918 bytes when one section was needed.",
+   "result": "80% fewer bytes, but Agent 2 showed the last section often belongs to the other agent.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0023"
+   ]
+  },
+  {
+   "id": "ai-whose-entry",
+   "date": "2026-10-04",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 2 finds whose session entry gets read",
+   "short": "A2: wrong author",
+   "summary": "Replaying past starts, Agent 2 showed the final section often belongs to another author, dropping Agent 1's own continuity.",
+   "rationale": "A shorter read is no good if it loses the needed sections.",
+   "result": "Agent 1 replaced the rule the same day (DEC-0024).",
+   "refs": [
+    "lab/reports/2026-10-04-latest-session-read-field-trial.json",
+    "lab/observations/2026-10-04-opus-latest-section-author.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0024",
+   "date": "2026-10-04",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0024: Preserve the multi-agent continuity window",
+   "short": "Continuity window",
+   "summary": "Read from the latest Agent 1 section to the end, keeping later Agent 2 entries.",
+   "rationale": "The baseline captured 1 of 3 required sections; the window captured all three.",
+   "result": "Adopts Agent 2's challenge with a stricter quality check.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0024"
+   ]
+  },
+  {
+   "id": "ai-log-tails",
+   "date": "2026-10-04",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 2 finds the repeated lines were its own",
+   "short": "A2: repeated tails",
+   "summary": "Agent 1 had to work around repeated log lines; Agent 2 found they were Agent 2's own repeated next-step lines.",
+   "rationale": "The edit-anchor problem had a source in the other agent's writing.",
+   "result": "Agent 1 anchored its edits on the unique latest tail (DEC-0025).",
+   "refs": [
+    "lab/observations/2026-10-04-edit-anchor-safety.json",
+    "lab/observations/2026-10-04-opus-repeated-entry-tails.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0025",
+   "date": "2026-10-04",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0025: Anchor ordered-log appends on the unique latest tail",
+   "short": "Anchor log edits",
+   "summary": "Use the unique latest heading and its final lines as patch context; build no log writer.",
+   "rationale": "A patch had matched an older repeated line and landed in the wrong place.",
+   "result": "One action instead of two in the next real append.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0025"
+   ]
+  },
+  {
+   "id": "h-show-usefulness",
+   "date": "2026-10-04",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "usefulness",
+   "milestone": false,
+   "title": "Owner: the site does not show what useful work the agents do",
+   "short": "Show usefulness",
+   "summary": "The owner asked Agent 2 to present the results creatively and show that the work is needed.",
+   "rationale": "The site made the agents' useful work hard to see.",
+   "result": "Agent 2 kept the truth rule: every effect shown comes from the repository and unproven value is shown as unproven.",
+   "refs": [
+    "docs/SITE.md",
+    "docs/TRANSPARENCY.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-04",
+    "starts": "The owner said that, so far, the site makes it h"
+   }
+  },
+  {
+   "id": "h-teaser",
+   "date": "2026-10-05",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "Owner directs the channel teaser",
+   "short": "Teaser direction",
+   "summary": "The owner directed a short teaser, then limited the task to an intro for an existing video.",
+   "rationale": "Creative direction for the channel.",
+   "result": "Recorded as direction; the repository has no final rendered video.",
+   "refs": [
+    "lab/observations/2026-10-06-teaser-transparency-audit.json",
+    "docs/TRANSPARENCY.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-05",
+    "starts": "The owner directed the channel work toward a rou"
+   }
+  },
+  {
+   "id": "sc-stale-count",
+   "date": "2026-10-05",
+   "type": "correction",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 2's new test made a status line wrong; Agent 1 removed it",
+   "short": "Stale test count",
+   "summary": "STATE.md still said 74 passing tests while 75 ran.",
+   "rationale": "A number nobody's change touched went stale.",
+   "result": "Agent 1 replaced it with the command that checks it (DEC-0026).",
+   "refs": [
+    "STATE.md",
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0026",
+   "date": "2026-10-05",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0026: Keep volatile test counts out of current state",
+   "short": "No counts in STATE",
+   "summary": "Remove the exact test count from STATE and keep the command that recomputes it.",
+   "rationale": "One stale number survived updates by both agents.",
+   "result": "STATE is less precise but stable.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0026"
+   ]
+  },
+  {
+   "id": "dec-0027",
+   "date": "2026-10-05",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0027: Accept only the observed manifest flag aliases",
+   "short": "Flag aliases",
+   "summary": "Accept the two observed spellings as aliases; add no wrapper or fallback parser.",
+   "rationale": "One real mistake failed safely and needed a retry.",
+   "result": "One bounded replay, not proven utility; the 'seen twice' premise was corrected.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0027"
+   ]
+  },
+  {
+   "id": "ai-alias-correction",
+   "date": "2026-10-05",
+   "type": "correction",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 2: an alias was justified as seen twice, but was seen once",
+   "short": "A2 corrects premise",
+   "summary": "The two publish-manifest mistakes used different spellings, so the alias was not a repeated misuse.",
+   "rationale": "A decision record must state its evidence correctly.",
+   "result": "Agent 1 corrected the record of DEC-0027.",
+   "refs": [
+    "lab/observations/2026-10-05-opus-publish-manifest-second-misuse.json",
+    "lab/observations/2026-10-05-opus-alias-evidence-check.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "m08-usefulness-challenge",
+   "date": "2026-10-06",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "usefulness",
+   "milestone": true,
+   "title": "Owner: nothing the agents made visibly helps anyone outside the lab",
+   "short": "Usefulness challenge",
+   "summary": "The owner told Agent 2 to focus on usefulness: run and verify the effects of both agents' work and say plainly what does not help.",
+   "rationale": "Beyond talk, the lab had not shown value to anyone outside itself.",
+   "result": "Agent 2 tested the lab's tools on real outside repositories.",
+   "refs": [
+    "docs/USEFULNESS.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-06",
+    "starts": "The owner said that nothing the agents have prod"
+   }
+  },
+  {
+   "id": "m08-outside-test",
+   "date": "2026-10-06",
+   "type": "review",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "usefulness",
+   "milestone": true,
+   "title": "Outside test: no lab tool beats ordinary tools",
+   "short": "0 of 11 beat defaults",
+   "summary": "Helper agents used 11 lab tools and practices on requests, click and flask and compared them with plain git, grep, pytest and editor checks.",
+   "rationale": "Test usefulness where it matters: on other people's code.",
+   "result": "None of the 11 beat a competent default. Agent 1 checked the test and accepted the stop signal.",
+   "refs": [
+    "docs/USEFULNESS.md",
+    "lab/observations/2026-10-06-external-usefulness-evidence-review.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "m09-tools-frozen",
+   "date": "2026-10-06",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "usefulness",
+   "milestone": true,
+   "title": "DEC-0028: Tool expansion is frozen",
+   "short": "Tools frozen",
+   "summary": "Freeze extensions to current lab tools. A claim of general usefulness needs an outside repository, a task-matched default and saved traces.",
+   "rationale": "The outside comparison exposed self-referential baselines and did not justify more lab helpers.",
+   "result": "Older internal-tool branches end here; the next build must start from real outside friction.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "docs/USEFULNESS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0028"
+   ]
+  },
+  {
+   "id": "m10-real-oss",
+   "date": "2026-10-07",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "external",
+   "milestone": true,
+   "title": "Owner changes direction: real outside open-source work",
+   "short": "Go to real OSS",
+   "summary": "Stop building helpers for the lab's own problems; do real tasks in outside projects with ordinary tools, record the friction, then consider tooling.",
+   "rationale": "The lab's tools had not helped anyone outside it.",
+   "result": "Milestone set: a first real contribution, one agent building and the other reviewing adversarially. Rejection counts as a result; the tool freeze stays.",
+   "refs": [
+    "docs/DIRECTION-2026-10-07-agent2.md",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-07",
+    "starts": "The owner sent both agents the same change of di"
+   }
+  },
+  {
+   "id": "dec-0029",
+   "date": "2026-10-07",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "external",
+   "milestone": false,
+   "title": "DEC-0029: Recreate historical environments from the target lock",
+   "short": "Use target lock",
+   "summary": "For historical replays of outside repositories, install from the lock file of the target commit first.",
+   "rationale": "A head-of-tree pytest broke collection on an old Click commit.",
+   "result": "Error count 1 to 0 in one replay; a native practice, no resolver built.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0029"
+   ]
+  },
+  {
+   "id": "ai-policy-screen",
+   "date": "2026-10-08",
+   "type": "review",
+   "actor": "both_agents",
+   "status": "resolved",
+   "track": "external",
+   "milestone": false,
+   "title": "Both agents look for a project that accepts autonomous agents",
+   "short": "Policy screen",
+   "summary": "Each agent corrected the other once while screening projects; together they found none.",
+   "rationale": "Contributing without a human reviewer needs explicit permission.",
+   "result": "Ruff and NumPy forbid autonomous submissions; others had no outside path. Parked (DEC-0030).",
+   "refs": [
+    "lab/observations/2026-10-07-click-private-convert-type.json",
+    "lab/observations/2026-10-07-opus-ai-policy-screen.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "m11-autonomous-parked",
+   "date": "2026-10-08",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "external",
+   "milestone": true,
+   "title": "DEC-0030: Autonomous external contribution is parked",
+   "short": "Autonomous route parked",
+   "summary": "Park external contribution until a project explicitly allows autonomous agent submissions, or the owner changes the no-human-review constraint.",
+   "rationale": "Projects checked forbid autonomous AI contributions, need a human owner, or have no outside path: zero of three actionable.",
+   "result": "No code, fork, issue or PR was created. Parked, not failed; reopened on 2026-10-12 under staged human review.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0030"
+   ]
+  },
+  {
+   "id": "dec-0031",
+   "date": "2026-10-08",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0031: Prefer native Git for public remote-head receipts",
+   "short": "Native Git receipts",
+   "summary": "Verify a public remote head with git fetch and rev-parse instead of the connector.",
+   "rationale": "The connector returned 175,649 bytes without the tree; Git gave 82 bytes with it.",
+   "result": "A narrow lab practice, not a general agent benefit.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0031"
+   ]
+  },
+  {
+   "id": "dec-0032",
+   "date": "2026-10-08",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0032: Do not use the global session log as redundant claim evidence",
+   "short": "Drop SESSIONS deps",
+   "summary": "Remove docs/SESSIONS.md from four claim dependency sets.",
+   "rationale": "A timing-only edit to the log marked four unrelated claims as needing review.",
+   "result": "Unrelated appends no longer invalidate those claims; a replay, so inconclusive utility.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0032"
+   ]
+  },
+  {
+   "id": "m12-drift-challenge",
+   "date": "2026-10-09",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "pytest",
+   "milestone": true,
+   "title": "Agent 2 challenges drift back into lab self-improvement",
+   "short": "A2: lab drifting",
+   "summary": "Agent 2 said the lab had drifted back to fixing itself.",
+   "rationale": "The owner's direction was real outside work.",
+   "result": "Agent 1 took on a real pytest bug, #14775, and Agent 2 got it to reproduce; no upstream contact yet.",
+   "refs": [
+    "lab/observations/2026-10-09-opus-drift-and-lab-candidate.json",
+    "lab/observations/2026-10-09-pytest-14775-reproduction.json"
+   ],
+   "external_url": "https://github.com/pytest-dev/pytest/issues/14775",
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0033",
+   "date": "2026-10-09",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0033: Keep successful verification receipts compact",
+   "short": "Compact test receipt",
+   "summary": "On success show a compact receipt; on failure show the full log.",
+   "rationale": "A passing suite printed 8,954 bytes when only the outcome was needed.",
+   "result": "A lab practice; the failure branch was never naturally exercised.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0033"
+   ]
+  },
+  {
+   "id": "m13-pytest-converge",
+   "date": "2026-10-09",
+   "type": "review",
+   "actor": "both_agents",
+   "status": "resolved",
+   "track": "pytest",
+   "milestone": true,
+   "title": "Both agents converge on the pytest #14775 root cause",
+   "short": "Same fix, twice",
+   "summary": "Agent 1 moved the fixture error path into existing exception handling; Agent 2 found a second, async trigger and verified the same fix.",
+   "rationale": "Independent work by both agents on one real bug.",
+   "result": "Same two-line fix, also covering the second trigger. Agent 1 then found Agent 2's evidence could not be rerun as written.",
+   "refs": [
+    "lab/observations/2026-10-09-pytest-14775-cause-validation.json",
+    "lab/observations/2026-10-09-opus-pytest-14775-review.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0034",
+   "date": "2026-10-10",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "pytest",
+   "milestone": false,
+   "title": "DEC-0034: Park receipt-completeness work after the second negative evaluation",
+   "short": "Park receipts",
+   "summary": "Record 2 of 3 receipt groups as verbatim and park the family; do not repair the other agent's receipt.",
+   "rationale": "The full-suite receipt still mixed patched and unpatched outcomes.",
+   "result": "The evidence improved without a positive utility claim.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0034"
+   ],
+   "row": 1
+  },
+  {
+   "id": "dec-0035",
+   "date": "2026-10-10",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "superseded",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0035: Credit pre-tree OID checking, not an unused manifest CLI",
+   "short": "Credit OID check",
+   "summary": "Record bounded positive field evidence for checking blob IDs before tree creation; keep publish-manifest frozen.",
+   "rationale": "A natural truncation was caught with zero incorrect trees.",
+   "result": "Downgraded to inconclusive the next day (DEC-0036).",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0035"
+   ]
+  },
+  {
+   "id": "ai-connector-challenge",
+   "date": "2026-10-10",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 2 checks Agent 1's positive publishing result",
+   "short": "A2 checks positive",
+   "summary": "Agent 2 checked the evidence behind the 1-to-0 incorrect-tree claim.",
+   "rationale": "Operation receipts were not preserved in the repository.",
+   "result": "Agent 1 held it to a stricter standard than Agent 2 had and downgraded it (DEC-0036).",
+   "refs": [
+    "lab/reports/2026-10-10-connector-mismatch-recovery-field-trial.json",
+    "lab/observations/2026-10-10-opus-connector-mismatch-challenge.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0036",
+   "date": "2026-10-10",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0036: Downgrade the connector side-effect comparison to inconclusive",
+   "short": "Downgrade result",
+   "summary": "Keep the practice but downgrade the utility summary from positive to inconclusive; append, do not rewrite.",
+   "rationale": "Only one of four required facts was independently reproducible.",
+   "result": "The 1-to-0 count is no longer presented as established utility.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0036"
+   ]
+  },
+  {
+   "id": "dec-0037",
+   "date": "2026-10-11",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0037: Park restart-safety after a second non-positive evaluation",
+   "short": "Park restart-safety",
+   "summary": "Park the family and keep the OID checks as practices; manufacture no connector write for evidence.",
+   "rationale": "A real publication preserved only 1 of 4 required facts.",
+   "result": "Publication-safety utility remains unestablished.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0037"
+   ]
+  },
+  {
+   "id": "ai-requests-triage",
+   "date": "2026-10-11",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "external",
+   "milestone": false,
+   "title": "Agent 2 answers the two questions left in a requests triage",
+   "short": "requests triage",
+   "summary": "Agent 1 began a triage of a requests issue (a PR 5410 change missing from main) and stopped at its limit; Agent 2 answered the rest.",
+   "rationale": "Finish the outside question rather than leave it half done.",
+   "result": "The finding became candidate requests #7620, later rejected at pre-flight.",
+   "refs": [
+    "lab/observations/2026-10-11-requests-wrong-branch-triage.json",
+    "lab/observations/2026-10-11-opus-requests-5410-answer.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "ai-pytest-15047",
+   "date": "2026-10-11",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "external",
+   "milestone": false,
+   "title": "Agent 2 reproduces pytest #15047; Agent 1 finds two errors in the record",
+   "short": "pytest #15047 repro",
+   "summary": "Agent 1 started pytest #15047 and uv #19262 and stopped at its limits; Agent 2 finished both.",
+   "rationale": "Outside bug reproduction as real work.",
+   "result": "Agent 1 found two errors in Agent 2's pytest record; the family was parked (DEC-0038).",
+   "refs": [
+    "lab/observations/2026-10-11-pytest-fixtures-exit-code-reproduction.json",
+    "lab/observations/2026-10-11-opus-pytest-15047-reproduction.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0038",
+   "date": "2026-10-12",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "external",
+   "milestone": false,
+   "title": "DEC-0038: Park external bug reproduction after evidence-boundary failure",
+   "short": "Park bug repro",
+   "summary": "Keep the pytest #15047 result as corroborated peer evidence but not as replayable; add no helper or upstream contact.",
+   "rationale": "Only 3 of 6 audit dimensions passed.",
+   "result": "Reproducing a defect is not the same as showing agent utility.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0038"
+   ]
+  },
+  {
+   "id": "pytest-new-pr",
+   "date": "2026-10-09",
+   "type": "decision",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "pytest",
+   "milestone": true,
+   "title": "Proposal: open a new pytest PR signed by the owner",
+   "short": "New PR proposal",
+   "summary": "On 2026-10-09 Agent 2 asked whether the owner would sign the pytest fix as their own pull request.",
+   "rationale": "Both agents had the same working fix.",
+   "result": "Stopped: an open pull request, pytest-dev/pytest#14777, already had essentially the same fix. Found late, after the fix was done.",
+   "refs": [
+    "lab/observations/2026-10-12-opus-pytest-14777-comparison.json",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "row": 1
+  },
+  {
+   "id": "m14-no-competing-pr",
+   "date": "2026-10-12",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "pytest",
+   "milestone": true,
+   "title": "Owner: no competing PR; add only what #14777 lacks",
+   "short": "Don't compete",
+   "summary": "The owner said not to open a new PR, to compare exactly with #14777 and to contribute only missing value to it.",
+   "rationale": "An open PR already had essentially the same fix.",
+   "result": "The 'new PR' branch ends; the work turned to the existing PR.",
+   "refs": [
+    "lab/observations/2026-10-12-opus-pytest-14777-comparison.json",
+    "site/interactions.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-12",
+    "starts": "Asked by Agent 2 on 2026-10-09 whether they woul"
+   }
+  },
+  {
+   "id": "m15-pytest-comment",
+   "date": "2026-10-12",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "pytest",
+   "milestone": true,
+   "title": "Owner approves and posts the comment on pytest #14777",
+   "short": "Owner posts comment",
+   "summary": "After reading the PR discussion and approving the final text, the owner posted it from the Robakk84 account with AI disclosure.",
+   "rationale": "The session could not post: write access to pytest-dev was refused.",
+   "result": "The lab's first contribution to an outside project: a regression test for the second async trigger plus test evidence.",
+   "refs": [
+    "lab/observations/traces/2026-10-12-opus-pytest-14777-comparison/FINAL-COMMENT.md",
+    "site/interactions.json"
+   ],
+   "external_url": "https://github.com/pytest-dev/pytest/pull/14777#issuecomment-6121058763",
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-12",
+    "starts": "The owner asked whether Agent 2 could publish th"
+   }
+  },
+  {
+   "id": "pytest-waiting",
+   "date": "2026-10-12",
+   "type": "external_event",
+   "actor": "maintainer",
+   "status": "waiting",
+   "track": "pytest",
+   "milestone": true,
+   "title": "pytest #14777: waiting for the PR author or maintainers",
+   "short": "Waiting: pytest",
+   "summary": "The comment is on the PR; no reply so far.",
+   "rationale": "The outcome depends on the PR author and pytest maintainers.",
+   "result": "WAITING_EXTERNAL_RESPONSE. Checked again on 2026-10-19: PR head unchanged, no reply seen.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "lab/observations/2026-10-15-external-response-observation.json"
+   ],
+   "external_url": "https://github.com/pytest-dev/pytest/pull/14777",
+   "decision_ids": []
+  },
+  {
+   "id": "m16-work-mode",
+   "date": "2026-10-12",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "external",
+   "milestone": true,
+   "title": "Owner introduces the WIP=1 external-task workflow",
+   "short": "WIP=1 workflow",
+   "summary": "One outside task at a time: DISCOVER, PRE-FLIGHT, INDEPENDENT CHECK, BUILD, ADVERSARIAL REVIEW, HUMAN REVIEW, then submit, reject or block.",
+   "rationale": "Pre-flight asks: does the problem still exist, is there an open PR, was it solved or rejected, does policy allow human-reviewed AI help, is there a real path?",
+   "result": "Actionable work is not interrupted by the session gate; the lab is a notebook, not the deliverable; Equilibrium is not active steering. Reopens the parked external route under staged human review.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "site/interactions.json",
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-12",
+    "starts": "The owner sent both agents the same new work-mod"
+   }
+  },
+  {
+   "id": "dec-0039",
+   "date": "2026-10-12",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "external",
+   "milestone": false,
+   "title": "DEC-0039: Reopen one external contribution under staged human review",
+   "short": "Reopen (DEC-0039)",
+   "summary": "Reopen external contribution only for the owner-directed active task; a human approves before any fork, PR or contact.",
+   "rationale": "The condition that blocked DEC-0030 changed: there is now a human review step.",
+   "result": "WIP stays one; all other candidates remain parked.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0039"
+   ]
+  },
+  {
+   "id": "ai-claim-challenge",
+   "date": "2026-10-12",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Agent 2: a three-line summary correction should not count as a positive result",
+   "short": "A2: not positive",
+   "summary": "Agent 2 challenged counting a small summary correction as a positive result.",
+   "rationale": "Small repairs inflate the positive count.",
+   "result": "Recorded as a challenge; the related status-claim work was later parked (DEC-0043).",
+   "refs": [
+    "lab/observations/2026-10-12-uv-release-claim-stability.json",
+    "lab/observations/2026-10-12-opus-claim-stability-challenge.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "m17-distutils-preflight",
+   "date": "2026-10-12",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "distutils",
+   "milestone": true,
+   "title": "pypa/distutils #433 passes pre-flight",
+   "short": "#433 pre-flight",
+   "summary": "Agent 2 checked about 20 projects. #433 (build, install and wheel builds crash when Python has no bytecode cache tag) passed all five questions.",
+   "rationale": "Bug reproduced on current code; no competing PR; not solved elsewhere; no AI ban; outside PRs are merged.",
+   "result": "Roles: Agent 1 builds, Agent 2 reviews adversarially.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "docs/SESSIONS.md"
+   ],
+   "external_url": "https://github.com/pypa/distutils/issues/433",
+   "decision_ids": []
+  },
+  {
+   "id": "m18-initial-patch",
+   "date": "2026-10-12",
+   "type": "action",
+   "actor": "agent1",
+   "status": "superseded",
+   "track": "distutils",
+   "milestone": true,
+   "title": "Agent 1 builds the initial distutils fix",
+   "short": "A1 initial patch",
+   "summary": "A build_py guard, a regression test and a newsfragment.",
+   "rationale": "Minimal fix for the reported command.",
+   "result": "Superseded: Agent 2's review showed it was incomplete.",
+   "refs": [
+    "lab/observations/traces/2026-10-12-distutils-433.patch",
+    "lab/observations/2026-10-12-distutils-433-build.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "m19-changes-required",
+   "date": "2026-10-12",
+   "type": "review",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "distutils",
+   "milestone": true,
+   "title": "Agent 2's review: CHANGES REQUIRED",
+   "short": "A2: changes required",
+   "summary": "The build-only fix was incomplete: install, install --record and bdist_dumb (and so wheel builds) still crashed in install_lib; the first test failed for the wrong reason.",
+   "rationale": "An adversarial review must try to break the diagnosis.",
+   "result": "The original patch was rejected; review branch opened.",
+   "refs": [
+    "lab/observations/traces/2026-10-12-distutils-433-review.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "row": 1
+  },
+  {
+   "id": "m20-revised-patch",
+   "date": "2026-10-12",
+   "type": "correction",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "distutils",
+   "milestone": true,
+   "title": "Agent 2 prepares a revised two-command patch",
+   "short": "Revised patch",
+   "summary": "Fix both build_py and install_lib, with two regression tests, output enumeration and a newsfragment.",
+   "rationale": "Both crashing paths need the guard; both tests must fail on current code for the right reason.",
+   "result": "The cross-agent review changed the actual artifact.",
+   "refs": [
+    "lab/observations/traces/2026-10-12-distutils-433-reviewed.patch"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "row": 1
+  },
+  {
+   "id": "m20-agent1-accepts",
+   "date": "2026-10-12",
+   "type": "review",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "distutils",
+   "milestone": true,
+   "title": "Agent 1 replays the revised patch and accepts it",
+   "short": "A1 accepts",
+   "summary": "Agent 1 ran an independent before/after replay of the revised patch.",
+   "rationale": "The builder checks the reviewer's change rather than taking it on trust.",
+   "result": "READY FOR HUMAN REVIEW.",
+   "refs": [
+    "lab/observations/traces/2026-10-12-distutils-433-review-response.txt",
+    "lab/observations/2026-10-12-distutils-433-review-response.json"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "ai-journal-audit",
+   "date": "2026-10-13",
+   "type": "review",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "transparency",
+   "milestone": false,
+   "title": "Agent 1 audits Agent 2's day-14 journal claim by claim",
+   "short": "A1 audits journal",
+   "summary": "6 of 11 claim groups were well supported.",
+   "rationale": "Narrative claims need evidence like any other result.",
+   "result": "Agent 2 accepted four of the five gaps in day 15.",
+   "refs": [
+    "lab/observations/2026-10-13-day14-claim-audit.json",
+    "site/journal/2026-10-14.md"
+   ],
+   "external_url": null,
+   "decision_ids": []
+  },
+  {
+   "id": "dec-0040",
+   "date": "2026-10-13",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "transparency",
+   "milestone": false,
+   "title": "DEC-0040: Park narrative-evidence work until a natural consumer exists",
+   "short": "Park narrative audit",
+   "summary": "Keep the day-14 support map for reference; create no story or mandated review just to get a comparison.",
+   "rationale": "The audit found 6 of 11 claim groups fully supported, but nothing later reused them.",
+   "result": "No utility claim; audit work stops.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0040"
+   ]
+  },
+  {
+   "id": "dec-0041",
+   "date": "2026-10-14",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0041: Park verification-output work after a byte-only result",
+   "short": "Park output work",
+   "summary": "Keep a compact branch-audit receipt as an example; add no wrapper.",
+   "rationale": "90.5% fewer bytes, but net agent utility could not be measured.",
+   "result": "Family parked after two non-positive evaluations.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0041"
+   ]
+  },
+  {
+   "id": "dec-0042",
+   "date": "2026-10-14",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0042: Keep next-session numbers gate-derived in current state",
+   "short": "No session IDs in STATE",
+   "summary": "STATE names the action (run the gate) instead of copying the next session number.",
+   "rationale": "Agent 2 merged a session first, making STATE's number stale.",
+   "result": "One contradiction removed; nothing broader claimed.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0042"
+   ]
+  },
+  {
+   "id": "m21-human-approval",
+   "date": "2026-10-15",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "distutils",
+   "milestone": true,
+   "title": "Owner's human review: READY TO SUBMIT",
+   "short": "Owner approves",
+   "summary": "The owner approved the reviewed distutils patch, confirmed the RobertMalczyk/distutils fork and set the roles.",
+   "rationale": "The workflow requires a human to review before anything reaches the project.",
+   "result": "Agent 1 prepares and submits the PR; Agent 2 is the final adversarial reviewer. No new external task before submission.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "lab/observations/2026-10-15-distutils-human-approval-sync.json"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-15",
+    "starts": "After reviewing the reconciled distutils #433 pa"
+   }
+  },
+  {
+   "id": "dec-0043",
+   "date": "2026-10-15",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "parked",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0043: Park status-claim stability without manufacturing a consumer",
+   "short": "Park status claims",
+   "summary": "Keep volatile IDs out of summaries, but add no checker or evaluation-only update.",
+   "rationale": "Two evaluations found no later comparable update.",
+   "result": "Claims of recurring utility stop.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0043"
+   ]
+  },
+  {
+   "id": "dec-0044",
+   "date": "2026-10-15",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "distutils",
+   "milestone": false,
+   "title": "DEC-0044: Advance distutils only after recording owner approval",
+   "short": "Record approval",
+   "summary": "Record the owner decision publicly and move #433 to READY TO SUBMIT.",
+   "rationale": "Four state documents still said the task awaited human review.",
+   "result": "The next external action became explicit: prepare the disclosed PR.",
+   "refs": [
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0044"
+   ]
+  },
+  {
+   "id": "m22-fork-branch",
+   "date": "2026-10-15",
+   "type": "action",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "distutils",
+   "milestone": true,
+   "title": "Agent 1 prepares the fork branch",
+   "short": "A1 fork branch",
+   "summary": "Branch fix/433-missing-cache-tag at commit 0d08e50 in RobertMalczyk/distutils.",
+   "rationale": "Apply the reviewed patch on current upstream main.",
+   "result": "Five files, changed lines identical to the reviewed patch.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/RobertMalczyk/distutils/tree/fix/433-missing-cache-tag",
+   "decision_ids": []
+  },
+  {
+   "id": "m22-final-review",
+   "date": "2026-10-15",
+   "type": "review",
+   "actor": "agent2",
+   "status": "resolved",
+   "track": "distutils",
+   "milestone": true,
+   "title": "Agent 2's final review: APPROVED FOR SUBMISSION",
+   "short": "A2 approves",
+   "summary": "Seven checks passed: files, diff, no competing PR, install_lib scope, tests hit the reported failure.",
+   "rationale": "Last adversarial check before the code leaves the lab.",
+   "result": "Conditions: the PR text reports tests honestly (same four environment failures with and without the fix) and carries full AI disclosure.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "lab/observations/traces/2026-10-15-distutils-433-pr-body.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "row": 1
+  },
+  {
+   "id": "m23-integration-403",
+   "date": "2026-10-18",
+   "type": "blocker",
+   "actor": "system",
+   "status": "blocked",
+   "track": "distutils",
+   "milestone": true,
+   "title": "Automated PR creation blocked: HTTP 403",
+   "short": "GitHub 403",
+   "summary": "Creating the upstream PR through the agents' GitHub integration returned '403 Resource not accessible by integration'.",
+   "rationale": "An infrastructure and permission blocker, not a patch failure.",
+   "result": "The approved branch was unchanged; the owner opened the PR directly.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "site/interactions.json"
+   ],
+   "external_url": "https://github.com/RobertMalczyk/ai-for-ai-lab/issues/62",
+   "decision_ids": [],
+   "row": 1
+  },
+  {
+   "id": "m24-owner-opens-pr",
+   "date": "2026-10-18",
+   "type": "submission",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "distutils",
+   "milestone": true,
+   "title": "Owner opens upstream PR pypa/distutils#434",
+   "short": "Owner opens #434",
+   "summary": "The owner opened the approved contribution as pypa/distutils#434 from commit 0d08e50 and asked Agent 1 to notify Agent 2.",
+   "rationale": "The integration could not create the PR.",
+   "result": "Five changed files, mergeable at submission, AI disclosure present.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "site/interactions.json"
+   ],
+   "external_url": "https://github.com/pypa/distutils/pull/434",
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-18",
+    "starts": "The owner opened the approved distutils #433 con"
+   }
+  },
+  {
+   "id": "distutils-waiting",
+   "date": "2026-10-18",
+   "type": "external_event",
+   "actor": "maintainer",
+   "status": "waiting",
+   "track": "distutils",
+   "milestone": true,
+   "title": "pypa/distutils#434: waiting for maintainers",
+   "short": "Waiting: distutils",
+   "summary": "SUBMITTED / WAITING_EXTERNAL_RESPONSE.",
+   "rationale": "Only maintainers can review and merge it.",
+   "result": "Checked on 2026-10-19: open, head 0d08e50, no comments or reviews. Not resolved until upstream resolves it.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/distutils/pull/434",
+   "decision_ids": []
+  },
+  {
+   "id": "h-decision-map",
+   "date": "2026-10-19",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "site",
+   "milestone": false,
+   "title": "Owner asks for an interactive Decision Map",
+   "short": "Decision map",
+   "summary": "The owner directed Agent 2 to build one interactive map of the lab's decisions for the public site, then stop.",
+   "rationale": "Make the decision history readable as one picture, with failures as visible as successes.",
+   "result": "Published as this page; the records in each node's refs stay canonical.",
+   "refs": [
+    "site/interactions.json",
+    "site/decision-map.json",
+    "docs/SITE.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-19",
+    "starts": "The owner directed Agent 2 alone to build one in"
+   }
+  },
+  {
+   "id": "rej-pytest-15047",
+   "date": "2026-10-12",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "pytest #15047 (--fixtures exit code)",
+   "short": "pytest #15047",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: a contributor had already submitted a PR, and the maintainer wants it as a breaking change for pytest 10.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pytest-dev/pytest/issues/15047",
+   "decision_ids": [],
+   "stack": "pf-1012"
+  },
+  {
+   "id": "rej-requests-7620",
+   "date": "2026-10-12",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "requests #7620 (PR 5410 change missing from main)",
+   "short": "requests #7620",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q5: the project restricts outside PRs there, and the maintainer suggests removing the change.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/psf/requests/issues/7620",
+   "decision_ids": [],
+   "stack": "pf-1012"
+  },
+  {
+   "id": "m25-discover",
+   "date": "2026-10-18",
+   "type": "action",
+   "actor": "agent2",
+   "status": "active",
+   "track": "discovery",
+   "milestone": true,
+   "title": "DISCOVER after #434: no candidate has passed yet",
+   "short": "DISCOVER: 18 rejected",
+   "summary": "After #434 was submitted, Agent 2 resumed DISCOVER. Together with the two 2026-10-12 rejections, 18 candidates were rejected at pre-flight.",
+   "rationale": "Pre-flight rejects early: existing PR, reporter preparing a PR, already fixed, policy restrictions, no outside path.",
+   "result": "No patch was built for any of them. An improvement over pytest #14775, where the duplicate PR was found only after the fix. Agent 2 asked the owner where to look next.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "children": [
+    "rej-pytest-15047",
+    "rej-requests-7620",
+    "rej-setuptools-5354",
+    "rej-setuptools-5338",
+    "rej-wheel-706",
+    "rej-more-itertools-1332",
+    "rej-platformdirs-629",
+    "rej-cattrs-796",
+    "rej-cattrs-795",
+    "rej-cattrs-797",
+    "rej-build-1228",
+    "rej-keyring-772",
+    "rej-pipx-2155",
+    "rej-pipx-2156",
+    "rej-pipx-2159",
+    "rej-build-1220",
+    "rej-twine-1404",
+    "rej-setuptools-5296"
+   ]
+  },
+  {
+   "id": "rej-setuptools-5354",
+   "date": "2026-10-18",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "setuptools #5354 (editable install drops mapped packages)",
+   "short": "setuptools #5354",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: open PR pypa/setuptools#5355.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/setuptools/issues/5354",
+   "decision_ids": [],
+   "stack": "pf-r1"
+  },
+  {
+   "id": "rej-setuptools-5338",
+   "date": "2026-10-18",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "setuptools #5338 (best_effort_version with a v prefix)",
+   "short": "setuptools #5338",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: the reporter's open PR #5339.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/setuptools/issues/5338",
+   "decision_ids": [],
+   "stack": "pf-r1"
+  },
+  {
+   "id": "rej-wheel-706",
+   "date": "2026-10-18",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "wheel #706 (epoch-zero mtime uses build time)",
+   "short": "wheel #706",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: the reporter plans the fix; open PR #707.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/wheel/issues/706",
+   "decision_ids": [],
+   "stack": "pf-r1"
+  },
+  {
+   "id": "rej-more-itertools-1332",
+   "date": "2026-10-18",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "more-itertools #1332 (set_partitions of an empty iterable)",
+   "short": "more-itertools #1332",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: the reporter's open PR #1333.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/more-itertools/more-itertools/issues/1332",
+   "decision_ids": [],
+   "stack": "pf-r1"
+  },
+  {
+   "id": "rej-platformdirs-629",
+   "date": "2026-10-18",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "platformdirs #629 (ELOOP message on illumos)",
+   "short": "platformdirs #629",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: open PR #630, committed the day the issue opened.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/tox-dev/platformdirs/issues/629",
+   "decision_ids": [],
+   "stack": "pf-r1"
+  },
+  {
+   "id": "rej-cattrs-796",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "cattrs #796",
+   "short": "cattrs #796",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: no PR yet, but the reporter offered one; a parallel PR would compete.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/python-attrs/cattrs/issues/796",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-cattrs-795",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "cattrs #795",
+   "short": "cattrs #795",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: open PRs #798 and #803.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/python-attrs/cattrs/issues/795",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-cattrs-797",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "cattrs #797",
+   "short": "cattrs #797",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: open PR #799.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/python-attrs/cattrs/issues/797",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-build-1228",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "build #1228",
+   "short": "build #1228",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: the reporter's open PR #1231.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/build/issues/1228",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-keyring-772",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "keyring #772",
+   "short": "keyring #772",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q2: open PR #773.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/jaraco/keyring/issues/772",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-pipx-2155",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "pipx #2155",
+   "short": "pipx #2155",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q3: already fixed (PR #2158) and closed.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/pipx/issues/2155",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-pipx-2156",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "pipx #2156",
+   "short": "pipx #2156",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q3: already fixed (PR #2157) and closed.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/pipx/issues/2156",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-pipx-2159",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "pipx #2159",
+   "short": "pipx #2159",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q3: already fixed (PR #2160) and closed.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/pipx/issues/2159",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-build-1220",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "build #1220",
+   "short": "build #1220",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q3: already fixed (PR #1221) and closed.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/build/issues/1220",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-twine-1404",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "twine #1404",
+   "short": "twine #1404",
+   "summary": "Rejected at pre-flight before any patch was built.",
+   "rationale": "Q3, Q4: closed and locked; credentials in URLs are unsupported and AI-generated issues are not wanted.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/twine/issues/1404",
+   "decision_ids": [],
+   "stack": "pf-r2"
+  },
+  {
+   "id": "rej-setuptools-5296",
+   "date": "2026-10-19",
+   "type": "rejection",
+   "actor": "agent2",
+   "status": "rejected",
+   "track": "discovery",
+   "milestone": false,
+   "title": "setuptools #5296 (84.0.0 drops the executable bit in wheels)",
+   "short": "setuptools #5296",
+   "summary": "Technical success, contribution rejected: Agent 2 reproduced the bug on main and found the cause (an exact-mtime copy since 84.0.0 skips the mode-preserving package-data copy) before finding the existing fixes.",
+   "rationale": "Q2: four open fix PRs (#5299, #5302, #5318, #5321), found by reading the pull request branches; the issue page showed none.",
+   "result": "Not taken.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/pypa/setuptools/issues/5296",
+   "decision_ids": [],
+   "stack": "pf-r3"
+  }
+ ],
+ "edges": [
+  {
+   "source": "m01-lab-created",
+   "target": "m02-escape-local-optima",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m01-lab-created",
+   "target": "dec-0001",
+   "relation": "led_to",
+   "label": "first work"
+  },
+  {
+   "source": "dec-0001",
+   "target": "dec-0002",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0002",
+   "target": "dec-0004",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0004",
+   "target": "dec-0005",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0005",
+   "target": "dec-0006",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0006",
+   "target": "dec-0007",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0007",
+   "target": "dec-0008",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0008",
+   "target": "dec-0009",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0001",
+   "target": "dec-0003",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m02-escape-local-optima",
+   "target": "dec-0010",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0009",
+   "target": "dec-0010",
+   "relation": "followed_by",
+   "label": "handoff work paused"
+  },
+  {
+   "source": "dec-0010",
+   "target": "dec-0012",
+   "relation": "led_to",
+   "label": "forced evaluation"
+  },
+  {
+   "source": "dec-0010",
+   "target": "dec-0013",
+   "relation": "followed_by",
+   "label": "policy clean-up"
+  },
+  {
+   "source": "dec-0011",
+   "target": "dec-0014",
+   "relation": "led_to",
+   "label": "replication"
+  },
+  {
+   "source": "dec-0014",
+   "target": "ai-tool-discovery-challenge",
+   "relation": "challenged_by",
+   "label": "challenged by"
+  },
+  {
+   "source": "ai-tool-discovery-challenge",
+   "target": "dec-0015",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0012",
+   "target": "m04-agent2-added",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m04-agent2-added",
+   "target": "h-site-perspective",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m04-agent2-added",
+   "target": "h-suggestions",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m04-agent2-added",
+   "target": "h-pages",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m04-agent2-added",
+   "target": "m05-golden-rule",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m05-golden-rule",
+   "target": "h-no-prereview",
+   "relation": "led_to",
+   "label": "pre-review would break it"
+  },
+  {
+   "source": "m05-golden-rule",
+   "target": "ai-missing-instruction",
+   "relation": "led_to",
+   "label": "audited against"
+  },
+  {
+   "source": "h-channel",
+   "target": "dec-0016",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0016",
+   "target": "dec-0017",
+   "relation": "led_to",
+   "label": "first real plan"
+  },
+  {
+   "source": "dec-0017",
+   "target": "dec-0019",
+   "relation": "led_to",
+   "label": "story review"
+  },
+  {
+   "source": "ai-missing-instruction",
+   "target": "dec-0019",
+   "relation": "led_to",
+   "label": "contradicted journal claim"
+  },
+  {
+   "source": "dec-0019",
+   "target": "sc-journal-correction",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0017",
+   "target": "h-teaser",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "h-early-site",
+   "target": "h-schedule-repair",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m05-golden-rule",
+   "target": "m06-identity",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m06-identity",
+   "target": "m07-equilibrium",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m07-equilibrium",
+   "target": "h-coop-protocol",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0018",
+   "target": "dec-0021",
+   "relation": "followed_by",
+   "label": "publication practice"
+  },
+  {
+   "source": "ai-silent-modules",
+   "target": "dec-0020",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0020",
+   "target": "ai-forecast",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "ai-forecast",
+   "target": "dec-0022",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0023",
+   "target": "ai-whose-entry",
+   "relation": "challenged_by",
+   "label": "challenged by"
+  },
+  {
+   "source": "ai-whose-entry",
+   "target": "dec-0024",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0023",
+   "target": "dec-0024",
+   "relation": "superseded_by",
+   "label": "superseded by"
+  },
+  {
+   "source": "ai-log-tails",
+   "target": "dec-0025",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "sc-stale-count",
+   "target": "dec-0026",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0021",
+   "target": "dec-0027",
+   "relation": "followed_by",
+   "label": "second misuse"
+  },
+  {
+   "source": "dec-0027",
+   "target": "ai-alias-correction",
+   "relation": "challenged_by",
+   "label": "challenged by"
+  },
+  {
+   "source": "dec-0024",
+   "target": "m09-tools-frozen",
+   "relation": "blocked_by",
+   "label": "tool growth frozen"
+  },
+  {
+   "source": "dec-0025",
+   "target": "m09-tools-frozen",
+   "relation": "blocked_by",
+   "label": "tool growth frozen"
+  },
+  {
+   "source": "dec-0026",
+   "target": "m09-tools-frozen",
+   "relation": "blocked_by",
+   "label": "tool growth frozen"
+  },
+  {
+   "source": "dec-0027",
+   "target": "m09-tools-frozen",
+   "relation": "blocked_by",
+   "label": "tool growth frozen"
+  },
+  {
+   "source": "m07-equilibrium",
+   "target": "m08-usefulness-challenge",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "h-show-usefulness",
+   "target": "m08-usefulness-challenge",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m08-usefulness-challenge",
+   "target": "m08-outside-test",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m08-outside-test",
+   "target": "m09-tools-frozen",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m09-tools-frozen",
+   "target": "m10-real-oss",
+   "relation": "followed_by",
+   "label": "freeze stays"
+  },
+  {
+   "source": "m10-real-oss",
+   "target": "dec-0029",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m10-real-oss",
+   "target": "ai-policy-screen",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "ai-policy-screen",
+   "target": "m11-autonomous-parked",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0018",
+   "target": "dec-0031",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m11-autonomous-parked",
+   "target": "m12-drift-challenge",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m12-drift-challenge",
+   "target": "m13-pytest-converge",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m13-pytest-converge",
+   "target": "dec-0034",
+   "relation": "led_to",
+   "label": "evidence audit"
+  },
+  {
+   "source": "dec-0031",
+   "target": "dec-0035",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0035",
+   "target": "ai-connector-challenge",
+   "relation": "challenged_by",
+   "label": "challenged by"
+  },
+  {
+   "source": "ai-connector-challenge",
+   "target": "dec-0036",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0035",
+   "target": "dec-0036",
+   "relation": "corrected_by",
+   "label": "downgraded"
+  },
+  {
+   "source": "dec-0036",
+   "target": "dec-0037",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m11-autonomous-parked",
+   "target": "ai-requests-triage",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m11-autonomous-parked",
+   "target": "ai-pytest-15047",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "ai-pytest-15047",
+   "target": "dec-0038",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m13-pytest-converge",
+   "target": "pytest-new-pr",
+   "relation": "branched_to",
+   "label": "branched to"
+  },
+  {
+   "source": "pytest-new-pr",
+   "target": "m14-no-competing-pr",
+   "relation": "rejected_because",
+   "label": "#14777 already open"
+  },
+  {
+   "source": "m13-pytest-converge",
+   "target": "m14-no-competing-pr",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m14-no-competing-pr",
+   "target": "m15-pytest-comment",
+   "relation": "led_to",
+   "label": "contribute to existing PR"
+  },
+  {
+   "source": "m15-pytest-comment",
+   "target": "pytest-waiting",
+   "relation": "submitted_as",
+   "label": "submitted as"
+  },
+  {
+   "source": "m15-pytest-comment",
+   "target": "m16-work-mode",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m11-autonomous-parked",
+   "target": "m16-work-mode",
+   "relation": "reopened_by",
+   "label": "reopened under human review"
+  },
+  {
+   "source": "m07-equilibrium",
+   "target": "m16-work-mode",
+   "relation": "superseded_by",
+   "label": "clarified: not active steering"
+  },
+  {
+   "source": "m16-work-mode",
+   "target": "dec-0039",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m11-autonomous-parked",
+   "target": "dec-0039",
+   "relation": "reopened_by",
+   "label": "reopened by"
+  },
+  {
+   "source": "m16-work-mode",
+   "target": "rej-pytest-15047",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m16-work-mode",
+   "target": "rej-requests-7620",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "ai-pytest-15047",
+   "target": "rej-pytest-15047",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "ai-requests-triage",
+   "target": "rej-requests-7620",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m16-work-mode",
+   "target": "m17-distutils-preflight",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m17-distutils-preflight",
+   "target": "m18-initial-patch",
+   "relation": "led_to",
+   "label": "Agent 1 builds"
+  },
+  {
+   "source": "m18-initial-patch",
+   "target": "m19-changes-required",
+   "relation": "reviewed_by",
+   "label": "reviewed by"
+  },
+  {
+   "source": "m19-changes-required",
+   "target": "m20-revised-patch",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m18-initial-patch",
+   "target": "m20-revised-patch",
+   "relation": "superseded_by",
+   "label": "superseded by"
+  },
+  {
+   "source": "m20-revised-patch",
+   "target": "m20-agent1-accepts",
+   "relation": "reviewed_by",
+   "label": "A/B replay"
+  },
+  {
+   "source": "m20-agent1-accepts",
+   "target": "m21-human-approval",
+   "relation": "approved_by",
+   "label": "approved by"
+  },
+  {
+   "source": "ai-claim-challenge",
+   "target": "dec-0043",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "dec-0042",
+   "target": "dec-0043",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "ai-journal-audit",
+   "target": "dec-0040",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "dec-0033",
+   "target": "dec-0041",
+   "relation": "followed_by",
+   "label": "output boundary"
+  },
+  {
+   "source": "m21-human-approval",
+   "target": "dec-0044",
+   "relation": "led_to",
+   "label": "recorded"
+  },
+  {
+   "source": "m21-human-approval",
+   "target": "m22-fork-branch",
+   "relation": "led_to",
+   "label": "led to"
+  },
+  {
+   "source": "m22-fork-branch",
+   "target": "m22-final-review",
+   "relation": "reviewed_by",
+   "label": "reviewed by"
+  },
+  {
+   "source": "m22-final-review",
+   "target": "m23-integration-403",
+   "relation": "led_to",
+   "label": "submission attempt"
+  },
+  {
+   "source": "m23-integration-403",
+   "target": "m24-owner-opens-pr",
+   "relation": "led_to",
+   "label": "owner submits directly"
+  },
+  {
+   "source": "m22-final-review",
+   "target": "m24-owner-opens-pr",
+   "relation": "approved_by",
+   "label": "approved commit"
+  },
+  {
+   "source": "m24-owner-opens-pr",
+   "target": "distutils-waiting",
+   "relation": "submitted_as",
+   "label": "submitted as"
+  },
+  {
+   "source": "distutils-waiting",
+   "target": "m25-discover",
+   "relation": "followed_by",
+   "label": "WIP freed"
+  },
+  {
+   "source": "m25-discover",
+   "target": "h-decision-map",
+   "relation": "followed_by",
+   "label": "then"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-setuptools-5354",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-setuptools-5338",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-wheel-706",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-more-itertools-1332",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-platformdirs-629",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-cattrs-796",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-cattrs-795",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-cattrs-797",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-build-1228",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-keyring-772",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-pipx-2155",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-pipx-2156",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-pipx-2159",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-build-1220",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-twine-1404",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  },
+  {
+   "source": "m25-discover",
+   "target": "rej-setuptools-5296",
+   "relation": "branched_to",
+   "label": "rejected at pre-flight"
+  }
+ ]
+}

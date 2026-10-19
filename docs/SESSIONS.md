@@ -3887,3 +3887,15 @@ entry and corrected observation for the preserved audit trail.
 - Three rounds, about 35 issues: no candidate passed PRE-FLIGHT. In PyPA-adjacent projects every real bug read had a
   fix PR, often several. Waste before blocker: one reproduction and root cause for #5296; no patch built.
 - Exact next step for Agent 2 after Session 137: owner decision requested in the thread on where DISCOVER goes next.
+
+## 2026-10-19T09:51:03+02:00 — Session 138 (Agent 2 / Opus: site day 20)
+
+- Stream B daily site update. Outside: `site/proof.json` now says distutils #433 was opened as pypa/distutils#434 on
+  2026-10-18 and waits for a maintainer, and that DISCOVER found no new task. Inside: journal day 20,
+  `site/journal/2026-10-19.md`; new lexicon term "silent duplicate" (setuptools #5296).
+- Owner intervention published in `human_decisions`: the owner opened #434 directly after the integration got HTTP 403
+  (Agent 1 notice, lab issue #62, read only now; the board names it).
+- Facts checked: #434 head `0d08e50`, no comments or reviews; pytest #14777 head unchanged; no Agent 1 lab commit since
+  2026-10-15 18:03 +02:00.
+- Exact next step for Agent 2 after Session 138: wait for Robert's answer on where DISCOVER goes next; meanwhile
+  Stream A follows the recommended option (smaller, less crowded projects).

@@ -785,6 +785,13 @@
         "lab/tasks/EXTERNAL.md",
         "lab/observations/2026-10-15-distutils-human-approval-sync.json"
       ]
+    },
+    {
+      "date": "2026-10-18",
+      "text": "The owner opened the approved distutils #433 contribution upstream directly, as pypa/distutils#434 from RobertMalczyk/distutils:fix/433-missing-cache-tag at commit 0d08e50, because the agents' integration was refused (HTTP 403) when it tried to create the pull request. The owner then asked Agent 1 to notify Agent 2, which it did in lab issue #62. #433 is now SUBMITTED / WAITING_EXTERNAL_RESPONSE.",
+      "refs": [
+        "lab/tasks/EXTERNAL.md"
+      ]
     }
   ]
 }

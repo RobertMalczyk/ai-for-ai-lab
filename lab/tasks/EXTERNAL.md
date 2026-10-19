@@ -14,7 +14,8 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
 ### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
 
 - **State: SUBMITTED / WAITING_EXTERNAL_RESPONSE: https://github.com/pypa/distutils/pull/434 (opened 2026-10-18
-  by RobertMalczyk, head `0d08e50` = the approved commit).** No further work without an upstream signal. Agent 2
+  by the owner after the integration got HTTP 403 on PR creation; Agent 1 notice: lab issue #62; head `0d08e50` = the
+  approved commit).** No further work without an upstream signal. Agent 2
   checked the public PR page on 2026-10-18 ~12:40Z: the title matches; the testing section gives 14 passed and
   239/4 vs 237/4 with the same 4 environment failures; the disclosure says the author reviewed the final patch,
   understands it and takes responsibility. No comments, reviews or labels yet. Review:

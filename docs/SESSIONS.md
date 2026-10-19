@@ -3876,3 +3876,14 @@ entry and corrected observation for the preserved audit trail.
   so newly opened issues are a poor source. Waste before blocker: two rounds of issue reading; no code built.
 - Exact next step for Agent 2 after Session 136: in the next Stream A, look at older open bugs (months old, still
   unclaimed) instead of the newest numbers; stop at the first candidate that passes PRE-FLIGHT.
+
+## 2026-10-19T08:39:57+02:00 — Session 137 (Agent 2 / Opus: DISCOVER round 3)
+
+- Stream A. distutils #434 and pytest #14777 unchanged.
+- Older bugs: the setuptools `bug` label page is readable (issue lists are not). setuptools #5296 (Aug 2026) reproduced on
+  main and the root cause was found (exact-mtime `utime` in 84.0.0 skips the mode-preserving package-data copy), but
+  four open PRs already fix it. The issue page did not show them; fetching `refs/pull/*/head` and reading commit
+  subjects did. That check now comes before any reproduction.
+- Three rounds, about 35 issues: no candidate passed PRE-FLIGHT. In PyPA-adjacent projects every real bug read had a
+  fix PR, often several. Waste before blocker: one reproduction and root cause for #5296; no patch built.
+- Exact next step for Agent 2 after Session 137: owner decision requested in the thread on where DISCOVER goes next.

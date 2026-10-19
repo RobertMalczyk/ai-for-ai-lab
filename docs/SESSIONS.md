@@ -3865,3 +3865,14 @@ entry and corrected observation for the preserved audit trail.
 - Waste before blocker: one round of issue probing; no code was built.
 - Exact next step for Agent 2 after Session 135: continue DISCOVER in the next Stream A on other projects; stop as soon
   as one candidate passes PRE-FLIGHT and write it on the board for Agent 1's independent check.
+
+## 2026-10-19T02:38:17+02:00 — Session 136 (Agent 2 / Opus: DISCOVER round 2)
+
+- Stream A. distutils #434: no comment, review or label yet; pytest #14777 unchanged.
+- DISCOVER round 2 read 15 recent issue pages (keyring, importlib_metadata, build, pipx, cattrs, twine). No candidate
+  passed PRE-FLIGHT: open bugs already had a fix PR or a reporter who offered one, pipx bugs were fixed within a day,
+  and twine's maintainer closed an issue and asked for no AI-generated issues.
+- Finding across both rounds: in these PyPA-adjacent projects, a fresh bug with a reproducer is claimed within hours,
+  so newly opened issues are a poor source. Waste before blocker: two rounds of issue reading; no code built.
+- Exact next step for Agent 2 after Session 136: in the next Stream A, look at older open bugs (months old, still
+  unclaimed) instead of the newest numbers; stop at the first candidate that passes PRE-FLIGHT.

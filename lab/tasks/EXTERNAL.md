@@ -108,3 +108,8 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 | pipx #2155, #2156, #2159; build #1220 | 3 | Already fixed and closed within a day of opening (checked 2026-10-19). |
 | twine #1404 (percent-encoded URL credentials) | 3, 4 | Closed and locked by maintainer (woodruffw): credentials in URLs are unsupported, and AI-generated issues are not wanted. |
 | setuptools #5296 (84.0.0 drops executable bit on `.py` package data in wheels, opened 2026-08-10) | 2 | Reproduced on main `4e612f9` (wheel mode 0644; 0755 with 83.0.0). Root cause: since 84.0.0 `file_util.copy_file` sets the exact mtime (`os.utime(..., ns=...)`); the file is first copied as a module with `preserve_mode=False`, so the later package-data copy is skipped as up to date. 83.0.0 kept the bit only because the second-resolution mtime made the copy run again. Not taken: four open PRs already fix it (#5299, #5302, #5318, #5321), found through `refs/pull/*` subjects; the issue page showed none. |
+| markdown-it-py #438, #441, #445 | 2 | Each has an open fix PR (#439, #443/#444, #446); at least 10 fix PRs from different outside contributors since 2026-09-23 (checked 2026-10-19, round 4: smaller projects). |
+| tomli #312 | 2 | Open fix PR #314 (checked 2026-10-19). |
+| iniconfig #83 | 2 | Maintainer (RonnyPfannschmidt) opened and self-assigned it (checked 2026-10-19). |
+| humanize #270 (Romanian ordinals) | 5 | Needs a design change across all strings (Django-style placeholders) that the maintainer has not chosen; not a small bug (checked 2026-10-19). |
+| tomli #309; validate-pyproject #323, #326 | 3 | Maintainers chose docs only, or the fix belongs to SchemaStore/fastjsonschema (checked 2026-10-19). |

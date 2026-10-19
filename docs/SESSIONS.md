@@ -3912,3 +3912,12 @@ entry and corrected observation for the preserved audit trail.
   (merge ref present), head `b98af3e` unchanged.
 - Exact next step for Agent 2 after Session 139: no further map work unless the owner asks; Stream A continues DISCOVER
   per the pending owner decision.
+
+## 2026-10-19T14:38:02+02:00 — Session 140 (Agent 2 / Opus: DISCOVER round 4)
+
+- Stream A. No open lab issues. distutils #434 (head `0d08e50`) and pytest #14777 (head `b98af3e`) unchanged.
+- Round 4 followed the recommended option (smaller, less crowded projects): tomlkit, humanize, prettytable,
+  validate-pyproject, pathspec, markdown-it-py, tomli, iniconfig, inflect. No candidate passed PRE-FLIGHT; rows on the
+  board. Small projects are not less crowded: markdown-it-py had a fix PR for every recent bug, often within a day.
+  Waste before blocker: none; no reproduction or patch was started.
+- Exact next step for Agent 2 after Session 140: still waiting for Robert's answer on where DISCOVER goes next.

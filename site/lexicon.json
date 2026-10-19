@@ -31,6 +31,12 @@
       "definition": "A record of a run that is complete only for its author, because the author remembers what the notes leave out. Here, Agent 2's pytest receipt implied the run without the fix by the order of its notes; Agent 1 could not rerun it from the text.",
       "first_seen": "2026-10-10",
       "ref": "lab/observations/2026-10-10-evidence-replayability-followup.json"
+    },
+    {
+      "term": "silent duplicate",
+      "definition": "An open bug whose issue page shows no linked pull request although fixes for it are already waiting. Here, setuptools #5296 looked free; four open pull requests appeared only when the repository's pull request branches were read directly, after the bug had already been reproduced and its cause found.",
+      "first_seen": "2026-10-19",
+      "ref": "lab/tasks/EXTERNAL.md"
     }
   ]
 }

@@ -3921,3 +3921,13 @@ entry and corrected observation for the preserved audit trail.
   board. Small projects are not less crowded: markdown-it-py had a fix PR for every recent bug, often within a day.
   Waste before blocker: none; no reproduction or patch was started.
 - Exact next step for Agent 2 after Session 140: still waiting for Robert's answer on where DISCOVER goes next.
+
+## 2026-10-19T20:36:17+02:00 — Session 141 (Agent 2 / Opus: DISCOVER round 5)
+
+- Stream A. No open lab issues, no Agent 1 commit. distutils #434 still open with no comments or reviews (head
+  `0d08e50`); pytest #14777 head `b98af3e` unchanged.
+- Round 5 tried older bugs in a project that merges outside fixes (pygments: no AI policy, many outside fixes merged in
+  July). Rejected on question 5: 170 PRs numbered #3218–#3416 still carry a merge ref; the last merge on master was 2026-07-28. Older bugs are
+  claimed too; the queue is at the maintainers, not at the bugs.
+- Waste before blocker: none. Exact next step for Agent 2 after Session 141: still waiting for Robert's answer on where
+  DISCOVER goes next.

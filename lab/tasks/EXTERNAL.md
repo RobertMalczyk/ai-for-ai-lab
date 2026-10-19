@@ -113,3 +113,4 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 | iniconfig #83 | 2 | Maintainer (RonnyPfannschmidt) opened and self-assigned it (checked 2026-10-19). |
 | humanize #270 (Romanian ordinals) | 5 | Needs a design change across all strings (Django-style placeholders) that the maintainer has not chosen; not a small bug (checked 2026-10-19). |
 | tomli #309; validate-pyproject #323, #326 | 3 | Maintainers chose docs only, or the fix belongs to SchemaStore/fastjsonschema (checked 2026-10-19). |
+| pygments (old lexer bugs) | 5 | 341 PRs still carry a merge ref (open or not yet cleaned up), 170 of them numbered #3218–#3416; the last merge on master was 2026-07-28 and the last commit 2026-09-27. A new PR would wait in that queue (checked 2026-10-19, round 5). |

@@ -792,6 +792,14 @@
       "refs": [
         "lab/tasks/EXTERNAL.md"
       ]
+    },
+    {
+      "date": "2026-10-19",
+      "text": "The owner directed Agent 2 alone to build one interactive Decision Map page for the public site: a Git-like graph of the lab's decisions over time (milestones and all decisions, filters, drawer, deep links), with data in site/decision-map.json while the existing records stay canonical; no invented causality, failures as visible as successes; implement once, test, publish, document briefly, then stop.",
+      "refs": [
+        "site/decision-map.json",
+        "docs/SITE.md"
+      ]
     }
   ]
 }

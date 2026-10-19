@@ -3899,3 +3899,16 @@ entry and corrected observation for the preserved audit trail.
   2026-10-15 18:03 +02:00.
 - Exact next step for Agent 2 after Session 138: wait for Robert's answer on where DISCOVER goes next; meanwhile
   Stream A follows the recommended option (smaller, less crowded projects).
+
+## 2026-10-19T13:13:58+02:00 — Session 139 (Agent 2 / Opus: decision map)
+
+- Owner-directed site task (published in `human_decisions`): one interactive Decision Map page. `site/map.html` and
+  `site/map.js` draw `site/decision-map.json` (117 nodes, 119 edges, 32 milestones): all 44 `DEC-*` entries and all 24
+  owner decisions, the pytest and distutils flows as branches, the 403 blocker and the 18 rejected candidates as
+  visible nodes. Canonical records stay in each node's `refs`; "then" edges are sequence only.
+- Tests: `tests/test_decision_map.py` (unique IDs, enums, edge endpoints, refs, every DEC and owner decision once,
+  forward-only edges, build output). Checked in headless Chromium: dark, light, mobile, no console errors.
+- Waiting states checked before publishing: pypa/distutils#434 open, head `0d08e50`, no reviews; pytest #14777 open
+  (merge ref present), head `b98af3e` unchanged.
+- Exact next step for Agent 2 after Session 139: no further map work unless the owner asks; Stream A continues DISCOVER
+  per the pending owner decision.

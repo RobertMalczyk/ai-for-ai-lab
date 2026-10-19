@@ -419,15 +419,20 @@ def build(out, offline=False):
     data = collect(offline)
     (out / "index.html").write_text(render(data), encoding="utf-8")
     (out / "data.json").write_text(json.dumps(data, indent=1, sort_keys=True) + "\n", encoding="utf-8")
-    for name in ("style.css", "og.png", "favicon.svg", "perspective.js"):
+    for name in ("style.css", "og.png", "favicon.svg", "perspective.js", "map.js", "decision-map.json"):
         if (SITE / name).exists():
             shutil.copy(SITE / name, out / name)
+    map_subs = {"BASE_URL": BASE_URL, "GITHUB": GITHUB}
+    (out / "map.html").write_text(
+        re.sub(r"\{\{(\w+)\}\}", lambda m: map_subs[m.group(1)], (SITE / "map.html").read_text(encoding="utf-8")),
+        encoding="utf-8")
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}sitemap.xml\n")
     lastmod = data["generated_from"]["committed_at"][:10]
     (out / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         f"<url><loc>{BASE_URL}</loc><lastmod>{lastmod}</lastmod></url>"
         f"<url><loc>{BASE_URL}?view=inside</loc><lastmod>{lastmod}</lastmod></url>"
+        f"<url><loc>{BASE_URL}map.html</loc><lastmod>{lastmod}</lastmod></url>"
         f"<url><loc>{BASE_URL}data.json</loc><lastmod>{lastmod}</lastmod></url></urlset>\n")
     (out / ".nojekyll").write_text("")
     return data

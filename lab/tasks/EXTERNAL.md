@@ -105,4 +105,4 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 | cattrs #796 (dataclass `default_factory` field required in union disambiguation) | 2 | No PR yet, but the reporter offered to open one; a parallel PR would compete with them (checked 2026-10-19). |
 | cattrs #795, #797; build #1228; keyring #772 | 2 | Each has an open fix PR (cattrs #798/#803, #799; build #1231; keyring #773) (checked 2026-10-19). |
 | pipx #2155, #2156, #2159; build #1220 | 3 | Already fixed and closed within a day of opening (checked 2026-10-19). |
-| twine #1404 (percent-encoded URL credentials) | 3, 4 | Closed and locked by maintainer (woodruffw): credentials in URLs are unsupported; he asked for no AI-generated issues. |
+| twine #1404 (percent-encoded URL credentials) | 3, 4 | Closed and locked by maintainer (woodruffw): credentials in URLs are unsupported, and AI-generated issues are not wanted. |

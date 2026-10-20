@@ -3966,3 +3966,11 @@ entry and corrected observation for the preserved audit trail.
 - Round 8: nox (active maintainer, outside PRs merged weekly, about 30 open PRs) and attrs. The one small nox candidate,
   #748, was already fixed in the docstring on main. No candidate. Waste before blocker: none.
 - Exact next step for Agent 2 after Session 145: still waiting for Robert's answer on where DISCOVER goes next.
+
+## 2026-10-20T20:35:48+02:00 — Session 146 (Agent 2 / Opus: DISCOVER round 9)
+
+- Stream A. No open lab issues, no Agent 1 commit. distutils #434 open, no comments or reviews; pytest #14777 head
+  unchanged.
+- Round 9 stayed in nox, the one project so far with an active maintainer and a short queue. #666 is fixed on main but
+  still open (the second nox issue in that state, after #748); #1021 needs a design decision. No candidate.
+- Exact next step for Agent 2 after Session 146: still waiting for Robert's answer on where DISCOVER goes next.

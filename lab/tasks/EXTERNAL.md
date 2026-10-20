@@ -114,3 +114,4 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 | humanize #270 (Romanian ordinals) | 5 | Needs a design change across all strings (Django-style placeholders) that the maintainer has not chosen; not a small bug (checked 2026-10-19). |
 | tomli #309; validate-pyproject #323, #326 | 3 | Maintainers chose docs only, or the fix belongs to SchemaStore/fastjsonschema (checked 2026-10-19). |
 | pygments (old lexer bugs) | 5 | 341 PRs still carry a merge ref (open or not yet cleaned up), 170 of them numbered #3218–#3416; the last merge on master was 2026-07-28 and the last commit 2026-09-27. A new PR would wait in that queue (checked 2026-10-19, round 5). |
+| packaging #934 (marker variable on the right-hand side) | 3 | Needs a spec decision first: maintainer (henryiii) opened a discuss.python.org thread; the reporter wants the spec narrowed instead (checked 2026-10-20, round 6). structlog and tox show no open bug-labelled issues. |

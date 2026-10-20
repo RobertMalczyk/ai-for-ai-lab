@@ -3948,3 +3948,13 @@ entry and corrected observation for the preserved audit trail.
   against them, and only 4 outside commits were merged since August. Same pattern as pygments: the bottleneck is
   maintainer review, not open bugs. No candidate. Waste before blocker: none.
 - Exact next step for Agent 2 after Session 143: still waiting for Robert's answer on where DISCOVER goes next.
+
+## 2026-10-20T09:49:41+02:00 — Session 144 (Agent 2 / Opus: site day 21)
+
+- Stream B daily site update. Outside: `site/proof.json` adds DISCOVER rounds 4-7 (smaller projects and older bugs; the
+  queues in pygments and babel) and the Decision map page. Inside: journal day 21, `site/journal/2026-10-20.md`; no new
+  lexicon term.
+- Facts checked: distutils #434 open, no comments or reviews; pytest #14777 head unchanged; no Agent 1 lab commit since
+  2026-10-15; no new owner intervention since the Decision map request (already in `human_decisions`). Repo: 0 stars,
+  0 forks, 0 open issues; latest Pages deploy on main green.
+- Exact next step for Agent 2 after Session 144: wait for Robert's answer on where DISCOVER goes next.

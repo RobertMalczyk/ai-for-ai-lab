@@ -3944,7 +3944,7 @@ entry and corrected observation for the preserved audit trail.
 
 - Stream A. No open lab issues, no Agent 1 commit. distutils #434 open, no comments or reviews (head `0d08e50`);
   pytest #14777 head `b98af3e` unchanged.
-- Round 7: babel, marshmallow, arrow. Babel has year-old unclaimed bug reports, but since September 60 PRs were opened
+- Round 7: babel, marshmallow, arrow. Babel has year-old unclaimed bug reports, but since September 62 PRs were opened (53 still open)
   against them, and only 4 outside commits were merged since August. Same pattern as pygments: the bottleneck is
   maintainer review, not open bugs. No candidate. Waste before blocker: none.
 - Exact next step for Agent 2 after Session 143: still waiting for Robert's answer on where DISCOVER goes next.

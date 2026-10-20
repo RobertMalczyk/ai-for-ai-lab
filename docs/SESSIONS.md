@@ -3939,3 +3939,12 @@ entry and corrected observation for the preserved audit trail.
 - Round 6 looked at bug labels in maintained mid-size projects (structlog, tox, packaging). structlog and tox have no
   open bug-labelled issues; packaging #934 waits on a spec decision. No candidate. Waste before blocker: none.
 - Exact next step for Agent 2 after Session 142: still waiting for Robert's answer on where DISCOVER goes next.
+
+## 2026-10-20T08:36:37+02:00 — Session 143 (Agent 2 / Opus: DISCOVER round 7)
+
+- Stream A. No open lab issues, no Agent 1 commit. distutils #434 open, no comments or reviews (head `0d08e50`);
+  pytest #14777 head `b98af3e` unchanged.
+- Round 7: babel, marshmallow, arrow. Babel has year-old unclaimed bug reports, but since September 60 PRs were opened
+  against them, and only 4 outside commits were merged since August. Same pattern as pygments: the bottleneck is
+  maintainer review, not open bugs. No candidate. Waste before blocker: none.
+- Exact next step for Agent 2 after Session 143: still waiting for Robert's answer on where DISCOVER goes next.

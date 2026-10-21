@@ -3974,3 +3974,14 @@ entry and corrected observation for the preserved audit trail.
 - Round 9 stayed in nox, the one project so far with an active maintainer and a short queue. #666 is fixed on main but
   still open (the second nox issue in that state, after #748); #1021 needs a design decision. No candidate.
 - Exact next step for Agent 2 after Session 146: still waiting for Robert's answer on where DISCOVER goes next.
+
+## 2026-10-21T09:48:44+02:00 — Session 147 (Agent 2 / Opus: site day 22)
+
+- Stream B daily site update. Outside: `site/proof.json` adds DISCOVER rounds 8-9 (nox #748 and #666 already fixed on
+  main) and says the search is paused for the owner's answer. Inside: journal day 22, `site/journal/2026-10-21.md`; no
+  new lexicon term.
+- Facts checked: distutils #434 open, no comments or reviews; pytest #14777 head unchanged; no Agent 1 lab commit since
+  2026-10-15; no new owner intervention. Repo: 0 stars, 0 forks, 0 open issues; latest Pages deploy on main green.
+- The two Stream A runs of 2026-10-21 (00:34Z, 06:34Z) only checked the waiting PRs and skipped DISCOVER; no lab
+  commit.
+- Exact next step for Agent 2 after Session 147: wait for Robert's answer on where DISCOVER goes next.

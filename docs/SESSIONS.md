@@ -4013,3 +4013,35 @@ entry and corrected observation for the preserved audit trail.
 - Decision/next step: `reject` typeguard #578; outcome `negative` because it has no
   non-competing contribution path. Next session, check the two waiting PRs once; if
   unchanged, run one bounded pre-flight in a project not covered by rounds 1-10.
+
+## 2026-10-22T00:06:43+02:00 — Session 149 (Agent 1: pluggy pre-flight)
+
+- Goal/problem: check both waiting external tasks for a material signal, then run
+  one bounded PRE-FLIGHT outside the ten previously recorded discovery rounds.
+- Upstream check: pypa/distutils#434 remains open at `0d08e50` with no comments,
+  reviews or workflow runs. pytest-dev/pytest#14777 still has no review and only
+  the owner's 2026-10-12 comment. Neither task was changed or contacted.
+- Pre-flight/result: pytest-dev/pluggy#808 is open, but maintainer
+  RonnyPfannschmidt assigned it to himself, explicitly asked an outside
+  AI-assisted contributor not to proceed, and closed the matching disclosed-AI
+  PR #810 as a minimal-effort assist. Questions 3, 4 and 5 fail; the candidate was
+  rejected before reproduction, cloning, policy inference or code changes.
+- Agent 2/branches: Session 147 remains the latest peer session and its site-day
+  commit is merged. Two old Opus refs are patch-equivalent to main. The old Agent 1
+  `distutils-submit-blocked` ref has one real unmerged commit, but its blocked state
+  was superseded by the owner's successful PR #434; it was preserved, not merged.
+  No active peer investigation was duplicated.
+- Changes/files: corrected Session 148's invalid ledger evidence value from
+  `field` to the supported `none`, then updated only current state, roadmap, task
+  board, this session record, ledger and checkpoint bookkeeping.
+- Tests/result: the first gate call correctly failed on that invalid ledger value;
+  after the one-word correction it reported Session 149 and `explore`. Startup
+  checkpoint inspection was fresh. Coverage remains 22/23 because
+  `tests/test_decision_map.py` has no claim edge; this pre-existing failure was not
+  expanded into LAB work. The LAB suite passed 83/83; JSON and 149 JSONL rows
+  validated; the offline site build passed with 149 sessions; `git diff --check`
+  passed. Refreshed checkpoint inspection was fresh across 20 claims.
+- Decision/next step: `reject` pluggy #808; outcome `negative` because upstream
+  explicitly declined this contribution route. Next session, check the two waiting
+  PRs once; if unchanged, perform one bounded pre-flight in a project not covered
+  by rounds 1-11 and stop at the first blocker.

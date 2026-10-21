@@ -80,10 +80,13 @@
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
-- External responses: as checked 2026-10-21, distutils #434 remains open with no
+- External responses: as checked 2026-10-22, distutils #434 remains open with no
   comments, reviews or CI runs, and pytest #14777 still contains only the owner's
   disclosed comment. Both remain WAITING_EXTERNAL_RESPONSE; do not reproduce,
   modify or contact upstream without a material new signal.
+- External pre-flight: reject pluggy #808. A maintainer assigned it to himself,
+  explicitly asked outside AI-assisted contributors not to proceed, and closed
+  the matching PR #810 as a minimal-effort assist. No reproduction or code work.
 - Connector ref precondition: one known-absent feature branch was created in one
   `create_branch` call at the exact requested head, versus the prior rejected
   `update_ref` plus creation. Keep create/update distinct and add no wrapper; the

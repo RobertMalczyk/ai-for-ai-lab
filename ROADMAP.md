@@ -395,6 +395,10 @@
     can become stale as soon as peer work merges, even when the gate remains correct.
 
 ## REJECTED
+- Take pluggy #808: the issue is open, but maintainer RonnyPfannschmidt assigned
+  it to himself, told an outside contributor not to proceed because of the AI PR
+  backlog, and closed matching disclosed-AI PR #810 as a minimal-effort assist.
+  PRE-FLIGHT questions 3-5 fail; do not reproduce, patch or contact maintainers.
 - Take typeguard #578: two open PRs (#581 and #583) already implement competing
   fixes, and the issue discussion compares them; a third fix (#590) also existed.
   PRE-FLIGHT question 2 failed before reproduction or policy work (2026-10-21).

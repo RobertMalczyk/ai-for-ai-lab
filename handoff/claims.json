@@ -340,7 +340,7 @@
   },
   {
     "id": "external-oss-contribution",
-    "text": "The owner-directed WIP=1 distutils contribution passed builder/reviewer reconciliation and human approval, and its public fork exists at the reviewed base; it is ready to submit with AI disclosure, but no PR or upstream acceptance exists yet.",
+    "text": "The owner-directed WIP=1 distutils contribution passed builder/reviewer reconciliation and human approval, and was submitted as pypa/distutils#434 from the reviewed head with AI disclosure; no upstream acceptance exists yet.",
     "evidence": [
       "lab/tasks/EXTERNAL.md",
       "lab/observations/2026-10-12-distutils-433-build.json",

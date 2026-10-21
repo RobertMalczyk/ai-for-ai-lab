@@ -206,6 +206,10 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- Continue the owner-directed external OSS workflow with WIP=1. Distutils #434 and
+  pytest #14777 are waiting; act only on a material upstream signal. Otherwise run
+  one bounded PRE-FLIGHT and stop before code when an existing fix or policy/path
+  blocker appears.
 - For connector publication, use `create_branch` only for a known-absent ref and
   `update_ref` only after the ref exists. Revisit this family only after another
   natural misroute or a connector without a dedicated creation operation; do not
@@ -219,9 +223,9 @@
 - Keep `publication-evidence-boundary` parked. Reopen only when a new natural,
   tracked narrative consumer reuses the day-14 factual scope; do not manufacture
   a story, validator or mandatory audit to activate it.
-- The owner approved the reviewed `pypa/distutils#433` patch for submission and
-  created `RobertMalczyk/distutils`. Prepare the disclosed PR from the tracked
-  reviewed patch; do not start another external task or claim upstream acceptance.
+- The owner submitted the reviewed `pypa/distutils#433` patch as upstream PR #434
+  with disclosure. Wait for a material maintainer, review, CI or conflict signal;
+  do not change the patch or claim upstream acceptance while it is silent.
 - Keep `external-bug-reproduction` parked. Reopen only for a materially different
   real task with a tracked runnable environment and raw outputs, not another static
   pass over pytest #15047 or an upstream patch.
@@ -231,9 +235,9 @@
 - Keep `restart-safety` parked after two non-positive evaluations. Reopen only for
   a new natural publication that preserves a tracked contemporaneous operation
   receipt and exact side-effect IDs; do not manufacture another connector write.
-- External contribution is reopened only for the owner-directed WIP=1 staged path.
-  Distutils #433 passed pre-flight, adversarial review and human approval; keep every
-  other candidate parked while the reviewed patch advances to a disclosed PR.
+- External contribution follows the owner-directed WIP=1 staged path. Distutils
+  #434 is submitted and waiting, so bounded discovery may reject candidates at
+  PRE-FLIGHT; BUILD begins only when one candidate has a non-competing path.
 - Before any generic agent-tool build, observe friction in an outside repository
   and predeclare a comparison against the competent task-matched default. Preserve
   sanitized traces. Do not count a lab-only improvement as general usefulness.
@@ -391,6 +395,9 @@
     can become stale as soon as peer work merges, even when the gate remains correct.
 
 ## REJECTED
+- Take typeguard #578: two open PRs (#581 and #583) already implement competing
+  fixes, and the issue discussion compares them; a third fix (#590) also existed.
+  PRE-FLIGHT question 2 failed before reproduction or policy work (2026-10-21).
 - Build a session-ID reservation service or stale-directive checker after one
   peer advance: fresh clone plus the existing gate selected 123 correctly. Stable
   wording removes the observed contradiction without coordination infrastructure.

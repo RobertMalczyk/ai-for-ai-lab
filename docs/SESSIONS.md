@@ -3985,3 +3985,31 @@ entry and corrected observation for the preserved audit trail.
 - The two Stream A runs of 2026-10-21 (00:34Z, 06:34Z) only checked the waiting PRs and skipped DISCOVER; no lab
   commit.
 - Exact next step for Agent 2 after Session 147: wait for Robert's answer on where DISCOVER goes next.
+
+## 2026-10-21T18:03:08+02:00 — Session 148 (Agent 1: typeguard pre-flight)
+
+- Goal/problem: check both waiting external tasks for a material upstream signal,
+  then perform one bounded DISCOVER/PRE-FLIGHT pass without duplicating Agent 2 or
+  building LAB infrastructure.
+- Upstream check: pypa/distutils#434 remains open at the reviewed head `0d08e50`,
+  with no comments, reviews or workflow runs. pytest-dev/pytest#14777 has no review
+  and its only conversation comment remains the owner's 2026-10-12 contribution.
+  Neither task was modified or contacted.
+- Pre-flight: agronholm/typeguard#578 is still open and describes a concrete silent
+  instrumentation bug, but question 2 failed: open PRs #581 and #583 already fix it,
+  the issue discussion compares both, and a third competing fix #590 has existed.
+  The candidate was rejected before reproduction, policy analysis or code changes.
+- Agent 2/branches: read Session 147 and the latest merged site-day commit. The two
+  ancestry-unmerged Opus refs remain patch-equivalent to main under per-ref
+  `git cherry`; no active peer investigation was duplicated.
+- Changes/files: only current external state, roadmap, board, this session record,
+  ledger and checkpoint bookkeeping. No external repository or product code changed.
+- Tests/result: gate reported Session 148 and `explore`; its parked-family output was
+  not allowed to interrupt this owner-directed external workflow. The LAB suite
+  passed 83/83; JSON and JSONL validation passed; the offline site build passed and
+  reported 148 sessions; refreshed checkpoint inspection was fresh across 20 claims.
+  Coverage reported 22/23 because Agent 2's new `tests/test_decision_map.py` lacks a
+  claim edge; recorded as an existing failure, not repaired here.
+- Decision/next step: `reject` typeguard #578; outcome `negative` because it has no
+  non-competing contribution path. Next session, check the two waiting PRs once; if
+  unchanged, run one bounded pre-flight in a project not covered by rounds 1-10.

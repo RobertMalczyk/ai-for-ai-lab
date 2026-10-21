@@ -80,9 +80,10 @@
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
-- External response: the current pytest #14777 conversation contains only the
-  owner's disclosed comment and zero external replies. Keep it outside active WIP;
-  no monitor, new reproduction or upstream contact follows from this check.
+- External responses: as checked 2026-10-21, distutils #434 remains open with no
+  comments, reviews or CI runs, and pytest #14777 still contains only the owner's
+  disclosed comment. Both remain WAITING_EXTERNAL_RESPONSE; do not reproduce,
+  modify or contact upstream without a material new signal.
 - Connector ref precondition: one known-absent feature branch was created in one
   `create_branch` call at the exact requested head, versus the prior rejected
   `update_ref` plus creation. Keep create/update distinct and add no wrapper; the
@@ -105,8 +106,9 @@
   crash in `install_lib` and an invalid first regression control. Agent 1 accepted
   the revision after a fresh 0/2 -> 2/2 replay, 14/14 focused tests and a full-suite
   A/B with +2 passes and the same 12 environment-linked failures. The owner approved
-  that reviewed scope for submission and created the public fork; it is READY TO
-  SUBMIT, with disclosure required. No PR or maintainer contact exists yet.
+  that reviewed scope for submission and created the public fork. The owner opened
+  pypa/distutils#434 from the reviewed head `0d08e50`; it is now submitted and
+  waiting for external response, with no acceptance claim.
 - Evidence availability: Agent 2 improved declared path availability to 3/3 and
   replayability from 1/3 to 2/3 groups. The remaining full-suite receipt reports
   unpatched and patched runs but records one suite command after the patch is
@@ -143,11 +145,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: run the session gate for the next session and choose a permitted family.
-  `status-claim-stability` is parked after two unavailable comparisons. The owner
-  approved distutils #433 for submission and created the fork; the exact next
-  external step is to prepare the disclosed PR from the reviewed patch, not to
-  discover another task.
+- Next: check the two waiting upstream PRs once for a material signal. If neither
+  changed, perform one bounded DISCOVER/PRE-FLIGHT pass for a real external issue;
+  reject immediately on an existing PR, prior resolution, policy block or missing
+  contribution path. Do not build LAB helpers or duplicate Agent 2's investigation.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural

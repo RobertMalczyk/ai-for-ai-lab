@@ -1,0 +1,19 @@
+{
+  "fixed_before_first_run": true,
+  "not_preregistered_externally": true,
+  "dataset_construction": "author saw historical outcomes; manual retrospective queries and gold",
+  "temporal_boundary": "source_session < query_session; current snapshot may contain retrospective edits",
+  "variants": [
+    "recent",
+    "raw_bm25",
+    "lexical",
+    "utility"
+  ],
+  "k": 3,
+  "utility_weight": 0.25,
+  "alpha": 0.2,
+  "q_initial": 0.5,
+  "feedback": "gold-relevance proxy only, not observed downstream task reward",
+  "pass_pilot": "All core tests pass; lexical useful-prior-evidence hit@3 >= 0.80; no future/invalidated/private retrieval. Does not qualify autonomous reward learning.",
+  "full_memrl_gate": "Not assessed: requires prospective independently evaluated agent outcomes."
+}

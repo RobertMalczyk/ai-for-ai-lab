@@ -1,0 +1,188 @@
+[
+  {
+    "id": "C022",
+    "at_session": 22,
+    "query": "Read the mandatory startup documents completely despite a long log and output truncation.",
+    "relevant": [
+      "read_boundary"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C049",
+    "at_session": 49,
+    "query": "Recover my next step when the last session entry was written by the other agent.",
+    "relevant": [
+      "peer_continuity"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C051",
+    "at_session": 51,
+    "query": "Append a new Markdown session entry with a patch; repeated next-step lines occur throughout the log.",
+    "relevant": [
+      "append_anchor"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C057",
+    "at_session": 57,
+    "query": "A different agent needs to replay public receipts at their original commits without reconstructing commands.",
+    "relevant": [
+      "exact_commands"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C061",
+    "at_session": 61,
+    "query": "Check a claim that the same manifest alias flags were guessed twice.",
+    "relevant": [
+      "alias_correction"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C064",
+    "at_session": 64,
+    "query": "Correct documentation still claiming repeated manifest alias failures after an evidence review.",
+    "relevant": [
+      "alias_correction",
+      "alias_confirmed"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C077",
+    "at_session": 77,
+    "query": "Batch mandatory startup document reads in a single orchestration output without losing content.",
+    "relevant": [
+      "read_boundary"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C090",
+    "at_session": 90,
+    "query": "Verify whether a fresh checkout contains independently checkable raw artifacts behind reported hashes.",
+    "relevant": [
+      "raw_evidence"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C092",
+    "at_session": 92,
+    "query": "Review updated receipts for reproducibility: command blocks and referenced local inputs for each group.",
+    "relevant": [
+      "replay_inputs",
+      "exact_commands"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C094",
+    "at_session": 94,
+    "query": "Publish multiple file blobs through a capped connector response and check what was transferred.",
+    "relevant": [
+      "read_boundary",
+      "outer_boundary"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C105",
+    "at_session": 105,
+    "query": "Audit a pytest reproduction report for replayable commands and minimal inputs.",
+    "relevant": [
+      "replay_inputs",
+      "raw_evidence",
+      "exact_commands"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C107",
+    "at_session": 107,
+    "query": "A status summary describes a tested uv release as the current version after another release.",
+    "relevant": [
+      "stable_status"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C114",
+    "at_session": 114,
+    "query": "Evaluate revised distutils regression controls and the install_lib missing cache_tag path.",
+    "relevant": [
+      "regression_cause"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C116",
+    "at_session": 116,
+    "query": "Decide whether a compact output receipt should also wrap the separate site build.",
+    "relevant": [
+      "compact_output"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C118",
+    "at_session": 118,
+    "query": "Check whether reported historical numerical results have retrievable evidence before publishing a narrative.",
+    "relevant": [
+      "raw_evidence",
+      "stable_status"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C128",
+    "at_session": 128,
+    "query": "Create a known-absent feature branch through the GitHub connector.",
+    "relevant": [
+      "create_ref"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C148",
+    "at_session": 148,
+    "query": "An open external issue looks actionable; check for a competing fix before starting reproduction.",
+    "relevant": [
+      "existing_fix"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C149",
+    "at_session": 149,
+    "query": "Decide whether to work on an OSS issue when the maintainer has declined an AI-assisted contribution.",
+    "relevant": [
+      "project_policy"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C150",
+    "at_session": 150,
+    "query": "An external issue is open with no comments; decide what to check before coding.",
+    "relevant": [
+      "existing_fix"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  },
+  {
+    "id": "C151",
+    "at_session": 151,
+    "query": "Inspect a new candidate in a project with few PRs before cloning or implementing a fix.",
+    "relevant": [
+      "existing_fix"
+    ],
+    "scope": "retrospective retrieval probe; not a new agent execution"
+  }
+]

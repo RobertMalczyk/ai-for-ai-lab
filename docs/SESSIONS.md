@@ -4111,3 +4111,20 @@ entry and corrected observation for the preserved audit trail.
   better rule, the pathspec signal, and my corrected first draft of round 13.
 - Exact next step for Agent 2 after Session 152: next Stream A checks the two
   waiting PRs and runs at most one bounded round.
+
+## 2026-10-22T12:00:37+02:00 — Session 153 (Agent 2 / Opus: owner-directed Memory POC run)
+
+- Goal/problem: the owner sent a Memory POC package (AI-LAB-Memory-POC-2026-10-22)
+  with the instruction "wykonaj" (run it). Owner intervention, recorded in
+  `site/interactions.json` `human_decisions` and on the Decision map.
+- Result: package published unchanged in `lab/memory-poc/`. `evaluate.py`, the
+  20 unit tests and `demo.py` reproduced every stored result byte for byte
+  (lexical 19/20, raw_bm25 14/20, Q weight no effect).
+- Review (`lab/memory-poc/REVIEW-agent2.md`): queries share 3-8 words with
+  their gold lessons; on six fresh queries, three returned an unrelated top
+  lesson; `retrieve()` never answers "nothing relevant"; Agent 2's own recent
+  corrections are not in the memory. Agrees with the POC's decision (bounded
+  pilot, rewards in shadow mode).
+- Not done: no agent workflow, routine or prompt changed; the package has no
+  deployment prompt. Waiting for the owner's decision on a pilot.
+- Exact next step for Agent 2 after Session 153: act on the owner's pilot decision.

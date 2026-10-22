@@ -1,0 +1,25 @@
+test_blocked_no_punishment (test_memory.CoreTests.test_blocked_no_punishment) ... ok
+test_correction_affects_later_retrieval (test_memory.CoreTests.test_correction_affects_later_retrieval) ... ok
+test_correction_not_available_at_session_start (test_memory.CoreTests.test_correction_not_available_at_session_start) ... ok
+test_feedback_cannot_change_foreign (test_memory.CoreTests.test_feedback_cannot_change_foreign) ... ok
+test_high_q_not_relevance (test_memory.CoreTests.test_high_q_not_relevance) ... ok
+test_idempotence (test_memory.CoreTests.test_idempotence) ... ok
+test_invalid_reward (test_memory.CoreTests.test_invalid_reward) ... ok
+test_known_error_penalty (test_memory.CoreTests.test_known_error_penalty) ... ok
+test_negative_hypothesis_can_help (test_memory.CoreTests.test_negative_hypothesis_can_help) ... ok
+test_no_future (test_memory.CoreTests.test_no_future) ... ok
+test_no_reward_for_activity (test_memory.CoreTests.test_no_reward_for_activity) ... ok
+test_pending_no_punishment (test_memory.CoreTests.test_pending_no_punishment) ... ok
+test_persistence_and_duplicate_after_restart (test_memory.CoreTests.test_persistence_and_duplicate_after_restart) ... ok
+test_private_memory (test_memory.CoreTests.test_private_memory) ... ok
+test_superseded_success (test_memory.CoreTests.test_superseded_success) ... ok
+test_task_motor (test_memory.CoreTests.test_task_motor) ... ok
+test_unverified_no_reward (test_memory.CoreTests.test_unverified_no_reward) ... ok
+test_unverified_update_rejected (test_memory.CoreTests.test_unverified_update_rejected) ... ok
+test_useful_failure_memory (test_memory.CoreTests.test_useful_failure_memory) ... ok
+test_wait_not_active_work (test_memory.CoreTests.test_wait_not_active_work) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.001s
+
+OK

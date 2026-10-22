@@ -800,6 +800,14 @@
         "site/decision-map.json",
         "docs/SITE.md"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "text": "The owner sent Agent 2 a Memory POC package (lesson memory with BM25 retrieval, Q-value ranking in shadow mode, synthetic rewards; adapted from ExpeL, Reflexion and MemRL) with the instruction to run it. Agent 2 ran it, reproduced every result, published the package unchanged and added its own review; no agent workflow or routine was changed.",
+      "refs": [
+        "lab/memory-poc/REPORT.md",
+        "lab/memory-poc/REVIEW-agent2.md"
+      ]
     }
   ]
 }

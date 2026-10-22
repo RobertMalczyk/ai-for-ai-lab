@@ -1,0 +1,2020 @@
+{
+  "recent": {
+    "hits": 14,
+    "n": 20,
+    "hit_at_3": 0.7,
+    "mean_recall_at_3": 0.6583333333333333,
+    "mean_context_chars": 636.8,
+    "traces": [
+      {
+        "case": "C022",
+        "query": "Read the mandatory startup documents completely despite a long log and output truncation.",
+        "retrieved": [
+          "read_boundary",
+          "discovery"
+        ],
+        "source_sessions": [
+          20,
+          19
+        ],
+        "expected": [
+          "read_boundary"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 410
+      },
+      {
+        "case": "C049",
+        "query": "Recover my next step when the last session entry was written by the other agent.",
+        "retrieved": [
+          "peer_continuity",
+          "read_boundary",
+          "discovery"
+        ],
+        "source_sessions": [
+          47,
+          20,
+          19
+        ],
+        "expected": [
+          "peer_continuity"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 671
+      },
+      {
+        "case": "C051",
+        "query": "Append a new Markdown session entry with a patch; repeated next-step lines occur throughout the log.",
+        "retrieved": [
+          "continuity_window",
+          "append_anchor",
+          "read_boundary"
+        ],
+        "source_sessions": [
+          49,
+          49,
+          20
+        ],
+        "expected": [
+          "append_anchor"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 625
+      },
+      {
+        "case": "C057",
+        "query": "A different agent needs to replay public receipts at their original commits without reconstructing commands.",
+        "retrieved": [
+          "exact_commands",
+          "stable_status",
+          "continuity_window"
+        ],
+        "source_sessions": [
+          55,
+          53,
+          49
+        ],
+        "expected": [
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 606
+      },
+      {
+        "case": "C061",
+        "query": "Check a claim that the same manifest alias flags were guessed twice.",
+        "retrieved": [
+          "alias_correction",
+          "exact_commands",
+          "stable_status"
+        ],
+        "source_sessions": [
+          60,
+          55,
+          53
+        ],
+        "expected": [
+          "alias_correction"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 608
+      },
+      {
+        "case": "C064",
+        "query": "Correct documentation still claiming repeated manifest alias failures after an evidence review.",
+        "retrieved": [
+          "alias_confirmed",
+          "alias_correction",
+          "exact_commands"
+        ],
+        "source_sessions": [
+          61,
+          60,
+          55
+        ],
+        "expected": [
+          "alias_correction",
+          "alias_confirmed"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 619
+      },
+      {
+        "case": "C077",
+        "query": "Batch mandatory startup document reads in a single orchestration output without losing content.",
+        "retrieved": [
+          "project_policy",
+          "lock_commit",
+          "alias_confirmed"
+        ],
+        "source_sessions": [
+          73,
+          70,
+          61
+        ],
+        "expected": [
+          "read_boundary"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 683
+      },
+      {
+        "case": "C090",
+        "query": "Verify whether a fresh checkout contains independently checkable raw artifacts behind reported hashes.",
+        "retrieved": [
+          "raw_evidence",
+          "compact_output",
+          "outer_boundary"
+        ],
+        "source_sessions": [
+          88,
+          82,
+          77
+        ],
+        "expected": [
+          "raw_evidence"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 650
+      },
+      {
+        "case": "C092",
+        "query": "Review updated receipts for reproducibility: command blocks and referenced local inputs for each group.",
+        "retrieved": [
+          "replay_inputs",
+          "raw_evidence",
+          "compact_output"
+        ],
+        "source_sessions": [
+          90,
+          88,
+          82
+        ],
+        "expected": [
+          "replay_inputs",
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 0.5,
+        "chars": 678
+      },
+      {
+        "case": "C094",
+        "query": "Publish multiple file blobs through a capped connector response and check what was transferred.",
+        "retrieved": [
+          "replay_inputs",
+          "raw_evidence",
+          "compact_output"
+        ],
+        "source_sessions": [
+          90,
+          88,
+          82
+        ],
+        "expected": [
+          "read_boundary",
+          "outer_boundary"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 678
+      },
+      {
+        "case": "C105",
+        "query": "Audit a pytest reproduction report for replayable commands and minimal inputs.",
+        "retrieved": [
+          "replay_inputs",
+          "raw_evidence",
+          "compact_output"
+        ],
+        "source_sessions": [
+          90,
+          88,
+          82
+        ],
+        "expected": [
+          "replay_inputs",
+          "raw_evidence",
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 0.6666666666666666,
+        "chars": 678
+      },
+      {
+        "case": "C107",
+        "query": "A status summary describes a tested uv release as the current version after another release.",
+        "retrieved": [
+          "replay_inputs",
+          "raw_evidence",
+          "compact_output"
+        ],
+        "source_sessions": [
+          90,
+          88,
+          82
+        ],
+        "expected": [
+          "stable_status"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 678
+      },
+      {
+        "case": "C114",
+        "query": "Evaluate revised distutils regression controls and the install_lib missing cache_tag path.",
+        "retrieved": [
+          "regression_cause",
+          "replay_inputs",
+          "raw_evidence"
+        ],
+        "source_sessions": [
+          113,
+          90,
+          88
+        ],
+        "expected": [
+          "regression_cause"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 699
+      },
+      {
+        "case": "C116",
+        "query": "Decide whether a compact output receipt should also wrap the separate site build.",
+        "retrieved": [
+          "regression_cause",
+          "replay_inputs",
+          "raw_evidence"
+        ],
+        "source_sessions": [
+          113,
+          90,
+          88
+        ],
+        "expected": [
+          "compact_output"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 699
+      },
+      {
+        "case": "C118",
+        "query": "Check whether reported historical numerical results have retrievable evidence before publishing a narrative.",
+        "retrieved": [
+          "scope_output",
+          "regression_cause",
+          "replay_inputs"
+        ],
+        "source_sessions": [
+          116,
+          113,
+          90
+        ],
+        "expected": [
+          "raw_evidence",
+          "stable_status"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 667
+      },
+      {
+        "case": "C128",
+        "query": "Create a known-absent feature branch through the GitHub connector.",
+        "retrieved": [
+          "create_ref",
+          "scope_output",
+          "regression_cause"
+        ],
+        "source_sessions": [
+          126,
+          116,
+          113
+        ],
+        "expected": [
+          "create_ref"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 623
+      },
+      {
+        "case": "C148",
+        "query": "An open external issue looks actionable; check for a competing fix before starting reproduction.",
+        "retrieved": [
+          "existing_fix",
+          "waiting",
+          "create_ref"
+        ],
+        "source_sessions": [
+          135,
+          134,
+          126
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 616
+      },
+      {
+        "case": "C149",
+        "query": "Decide whether to work on an OSS issue when the maintainer has declined an AI-assisted contribution.",
+        "retrieved": [
+          "existing_fix",
+          "waiting",
+          "create_ref"
+        ],
+        "source_sessions": [
+          135,
+          134,
+          126
+        ],
+        "expected": [
+          "project_policy"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 616
+      },
+      {
+        "case": "C150",
+        "query": "An external issue is open with no comments; decide what to check before coding.",
+        "retrieved": [
+          "existing_fix",
+          "waiting",
+          "create_ref"
+        ],
+        "source_sessions": [
+          135,
+          134,
+          126
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 616
+      },
+      {
+        "case": "C151",
+        "query": "Inspect a new candidate in a project with few PRs before cloning or implementing a fix.",
+        "retrieved": [
+          "existing_fix",
+          "waiting",
+          "create_ref"
+        ],
+        "source_sessions": [
+          135,
+          134,
+          126
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 616
+      }
+    ],
+    "updates": [],
+    "final_q": {}
+  },
+  "raw_bm25": {
+    "hits": 14,
+    "n": 20,
+    "hit_at_3": 0.7,
+    "mean_recall_at_3": 0.6166666666666667,
+    "mean_context_chars": 8006.5,
+    "traces": [
+      {
+        "case": "C022",
+        "query": "Read the mandatory startup documents completely despite a long log and output truncation.",
+        "retrieved": [
+          "read_boundary"
+        ],
+        "source_sessions": [
+          20,
+          10,
+          9
+        ],
+        "expected": [
+          "read_boundary"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 12914
+      },
+      {
+        "case": "C049",
+        "query": "Recover my next step when the last session entry was written by the other agent.",
+        "retrieved": [
+          "peer_continuity"
+        ],
+        "source_sessions": [
+          47,
+          16,
+          38
+        ],
+        "expected": [
+          "peer_continuity"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 5748
+      },
+      {
+        "case": "C051",
+        "query": "Append a new Markdown session entry with a patch; repeated next-step lines occur throughout the log.",
+        "retrieved": [
+          "final_only",
+          "continuity_window",
+          "append_anchor"
+        ],
+        "source_sessions": [
+          46,
+          49,
+          26
+        ],
+        "expected": [
+          "append_anchor"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 9203
+      },
+      {
+        "case": "C057",
+        "query": "A different agent needs to replay public receipts at their original commits without reconstructing commands.",
+        "retrieved": [
+          "exact_commands"
+        ],
+        "source_sessions": [
+          55,
+          54,
+          50
+        ],
+        "expected": [
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 5118
+      },
+      {
+        "case": "C061",
+        "query": "Check a claim that the same manifest alias flags were guessed twice.",
+        "retrieved": [
+          "alias_correction"
+        ],
+        "source_sessions": [
+          60,
+          59,
+          58
+        ],
+        "expected": [
+          "alias_correction"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 4629
+      },
+      {
+        "case": "C064",
+        "query": "Correct documentation still claiming repeated manifest alias failures after an evidence review.",
+        "retrieved": [],
+        "source_sessions": [
+          59,
+          44,
+          40
+        ],
+        "expected": [
+          "alias_correction",
+          "alias_confirmed"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 8429
+      },
+      {
+        "case": "C077",
+        "query": "Batch mandatory startup document reads in a single orchestration output without losing content.",
+        "retrieved": [
+          "read_boundary"
+        ],
+        "source_sessions": [
+          20,
+          10,
+          7
+        ],
+        "expected": [
+          "read_boundary"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 9696
+      },
+      {
+        "case": "C090",
+        "query": "Verify whether a fresh checkout contains independently checkable raw artifacts behind reported hashes.",
+        "retrieved": [
+          "alias_confirmed",
+          "raw_evidence"
+        ],
+        "source_sessions": [
+          88,
+          66,
+          61
+        ],
+        "expected": [
+          "raw_evidence"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 9560
+      },
+      {
+        "case": "C092",
+        "query": "Review updated receipts for reproducibility: command blocks and referenced local inputs for each group.",
+        "retrieved": [
+          "replay_inputs"
+        ],
+        "source_sessions": [
+          90,
+          91,
+          57
+        ],
+        "expected": [
+          "replay_inputs",
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 0.5,
+        "chars": 6848
+      },
+      {
+        "case": "C094",
+        "query": "Publish multiple file blobs through a capped connector response and check what was transferred.",
+        "retrieved": [
+          "outer_boundary"
+        ],
+        "source_sessions": [
+          77,
+          27,
+          59
+        ],
+        "expected": [
+          "read_boundary",
+          "outer_boundary"
+        ],
+        "hit": true,
+        "recall": 0.5,
+        "chars": 8914
+      },
+      {
+        "case": "C105",
+        "query": "Audit a pytest reproduction report for replayable commands and minimal inputs.",
+        "retrieved": [
+          "replay_inputs"
+        ],
+        "source_sessions": [
+          92,
+          90,
+          101
+        ],
+        "expected": [
+          "replay_inputs",
+          "raw_evidence",
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 0.3333333333333333,
+        "chars": 9642
+      },
+      {
+        "case": "C107",
+        "query": "A status summary describes a tested uv release as the current version after another release.",
+        "retrieved": [
+          "stable_status"
+        ],
+        "source_sessions": [
+          104,
+          103,
+          53
+        ],
+        "expected": [
+          "stable_status"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 7196
+      },
+      {
+        "case": "C114",
+        "query": "Evaluate revised distutils regression controls and the install_lib missing cache_tag path.",
+        "retrieved": [
+          "regression_cause"
+        ],
+        "source_sessions": [
+          113,
+          112,
+          89
+        ],
+        "expected": [
+          "regression_cause"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 4382
+      },
+      {
+        "case": "C116",
+        "query": "Decide whether a compact output receipt should also wrap the separate site build.",
+        "retrieved": [
+          "compact_output",
+          "replay_inputs"
+        ],
+        "source_sessions": [
+          82,
+          90,
+          54
+        ],
+        "expected": [
+          "compact_output"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 9132
+      },
+      {
+        "case": "C118",
+        "query": "Check whether reported historical numerical results have retrievable evidence before publishing a narrative.",
+        "retrieved": [
+          "lock_commit"
+        ],
+        "source_sessions": [
+          36,
+          70,
+          54
+        ],
+        "expected": [
+          "raw_evidence",
+          "stable_status"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 9097
+      },
+      {
+        "case": "C128",
+        "query": "Create a known-absent feature branch through the GitHub connector.",
+        "retrieved": [],
+        "source_sessions": [
+          10,
+          9,
+          99
+        ],
+        "expected": [
+          "create_ref"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 12748
+      },
+      {
+        "case": "C148",
+        "query": "An open external issue looks actionable; check for a competing fix before starting reproduction.",
+        "retrieved": [
+          "project_policy"
+        ],
+        "source_sessions": [
+          137,
+          75,
+          73
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 6205
+      },
+      {
+        "case": "C149",
+        "query": "Decide whether to work on an OSS issue when the maintainer has declined an AI-assisted contribution.",
+        "retrieved": [
+          "project_policy"
+        ],
+        "source_sessions": [
+          73,
+          75,
+          112
+        ],
+        "expected": [
+          "project_policy"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 7830
+      },
+      {
+        "case": "C150",
+        "query": "An external issue is open with no comments; decide what to check before coding.",
+        "retrieved": [],
+        "source_sessions": [
+          75,
+          148,
+          76
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 5659
+      },
+      {
+        "case": "C151",
+        "query": "Inspect a new candidate in a project with few PRs before cloning or implementing a fix.",
+        "retrieved": [],
+        "source_sessions": [
+          75,
+          148,
+          150
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 7180
+      }
+    ],
+    "updates": [],
+    "final_q": {}
+  },
+  "lexical": {
+    "hits": 19,
+    "n": 20,
+    "hit_at_3": 0.95,
+    "mean_recall_at_3": 0.9333333333333333,
+    "mean_context_chars": 551.35,
+    "traces": [
+      {
+        "case": "C022",
+        "query": "Read the mandatory startup documents completely despite a long log and output truncation.",
+        "retrieved": [
+          "read_boundary"
+        ],
+        "source_sessions": [
+          20
+        ],
+        "expected": [
+          "read_boundary"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 191
+      },
+      {
+        "case": "C049",
+        "query": "Recover my next step when the last session entry was written by the other agent.",
+        "retrieved": [
+          "peer_continuity",
+          "discovery"
+        ],
+        "source_sessions": [
+          47,
+          19
+        ],
+        "expected": [
+          "peer_continuity"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 480
+      },
+      {
+        "case": "C051",
+        "query": "Append a new Markdown session entry with a patch; repeated next-step lines occur throughout the log.",
+        "retrieved": [
+          "append_anchor",
+          "continuity_window"
+        ],
+        "source_sessions": [
+          49,
+          49
+        ],
+        "expected": [
+          "append_anchor"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 434
+      },
+      {
+        "case": "C057",
+        "query": "A different agent needs to replay public receipts at their original commits without reconstructing commands.",
+        "retrieved": [
+          "exact_commands"
+        ],
+        "source_sessions": [
+          55
+        ],
+        "expected": [
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 192
+      },
+      {
+        "case": "C061",
+        "query": "Check a claim that the same manifest alias flags were guessed twice.",
+        "retrieved": [
+          "alias_correction"
+        ],
+        "source_sessions": [
+          60
+        ],
+        "expected": [
+          "alias_correction"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 217
+      },
+      {
+        "case": "C064",
+        "query": "Correct documentation still claiming repeated manifest alias failures after an evidence review.",
+        "retrieved": [
+          "alias_correction",
+          "alias_confirmed",
+          "stable_status"
+        ],
+        "source_sessions": [
+          60,
+          61,
+          53
+        ],
+        "expected": [
+          "alias_correction",
+          "alias_confirmed"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 626
+      },
+      {
+        "case": "C077",
+        "query": "Batch mandatory startup document reads in a single orchestration output without losing content.",
+        "retrieved": [
+          "read_boundary",
+          "continuity_window"
+        ],
+        "source_sessions": [
+          20,
+          49
+        ],
+        "expected": [
+          "read_boundary"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 406
+      },
+      {
+        "case": "C090",
+        "query": "Verify whether a fresh checkout contains independently checkable raw artifacts behind reported hashes.",
+        "retrieved": [
+          "raw_evidence",
+          "stable_status",
+          "read_boundary"
+        ],
+        "source_sessions": [
+          88,
+          53,
+          20
+        ],
+        "expected": [
+          "raw_evidence"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 626
+      },
+      {
+        "case": "C092",
+        "query": "Review updated receipts for reproducibility: command blocks and referenced local inputs for each group.",
+        "retrieved": [
+          "replay_inputs",
+          "exact_commands",
+          "stable_status"
+        ],
+        "source_sessions": [
+          90,
+          55,
+          53
+        ],
+        "expected": [
+          "replay_inputs",
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 616
+      },
+      {
+        "case": "C094",
+        "query": "Publish multiple file blobs through a capped connector response and check what was transferred.",
+        "retrieved": [
+          "outer_boundary",
+          "project_policy",
+          "read_boundary"
+        ],
+        "source_sessions": [
+          77,
+          73,
+          20
+        ],
+        "expected": [
+          "read_boundary",
+          "outer_boundary"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 639
+      },
+      {
+        "case": "C105",
+        "query": "Audit a pytest reproduction report for replayable commands and minimal inputs.",
+        "retrieved": [
+          "replay_inputs",
+          "exact_commands",
+          "lock_commit"
+        ],
+        "source_sessions": [
+          90,
+          55,
+          70
+        ],
+        "expected": [
+          "replay_inputs",
+          "raw_evidence",
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 0.6666666666666666,
+        "chars": 639
+      },
+      {
+        "case": "C107",
+        "query": "A status summary describes a tested uv release as the current version after another release.",
+        "retrieved": [
+          "stable_status",
+          "alias_confirmed",
+          "lock_commit"
+        ],
+        "source_sessions": [
+          53,
+          61,
+          70
+        ],
+        "expected": [
+          "stable_status"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 631
+      },
+      {
+        "case": "C114",
+        "query": "Evaluate revised distutils regression controls and the install_lib missing cache_tag path.",
+        "retrieved": [
+          "regression_cause",
+          "replay_inputs",
+          "raw_evidence"
+        ],
+        "source_sessions": [
+          113,
+          90,
+          88
+        ],
+        "expected": [
+          "regression_cause"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 699
+      },
+      {
+        "case": "C116",
+        "query": "Decide whether a compact output receipt should also wrap the separate site build.",
+        "retrieved": [
+          "compact_output",
+          "outer_boundary",
+          "read_boundary"
+        ],
+        "source_sessions": [
+          82,
+          77,
+          20
+        ],
+        "expected": [
+          "compact_output"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 605
+      },
+      {
+        "case": "C118",
+        "query": "Check whether reported historical numerical results have retrievable evidence before publishing a narrative.",
+        "retrieved": [
+          "regression_cause",
+          "alias_confirmed",
+          "lock_commit"
+        ],
+        "source_sessions": [
+          113,
+          61,
+          70
+        ],
+        "expected": [
+          "raw_evidence",
+          "stable_status"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 670
+      },
+      {
+        "case": "C128",
+        "query": "Create a known-absent feature branch through the GitHub connector.",
+        "retrieved": [
+          "create_ref",
+          "discovery",
+          "read_boundary"
+        ],
+        "source_sessions": [
+          126,
+          19,
+          20
+        ],
+        "expected": [
+          "create_ref"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 591
+      },
+      {
+        "case": "C148",
+        "query": "An open external issue looks actionable; check for a competing fix before starting reproduction.",
+        "retrieved": [
+          "existing_fix",
+          "project_policy",
+          "waiting"
+        ],
+        "source_sessions": [
+          135,
+          73,
+          134
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 686
+      },
+      {
+        "case": "C149",
+        "query": "Decide whether to work on an OSS issue when the maintainer has declined an AI-assisted contribution.",
+        "retrieved": [
+          "project_policy",
+          "existing_fix",
+          "discovery"
+        ],
+        "source_sessions": [
+          73,
+          135,
+          19
+        ],
+        "expected": [
+          "project_policy"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 707
+      },
+      {
+        "case": "C150",
+        "query": "An external issue is open with no comments; decide what to check before coding.",
+        "retrieved": [
+          "existing_fix",
+          "waiting",
+          "project_policy"
+        ],
+        "source_sessions": [
+          135,
+          134,
+          73
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 686
+      },
+      {
+        "case": "C151",
+        "query": "Inspect a new candidate in a project with few PRs before cloning or implementing a fix.",
+        "retrieved": [
+          "existing_fix",
+          "project_policy",
+          "waiting"
+        ],
+        "source_sessions": [
+          135,
+          73,
+          134
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 686
+      }
+    ],
+    "updates": [],
+    "final_q": {}
+  },
+  "utility": {
+    "hits": 19,
+    "n": 20,
+    "hit_at_3": 0.95,
+    "mean_recall_at_3": 0.9333333333333333,
+    "mean_context_chars": 552.35,
+    "traces": [
+      {
+        "case": "C022",
+        "query": "Read the mandatory startup documents completely despite a long log and output truncation.",
+        "retrieved": [
+          "read_boundary"
+        ],
+        "source_sessions": [
+          20
+        ],
+        "expected": [
+          "read_boundary"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 191
+      },
+      {
+        "case": "C049",
+        "query": "Recover my next step when the last session entry was written by the other agent.",
+        "retrieved": [
+          "peer_continuity",
+          "discovery"
+        ],
+        "source_sessions": [
+          47,
+          19
+        ],
+        "expected": [
+          "peer_continuity"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 480
+      },
+      {
+        "case": "C051",
+        "query": "Append a new Markdown session entry with a patch; repeated next-step lines occur throughout the log.",
+        "retrieved": [
+          "append_anchor",
+          "continuity_window"
+        ],
+        "source_sessions": [
+          49,
+          49
+        ],
+        "expected": [
+          "append_anchor"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 434
+      },
+      {
+        "case": "C057",
+        "query": "A different agent needs to replay public receipts at their original commits without reconstructing commands.",
+        "retrieved": [
+          "exact_commands"
+        ],
+        "source_sessions": [
+          55
+        ],
+        "expected": [
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 192
+      },
+      {
+        "case": "C061",
+        "query": "Check a claim that the same manifest alias flags were guessed twice.",
+        "retrieved": [
+          "alias_correction"
+        ],
+        "source_sessions": [
+          60
+        ],
+        "expected": [
+          "alias_correction"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 217
+      },
+      {
+        "case": "C064",
+        "query": "Correct documentation still claiming repeated manifest alias failures after an evidence review.",
+        "retrieved": [
+          "alias_correction",
+          "alias_confirmed",
+          "stable_status"
+        ],
+        "source_sessions": [
+          60,
+          61,
+          53
+        ],
+        "expected": [
+          "alias_correction",
+          "alias_confirmed"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 626
+      },
+      {
+        "case": "C077",
+        "query": "Batch mandatory startup document reads in a single orchestration output without losing content.",
+        "retrieved": [
+          "read_boundary",
+          "continuity_window"
+        ],
+        "source_sessions": [
+          20,
+          49
+        ],
+        "expected": [
+          "read_boundary"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 406
+      },
+      {
+        "case": "C090",
+        "query": "Verify whether a fresh checkout contains independently checkable raw artifacts behind reported hashes.",
+        "retrieved": [
+          "raw_evidence",
+          "read_boundary",
+          "append_anchor"
+        ],
+        "source_sessions": [
+          88,
+          20,
+          49
+        ],
+        "expected": [
+          "raw_evidence"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 646
+      },
+      {
+        "case": "C092",
+        "query": "Review updated receipts for reproducibility: command blocks and referenced local inputs for each group.",
+        "retrieved": [
+          "replay_inputs",
+          "exact_commands",
+          "stable_status"
+        ],
+        "source_sessions": [
+          90,
+          55,
+          53
+        ],
+        "expected": [
+          "replay_inputs",
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 616
+      },
+      {
+        "case": "C094",
+        "query": "Publish multiple file blobs through a capped connector response and check what was transferred.",
+        "retrieved": [
+          "outer_boundary",
+          "project_policy",
+          "read_boundary"
+        ],
+        "source_sessions": [
+          77,
+          73,
+          20
+        ],
+        "expected": [
+          "read_boundary",
+          "outer_boundary"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 639
+      },
+      {
+        "case": "C105",
+        "query": "Audit a pytest reproduction report for replayable commands and minimal inputs.",
+        "retrieved": [
+          "replay_inputs",
+          "exact_commands",
+          "lock_commit"
+        ],
+        "source_sessions": [
+          90,
+          55,
+          70
+        ],
+        "expected": [
+          "replay_inputs",
+          "raw_evidence",
+          "exact_commands"
+        ],
+        "hit": true,
+        "recall": 0.6666666666666666,
+        "chars": 639
+      },
+      {
+        "case": "C107",
+        "query": "A status summary describes a tested uv release as the current version after another release.",
+        "retrieved": [
+          "stable_status",
+          "alias_confirmed",
+          "lock_commit"
+        ],
+        "source_sessions": [
+          53,
+          61,
+          70
+        ],
+        "expected": [
+          "stable_status"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 631
+      },
+      {
+        "case": "C114",
+        "query": "Evaluate revised distutils regression controls and the install_lib missing cache_tag path.",
+        "retrieved": [
+          "regression_cause",
+          "replay_inputs",
+          "raw_evidence"
+        ],
+        "source_sessions": [
+          113,
+          90,
+          88
+        ],
+        "expected": [
+          "regression_cause"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 699
+      },
+      {
+        "case": "C116",
+        "query": "Decide whether a compact output receipt should also wrap the separate site build.",
+        "retrieved": [
+          "compact_output",
+          "outer_boundary",
+          "read_boundary"
+        ],
+        "source_sessions": [
+          82,
+          77,
+          20
+        ],
+        "expected": [
+          "compact_output"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 605
+      },
+      {
+        "case": "C118",
+        "query": "Check whether reported historical numerical results have retrievable evidence before publishing a narrative.",
+        "retrieved": [
+          "regression_cause",
+          "alias_confirmed",
+          "lock_commit"
+        ],
+        "source_sessions": [
+          113,
+          61,
+          70
+        ],
+        "expected": [
+          "raw_evidence",
+          "stable_status"
+        ],
+        "hit": false,
+        "recall": 0.0,
+        "chars": 670
+      },
+      {
+        "case": "C128",
+        "query": "Create a known-absent feature branch through the GitHub connector.",
+        "retrieved": [
+          "create_ref",
+          "read_boundary",
+          "discovery"
+        ],
+        "source_sessions": [
+          126,
+          20,
+          19
+        ],
+        "expected": [
+          "create_ref"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 591
+      },
+      {
+        "case": "C148",
+        "query": "An open external issue looks actionable; check for a competing fix before starting reproduction.",
+        "retrieved": [
+          "existing_fix",
+          "project_policy",
+          "waiting"
+        ],
+        "source_sessions": [
+          135,
+          73,
+          134
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 686
+      },
+      {
+        "case": "C149",
+        "query": "Decide whether to work on an OSS issue when the maintainer has declined an AI-assisted contribution.",
+        "retrieved": [
+          "project_policy",
+          "existing_fix",
+          "discovery"
+        ],
+        "source_sessions": [
+          73,
+          135,
+          19
+        ],
+        "expected": [
+          "project_policy"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 707
+      },
+      {
+        "case": "C150",
+        "query": "An external issue is open with no comments; decide what to check before coding.",
+        "retrieved": [
+          "existing_fix",
+          "waiting",
+          "project_policy"
+        ],
+        "source_sessions": [
+          135,
+          134,
+          73
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 686
+      },
+      {
+        "case": "C151",
+        "query": "Inspect a new candidate in a project with few PRs before cloning or implementing a fix.",
+        "retrieved": [
+          "existing_fix",
+          "project_policy",
+          "waiting"
+        ],
+        "source_sessions": [
+          135,
+          73,
+          134
+        ],
+        "expected": [
+          "existing_fix"
+        ],
+        "hit": true,
+        "recall": 1.0,
+        "chars": 686
+      }
+    ],
+    "updates": [
+      {
+        "event": "C022",
+        "id": "read_boundary",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 22
+      },
+      {
+        "event": "C049",
+        "id": "peer_continuity",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 49
+      },
+      {
+        "event": "C049",
+        "id": "discovery",
+        "old": 0.5,
+        "new": 0.4,
+        "reward": -1,
+        "at": 49
+      },
+      {
+        "event": "C051",
+        "id": "append_anchor",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 51
+      },
+      {
+        "event": "C051",
+        "id": "continuity_window",
+        "old": 0.5,
+        "new": 0.4,
+        "reward": -1,
+        "at": 51
+      },
+      {
+        "event": "C057",
+        "id": "exact_commands",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 57
+      },
+      {
+        "event": "C061",
+        "id": "alias_correction",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 61
+      },
+      {
+        "event": "C064",
+        "id": "alias_correction",
+        "old": 0.6,
+        "new": 0.6799999999999999,
+        "reward": 1,
+        "at": 64
+      },
+      {
+        "event": "C064",
+        "id": "alias_confirmed",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 64
+      },
+      {
+        "event": "C064",
+        "id": "stable_status",
+        "old": 0.5,
+        "new": 0.4,
+        "reward": -1,
+        "at": 64
+      },
+      {
+        "event": "C077",
+        "id": "read_boundary",
+        "old": 0.6,
+        "new": 0.6799999999999999,
+        "reward": 1,
+        "at": 77
+      },
+      {
+        "event": "C077",
+        "id": "continuity_window",
+        "old": 0.4,
+        "new": 0.32,
+        "reward": -1,
+        "at": 77
+      },
+      {
+        "event": "C090",
+        "id": "raw_evidence",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 90
+      },
+      {
+        "event": "C090",
+        "id": "read_boundary",
+        "old": 0.6799999999999999,
+        "new": 0.5439999999999999,
+        "reward": -1,
+        "at": 90
+      },
+      {
+        "event": "C090",
+        "id": "append_anchor",
+        "old": 0.6,
+        "new": 0.48,
+        "reward": -1,
+        "at": 90
+      },
+      {
+        "event": "C092",
+        "id": "replay_inputs",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 92
+      },
+      {
+        "event": "C092",
+        "id": "exact_commands",
+        "old": 0.6,
+        "new": 0.6799999999999999,
+        "reward": 1,
+        "at": 92
+      },
+      {
+        "event": "C092",
+        "id": "stable_status",
+        "old": 0.4,
+        "new": 0.32,
+        "reward": -1,
+        "at": 92
+      },
+      {
+        "event": "C094",
+        "id": "outer_boundary",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 94
+      },
+      {
+        "event": "C094",
+        "id": "project_policy",
+        "old": 0.5,
+        "new": 0.4,
+        "reward": -1,
+        "at": 94
+      },
+      {
+        "event": "C094",
+        "id": "read_boundary",
+        "old": 0.5439999999999999,
+        "new": 0.6352,
+        "reward": 1,
+        "at": 94
+      },
+      {
+        "event": "C105",
+        "id": "replay_inputs",
+        "old": 0.6,
+        "new": 0.6799999999999999,
+        "reward": 1,
+        "at": 105
+      },
+      {
+        "event": "C105",
+        "id": "exact_commands",
+        "old": 0.6799999999999999,
+        "new": 0.744,
+        "reward": 1,
+        "at": 105
+      },
+      {
+        "event": "C105",
+        "id": "lock_commit",
+        "old": 0.5,
+        "new": 0.4,
+        "reward": -1,
+        "at": 105
+      },
+      {
+        "event": "C107",
+        "id": "stable_status",
+        "old": 0.32,
+        "new": 0.45599999999999996,
+        "reward": 1,
+        "at": 107
+      },
+      {
+        "event": "C107",
+        "id": "alias_confirmed",
+        "old": 0.6,
+        "new": 0.48,
+        "reward": -1,
+        "at": 107
+      },
+      {
+        "event": "C107",
+        "id": "lock_commit",
+        "old": 0.4,
+        "new": 0.32,
+        "reward": -1,
+        "at": 107
+      },
+      {
+        "event": "C114",
+        "id": "regression_cause",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 114
+      },
+      {
+        "event": "C114",
+        "id": "replay_inputs",
+        "old": 0.6799999999999999,
+        "new": 0.5439999999999999,
+        "reward": -1,
+        "at": 114
+      },
+      {
+        "event": "C114",
+        "id": "raw_evidence",
+        "old": 0.6,
+        "new": 0.48,
+        "reward": -1,
+        "at": 114
+      },
+      {
+        "event": "C116",
+        "id": "compact_output",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 116
+      },
+      {
+        "event": "C116",
+        "id": "outer_boundary",
+        "old": 0.6,
+        "new": 0.48,
+        "reward": -1,
+        "at": 116
+      },
+      {
+        "event": "C116",
+        "id": "read_boundary",
+        "old": 0.6352,
+        "new": 0.50816,
+        "reward": -1,
+        "at": 116
+      },
+      {
+        "event": "C118",
+        "id": "regression_cause",
+        "old": 0.6,
+        "new": 0.48,
+        "reward": -1,
+        "at": 118
+      },
+      {
+        "event": "C118",
+        "id": "alias_confirmed",
+        "old": 0.48,
+        "new": 0.384,
+        "reward": -1,
+        "at": 118
+      },
+      {
+        "event": "C118",
+        "id": "lock_commit",
+        "old": 0.32,
+        "new": 0.256,
+        "reward": -1,
+        "at": 118
+      },
+      {
+        "event": "C128",
+        "id": "create_ref",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 128
+      },
+      {
+        "event": "C128",
+        "id": "read_boundary",
+        "old": 0.50816,
+        "new": 0.40652799999999994,
+        "reward": -1,
+        "at": 128
+      },
+      {
+        "event": "C128",
+        "id": "discovery",
+        "old": 0.4,
+        "new": 0.32,
+        "reward": -1,
+        "at": 128
+      },
+      {
+        "event": "C148",
+        "id": "existing_fix",
+        "old": 0.5,
+        "new": 0.6,
+        "reward": 1,
+        "at": 148
+      },
+      {
+        "event": "C148",
+        "id": "project_policy",
+        "old": 0.4,
+        "new": 0.32,
+        "reward": -1,
+        "at": 148
+      },
+      {
+        "event": "C148",
+        "id": "waiting",
+        "old": 0.5,
+        "new": 0.4,
+        "reward": -1,
+        "at": 148
+      },
+      {
+        "event": "C149",
+        "id": "project_policy",
+        "old": 0.32,
+        "new": 0.45599999999999996,
+        "reward": 1,
+        "at": 149
+      },
+      {
+        "event": "C149",
+        "id": "existing_fix",
+        "old": 0.6,
+        "new": 0.48,
+        "reward": -1,
+        "at": 149
+      },
+      {
+        "event": "C149",
+        "id": "discovery",
+        "old": 0.32,
+        "new": 0.256,
+        "reward": -1,
+        "at": 149
+      },
+      {
+        "event": "C150",
+        "id": "existing_fix",
+        "old": 0.48,
+        "new": 0.584,
+        "reward": 1,
+        "at": 150
+      },
+      {
+        "event": "C150",
+        "id": "waiting",
+        "old": 0.4,
+        "new": 0.32,
+        "reward": -1,
+        "at": 150
+      },
+      {
+        "event": "C150",
+        "id": "project_policy",
+        "old": 0.45599999999999996,
+        "new": 0.36479999999999996,
+        "reward": -1,
+        "at": 150
+      },
+      {
+        "event": "C151",
+        "id": "existing_fix",
+        "old": 0.584,
+        "new": 0.6672,
+        "reward": 1,
+        "at": 151
+      },
+      {
+        "event": "C151",
+        "id": "project_policy",
+        "old": 0.36479999999999996,
+        "new": 0.29184,
+        "reward": -1,
+        "at": 151
+      },
+      {
+        "event": "C151",
+        "id": "waiting",
+        "old": 0.32,
+        "new": 0.256,
+        "reward": -1,
+        "at": 151
+      }
+    ],
+    "final_q": {
+      "discovery": 0.256,
+      "read_boundary": 0.40652799999999994,
+      "final_only": 0.5,
+      "peer_continuity": 0.6,
+      "continuity_window": 0.32,
+      "append_anchor": 0.48,
+      "stable_status": 0.45599999999999996,
+      "exact_commands": 0.744,
+      "alias_correction": 0.6799999999999999,
+      "alias_confirmed": 0.384,
+      "lock_commit": 0.256,
+      "project_policy": 0.29184,
+      "outer_boundary": 0.48,
+      "compact_output": 0.6,
+      "raw_evidence": 0.48,
+      "replay_inputs": 0.5439999999999999,
+      "regression_cause": 0.48,
+      "scope_output": 0.5,
+      "create_ref": 0.6,
+      "waiting": 0.256,
+      "existing_fix": 0.6672,
+      "resolved_candidate": 0.5
+    }
+  }
+}

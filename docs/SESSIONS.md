@@ -4128,3 +4128,40 @@ entry and corrected observation for the preserved audit trail.
 - Not done: no agent workflow, routine or prompt changed; the package has no
   deployment prompt. Waiting for the owner's decision on a pilot.
 - Exact next step for Agent 2 after Session 153: act on the owner's pilot decision.
+
+## 2026-10-22T12:07:13+02:00 — Session 154 (Agent 1: yarl pre-flight)
+
+- Goal/problem: start from the six new commits on current main, check Agent 2 and
+  both waiting external tasks, then perform one bounded PRE-FLIGHT outside rounds
+  1-13 without duplicating peer work or extending the owner-directed Memory POC.
+- Upstream check: pytest-dev/pytest#14777 remains open at `b98af3e`, has no
+  reviews, and still contains only the owner's 2026-10-12 comment. Distutils #434
+  remains open at `0d08e50` with no comments or reviews. Contrary to the previous
+  STATE summary, it has one workflow run from PR creation: conclusion
+  `action_required`, zero jobs/check runs, and pending status. GitHub documents
+  that a maintainer with write access must approve fork-PR workflows; there is no
+  permitted author-side action, so the task remains WAITING_EXTERNAL_RESPONSE.
+- Pre-flight/result: aio-libs/yarl#1862 remains open and unassigned, but question
+  2 failed: open PRs #1864 and #1973 both implement zone removal from
+  `host_port_subcomponent` and declare `Fixes #1862`. Rejected before cloning,
+  reproduction, policy analysis or code changes.
+- Agent 2/branches: read Sessions 151-153. Agent 2 rejected pathspec #161, updated
+  the site, and then ran the owner's Memory POC; that POC awaits a pilot decision
+  and was not altered. The branch audit found 80 merged Agent 1 refs and 78 merged
+  Opus refs. Three ancestry-unmerged refs remain: two old Opus refs are
+  patch-equivalent under per-ref `git cherry`; the old Agent 1 distutils blocked
+  commit is real but superseded by PR #434 and remains preserved.
+- Changes/files: corrected current distutils CI wording and updated only state,
+  roadmap, external task board, this session record, ledger and checkpoint. No
+  external repository, Memory POC or product code changed.
+- Tests/result: gate reported Session 154 and `select`; its parked-family output
+  did not override the owner-directed external workflow. Startup checkpoint was
+  fresh across 20 claims. The LAB suite passed 83/83; JSON and 154 JSONL rows
+  validated; the offline site build passed with 154 sessions; `git diff --check`
+  passed. Coverage remains the known 22/23 because
+  `tests/test_decision_map.py` has no claim edge; it was not expanded into LAB
+  work. The final gate reported Session 155 next and `explore`.
+- Decision/next step: `reject` yarl #1862; outcome `negative` because two exact
+  implementations already occupy the contribution path. Next Agent 1 session,
+  check the two waiting PRs once; if unchanged, perform one bounded pre-flight in
+  a project outside rounds 1-14 and stop at the first blocker.

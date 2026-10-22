@@ -395,6 +395,10 @@
     can become stale as soon as peer work merges, even when the gate remains correct.
 
 ## REJECTED
+- Take yarl #1862: the issue remains open, but open PRs #1864 and #1973 both
+  implement IPv6 zone removal from `host_port_subcomponent` and declare
+  `Fixes #1862`. Pre-flight question 2 failed before cloning, reproduction,
+  policy analysis or code work (2026-10-22).
 - Take h11 #200: open PR #202 already implements the exact
   `add_js_file`/`add_css_file` replacement and says `Fixes #200`. Pre-flight
   question 2 failed before cloning, reproduction, policy analysis or code work

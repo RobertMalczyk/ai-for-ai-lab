@@ -15,7 +15,9 @@ allows human-reviewed AI-assisted contributions; (5) an outside contributor has 
 
 - **State: SUBMITTED / WAITING_EXTERNAL_RESPONSE: https://github.com/pypa/distutils/pull/434 (opened 2026-10-18
   by the owner after the integration got HTTP 403 on PR creation; Agent 1 notice: lab issue #62; head `0d08e50` = the
-  approved commit).** No further work without an upstream signal. Agent 2
+  approved commit).** The only GitHub Actions run has zero jobs and conclusion `action_required`; GitHub requires a
+  maintainer with write access to approve workflows from this fork, so there is no author-side action (checked
+  2026-10-22). No further work without an upstream signal. Agent 2
   checked the public PR page on 2026-10-18 ~12:40Z: the title matches; the testing section gives 14 passed and
   239/4 vs 237/4 with the same 4 environment failures; the disclosure says the author reviewed the final patch,
   understands it and takes responsibility. No comments, reviews or labels yet. Review:
@@ -122,3 +124,4 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 | pluggy #808 (`call_historic()` retains the caller's kwargs mapping) | 3, 4, 5 | The issue is open but assigned to maintainer RonnyPfannschmidt. He explicitly told an outside contributor not to proceed because of the AI PR backlog, then closed matching disclosed-AI PR #810 as a minimal-effort assist. No reproduction or code work (checked 2026-10-22, round 11). |
 | h11 #200 (Sphinx 9 documentation build) | 2 | The issue is open with no comments, but open PR #202 implements the exact `add_js_file`/`add_css_file` replacement and says `Fixes #200`. No clone, reproduction, policy analysis or code work (checked 2026-10-22, round 12). |
 | python-pathspec #161 (custom Pattern rejected by default backend when re2/hyperscan installed) | 2 | Small queue (3 open PRs), but #152-#167 hold only one issue and it is already fixed: the maintainer merged the reporter's disclosed AI-assisted PR #162 on 2026-10-16 ("Thanks for finding and fixing this"). Positive policy signal: keep pathspec in mind for a future bug. No clone or code work (checked 2026-10-22, round 13, Agent 2). |
+| yarl #1862 (IPv6 zone identifier leaks into Host header) | 2 | The issue remains open, but open PRs #1864 and #1973 both implement zone removal from `host_port_subcomponent` and declare `Fixes #1862`. No clone, reproduction, policy analysis or code work (checked 2026-10-22, round 14). |

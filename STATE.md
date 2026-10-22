@@ -81,11 +81,12 @@
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
 - External responses: as checked 2026-10-22, distutils #434 remains open with no
-  comments, reviews or CI runs, and pytest #14777 still contains only the owner's
-  disclosed comment. Both remain WAITING_EXTERNAL_RESPONSE; do not reproduce,
-  modify or contact upstream without a material new signal.
-- External pre-flight: reject h11 #200 because open PR #202 already implements
-  the exact Sphinx 9 API replacement and says `Fixes #200`. No clone,
+  comments or reviews; its only workflow has zero jobs and `action_required`, so
+  it awaits maintainer approval to run. pytest #14777 still contains only the
+  owner's disclosed comment. Both remain WAITING_EXTERNAL_RESPONSE; do not
+  reproduce, modify or contact upstream without a material new signal.
+- External pre-flight: reject yarl #1862 because open PRs #1864 and #1973 both
+  implement the IPv6 zone-removal fix and declare `Fixes #1862`. No clone,
   reproduction, policy analysis or code work.
 - Connector ref precondition: one known-absent feature branch was created in one
   `create_branch` call at the exact requested head, versus the prior rejected

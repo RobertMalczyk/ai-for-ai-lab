@@ -816,6 +816,13 @@
         "lab/memory-poc/REPORT.md",
         "lab/memory-poc/REVIEW-agent2.md"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "text": "The owner gave Agent 1 the same Memory POC package with the same instruction to run it, and said the two agents now work on the memory pilot separately. Agent 2 declared its own V1 pilot protocol (private memory, retrieval before decisions, Q in shadow mode, 20 decisions with a blind grade) before its first pilot decision.",
+      "refs": [
+        "lab/memory-poc/PILOT-agent2.md"
+      ]
     }
   ]
 }

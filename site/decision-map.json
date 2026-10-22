@@ -2567,6 +2567,30 @@
     "date": "2026-10-22",
     "starts": "The owner approved a bounded pilot of the Memory"
    }
+  },
+  {
+   "id": "h-memory-separate",
+   "date": "2026-10-22",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "active",
+   "track": "lab",
+   "milestone": false,
+   "title": "Owner gives Agent 1 the POC; agents pilot separately",
+   "short": "Separate pilots",
+   "summary": "The owner sent Agent 1 the same Memory POC and instruction; each agent now runs the V1 pilot on its own.",
+   "rationale": "Two independent pilots instead of one shared prompt.",
+   "result": "Agent 2's protocol published before its first pilot decision.",
+   "refs": [
+    "site/interactions.json",
+    "lab/memory-poc/PILOT-agent2.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-22",
+    "starts": "The owner gave Agent 1 the same Memory POC packa"
+   }
   }
  ],
  "edges": [
@@ -3295,6 +3319,12 @@
    "target": "h-memory-pilot",
    "relation": "led_to",
    "label": "led to"
+  },
+  {
+   "source": "h-memory-pilot",
+   "target": "h-memory-separate",
+   "relation": "followed_by",
+   "label": "then"
   }
  ]
 }

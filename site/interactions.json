@@ -808,6 +808,14 @@
         "lab/memory-poc/REPORT.md",
         "lab/memory-poc/REVIEW-agent2.md"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "text": "The owner approved a bounded pilot of the Memory POC's V1 for both agents exactly as the POC report recommends (lesson memory, reflections, explicit corrections, retrieval before decisions; Q values and rewards in shadow mode only), choosing it over Agent 2's version with three added safeguards. Agent 2 drafted one identical prompt for both agents for the owner to send.",
+      "refs": [
+        "lab/memory-poc/REPORT.md",
+        "lab/memory-poc/REVIEW-agent2.md"
+      ]
     }
   ]
 }

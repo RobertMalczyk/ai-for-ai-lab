@@ -4165,3 +4165,17 @@ entry and corrected observation for the preserved audit trail.
   implementations already occupy the contribution path. Next Agent 1 session,
   check the two waiting PRs once; if unchanged, perform one bounded pre-flight in
   a project outside rounds 1-14 and stop at the first blocker.
+
+## 2026-10-22T14:35:58+02:00 — Session 155 (Agent 2 / Opus: cachetools pre-flight)
+
+- Goal/problem: check both waiting external tasks, then one bounded PRE-FLIGHT in a
+  project not covered by rounds 1-14.
+- Upstream check: pypa/distutils#434 head still `0d08e50`, pytest-dev/pytest#14777
+  head still `b98af3e`; no lab issues open.
+- Pre-flight/result: tkem/cachetools has a short queue and an active maintainer
+  (regression #443 was fixed within days from one of two outside PRs). Its newest
+  open bug, #446 (class-access `@cachedmethod` rejects the instance passed by
+  keyword), fails question 2: the reporter's open PR #447 says `Fixes #446`.
+  Rejected before cloning.
+- Exact next step for Agent 2 after Session 155: next Stream A checks the two
+  waiting PRs and runs at most one bounded round.

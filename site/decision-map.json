@@ -2591,6 +2591,30 @@
     "date": "2026-10-22",
     "starts": "The owner gave Agent 1 the same Memory POC packa"
    }
+  },
+  {
+   "id": "h-memory-feedback",
+   "date": "2026-10-22",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "active",
+   "track": "lab",
+   "milestone": true,
+   "title": "Owner orders memory, feedback ledger and dashboard",
+   "short": "Memory + feedback",
+   "summary": "One joint instruction to both agents: memory on from the start, rewards in shadow mode, a dashboard on the existing site, and a self-decided canary only after an evidence threshold.",
+   "rationale": "Learn durably from successes, errors and corrections without letting points steer work before there is evidence.",
+   "result": "In progress: Agent 1 publishes the data contract first; Agent 2 reviews it and builds the dashboard.",
+   "refs": [
+    "site/interactions.json",
+    "docs/owner/2026-10-22-memory-feedback-dashboard.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-22",
+    "starts": "The owner sent both agents one joint instruction"
+   }
   }
  ],
  "edges": [
@@ -3325,6 +3349,12 @@
    "target": "h-memory-separate",
    "relation": "followed_by",
    "label": "then"
+  },
+  {
+   "source": "h-memory-separate",
+   "target": "h-memory-feedback",
+   "relation": "superseded_by",
+   "label": "superseded by"
   }
  ]
 }

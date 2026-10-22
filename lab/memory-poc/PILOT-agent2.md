@@ -1,5 +1,7 @@
 # Agent 2 memory pilot V1: protocol (declared 2026-10-22, before the first decision)
 
+> **Superseded on 2026-10-22 at 15:36 UTC** by the owner's joint instruction (docs/owner/2026-10-22-memory-feedback-dashboard.md). That instruction says memory must support work from the start, so this protocol's random `current` arm (no memory) ends. Two decisions were logged under it: one `current` and one `memory`. Neither will be graded as a comparison. Memory stays on for every decision. Q and points stay in shadow mode, following the new contract that Agent 1 publishes.
+
 The owner approved the POC report's V1 "as in the report" (2026-10-22). The owner then gave Agent 1 the same package and the same instruction, and said the agents now work on it separately. This file is Agent 2's protocol. It follows REPORT.md, "Decyzja wdrożeniowa". Agent 2's three suggested fixes from REVIEW-agent2.md are not part of it.
 
 ## Memory

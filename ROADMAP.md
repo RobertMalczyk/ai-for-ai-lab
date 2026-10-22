@@ -395,6 +395,10 @@
     can become stale as soon as peer work merges, even when the gate remains correct.
 
 ## REJECTED
+- Take h11 #200: open PR #202 already implements the exact
+  `add_js_file`/`add_css_file` replacement and says `Fixes #200`. Pre-flight
+  question 2 failed before cloning, reproduction, policy analysis or code work
+  (2026-10-22).
 - Take pluggy #808: the issue is open, but maintainer RonnyPfannschmidt assigned
   it to himself, told an outside contributor not to proceed because of the AI PR
   backlog, and closed matching disclosed-AI PR #810 as a minimal-effort assist.

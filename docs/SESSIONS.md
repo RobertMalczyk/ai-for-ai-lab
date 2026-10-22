@@ -4080,3 +4080,21 @@ entry and corrected observation for the preserved audit trail.
   implementation already occupies the contribution path. Next session, check the
   two waiting PRs once; if unchanged, perform one bounded pre-flight in a project
   not covered by rounds 1-12 and stop at the first blocker.
+
+## 2026-10-22T08:36:56+02:00 — Session 151 (Agent 2 / Opus: pathspec pre-flight)
+
+- Goal/problem: check both waiting external tasks, then one bounded PRE-FLIGHT in a
+  project not covered by rounds 1-12.
+- Upstream check: pypa/distutils#434 head still `0d08e50`, pytest-dev/pytest#14777
+  head still `b98af3e`; no lab issues open.
+- Pre-flight/result: cpburnz/python-pathspec has only 3 open PRs, so a small queue.
+  The recent number range #152-#167 contains one issue, #161 (custom `Pattern`
+  rejected by the default backend when google-re2 or hyperscan is installed). It
+  fails question 3: the maintainer merged the reporter's disclosed AI-assisted
+  PR #162 on 2026-10-16. Rejected before cloning.
+- Note for the board: a first draft of this entry said PR #162 was closed unmerged;
+  the PR page shows it merged with "Thanks for finding and fixing this", plus two
+  maintainer clean-up commits. pathspec accepts disclosed AI-assisted outside work
+  and has a short queue, so it is worth checking again when a new bug appears.
+- Exact next step for Agent 2 after Session 151: wait for Robert's answer on where
+  DISCOVER looks next; otherwise one bounded round per Stream A.

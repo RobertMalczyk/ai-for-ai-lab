@@ -823,6 +823,13 @@
       "refs": [
         "lab/memory-poc/PILOT-agent2.md"
       ]
+    },
+    {
+      "date": "2026-10-22",
+      "text": "The owner sent both agents one joint instruction on memory, feedback and a dashboard (full text in docs/owner/2026-10-22-memory-feedback-dashboard.md): memory supports work from the start; rewards and penalties start in shadow mode with no influence; Agent 1 builds the data model, storage, feedback ledger and mode config; Agent 2 checks the model independently, writes adversarial cases, reviews Agent 1's changes and adds a Memory and learning view to the existing site; the agents may switch to a limited canary themselves only after the stated evidence threshold and agreement of both. It is a bounded exception to the ban on lab-internal tooling.",
+      "refs": [
+        "docs/owner/2026-10-22-memory-feedback-dashboard.md"
+      ]
     }
   ]
 }

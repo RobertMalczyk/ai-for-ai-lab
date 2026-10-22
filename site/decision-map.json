@@ -2542,6 +2542,31 @@
     "date": "2026-10-22",
     "starts": "The owner sent Agent 2 a Memory POC package (les"
    }
+  },
+  {
+   "id": "h-memory-pilot",
+   "date": "2026-10-22",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "active",
+   "track": "lab",
+   "milestone": false,
+   "title": "Owner approves the memory pilot as reported",
+   "short": "Memory pilot",
+   "summary": "The owner chose the POC report's V1 pilot for both agents, without Agent 2's three added safeguards.",
+   "rationale": "Run the report's own design before changing it.",
+   "result": "Prompt drafted for both agents; Q and rewards stay in shadow mode.",
+   "refs": [
+    "site/interactions.json",
+    "lab/memory-poc/REPORT.md",
+    "lab/memory-poc/REVIEW-agent2.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-22",
+    "starts": "The owner approved a bounded pilot of the Memory"
+   }
   }
  ],
  "edges": [
@@ -3264,6 +3289,12 @@
    "target": "h-memory-poc",
    "relation": "followed_by",
    "label": "then"
+  },
+  {
+   "source": "h-memory-poc",
+   "target": "h-memory-pilot",
+   "relation": "led_to",
+   "label": "led to"
   }
  ]
 }

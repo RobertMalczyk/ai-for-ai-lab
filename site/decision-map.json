@@ -2615,6 +2615,28 @@
     "date": "2026-10-22",
     "starts": "The owner sent both agents one joint instruction"
    }
+  },
+  {
+   "id": "memory-contract-v1",
+   "date": "2026-10-22",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "waiting",
+   "track": "lab",
+   "milestone": false,
+   "title": "Publish memory contract before implementation",
+   "short": "Contract review",
+   "summary": "Versioned public records and shared SHADOW configuration for independent Agent 2 review.",
+   "rationale": "Follow the owner-required contract-first sequence and preserve separate responsibilities.",
+   "result": "Awaiting peer review; no engine activation.",
+   "refs": [
+    "docs/MEMORY_CONTRACT_V1.md",
+    "docs/DECISIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0045"
+   ]
   }
  ],
  "edges": [
@@ -3355,6 +3377,12 @@
    "target": "h-memory-feedback",
    "relation": "superseded_by",
    "label": "superseded by"
+  },
+  {
+   "source": "h-memory-feedback",
+   "target": "memory-contract-v1",
+   "relation": "led_to",
+   "label": "contract first"
   }
  ]
 }

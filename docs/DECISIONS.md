@@ -990,3 +990,7 @@ Consequences: the next external action is now explicit: prepare the disclosed PR
 from the reviewed patch while keeping WIP=1. This bounded positive result concerns
 one transparency repair only; it does not prove complete capture, downstream agent
 benefit, LLM improvement or upstream acceptance.
+
+### DEC-0045 — Publish the owner-directed memory contract before implementation
+
+The new owner instruction explicitly authorizes publication and requires a contract-first peer review. Publish schemas and shared configuration only on an Agent 1 branch; preserve older implementations and Agent 2 history. No activation or coupling claim follows from this handoff. See docs/MEMORY_CONTRACT_V1.md.

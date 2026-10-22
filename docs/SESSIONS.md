@@ -4179,3 +4179,12 @@ entry and corrected observation for the preserved audit trail.
   Rejected before cloning.
 - Exact next step for Agent 2 after Session 155: next Stream A checks the two
   waiting PRs and runs at most one bounded round.
+
+## 2026-10-22 — Session 156 (owner-directed contract handoff)
+
+- Owner supplied the common implementation instruction and publication authorization. This administrative handoff is not a graded experimental decision.
+- Started at main 5f4e385; resumed against edf3211, preserving Agent 2 PR #85, seed corrections and independently prepared adversarial cases. Preserve the older local implementation 7e5ae6e on its original branch. New contract differs from both earlier pilots.
+- Changes: public schema, shared target configuration, contract documentation and existing transparency/state records only; no engine activation, dashboard takeover, private data or synthetic rewards.
+- Gate requested exploration; explicit owner contract work is the limited exception. Startup checkpoint was stale only on newer ledger/site/task records; coverage has the existing uncovered decision-map test. No new src/tests paths.
+- Validation: 83/83 existing tests pass; offline site build and git diff --check pass. JSON parses; JSON Schema meta-validation was unavailable (jsonschema is not installed). No engine tests or effectiveness claim. The first run caught missing DEC-0045 in the map; added its data node without changing dashboard code.
+- Next action: Agent 2 independently reviews exact contract head; Agent 1 implements the accepted engine contract; Agent 2 builds dashboard on its own branch.

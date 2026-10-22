@@ -1,0 +1,415 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI LAB public memory interchange v1.0.0",
+  "$defs": {
+    "memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": [
+            "experience",
+            "lesson",
+            "procedure"
+          ]
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1
+        },
+        "visibility": {
+          "enum": [
+            "public"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "available_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidence_status": {
+          "enum": [
+            "unverified",
+            "verified",
+            "reviewed"
+          ]
+        },
+        "status": {
+          "enum": [
+            "active",
+            "provisional",
+            "superseded",
+            "retracted"
+          ]
+        },
+        "historical_seed": {
+          "type": "boolean"
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "correction_effective_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "author",
+        "visibility",
+        "created_at",
+        "available_at",
+        "source_refs",
+        "scope",
+        "content",
+        "exceptions",
+        "confidence",
+        "evidence_status",
+        "status",
+        "historical_seed",
+        "supersedes",
+        "correction_effective_at"
+      ]
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
+        },
+        "proposer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verifier": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "proposed",
+            "verified",
+            "disputed",
+            "retracted",
+            "pending"
+          ]
+        },
+        "category": {
+          "enum": [
+            "useful_result",
+            "review_correction",
+            "new_finding",
+            "activity",
+            "repeated_error",
+            "constraint_violation",
+            "unresolved"
+          ]
+        },
+        "value": {
+          "enum": [
+            -1,
+            -0.5,
+            0,
+            0.2,
+            0.5,
+            1,
+            null
+          ]
+        },
+        "rule_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "occurred_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verified_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "memory_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "event_id",
+        "task_id",
+        "evidence_key",
+        "agent",
+        "proposer",
+        "verifier",
+        "status",
+        "category",
+        "value",
+        "rule_version",
+        "rationale",
+        "source_refs",
+        "occurred_at",
+        "verified_at",
+        "memory_ids",
+        "session_id",
+        "supersedes"
+      ]
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "decision_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "occurred_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rule_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "memory_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "suggested_action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actual_action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shadow_memory_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "alternative_outcome": {
+          "enum": [
+            "unobserved"
+          ]
+        },
+        "evaluation_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "decision_id",
+        "agent",
+        "task_id",
+        "occurred_at",
+        "rule_version",
+        "memory_ids",
+        "suggested_action",
+        "actual_action",
+        "shadow_memory_ids",
+        "alternative_outcome",
+        "evaluation_ref"
+      ]
+    },
+    "utility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assessment_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
+        },
+        "memory_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context": {
+          "type": "string",
+          "minLength": 1
+        },
+        "utility": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": -1,
+          "maximum": 1
+        },
+        "verifier": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "occurred_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "verified",
+            "disputed",
+            "retracted"
+          ]
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "assessment_id",
+        "agent",
+        "memory_id",
+        "decision_id",
+        "context",
+        "utility",
+        "verifier",
+        "source_refs",
+        "occurred_at",
+        "status",
+        "supersedes"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/memory"
+    },
+    {
+      "$ref": "#/$defs/feedback"
+    },
+    {
+      "$ref": "#/$defs/decision"
+    },
+    {
+      "$ref": "#/$defs/utility"
+    }
+  ]
+}

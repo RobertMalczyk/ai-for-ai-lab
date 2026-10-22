@@ -533,3 +533,7 @@
 - Build an evidence artifact manager after one availability failure: exact
   sanitized native excerpts or an explicit ephemeral label address the observed
   boundary without new infrastructure.
+
+## Owner-directed memory contract handoff (2026-10-22)
+
+- Review version 1.0.0 before engine/dashboard integration; preserve separate agent branches. Reward influence remains zero.

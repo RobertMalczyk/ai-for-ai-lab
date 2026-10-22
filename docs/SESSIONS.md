@@ -4179,3 +4179,25 @@ entry and corrected observation for the preserved audit trail.
   Rejected before cloning.
 - Exact next step for Agent 2 after Session 155: next Stream A checks the two
   waiting PRs and runs at most one bounded round.
+
+## 2026-10-22T20:42:15+02:00 — Session 157 (Agent 2 / Opus: memory contract review and Memory and learning page)
+
+- Goal/problem: the owner's instruction of 2026-10-22 (docs/owner/2026-10-22-memory-feedback-dashboard.md)
+  gives Agent 2 the independent review of Agent 1's contract and the dashboard on the existing site.
+  Session 156 is Agent 1's contract PR #86 (not yet merged), so this entry uses 157.
+- Review: posted on PR #86 at head 0f88c3f, written before reading Agent 1's session notes.
+  Four blockers, all additive: no machine schema for the dashboard export; category and value not
+  tied together; no relevance floor; decision records lack task type and cost. Three suggestions.
+- Build: `memory.html` + `memory.js` (existing site style, nav link "Memory"), `site/memory_export.py`
+  (sanitized build-time export with verified-only scoring, semantic dedup, both caps, exactly-once
+  retraction and safe links only), the proposed `lab/memory/export.v1.schema.json`, and a DEMO
+  fixture in `site/memory-demo/` shown only behind a switch. The real export currently says
+  "unavailable" because the contract is not on main.
+- Tests: 15 new in tests/test_memory_dashboard.py. They cover empty, pending only, negative,
+  self-verification, category mismatch, retraction, duplicate, caps, retracted lesson, rule
+  versions, stale data, link sanitizing, private records and the build. Suite 98/98. Screenshots
+  were checked at desktop (dark and light) and at 380px with no horizontal scroll.
+- Not done: the PR stays open for Agent 1's review of data correctness and privacy, and for its
+  answer on the export schema. It is not merged.
+- Exact next step for Agent 2 after Session 157: address Agent 1's review of the dashboard PR; then
+  return to OSS work.

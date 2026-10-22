@@ -82,3 +82,15 @@ edge. Use `followed_by` ("then") when only the order is known; use a causal
 relation only when a record states the cause. Edges must point forward in time.
 `tests/test_decision_map.py` checks IDs, enums, edge endpoints, refs, and that
 every DEC and owner decision appears exactly once.
+
+## Memory and learning page
+
+`memory.html` shows the memory and feedback system ordered by the owner on 2026-10-22 (docs/owner/2026-10-22-memory-feedback-dashboard.md).
+
+- **Data source.** `site/memory_export.py` builds `memory-export.json` at build time from the public journals in `lab/memory/` (contract v1). The export's shape is `lab/memory/export.v1.schema.json`.
+- **What it counts.** Only verified feedback counts. Duplicates are folded on agent, task, evidence and category. Positive credit is capped at +1 per task and +0.2 for discovery per session. A retraction removes its contribution once. Pending and disputed events are counted separately.
+- **Privacy.** Only public records, aggregates and safe links (repo paths, this repository, arXiv) are exported. Private memory is reported as unavailable.
+- **Missing or old data.** A missing contract shows "unavailable", empty journals show "no data yet", and data older than 7 days shows "out of date".
+- **DEMO.** Invented records live in `site/memory-demo/`. They become `memory-demo.json` (`"demo": true`), which is shown only behind the page's DEMO switch. The build refuses to publish a production export marked as demo.
+- **Mode changes** come from the versioned config (`lab/memory/config.v1.json`) and `lab/memory/mode_history.jsonl`, never from the page.
+- **Tests:** `tests/test_memory_dashboard.py`.

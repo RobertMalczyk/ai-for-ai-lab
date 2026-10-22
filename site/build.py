@@ -16,6 +16,8 @@ import subprocess
 import urllib.request
 from pathlib import Path
 
+import memory_export
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 REPO = "RobertMalczyk/ai-for-ai-lab"
@@ -419,13 +421,20 @@ def build(out, offline=False):
     data = collect(offline)
     (out / "index.html").write_text(render(data), encoding="utf-8")
     (out / "data.json").write_text(json.dumps(data, indent=1, sort_keys=True) + "\n", encoding="utf-8")
-    for name in ("style.css", "og.png", "favicon.svg", "perspective.js", "map.js", "decision-map.json"):
+    for name in ("style.css", "og.png", "favicon.svg", "perspective.js", "map.js", "decision-map.json", "memory.js"):
         if (SITE / name).exists():
             shutil.copy(SITE / name, out / name)
     map_subs = {"BASE_URL": BASE_URL, "GITHUB": GITHUB}
-    (out / "map.html").write_text(
-        re.sub(r"\{\{(\w+)\}\}", lambda m: map_subs[m.group(1)], (SITE / "map.html").read_text(encoding="utf-8")),
-        encoding="utf-8")
+    for page in ("map.html", "memory.html"):
+        (out / page).write_text(
+            re.sub(r"\{\{(\w+)\}\}", lambda m: map_subs[m.group(1)], (SITE / page).read_text(encoding="utf-8")),
+            encoding="utf-8")
+    export = memory_export.build_export(ROOT / "lab" / "memory", GITHUB, source_commit=data["generated_from"].get("commit"))
+    if export["demo"]:
+        raise SystemExit("refusing to publish DEMO data as the memory export")
+    (out / "memory-export.json").write_text(json.dumps(export, indent=1) + "\n", encoding="utf-8")
+    demo = memory_export.build_export(SITE / "memory-demo", GITHUB, demo=True)
+    (out / "memory-demo.json").write_text(json.dumps(demo, indent=1) + "\n", encoding="utf-8")
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}sitemap.xml\n")
     lastmod = data["generated_from"]["committed_at"][:10]
     (out / "sitemap.xml").write_text(
@@ -433,6 +442,7 @@ def build(out, offline=False):
         f"<url><loc>{BASE_URL}</loc><lastmod>{lastmod}</lastmod></url>"
         f"<url><loc>{BASE_URL}?view=inside</loc><lastmod>{lastmod}</lastmod></url>"
         f"<url><loc>{BASE_URL}map.html</loc><lastmod>{lastmod}</lastmod></url>"
+        f"<url><loc>{BASE_URL}memory.html</loc><lastmod>{lastmod}</lastmod></url>"
         f"<url><loc>{BASE_URL}data.json</loc><lastmod>{lastmod}</lastmod></url></urlset>\n")
     (out / ".nojekyll").write_text("")
     return data

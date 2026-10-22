@@ -4098,3 +4098,16 @@ entry and corrected observation for the preserved audit trail.
   and has a short queue, so it is worth checking again when a new bug appears.
 - Exact next step for Agent 2 after Session 151: wait for Robert's answer on where
   DISCOVER looks next; otherwise one bounded round per Stream A.
+
+## 2026-10-22T09:50:06+02:00 — Session 152 (Agent 2 / Opus: site day 23)
+
+- Goal/problem: daily site update for 2026-10-22.
+- Outside: `site/proof.json` outside summary now covers discovery rounds 10-13
+  (typeguard, pluggy, h11, pathspec) and the pathspec maintainer merging a
+  disclosed AI-assisted outside PR. Repository metrics unchanged (0 stars, 0 forks,
+  0 open issues); the last three Pages deploys succeeded. No new owner decision, so
+  `human_decisions` is unchanged.
+- Inside: journal day 23 "One project that said yes": Agent 1's cheap rounds as the
+  better rule, the pathspec signal, and my corrected first draft of round 13.
+- Exact next step for Agent 2 after Session 152: next Stream A checks the two
+  waiting PRs and runs at most one bounded round.

@@ -1,0 +1,152 @@
+{"session":1,"family":"handoff","mode":"build","evidence":"synthetic","outcome":"unknown","record":"docs/SESSIONS.md"}
+{"session":2,"family":"handoff","mode":"evaluate","evidence":"synthetic","outcome":"unknown","record":"docs/BENCHMARKS.md"}
+{"session":3,"family":"handoff","mode":"build","evidence":"synthetic","outcome":"unknown","record":"docs/REVIEW.md"}
+{"session":4,"family":"handoff","mode":"evaluate","evidence":"synthetic","outcome":"unknown","record":"docs/BENCHMARKS.md"}
+{"session":5,"family":"handoff","mode":"build","evidence":"synthetic","outcome":"unknown","record":"docs/CAPSULE.md"}
+{"session":6,"family":"handoff","mode":"build","evidence":"replay","outcome":"unknown","record":"docs/CHECKPOINT.md"}
+{"session":7,"family":"handoff","mode":"build","evidence":"replay","outcome":"unknown","record":"docs/COVERAGE.md"}
+{"session":8,"family":"lab-governance","mode":"maintenance","evidence":"synthetic","outcome":"unknown","record":"docs/EXPERIMENT_POLICY.md"}
+{"session":9,"family":"tool-discovery","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-09-29-tool-discovery-field-trial.json"}
+{"session":10,"family":"handoff","mode":"evaluate","evidence":"field_trial","outcome":"negative","record":"lab/reports/2026-09-29-fresh-clone-checkpoint-field-trial.json"}
+{"session":11,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/EXPERIMENT_POLICY.md"}
+{"session":12,"family":"tool-discovery","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-09-29-web-tool-discovery-field-trial.json"}
+{"session":13,"family":"branch-visibility","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-09-29-branch-audit-trace.json"}
+{"session":14,"family":"verification-entrypoint","mode":"explore","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-test-entrypoint-replay.json"}
+{"session":15,"family":"verification-entrypoint","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-09-30-test-entrypoint-field-trace.json"}
+{"session":16,"family":"tool-discovery","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-opus-tool-discovery-audit.json"}
+{"session":17,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/SITE.md"}
+{"session":18,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/SITE.md"}
+{"session":19,"family":"tool-discovery","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-targeted-tool-discovery-trace.json"}
+{"session":20,"family":"startup-context","mode":"explore","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-09-30-startup-read-boundary.json"}
+{"session":21,"family":"publication-evidence-boundary","mode":"build","evidence":"synthetic","outcome":"unknown","record":"lab/observations/2026-09-30-publisher-boundary-plan.json"}
+{"session":22,"family":"startup-context","mode":"evaluate","evidence":"field_trial","outcome":"inconclusive","record":"lab/reports/2026-10-01-startup-read-field-trial.json"}
+{"session":23,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/SITE.md"}
+{"session":24,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/TRANSPARENCY.md"}
+{"session":25,"family":"publication-evidence-boundary","mode":"evaluate","evidence":"field_trial","outcome":"inconclusive","record":"lab/reports/2026-10-01-first-episode-plan-field-trial.json"}
+{"session":26,"family":"human-intervention-traceability","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-01-human-intervention-audit-field-trial.json"}
+{"session":27,"family":"restart-safety","mode":"build","evidence":"synthetic","outcome":"unknown","record":"lab/observations/2026-10-02-publish-manifest-plan.json"}
+{"session":28,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-02-opus-site-publisher-boundary.json"}
+{"session":29,"family":"restart-safety","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-02-opus-publish-manifest-replication.json"}
+{"session":30,"family":"human-intervention-traceability","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-02-cross-agent-transparency-field-trial.json"}
+{"session":31,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"AGENTS.md"}
+{"session":32,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/TRANSPARENCY.md"}
+{"session":33,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/EQUILIBRIUM.md"}
+{"session":34,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-02-opus-transparency-recheck.json"}
+{"session":35,"family":"lab-governance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/agent-cooperation-protocol.md"}
+{"session":36,"family":"publication-evidence-boundary","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-02-public-narrative-evidence-review-field-trial.json"}
+{"session":37,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/build.py"}
+{"session":38,"family":"cli-invocation-clarity","mode":"build","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-03-coverage-module-invocation-field-trial.json"}
+{"session":39,"family":"cli-invocation-clarity","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-03-opus-silent-module-exposure.json"}
+{"session":40,"family":"cli-invocation-clarity","mode":"build","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-03-checkpoint-module-invocation.json"}
+{"session":41,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-03.md"}
+{"session":42,"family":"cli-invocation-clarity","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-03-cli-invocation-clarity-evaluation.json"}
+{"session":43,"family":"cli-invocation-clarity","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-03-opus-forced-evaluation-forecast.json"}
+{"session":44,"family":"tool-precondition-clarity","mode":"explore","evidence":"field_trial","outcome":"negative","record":"lab/reports/2026-10-03-publish-manifest-precondition-field-trial.json"}
+{"session":45,"family":"cli-invocation-clarity","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-03-cli-invocation-clarity-parking.json"}
+{"session":46,"family":"context-log-scaling","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-04-latest-session-read-field-trial.json"}
+{"session":47,"family":"context-log-scaling","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-04-opus-latest-section-author.json"}
+{"session":48,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-04.md"}
+{"session":49,"family":"context-log-scaling","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-04-session-continuity-window-field-trial.json"}
+{"session":50,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/proof.json"}
+{"session":51,"family":"edit-anchor-safety","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-04-edit-anchor-safety-field-trial.json"}
+{"session":52,"family":"edit-anchor-safety","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-04-opus-repeated-entry-tails.json"}
+{"session":53,"family":"status-claim-stability","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-05-state-count-drift-field-trial.json"}
+{"session":54,"family":"public-evidence-receipts","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-05-proof-replay-audit.json"}
+{"session":55,"family":"public-evidence-receipts","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/proof.json"}
+{"session":56,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-05.md"}
+{"session":57,"family":"public-evidence-receipts","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-05-verbatim-receipt-field-trial.json"}
+{"session":58,"family":"cli-invocation-clarity","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-05-opus-publish-manifest-second-misuse.json"}
+{"session":59,"family":"publication-cli-affordance","mode":"explore","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-05-publish-manifest-alias-replay.json"}
+{"session":60,"family":"publication-cli-affordance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-05-opus-alias-evidence-check.json"}
+{"session":61,"family":"publication-cli-affordance","mode":"maintenance","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-05-alias-evidence-correction.json"}
+{"session":62,"family":"human-intervention-traceability","mode":"evaluate","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-06-teaser-transparency-field-trial.json"}
+{"session":63,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-06.md"}
+{"session":64,"family":"publication-cli-affordance","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-06-alias-doc-correction.json"}
+{"session":65,"family":"external-usefulness","mode":"maintenance","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-06-opus-external-usefulness.json"}
+{"session":66,"family":"external-usefulness","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-06-external-usefulness-evidence-review.json"}
+{"session":67,"family":"external-usefulness","mode":"maintenance","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-06-opus-manifest-baseline.json"}
+{"session":68,"family":"external-test-selection","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-06-external-test-selection.json"}
+{"session":69,"family":"external-test-selection","mode":"maintenance","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-07-opus-hard-case-test-selection.json"}
+{"session":70,"family":"external-environment-compatibility","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-07-external-env-compatibility.json"}
+{"session":71,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-07.md"}
+{"session":72,"family":"direction-review","mode":"maintenance","evidence":"none","outcome":"unknown","record":"docs/DIRECTION-2026-10-07-agent2.md"}
+{"session":73,"family":"external-oss-contribution","mode":"build","evidence":"none","outcome":"negative","record":"lab/observations/2026-10-07-click-private-convert-type.json"}
+{"session":74,"family":"external-oss-contribution","mode":"explore","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-07-opus-ai-policy-screen.json"}
+{"session":75,"family":"external-oss-contribution","mode":"evaluate","evidence":"none","outcome":"negative","record":"lab/observations/2026-10-07-rich-approval-evaluation.json"}
+{"session":76,"family":"external-oss-contribution","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-07-opus-rich-replication.json"}
+{"session":77,"family":"startup-read-boundary","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-08-startup-response-boundary-field-trial.json"}
+{"session":78,"family":"external-oss-contribution","mode":"evaluate","evidence":"none","outcome":"negative","record":"lab/observations/2026-10-08-oss-route-evaluation.json"}
+{"session":79,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-08.md"}
+{"session":80,"family":"remote-head-receipt","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-08-remote-head-receipt-field-trial.json"}
+{"session":81,"family":"handoff","mode":"build","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-08-checkpoint-log-dependency.json"}
+{"session":82,"family":"verification-output-boundary","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-09-verification-output-boundary-field-trial.json"}
+{"session":83,"family":"external-oss-contribution","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/2026-10-09-opus-drift-and-lab-candidate.json"}
+{"session":84,"family":"external-bug-reproduction","mode":"build","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-09-pytest-14775-reproduction.json"}
+{"session":85,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-09-opus-pytest-14775-replication.json"}
+{"session":86,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-09.md"}
+{"session":87,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-09-pytest-14775-cause-validation.json"}
+{"session":88,"family":"evidence-artifact-completeness","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-09-evidence-artifact-availability.json"}
+{"session":89,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-09-opus-pytest-14775-review.json"}
+{"session":90,"family":"evidence-artifact-completeness","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-10-evidence-replayability-evaluation.json"}
+{"session":91,"family":"evidence-artifact-completeness","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/traces/2026-10-09-opus-pytest-14775-review/receipts.txt"}
+{"session":92,"family":"evidence-artifact-completeness","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-10-evidence-replayability-followup.json"}
+{"session":93,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-10.md"}
+{"session":94,"family":"restart-safety","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-10-connector-mismatch-recovery-field-trial.json"}
+{"session":95,"family":"restart-safety","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-10-opus-connector-mismatch-challenge.json"}
+{"session":96,"family":"restart-safety","mode":"evaluate","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-10-connector-evidence-evaluation.json"}
+{"session":97,"family":"external-maintenance-triage","mode":"explore","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-11-requests-wrong-branch-triage.json"}
+{"session":98,"family":"external-maintenance-triage","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-11-opus-requests-5410-answer.json"}
+{"session":99,"family":"restart-safety","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-11-session97-publication-receipt-evaluation.json"}
+{"session":100,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-11.md"}
+{"session":101,"family":"external-bug-reproduction","mode":"explore","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-11-pytest-fixtures-exit-code-reproduction.json"}
+{"session":102,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-11-opus-pytest-15047-reproduction.json"}
+{"session":103,"family":"external-documentation-accuracy","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-11-uv-init-doc-audit.json"}
+{"session":104,"family":"external-documentation-accuracy","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-11-opus-uv-init-versions.json"}
+{"session":105,"family":"external-bug-reproduction","mode":"evaluate","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-11-pytest-15047-evidence-audit.json"}
+{"session":106,"family":"external-bug-reproduction","mode":"maintenance","evidence":"none","outcome":"unknown","record":"lab/observations/traces/2026-10-12-opus-pytest-15047-raw/NOTES.txt"}
+{"session":107,"family":"status-claim-stability","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/observations/2026-10-12-uv-release-claim-stability.json"}
+{"session":108,"family":"status-claim-stability","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-12-opus-claim-stability-challenge.json"}
+{"session":109,"family":"public-site","mode":"maintenance","evidence":"none","outcome":"unknown","record":"site/journal/2026-10-12.md"}
+{"session":110,"family":"external-oss-contribution","mode":"evaluate","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-12-opus-pytest-14777-comparison.json"}
+{"session": 111, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session":112,"family":"external-oss-contribution","mode":"explore","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-12-distutils-433-build.json"}
+{"session": 113, "family": "external-oss-contribution", "mode": "evaluate", "evidence": "replay", "outcome": "unknown", "record": "lab/observations/traces/2026-10-12-distutils-433-review.md"}
+{"session":114,"family":"external-oss-contribution","mode":"explore","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-12-distutils-433-review-response.json"}
+{"session":115,"family":"public-cooperation-protocol","mode":"explore","evidence":"replay","outcome":"unknown","record":"lab/observations/2026-10-12-review-artifact-schema.json"}
+{"session":116,"family":"verification-output-boundary","mode":"evaluate","evidence":"field_trial","outcome":"negative","record":"lab/reports/2026-10-13-site-output-boundary-field-trial.json"}
+{"session": 117, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-13.md"}
+{"session":118,"family":"publication-evidence-boundary","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-13-day14-claim-audit.json"}
+{"session":119,"family":"publication-evidence-boundary","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-13-publication-evidence-evaluation.json"}
+{"session":120,"family":"branch-visibility","mode":"explore","evidence":"replay","outcome":"negative","record":"lab/observations/2026-10-13-branch-equivalence-batch.json"}
+{"session":121,"family":"verification-output-boundary","mode":"evaluate","evidence":"field_trial","outcome":"inconclusive","record":"lab/reports/2026-10-14-branch-output-boundary-field-trial.json"}
+{"session": 122, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-14.md"}
+{"session":123,"family":"status-claim-stability","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-14-state-next-session-drift-field-trial.json"}
+{"session":124,"family":"status-claim-stability","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-14-status-claim-stability-evaluation.json"}
+{"session":125,"family":"status-claim-stability","mode":"evaluate","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-15-status-claim-stability-evaluation.json"}
+{"session":126,"family":"external-response-followup","mode":"explore","evidence":"none","outcome":"inconclusive","record":"lab/observations/2026-10-15-external-response-observation.json"}
+{"session": 127, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-15.md"}
+{"session":128,"family":"side-effect-precondition-clarity","mode":"explore","evidence":"replay","outcome":"inconclusive","record":"lab/observations/2026-10-15-ref-precondition.json"}
+{"session":129,"family":"human-intervention-transparency","mode":"explore","evidence":"field_trial","outcome":"positive","record":"lab/reports/2026-10-15-distutils-human-approval-sync-field-trial.json"}
+{"session": 130, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 131, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-16.md"}
+{"session": 132, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-17.md"}
+{"session": 133, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-18.md"}
+{"session": 134, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 135, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 136, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 137, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 138, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-19.md"}
+{"session": 139, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SITE.md"}
+{"session": 140, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 141, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 142, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 143, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 144, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-20.md"}
+{"session": 145, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 146, "family": "external-oss-contribution", "mode": "explore", "evidence": "replay", "outcome": "unknown", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 147, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-21.md"}
+{"session": 148, "family": "external-oss-contribution", "mode": "explore", "evidence": "none", "outcome": "negative", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 149, "family": "external-oss-contribution", "mode": "explore", "evidence": "none", "outcome": "negative", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 150, "family": "external-oss-contribution", "mode": "explore", "evidence": "none", "outcome": "negative", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 151, "family": "external-oss-contribution", "mode": "explore", "evidence": "none", "outcome": "negative", "record": "lab/tasks/EXTERNAL.md"}
+{"session": 152, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-22.md"}

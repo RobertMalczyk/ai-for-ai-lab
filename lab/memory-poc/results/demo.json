@@ -1,0 +1,80 @@
+{
+  "label": "SIMULATION, not observed reward or live agent behavior",
+  "reward_examples": [
+    {
+      "source_session": 73,
+      "event": "click-policy-check",
+      "status": "completed",
+      "verified": true,
+      "new_evidence": true,
+      "proposed_reward": 0.2
+    },
+    {
+      "source_session": 113,
+      "event": "distutils-review-correction",
+      "status": "completed",
+      "verified": true,
+      "review_correction": true,
+      "proposed_reward": 0.5
+    },
+    {
+      "source_session": 134,
+      "event": "waiting-for-upstream",
+      "status": "pending",
+      "verified": true,
+      "proposed_reward": null
+    },
+    {
+      "source_session": 148,
+      "event": "new-occupied-candidate",
+      "status": "completed",
+      "verified": true,
+      "new_evidence": true,
+      "proposed_reward": 0.2
+    },
+    {
+      "source_session": null,
+      "event": "repeated-no-change-poll",
+      "status": "completed",
+      "verified": true,
+      "proposed_reward": 0.0
+    },
+    {
+      "source_session": null,
+      "event": "repeat-known-error",
+      "status": "completed",
+      "verified": true,
+      "repeated_known_error": true,
+      "proposed_reward": -0.5
+    }
+  ],
+  "task_examples": [
+    {
+      "id": "unchanged_upstream_poll",
+      "permitted": true,
+      "actionable": false,
+      "external_value": 1,
+      "learning_opportunity": 0,
+      "cost": 0.1
+    },
+    {
+      "id": "eligible_external_candidate",
+      "permitted": true,
+      "actionable": true,
+      "external_value": 1,
+      "learning_opportunity": 0.7,
+      "cost": 0.4
+    },
+    {
+      "id": "lab_only_helper",
+      "permitted": false,
+      "actionable": true,
+      "external_value": 0,
+      "learning_opportunity": 1,
+      "cost": 0.2
+    }
+  ],
+  "chosen_task": "eligible_external_candidate",
+  "failure_memory_q_after_synthetic_success": 0.6,
+  "persistence_verified": true
+}

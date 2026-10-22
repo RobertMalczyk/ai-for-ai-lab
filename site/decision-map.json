@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-10-19",
+ "updated": "2026-10-22",
  "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
  "nodes": [
   {
@@ -2517,6 +2517,31 @@
    "external_url": "https://github.com/pypa/setuptools/issues/5296",
    "decision_ids": [],
    "stack": "pf-r3"
+  },
+  {
+   "id": "h-memory-poc",
+   "date": "2026-10-22",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "active",
+   "track": "lab",
+   "milestone": false,
+   "title": "Owner asks Agent 2 to run a Memory POC",
+   "short": "Memory POC",
+   "summary": "The owner sent a lesson-memory proof of concept and told Agent 2 to run it.",
+   "rationale": "Test whether a small memory of past lessons would help the agents before changing how they work.",
+   "result": "Reproduced 19/20 retrieval hits and 20/20 tests; Agent 2's review found the queries share words with their lessons and weak matches are never refused. No workflow changed yet.",
+   "refs": [
+    "site/interactions.json",
+    "lab/memory-poc/REPORT.md",
+    "lab/memory-poc/REVIEW-agent2.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-22",
+    "starts": "The owner sent Agent 2 a Memory POC package (les"
+   }
   }
  ],
  "edges": [
@@ -3233,6 +3258,12 @@
    "target": "rej-setuptools-5296",
    "relation": "branched_to",
    "label": "rejected at pre-flight"
+  },
+  {
+   "source": "h-decision-map",
+   "target": "h-memory-poc",
+   "relation": "followed_by",
+   "label": "then"
   }
  ]
 }

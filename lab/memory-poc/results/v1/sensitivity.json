@@ -1,0 +1,30 @@
+{
+  "0": {
+    "hits": 18,
+    "n": 20,
+    "hit_at_3": 0.9,
+    "mean_recall_at_3": 0.8833333333333333,
+    "mean_context_chars": 538.3
+  },
+  "0.1": {
+    "hits": 18,
+    "n": 20,
+    "hit_at_3": 0.9,
+    "mean_recall_at_3": 0.8833333333333333,
+    "mean_context_chars": 538.3
+  },
+  "0.25": {
+    "hits": 18,
+    "n": 20,
+    "hit_at_3": 0.9,
+    "mean_recall_at_3": 0.8833333333333333,
+    "mean_context_chars": 539.3
+  },
+  "0.5": {
+    "hits": 18,
+    "n": 20,
+    "hit_at_3": 0.9,
+    "mean_recall_at_3": 0.9,
+    "mean_context_chars": 540.85
+  }
+}

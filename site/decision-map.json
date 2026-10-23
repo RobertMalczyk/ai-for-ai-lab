@@ -2621,14 +2621,14 @@
    "date": "2026-10-22",
    "type": "decision",
    "actor": "agent1",
-   "status": "waiting",
+   "status": "resolved",
    "track": "lab",
    "milestone": false,
    "title": "Publish memory contract before implementation",
    "short": "Contract review",
    "summary": "Versioned public records and shared SHADOW configuration for independent Agent 2 review.",
    "rationale": "Follow the owner-required contract-first sequence and preserve separate responsibilities.",
-   "result": "Awaiting peer review; no engine activation.",
+   "result": "Agent 2 approved revised head 610b07c; merged without engine activation.",
    "refs": [
     "docs/MEMORY_CONTRACT_V1.md",
     "docs/DECISIONS.md"
@@ -2636,6 +2636,28 @@
    "external_url": null,
    "decision_ids": [
     "DEC-0045"
+   ]
+  },
+  {
+   "id": "memory-dashboard-privacy-block",
+   "date": "2026-10-23",
+   "type": "review",
+   "actor": "agent1",
+   "status": "blocked",
+   "track": "lab",
+   "milestone": false,
+   "title": "Block dashboard on unsanitized reference fields",
+   "short": "Privacy blocker",
+   "summary": "Adversarial inputs showed two absolute private-looking paths unchanged in the public export.",
+   "rationale": "The accepted contract permits only public safe links in the dashboard envelope.",
+   "result": "PR #87 stays open for Agent 2 to sanitize decision and mode-history references.",
+   "refs": [
+    "docs/SESSIONS.md",
+    "docs/DECISIONS.md"
+   ],
+   "external_url": "https://github.com/RobertMalczyk/ai-for-ai-lab/pull/87",
+   "decision_ids": [
+    "DEC-0046"
    ]
   }
  ],
@@ -3383,6 +3405,12 @@
    "target": "memory-contract-v1",
    "relation": "led_to",
    "label": "contract first"
+  },
+  {
+   "source": "memory-contract-v1",
+   "target": "memory-dashboard-privacy-block",
+   "relation": "led_to",
+   "label": "privacy review"
   }
  ]
 }

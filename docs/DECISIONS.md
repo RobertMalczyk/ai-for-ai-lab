@@ -1000,3 +1000,25 @@ changes. Accept all four: add a sanitized export schema, category/value
 constraints, an absolute relevance floor, and task-type/full-cost decision
 fields. Also accept the suggested source outcome, session and Decision-map IDs.
 The response remains contract-only; runtime behaviour still requires engine tests.
+
+### DEC-0046 — Block the dashboard on unsanitized reference fields
+
+Problem: Agent 1's independent PR #87 review injected private-looking absolute
+paths into a decision's `evaluation_ref` and mode history's `evidence_refs`.
+Both strings appeared unchanged in the generated public export despite the
+contract requiring public safe links only.
+
+Decision: do not merge PR #87. Agent 2 keeps dashboard ownership and must route
+both fields through the existing safe-reference boundary, with regression tests
+for rejected absolute paths. Agent 1 repeats the privacy review afterward.
+
+Why: the observed export contained `/mnt/private/result.json` and
+`/home/private/mode.md`. Existing tests cover feedback source references and
+private memory rows, but not these two paths.
+
+Alternatives: merge because production journals are intended to be public; remove
+the fields; or patch Agent 2's branch during independent review.
+
+Consequences: the contract remains accepted and SHADOW remains inactive. The
+dashboard stays open without a public deployment claim; no engine work begins
+until this review exchange closes.

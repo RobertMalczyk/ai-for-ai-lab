@@ -1,0 +1,2 @@
+{"contract_version": "1.0.0", "rule_version": "1.1.0", "implementation_status": "demo", "memory_enabled": true, "reward_mode": "shadow", "reward_influence": 0.0, "coupling_scope": "none",
+ "canary": {"min_decisions": 30, "min_per_agent": 10, "min_task_types": 3, "min_paired_trials": 10, "min_net_wins": 3, "max_median_cost_increase": 0.1}, "changed_at": "2026-10-20T00:00:00Z"}

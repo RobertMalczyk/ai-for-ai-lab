@@ -4199,17 +4199,34 @@ entry and corrected observation for the preserved audit trail.
 
 ## 2026-10-22T20:42:15+02:00 — Session 157 (Agent 2 / Opus: memory contract review and Memory and learning page)
 
-- Goal/problem: the owner's instruction gives Agent 2 the independent review of
-  Agent 1's contract and the dashboard on the existing site.
-- Review: four additive blockers on contract head `0f88c3f`: no machine export
-  schema, category/value not tied, no relevance floor, and missing task type/cost.
-- Build: `memory.html`, `memory.js`, sanitized build-time exporter, proposed
-  export schema and a separate DEMO fixture. Fifteen tests covered empty, pending,
-  negative, correction, deduplication, caps, stale and privacy states.
-- Revision: Agent 1's `610b07c` resolved all blockers. Agent 2 approved it and
-  changed PR #87 at `de45ac2` to the stricter canonical schema. The schema copies
-  are byte-identical; 101/101 branch tests passed.
-- Not done: PR #87 remains open for Agent 1's independent aggregate/privacy review.
+- Goal/problem: the owner's instruction of 2026-10-22 (docs/owner/2026-10-22-memory-feedback-dashboard.md)
+  gives Agent 2 the independent review of Agent 1's contract and the dashboard on the existing site.
+  Session 156 is Agent 1's contract PR #86 (not yet merged), so this entry uses 157.
+- Review: posted on PR #86 at head 0f88c3f, written before reading Agent 1's session notes.
+  Four blockers, all additive: no machine schema for the dashboard export; category and value not
+  tied together; no relevance floor; decision records lack task type and cost. Three suggestions.
+- Build: `memory.html` + `memory.js` (existing site style, nav link "Memory"), `site/memory_export.py`
+  (sanitized build-time export with verified-only scoring, semantic dedup, both caps, exactly-once
+  retraction and safe links only), the proposed `lab/memory/export.v1.schema.json`, and a DEMO
+  fixture in `site/memory-demo/` shown only behind a switch. The real export currently says
+  "unavailable" because the contract is not on main.
+- Tests: 15 new in tests/test_memory_dashboard.py. They cover empty, pending only, negative,
+  self-verification, category mismatch, retraction, duplicate, caps, retracted lesson, rule
+  versions, stale data, link sanitizing, private records and the build. Suite 98/98. Screenshots
+  were checked at desktop (dark and light) and at 380px with no horizontal scroll.
+- Not done: the PR stays open for Agent 1's review of data correctness and privacy, and for its
+  answer on the export schema. It is not merged.
+- Exact next step for Agent 2 after Session 157: address Agent 1's review of the dashboard PR; then
+  return to OSS work.
+- Revision 2026-10-23 (same session, Stream A 06:34Z): Agent 1's contract head `610b07c` accepted all
+  four blockers and adopted a stricter export schema. The dashboard now conforms to it: private memory
+  is exported as `{available:false}` only (the explanatory note moved to the page), every readiness
+  criterion carries `evidence_refs` and `gaps` (shown in a new "Missing" column), and the DEMO
+  memories and decisions gained the new required record fields. `lab/memory/export.v1.schema.json`
+  on this branch is now byte-identical to Agent 1's file, so the two PRs no longer disagree on it.
+  The DEMO export, the empty export under Agent 1's config and the DEMO records validated against
+  Agent 1's schemas with jsonschema run outside the repo; three new stdlib tests check the same
+  required fields. 101/101 tests pass. Mobile overflow of the criteria table fixed.
 
 ## 2026-10-23T09:55:00+02:00 — Session 158 (Agent 2 / Opus: site day 24)
 
@@ -4245,3 +4262,25 @@ entry and corrected observation for the preserved audit trail.
   private store, reward influence or usefulness claim was activated.
 - Exact next step: Agent 2 sanitizes both reference fields and adds regression
   cases; Agent 1 repeats the privacy review before dashboard integration.
+
+## 2026-10-23T14:50:00+02:00 — Session 160 (Agent 2 / Opus: dashboard reference leaks fixed)
+
+- Goal/problem: Agent 1's Session 159 privacy review (DEC-0046) showed two absolute paths, a decision
+  `evaluation_ref` and a mode-history `evidence_refs` entry, reaching the public export unchanged.
+- Finding confirmed and widened: replaying 13 leak vectors against the old exporter, the two reported
+  fields passed every vector through. The feedback `refs` field, which was meant to be safe, also
+  passed six: `C:/...`, `mailto:`, a leading space, `%2e%2e`, `./` and an embedded newline. Agent 1's
+  review was correct and the hole was larger than it reported.
+- Fix: `safe_ref` now rejects schemes other than this repository and arXiv, any colon, leading dot,
+  dash or slash, surrounding whitespace, control characters, `%` and `@`. All three reference fields
+  go through it. Mode-history entries are rebuilt from a whitelist of fields, and `decided_by` keeps only
+  agent1, agent2 and owner. Four regression tests (Agent 1's two cases, the 13 vectors on every
+  reference field, safe references kept, mode-history whitelist) fail on the old exporter (16 failures)
+  and pass now.
+- Validation: 111/111 tests, offline build, DEMO and empty exports validated against the accepted
+  export schema (jsonschema outside the repo).
+- Next: Agent 1 repeats the privacy review of PR #87; no merge before that.
+- Correction after Agent 1's re-review: the ledger row first said `outcome: positive` with
+  `evidence: replay`, which the session gate rejects ("synthetic/replay success is not demonstrated
+  agent utility"). A correctness replay of my own exporter is not a utility result, so the row now says
+  `unknown`. The gate passes. I had not run the gate before pushing.

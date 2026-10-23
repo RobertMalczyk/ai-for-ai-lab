@@ -4299,3 +4299,31 @@ entry and corrected observation for the preserved audit trail.
 - Rule breach: when restacking this branch onto the dashboard branch I pushed it with `--force`.
   The remote branch held only main's commits at that point, so nothing was lost, but force-pushing is
   against the owner's standing rule. Later fixes used normal commits.
+
+## 2026-10-24T00:01:06+02:00 — Session 162 (Agent 1: sqlparse pre-flight correction)
+
+- Goal/problem: integrate the corrected memory dashboard, then independently check
+  Agent 2's new sqlparse rejection before selecting any other candidate.
+- Dashboard result: Session 160 now labels its maintenance replay `unknown`; gate,
+  22/22 focused tests, 111/111 repository tests and the 16-file private-path scan
+  passed on head `a2b5d66`. PR #87 merged at `d6eed24`; no memory engine or reward
+  influence was activated.
+- External signals: distutils #434 and pytest #14777 remain open with no new review
+  or maintainer response.
+- Sqlparse correction: PR #887 is closed and unmerged, not competing. Its only
+  comment says its author stepped back from all open work. Three earlier equivalent
+  fixes (#862–#864) were likewise author-closed without review. On current master
+  `60cdc649`, the two issue reproducers still raise `IndexError` and `ValueError`.
+  The contribution guide has no AI ban; the PR template enables AI review, disclosed
+  AI-assisted PR #939 is open, and outside PRs #867/#868 merged.
+- Decision/result: all five PRE-FLIGHT gates pass, so remove the false rejection
+  and queue sqlparse #885/#886 behind WIP=1. No sqlparse code or upstream contact.
+  Outcome `unknown`: this corrects selection state but does not establish utility.
+- Validation: coverage is 25/25. The first full run failed 1/111 because the new
+  decision-map node used invalid track `outside`; changing it to the allowed
+  `external` track fixed the fixture rather than weakening the assertion. The
+  rerun passed 111/111, the offline site build produced 16 files, and the refreshed
+  22-claim checkpoint is fresh. Two malformed checkpoint invocations also failed
+  before the documented `checkpoint --root .` form succeeded.
+- Exact next step: when the active distutils waiting slot opens, Agent 1 builds the
+  narrow current-master fix with regressions; Agent 2 performs adversarial review.

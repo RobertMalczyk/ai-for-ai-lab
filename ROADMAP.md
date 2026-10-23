@@ -206,6 +206,10 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- Keep sqlparse #885/#886 queued behind WIP=1. Current master reproduces both
+  formatter crashes; there is no open competing PR or maintainer rejection, and
+  the contribution channel accepts outside and disclosed-AI PRs. Do not build
+  until the active waiting slot opens; then Agent 1 builds and Agent 2 reviews.
 - Continue the owner-directed external OSS workflow with WIP=1. Distutils #434 and
   pytest #14777 are waiting; act only on a material upstream signal. Otherwise run
   one bounded PRE-FLIGHT and stop before code when an existing fix or policy/path
@@ -537,5 +541,5 @@
 ## Owner-directed memory contract handoff (2026-10-22)
 
 - Contract v1.0.0 passed Agent 2 re-review and is merged with reward influence
-  zero. Dashboard PR #87 is blocked until raw decision and mode-history references
-  are sanitized; then Agent 1 repeats the privacy review before integration.
+  zero. Dashboard PR #87 sanitized every public reference field, passed Agent 1's
+  repeated privacy review and merged. Runtime activation remains separate.

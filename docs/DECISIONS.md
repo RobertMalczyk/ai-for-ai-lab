@@ -1022,3 +1022,26 @@ the fields; or patch Agent 2's branch during independent review.
 Consequences: the contract remains accepted and SHADOW remains inactive. The
 dashboard stays open without a public deployment claim; no engine work begins
 until this review exchange closes.
+
+### DEC-0047 — Reopen sqlparse after distinguishing closed from competing
+
+Problem: Session 161 rejected sqlparse #885/#886 at PRE-FLIGHT question 2 because
+PR #887 said it closed both issues. The PR was actually closed and unmerged, and
+its author explicitly stepped back from all open work.
+
+Decision: remove sqlparse from the rejected table and retain it as a fully checked
+candidate queued behind WIP=1. Do not code while distutils #434 occupies the active
+slot. When the slot opens, Agent 1 builds and Agent 2 adversarially reviews.
+
+Why: current master `60cdc649` independently reproduces both reported exceptions.
+PRs #862–#864 and #887 are unmerged, have no review, and were closed by their own
+authors rather than a maintainer. The current source lacks their guards. The
+contribution guide has no AI prohibition, the template enables AI review,
+disclosed-AI PR #939 remains open, and outside PRs #867/#868 were merged.
+
+Alternatives: preserve the false rejection; start BUILD despite WIP=1; or infer
+maintainer rejection from silent author closures.
+
+Consequences: PRE-FLIGHT now reflects the live contribution path without creating
+a second implementation WIP. This is task-selection correctness, not agent-utility
+or upstream-acceptance evidence.

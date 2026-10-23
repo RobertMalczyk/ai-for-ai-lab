@@ -181,6 +181,8 @@
       "site/lexicon.json",
       "site/perspective.js",
       "tests/test_site.py",
+      "site/decision-map.json",
+      "tests/test_decision_map.py",
       ".github/workflows/pages.yml",
       "docs/SITE.md",
       "docs/TRANSPARENCY.md",
@@ -366,6 +368,19 @@
       "lab/memory/records.v1.schema.json",
       "lab/memory/export.v1.schema.json",
       "tests/test_memory_contract.py"
+    ]
+  },
+  {
+    "id": "memory-dashboard",
+    "text": "The public memory dashboard derives a sanitized export from public contract journals; its tests establish export and privacy behavior, not runtime activation or utility.",
+    "evidence": [
+      "site/memory.html",
+      "site/memory.js",
+      "site/memory_export.py",
+      "site/build.py",
+      "lab/memory/export.v1.schema.json",
+      "tests/test_memory_dashboard.py",
+      "docs/SITE.md"
     ]
   }
 ]

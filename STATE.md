@@ -80,14 +80,14 @@
   3.14.8 causal test then moved fixture resolution into the existing failure-cache
   block and changed warning+assertion into two intended warning errors. This
   confirms the narrow ordering cause, not patch completeness or agent utility.
-- External responses: as checked 2026-10-22, distutils #434 remains open with no
+- External responses: as checked 2026-10-24, distutils #434 remains open with no
   comments or reviews; its only workflow has zero jobs and `action_required`, so
   it awaits maintainer approval to run. pytest #14777 still contains only the
   owner's disclosed comment. Both remain WAITING_EXTERNAL_RESPONSE; do not
   reproduce, modify or contact upstream without a material new signal.
-- External pre-flight: reject yarl #1862 because open PRs #1864 and #1973 both
-  implement the IPv6 zone-removal fix and declare `Fixes #1862`. No clone,
-  reproduction, policy analysis or code work.
+- External pre-flight: sqlparse #885/#886 pass all five gates but stay queued behind
+  WIP=1. Current master `60cdc64` reproduces both crashes; PR #887 and three earlier
+  equivalent attempts were author-closed, unmerged and unreviewed. No code changed.
 - Connector ref precondition: one known-absent feature branch was created in one
   `create_branch` call at the exact requested head, versus the prior rejected
   `update_ref` plus creation. Keep create/update distinct and add no wrapper; the
@@ -149,9 +149,8 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: Agent 2 sanitizes both decision and mode-history references in PR #87 and
-  adds the two adversarial cases from Session 159. Agent 1 then repeats the privacy
-  review. Do not merge the dashboard or start the engine while that blocker remains.
+- Next: keep sqlparse #885/#886 queued behind the active waiting WIP. If that slot
+  opens, Agent 1 builds the narrow current-master fix and Agent 2 reviews it.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural
@@ -177,5 +176,5 @@
 
 - Owner-directed memory contract v1.0.0: Agent 2 approved revised head `610b07c`;
   the exact tested tree is on main at `7c7e624`, with no runtime activation.
-  Dashboard PR #87 remains Agent 2's responsibility and is blocked on two public-
-  export reference leaks found by Agent 1.
+  Dashboard PR #87 fixed the public-reference leaks, passed Agent 1's repeated
+  privacy replay and merged at `d6eed24`. No engine or reward influence is active.

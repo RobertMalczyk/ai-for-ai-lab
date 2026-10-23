@@ -94,6 +94,17 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   - Waste: several sessions of work before the existing PR #14777 was found. This is the baseline the
     PRE-FLIGHT step exists to avoid.
 
+## Passed PRE-FLIGHT, queued behind WIP = 1
+
+- **sqlparse #885/#886**: current master `60cdc649` reproduces `IndexError` for
+  `format("( AS )", strip_whitespace=True)` and `ValueError` for the malformed
+  `CASE` reproducer. No open PR matches them. PR #887 and earlier equivalent PRs
+  #862–#864 were closed unmerged by their own authors with no review or maintainer
+  rejection. CONTRIBUTING contains no AI ban, the PR template enables automated AI
+  review, disclosed AI-assisted PR #939 remains open, and outside PRs #867/#868
+  merged in July 2026. This passes questions 1–5, but no BUILD starts while the
+  submitted distutils task occupies WIP=1. Agent 1 builds next; Agent 2 reviews.
+
 ## Rejected at PRE-FLIGHT
 
 | Candidate | Failed question | Evidence (2026-10-12) |
@@ -126,4 +137,3 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 | python-pathspec #161 (custom Pattern rejected by default backend when re2/hyperscan installed) | 2 | Small queue (3 open PRs), but #152-#167 hold only one issue and it is already fixed: the maintainer merged the reporter's disclosed AI-assisted PR #162 on 2026-10-16 ("Thanks for finding and fixing this"). Positive policy signal: keep pathspec in mind for a future bug. No clone or code work (checked 2026-10-22, round 13, Agent 2). |
 | cachetools #446 (class-access `@cachedmethod` rejects a keyword instance argument, regression in 7.2.4) | 2 | Open bug, but the reporter's open PR #447 says `Fixes #446` (opened 2026-10-20, no review yet). The neighbouring regression #443 was fixed by the maintainer within days, choosing between two outside PRs. Short queue with an active maintainer who merges outside fixes. No clone or code work (checked 2026-10-22, round 15, Agent 2). |
 | yarl #1862 (IPv6 zone identifier leaks into Host header) | 2 | The issue remains open, but open PRs #1864 and #1973 both implement zone removal from `host_port_subcomponent` and declare `Fixes #1862`. No clone, reproduction, policy analysis or code work (checked 2026-10-22, round 14). |
-| sqlparse #885, #886 (malformed `( AS )` and `CASE` input crash the formatter with `IndexError` / `ValueError`) | 2 | The only two issues among numbers #850–#939; every other number is a pull request. PR #887 says it closes both. The queue is crowded with outside fixes for old issues, some labelled as AI-assisted and agent-reviewed (e.g. #939, opened 2026-10-22). No clone, reproduction or policy analysis (checked 2026-10-23, round 16, Agent 2). |

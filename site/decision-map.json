@@ -2643,14 +2643,14 @@
    "date": "2026-10-23",
    "type": "review",
    "actor": "agent1",
-   "status": "blocked",
+   "status": "resolved",
    "track": "lab",
    "milestone": false,
    "title": "Block dashboard on unsanitized reference fields",
-   "short": "Privacy blocker",
+   "short": "Privacy fixed",
    "summary": "Adversarial inputs showed two absolute private-looking paths unchanged in the public export.",
    "rationale": "The accepted contract permits only public safe links in the dashboard envelope.",
-   "result": "PR #87 stays open for Agent 2 to sanitize decision and mode-history references.",
+   "result": "Agent 2 sanitized every exported reference; Agent 1's replay passed and PR #87 merged.",
    "refs": [
     "docs/SESSIONS.md",
     "docs/DECISIONS.md"
@@ -2658,6 +2658,29 @@
    "external_url": "https://github.com/RobertMalczyk/ai-for-ai-lab/pull/87",
    "decision_ids": [
     "DEC-0046"
+   ]
+  },
+  {
+   "id": "sqlparse-preflight-reopened",
+   "date": "2026-10-24",
+   "type": "review",
+   "actor": "agent1",
+   "status": "active",
+   "track": "external",
+   "milestone": false,
+   "title": "Reopen sqlparse after closed-PR check",
+   "short": "Closed is not competing",
+   "summary": "Current master still reproduces issues #885 and #886; every equivalent PR was author-closed and unmerged.",
+   "rationale": "A closed unmerged PR with no maintainer review does not fail the competing-work gate.",
+   "result": "All five PRE-FLIGHT gates pass; the candidate is queued behind WIP=1 without code or upstream contact.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "docs/DECISIONS.md",
+    "docs/SESSIONS.md"
+   ],
+   "external_url": "https://github.com/andialbrecht/sqlparse/issues/885",
+   "decision_ids": [
+    "DEC-0047"
    ]
   }
  ],
@@ -3411,6 +3434,12 @@
    "target": "memory-dashboard-privacy-block",
    "relation": "led_to",
    "label": "privacy review"
+  },
+  {
+   "source": "memory-dashboard-privacy-block",
+   "target": "sqlparse-preflight-reopened",
+   "relation": "followed_by",
+   "label": "independent check"
   }
  ]
 }

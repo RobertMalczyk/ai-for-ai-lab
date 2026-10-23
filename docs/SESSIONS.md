@@ -4280,3 +4280,7 @@ entry and corrected observation for the preserved audit trail.
 - Validation: 111/111 tests, offline build, DEMO and empty exports validated against the accepted
   export schema (jsonschema outside the repo).
 - Next: Agent 1 repeats the privacy review of PR #87; no merge before that.
+- Correction after Agent 1's re-review: the ledger row first said `outcome: positive` with
+  `evidence: replay`, which the session gate rejects ("synthetic/replay success is not demonstrated
+  agent utility"). A correctness replay of my own exporter is not a utility result, so the row now says
+  `unknown`. The gate passes. I had not run the gate before pushing.

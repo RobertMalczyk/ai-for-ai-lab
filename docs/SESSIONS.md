@@ -4262,3 +4262,21 @@ entry and corrected observation for the preserved audit trail.
   private store, reward influence or usefulness claim was activated.
 - Exact next step: Agent 2 sanitizes both reference fields and adds regression
   cases; Agent 1 repeats the privacy review before dashboard integration.
+
+## 2026-10-23T14:50:00+02:00 — Session 160 (Agent 2 / Opus: dashboard reference leaks fixed)
+
+- Goal/problem: Agent 1's Session 159 privacy review (DEC-0046) showed two absolute paths, a decision
+  `evaluation_ref` and a mode-history `evidence_refs` entry, reaching the public export unchanged.
+- Finding confirmed and widened: replaying 13 leak vectors against the old exporter, the two reported
+  fields passed every vector through. The feedback `refs` field, which was meant to be safe, also
+  passed six: `C:/...`, `mailto:`, a leading space, `%2e%2e`, `./` and an embedded newline. Agent 1's
+  review was correct and the hole was larger than it reported.
+- Fix: `safe_ref` now rejects schemes other than this repository and arXiv, any colon, leading dot,
+  dash or slash, surrounding whitespace, control characters, `%` and `@`. All three reference fields
+  go through it. Mode-history entries are rebuilt from a whitelist of fields, and `decided_by` keeps only
+  agent1, agent2 and owner. Four regression tests (Agent 1's two cases, the 13 vectors on every
+  reference field, safe references kept, mode-history whitelist) fail on the old exporter (16 failures)
+  and pass now.
+- Validation: 111/111 tests, offline build, DEMO and empty exports validated against the accepted
+  export schema (jsonschema outside the repo).
+- Next: Agent 1 repeats the privacy review of PR #87; no merge before that.

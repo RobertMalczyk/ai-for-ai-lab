@@ -25,12 +25,13 @@ def ev(i, agent="agent1", task="T1", key="k1", cat="new_finding", val=0.2, statu
             "session_id": sess, "supersedes": sup}
 
 
-def export(feedback=(), memories=(), decisions=(), cfg=CFG, now=NOW):
+def export(feedback=(), memories=(), decisions=(), cfg=CFG, now=NOW, modes=()):
     with tempfile.TemporaryDirectory() as d:
         d = Path(d)
         if cfg is not None:
             (d / "config.v1.json").write_text(json.dumps(cfg))
-        for name, rows in (("feedback", feedback), ("memories", memories), ("decisions", decisions)):
+        for name, rows in (("feedback", feedback), ("memories", memories), ("decisions", decisions),
+                           ("mode_history", modes)):
             if rows:
                 (d / f"{name}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
         return mx.build_export(d, GH, now=now)
@@ -159,6 +160,57 @@ class ExportSchemaConformanceTest(unittest.TestCase):
             self.assertFalse(set(c) - set(crit["properties"]))
             if c["met"] is not True:
                 self.assertTrue(c["gaps"], c["id"])
+
+
+class ReferenceLeakTest(unittest.TestCase):
+    """Agent 1's Session 159 replay: absolute private paths must not reach the public export."""
+
+    LEAKS = ("/mnt/private/result.json", "/home/private/mode.md", "~/notes.md", "file:///etc/passwd",
+             "C:\\Users\\x.md", "C:/Users/x.md", "mailto:a@b.c", "https://example.com/private",
+             "lab/../../etc/passwd", " lab/x.md", "lab/%2e%2e/x", "./x.md", "lab/x.md\n/secret")
+
+    def decision(self, ref):
+        return {"decision_id": "d", "agent": "agent1", "task_id": "T", "task_type": "build", "session_id": "s",
+                "occurred_at": "2026-10-21T00:00:00Z", "rule_version": "1.0.0", "memory_ids": ["m"],
+                "suggested_action": "x", "actual_action": "x", "shadow_memory_ids": ["m"],
+                "alternative_outcome": "unobserved", "evaluation_ref": ref,
+                "cost": {"value": None, "unit": None, "measured": False}, "map_node_ids": []}
+
+    def mode(self, refs, by=("agent1",)):
+        return {"at": "2026-10-21T00:00:00Z", "from": None, "to": "SHADOW", "influence": 0, "scope": "none",
+                "rule_version": "1.0.0", "decided_by": list(by), "reason": "t", "evidence_refs": list(refs)}
+
+    def test_session_159_cases_are_removed(self):
+        e = export(decisions=[self.decision("/mnt/private/result.json")],
+                   modes=[self.mode(["/home/private/mode.md", "docs/DECISIONS.md"])])
+        text = json.dumps(e)
+        self.assertNotIn("/mnt/private", text)
+        self.assertNotIn("/home/private", text)
+        self.assertEqual(e["mode_history"][0]["evidence_refs"], [f"{GH}/blob/main/docs/DECISIONS.md"])
+        self.assertEqual(e["memories"]["recent_applications"], [])
+
+    def test_no_leak_vector_reaches_any_reference_field(self):
+        for leak in self.LEAKS:
+            with self.subTest(leak=leak):
+                e = export(feedback=[ev("a", refs=(leak,))], decisions=[self.decision(leak)],
+                           modes=[self.mode([leak])])
+                self.assertEqual(e["events"][0]["refs"], [])
+                self.assertEqual(e["mode_history"][0]["evidence_refs"], [])
+                self.assertEqual(e["memories"]["recent_applications"], [])
+                for c in e["readiness"]["criteria"]:
+                    self.assertEqual(c["evidence_refs"], [])
+
+    def test_safe_references_survive(self):
+        e = export(decisions=[self.decision("lab/tasks/EXTERNAL.md")], modes=[self.mode([f"{GH}/pull/86"])])
+        self.assertEqual(e["memories"]["recent_applications"][0]["evaluation_ref"],
+                         f"{GH}/blob/main/lab/tasks/EXTERNAL.md")
+        self.assertEqual(e["mode_history"][0]["evidence_refs"], [f"{GH}/pull/86"])
+
+    def test_mode_history_fields_are_whitelisted(self):
+        m = dict(self.mode([]), private_note="/mnt/private/x", decided_by=["someone@example.com"])
+        out = export(modes=[m])["mode_history"][0]
+        self.assertNotIn("private_note", out)
+        self.assertEqual(out["decided_by"], ["unknown"])
 
 
 if __name__ == "__main__":

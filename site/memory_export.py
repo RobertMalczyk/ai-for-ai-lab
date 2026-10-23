@@ -37,13 +37,27 @@ def _ts(text):
 
 def safe_ref(ref, github):
     """Keep links that are public by construction: repo-relative paths, this repo, public arXiv."""
-    if not isinstance(ref, str) or not ref:
+    if not isinstance(ref, str) or not ref or ref != ref.strip() or ".." in ref or "\\" in ref:
+        return None
+    if any(ord(c) < 32 or c in "%@" for c in ref):
         return None
     if ref.startswith(github + "/") or ref.startswith("https://arxiv.org/"):
         return ref
-    if ref.startswith(("http://", "https://", "/", "~", "file:")) or ".." in ref or "\\" in ref:
+    if ":" in ref or ref.startswith(("/", "~", ".", "-")):
         return None
     return f"{github}/blob/main/{ref}"
+
+
+def _refs(refs, github):
+    return [r for r in (safe_ref(x, github) for x in (refs or [])) if r]
+
+
+def _mode_entry(m, github):
+    """Whitelist the public fields of a mode change; references go through safe_ref."""
+    out = {k: m.get(k) for k in ("at", "from", "to", "influence", "scope", "rule_version", "reason")}
+    out["decided_by"] = [a for a in m.get("decided_by", []) if a in AGENTS + ("owner",)] or ["unknown"]
+    out["evidence_refs"] = _refs(m.get("evidence_refs"), github)
+    return out
 
 
 def fold(records, key):
@@ -112,7 +126,7 @@ def score(feedback):
     return agents, effective, chains, counted
 
 
-def memory_aggregates(memories, decisions, now):
+def memory_aggregates(memories, decisions, now, github):
     effective, chains = fold([m for m in memories if m.get("visibility") == "public"], "id")
     by_status = defaultdict(int)
     for m in effective:
@@ -132,9 +146,9 @@ def memory_aggregates(memories, decisions, now):
         "corrections": corrections,
         "recent_applications": [
             {"decision_id": d["decision_id"], "agent": d["agent"], "at": d["occurred_at"],
-             "memory_ids": d["memory_ids"], "evaluation_ref": d.get("evaluation_ref")}
+             "memory_ids": d["memory_ids"], "evaluation_ref": safe_ref(d.get("evaluation_ref"), github)}
             for d in sorted(decisions, key=lambda d: d["occurred_at"], reverse=True)
-            if d.get("memory_ids") and d.get("evaluation_ref")][:5],
+            if d.get("memory_ids") and safe_ref(d.get("evaluation_ref"), github)][:5],
         "private": {"available": False},
     }
 
@@ -203,7 +217,7 @@ def build_export(mem, github, now=None, source_commit=None, demo=False):
             "status": e["status"], "value": e.get("value"), "credited": counted.get(e["event_id"]),
             "rule_version": e["rule_version"], "reason": e["rationale"], "occurred_at": e["occurred_at"],
             "verified_at": e.get("verified_at"), "verifier": e.get("verifier"), "proposer": e.get("proposer"),
-            "refs": [r for r in (safe_ref(x, github) for x in e.get("source_refs", [])) if r],
+            "refs": _refs(e.get("source_refs"), github),
             "memory_ids": e.get("memory_ids", []),
             "history": [{"id": h["event_id"], "status": h["status"], "value": h.get("value"),
                          "at": h.get("verified_at") or h["occurred_at"]} for h in history[:-1]],
@@ -218,10 +232,10 @@ def build_export(mem, github, now=None, source_commit=None, demo=False):
         "contract_version": cfg.get("contract_version"), "rule_version": cfg.get("rule_version"),
         "implementation_status": cfg.get("implementation_status"),
         "mode": mode, "memory_enabled": cfg.get("memory_enabled"), "coupling_scope": cfg.get("coupling_scope"),
-        "reward_influence": cfg.get("reward_influence"), "mode_history": modes,
+        "reward_influence": cfg.get("reward_influence"), "mode_history": [_mode_entry(m, github) for m in modes],
         "agents": {a: dict(v, cost={"value": None, "unit": None, "measured": False}) for a, v in agents.items()},
         "events": events,
-        "memories": memory_aggregates(memories, decisions, now),
+        "memories": memory_aggregates(memories, decisions, now, github),
         "shadow": {
             "decisions": len(decisions),
             "differences": sum(1 for d in decisions if d.get("shadow_memory_ids") and d["shadow_memory_ids"] != d.get("memory_ids")),

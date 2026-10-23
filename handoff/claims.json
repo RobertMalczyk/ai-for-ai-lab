@@ -356,5 +356,16 @@
       "ROADMAP.md",
       "STATE.md"
     ]
+  },
+  {
+    "id": "memory-contract",
+    "text": "The owner-directed public memory contract fixes SHADOW configuration, interchange fields, dashboard export privacy and prospective CANARY thresholds; contract tests do not prove runtime behaviour or decision improvement.",
+    "evidence": [
+      "docs/MEMORY_CONTRACT_V1.md",
+      "lab/memory/config.v1.json",
+      "lab/memory/records.v1.schema.json",
+      "lab/memory/export.v1.schema.json",
+      "tests/test_memory_contract.py"
+    ]
   }
 ]

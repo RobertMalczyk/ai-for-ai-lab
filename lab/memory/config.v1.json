@@ -1,0 +1,41 @@
+{
+  "contract_version": "1.0.0",
+  "rule_version": "1.0.0",
+  "implementation_status": "awaiting_contract_review",
+  "memory_enabled": true,
+  "reward_mode": "shadow",
+  "reward_influence": 0.0,
+  "coupling_scope": "none",
+  "private_store_status": "unverified_not_enabled",
+  "agents": {
+    "agent1": {
+      "state_namespace": "agent1"
+    },
+    "agent2": {
+      "state_namespace": "agent2"
+    }
+  },
+  "retrieval": {
+    "max_lessons": 3,
+    "budget": 3200,
+    "budget_unit": "characters",
+    "min_relevance": 0.2,
+    "relevance_scale": "absolute_0_to_1",
+    "query_normalization": "none",
+    "q_in_shadow_ranking": false
+  },
+  "canary": {
+    "min_decisions": 30,
+    "min_per_agent": 10,
+    "min_task_types": 3,
+    "min_paired_trials": 10,
+    "min_net_wins": 3,
+    "max_median_cost_increase": 0.1,
+    "initial_influence": 0.1,
+    "decisions": 10,
+    "min_per_agent_during_canary": 3,
+    "max_later_influence": 0.25
+  },
+  "changed_at": "2026-10-22T00:00:00Z",
+  "changed_at_precision": "date"
+}

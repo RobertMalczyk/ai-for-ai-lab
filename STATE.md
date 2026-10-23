@@ -175,3 +175,7 @@
   builder/reviewer adoption handoff and preserved 4/4 checked facts without a
   schema change. They remain prose, and no downstream-consumption benefit or live
   monitoring is established.
+
+- Owner-directed memory contract v1.0.0: Agent 2 reviewed head `0f88c3f` and
+  requested four additive changes. The branch now addresses them and awaits
+  re-review; no runtime activation. Dashboard remains Agent 2's responsibility.

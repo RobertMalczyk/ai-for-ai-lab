@@ -4180,6 +4180,23 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step for Agent 2 after Session 155: next Stream A checks the two
   waiting PRs and runs at most one bounded round.
 
+## 2026-10-22 — Session 156 (owner-directed contract handoff)
+
+- Owner supplied the common implementation instruction and publication authorization. This administrative handoff is not a graded experimental decision.
+- Started at main 5f4e385; resumed against edf3211, preserving Agent 2 PR #85, seed corrections and independently prepared adversarial cases. Preserve the older local implementation 7e5ae6e on its original branch. New contract differs from both earlier pilots.
+- Changes: public schema, shared target configuration, contract documentation and existing transparency/state records only; no engine activation, dashboard takeover, private data or synthetic rewards.
+- Gate requested exploration; explicit owner contract work is the limited exception. Startup checkpoint was stale only on newer ledger/site/task records; coverage has the existing uncovered decision-map test. No new src/tests paths.
+- Validation: 83/83 existing tests pass; offline site build and git diff --check pass. JSON parses; JSON Schema meta-validation was unavailable (jsonschema is not installed). No engine tests or effectiveness claim. The first run caught missing DEC-0045 in the map; added its data node without changing dashboard code.
+- Review response: Agent 2 independently reviewed exact head `0f88c3f` and found
+  four small blockers. This revision accepts all four and its three non-blocking
+  field suggestions. Six stdlib contract tests cover the fixed SHADOW flags,
+  absolute relevance floor, category/value pairs, CANARY measurement fields,
+  readiness evidence/gaps and absence of a private export payload. They validate
+  the contract shape only, not an engine or decision improvement.
+- Next action: Agent 2 re-reviews the revised contract head; after approval Agent 1
+  implements the engine, while Agent 2 updates its separate dashboard branch to
+  the accepted export schema.
+
 ## 2026-10-22T20:42:15+02:00 — Session 157 (Agent 2 / Opus: memory contract review and Memory and learning page)
 
 - Goal/problem: the owner's instruction of 2026-10-22 (docs/owner/2026-10-22-memory-feedback-dashboard.md)
@@ -4210,3 +4227,17 @@ entry and corrected observation for the preserved audit trail.
   The DEMO export, the empty export under Agent 1's config and the DEMO records validated against
   Agent 1's schemas with jsonschema run outside the repo; three new stdlib tests check the same
   required fields. 101/101 tests pass. Mobile overflow of the criteria table fixed.
+
+## 2026-10-23T09:55:00+02:00 — Session 158 (Agent 2 / Opus: site day 24)
+
+- Stream B website session, family public-site, mode maintenance. Sessions 156 (Agent 1, PR #86) and
+  157 (Agent 2, PR #87) are on open branches, so this entry uses 158.
+- Outside: proof.json outside text now covers rounds 14-15 (yarl, cachetools) and the owner-directed
+  memory side task, with the explicit note that no memory record or point exists yet. New
+  agent_interactions entry: Agent 2's four-blocker review of the memory contract, Agent 1's acceptance
+  and stricter export schema, and Agent 2 changing its own page to fit.
+- Inside: journal day 24, "A schema stricter than mine".
+- Metrics: 0 stars, 0 forks; last Pages deploy succeeded on edf3211. distutils #434 has no review;
+  pytest #14777 head is unchanged.
+- Validation: 83/83 tests, offline build, screenshots of both views.
+- Next: Agent 1 reviews PR #87; merge order #86, then #87.

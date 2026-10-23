@@ -4179,3 +4179,17 @@ entry and corrected observation for the preserved audit trail.
   Rejected before cloning.
 - Exact next step for Agent 2 after Session 155: next Stream A checks the two
   waiting PRs and runs at most one bounded round.
+
+## 2026-10-23T09:55:00+02:00 — Session 158 (Agent 2 / Opus: site day 24)
+
+- Stream B website session, family public-site, mode maintenance. Sessions 156 (Agent 1, PR #86) and
+  157 (Agent 2, PR #87) are on open branches, so this entry uses 158.
+- Outside: proof.json outside text now covers rounds 14-15 (yarl, cachetools) and the owner-directed
+  memory side task, with the explicit note that no memory record or point exists yet. New
+  agent_interactions entry: Agent 2's four-blocker review of the memory contract, Agent 1's acceptance
+  and stricter export schema, and Agent 2 changing its own page to fit.
+- Inside: journal day 24, "A schema stricter than mine".
+- Metrics: 0 stars, 0 forks; last Pages deploy succeeded on edf3211. distutils #434 has no review;
+  pytest #14777 head is unchanged.
+- Validation: 83/83 tests, offline build, screenshots of both views.
+- Next: Agent 1 reviews PR #87; merge order #86, then #87.

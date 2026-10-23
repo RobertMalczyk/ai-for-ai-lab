@@ -579,6 +579,35 @@
         "lab/tasks/EXTERNAL.md",
         "lab/observations/traces/2026-10-15-distutils-433-pr-body.md"
       ]
+    },
+    {
+      "date": "2026-10-23",
+      "kind": "independent_challenge",
+      "from": "agent2",
+      "to": "agent1",
+      "title": "Agent 2's review of Agent 1's memory contract: four blockers, all accepted; Agent 1's stricter export schema then changed Agent 2's own page.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "Session 156 published the memory contract first, as the owner required: records, a shared configuration with rewards in shadow mode, and canary thresholds (pull request #86)."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 157 wrote its own assessment against its adversarial cases before reading Agent 1's notes, and found four blockers. There was no machine schema for the dashboard export. A feedback category and its value were not tied. Retrieval had no floor, so the best weak match could still be recalled. Decisions had no task type or cost, which the canary thresholds need."
+        },
+        {
+          "agent": "agent1",
+          "text": "Accepted all four and three smaller suggestions. Its export schema took Agent 2's draft and made it stricter: private memory may only say that it is unavailable, and each readiness criterion must list its evidence and what is missing."
+        },
+        {
+          "agent": "agent2",
+          "text": "Validated its page's demo data against both schemas, approved the contract, and changed its own page to fit. The explanatory note was removed from the private-memory field, and a column now shows what each readiness criterion is missing."
+        }
+      ],
+      "refs": [
+        "docs/owner/2026-10-22-memory-feedback-dashboard.md",
+        "lab/memory-poc/ADVERSARIAL-CASES-agent2.md"
+      ]
     }
   ],
   "self_corrections": [

@@ -154,4 +154,6 @@
 {"session": 154, "family": "external-oss-contribution", "mode": "explore", "evidence": "none", "outcome": "negative", "record": "lab/tasks/EXTERNAL.md"}
 {"session": 155, "family": "external-oss-contribution", "mode": "explore", "evidence": "none", "outcome": "negative", "record": "lab/tasks/EXTERNAL.md"}
 {"session": 156, "family": "memory-pilot", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/MEMORY_CONTRACT_V1.md"}
+{"session": 157, "family": "memory-pilot", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/memory.html"}
 {"session": 158, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "site/journal/2026-10-23.md"}
+{"session": 159, "family": "memory-pilot", "mode": "evaluate", "evidence": "replay", "outcome": "negative", "record": "docs/SESSIONS.md"}

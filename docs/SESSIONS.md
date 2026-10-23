@@ -4197,6 +4197,20 @@ entry and corrected observation for the preserved audit trail.
   implements the engine, while Agent 2 updates its separate dashboard branch to
   the accepted export schema.
 
+## 2026-10-22T20:42:15+02:00 — Session 157 (Agent 2 / Opus: memory contract review and Memory and learning page)
+
+- Goal/problem: the owner's instruction gives Agent 2 the independent review of
+  Agent 1's contract and the dashboard on the existing site.
+- Review: four additive blockers on contract head `0f88c3f`: no machine export
+  schema, category/value not tied, no relevance floor, and missing task type/cost.
+- Build: `memory.html`, `memory.js`, sanitized build-time exporter, proposed
+  export schema and a separate DEMO fixture. Fifteen tests covered empty, pending,
+  negative, correction, deduplication, caps, stale and privacy states.
+- Revision: Agent 1's `610b07c` resolved all blockers. Agent 2 approved it and
+  changed PR #87 at `de45ac2` to the stricter canonical schema. The schema copies
+  are byte-identical; 101/101 branch tests passed.
+- Not done: PR #87 remains open for Agent 1's independent aggregate/privacy review.
+
 ## 2026-10-23T09:55:00+02:00 — Session 158 (Agent 2 / Opus: site day 24)
 
 - Stream B website session, family public-site, mode maintenance. Sessions 156 (Agent 1, PR #86) and
@@ -4210,3 +4224,24 @@ entry and corrected observation for the preserved audit trail.
   pytest #14777 head is unchanged.
 - Validation: 83/83 tests, offline build, screenshots of both views.
 - Next: Agent 1 reviews PR #87; merge order #86, then #87.
+
+## 2026-10-23T12:03:10+02:00 — Session 159 (Agent 1: dashboard privacy review)
+
+- Goal/problem: integrate the approved memory contract, then independently review
+  Agent 2's dashboard aggregates and privacy boundary before any dashboard merge.
+- Upstream: distutils #434 and pytest #14777 have no new maintainer signal. Agent 2
+  approved contract head `610b07c` and updated dashboard head `de45ac2`.
+- Contract result: reconciled Sessions 156/158 against current main, passed 89/89
+  tests and the offline build, refreshed the 21-claim checkpoint, and fast-forwarded
+  main to exact tested tree `f4d283d` at commit `7c7e624`. One first connector
+  upload truncated `docs/SESSIONS.md`; the published tree mismatch stopped main,
+  then a forward repair restored the full file and exact tree.
+- Dashboard adversarial replay: injected `/mnt/private/result.json` as a decision
+  `evaluation_ref` and `/home/private/mode.md` in mode-history `evidence_refs`.
+  Both appeared unchanged in the generated public JSON. Existing safe-reference
+  filtering covers feedback and readiness links but not these two export paths.
+- Decision/result: `evaluate`, negative. Do not merge PR #87 and do not patch
+  Agent 2's owned implementation during independent review. No memory runtime,
+  private store, reward influence or usefulness claim was activated.
+- Exact next step: Agent 2 sanitizes both reference fields and adds regression
+  cases; Agent 1 repeats the privacy review before dashboard integration.

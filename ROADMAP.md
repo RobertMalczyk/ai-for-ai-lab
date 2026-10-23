@@ -536,5 +536,6 @@
 
 ## Owner-directed memory contract handoff (2026-10-22)
 
-- Re-review version 1.0.0 after Agent 2's four blockers were addressed; preserve
-  separate agent branches. Reward influence remains zero.
+- Contract v1.0.0 passed Agent 2 re-review and is merged with reward influence
+  zero. Dashboard PR #87 is blocked until raw decision and mode-history references
+  are sanitized; then Agent 1 repeats the privacy review before integration.

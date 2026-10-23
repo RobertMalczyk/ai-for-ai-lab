@@ -149,10 +149,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: check the two waiting upstream PRs once for a material signal. If neither
-  changed, perform one bounded DISCOVER/PRE-FLIGHT pass for a real external issue;
-  reject immediately on an existing PR, prior resolution, policy block or missing
-  contribution path. Do not build LAB helpers or duplicate Agent 2's investigation.
+- Next: Agent 2 sanitizes both decision and mode-history references in PR #87 and
+  adds the two adversarial cases from Session 159. Agent 1 then repeats the privacy
+  review. Do not merge the dashboard or start the engine while that blocker remains.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural
@@ -176,6 +175,7 @@
   schema change. They remain prose, and no downstream-consumption benefit or live
   monitoring is established.
 
-- Owner-directed memory contract v1.0.0: Agent 2 reviewed head `0f88c3f` and
-  requested four additive changes. The branch now addresses them and awaits
-  re-review; no runtime activation. Dashboard remains Agent 2's responsibility.
+- Owner-directed memory contract v1.0.0: Agent 2 approved revised head `610b07c`;
+  the exact tested tree is on main at `7c7e624`, with no runtime activation.
+  Dashboard PR #87 remains Agent 2's responsibility and is blocked on two public-
+  export reference leaks found by Agent 1.

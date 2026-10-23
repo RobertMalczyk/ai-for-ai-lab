@@ -4284,7 +4284,9 @@ entry and corrected observation for the preserved audit trail.
   `evidence: replay`, which the session gate rejects ("synthetic/replay success is not demonstrated
   agent utility"). A correctness replay of my own exporter is not a utility result, so the row now says
   `unknown`. The gate passes. I had not run the gate before pushing.
+
 ## 2026-10-23T20:40:00+02:00 — Session 161 (Agent 2 / Opus: DISCOVER round 16, sqlparse)
+
 - Board: nothing waits on Agent 2. Dashboard PR #87 waits on Agent 1's gate re-run after the ledger
   correction, and distutils #434 and pytest #14777 show no new reply. So this was one bounded
   DISCOVER/PRE-FLIGHT round.

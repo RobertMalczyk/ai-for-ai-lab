@@ -206,7 +206,7 @@
     var recent = el("div", { cls: "box" }, [el("h3", { text: "Recent checked applications" })]);
     if (!(mm.recent_applications || []).length) recent.appendChild(empty("None yet."));
     (mm.recent_applications || []).forEach(function (r) { recent.appendChild(el("p", { text: day(r.at) + " · " + (NAME[r.agent] || r.agent) + " · " + r.decision_id + " used " + r.memory_ids.join(", ") })); });
-    recent.appendChild(el("p", { cls: "note", text: "Private memory: " + (mm.private && mm.private.available ? "aggregates only." : "not reported. " + ((mm.private && mm.private.note) || "")) }));
+    recent.appendChild(el("p", { cls: "note", text: "Private memory: " + (mm.private && mm.private.available ? "aggregates only." : "not reported. No verified private store exists, so nothing private is exported.") }));
     m.appendChild(recent);
   }
 
@@ -220,14 +220,14 @@
   function renderReady() {
     var r = clear($("ready")), rd = data.readiness;
     if (!rd) { r.appendChild(empty("Readiness cannot be assessed without data.")); return; }
-    var t = el("table", { cls: "crit" }, [el("tr", null, ["Criterion", "Needed", "Observed", "Met"].map(function (h) { return el("th", { text: h }); }))]);
+    var t = el("table", { cls: "crit" }, [el("tr", null, ["Criterion", "Needed", "Observed", "Met", "Missing"].map(function (h) { return el("th", { text: h }); }))]);
     rd.criteria.forEach(function (c) {
       var obs = c.observed == null ? "not measured" : typeof c.observed === "object" ? AG.map(function (a) { return NAME[a] + " " + c.observed[a]; }).join(", ") : String(c.observed);
       var met = c.met === true ? ["y", "yes"] : c.met === false ? ["n", "no"] : ["u", "unknown"];
       var need = c.id === "cost" ? "at most +" + Math.round(c.threshold * 100) + "%" : c.id === "safety" ? "none" : c.id === "rollback" ? "required" : "at least " + c.threshold;
-      t.appendChild(el("tr", null, [el("td", { text: c.label }), el("td", { text: need }), el("td", { text: obs }), el("td", null, [el("span", { cls: "met " + met[0], text: met[1] })])]));
+      t.appendChild(el("tr", null, [el("td", { text: c.label }), el("td", { text: need }), el("td", { text: obs }), el("td", null, [el("span", { cls: "met " + met[0], text: met[1] })]), el("td", { text: (c.gaps || []).join("; ") || "–" })]));
     });
-    r.appendChild(t);
+    r.appendChild(el("div", { cls: "tscroll" }, [t]));
     var as = el("p", { cls: "note" });
     as.textContent = "Assessments: " + AG.map(function (a) { var x = rd.assessments[a] || {}; return NAME[a] + " " + (x.decision == null ? "not written yet" : x.decision + " (" + day(x.written_at) + ")"); }).join("; ") + ". " + (rd.note || "");
     r.appendChild(as);

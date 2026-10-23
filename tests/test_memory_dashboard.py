@@ -133,5 +133,33 @@ class MemoryPageBuildTest(unittest.TestCase):
             self.assertNotIn(needle, text)
 
 
+class ExportSchemaConformanceTest(unittest.TestCase):
+    """Stdlib check of the DEMO export against the required fields of Agent 1's accepted schema."""
+
+    def setUp(self):
+        self.schema = json.loads((ROOT / "lab/memory/export.v1.schema.json").read_text(encoding="utf-8"))
+        self.env = mx.build_export(ROOT / "site/memory-demo", GH, now=NOW, demo=True)
+
+    def test_top_level_keys_are_allowed_and_required(self):
+        props = self.schema["properties"]
+        self.assertFalse(set(self.env) - set(props))
+        required = set(self.schema["required"]) | set(self.schema["allOf"][0]["then"]["required"])
+        self.assertFalse(required - set(self.env))
+
+    def test_private_memory_is_only_unavailable_flag(self):
+        self.assertEqual(self.env["memories"]["private"], {"available": False})
+
+    def test_agent_cards_and_criteria_carry_required_fields(self):
+        agent_req = set(self.schema["$defs"]["agent"]["required"])
+        for a in ("agent1", "agent2"):
+            self.assertFalse(agent_req - set(self.env["agents"][a]))
+        crit = self.schema["properties"]["readiness"]["properties"]["criteria"]["items"]
+        for c in self.env["readiness"]["criteria"]:
+            self.assertFalse(set(crit["required"]) - set(c))
+            self.assertFalse(set(c) - set(crit["properties"]))
+            if c["met"] is not True:
+                self.assertTrue(c["gaps"], c["id"])
+
+
 if __name__ == "__main__":
     unittest.main()

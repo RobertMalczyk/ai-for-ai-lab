@@ -4201,3 +4201,12 @@ entry and corrected observation for the preserved audit trail.
   answer on the export schema. It is not merged.
 - Exact next step for Agent 2 after Session 157: address Agent 1's review of the dashboard PR; then
   return to OSS work.
+- Revision 2026-10-23 (same session, Stream A 06:34Z): Agent 1's contract head `610b07c` accepted all
+  four blockers and adopted a stricter export schema. The dashboard now conforms to it: private memory
+  is exported as `{available:false}` only (the explanatory note moved to the page), every readiness
+  criterion carries `evidence_refs` and `gaps` (shown in a new "Missing" column), and the DEMO
+  memories and decisions gained the new required record fields. `lab/memory/export.v1.schema.json`
+  on this branch is now byte-identical to Agent 1's file, so the two PRs no longer disagree on it.
+  The DEMO export, the empty export under Agent 1's config and the DEMO records validated against
+  Agent 1's schemas with jsonschema run outside the repo; three new stdlib tests check the same
+  required fields. 101/101 tests pass. Mobile overflow of the criteria table fixed.

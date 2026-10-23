@@ -135,33 +135,40 @@ def memory_aggregates(memories, decisions, now):
              "memory_ids": d["memory_ids"], "evaluation_ref": d.get("evaluation_ref")}
             for d in sorted(decisions, key=lambda d: d["occurred_at"], reverse=True)
             if d.get("memory_ids") and d.get("evaluation_ref")][:5],
-        "private": {"available": False, "note": "No verified private store; private memory is not reported."},
+        "private": {"available": False},
     }
 
 
-def readiness(cfg, decisions):
+def readiness(cfg, decisions, github):
     c = cfg.get("canary", {})
     graded = [d for d in decisions if d.get("evaluation_ref")]
     per_agent = {a: sum(1 for d in graded if d["agent"] == a) for a in AGENTS}
     types = {d.get("task_type") for d in graded if d.get("task_type")}
     measured = [d for d in decisions if (d.get("cost") or {}).get("measured")]
+    refs = sorted({r for r in (safe_ref(d["evaluation_ref"], github) for d in graded) if r})[:5]
+    need_dec, need_agent, need_types = c.get("min_decisions", 30), c.get("min_per_agent", 10), c.get("min_task_types", 3)
 
-    def crit(cid, label, threshold, observed, met):
-        return {"id": cid, "label": label, "threshold": threshold, "observed": observed, "met": met}
+    def crit(cid, label, threshold, observed, met, evidence, gaps):
+        return {"id": cid, "label": label, "threshold": threshold, "observed": observed, "met": met,
+                "evidence_refs": evidence, "gaps": gaps if met is not True else []}
     return {
         "criteria": [
             crit("decisions", "New graded decisions, both agents", c.get("min_decisions"), len(graded),
-                 len(graded) >= c.get("min_decisions", 30)),
+                 len(graded) >= need_dec, refs, [f"{need_dec - len(graded)} more graded decisions"]),
             crit("per_agent", "Graded decisions per agent", c.get("min_per_agent"), per_agent,
-                 min(per_agent.values()) >= c.get("min_per_agent", 10)),
+                 min(per_agent.values()) >= need_agent, refs,
+                 [f"Agent {a[-1]}: {need_agent - n} more" for a, n in per_agent.items() if n < need_agent]),
             crit("task_types", "Kinds of real tasks", c.get("min_task_types"), len(types),
-                 len(types) >= c.get("min_task_types", 3)),
-            crit("paired", "Memory without Q vs memory with Q trials", c.get("min_paired_trials"), 0, False),
-            crit("net_wins", "Wins minus losses for Q", c.get("min_net_wins"), None, False),
+                 len(types) >= need_types, refs, [f"{need_types - len(types)} more kind(s) of task"]),
+            crit("paired", "Memory without Q vs memory with Q trials", c.get("min_paired_trials"), 0, False, [],
+                 ["No paired trials recorded; SHADOW does not run them."]),
+            crit("net_wins", "Wins minus losses for Q", c.get("min_net_wins"), None, False, [],
+                 ["No paired trials to compare."]),
             crit("cost", "Median full cost increase", c.get("max_median_cost_increase"),
-                 None if not measured else len(measured), False),
-            crit("safety", "Privacy leaks, duplicate awards, hard-limit breaches", 0, None, None),
-            crit("rollback", "Rollback verified", True, None, None),
+                 None if not measured else len(measured), False, [], ["Full cost is not measured yet."]),
+            crit("safety", "Privacy leaks, duplicate awards, hard-limit breaches", 0, None, None, [],
+                 ["No privacy and duplicate-award audit recorded yet."]),
+            crit("rollback", "Rollback verified", True, None, None, [], ["Rollback has not been exercised."]),
         ],
         "assessments": {a: {"written_at": None, "decision": None, "refs": []} for a in AGENTS},
         "note": "Operational threshold for a small pilot, not statistical proof. Unmet or unknown criteria keep SHADOW.",
@@ -221,7 +228,7 @@ def build_export(mem, github, now=None, source_commit=None, demo=False):
             "evaluated": sum(1 for d in decisions if d.get("evaluation_ref")),
             "note": "A choice Q would have made but nobody made has no observed outcome.",
         },
-        "readiness": readiness(cfg, decisions),
+        "readiness": readiness(cfg, decisions, github),
         "map_links": [{"memory_id": m["id"], "map_node_ids": m["map_node_ids"]} for m in memories
                       if m.get("visibility") == "public" and m.get("map_node_ids")],
     })

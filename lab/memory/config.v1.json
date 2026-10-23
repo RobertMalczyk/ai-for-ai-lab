@@ -19,6 +19,9 @@
     "max_lessons": 3,
     "budget": 3200,
     "budget_unit": "characters",
+    "min_relevance": 0.2,
+    "relevance_scale": "absolute_0_to_1",
+    "query_normalization": "none",
     "q_in_shadow_ranking": false
   },
   "canary": {

@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI LAB sanitized memory export v1.0.0",
+  "description": "Build-time public envelope consumed by the existing LAB site. It contains only public records, aggregates and safe links.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "export_version": {"const": "1.0.0"},
+    "contract_version": {"type": "string", "minLength": 1},
+    "rule_version": {"type": "string", "minLength": 1},
+    "implementation_status": {"type": "string", "minLength": 1},
+    "demo": {"type": "boolean"},
+    "generated_at": {"type": "string", "minLength": 1},
+    "last_success_at": {"type": ["string", "null"]},
+    "source_commit": {"type": ["string", "null"]},
+    "data_status": {"enum": ["available", "stale", "empty", "unavailable"]},
+    "mode": {"enum": ["SHADOW", "CANARY", "COUPLED", "ROLLED_BACK", "UNKNOWN"]},
+    "memory_enabled": {"type": ["boolean", "null"]},
+    "coupling_scope": {"type": ["string", "null"]},
+    "reward_influence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "mode_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "at": {"type": "string", "minLength": 1},
+          "from": {"type": ["string", "null"]},
+          "to": {"enum": ["SHADOW", "CANARY", "COUPLED", "ROLLED_BACK"]},
+          "influence": {"type": "number", "minimum": 0, "maximum": 1},
+          "scope": {"type": ["string", "null"]},
+          "rule_version": {"type": "string", "minLength": 1},
+          "decided_by": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "reason": {"type": "string", "minLength": 1},
+          "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        },
+        "required": ["at", "from", "to", "influence", "scope", "rule_version", "decided_by", "reason", "evidence_refs"]
+      }
+    },
+    "agents": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "agent1": {"$ref": "#/$defs/agent"},
+        "agent2": {"$ref": "#/$defs/agent"}
+      },
+      "required": ["agent1", "agent2"]
+    },
+    "events": {"type": "array", "items": {"type": "object"}},
+    "memories": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "public": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "active": {"type": "integer", "minimum": 0},
+            "provisional": {"type": "integer", "minimum": 0},
+            "superseded": {"type": "integer", "minimum": 0},
+            "retracted": {"type": "integer", "minimum": 0}
+          },
+          "required": ["active", "provisional", "superseded", "retracted"]
+        },
+        "historical_seed": {"type": "integer", "minimum": 0},
+        "retrievals": {"type": "integer", "minimum": 0},
+        "corrections": {"type": "integer", "minimum": 0},
+        "recent_applications": {"type": "array", "items": {"type": "object"}},
+        "private": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {"available": {"const": false}},
+          "required": ["available"]
+        }
+      },
+      "required": ["public", "historical_seed", "retrievals", "corrections", "recent_applications", "private"]
+    },
+    "shadow": {"type": "object"},
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "label": {"type": "string", "minLength": 1},
+              "threshold": {},
+              "observed": {},
+              "met": {"type": ["boolean", "null"]},
+              "evidence_refs": {"type": "array", "items": {"type": "string", "minLength": 1}},
+              "gaps": {"type": "array", "items": {"type": "string", "minLength": 1}}
+            },
+            "required": ["id", "label", "threshold", "observed", "met", "evidence_refs", "gaps"]
+          }
+        },
+        "assessments": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "agent1": {"$ref": "#/$defs/assessment"},
+            "agent2": {"$ref": "#/$defs/assessment"}
+          },
+          "required": ["agent1", "agent2"]
+        },
+        "note": {"type": "string"}
+      },
+      "required": ["criteria", "assessments"]
+    },
+    "map_links": {"type": "array", "items": {"type": "object"}},
+    "reason": {"type": "string"}
+  },
+  "required": ["export_version", "demo", "generated_at", "data_status", "last_success_at"],
+  "allOf": [
+    {
+      "if": {"properties": {"data_status": {"enum": ["available", "stale", "empty"]}}, "required": ["data_status"]},
+      "then": {"required": ["contract_version", "rule_version", "implementation_status", "mode", "memory_enabled", "coupling_scope", "reward_influence", "mode_history", "agents", "events", "memories", "shadow", "readiness", "map_links"]}
+    }
+  ],
+  "$defs": {
+    "cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "value": {"type": ["number", "null"], "minimum": 0},
+        "unit": {"type": ["string", "null"]},
+        "measured": {"type": "boolean"}
+      },
+      "required": ["value", "unit", "measured"]
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "positive": {"type": "number", "minimum": 0},
+        "negative": {"type": "number", "maximum": 0},
+        "net": {"type": "number"},
+        "graded": {"type": "integer", "minimum": 0},
+        "pending": {"type": "integer", "minimum": 0},
+        "disputed": {"type": "integer", "minimum": 0},
+        "duplicates": {"type": "integer", "minimum": 0},
+        "capped": {"type": "integer", "minimum": 0},
+        "cost": {"$ref": "#/$defs/cost"}
+      },
+      "required": ["positive", "negative", "net", "graded", "pending", "disputed", "cost"]
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "written_at": {"type": ["string", "null"]},
+        "decision": {"enum": ["yes", "no", null]},
+        "refs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      },
+      "required": ["written_at", "decision", "refs"]
+    }
+  }
+}

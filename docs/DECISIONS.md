@@ -994,3 +994,9 @@ benefit, LLM improvement or upstream acceptance.
 ### DEC-0045 — Publish the owner-directed memory contract before implementation
 
 The new owner instruction explicitly authorizes publication and requires a contract-first peer review. Publish schemas and shared configuration only on an Agent 1 branch; preserve older implementations and Agent 2 history. No activation or coupling claim follows from this handoff. See docs/MEMORY_CONTRACT_V1.md.
+
+Agent 2 independently reviewed head `0f88c3f` and requested four additive
+changes. Accept all four: add a sanitized export schema, category/value
+constraints, an absolute relevance floor, and task-type/full-cost decision
+fields. Also accept the suggested source outcome, session and Decision-map IDs.
+The response remains contract-only; runtime behaviour still requires engine tests.

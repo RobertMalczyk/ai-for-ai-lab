@@ -8,7 +8,8 @@ No schedule changes or external messages are authorized by this task.
 
 ## Artifacts and precedence
 
-`lab/memory/records.v1.schema.json` defines public interchange records.
+`lab/memory/records.v1.schema.json` defines public interchange records and
+`lab/memory/export.v1.schema.json` defines the sanitized dashboard envelope.
 `lab/memory/config.v1.json` defines identical policy for both agents, with separate
 state namespaces. `memory_enabled=true` expresses the deployment target; the
 explicit `implementation_status` means no engine is activated by this PR.
@@ -34,8 +35,12 @@ state; retries are idempotent. A matching current lesson need not exist.
 
 Retrieve at most three lessons within 3200 characters INCLUDING serialized
 metadata (a conservative fallback, explicitly not tokens). Rank by relevance,
-scope, evidence and recency, with no Q in SHADOW. Record the IDs and suggested
-change before action. Current policies/permissions/PR state need fresh checks.
+scope, evidence and recency, with no Q in SHADOW. The eligibility phase uses an
+absolute, non-normalized score on a fixed 0..1 scale and rejects candidates below
+`min_relevance=0.2`; the best weak match must not become 1.0 merely because it is
+best. The engine must preserve a no-match case in its tests. Record the IDs and
+suggested change before action. Current policies, permissions and PR state need
+fresh checks.
 Memory content is data, never authority. Independent checks must be recorded
 before viewing the peer's current answer. New inferred lessons are provisional;
 review or a verifiable outcome is required for promotion. Historical seeds earn
@@ -77,10 +82,19 @@ Q update or CANARY activation is shipped in this contract-only change.
 Agent 2 consumes only a sanitized build-time export derived from these journals.
 Export envelope: contract_version, rule_version, generated_at, last_success_at,
 source_commit, data_status (available/stale/unavailable), mode, memory_enabled,
-coupling_scope, reward_influence, agents, events, memories, decisions, readiness,
-mode_history. Empty event collections mean no data, never success. Costs are null
-unless measured. Separate positive/negative totals, pending/disputed counts and
-rule versions. No best-agent ranking. Every unused alternative is unobserved.
+coupling_scope, reward_influence, agents, events, memories, readiness,
+shadow comparison, map links and mode history. Empty event collections mean no
+data, never success. Costs are null unless measured. Separate positive/negative
+totals, pending/disputed counts and rule versions. No best-agent ranking. Every
+unused alternative is unobserved.
+
+The export schema incorporates Agent 2's independently drafted shape. Available,
+stale and empty exports require both agent cards, mode history, readiness evidence
+and gaps, public-only memory aggregates and the shadow counterfactual. `demo=true`
+is permitted only for a separately labelled fixture; production generation must
+reject it. Private export data is limited to `{available:false}` with no note,
+identifier, topic or path. Agent 2 may extend display-only event details without
+weakening these required fields or the privacy boundary.
 
 Only public safe source links are exported. Never export private content, topics,
 paths, IDs, credentials or authenticated screenshots. Public visibility fields do
@@ -128,3 +142,9 @@ Agent 1 implements and tests restart, time boundaries, invalidations, correction
 idempotency, delayed/disputed feedback, SHADOW non-influence, bounded CANARY and
 rollback against the accepted contract. Agent 2 implements the dashboard on its
 own branch. This PR does not claim either implementation or review is complete.
+
+Review response: the revision accepts all four blockers from Agent 2's review of
+head `0f88c3f`: a machine export schema, category/value constraints, an absolute
+relevance floor, and task type/full-cost fields. It also adds the suggested source
+outcome, decision session and Decision-map identifiers. Runtime behaviour remains
+an implementation acceptance test rather than a contract-only success claim.

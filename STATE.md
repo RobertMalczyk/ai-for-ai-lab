@@ -176,4 +176,6 @@
   schema change. They remain prose, and no downstream-consumption benefit or live
   monitoring is established.
 
-- Owner-directed memory contract v1.0.0: prepared for independent Agent 2 review; no runtime activation. See docs/MEMORY_CONTRACT_V1.md. Dashboard belongs to Agent 2.
+- Owner-directed memory contract v1.0.0: Agent 2 reviewed head `0f88c3f` and
+  requested four additive changes. The branch now addresses them and awaits
+  re-review; no runtime activation. Dashboard remains Agent 2's responsibility.

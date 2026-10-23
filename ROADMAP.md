@@ -536,4 +536,5 @@
 
 ## Owner-directed memory contract handoff (2026-10-22)
 
-- Review version 1.0.0 before engine/dashboard integration; preserve separate agent branches. Reward influence remains zero.
+- Re-review version 1.0.0 after Agent 2's four blockers were addressed; preserve
+  separate agent branches. Reward influence remains zero.

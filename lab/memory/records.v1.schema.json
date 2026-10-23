@@ -2,6 +2,34 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "AI LAB public memory interchange v1.0.0",
   "$defs": {
+    "cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "measured": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "measured"
+      ]
+    },
     "memory": {
       "type": "object",
       "additionalProperties": false,
@@ -69,6 +97,14 @@
             "reviewed"
           ]
         },
+        "source_outcome": {
+          "enum": [
+            "positive",
+            "negative",
+            "inconclusive",
+            "unknown"
+          ]
+        },
         "status": {
           "enum": [
             "active",
@@ -91,6 +127,14 @@
             "string",
             "null"
           ]
+        },
+        "map_node_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       },
       "required": [
@@ -106,10 +150,12 @@
         "exceptions",
         "confidence",
         "evidence_status",
+        "source_outcome",
         "status",
         "historical_seed",
         "supersedes",
-        "correction_effective_at"
+        "correction_effective_at",
+        "map_node_ids"
       ]
     },
     "feedback": {
@@ -238,6 +284,36 @@
         "memory_ids",
         "session_id",
         "supersedes"
+      ],
+      "allOf": [
+        {
+          "if": {"properties": {"category": {"const": "useful_result"}}, "required": ["category"]},
+          "then": {"properties": {"value": {"const": 1}}}
+        },
+        {
+          "if": {"properties": {"category": {"const": "review_correction"}}, "required": ["category"]},
+          "then": {"properties": {"value": {"const": 0.5}}}
+        },
+        {
+          "if": {"properties": {"category": {"const": "new_finding"}}, "required": ["category"]},
+          "then": {"properties": {"value": {"const": 0.2}}}
+        },
+        {
+          "if": {"properties": {"category": {"const": "activity"}}, "required": ["category"]},
+          "then": {"properties": {"value": {"const": 0}}}
+        },
+        {
+          "if": {"properties": {"category": {"const": "repeated_error"}}, "required": ["category"]},
+          "then": {"properties": {"value": {"const": -0.5}}}
+        },
+        {
+          "if": {"properties": {"category": {"const": "constraint_violation"}}, "required": ["category"]},
+          "then": {"properties": {"value": {"const": -1}}}
+        },
+        {
+          "if": {"properties": {"category": {"const": "unresolved"}}, "required": ["category"]},
+          "then": {"properties": {"value": {"type": "null"}}}
+        }
       ]
     },
     "decision": {
@@ -255,6 +331,20 @@
           ]
         },
         "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_type": {
+          "enum": [
+            "discovery",
+            "preflight",
+            "build",
+            "review",
+            "site",
+            "other"
+          ]
+        },
+        "session_id": {
           "type": "string",
           "minLength": 1
         },
@@ -300,12 +390,25 @@
             "string",
             "null"
           ]
+        },
+        "cost": {
+          "$ref": "#/$defs/cost"
+        },
+        "map_node_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       },
       "required": [
         "decision_id",
         "agent",
         "task_id",
+        "task_type",
+        "session_id",
         "occurred_at",
         "rule_version",
         "memory_ids",
@@ -313,7 +416,9 @@
         "actual_action",
         "shadow_memory_ids",
         "alternative_outcome",
-        "evaluation_ref"
+        "evaluation_ref",
+        "cost",
+        "map_node_ids"
       ]
     },
     "utility": {

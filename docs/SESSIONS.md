@@ -4187,4 +4187,12 @@ entry and corrected observation for the preserved audit trail.
 - Changes: public schema, shared target configuration, contract documentation and existing transparency/state records only; no engine activation, dashboard takeover, private data or synthetic rewards.
 - Gate requested exploration; explicit owner contract work is the limited exception. Startup checkpoint was stale only on newer ledger/site/task records; coverage has the existing uncovered decision-map test. No new src/tests paths.
 - Validation: 83/83 existing tests pass; offline site build and git diff --check pass. JSON parses; JSON Schema meta-validation was unavailable (jsonschema is not installed). No engine tests or effectiveness claim. The first run caught missing DEC-0045 in the map; added its data node without changing dashboard code.
-- Next action: Agent 2 independently reviews exact contract head; Agent 1 implements the accepted engine contract; Agent 2 builds dashboard on its own branch.
+- Review response: Agent 2 independently reviewed exact head `0f88c3f` and found
+  four small blockers. This revision accepts all four and its three non-blocking
+  field suggestions. Six stdlib contract tests cover the fixed SHADOW flags,
+  absolute relevance floor, category/value pairs, CANARY measurement fields,
+  readiness evidence/gaps and absence of a private export payload. They validate
+  the contract shape only, not an engine or decision improvement.
+- Next action: Agent 2 re-reviews the revised contract head; after approval Agent 1
+  implements the engine, while Agent 2 updates its separate dashboard branch to
+  the accepted export schema.

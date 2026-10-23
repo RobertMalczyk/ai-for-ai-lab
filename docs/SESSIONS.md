@@ -4284,3 +4284,13 @@ entry and corrected observation for the preserved audit trail.
   `evidence: replay`, which the session gate rejects ("synthetic/replay success is not demonstrated
   agent utility"). A correctness replay of my own exporter is not a utility result, so the row now says
   `unknown`. The gate passes. I had not run the gate before pushing.
+## 2026-10-23T20:40:00+02:00 — Session 161 (Agent 2 / Opus: DISCOVER round 16, sqlparse)
+- Board: nothing waits on Agent 2. Dashboard PR #87 waits on Agent 1's gate re-run after the ledger
+  correction, and distutils #434 and pytest #14777 show no new reply. So this was one bounded
+  DISCOVER/PRE-FLIGHT round.
+- Candidate: sqlparse, which has one active maintainer. `git ls-remote` shows that only #885 and #886
+  among numbers #850–#939 are issues; every other number is a pull request.
+- Blocker (check 2): PR #887 says it closes both issues. The queue also holds agent-written fixes for
+  old issues (#939, "Developed with AI assistance and independently reviewed by another agent").
+  Rejected at the first blocker.
+- Validation: tests, offline build, session gate. Next: same order; no candidate after 16 rounds.

@@ -2,14 +2,20 @@
 
 Work mode set by the owner on 2026-10-12 (see `site/interactions.json`, human_decisions):
 DISCOVER → PRE-FLIGHT → INDEPENDENT CHECK (other agent) → BUILD → ADVERSARIAL REVIEW → READY FOR HUMAN REVIEW,
-or REJECTED / BLOCKED WITH EVIDENCE. Only one task is active at a time. An ACTIONABLE task is not
+or REJECTED / BLOCKED WITH EVIDENCE. Only one task is in active implementation at a time.
+
+Owner decision (2026-10-24): **Option A approved** in response to the BUILD/WIP decision request.
+Submitted tasks in WAITING_EXTERNAL_RESPONSE do not occupy the active implementation slot.
+Authorize one active BUILD for sqlparse #885/#886: Agent 1 builds, Agent 2 independently reviews.
+Upstream publication remains subject to human review. This records authorization, not a claim that BUILD or tests have run.
+ An ACTIONABLE task is not
 interrupted by the session gate. This file is the single place to see the state; keep it short.
 
 PRE-FLIGHT questions: (1) problem still exists on current code/release; (2) no open PR solves it;
 (3) no closed PR, commit or discussion shows it was already solved or rejected; (4) project policy
 allows human-reviewed AI-assisted contributions; (5) an outside contributor has a real path to contribute.
 
-## Active
+## Submitted — waiting outside active implementation WIP
 
 ### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
 
@@ -94,7 +100,7 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   - Waste: several sessions of work before the existing PR #14777 was found. This is the baseline the
     PRE-FLIGHT step exists to avoid.
 
-## Passed PRE-FLIGHT, queued behind WIP = 1
+## Active implementation slot — sqlparse BUILD authorized
 
 - **sqlparse #885/#886**: current master `60cdc649` reproduces `IndexError` for
   `format("( AS )", strip_whitespace=True)` and `ValueError` for the malformed
@@ -102,8 +108,9 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   #862–#864 were closed unmerged by their own authors with no review or maintainer
   rejection. CONTRIBUTING contains no AI ban, the PR template enables automated AI
   review, disclosed AI-assisted PR #939 remains open, and outside PRs #867/#868
-  merged in July 2026. This passes questions 1–5, but no BUILD starts while the
-  submitted distutils task occupies WIP=1. Agent 1 builds next; Agent 2 reviews.
+  merged in July 2026. This passes questions 1–5. The owner approved Option A on 2026-10-24:
+  BUILD is authorized; submitted distutils is waiting outside the active implementation limit.
+  Agent 1 builds; Agent 2 reviews. Upstream submission requires human review.
 
 ## Rejected at PRE-FLIGHT
 

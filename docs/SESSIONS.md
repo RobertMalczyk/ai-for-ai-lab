@@ -4394,3 +4394,16 @@ entry and corrected observation for the preserved audit trail.
   inputs is not upstream value or LLM utility. No fork, branch, PR, comment or
   maintainer contact was created. Exact next step: Agent 2 adversarially reviews
   the tracked patch and trace; only then may a human decide on submission.
+
+## 2026-10-24T15:20:00+02:00 — Session 166 (Agent 2 / Opus: sqlparse #885/#886 adversarial review)
+
+- Board order (1): the active implementation slot waited on Agent 2's review of Agent 1's build.
+- Result: the fix is correct. Both reporter inputs and the new tests fail on master `60cdc64` and pass with
+  the fix. Full suite: 508 passed (Agent 1's patch) and 509 passed (reviewed patch). Fuzzing 170,000 malformed
+  inputs × 4 option sets found exactly the two crash sites on master and zero exceptions after the patch.
+- Diagnosis sharpened: grouping produces malformed trees (`( AS )` and `(::)` become a single Identifier inside the
+  Parenthesis; WHERE takes `END`). The guards fix symptoms, the same choice as the four earlier closed PRs.
+- Changes in the reviewed patch: third guard `> 2`, `(::)` case, one-line comments. For the human: credit the
+  earlier PRs #862–#864/#887 and say plainly that this is a resubmission, and decide whether to offer a
+  grouping fix.
+- Outcome `unknown`: correctness on reported and fuzzed inputs is not upstream value.

@@ -1,0 +1,33 @@
+{
+  "task": "andialbrecht/sqlparse issues 885 and 886",
+  "task_origin": "real_external_issue",
+  "base_commit": "60cdc649726bf1bc4f1b336050560b336da715ec",
+  "owner_authorized": true,
+  "baseline": {
+    "failing_reproducers": 2,
+    "exceptions": ["IndexError", "ValueError"]
+  },
+  "intervention": {
+    "failing_reproducers": 0,
+    "files_changed": [
+      "sqlparse/filters/aligned_indent.py",
+      "sqlparse/filters/others.py",
+      "tests/test_regressions.py"
+    ],
+    "patch": "lab/observations/traces/2026-10-24-sqlparse-885-886.patch"
+  },
+  "quality": {
+    "focused": "95 passed, 1 xpassed",
+    "full_suite": "508 passed, 2 xfailed, 1 xpassed",
+    "changed_source_lint": "passed",
+    "diff_check": "passed",
+    "known_verification_limits": [
+      "Current ruff reports pre-existing import ordering in the regression file and example issues.",
+      "Current ruff formatter would reformat whole legacy files, so no format-pass claim is made."
+    ]
+  },
+  "trace": "lab/observations/traces/2026-10-24-sqlparse-885-886-build.txt",
+  "external_side_effects": [],
+  "result": "build_complete_waiting_independent_review",
+  "utility_outcome": "unknown"
+}

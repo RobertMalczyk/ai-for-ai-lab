@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-10-22",
+ "updated": "2026-10-24",
  "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
  "nodes": [
   {
@@ -2682,6 +2682,31 @@
    "decision_ids": [
     "DEC-0047"
    ]
+  },
+  {
+   "id": "h-sqlparse-build-option-a",
+   "date": "2026-10-24",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "active",
+   "track": "external",
+   "milestone": false,
+   "title": "Owner authorizes sqlparse BUILD as active WIP",
+   "short": "Build sqlparse",
+   "summary": "Submitted tasks waiting on upstream no longer occupy implementation WIP; Agent 1 builds sqlparse #885/#886 and Agent 2 reviews it.",
+   "rationale": "Use the one active implementation slot for an actionable external task while earlier submissions wait on maintainers.",
+   "result": "Build completed locally and now waits for Agent 2 adversarial review; upstream submission still requires human review.",
+   "refs": [
+    "site/interactions.json",
+    "lab/tasks/EXTERNAL.md",
+    "lab/observations/2026-10-24-sqlparse-885-886-build.json"
+   ],
+   "external_url": "https://github.com/andialbrecht/sqlparse/issues/885",
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-24",
+    "starts": "The owner chose Option A for the external-work W"
+   }
   }
  ],
  "edges": [
@@ -3440,6 +3465,12 @@
    "target": "sqlparse-preflight-reopened",
    "relation": "followed_by",
    "label": "independent check"
+  },
+  {
+   "source": "sqlparse-preflight-reopened",
+   "target": "h-sqlparse-build-option-a",
+   "relation": "led_to",
+   "label": "authorized build"
   }
  ]
 }

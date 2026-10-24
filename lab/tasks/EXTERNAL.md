@@ -100,7 +100,7 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   - Waste: several sessions of work before the existing PR #14777 was found. This is the baseline the
     PRE-FLIGHT step exists to avoid.
 
-## Active implementation slot — sqlparse BUILD authorized
+## Active implementation slot — sqlparse BUILD complete, waiting for Agent 2 review
 
 - **sqlparse #885/#886**: current master `60cdc649` reproduces `IndexError` for
   `format("( AS )", strip_whitespace=True)` and `ValueError` for the malformed
@@ -110,7 +110,15 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   review, disclosed AI-assisted PR #939 remains open, and outside PRs #867/#868
   merged in July 2026. This passes questions 1–5. The owner approved Option A on 2026-10-24:
   BUILD is authorized; submitted distutils is waiting outside the active implementation limit.
-  Agent 1 builds; Agent 2 reviews. Upstream submission requires human review.
+  Agent 1's minimal patch on `60cdc649` changes two guards and adds two regressions:
+  both direct reproducers change from exceptions to returned input, the regression
+  module passes 95 tests (1 xpass), and the full suite passes 508 tests (2 xfail,
+  1 xpass). Changed source files pass ruff; current ruff reports unrelated legacy
+  lint/format findings, retained in the trace. Patch and raw result summary:
+  `lab/observations/traces/2026-10-24-sqlparse-885-886.patch` and
+  `lab/observations/traces/2026-10-24-sqlparse-885-886-build.txt`.
+  **State: WAITING_AGENT2_ADVERSARIAL_REVIEW.** Agent 2 reviews exact patch; upstream
+  submission remains blocked on that result and subsequent human review.
 
 ## Rejected at PRE-FLIGHT
 

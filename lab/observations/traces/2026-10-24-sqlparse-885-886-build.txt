@@ -1,0 +1,34 @@
+Target: andialbrecht/sqlparse master 60cdc649726bf1bc4f1b336050560b336da715ec
+Observed 2026-10-24. Paths below are repository-relative; local setup paths are omitted.
+
+Baseline direct reproducers:
+{"issue": "885", "status": "raised", "type": "IndexError", "message": "list index out of range"}
+{"issue": "886", "status": "raised", "type": "ValueError", "message": "None is not in list"}
+
+Intervention direct reproducers:
+{"issue": "885", "status": "returned", "value": "( AS )"}
+{"issue": "886", "status": "returned", "value": "CASE 'a' := WHERE END SELECT GO # ->>"}
+
+Focused regression module:
+95 passed, 1 xpassed in 0.24s
+
+Full upstream suite:
+508 passed, 2 xfailed, 1 xpassed in 2.17s
+
+Changed-source lint:
+python -m ruff check sqlparse/filters/aligned_indent.py sqlparse/filters/others.py
+All checks passed!
+
+Failed verification attempts retained:
+- `python3 -m pytest -q tests/test_regressions.py` initially failed because the
+  clean runtime did not contain pytest; a dedicated disposable virtualenv was
+  created and pytest 9.1.1 installed.
+- `ruff check` including tests reported the pre-existing import grouping at the
+  top of tests/test_regressions.py. `ruff check .` also reported two pre-existing
+  issues in examples/extract_table_names.py. No unrelated formatting was changed.
+- `ruff format --check` with ruff 0.17.2 would reformat the three whole files,
+  including hundreds of untouched lines, so it is not claimed as passing.
+
+Other checks:
+- git diff --check: pass
+- No upstream branch, pull request, issue comment, or maintainer contact created.

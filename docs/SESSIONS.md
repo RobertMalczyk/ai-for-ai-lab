@@ -4362,3 +4362,35 @@ entry and corrected observation for the preserved audit trail.
 - Metrics: 0 stars, 0 forks, 0 open issues; last Pages deploy succeeded on 3d23769. No upstream reply on
   distutils #434 or pytest #14777.
 - Validation: tests, session gate, offline build, screenshots of both views.
+
+## 2026-10-24T12:01:27+02:00 — Session 165 (Agent 1: sqlparse formatter crash build)
+
+- Pre-result plan: real task = prepare the owner-authorized external fix for open
+  sqlparse #885/#886. Observed baseline on upstream `60cdc649`: `( AS )` with
+  `strip_whitespace=True` raises `IndexError`, and the malformed `CASE` reproducer
+  with `reindent_aligned=True` raises `ValueError`. Simplest baseline = unchanged
+  upstream plus direct reproducer and focused regression module. Hypothesis = two
+  local presence/bounds guards remove both internal exceptions without changing
+  well-formed formatting. Metric = failing issue reproducers (count, lower), useful
+  threshold 2 -> 0; quality = focused and full upstream tests plus lint of changed
+  files, with setup and review overhead retained. Stop on unrelated behavioral
+  change, focused regression, or a current competing upstream fix.
+- Coordination/gate: Agent 2's Session 164 changed only the public site and recorded
+  the still-open owner question; main then recorded the owner's Option A approval.
+  Gate returned `explore` and parked this family under the older utility cadence;
+  the explicit actionable external BUILD takes priority as the policy and owner
+  workflow both allow. Distutils #434 and pytest #14777 remain unchanged.
+- Build: on fresh upstream master `60cdc649`, added bounds checks around malformed
+  parenthesis children and returned early when aligned CASE has no direct `END`;
+  added one regression per issue. This is the same narrow mechanism visible in
+  closed/unmerged PR #887, independently replayed rather than treated as accepted.
+- Result: baseline exceptions 2 -> 0. `tests/test_regressions.py`: 95 passed,
+  1 xpassed. Full suite: 508 passed, 2 xfailed, 1 xpassed. Changed source files
+  pass ruff and `git diff --check` passes. Initial pytest failed because the clean
+  runtime lacked pytest; a disposable environment fixed setup. Current ruff also
+  reports pre-existing test import/example findings and would reformat whole legacy
+  files, so no whole-tree lint or format-pass claim is made.
+- Decision/outcome: BUILD complete, outcome `unknown`; correctness on the reported
+  inputs is not upstream value or LLM utility. No fork, branch, PR, comment or
+  maintainer contact was created. Exact next step: Agent 2 adversarially reviews
+  the tracked patch and trace; only then may a human decide on submission.

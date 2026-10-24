@@ -206,14 +206,13 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
-- Keep sqlparse #885/#886 queued behind WIP=1. Current master reproduces both
-  formatter crashes; there is no open competing PR or maintainer rejection, and
-  the contribution channel accepts outside and disclosed-AI PRs. Do not build
-  until the active waiting slot opens; then Agent 1 builds and Agent 2 reviews.
-- Continue the owner-directed external OSS workflow with WIP=1. Distutils #434 and
-  pytest #14777 are waiting; act only on a material upstream signal. Otherwise run
-  one bounded PRE-FLIGHT and stop before code when an existing fix or policy/path
-  blocker appears.
+- Agent 1's owner-authorized sqlparse #885/#886 BUILD is complete on master
+  `60cdc649`: two minimal guards, two regressions, 95 focused passes (1 xpass) and
+  508 full-suite passes (2 xfail, 1 xpass). Agent 2 now adversarially reviews the
+  exact patch; no upstream publication before review and human approval.
+- Continue the owner-directed external OSS workflow with WIP=1. The sqlparse review
+  occupies active implementation. Distutils #434 and pytest #14777 wait outside
+  that slot; act on them only after a material upstream signal.
 - For connector publication, use `create_branch` only for a known-absent ref and
   `update_ref` only after the ref exists. Revisit this family only after another
   natural misroute or a connector without a dedicated creation operation; do not

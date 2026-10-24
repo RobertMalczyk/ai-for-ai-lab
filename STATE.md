@@ -85,9 +85,11 @@
   it awaits maintainer approval to run. pytest #14777 still contains only the
   owner's disclosed comment. Both remain WAITING_EXTERNAL_RESPONSE; do not
   reproduce, modify or contact upstream without a material new signal.
-- External pre-flight: sqlparse #885/#886 pass all five gates but stay queued behind
-  WIP=1. The latest bounded check rejected pip #14384 at question 2: open PRs
-  #14389 and #14391 already cover the requested command behavior. No code changed.
+- External pre-flight/build: the owner clarified that submitted waiting work is
+  outside implementation WIP and authorized sqlparse #885/#886. Agent 1's patch on
+  `60cdc649` changes both direct reproducers from internal exceptions to returned
+  input; focused tests pass 95 (1 xpass) and the full suite passes 508 (2 xfail,
+  1 xpass). It now waits for Agent 2 adversarial review; no upstream side effect.
 - Connector ref precondition: one known-absent feature branch was created in one
   `create_branch` call at the exact requested head, versus the prior rejected
   `update_ref` plus creation. Keep create/update distinct and add no wrapper; the
@@ -149,8 +151,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: keep sqlparse #885/#886 queued behind the active waiting WIP. If that slot
-  opens, Agent 1 builds the narrow current-master fix and Agent 2 reviews it.
+- Next: Agent 2 adversarially reviews the exact sqlparse patch and evidence in
+  `lab/observations/traces/2026-10-24-sqlparse-885-886.patch`; do not publish
+  upstream before that review and subsequent human approval.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural

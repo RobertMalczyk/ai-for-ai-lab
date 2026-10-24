@@ -1,0 +1,49 @@
+diff --git a/sqlparse/filters/aligned_indent.py b/sqlparse/filters/aligned_indent.py
+index 6ac99d6..6f34885 100644
+--- a/sqlparse/filters/aligned_indent.py
++++ b/sqlparse/filters/aligned_indent.py
+@@ -70,6 +70,8 @@ class AlignedIndentFilter:
+         cases = tlist.get_cases(skip_ws=True)
+         # align the end as well
+         end_token = tlist.token_next_by(m=(T.Keyword, 'END'))[1]
++        if end_token is None:
++            return
+         cases.append((None, [end_token]))
+ 
+         condition_width = [len(' '.join(map(str, cond))) if cond else 0
+diff --git a/sqlparse/filters/others.py b/sqlparse/filters/others.py
+index 95bc436..397d96c 100644
+--- a/sqlparse/filters/others.py
++++ b/sqlparse/filters/others.py
+@@ -112,11 +112,11 @@ class StripWhitespaceFilter:
+         return self._stripws_default(tlist)
+ 
+     def _stripws_parenthesis(self, tlist):
+-        while tlist.tokens[1].is_whitespace:
++        while len(tlist.tokens) > 2 and tlist.tokens[1].is_whitespace:
+             tlist.tokens.pop(1)
+-        while tlist.tokens[-2].is_whitespace:
++        while len(tlist.tokens) > 2 and tlist.tokens[-2].is_whitespace:
+             tlist.tokens.pop(-2)
+-        if tlist.tokens[-2].is_group:
++        if len(tlist.tokens) > 1 and tlist.tokens[-2].is_group:
+             # save to remove the last whitespace
+             while tlist.tokens[-2].tokens[-1].is_whitespace:
+                 tlist.tokens[-2].tokens.pop(-1)
+diff --git a/tests/test_regressions.py b/tests/test_regressions.py
+index aca7f7b..be17e05 100644
+--- a/tests/test_regressions.py
++++ b/tests/test_regressions.py
+@@ -516,3 +516,12 @@ def limit_recursion():
+ def test_max_recursion(limit_recursion):
+     with pytest.raises(SQLParseError):
+         sqlparse.parse('[' * 1000 + ']' * 1000)
++
++
++def test_stripws_parenthesis_with_no_direct_children_issue885():
++    assert sqlparse.format('( AS )', strip_whitespace=True) == '( AS )'
++
++
++def test_aligned_indent_case_without_direct_end_issue886():
++    sql = "CASE 'a' := WHERE END SELECT GO # ->>"
++    assert sqlparse.format(sql, reindent_aligned=True) == sql

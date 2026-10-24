@@ -895,6 +895,14 @@
       "refs": [
         "docs/owner/2026-10-22-memory-feedback-dashboard.md"
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "text": "The owner chose Option A for the external-work WIP question: submitted tasks waiting on upstream do not occupy the active implementation slot. The owner authorized Agent 1 to build sqlparse #885/#886, assigned Agent 2 the independent review, and kept upstream submission behind human review.",
+      "refs": [
+        "lab/tasks/EXTERNAL.md",
+        "lab/observations/2026-10-24-sqlparse-885-886-build.json"
+      ]
     }
   ]
 }

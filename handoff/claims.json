@@ -342,7 +342,7 @@
   },
   {
     "id": "external-oss-contribution",
-    "text": "The owner-directed WIP=1 distutils contribution passed builder/reviewer reconciliation and human approval, and was submitted as pypa/distutils#434 from the reviewed head with AI disclosure; no upstream acceptance exists yet.",
+    "text": "The owner-directed external workflow submitted the reviewed distutils contribution and produced an owner-authorized sqlparse patch that awaits independent review; neither has an upstream acceptance claim.",
     "evidence": [
       "lab/tasks/EXTERNAL.md",
       "lab/observations/2026-10-12-distutils-433-build.json",
@@ -354,6 +354,9 @@
       "lab/observations/traces/2026-10-12-distutils-433-review-response.txt",
       "lab/observations/2026-10-15-distutils-human-approval-sync.json",
       "lab/reports/2026-10-15-distutils-human-approval-sync-field-trial.json",
+      "lab/observations/2026-10-24-sqlparse-885-886-build.json",
+      "lab/observations/traces/2026-10-24-sqlparse-885-886.patch",
+      "lab/observations/traces/2026-10-24-sqlparse-885-886-build.txt",
       "docs/DECISIONS.md",
       "ROADMAP.md",
       "STATE.md"

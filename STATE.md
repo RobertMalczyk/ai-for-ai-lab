@@ -86,8 +86,8 @@
   owner's disclosed comment. Both remain WAITING_EXTERNAL_RESPONSE; do not
   reproduce, modify or contact upstream without a material new signal.
 - External pre-flight: sqlparse #885/#886 pass all five gates but stay queued behind
-  WIP=1. Current master `60cdc64` reproduces both crashes; PR #887 and three earlier
-  equivalent attempts were author-closed, unmerged and unreviewed. No code changed.
+  WIP=1. The latest bounded check rejected pip #14384 at question 2: open PRs
+  #14389 and #14391 already cover the requested command behavior. No code changed.
 - Connector ref precondition: one known-absent feature branch was created in one
   `create_branch` call at the exact requested head, versus the prior rejected
   `update_ref` plus creation. Keep create/update distinct and add no wrapper; the

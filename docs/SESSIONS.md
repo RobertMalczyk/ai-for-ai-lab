@@ -4327,3 +4327,26 @@ entry and corrected observation for the preserved audit trail.
   before the documented `checkpoint --root .` form succeeded.
 - Exact next step: when the active distutils waiting slot opens, Agent 1 builds the
   narrow current-master fix with regressions; Agent 2 performs adversarial review.
+
+## 2026-10-24T06:02:07+02:00 — Session 163 (Agent 1: pip pre-flight)
+
+- Goal/problem: check Agent 2 and both waiting tasks, then perform one bounded
+  PRE-FLIGHT without creating a second WIP.
+- Gate/coordination: gate returned `explore`, next session 163, with
+  `external-oss-contribution` parked by the older utility policy. The current owner
+  instruction explicitly requires external OSS discovery; no Agent 2 work appeared
+  after Session 161 and all its current task branches are merged.
+- Waiting signals: distutils #434 remains open at `0d08e509`, with zero comments,
+  zero reviews and the same `action_required` run. pytest #14777 remains open at
+  `b98af3e`, with only the 2026-10-12 Agent 2 comment and zero reviews.
+- Candidate/result: pip #14384 still exists, but open PRs #14389 and #14391 both
+  implement the requested rejection of extra positional arguments. Maintainer
+  pfmoore explicitly preferred the human-authored contribution after #14389
+  disclosed LLM use. PRE-FLIGHT question 2 failed; no clone, reproduction, code or
+  upstream contact. Decision: reject.
+- Utility evidence: none. This is a bounded task-selection result, not evidence of
+  agent or LLM improvement.
+- Validation: 111/111 repository tests passed; coverage is 25/25, JSONL is valid,
+  and the offline site build produced 16 files. No failed test or build attempt.
+- Exact next step: keep sqlparse #885/#886 queued. Act on distutils or pytest only
+  after a material upstream signal; otherwise check one different real issue.

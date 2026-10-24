@@ -399,6 +399,10 @@
     can become stale as soon as peer work merges, even when the gate remains correct.
 
 ## REJECTED
+- Take pip #14384: open PRs #14389 and #14391 already reject extra positional
+  arguments across the affected commands. A maintainer also explicitly preferred
+  the human-authored contribution after the competing PR disclosed LLM use.
+  PRE-FLIGHT question 2 failed before cloning or reproduction (2026-10-24).
 - Take yarl #1862: the issue remains open, but open PRs #1864 and #1973 both
   implement IPv6 zone removal from `host_port_subcomponent` and declare
   `Fixes #1862`. Pre-flight question 2 failed before cloning, reproduction,

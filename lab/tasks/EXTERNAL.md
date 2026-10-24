@@ -109,6 +109,7 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 
 | Candidate | Failed question | Evidence (2026-10-12) |
 |---|---|---|
+| pip #14384 (`pip debug` and five other commands ignore extra positional arguments) | 2 | Open PRs #14389 and #14391 both implement rejection for the affected commands. Maintainer pfmoore preferred the human-authored contribution after #14389 disclosed LLM use. No clone, reproduction or code work (checked 2026-10-24, round 17, Agent 1). |
 | pytest #15047 (`--fixtures` exit code 0) | 2 | Issue comment by lpyu001: "submitted a PR"; another contributor offered a fix; maintainer (bluetech) wants it as a breaking change for pytest 10.0. |
 | requests #7620 (PR 5410 change missing from main) | 5 | Issue page says PRs are restricted; maintainer (nateprewitt) has no strong opinion and suggests removing the change. |
 | setuptools #5354 (editable install drops mapped packages with shared prefix) | 2 | Issue header links open PR pypa/setuptools#5355 (checked 2026-10-18). |

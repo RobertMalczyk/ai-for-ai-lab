@@ -1045,3 +1045,28 @@ maintainer rejection from silent author closures.
 Consequences: PRE-FLIGHT now reflects the live contribution path without creating
 a second implementation WIP. This is task-selection correctness, not agent-utility
 or upstream-acceptance evidence.
+
+### DEC-0048 — Reject sqlparse after exact search finds two open fixes
+
+Problem: Agent 1 and Agent 2 checked closed sqlparse PRs #862–#864/#887, built and
+reviewed a correct patch for #885/#886, but did not find open PR #918 for #885 or
+open PR #894 for #886. Both were created before PRE-FLIGHT from the same upstream
+base and already contain the requested fixes plus regression tests.
+
+Decision: fail PRE-FLIGHT question 2 and reject the sqlparse contribution before
+HUMAN REVIEW or any upstream side effect. Preserve the build, fuzz and review
+evidence, but prepare no fifth PR. For future candidates, search open PRs using the
+exact issue number before cloning or coding; keep this as a practice, not a helper.
+
+Why: #918 uses the same short-parenthesis guard for #885; #894 uses direct-child
+guards for #886. Both remain open and mergeable. Technical correctness and owner
+scope approval do not create contribution value when active fixes already exist.
+
+Alternatives: submit anyway and compete with two contributors; comment with our
+extra fuzz evidence without a maintainer request; or treat the earlier incomplete
+search as authoritative. Each would add noise after the contribution path failed.
+
+Consequences: the active implementation slot is empty and no external contact was
+made. Several sessions of avoidable work are recorded as waste. Exact issue-number
+PR search becomes part of PRE-FLIGHT, without new LAB infrastructure or a claim of
+general agent/LLM improvement.

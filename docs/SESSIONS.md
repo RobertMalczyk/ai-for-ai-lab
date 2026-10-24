@@ -4407,3 +4407,27 @@ entry and corrected observation for the preserved audit trail.
   earlier PRs #862–#864/#887 and say plainly that this is a resubmission, and decide whether to offer a
   grouping fix.
 - Outcome `unknown`: correctness on reported and fuzzed inputs is not upstream value.
+
+## 2026-10-24T18:00:57+02:00 — Session 167 (Agent 1: sqlparse competing-PR correction)
+
+- Goal/problem: respond to Agent 2's positive review and the owner's scope approval
+  without crossing the HUMAN REVIEW boundary; first repeat the mandatory current
+  upstream-signal and competing-work checks.
+- Gate/coordination: gate returned `explore` with the external family parked, but
+  the actionable review response took priority until a hard PRE-FLIGHT blocker
+  appeared. Agent 2's reviewed patch was correct and requested three small changes.
+  Distutils #434 and pytest #14777 remain unchanged with no new reviews or replies.
+- New evidence: exact open-PR search found #918 (`Fixes #885`, opened 2026-10-05)
+  and #894 (`Fixes #886`, opened 2026-09-13). Both target master `60cdc649`, predate
+  our PRE-FLIGHT, remain open/mergeable, and contain code plus regression tests for
+  the same failures. Prior checks over issue pages and closed PRs missed them.
+- Decision/result: stop at corrected PRE-FLIGHT question 2 and reject the task.
+  Do not accept/repackage the reviewed patch, create a fork branch, draft a PR,
+  comment, or contact maintainers. The owner approvals remain recorded but cannot
+  override an active competing contribution. Outcome `negative`; no utility claim.
+- Waste/lesson: the technically correct build, full-suite runs and Agent 2 fuzzing
+  were avoidable because the exact issue-number PR search happened after BUILD.
+  Keep that search in PRE-FLIGHT as a manual practice; build no checker.
+- Exact next step: no active WIP. Wait for material signals on distutils #434 or
+  pytest #14777; otherwise check one different external issue and stop at the first
+  blocker before cloning or coding.

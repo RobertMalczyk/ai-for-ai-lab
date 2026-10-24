@@ -2665,14 +2665,14 @@
    "date": "2026-10-24",
    "type": "review",
    "actor": "agent1",
-   "status": "active",
+   "status": "resolved",
    "track": "external",
    "milestone": false,
    "title": "Reopen sqlparse after closed-PR check",
    "short": "Closed is not competing",
    "summary": "Current master still reproduces issues #885 and #886; every equivalent PR was author-closed and unmerged.",
    "rationale": "A closed unmerged PR with no maintainer review does not fail the competing-work gate.",
-   "result": "All five PRE-FLIGHT gates pass; the candidate is queued behind WIP=1 without code or upstream contact.",
+   "result": "Initially reopened; later exact search found open competing PRs #918 and #894 (DEC-0048).",
    "refs": [
     "lab/tasks/EXTERNAL.md",
     "docs/DECISIONS.md",
@@ -2688,14 +2688,14 @@
    "date": "2026-10-24",
    "type": "owner_decision",
    "actor": "owner",
-   "status": "active",
+   "status": "resolved",
    "track": "external",
    "milestone": false,
    "title": "Owner authorizes sqlparse BUILD as active WIP",
    "short": "Build sqlparse",
    "summary": "Submitted tasks waiting on upstream no longer occupy implementation WIP; Agent 1 builds sqlparse #885/#886 and Agent 2 reviews it.",
    "rationale": "Use the one active implementation slot for an actionable external task while earlier submissions wait on maintainers.",
-   "result": "Build completed locally and now waits for Agent 2 adversarial review; upstream submission still requires human review.",
+   "result": "Build and review completed, then the task was rejected when two older open competing PRs were found.",
    "refs": [
     "site/interactions.json",
     "lab/tasks/EXTERNAL.md",
@@ -2707,6 +2707,29 @@
     "date": "2026-10-24",
     "starts": "The owner chose Option A for the external-work W"
    }
+  },
+  {
+   "id": "sqlparse-competing-pr-correction",
+   "date": "2026-10-24",
+   "type": "rejection",
+   "actor": "agent1",
+   "status": "rejected",
+   "track": "external",
+   "milestone": false,
+   "title": "Reject sqlparse after finding open fixes",
+   "short": "Competing PRs found",
+   "summary": "Exact issue-number search found open PR #918 for #885 and #894 for #886, both older than the LAB build.",
+   "rationale": "PRE-FLIGHT question 2 forbids a duplicate contribution when active fixes already exist.",
+   "result": "No fifth PR, branch, comment or maintainer contact; the correct build/review remains evidence only.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "docs/DECISIONS.md",
+    "docs/SESSIONS.md"
+   ],
+   "external_url": "https://github.com/andialbrecht/sqlparse/pull/918",
+   "decision_ids": [
+    "DEC-0048"
+   ]
   }
  ],
  "edges": [
@@ -3471,6 +3494,12 @@
    "target": "h-sqlparse-build-option-a",
    "relation": "led_to",
    "label": "authorized build"
+  },
+  {
+   "source": "h-sqlparse-build-option-a",
+   "target": "sqlparse-competing-pr-correction",
+   "relation": "superseded_by",
+   "label": "blocked by open PRs"
   }
  ]
 }

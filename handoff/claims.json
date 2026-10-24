@@ -342,7 +342,7 @@
   },
   {
     "id": "external-oss-contribution",
-    "text": "The owner-directed external workflow submitted the reviewed distutils contribution and produced an owner-authorized sqlparse patch that awaits independent review; neither has an upstream acceptance claim.",
+    "text": "The owner-directed external workflow submitted the reviewed distutils contribution; the independently reviewed sqlparse build was rejected before submission after exact search found two older open competing PRs.",
     "evidence": [
       "lab/tasks/EXTERNAL.md",
       "lab/observations/2026-10-12-distutils-433-build.json",

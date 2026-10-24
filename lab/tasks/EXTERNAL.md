@@ -100,11 +100,17 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   - Waste: several sessions of work before the existing PR #14777 was found. This is the baseline the
     PRE-FLIGHT step exists to avoid.
 
-## Active implementation slot — sqlparse BUILD complete, waiting for Agent 2 review
+## No active implementation task
 
-- **sqlparse #885/#886**: current master `60cdc649` reproduces `IndexError` for
+- **sqlparse #885/#886 — REJECTED after late PRE-FLIGHT correction.** Current master `60cdc649` reproduces `IndexError` for
   `format("( AS )", strip_whitespace=True)` and `ValueError` for the malformed
-  `CASE` reproducer. No open PR matches them. PR #887 and earlier equivalent PRs
+  `CASE` reproducer. The earlier review considered closed PRs #862–#864/#887 but
+  missed two open, exact competing fixes: #918 fixes #885 from base `60cdc649`
+  with the same short-parenthesis guard and a regression; #894 fixes #886 from the
+  same base with direct-child guards and a regression. They were opened on
+  2026-10-05 and 2026-09-13, before this task's PRE-FLIGHT. Both remain open and
+  mergeable with no review. Therefore PRE-FLIGHT question 2 fails and no fifth PR
+  will be prepared. PR #887 and earlier equivalent PRs
   #862–#864 were closed unmerged by their own authors with no review or maintainer
   rejection. CONTRIBUTING contains no AI ban, the PR template enables automated AI
   review, disclosed AI-assisted PR #939 remains open, and outside PRs #867/#868
@@ -137,13 +143,14 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   earlier closed, unmerged PRs #862, #863, #864 and #887. Credit goes to their authors
   for the earlier fixes; this submission adds regression coverage and independent
   verification."
-  This approves scope and attribution only: Agent 1 must still resolve the three
-  review changes; final human review and ownership are required before upstream submission.
+  This approval is retained as history, but it cannot override the newly verified
+  competing-work blocker. No fork branch, PR, comment or maintainer contact was created.
 
 ## Rejected at PRE-FLIGHT
 
 | Candidate | Failed question | Evidence (2026-10-12) |
 |---|---|---|
+| sqlparse #885/#886 (formatter crashes on malformed input) | 2 | Open PR #918 fixes #885 and open PR #894 fixes #886 from the same upstream base. Both predate our PRE-FLIGHT and contain regression tests. Our independently correct build/review is preserved, but a fifth PR would duplicate active work (checked 2026-10-24, Agent 1). |
 | pip #14384 (`pip debug` and five other commands ignore extra positional arguments) | 2 | Open PRs #14389 and #14391 both implement rejection for the affected commands. Maintainer pfmoore preferred the human-authored contribution after #14389 disclosed LLM use. No clone, reproduction or code work (checked 2026-10-24, round 17, Agent 1). |
 | pytest #15047 (`--fixtures` exit code 0) | 2 | Issue comment by lpyu001: "submitted a PR"; another contributor offered a fix; maintainer (bluetech) wants it as a breaking change for pytest 10.0. |
 | requests #7620 (PR 5410 change missing from main) | 5 | Issue page says PRs are restricted; maintainer (nateprewitt) has no strong opinion and suggests removing the change. |

@@ -4431,3 +4431,13 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: no active WIP. Wait for material signals on distutils #434 or
   pytest #14777; otherwise check one different external issue and stop at the first
   blocker before cloning or coding.
+
+## 2026-10-24T20:50:00+02:00 — Session 168 (Agent 2 / Opus: DISCOVER round 18, flit)
+
+- Board: sqlparse was rejected by Agent 1 (DEC-0048) because open PRs #918 and #894 already fix #885 and #886.
+  Agent 2's review missed them too. It looked only at the closed PRs it already knew about, although its own
+  `ls-remote` listing showed both merge refs. The active slot is empty, so this was one bounded DISCOVER round.
+- Practice applied (DEC-0048): list open PRs from `refs/pull/*/merge` before reading any issue in depth.
+- flit: issues #817 and #804 are the newest real reports. Both are already fixed on main `1418ccb` (docs; `39f214f`
+  chmods the wheel temp file). Rejected at question 1. No clone beyond a shallow read, no code.
+- Validation: tests, session gate, offline build.

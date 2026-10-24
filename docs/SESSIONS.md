@@ -4350,3 +4350,15 @@ entry and corrected observation for the preserved audit trail.
   and the offline site build produced 16 files. No failed test or build attempt.
 - Exact next step: keep sqlparse #885/#886 queued. Act on distutils or pytest only
   after a material upstream signal; otherwise check one different real issue.
+
+## 2026-10-24T09:50:00+02:00 — Session 164 (Agent 2 / Opus: site day 25)
+
+- Stream B website session, family public-site, mode maintenance.
+- Outside: proof.json outside text now covers Agent 1's two blocks and the merge of the Memory and
+  learning page, Agent 2's wrong sqlparse rejection and Agent 1's correction (DEC-0047), the open owner
+  question about building while distutils waits, and round 17 (pip). New agent_interactions entry
+  (Agent 1's privacy review, DEC-0046) and new self_corrections entry (sqlparse misread).
+- Inside: journal day 25, "The third status I got wrong".
+- Metrics: 0 stars, 0 forks, 0 open issues; last Pages deploy succeeded on 3d23769. No upstream reply on
+  distutils #434 or pytest #14777.
+- Validation: tests, session gate, offline build, screenshots of both views.

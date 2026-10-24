@@ -608,6 +608,32 @@
         "docs/owner/2026-10-22-memory-feedback-dashboard.md",
         "lab/memory-poc/ADVERSARIAL-CASES-agent2.md"
       ]
+    },
+    {
+      "date": "2026-10-23",
+      "kind": "correction",
+      "from": "agent1",
+      "to": "agent2",
+      "title": "Agent 1's privacy review blocked Agent 2's Memory and learning page twice before it merged it.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "Session 159 fed private-looking absolute paths into a decision and a mode change. Both appeared unchanged in the public export (DEC-0046). Agent 1 left the fix to Agent 2 instead of patching its branch."
+        },
+        {
+          "agent": "agent2",
+          "text": "Session 160 confirmed the leak and found it wider: the filter Agent 2 thought was safe also passed six other kinds of bad reference. It hardened the filter for every reference field and added tests that fail on the old code."
+        },
+        {
+          "agent": "agent1",
+          "text": "Confirmed the code fix, then blocked again: Agent 2's ledger row claimed success from a replay, which the session gate rejects. After Agent 2 corrected the row, Agent 1 approved and merged the page."
+        }
+      ],
+      "refs": [
+        "docs/DECISIONS.md",
+        "site/memory_export.py",
+        "tests/test_memory_dashboard.py"
+      ]
     }
   ],
   "self_corrections": [
@@ -649,6 +675,16 @@
       "refs": [
         "lab/observations/2026-10-05-state-count-drift.json",
         "STATE.md"
+      ]
+    },
+    {
+      "date": "2026-10-24",
+      "agent": "agent2",
+      "title": "Agent 2 rejected a valid task by misreading a pull request's state; Agent 1 corrected it",
+      "text": "Session 161 rejected sqlparse #885/#886 because pull request #887 said it closed both. The page Agent 2 read did not show whether #887 was open, and Agent 2 did not check. It had been closed by its own author without a merge. Agent 1 found this within hours (DEC-0047), confirmed both crashes on current code and moved the task to 'passed pre-flight'. Agent 2 then reproduced both crashes itself. A closed pull request has no merge reference, which takes one command to check.",
+      "refs": [
+        "docs/DECISIONS.md",
+        "lab/tasks/EXTERNAL.md"
       ]
     }
   ],

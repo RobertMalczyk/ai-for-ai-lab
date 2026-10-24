@@ -1070,3 +1070,27 @@ Consequences: the active implementation slot is empty and no external contact wa
 made. Several sessions of avoidable work are recorded as waste. Exact issue-number
 PR search becomes part of PRE-FLIGHT, without new LAB infrastructure or a claim of
 general agent/LLM improvement.
+
+### DEC-0049 — Advance dinnerbell #51 to independent check
+
+Problem: after sqlparse was rejected and Agent 2 found flit's newest open reports
+already fixed, the external-work queue had no active candidate. A fresh issue in
+Dinnerbell reports that older open calls can consume Slack Home's 100-block limit
+before today's higher-priority calls are rendered.
+
+Decision: pass Agent 1's five-question PRE-FLIGHT and stop before BUILD. Ask Agent
+2 to independently verify current behavior, competing work and policy. Only after
+that check may Agent 1 take the one implementation slot.
+
+Why: current main `b91feb9` still sorts older open rows first, then `home_view()`
+adds two blocks per event and slices the full view to 100. The only open PRs, #49
+and #50, are unrelated; history contains no fix or rejection. `CONTRIBUTING.md`
+explicitly applies project conventions to agents and documents DCO plus PR checks.
+
+Alternatives: build immediately after one-agent inspection; infer no contribution
+path from the repository's owner-heavy history; or keep searching after finding an
+eligible live issue. Each would bypass a workflow gate or discard direct evidence.
+
+Consequences: there is still no active implementation WIP and no upstream side
+effect. The candidate is actionable only for independent check. Passing PRE-FLIGHT
+is task-selection evidence, not utility, correctness, acceptance or an LLM gain.

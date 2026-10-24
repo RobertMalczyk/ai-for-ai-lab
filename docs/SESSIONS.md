@@ -4441,3 +4441,45 @@ entry and corrected observation for the preserved audit trail.
 - flit: issues #817 and #804 are the newest real reports. Both are already fixed on main `1418ccb` (docs; `39f214f`
   chmods the wheel temp file). Rejected at question 1. No clone beyond a shallow read, no code.
 - Validation: tests, session gate, offline build.
+
+## 2026-10-24T23:59:49+02:00 — Session 169 (Agent 1: dinnerbell #51 pre-flight)
+
+- Goal/problem: check Agent 2 and both waiting tasks, then perform one bounded
+  current-repository PRE-FLIGHT for a different real OSS issue, stopping before
+  BUILD until the required independent check.
+- Coordination/gate: Agent 2's Session 168 rejected flit #817/#804 because current
+  main already fixes both. Its task branch is merged and it has no conflicting WIP.
+  Gate returned `explore`, Session 169, with `external-oss-contribution` parked by
+  the older utility policy; the explicit owner-directed external workflow governs
+  this bounded task-selection pass. The branch audit found 175 ancestry-merged
+  agent/opus refs and three ancestry-unmerged historical refs: two are patch-
+  equivalent to main, while the distutils submission record is superseded by the
+  later public PR and not active work.
+- Waiting signals: distutils #434 remains open at `0d08e509` with zero comments or
+  reviews; pytest #14777 remains open at `b98af3e` with only the owner's disclosed
+  2026-10-12 comment. Neither has a material signal, so neither was modified.
+- Candidate/result: dsmorgan/dinnerbell #51 is open, unassigned and comment-free.
+  On current main `b91feb9`, `EventRepository.for_today()` includes every older
+  open call and orders oldest first; `home_view()` emits two blocks per event and
+  truncates the whole view to 100. The reported loss of today's cards/actions is
+  therefore still present. Exact open merge-ref inventory contains only #49 and
+  #50, both unrelated. Repository history has no #51/stale-call/100-block fix or
+  rejection. `CONTRIBUTING.md` says conventions apply to people and agents alike
+  and defines DCO plus CI/PR requirements. Agent 1 passes all five PRE-FLIGHT
+  questions and advances the task only to INDEPENDENT CHECK.
+- Failures/limits: the first broad GitHub search returned many irrelevant personal
+  repositories; the next repository batch hit GitHub's transient secondary rate
+  limit, and two web-index searches returned no results. Work narrowed to one
+  candidate from the successful result instead of retrying bulk search. The repo
+  has an owner-heavy commit history, so review speed is uncertain even though its
+  written contribution path is open.
+- Changes/files: updated `lab/tasks/EXTERNAL.md`, `STATE.md`, `ROADMAP.md`,
+  `docs/DECISIONS.md` (DEC-0049), this session log, the ledger, decision map,
+  handoff claim and refreshed checkpoint. No Dinnerbell code or upstream state.
+- Utility/result: outcome `unknown`, evidence `none`. Finding an eligible task is
+  selection state, not correctness, acceptance, agent utility or LLM improvement.
+- Validation: 111/111 LAB tests passed before the final ledger/checkpoint refresh;
+  final gate, coverage, JSON/JSONL, offline build, checkpoint and diff checks are
+  reported by their actual reruns. Exact next step: Agent 2 independently verifies
+  Dinnerbell #51's live behavior, open-PR inventory and contribution policy; reject
+  on disagreement, otherwise return it to Agent 1 for a narrow regression-first BUILD.

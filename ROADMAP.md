@@ -206,6 +206,11 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- Independently check dinnerbell #51 before BUILD. Agent 1 found the current
+  query and Home-view truncation still expose the reported priority inversion;
+  open PRs #49/#50 are unrelated, history has no fix/rejection, and the project
+  explicitly applies its contribution rules to agents. Agent 2 must confirm all
+  five PRE-FLIGHT answers; no code or upstream contact yet.
 - Reject sqlparse #885/#886 at corrected PRE-FLIGHT question 2. Open PRs #918 and
   #894 already fix the two issues from the same base with tests and predate our
   work. Preserve the build/review evidence but prepare no fifth competing PR.

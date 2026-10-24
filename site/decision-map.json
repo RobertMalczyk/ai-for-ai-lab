@@ -2730,6 +2730,29 @@
    "decision_ids": [
     "DEC-0048"
    ]
+  },
+  {
+   "id": "dinnerbell-preflight",
+   "date": "2026-10-24",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "waiting",
+   "track": "external",
+   "milestone": false,
+   "title": "Advance dinnerbell #51 to independent check",
+   "short": "Dinnerbell pre-flight",
+   "summary": "Current code still lets stale open calls consume Slack Home's block limit before today's calls; no competing fix was found.",
+   "rationale": "All five Agent 1 PRE-FLIGHT questions passed, so the staged workflow requires Agent 2's independent check before BUILD.",
+   "result": "No implementation or upstream contact; candidate waits on independent check.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "docs/DECISIONS.md",
+    "docs/SESSIONS.md"
+   ],
+   "external_url": "https://github.com/dsmorgan/dinnerbell/issues/51",
+   "decision_ids": [
+    "DEC-0049"
+   ]
   }
  ],
  "edges": [
@@ -3500,6 +3523,12 @@
    "target": "sqlparse-competing-pr-correction",
    "relation": "superseded_by",
    "label": "blocked by open PRs"
+  },
+  {
+   "source": "sqlparse-competing-pr-correction",
+   "target": "dinnerbell-preflight",
+   "relation": "followed_by",
+   "label": "next candidate"
   }
  ]
 }

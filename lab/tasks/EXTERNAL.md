@@ -126,6 +126,20 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   earlier PRs. Human must decide: provenance wording crediting closed PRs #862–#864/#887, and whether to offer a
   grouping-level fix instead.
 
+  **Owner scope/provenance decision (2026-10-24): Option A approved** in response to
+  the separate scope/authorship decision email (not the earlier BUILD/WIP decision).
+  Keep the narrow filter guards. In the future PR body, credit the authors of closed,
+  unmerged PRs #862, #863, #864 and #887 for the earlier guard-based fixes; explain
+  that this submission adds regression coverage and independent verification, and
+  disclose AI assistance. Explicitly state that malformed token grouping is the root
+  cause and that a broader grouping-level change can be considered at a maintainer's
+  request. Suggested attribution: "This uses the same guard-based approach as the
+  earlier closed, unmerged PRs #862, #863, #864 and #887. Credit goes to their authors
+  for the earlier fixes; this submission adds regression coverage and independent
+  verification."
+  This approves scope and attribution only: Agent 1 must still resolve the three
+  review changes; final human review and ownership are required before upstream submission.
+
 ## Rejected at PRE-FLIGHT
 
 | Candidate | Failed question | Evidence (2026-10-12) |

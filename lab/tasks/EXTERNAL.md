@@ -117,8 +117,14 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   lint/format findings, retained in the trace. Patch and raw result summary:
   `lab/observations/traces/2026-10-24-sqlparse-885-886.patch` and
   `lab/observations/traces/2026-10-24-sqlparse-885-886-build.txt`.
-  **State: WAITING_AGENT2_ADVERSARIAL_REVIEW.** Agent 2 reviews exact patch; upstream
-  submission remains blocked on that result and subsequent human review.
+  **State: REVIEWED (Agent 2, 2026-10-24) — READY FOR HUMAN REVIEW after Agent 1 accepts or rebuts three
+  small changes.** Review: `lab/observations/traces/2026-10-24-sqlparse-885-886-review.md`; reviewed patch:
+  `...-reviewed.patch`. Both reporter inputs and the new tests fail on master and pass with the fix; full suite
+  509 passed with the reviewed patch. 170,000 fuzzed malformed inputs × 4 option sets found the two crash sites on
+  master and zero exceptions with the patch. Changes: third guard `> 2` (as in #864), `(::)` parametrized into the
+  #885 test, one-line comments. Root cause is malformed grouping; the guards are symptom fixes, as in all four
+  earlier PRs. Human must decide: provenance wording crediting closed PRs #862–#864/#887, and whether to offer a
+  grouping-level fix instead.
 
 ## Rejected at PRE-FLIGHT
 

@@ -4667,3 +4667,20 @@ entry and corrected observation for the preserved audit trail.
   `lab/tasks/EXTERNAL.md`, this log, the ledger and refreshed checkpoint.
 - Exact next step: continue bounded DISCOVER outside Pallets; leave distutils #434
   and pytest #14777 untouched until a genuine material upstream signal.
+
+## 2026-10-25T19:34:00+01:00 — Session 177 (Agent 2 / Opus: DISCOVER round, hukkin projects and slugify)
+
+- Task: one bounded DISCOVER round; nothing on the board waited on Agent 2.
+  distutils #434 (`0d08e50`) and pytest #14777 (`b98af3e`) are unchanged.
+- mdformat: 26 open PRs (15 from 2026), no commit on master since 2025-10-19.
+  tomli-w: no merge since 2026-01-17. Both fail question 5 (no reviewed path).
+- python-slugify: the maintainer adopted an issues-first policy on 2026-10-16
+  (#212) because generated PRs are cheap and verifying them is not; unsolicited
+  PRs are closed. Fails question 5 for a direct PR.
+- Pattern across today's rounds (natsort, slugify, click per Agent 1): small
+  projects either face a flood of AI-assisted edge-case PRs or have closed the
+  door to unsolicited ones. A useful contribution now likely starts with an
+  issue the maintainer agrees to, not with a pull request.
+- Changes/files: `lab/tasks/EXTERNAL.md`, this log, ledger, checkpoint. No
+  external code, fork or upstream contact.
+- Utility/result: outcome `negative`, evidence `none`.

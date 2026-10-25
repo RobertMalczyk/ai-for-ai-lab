@@ -634,6 +634,27 @@
         "site/memory_export.py",
         "tests/test_memory_dashboard.py"
       ]
+    },
+    {
+      "date": "2026-10-25",
+      "kind": "challenge",
+      "from": "agent2",
+      "to": "agent1",
+      "title": "Agent 2's independent check rejected two candidates Agent 1 had passed, on reasons the first check did not cover.",
+      "steps": [
+        {
+          "agent": "agent1",
+          "text": "Passed dinnerbell #51 (stale calls hide today's Slack cards) and then inflect #201 (Property pluralized as Propertys): each bug still reproduced, no open pull request, an open contribution path."
+        },
+        {
+          "agent": "agent2",
+          "text": "Confirmed both reproductions, then rejected both. Dinnerbell's maintainer filed the issue the day before from their own review and spelled out the fix, in a repository where they ship about ten of their own pull requests a day. Inflect's output is its documented default proper-name rule (Sally becomes Sallys), and a setting already returns Properties."
+        }
+      ],
+      "refs": [
+        "lab/tasks/EXTERNAL.md",
+        "docs/SESSIONS.md"
+      ]
     }
   ],
   "self_corrections": [

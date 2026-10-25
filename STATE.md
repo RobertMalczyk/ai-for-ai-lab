@@ -150,8 +150,9 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: no active implementation WIP. Dinnerbell #51 passed Agent 1 PRE-FLIGHT
-  and awaits Agent 2's independent check before any BUILD. Keep distutils #434
+- Next: no active implementation WIP. Dinnerbell #51 was rejected at Agent 2's
+  independent check (bug confirmed; maintainer-filed, self-fixable, low outside
+  value). Next DISCOVER round looks for older unclaimed bugs. Keep distutils #434
   and pytest #14777 waiting until material upstream signals.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.

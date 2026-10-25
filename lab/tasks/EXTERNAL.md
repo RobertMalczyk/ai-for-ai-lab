@@ -15,37 +15,6 @@ PRE-FLIGHT questions: (1) problem still exists on current code/release; (2) no o
 (3) no closed PR, commit or discussion shows it was already solved or rejected; (4) project policy
 allows human-reviewed AI-assisted contributions; (5) an outside contributor has a real path to contribute.
 
-## PRE-FLIGHT passed — awaiting independent check
-
-### dsmorgan/dinnerbell#51: stale calls can hide today's Slack Home cards
-
-- **State: PRE-FLIGHT PASSED BY AGENT 1 / AWAITING AGENT 2 INDEPENDENT CHECK.** No
-  active implementation WIP, code change, fork, PR, comment or maintainer contact.
-- Issue: https://github.com/dsmorgan/dinnerbell/issues/51, opened 2026-10-24 by
-  the maintainer, open, unassigned and without comments.
-- PRE-FLIGHT answers (Agent 1, current main `b91feb9`):
-  1. **Still exists:** `EventRepository.for_today()` includes every older open
-     event and sorts oldest first. `home_view()` emits two blocks per event, then
-     slices the complete list to 100, so enough stale rows remove today's cards,
-     start actions and footer links.
-  2. **No open PR:** the only open merge refs are #49 and #50. They show member
-     selections and the running version; neither references #51 or changes the
-     query/Home truncation path.
-  3. **Not solved or rejected elsewhere:** main has no later commit than the issue's
-     reported base behavior; all fetched PR heads and repository history contain
-     no #51/stale-call/100-block fix. The issue was filed from review of #50 after
-     current main.
-  4. **Policy:** `CONTRIBUTING.md` says the project conventions apply to people
-     and agents alike. There is no AI ban; a future contribution must disclose
-     assistance and remain human reviewed under this LAB workflow.
-  5. **Path:** the repository publishes a DCO, setup, CI checks and explicit PR
-     instructions. Lack of prior outside-human commits is a review-speed risk, not
-     a closed submission channel.
-- Cheapest next step: Agent 2 independently verifies the live query/render path,
-  exact open-PR inventory and contribution policy. Reject on any disagreement;
-  otherwise return the candidate to Agent 1 for one narrow BUILD with a regression
-  showing today's card and its actions survive many stale open events.
-
 ## Submitted — waiting outside active implementation WIP
 
 ### pypa/distutils#433: `build_py` crashes when `sys.implementation.cache_tag is None`
@@ -181,6 +150,7 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 
 | Candidate | Failed question | Evidence (2026-10-12) |
 |---|---|---|
+| dinnerbell #51 (stale open calls push today's Slack Home cards past the 100-block limit) | Independent check (value, 5) | Agent 2 agrees the bug exists on main `a16245d`: `for_today()` orders by date ascending, `home_view()` slices to `MAX_VIEW_BLOCKS = 100`, so about 49 stale open calls hide today's card and its actions. No open PR touches it (only #55, parallel tests). Rejected anyway: the maintainer filed it on 2026-10-24 from their own review of #50, wrote the fix and the test in the issue, and calls it unlikely in practice because the scheduler tick marks old calls done (`Step.MARK_DONE`). All 184 commits are the maintainer's (Claude co-authored, about 10 PRs a day), with no outside contributor ever merged. An outside PR would race the author's own pipeline on a one-day-old issue for little value outside the lab (checked 2026-10-25, Agent 2 independent check of Agent 1's DEC-0049). |
 | sqlparse #885/#886 (formatter crashes on malformed input) | 2 | Open PR #918 fixes #885 and open PR #894 fixes #886 from the same upstream base. Both predate our PRE-FLIGHT and contain regression tests. Our independently correct build/review is preserved, but a fifth PR would duplicate active work (checked 2026-10-24, Agent 1). |
 | flit #817 (docs still mention `--setup-py`), #804 (wheels written with mode 0600) | 1 | Both already fixed on main `1418ccb`: the command-line docs no longer mention `--setup-py` (only `history.rst` does, correctly), and `flit_core/wheel.py` chmods the `mkstemp` file to normal permissions (commit `39f214f`, 2026-07-16). Issue pages still look open. Open PRs were listed from `refs/pull/*/merge` first (43 open; the newest, #827–#838, are unrelated). No code work (checked 2026-10-24, round 18, Agent 2). |
 | pip #14384 (`pip debug` and five other commands ignore extra positional arguments) | 2 | Open PRs #14389 and #14391 both implement rejection for the affected commands. Maintainer pfmoore preferred the human-authored contribution after #14389 disclosed LLM use. No clone, reproduction or code work (checked 2026-10-24, round 17, Agent 1). |

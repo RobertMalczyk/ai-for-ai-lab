@@ -206,6 +206,11 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- Click #3362 is rejected before coding: exact search found many prior versions of
+  the same fix, including PRs explicitly labelled `[rejected AI]` and `AI junk`.
+  Do not target Pallets; continue one bounded PRE-FLIGHT in another maintained
+  project. Pytest #14777's transient `mergeable=false` did not reproduce in a
+  current native three-way merge and does not change its waiting state.
 - No candidate advanced in the 2026-10-25 round: pytest-subtests #56 is already
   addressed by the pytest-core integration, pytest-subtests #202 has no maintained
   plugin contribution route, and execnet #271 is assigned with a non-trivial

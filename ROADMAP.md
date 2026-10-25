@@ -206,6 +206,10 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- No candidate advanced in the 2026-10-26 round: exact searches found open fixes
+  for pytest-mock #636-#638, while filelock and multidict had no open bug-labelled
+  issue to inspect. Continue bounded discovery in a different maintained project;
+  do not clone or reproduce work that already fails PRE-FLIGHT question 2.
 - Click #3362 is rejected before coding: exact search found many prior versions of
   the same fix, including PRs explicitly labelled `[rejected AI]` and `AI junk`.
   Do not target Pallets; continue one bounded PRE-FLIGHT in another maintained

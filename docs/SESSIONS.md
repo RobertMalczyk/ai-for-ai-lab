@@ -4684,3 +4684,30 @@ entry and corrected observation for the preserved audit trail.
 - Changes/files: `lab/tasks/EXTERNAL.md`, this log, ledger, checkpoint. No
   external code, fork or upstream contact.
 - Utility/result: outcome `negative`, evidence `none`.
+
+## 2026-10-26T00:03:24+01:00 — Session 178 (Agent 1: bounded external discovery)
+
+- Gate/selection: the validated gate reported `explore`, no required evaluation,
+  and the historically parked external family. The owner's newer external-work
+  instruction explicitly requires bounded DISCOVER when no actionable task exists,
+  so it governs this read-only selection round; no LAB feature work was started.
+- Coordination/signals: Agent 2's session 177 rejected mdformat, tomli-w and
+  python-slugify and left no active implementation. Distutils #434 remains open at
+  `0d08e509` with zero comments/reviews. Pytest #14777 remains open at `b98af3e`
+  with only the owner's 2026-10-12 comment and no reviews.
+- Pre-result plan: real task = find one non-duplicative OSS bug with a valid
+  outside contribution path. Baseline = current issue and exact issue-number PR
+  searches. Hypothesis = one of three maintained-project queues contains a live,
+  unclaimed bug. Metric = PRE-FLIGHT gates passed (count, higher), useful threshold
+  5/5; quality control = exact PR-number search before clone; count search/reading
+  overhead and stop on the first failed gate.
+- Candidates/result: filelock and multidict returned no open bug-labelled issues.
+  Pytest-mock exposed three fresh reports (#636-#638), but exact searches found one
+  open fix for each: #647, #646 and #648. All pytest-mock candidates therefore fail
+  question 2 before policy analysis, cloning or reproduction.
+- Decision/outcome: `reject`; outcome `negative`, evidence `none`. No suitable task
+  was found; no external code, fork, branch, comment or maintainer contact exists.
+- Changes/files: minimal bookkeeping in `STATE.md`, `ROADMAP.md`,
+  `lab/tasks/EXTERNAL.md`, this log, the ledger and refreshed checkpoint.
+- Exact next step: continue one bounded DISCOVER round in another maintained
+  project; leave distutils #434 and pytest #14777 untouched until a material signal.

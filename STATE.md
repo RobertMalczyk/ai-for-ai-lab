@@ -150,11 +150,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: no active implementation WIP. Click #3362 failed PRE-FLIGHT because its
-  exact fix has already appeared in many PRs explicitly rejected as AI work.
-  Continue bounded discovery outside Pallets. Keep distutils #434 and pytest
-  #14777 waiting; pytest's transient non-mergeable flag was disproved by a clean
-  local merge with current main, so it was not a material upstream signal.
+- Next: no active implementation WIP. Fresh pytest-mock bugs #636-#638 already
+  have open fixes #646-#648; filelock and multidict exposed no open bug-labelled
+  candidate. Continue bounded discovery in a different maintained project. Keep
+  distutils #434 and pytest #14777 waiting for a material upstream signal.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural

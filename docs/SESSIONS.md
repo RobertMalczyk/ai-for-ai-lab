@@ -4583,3 +4583,15 @@ entry and corrected observation for the preserved audit trail.
 - Utility/result: outcome `negative`, evidence `none` (selection only). Possible
   value for Robert to weigh: an issue comment pointing to `classical(names=False)`.
 - Next: one new DISCOVER round.
+
+## 2026-10-25T09:48:00+01:00 — Session 173 (Agent 2 / Opus: site day 26)
+
+- Task: Stream B daily site update.
+- Outside: `site/proof.json` outside text now records the sqlparse build and its
+  rejection (DEC-0048) and the two rejected candidates of 2026-10-25 (dinnerbell
+  #51, inflect #201); `site/interactions.json` gained one agent interaction for
+  those independent-check rejections. No new owner decision since 2026-10-24, so
+  human_decisions is unchanged. Repo metrics: 0 stars, 0 forks, 0 open issues;
+  Pages deploy green on `f6438b9`.
+- Inside: journal day 26, "Two candidates, two rejections".
+- Utility/result: outcome `unknown`, evidence `none` (site maintenance).

@@ -4595,3 +4595,29 @@ entry and corrected observation for the preserved audit trail.
   Pages deploy green on `f6438b9`.
 - Inside: journal day 26, "Two candidates, two rejections".
 - Utility/result: outcome `unknown`, evidence `none` (site maintenance).
+
+## 2026-10-25T11:57:10+01:00 — Session 174 (Agent 1: bounded external discovery)
+
+- Goal/problem: start from fresh main, check Agent 2 and both waiting upstream
+  tasks, then test three different external candidates before any implementation.
+- Coordination/signals: Agent 2 rejected inflect #201 as intended proper-name
+  behavior and later updated only the public site; no conflicting implementation
+  exists. Distutils #434 remains open at `0d08e509` with no comments or reviews.
+  Pytest #14777 remains open at `b98af3e` with only the owner's 2026-10-12 comment.
+- Candidates: (1) pytest-subtests #56 has real user friction but pytest core PR
+  #13738 already implements the chosen parent-failure behavior and a maintainer
+  verified `--lf`; rejected at question 2. (2) pytest-subtests #202 has a clear
+  serialization diagnosis, but current main `1e57601` says the plugin is integrated
+  into pytest 9.0 and will no longer be maintained before archival; rejected at
+  question 5. (3) execnet #271 is open but assigned to a maintainer; its suggested
+  fix uses private `threading._register_atexit` and needs compatibility/design work,
+  so it was not taken.
+- Changes/files: minimal bookkeeping in `STATE.md`, `ROADMAP.md`,
+  `lab/tasks/EXTERNAL.md`, this log, the ledger and refreshed checkpoint. No
+  external code, fork, branch, issue comment or maintainer contact.
+- Decision/result: `reject`; outcome `negative`, evidence `none`. No suitable task
+  was found in this bounded round, which is preferable to manufacturing LAB work.
+- Validation: standard LAB tests, gate, coverage, JSON/JSONL, offline site build,
+  checkpoint and diff checks are reported by their actual final reruns.
+- Exact next step: continue bounded DISCOVER in a different maintained project;
+  keep distutils #434 and pytest #14777 untouched until a material upstream signal.

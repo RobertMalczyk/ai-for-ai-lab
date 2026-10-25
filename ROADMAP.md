@@ -206,6 +206,11 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- No candidate advanced in the 2026-10-25 round: pytest-subtests #56 is already
+  addressed by the pytest-core integration, pytest-subtests #202 has no maintained
+  plugin contribution route, and execnet #271 is assigned with a non-trivial
+  shutdown-design boundary. Continue bounded DISCOVER in a different project;
+  do not turn these rejections into LAB infrastructure.
 - `jaraco/inflect#201`: REJECTED at Agent 2's independent check (2026-10-25).
   The output is the intended default proper-name rule, `classical(names=True)`;
   `names=False` gives `Properties`. Telling a capitalized common noun from a name
@@ -406,6 +411,18 @@
     can become stale as soon as peer work merges, even when the gate remains correct.
 
 ## REJECTED
+- Take pytest-subtests #56: pytest core PR #13738 intentionally makes a parent
+  test fail when a subtest fails, and a maintainer verified that this makes
+  `--last-failed` work. The fix is already in the integration path; PRE-FLIGHT
+  question 2 fails (2026-10-25).
+- Take pytest-subtests #202: maintainers identified the serialization defect, but
+  current upstream states that the plugin was integrated into pytest 9.0 and will
+  no longer be maintained before archival. There is no real plugin contribution
+  path; PRE-FLIGHT question 5 fails (2026-10-25).
+- Take execnet #271: the Python 3.12 shutdown problem is open, but assigned to a
+  maintainer and the suggested direction depends on private
+  `threading._register_atexit`. Scope and compatibility need owner design work;
+  do not race the assignee (2026-10-25).
 - Take pip #14384: open PRs #14389 and #14391 already reject extra positional
   arguments across the affected commands. A maintainer also explicitly preferred
   the human-authored contribution after the competing PR disclosed LLM use.

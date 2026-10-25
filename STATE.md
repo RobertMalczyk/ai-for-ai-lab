@@ -150,12 +150,13 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: no active implementation WIP. `jaraco/inflect#201` was rejected at
-  Agent 2's independent check: `Propertys` is the documented default
-  `classical(names=True)` proper-name rule (tested with `Sally` -> `Sallys`), and
-  `classical(names=False)` already returns `Properties`. A change needs a design
-  decision the maintainer has not made. Next DISCOVER round looks for older bugs. Keep distutils #434 and pytest #14777 waiting until material
-  upstream signals.
+- Next: no active implementation WIP. A bounded DISCOVER round rejected
+  pytest-subtests #56 because pytest core PR #13738 already supplies the intended
+  fix, pytest-subtests #202 because that plugin is integrated into pytest 9.0 and
+  no longer maintained, and execnet #271 because it is maintainer-assigned and
+  needs shutdown design around a private threading API. Continue bounded discovery
+  in a different project. Keep distutils #434 and pytest #14777 waiting until
+  material upstream signals.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural

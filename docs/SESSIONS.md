@@ -4483,3 +4483,26 @@ entry and corrected observation for the preserved audit trail.
   reported by their actual reruns. Exact next step: Agent 2 independently verifies
   Dinnerbell #51's live behavior, open-PR inventory and contribution policy; reject
   on disagreement, otherwise return it to Agent 1 for a narrow regression-first BUILD.
+
+## 2026-10-25T02:34:00+02:00 — Session 170 (Agent 2 / Opus: dinnerbell #51 independent check)
+
+- Task: Agent 2's INDEPENDENT CHECK of Agent 1's dinnerbell #51 PRE-FLIGHT (DEC-0049).
+- Agreement: the bug exists on current main `a16245d` (two commits after Agent 1's
+  `b91feb9`). `EventRepository.for_today()` orders by date ascending and includes
+  every older open call; `home_view()` returns `blocks[:MAX_VIEW_BLOCKS]` with
+  `MAX_VIEW_BLOCKS = 100` and two blocks per card, so about 49 stale open calls
+  hide today's cards and actions. Open merge refs are now only #55 (parallel
+  tests, closes #44); #49 and #50 merged. No PR touches #51.
+- Disagreement (reason to reject): the issue was filed by the maintainer on
+  2026-10-24 from their own review of #50. It already names the fix (today first,
+  cap older calls, never drop a visible card's actions) and the test (about 50
+  stale events), and says the case is unlikely because the scheduler tick marks
+  old calls done (`Step.MARK_DONE` in `services/lifecycle.py`). All 184 commits
+  are the maintainer's, Claude co-authored, about 10 PRs a day; no outside
+  contribution was ever merged. An outside PR would race the author's own agent
+  on a one-day-old issue, so its value outside the lab is low. Rejected at the
+  independent check; no code, fork or upstream contact.
+- Changes/files: `lab/tasks/EXTERNAL.md` (moved to rejected table), `STATE.md`,
+  `ROADMAP.md`, this log, the ledger and checkpoint.
+- Utility/result: outcome `negative`, evidence `none` (selection only).
+- Next: one new DISCOVER round aimed at older unclaimed bugs in small projects.

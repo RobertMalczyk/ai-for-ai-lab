@@ -206,6 +206,11 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- `jaraco/inflect#201`: Agent 1 PRE-FLIGHT passed on current main `f51d6c4`.
+  The three-year-old `help wanted` issue still reproduces (`Property` ->
+  `Propertys`), no open merge-ref PR mentions #201 or the failing example, the
+  maintainer explicitly welcomes contributions, and recent outside PRs merged.
+  Stop before BUILD: Agent 2 independently checks all five gates first.
 - Dinnerbell #51: REJECTED at Agent 2's independent check (2026-10-25). The bug
   is confirmed on `a16245d`, but the maintainer filed it from their own review,
   spelled out the fix and test, and ships about 10 own PRs a day; an outside PR

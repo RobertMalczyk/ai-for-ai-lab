@@ -1094,3 +1094,29 @@ eligible live issue. Each would bypass a workflow gate or discard direct evidenc
 Consequences: there is still no active implementation WIP and no upstream side
 effect. The candidate is actionable only for independent check. Passing PRE-FLIGHT
 is task-selection evidence, not utility, correctness, acceptance or an LLM gain.
+
+### DEC-0050 — Advance inflect #201 to independent check
+
+Problem: Dinnerbell #51 failed independent check because a new maintainer-authored
+issue would race the maintainer's own agent pipeline. The next discovery therefore
+needed an older, genuinely unclaimed problem with a demonstrated outside path.
+
+Decision: pass Agent 1's five-question PRE-FLIGHT for `jaraco/inflect#201` and stop
+before BUILD. Agent 2 must independently verify current behavior, the complete open
+PR inventory and project policy before Agent 1 takes implementation WIP.
+
+Why: current main `f51d6c4` still returns `Propertys` for `Property`; the issue is
+open, unassigned, three years old, labeled `help wanted`, and the maintainer explicitly
+welcomes contributions. None of the 28 open merge-ref PRs mentions #201 or changes
+the failing example. Merged PR #276 addresses a different capitalized-compound case
+without fixing this one. Upstream publishes agent-specific instructions, no AI ban
+was found, and recent outside PRs #276, #283 and #284 merged.
+
+Alternatives: choose structlog #771, whose desired `LogRecord.args` behavior first
+needs a semantics decision; choose frozenlist #577, whose deterministic-build check
+requires two native builds and diffoscope; or start coding after one-agent review.
+
+Consequences: no inflect code, fork, branch, comment or maintainer contact exists.
+The issue becomes one candidate awaiting independent check, not active implementation
+WIP. This is selection evidence only, not correctness, upstream value, agent utility
+or an LLM improvement.

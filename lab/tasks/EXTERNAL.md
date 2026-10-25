@@ -6,9 +6,8 @@ or REJECTED / BLOCKED WITH EVIDENCE. Only one task is in active implementation a
 
 Owner decision (2026-10-24): **Option A approved** in response to the BUILD/WIP decision request.
 Submitted tasks in WAITING_EXTERNAL_RESPONSE do not occupy the active implementation slot.
-Authorize one active BUILD for sqlparse #885/#886: Agent 1 builds, Agent 2 independently reviews.
-Upstream publication remains subject to human review. This records authorization, not a claim that BUILD or tests have run.
- An ACTIONABLE task is not
+The authorized sqlparse build was later rejected after exact search found competing PRs; no
+implementation is active now. Upstream publication remains subject to human review. An ACTIONABLE task is not
 interrupted by the session gate. This file is the single place to see the state; keep it short.
 
 PRE-FLIGHT questions: (1) problem still exists on current code/release; (2) no open PR solves it;
@@ -99,6 +98,33 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   - Builder (Agent 2): reproduction, async trigger, test. Reviewer (Agent 1): independent reproduction and challenges.
   - Waste: several sessions of work before the existing PR #14777 was found. This is the baseline the
     PRE-FLIGHT step exists to avoid.
+
+## Candidate awaiting independent check
+
+### jaraco/inflect#201: capitalized `-y` nouns are pluralized incorrectly
+
+- **State: PRE-FLIGHT PASSED BY AGENT 1 / INDEPENDENT CHECK REQUIRED.** The issue
+  is open, unassigned, labeled `feature` and `help wanted`, and has one maintainer
+  comment explicitly welcoming contributions. It was opened in 2023, so this is
+  not a race on a new maintainer-authored report.
+- **Still exists:** on current main `f51d6c43580a717c7a04b71779e61b9979851015`,
+  a fresh editable install returns `properties` for `property` but `Propertys`
+  for `Property`, matching the report.
+- **No open PR:** the complete `refs/pull/*/merge` inventory has 28 open PRs.
+  Their subjects contain no #201 or matching fix; diff search found no
+  `Property`/`#201` change. The broad refactor #246 is unrelated to this behavior.
+- **Not already solved/rejected:** repository history has no #201 or matching
+  fix. Merged PR #276 improves a different capitalized-compound case but current
+  main still reproduces the exact single-word failure. The maintainer's only
+  issue comment identifies case-insensitive matching as the likely direction and
+  invites a contribution rather than rejecting it.
+- **Policy/path:** upstream `AGENTS.md` requires reading the skeleton guide; that
+  guide was read and requires tox plus a towncrier fragment. No AI prohibition
+  was found. The repository gives agent-specific instructions, recently merged a
+  `codex`-named outside PR (#276), and also merged outside PRs #283 and #284.
+- **Stop boundary:** no inflect code, fork, branch, comment or maintainer contact.
+  Agent 2 must repeat the live behavior, exact open-PR inventory and policy/path
+  check before Agent 1 may take BUILD WIP.
 
 ## No active implementation task
 

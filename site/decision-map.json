@@ -2736,14 +2736,14 @@
    "date": "2026-10-24",
    "type": "decision",
    "actor": "agent1",
-   "status": "waiting",
+   "status": "rejected",
    "track": "external",
    "milestone": false,
    "title": "Advance dinnerbell #51 to independent check",
    "short": "Dinnerbell pre-flight",
    "summary": "Current code still lets stale open calls consume Slack Home's block limit before today's calls; no competing fix was found.",
    "rationale": "All five Agent 1 PRE-FLIGHT questions passed, so the staged workflow requires Agent 2's independent check before BUILD.",
-   "result": "No implementation or upstream contact; candidate waits on independent check.",
+   "result": "Agent 2 confirmed the bug but rejected the task: a maintainer-authored one-day-old issue would race the maintainer's own agent pipeline for little outside value. No implementation or upstream contact.",
    "refs": [
     "lab/tasks/EXTERNAL.md",
     "docs/DECISIONS.md",
@@ -2752,6 +2752,29 @@
    "external_url": "https://github.com/dsmorgan/dinnerbell/issues/51",
    "decision_ids": [
     "DEC-0049"
+   ]
+  },
+  {
+   "id": "inflect-201-preflight",
+   "date": "2026-10-25",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "waiting",
+   "track": "external",
+   "milestone": false,
+   "title": "Advance inflect #201 to independent check",
+   "short": "Inflect pre-flight",
+   "summary": "Current main still pluralizes Property as Propertys; the three-year-old help-wanted issue has no matching open PR.",
+   "rationale": "All five Agent 1 PRE-FLIGHT questions passed, including explicit maintainer invitation and recent outside merges.",
+   "result": "No implementation or upstream contact; candidate waits on Agent 2's independent check.",
+   "refs": [
+    "lab/tasks/EXTERNAL.md",
+    "docs/DECISIONS.md",
+    "docs/SESSIONS.md"
+   ],
+   "external_url": "https://github.com/jaraco/inflect/issues/201",
+   "decision_ids": [
+    "DEC-0050"
    ]
   }
  ],
@@ -3529,6 +3552,12 @@
    "target": "dinnerbell-preflight",
    "relation": "followed_by",
    "label": "next candidate"
+  },
+  {
+   "source": "dinnerbell-preflight",
+   "target": "inflect-201-preflight",
+   "relation": "followed_by",
+   "label": "older unclaimed bug"
   }
  ]
 }

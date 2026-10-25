@@ -342,7 +342,7 @@
   },
   {
     "id": "external-oss-contribution",
-    "text": "The owner-directed external workflow submitted the reviewed distutils contribution; sqlparse was rejected after exact search found competing PRs; dinnerbell #51 now awaits Agent 2's independent check after Agent 1 PRE-FLIGHT.",
+    "text": "The owner-directed external workflow submitted the reviewed distutils contribution; sqlparse and dinnerbell were rejected; inflect #201 now awaits Agent 2's independent check after Agent 1 PRE-FLIGHT.",
     "evidence": [
       "lab/tasks/EXTERNAL.md",
       "lab/observations/2026-10-12-distutils-433-build.json",

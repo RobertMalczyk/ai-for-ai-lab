@@ -4506,3 +4506,55 @@ entry and corrected observation for the preserved audit trail.
   `ROADMAP.md`, this log, the ledger and checkpoint.
 - Utility/result: outcome `negative`, evidence `none` (selection only).
 - Next: one new DISCOVER round aimed at older unclaimed bugs in small projects.
+
+## 2026-10-25T05:55:34+01:00 — Session 171 (Agent 1: inflect #201 pre-flight)
+
+- Goal/problem: start from merged Agent 2 work, check both waiting upstream tasks,
+  then perform one bounded DISCOVER/PRE-FLIGHT round aimed at an older unclaimed
+  bug. No LAB helper or external implementation was in scope.
+- Gate/coordination: gate returned `explore`, next session 171, with the historical
+  `external-oss-contribution` family parked; the explicit owner-directed external
+  workflow governs this task-selection pass. Agent 2 rejected Dinnerbell #51 after
+  independently confirming the bug but finding low outside value and a likely race.
+  Distutils #434 remains open at `0d08e509` with no comments or reviews. Pytest
+  #14777 remains open at `b98af3e` with only the owner's 2026-10-12 comment.
+- Three candidates: (1) inflect #201 has a reproduced capitalized-`-y` failure,
+  `help wanted`, an explicit invitation and a cheap one-call falsifier; selected.
+  (2) structlog #771 reports loss of `LogRecord.args`, but its desired lifetime
+  semantics need agreement before a patch; cheapest test is tracing formatter
+  mutation, medium cost. (3) frozenlist #577 reports nondeterministic debug paths;
+  the assumption that the old packaging backend still leaks a temp directory needs
+  two comparable native builds, debug extraction and diffoscope, high cost.
+- Pre-result plan: real task = decide whether inflect #201 has a live contribution
+  path. Baseline = current upstream plus direct `plural('Property')`; hypothesis =
+  the report still reproduces and no active fix/policy blocker exists. Metric = five
+  PRE-FLIGHT gates passed (count, higher), useful threshold 5/5; quality control =
+  exact open merge-ref inventory, repository history, issue discussion and mandatory
+  upstream instructions. Count clone/install/search/reading overhead. Stop at the
+  first failed gate or before BUILD pending Agent 2.
+- Result: current main `f51d6c4` returns `properties` for `property` and `Propertys`
+  for `Property`. The issue is open, unassigned, from 2023, labeled `feature` and
+  `help wanted`; the maintainer explicitly welcomes contributions. All 28 open PR
+  merge refs were inventoried; none mentions #201 or the failing example. Merged
+  PR #276 fixes a different capitalized-compound case but leaves this reproducer.
+  Upstream `AGENTS.md` and the complete skeleton guide were read; no AI prohibition
+  was found, and recent outside PRs #276/#283/#284 merged. All 5 gates pass.
+- Failure/limit: four connector issue-search calls hit GitHub's transient secondary
+  rate limit. The verification switched to exact native merge refs and fetched issue
+  metadata/comments; no retry loop or missing-success claim. One package-level
+  `session_gate` spelling failed because the command is a standalone module; the
+  documented module invocation then returned the expected Session 172 gate. Passing
+  PRE-FLIGHT does not establish the eventual patch, acceptance, agent utility or
+  LLM improvement.
+- Decision/outcome: `continue` to INDEPENDENT CHECK, evidence `none`, outcome
+  `unknown`. No inflect code, fork, branch, comment or maintainer contact. Updated
+  the task board, current summaries, DEC-0050, decision map, handoff claim, ledger
+  and checkpoint.
+- Validation: 111/111 LAB tests passed; the offline site build produced 171-session
+  output; coverage is 25/25; JSON/JSONL and diff checks passed; the refreshed
+  22-claim checkpoint is fresh. Branch audit classified 177/180 remote task refs as
+  ancestry-merged; the three historical unmerged refs are unchanged, including two
+  patch-equivalent refs and the superseded distutils submission record.
+- Exact next step: Agent 2 independently verifies inflect #201's current behavior,
+  all open PRs and the agent/contribution policy; reject on disagreement, otherwise
+  return it to Agent 1 for a narrow regression-first BUILD.

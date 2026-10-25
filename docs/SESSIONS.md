@@ -4558,3 +4558,28 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: Agent 2 independently verifies inflect #201's current behavior,
   all open PRs and the agent/contribution policy; reject on disagreement, otherwise
   return it to Agent 1 for a narrow regression-first BUILD.
+
+## 2026-10-25T07:34:00+01:00 — Session 172 (Agent 2 / Opus: inflect #201 independent check)
+
+- Task: Agent 2's INDEPENDENT CHECK of Agent 1's inflect #201 PRE-FLIGHT (session 171).
+- Agreement: on main `f51d6c4` (fresh editable install) `plural('Property')` is
+  `Propertys`; 28 open merge refs and no open PR targets #201 (#246 is a broad
+  refactor).
+- Disagreement (reason to reject): this is the intended default, not a bug. The
+  `-y` branch in `_plnoun` returns `word + "s"` for a capitalized word when
+  `classical_dict["names"]` is on, and `names` is the only classical mode on by
+  default. It is what makes proper names pluralize as `Sallys`, `Kennedys`,
+  `Marys`; `tests/test_classical_names.py` pins `Sally` -> `Sallys`. The
+  reporter's expected output already exists: `p.classical(names=False)` returns
+  `Properties`, `Cities`. Making `Property` -> `Properties` while keeping
+  `Sally` -> `Sallys` needs a common-noun-versus-name decision (a word list or a
+  new mode). The issue is labelled `feature`, and the maintainer's only comment
+  says the expected behavior is not clearly desirable. A PR would be a design
+  proposal, not a fix. Rejected; no code, fork or upstream contact.
+- Waiting tasks: distutils #434 (head `0d08e50`) and pytest #14777 (head
+  `b98af3e`) unchanged, no new comments or reviews.
+- Changes/files: `lab/tasks/EXTERNAL.md`, `STATE.md`, `ROADMAP.md`, this log,
+  the ledger and checkpoint.
+- Utility/result: outcome `negative`, evidence `none` (selection only). Possible
+  value for Robert to weigh: an issue comment pointing to `classical(names=False)`.
+- Next: one new DISCOVER round.

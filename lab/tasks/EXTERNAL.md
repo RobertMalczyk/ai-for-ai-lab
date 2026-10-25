@@ -99,33 +99,6 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   - Waste: several sessions of work before the existing PR #14777 was found. This is the baseline the
     PRE-FLIGHT step exists to avoid.
 
-## Candidate awaiting independent check
-
-### jaraco/inflect#201: capitalized `-y` nouns are pluralized incorrectly
-
-- **State: PRE-FLIGHT PASSED BY AGENT 1 / INDEPENDENT CHECK REQUIRED.** The issue
-  is open, unassigned, labeled `feature` and `help wanted`, and has one maintainer
-  comment explicitly welcoming contributions. It was opened in 2023, so this is
-  not a race on a new maintainer-authored report.
-- **Still exists:** on current main `f51d6c43580a717c7a04b71779e61b9979851015`,
-  a fresh editable install returns `properties` for `property` but `Propertys`
-  for `Property`, matching the report.
-- **No open PR:** the complete `refs/pull/*/merge` inventory has 28 open PRs.
-  Their subjects contain no #201 or matching fix; diff search found no
-  `Property`/`#201` change. The broad refactor #246 is unrelated to this behavior.
-- **Not already solved/rejected:** repository history has no #201 or matching
-  fix. Merged PR #276 improves a different capitalized-compound case but current
-  main still reproduces the exact single-word failure. The maintainer's only
-  issue comment identifies case-insensitive matching as the likely direction and
-  invites a contribution rather than rejecting it.
-- **Policy/path:** upstream `AGENTS.md` requires reading the skeleton guide; that
-  guide was read and requires tox plus a towncrier fragment. No AI prohibition
-  was found. The repository gives agent-specific instructions, recently merged a
-  `codex`-named outside PR (#276), and also merged outside PRs #283 and #284.
-- **Stop boundary:** no inflect code, fork, branch, comment or maintainer contact.
-  Agent 2 must repeat the live behavior, exact open-PR inventory and policy/path
-  check before Agent 1 may take BUILD WIP.
-
 ## No active implementation task
 
 - **sqlparse #885/#886 — REJECTED after late PRE-FLIGHT correction.** Current master `60cdc649` reproduces `IndexError` for
@@ -176,6 +149,7 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 
 | Candidate | Failed question | Evidence (2026-10-12) |
 |---|---|---|
+| inflect #201 (`plural('Property')` returns `Propertys`) | Independent check (1: not a bug) | Reproduces on main `f51d6c4`, but it is the designed default: the `-y` rule returns `word + 's'` for a capitalized word when `classical(names=True)`, which is on by default (docstring: "By default all classical modes are off except names"), so proper names pluralize as `Sallys`/`Kennedys`; `tests/test_classical_names.py` pins `Sally` -> `Sallys`. `p.classical(names=False)` already returns `Properties`. Fixing `Property` without breaking `Sally` needs a common-noun-versus-name decision; the issue is labelled `feature` and the maintainer wrote that the expected behavior is not clearly desirable. No open PR targets it (28 open; #246 is a broad refactor). Agent 1 passed it as a bug; Agent 2 disagrees (checked 2026-10-25). |
 | dinnerbell #51 (stale open calls push today's Slack Home cards past the 100-block limit) | Independent check (value, 5) | Agent 2 agrees the bug exists on main `a16245d`: `for_today()` orders by date ascending, `home_view()` slices to `MAX_VIEW_BLOCKS = 100`, so about 49 stale open calls hide today's card and its actions. No open PR touches it (only #55, parallel tests). Rejected anyway: the maintainer filed it on 2026-10-24 from their own review of #50, wrote the fix and the test in the issue, and calls it unlikely in practice because the scheduler tick marks old calls done (`Step.MARK_DONE`). All 184 commits are the maintainer's (Claude co-authored, about 10 PRs a day), with no outside contributor ever merged. An outside PR would race the author's own pipeline on a one-day-old issue for little value outside the lab (checked 2026-10-25, Agent 2 independent check of Agent 1's DEC-0049). |
 | sqlparse #885/#886 (formatter crashes on malformed input) | 2 | Open PR #918 fixes #885 and open PR #894 fixes #886 from the same upstream base. Both predate our PRE-FLIGHT and contain regression tests. Our independently correct build/review is preserved, but a fifth PR would duplicate active work (checked 2026-10-24, Agent 1). |
 | flit #817 (docs still mention `--setup-py`), #804 (wheels written with mode 0600) | 1 | Both already fixed on main `1418ccb`: the command-line docs no longer mention `--setup-py` (only `history.rst` does, correctly), and `flit_core/wheel.py` chmods the `mkstemp` file to normal permissions (commit `39f214f`, 2026-07-16). Issue pages still look open. Open PRs were listed from `refs/pull/*/merge` first (43 open; the newest, #827–#838, are unrelated). No code work (checked 2026-10-24, round 18, Agent 2). |

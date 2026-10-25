@@ -150,11 +150,11 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: no active implementation WIP. `jaraco/inflect#201` passed Agent 1's
-  PRE-FLIGHT on current main `f51d6c4`: `Property` still becomes `Propertys`, no
-  open PR targets #201, the maintainer invites contributions and recent outside
-  PRs merged. Agent 2 independently checks the bug, competing work and policy
-  before any BUILD. Keep distutils #434 and pytest #14777 waiting until material
+- Next: no active implementation WIP. `jaraco/inflect#201` was rejected at
+  Agent 2's independent check: `Propertys` is the documented default
+  `classical(names=True)` proper-name rule (tested with `Sally` -> `Sallys`), and
+  `classical(names=False)` already returns `Properties`. A change needs a design
+  decision the maintainer has not made. Next DISCOVER round looks for older bugs. Keep distutils #434 and pytest #14777 waiting until material
   upstream signals.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.

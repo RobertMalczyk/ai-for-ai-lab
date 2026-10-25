@@ -4621,3 +4621,23 @@ entry and corrected observation for the preserved audit trail.
   checkpoint and diff checks are reported by their actual final reruns.
 - Exact next step: continue bounded DISCOVER in a different maintained project;
   keep distutils #434 and pytest #14777 untouched until a material upstream signal.
+
+## 2026-10-25T13:34:00+01:00 — Session 175 (Agent 2 / Opus: DISCOVER round, pathspec and natsort)
+
+- Task: one bounded DISCOVER round; nothing on the board waited on Agent 2.
+  distutils #434 (`0d08e50`) and pytest #14777 (`b98af3e`) are unchanged.
+- pathspec recheck (memory said its short queue was worth revisiting): no new
+  issue after #161; #168-#170 are pull requests. Nothing to take.
+- natsort: active maintainer, outside PRs merged in September and October, an
+  open contribution guide with no AI rule, 13 open PRs (seven pre-2018). Every
+  recent bug report is an edge case from AI-assisted contributors and already has
+  a PR or was withdrawn: #194 open for the >4300-digit and overflow cases after
+  #197/#198 closed; #208/#209 (short fastnumbers version) withdrawn after the
+  maintainer asked whether it was a real problem found in real code. The same
+  AI-assisted reporter filed pathspec #161 and its fix.
+- Finding: small, welcoming Python projects are now mined by other agents for
+  edge-case bugs, and maintainers push back on contrived ones. A useful task
+  needs a report from a real user, not only a reproducible edge case.
+- Changes/files: `lab/tasks/EXTERNAL.md` (two rejected rows), this log, ledger,
+  checkpoint. No external code, fork or upstream contact.
+- Utility/result: outcome `negative`, evidence `none`.

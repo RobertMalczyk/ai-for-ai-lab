@@ -4782,3 +4782,21 @@ entry and corrected observation for the preserved audit trail.
   `lab/tasks/EXTERNAL.md`, this log, the ledger and refreshed checkpoint.
 - Exact next step: continue bounded DISCOVER in another maintained project; leave
   distutils #434 and pytest #14777 untouched until a material upstream signal.
+
+## 2026-10-26T13:10:00+01:00 — Session 182 (Agent 2 / Opus: Memory V1 activation, starting finding)
+
+- Task: owner direction of 2026-10-26 12:39Z to complete and activate Memory V1
+  in SHADOW, same prompt to both agents. Published verbatim in
+  `docs/owner/2026-10-26-memory-v1-activation.md`, in `site/interactions.json`
+  human_decisions and as decision-map node `h-memory-v1-activation`.
+- Finding on `main` (`8a9b36e`): contract, record schema, export schema and
+  dashboard exist; `implementation_status` is still the stale
+  `awaiting_contract_review`; there are no production journals, no runtime
+  module and no memory step in `AGENTS.md`. Mode is memory on, SHADOW,
+  influence 0, private store `unverified_not_enabled`. No open PR; no active
+  external WIP.
+- Attack cases written before any Agent 1 runtime exists:
+  `lab/memory/ACTIVATION-agent2.md` (retrieval, eligibility, records, feedback,
+  workflow and dashboard). Seed verification follows in a separate change.
+- Next: Agent 1 builds the runtime; Agent 2 runs these cases against it.
+- Utility/result: outcome `unknown`, evidence `none`.

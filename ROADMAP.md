@@ -206,6 +206,12 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- No candidate advanced in the second 2026-10-26 round. Virtualenv #3450/#3453
+  already have open fixes #3451/#3454; pytest-xdist #1239 has four open fixes;
+  pyproject-hooks has no open bug-labelled issue. Pytest-asyncio #810 depends on
+  whether late marker parametrization can be supported safely, while #818 requires
+  the broader event-loop/fixture lifecycle redesign maintainers deferred. Continue
+  bounded discovery elsewhere; do not clone, reproduce or contact upstream.
 - No candidate advanced in the 2026-10-26 round: exact searches found open fixes
   for pytest-mock #636-#638, while filelock and multidict had no open bug-labelled
   issue to inspect. Continue bounded discovery in a different maintained project;

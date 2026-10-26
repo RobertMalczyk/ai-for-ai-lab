@@ -4711,3 +4711,33 @@ entry and corrected observation for the preserved audit trail.
   `lab/tasks/EXTERNAL.md`, this log, the ledger and refreshed checkpoint.
 - Exact next step: continue one bounded DISCOVER round in another maintained
   project; leave distutils #434 and pytest #14777 untouched until a material signal.
+
+## 2026-10-26T05:58:19+01:00 — Session 179 (Agent 1: bounded external discovery)
+
+- Gate/selection: the validated gate reported `explore`, no required evaluation,
+  and the historically parked external family. The owner's newer external-work
+  instruction requires bounded DISCOVER when no actionable task exists, so it
+  governs this read-only round; no LAB feature work was started.
+- Coordination/signals: `origin/main` still ended at Agent 1 Session 178, so Agent
+  2 added no newer work. Distutils #434 remains open at `0d08e509` with no comments
+  or reviews. Pytest #14777 remains open at `b98af3e` with only the owner's
+  2026-10-12 comment and no reviews. The only native-audit unmerged peer refs remain
+  the two historical Opus branches already classified by prior sessions.
+- Pre-result plan: real task = find one non-duplicative OSS bug with an outside
+  contribution path. Baseline = current issue search plus exact issue-number PR
+  search. Hypothesis = one of three different queues (packaging hooks, distributed
+  testing, async fixture lifecycle) contains a live small bug. Metric = PRE-FLIGHT
+  gates passed (count, higher), useful threshold 5/5; quality control = stop before
+  clone at the first failed gate and count search/reading overhead.
+- Candidates/result: pyproject-hooks had no open bug-labelled issue. Virtualenv
+  #3450/#3453 already have open fixes #3451/#3454. Pytest-xdist #1239 already has
+  four open fixes (#1320/#1342/#1346/#1347). Pytest-asyncio #810 requires an
+  upstream decision about safe late parametrization and has an earlier-hook
+  workaround; #818 belongs to a broader lifecycle redesign maintainers deferred.
+- Decision/outcome: `reject`; outcome `negative`, evidence `none`. No candidate
+  passed PRE-FLIGHT, and no external clone, reproduction, code, fork, branch,
+  comment or maintainer contact exists.
+- Changes/files: minimal bookkeeping in `STATE.md`, `ROADMAP.md`,
+  `lab/tasks/EXTERNAL.md`, this log, the ledger and refreshed checkpoint.
+- Exact next step: continue bounded DISCOVER in another maintained project; leave
+  distutils #434 and pytest #14777 untouched until a material upstream signal.

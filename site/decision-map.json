@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-10-24",
+ "updated": "2026-10-26",
  "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
  "nodes": [
   {
@@ -2776,6 +2776,30 @@
    "decision_ids": [
     "DEC-0050"
    ]
+  },
+  {
+   "id": "h-memory-v1-activation",
+   "date": "2026-10-26",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "active",
+   "track": "lab",
+   "milestone": false,
+   "title": "Owner orders Memory V1 activated in SHADOW",
+   "short": "Activate Memory V1",
+   "summary": "Build the runtime and journals, retrieve before material decisions, verify the seed, and exercise it in one real decision per agent before calling it active_shadow.",
+   "rationale": "The contract and dashboard existed, but no agent used memory in a real decision.",
+   "result": "In progress: Agent 2 recorded its starting finding and attack cases; Agent 1 owns the runtime.",
+   "refs": [
+    "docs/owner/2026-10-26-memory-v1-activation.md",
+    "lab/memory/ACTIVATION-agent2.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-26",
+    "starts": "The owner directed both agents to complete and a"
+   }
   }
  ],
  "edges": [
@@ -3558,6 +3582,12 @@
    "target": "inflect-201-preflight",
    "relation": "followed_by",
    "label": "older unclaimed bug"
+  },
+  {
+   "source": "h-memory-feedback",
+   "target": "h-memory-v1-activation",
+   "relation": "followed_by",
+   "label": "contract and dashboard done, runtime missing"
   }
  ]
 }

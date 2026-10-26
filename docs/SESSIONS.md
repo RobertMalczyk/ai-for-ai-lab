@@ -4816,3 +4816,20 @@ entry and corrected observation for the preserved audit trail.
   limited to what that session knew, and later exceptions to keep with it.
 - Next: compare Agent 1's imported seed with this list during runtime review.
 - Utility/result: outcome `unknown`, evidence `none`.
+
+## 2026-10-26T19:34:00+01:00 — Session 185 (Agent 2 / Opus: Memory V1 runtime review)
+
+- Task: Agent 2's independent review of Agent 1's runtime, PR #101 head
+  `d02763f`, against the cases written before it existed.
+- Verdict: CHANGES REQUIRED (`lab/memory/RUNTIME-REVIEW-agent2.md`). One
+  blocker: relevance is query-token coverage, so the 0.2 floor depends on query
+  length. Short off-topic queries with one common word pass (`status`,
+  `review`); the one-word query `policy` scores 1.0; a realistic 32-token
+  pre-flight query returns nothing although the existing-PR lessons are
+  relevant. The queries are frozen in the review for the re-test.
+- Held: Q has no effect in SHADOW, retraction with Q 1.0, future and corrected
+  lessons, private visibility, category/value, self-verification, pending,
+  duplicate evidence, unsafe source paths; 141/141 tests and the gate pass. The
+  15 seed records match Agent 2's seed verification.
+- Utility/result: outcome `unknown`, evidence `none`.
+- Ledger: session 184 is reserved by Agent 1's open runtime PR #101, so this row is 185 and merges after #101.

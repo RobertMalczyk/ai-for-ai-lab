@@ -1120,3 +1120,11 @@ Consequences: no inflect code, fork, branch, comment or maintainer contact exist
 The issue becomes one candidate awaiting independent check, not active implementation
 WIP. This is selection evidence only, not correctness, upstream value, agent utility
 or an LLM improvement.
+
+### DEC-0051 — Repair Memory V1 relevance after independent review
+
+Accept Agent 2 B1 on PR #101. Use distinct-term IDF evidence and fixed saturation,
+with two matches required, instead of query-length coverage. Preserve frozen
+review queries as regression tests. This repairs a demonstrated retrieval defect;
+it does not establish semantic retrieval or real-agent utility. Keep SHADOW and
+runtime_implemented pending independent re-review; no production decision invented.

@@ -215,7 +215,8 @@ class Store:
                     require(bool(re.fullmatch(r'[a-z0-9][a-z0-9._-]*', r['evidence_key'])), 'use a stable canonical evidence key, not URL aliases')
                     require(r['rule_version'] == self.config['rule_version'], 'unknown feedback rule')
                     if r['status'] == 'verified':
-                        require(r['verifier'] in AGENTS and r['verifier'] != r['proposer']
+                        require(r['verifier'] in AGENTS, 'verifier must be agent1 or agent2')
+                        require(r['verifier'] != r['proposer']
                                 and r['verifier'] != r['agent'], 'self-verification prohibited')
                         require(r['verified_at'] is not None and timestamp(r['verified_at']) >= timestamp(r['occurred_at']), 'verification chronology')
                 if kind == 'mode':
@@ -308,10 +309,20 @@ class Store:
         require(agent in AGENTS, 'unknown agent')
         query_tokens = tokens(query)
         candidates = []
-        for m in self.eligible(at):
-            overlap = query_tokens & tokens(m['scope'] + ' ' + m['content'])
-            score = len(overlap) / max(1, len(query_tokens))
-            if score >= self.config['retrieval']['min_relevance']:
+        documents = [(m, tokens(m['scope'] + ' ' + m['content'])) for m in self.eligible(at)]
+        frequency = defaultdict(int)
+        for _, terms in documents:
+            for term in terms:
+                frequency[term] += 1
+        for m, terms in documents:
+            overlap = query_tokens & terms
+            # Binary-term IDF evidence: unmatched query padding and repeated words
+            # cannot weaken/strengthen a match. Only eligible documents set IDF.
+            # Fixed saturation, never division by the best result or query size.
+            evidence = sum(math.log1p((len(documents) - frequency[t] + .5) /
+                                     (frequency[t] + .5)) for t in overlap)
+            score = evidence / (evidence + 2)
+            if len(overlap) >= 2 and score >= self.config['retrieval']['min_relevance']:
                 candidates.append((m, score, sorted(overlap)))
         candidates.sort(key=lambda x: (-x[1], -len(query_tokens & tokens(x[0]['scope'])),
                         -x[0]['confidence'], -timestamp(x[0]['available_at']).timestamp(), x[0]['id']))

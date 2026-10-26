@@ -87,7 +87,7 @@ class RuntimeTest(unittest.TestCase):
 
     def test_count_and_context_budget(self):
         for i in range(7): self.s.append('memory', self.memory('m'+str(i)))
-        r=self.s.retrieve('regression control',T1,'agent1','build')
+        r=self.s.retrieve(self.memory()['content'],T1,'agent1','build')
         self.assertEqual(len(r['memory_ids']),3); self.assertLessEqual(len(r['context']),3200)
 
     def test_oversize_metadata_is_not_truncated_into_lesson(self):
@@ -221,3 +221,40 @@ class RuntimeTest(unittest.TestCase):
         receipt['context']='forged delivery'
         (self.mem/'retrievals.jsonl').write_text(encode(receipt)+'\n')
         with self.assertRaises(MemoryError): Store(self.root)
+
+
+class FrozenReviewQueries(unittest.TestCase):
+    def setUp(self):
+        self.s = Store(ROOT)
+
+    def retrieve(self, query):
+        return self.s.retrieve(query, '2026-10-26T18:00:00Z', 'agent2', 'preflight')
+
+    def test_frozen_agent2_queries(self):
+        queries = [
+            ('choose a colour palette for the site header', None),
+            ('merge the dashboard branch after review', None),
+            ('update the status of the coffee machine order', None),
+            ('policy', None),
+            ('check the state of this PR', 'weak'),
+            ('should I reject this OSS candidate because an open PR already fixes it', {'seed-family-01', 'seed-family-02'}),
+            ('PRE-FLIGHT for jaraco/inflect issue 201: the bug reproduces on current main f51d6c4, no open pull request references 201 among the 28 open merge refs, the maintainer welcomes contributions; should Agent 2 accept or reject this external OSS candidate for BUILD?', {'seed-family-01', 'seed-family-02'}),
+            ("a patch for this crash already sits in someone else's open change request", {'seed-family-01', 'seed-family-11'}),
+        ]
+        for query, expected in queries:
+            with self.subTest(query=query):
+                r = self.retrieve(query)
+                if expected is None:
+                    self.assertEqual(r['memory_ids'], [])
+                elif expected == 'weak':
+                    for line in r['context'].splitlines()[1:]:
+                        self.assertLess(json.loads(line)['score'], 1)
+                else:
+                    self.assertTrue(set(r['memory_ids']) & expected, r)
+
+    def test_unmatched_padding_and_repetition_do_not_change_scores(self):
+        query = 'open PR candidate'
+        baseline = self.retrieve(query)
+        self.assertTrue(baseline['memory_ids'])
+        self.assertEqual(self.retrieve(query + ' ' + 'xylophone '*40), baseline)
+        self.assertEqual(self.retrieve(query + ' ' + query*4), baseline)

@@ -927,7 +927,7 @@
     },
     {
       "date": "2026-10-26",
-      "text": "The owner directed both agents to complete and activate Memory V1 in SHADOW: a production runtime and append-only journals, retrieval before every material decision, a verified historical seed, and at least one real decision per agent reviewed by the other before the status becomes active_shadow. Rewards stay observational with influence 0; no CANARY. Agent 1 builds the runtime; Agent 2 reviews it adversarially, verifies the seed, connects the dashboard to real journals and checks the first real decisions.",
+      "text": "The owner directed both agents to complete and activate Memory V1 in SHADOW: a production runtime and append-only journals, retrieval before every material decision, a verified historical seed, and at least one real decision per agent reviewed by the other before the status becomes active_shadow. Rewards stay observational with influence 0; no CANARY. Agent 1 builds the runtime; Agent 2 reviews it adversarially, verifies the seed, connects the dashboard to real journals and checks the first real decisions. The owner subsequently asked Agent 1 to continue; Agent 1 resumed the pending independent-review fixes.",
       "refs": [
         "docs/owner/2026-10-26-memory-v1-activation.md",
         "lab/memory/ACTIVATION-agent2.md"

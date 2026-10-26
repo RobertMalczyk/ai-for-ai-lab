@@ -96,8 +96,14 @@ closed and needs explicit repair from Git; it is never silently skipped. Manual
 file edits and cross-clone Git merges are not prevented by a local lock: peer review
 must enforce append-only prefixes and resolve collisions before merge.
 
-Retrieval is fixed lexical query-token coverage on [0,1], threshold applied before
-ranking. Ties: scope overlap, confidence, recency, ID. At most three cards and 3200
+Retrieval sums binary-term IDF evidence over distinct matched content tokens in
+the eligible corpus: IDF = log(1 + (N - df + 0.5)/(df + 0.5)). The score is
+evidence/(evidence + 2), with at least two distinct matches and the configured
+absolute floor applied before ranking. Neither query length nor the strongest
+result normalizes the score. Repeating words adds no evidence. The fixed 2
+saturation constant is an engineering choice, not a calibrated probability.
+Corpus changes can change IDF; future/ineligible lessons cannot. This is lexical
+matching, not semantic relevance; multiword coincidences can still pass. Ties: scope overlap, confidence, recency, ID. At most three cards and 3200
 characters including the entire context header and metadata. Oversized cards are
 omitted, not truncated. Only active public lessons available strictly before the
 query are eligible. Future corrections do not hide a currently valid predecessor.

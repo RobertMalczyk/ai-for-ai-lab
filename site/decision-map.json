@@ -2800,6 +2800,29 @@
     "date": "2026-10-26",
     "starts": "The owner directed both agents to complete and a"
    }
+  },
+  {
+   "id": "dec-0051",
+   "date": "2026-10-26",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "waiting",
+   "track": "lab",
+   "milestone": false,
+   "title": "Repair memory relevance after independent review",
+   "short": "Retrieval repair",
+   "summary": "Replace query coverage with distinct-term IDF evidence and two-match admission.",
+   "rationale": "Agent 2 demonstrated false short matches and missed long queries.",
+   "result": "Frozen review cases pass; independent re-review and activation remain pending.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "lab/memory/RUNTIME-REVIEW-agent2.md",
+    "docs/MEMORY_RUNTIME_V1.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0051"
+   ]
   }
  ],
  "edges": [

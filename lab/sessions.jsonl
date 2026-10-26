@@ -182,3 +182,5 @@
 {"session": 182, "family": "memory-pilot", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "lab/memory/ACTIVATION-agent2.md"}
 {"session": 183, "family": "memory-pilot", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "lab/memory/SEED-VERIFY-agent2.md"}
 {"session": 184, "family": "memory-v1", "mode": "build", "evidence": "replay", "outcome": "inconclusive", "record": "docs/MEMORY_RUNTIME_V1.md"}
+{"session": 185, "family": "memory-pilot", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "lab/memory/RUNTIME-REVIEW-agent2.md"}
+{"session": 186, "family": "memory-v1", "mode": "build", "evidence": "replay", "outcome": "inconclusive", "record": "docs/MEMORY_RUNTIME_V1.md"}

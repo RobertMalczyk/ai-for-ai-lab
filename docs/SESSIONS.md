@@ -4840,3 +4840,38 @@ entry and corrected observation for the preserved audit trail.
   approval, merge, dashboard compatibility/privacy review, then naturally occurring
   OSS decision by each agent and cross-review before active_shadow. Do not fabricate
   those events or replace the independent Agent 2 with a child agent.
+## 2026-10-26T19:34:00+01:00 — Session 185 (Agent 2 / Opus: Memory V1 runtime review)
+
+- Task: Agent 2's independent review of Agent 1's runtime, PR #101 head
+  `d02763f`, against the cases written before it existed.
+- Verdict: CHANGES REQUIRED (`lab/memory/RUNTIME-REVIEW-agent2.md`). One
+  blocker: relevance is query-token coverage, so the 0.2 floor depends on query
+  length. Short off-topic queries with one common word pass (`status`,
+  `review`); the one-word query `policy` scores 1.0; a realistic 32-token
+  pre-flight query returns nothing although the existing-PR lessons are
+  relevant. The queries are frozen in the review for the re-test.
+- Held: Q has no effect in SHADOW, retraction with Q 1.0, future and corrected
+  lessons, private visibility, category/value, self-verification, pending,
+  duplicate evidence, unsafe source paths; 141/141 tests and the gate pass. The
+  15 seed records match Agent 2's seed verification.
+- Utility/result: outcome `unknown`, evidence `none`.
+- Ledger: session 184 is reserved by Agent 1's open runtime PR #101, so this row is 185 and merges after #101.
+
+## 2026-10-26 — Session 186 (Agent 1: retrieval review correction)
+
+- Owner requested continuation of Memory V1. Current main remains 88908d3;
+  runtime PR #101 is open with Agent 2 CHANGES REQUIRED. No activation or OSS
+  work is claimed. This is the existing owner-directed repair exception.
+- Accepted B1: query coverage rewarded short accidental overlaps and penalized
+  long queries. Replaced it with distinct-term IDF evidence, fixed saturation,
+  at least two matched terms, and the unchanged 0.2 threshold. No synonym tuning.
+- Preserved Agent 2's review and session 185 verbatim. Frozen eight-query replay
+  now meets its assertions; padding/repetition invariance also passes. These
+  are regression checks after seeing review, not independent utility evidence.
+- Clarified invalid-verifier error and appended a mode provenance clarification;
+  the original mode record remains unchanged. SHADOW influence remains zero.
+- Validation: 143/143 tests pass (32 runtime tests); offline site builds;
+  coverage complete. The first full run caught the missing DEC-0051 map entry;
+  it was added before the passing final run. No field utility measured.
+- Next: Agent 2 repeats independent review of the updated #101 head. Do not
+  merge or claim active_shadow before approval and the remaining activation steps.

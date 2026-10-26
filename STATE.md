@@ -186,3 +186,6 @@
   public retrieval, append-only journals and a mandatory material-decision hook.
   Independent runtime/seed review by Agent 2 is next; no real decisions or feedback
   are recorded, and active_shadow is not claimed. See docs/MEMORY_RUNTIME_V1.md.
+
+- Runtime PR #101: Agent 2 B1 retrieval repair implemented for re-review. Frozen
+  queries are regression evidence only; activation still pending. Reward influence 0.

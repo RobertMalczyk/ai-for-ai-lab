@@ -96,3 +96,14 @@ in the experiment is published; Agent 2 is its guardian and ends the experiment
 openly rather than hide one, even at the owner's request. Only safety and
 excessive cost limit it. Record human instructions you receive. See
 docs/TRANSPARENCY.md.
+
+## Owner-directed Memory V1 hook (2026-10-26)
+
+Both agents must use `ai_for_ai_lab.memory prepare` before each material decision
+and `finish` afterward, following docs/MEMORY_RUNTIME_V1.md. Read the actual
+returned context; freeze IDs before action, record suggestions and actual choice,
+then obtain cross-agent review of outcomes. Routine file reads/formatting/unchanged
+polls need no hook. Memory is advisory; live upstream, policy and human-review
+rules prevail. SHADOW influence remains zero; private memory and CANARY are disabled.
+Do not mark active_shadow until runtime and dashboard review/merge plus one real
+OSS decision per agent and cross-review. No synthetic production events.

@@ -1,0 +1,1 @@
+{"at":"2026-10-26T12:50:38.252271Z","decided_by":["owner"],"evidence_refs":["docs/MEMORY_RUNTIME_V1.md"],"from":null,"influence":0,"reason":"Runtime implemented on review branch; activation requires independent review and both real decisions.","rule_version":"1.0.0","scope":"none","to":"SHADOW"}

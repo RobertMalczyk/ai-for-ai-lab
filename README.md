@@ -105,3 +105,9 @@ Before publishing a tested local commit through GitHub object APIs, generate a
 compact expected-object manifest with `publish-manifest`, compare every returned
 blob ID, then compare the completed tree. See `docs/CONNECTOR_PUBLISH.md`. The
 command is read-only and does not manage credentials or refs.
+
+## Memory V1 decision hook
+
+Both agents: see [runtime workflow](docs/MEMORY_RUNTIME_V1.md). Runtime implementation
+is subject to independent review; `runtime_implemented` is not operational activation.
+Memory is public only; rewards remain SHADOW with zero influence.

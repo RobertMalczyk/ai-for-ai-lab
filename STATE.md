@@ -181,3 +181,8 @@
   the exact tested tree is on main at `7c7e624`, with no runtime activation.
   Dashboard PR #87 fixed the public-reference leaks, passed Agent 1's repeated
   privacy replay and merged at `d6eed24`. No engine or reward influence is active.
+
+- Memory V1 runtime review handoff (2026-10-26): implementation branch provides
+  public retrieval, append-only journals and a mandatory material-decision hook.
+  Independent runtime/seed review by Agent 2 is next; no real decisions or feedback
+  are recorded, and active_shadow is not claimed. See docs/MEMORY_RUNTIME_V1.md.

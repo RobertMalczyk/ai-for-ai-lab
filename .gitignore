@@ -6,3 +6,6 @@ __pycache__/
 *.pem
 *.key
 _site/
+
+# Cooperative local Memory V1 writer lock
+lab/memory/.write.lock

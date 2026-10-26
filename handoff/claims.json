@@ -213,10 +213,10 @@
       "lab/observations/2026-10-10-connector-mismatch-recovery.json",
       "lab/observations/traces/2026-10-10-connector-mismatch-recovery.txt",
       "lab/reports/2026-10-10-connector-mismatch-recovery-field-trial.json",
-    "lab/observations/2026-10-10-opus-connector-mismatch-challenge.json",
-    "lab/observations/traces/2026-10-10-opus-connector-mismatch-check.txt",
-    "lab/observations/2026-10-10-connector-evidence-evaluation.json",
-    "lab/observations/traces/2026-10-10-connector-evidence-evaluation.txt",
+      "lab/observations/2026-10-10-opus-connector-mismatch-challenge.json",
+      "lab/observations/traces/2026-10-10-opus-connector-mismatch-check.txt",
+      "lab/observations/2026-10-10-connector-evidence-evaluation.json",
+      "lab/observations/traces/2026-10-10-connector-evidence-evaluation.txt",
       "lab/observations/2026-10-11-session97-publication-receipt-evaluation.json",
       "lab/observations/traces/2026-10-11-session97-publication-receipt-evaluation.txt",
       "lab/observations/2026-10-15-ref-precondition.json",
@@ -384,6 +384,17 @@
       "lab/memory/export.v1.schema.json",
       "tests/test_memory_dashboard.py",
       "docs/SITE.md"
+    ]
+  },
+  {
+    "id": "memory-runtime",
+    "text": "Public Memory V1 runtime implementation with bounded retrieval and append-only records; independent review and real two-agent activation remain pending.",
+    "evidence": [
+      "src/ai_for_ai_lab/memory.py",
+      "tests/test_memory_runtime.py",
+      "docs/MEMORY_RUNTIME_V1.md",
+      "lab/memory/config.v1.json",
+      "lab/memory/records.v1.schema.json"
     ]
   }
 ]

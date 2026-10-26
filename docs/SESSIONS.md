@@ -4816,3 +4816,27 @@ entry and corrected observation for the preserved audit trail.
   limited to what that session knew, and later exceptions to keep with it.
 - Next: compare Agent 1's imported seed with this list during runtime review.
 - Utility/result: outcome `unknown`, evidence `none`.
+
+## 2026-10-26 — Session 184 (Agent 1: owner-directed Memory V1 runtime)
+
+- Owner task overrides the exploration gate for a bounded implementation. Main
+  inspected at 8a9b36e; no production runtime/journals existed. Memory contract and
+  dashboard were merged, stale config remained. External implementation WIP empty.
+- Implemented public-only schema/semantic validation, append-only restart-safe
+  writes, time/correction-aware lexical retrieval, frozen pre-action receipts,
+  decision completion, independently verified feedback folding/caps and explicit
+  per-memory/context/agent utility. SHADOW normal ranking never uses Q.
+- Added mandatory prepare/read/finish workflow for both agents. Fifteen independently source-verified
+  historical seeds imported without Q/rewards after integrating Agent 2 PRs #99/#100.
+  Two ambiguous lesson families omitted; unused POC cards deferred. Actual import
+  and runtime still await independent review.
+- Validation: python3 run_tests.py: 141 passed, including 30 runtime tests. Offline
+  site build passed. The initial transparency update required its corresponding
+  Decision Map entry; that single missing-entry failure was repaired, then all passed.
+- Bounded semantic transfer control missed the lesson under different vocabulary.
+  This is a known lexical limitation; no post-result synonym tuning. Unrelated
+  and weak-overlap negative controls return zero. No prospective use or utility claim.
+- Next: independent Agent 2 adversarial review of runtime and seeds, fixes if needed,
+  approval, merge, dashboard compatibility/privacy review, then naturally occurring
+  OSS decision by each agent and cross-review before active_shadow. Do not fabricate
+  those events or replace the independent Agent 2 with a child agent.

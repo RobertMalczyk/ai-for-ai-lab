@@ -1,7 +1,7 @@
 {
   "contract_version": "1.0.0",
   "rule_version": "1.0.0",
-  "implementation_status": "awaiting_contract_review",
+  "implementation_status": "runtime_implemented",
   "memory_enabled": true,
   "reward_mode": "shadow",
   "reward_influence": 0.0,

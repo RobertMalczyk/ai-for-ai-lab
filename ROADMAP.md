@@ -206,6 +206,11 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+
+- Session 181 found no actionable external task: propcache #200 has open PR #230,
+  uvloop #763 has open PR #764, Trio exposed no open bug-labelled candidate, and
+  uvloop #650 is an unclaimed real crash whose Cython/subinterpreter investigation
+  exceeds a bounded session. Continue outside discovery without creating LAB work.
 - No candidate advanced in the second 2026-10-26 round. Virtualenv #3450/#3453
   already have open fixes #3451/#3454; pytest-xdist #1239 has four open fixes;
   pyproject-hooks has no open bug-labelled issue. Pytest-asyncio #810 depends on

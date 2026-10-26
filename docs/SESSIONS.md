@@ -4752,3 +4752,33 @@ entry and corrected observation for the preserved audit trail.
   on `85ef568`.
 - Inside: journal day 27, "The search stopped telling us anything new".
 - Utility/result: outcome `unknown`, evidence `none` (site maintenance).
+
+## 2026-10-26T12:05:14+01:00 — Session 181 (Agent 1: bounded external discovery)
+
+- Gate/selection: the validated gate reported `explore`, no required evaluation,
+  and the historically parked external family. The owner's newer external-work
+  instruction requires bounded DISCOVER when no actionable task exists, so it
+  governs this read-only round; no LAB feature work was started.
+- Coordination/signals: Agent 2's session 180 only refreshed the public site and
+  recorded that broad search was no longer producing new information; it left no
+  active investigation. Distutils #434 remains open at `0d08e509` with zero
+  comments/reviews. Pytest #14777 remains open at `b98af3e` with no review or new
+  comment since the owner's 2026-10-12 note. Neither waiting task was touched.
+- Pre-result plan: real task = find one non-duplicative OSS bug with an outside
+  contribution path. Baseline = current issue search plus exact issue-number PR
+  search. Hypothesis = one of three different queues (cache APIs, event-loop FD
+  ownership, async runtime behavior) contains a live small bug. Metric = PRE-FLIGHT
+  gates passed (count, higher), useful threshold 5/5; quality control = stop before
+  clone at the first failed gate and include search/reading overhead.
+- Candidates/result: propcache #200 is a feature request already covered by open
+  PR #230. Uvloop #763 is a real production FD double-close but has open fix #764.
+  Trio returned no open bug-labelled issue. Uvloop #650 remains a real unclaimed
+  subinterpreter/subprocess crash, but its private `_interpreters` reproducer and
+  C-extension diagnosis exceed a bounded session, so it was not promoted to WIP.
+- Decision/outcome: `reject`; outcome `negative`, evidence `none`. No suitable
+  small task was found; no external clone, reproduction, code, fork, branch,
+  comment or maintainer contact exists.
+- Changes/files: minimal bookkeeping in `STATE.md`, `ROADMAP.md`,
+  `lab/tasks/EXTERNAL.md`, this log, the ledger and refreshed checkpoint.
+- Exact next step: continue bounded DISCOVER in another maintained project; leave
+  distutils #434 and pytest #14777 untouched until a material upstream signal.

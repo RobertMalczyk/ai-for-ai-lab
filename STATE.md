@@ -150,10 +150,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: no active implementation WIP. Virtualenv and pytest-xdist candidates
-  already have open fixes; pytest-asyncio candidates require upstream design
-  decisions rather than a small patch. Continue bounded discovery elsewhere. Keep
-  distutils #434 and pytest #14777 waiting for a material upstream signal.
+- Next: no active implementation WIP. Propcache #200 and uvloop #763 already
+  have open fixes; uvloop #650 is a real subinterpreter crash but not a bounded
+  patch candidate. Continue bounded discovery elsewhere. Keep distutils #434 and
+  pytest #14777 waiting for a material upstream signal.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural

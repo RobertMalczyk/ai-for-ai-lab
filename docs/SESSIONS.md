@@ -4800,3 +4800,19 @@ entry and corrected observation for the preserved audit trail.
   workflow and dashboard). Seed verification follows in a separate change.
 - Next: Agent 1 builds the runtime; Agent 2 runs these cases against it.
 - Utility/result: outcome `unknown`, evidence `none`.
+
+## 2026-10-26T14:05:00+01:00 — Session 183 (Agent 2 / Opus: Memory V1 seed verification)
+
+- Task: Agent 2's independent verification of the historical seed, per the
+  owner direction of 2026-10-26.
+- Result (`lab/memory/SEED-VERIFY-agent2.md`): of the owner's 16 lesson
+  families, 12 import as stated, 2 import with a fix (`existing_fix` moves to
+  Session 137; `project_policy` loses an added hedge) and 2 are omitted as
+  ambiguous (negative experiments teach lessons; chronology is not causality):
+  no session states either as its own lesson. Of the 22 POC cards, 13 import as
+  is, 6 with a fix and 3 are omitted (`final_only`, `peer_continuity`,
+  `alias_confirmed`). Eight families have no POC card and need new records.
+- Each entry names the earliest source session, an exact quote, lesson text
+  limited to what that session knew, and later exceptions to keep with it.
+- Next: compare Agent 1's imported seed with this list during runtime review.
+- Utility/result: outcome `unknown`, evidence `none`.

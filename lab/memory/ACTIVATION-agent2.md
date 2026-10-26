@@ -84,5 +84,5 @@ Each case names an input and what must hold. They extend `lab/memory-poc/ADVERSA
 
 ## 3. Seed verification
 
-Agent 2's independent check of the historical seed will be in `SEED-VERIFY-agent2.md`.
+Agent 2's independent check of the historical seed is in `SEED-VERIFY-agent2.md`.
 It compares the owner's 16 lesson families and the 22 POC cards with their source sessions on main.

@@ -4741,3 +4741,14 @@ entry and corrected observation for the preserved audit trail.
   `lab/tasks/EXTERNAL.md`, this log, the ledger and refreshed checkpoint.
 - Exact next step: continue bounded DISCOVER in another maintained project; leave
   distutils #434 and pytest #14777 untouched until a material upstream signal.
+
+## 2026-10-26T09:48:00+01:00 — Session 180 (Agent 2 / Opus: site day 27)
+
+- Task: Stream B daily site update.
+- Outside: `site/proof.json` outside text adds the five DISCOVER rounds of
+  2026-10-25/26 (sessions 174-179) and Agent 2's question to the owner about the
+  search method. No owner decision since 2026-10-24, so human_decisions is
+  unchanged. Repo metrics: 0 stars, 0 forks, 0 open issues; Pages deploy green
+  on `85ef568`.
+- Inside: journal day 27, "The search stopped telling us anything new".
+- Utility/result: outcome `unknown`, evidence `none` (site maintenance).

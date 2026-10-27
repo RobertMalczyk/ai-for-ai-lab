@@ -240,10 +240,8 @@ class Store:
             require(len(r['context']) <= self.config['retrieval']['budget'], 'receipt context exceeds budget')
             require(len(r['memory_ids']) <= self.config['retrieval']['max_lessons'], 'receipt count exceeds budget')
             expected = self.retrieve(r['query'], r['occurred_at'], r['agent'], r['task_type'])
-            require(r['memory_ids'] == expected['memory_ids'] and r['context'] == expected['context'], 'retrieval does not match frozen query')
-            qtokens = tokens(r['query'])
-            eligible = {m['id'] for m in self.eligible(r['occurred_at']) if len(qtokens & tokens(m['scope'] + ' ' + m['content'])) / max(1, len(qtokens)) >= self.config['retrieval']['min_relevance']}
-            require(set(r['memory_ids']) <= eligible and set(r['shadow_memory_ids']) <= eligible, 'ineligible receipt memory')
+            require(all(r[k] == expected[k] for k in ('memory_ids', 'context', 'shadow_memory_ids')),
+                    'retrieval does not match frozen query')
         for d in decisions.values():
             r = receipts.get(d['decision_id'])
             require(r is not None, 'decision has no frozen retrieval')

@@ -1,7 +1,7 @@
 """Build the sanitized public export for the "Memory and learning" page. Stdlib only.
 
 Reads the public memory contract (lab/memory/config.v1.json) and the public
-append-only journals (lab/memory/{memories,feedback,decisions,mode_history}.jsonl)
+append-only journals (lab/memory/{memories,feedback,decisions,mode_history,retrievals,utility}.jsonl)
 and writes one JSON envelope shaped by lab/memory/export.v1.schema.json.
 
 Rules from the owner's instruction of 2026-10-22 and contract v1:
@@ -10,7 +10,9 @@ Rules from the owner's instruction of 2026-10-22 and contract v1:
 - duplicates are folded on (agent, task, evidence, category), not on event_id;
 - positive credit is capped at +1 per agent and task, discovery at +0.2 per agent and session;
 - nothing private is exported: only public records, safe links and aggregates;
-- empty or missing data means "no data", never success; DEMO data never enters this export.
+- empty or missing data means "no data", never success; DEMO data never enters this export;
+- a record counts only once it is available, and a correction only once it is effective (same rule as the
+  runtime's retrieval); a decision is graded only by an evaluation_ref or a verified utility assessment.
 """
 import datetime as dt
 import json
@@ -60,6 +62,15 @@ def _mode_entry(m, github):
     return out
 
 
+def available(records, now):
+    """Records the runtime could see at `now`: not yet available or not yet effective corrections are left out."""
+    def ok(r):
+        at = _ts(r.get("available_at") or r.get("created_at") or r.get("occurred_at"))
+        eff = _ts(r.get("correction_effective_at")) if r.get("supersedes") else None
+        return (at is None or at <= now) and (eff is None or eff <= now)
+    return [r for r in records if ok(r)]
+
+
 def fold(records, key):
     """Newest record of each `supersedes` chain wins; returns (effective, chains)."""
     by_id = {r[key]: r for r in records}
@@ -88,11 +99,11 @@ def score(feedback):
         if a is None:
             continue
         status = e["status"]
-        if status in ("pending", "proposed") or e.get("value") is None:
-            a["pending"] += 1
-            continue
         if status == "disputed":
             a["disputed"] += 1
+            continue
+        if status in ("pending", "proposed") or e.get("value") is None:
+            a["pending"] += 1
             continue
         if status != "verified" or not e.get("verifier") or e["verifier"] == e.get("proposer"):
             continue
@@ -126,40 +137,53 @@ def score(feedback):
     return agents, effective, chains, counted
 
 
-def memory_aggregates(memories, decisions, now, github):
-    effective, chains = fold([m for m in memories if m.get("visibility") == "public"], "id")
+def evaluations(decisions, utility, github):
+    """decision_id -> safe evaluation refs. The runtime writes evaluation_ref as null and cannot rewrite a
+    decision, so a verified, independently verified utility assessment is the normal way a decision gets graded."""
+    out = {}
+    for d in decisions:
+        ref = safe_ref(d.get("evaluation_ref"), github)
+        if ref:
+            out.setdefault(d["decision_id"], []).append(ref)
+    agent_of = {d["decision_id"]: d["agent"] for d in decisions}
+    effective, _ = fold(utility, "assessment_id")
+    for u in effective:
+        did = u.get("decision_id")
+        if (did in agent_of and u.get("status") == "verified" and u.get("verifier") in AGENTS
+                and u["verifier"] != agent_of[did]):
+            refs = _refs(u.get("source_refs"), github)
+            if refs:
+                out.setdefault(did, []).extend(refs)
+    return {k: sorted(set(v)) for k, v in out.items()}
+
+
+def memory_aggregates(memories, decisions, receipts, graded, github):
+    effective, _ = fold([m for m in memories if m.get("visibility") == "public"], "id")
     by_status = defaultdict(int)
     for m in effective:
-        status = m["status"]
-        if m.get("correction_effective_at") and _ts(m["correction_effective_at"]) > now:
-            status = chains[m["id"]][-2]["status"] if len(chains[m["id"]]) > 1 else status
-        by_status[status] += 1
-    uses = defaultdict(int)
-    for d in decisions:
-        for mid in d.get("memory_ids", []):
-            uses[mid] += 1
-    corrections = sum(1 for m in memories if m.get("supersedes"))
+        by_status[m["status"]] += 1
+    corrections = sum(1 for m in memories if m.get("supersedes") and m.get("visibility") == "public")
     return {
         "public": {s: by_status.get(s, 0) for s in ("active", "provisional", "superseded", "retracted")},
         "historical_seed": sum(1 for m in effective if m.get("historical_seed")),
-        "retrievals": sum(uses.values()),
+        "retrievals": len(receipts),
         "corrections": corrections,
         "recent_applications": [
             {"decision_id": d["decision_id"], "agent": d["agent"], "at": d["occurred_at"],
-             "memory_ids": d["memory_ids"], "evaluation_ref": safe_ref(d.get("evaluation_ref"), github)}
+             "memory_ids": d["memory_ids"], "evaluation_ref": graded[d["decision_id"]][0]}
             for d in sorted(decisions, key=lambda d: d["occurred_at"], reverse=True)
-            if d.get("memory_ids") and safe_ref(d.get("evaluation_ref"), github)][:5],
+            if d.get("memory_ids") and graded.get(d["decision_id"])][:5],
         "private": {"available": False},
     }
 
 
-def readiness(cfg, decisions, github):
+def readiness(cfg, decisions, graded_refs, github):
     c = cfg.get("canary", {})
-    graded = [d for d in decisions if d.get("evaluation_ref")]
+    graded = [d for d in decisions if graded_refs.get(d["decision_id"])]
     per_agent = {a: sum(1 for d in graded if d["agent"] == a) for a in AGENTS}
     types = {d.get("task_type") for d in graded if d.get("task_type")}
     measured = [d for d in decisions if (d.get("cost") or {}).get("measured")]
-    refs = sorted({r for r in (safe_ref(d["evaluation_ref"], github) for d in graded) if r})[:5]
+    refs = sorted({r for d in graded for r in graded_refs[d["decision_id"]]})[:5]
     need_dec, need_agent, need_types = c.get("min_decisions", 30), c.get("min_per_agent", 10), c.get("min_task_types", 3)
 
     def crit(cid, label, threshold, observed, met, evidence, gaps):
@@ -199,8 +223,10 @@ def build_export(mem, github, now=None, source_commit=None, demo=False):
         env.update(mode="UNKNOWN", memory_enabled=None, reason="The memory contract is not on the main branch yet.")
         return env
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
-    memories, feedback = _jsonl(mem / "memories.jsonl"), _jsonl(mem / "feedback.jsonl")
-    decisions, modes = _jsonl(mem / "decisions.jsonl"), _jsonl(mem / "mode_history.jsonl")
+    memories, feedback = available(_jsonl(mem / "memories.jsonl"), now), available(_jsonl(mem / "feedback.jsonl"), now)
+    decisions, modes = available(_jsonl(mem / "decisions.jsonl"), now), _jsonl(mem / "mode_history.jsonl")
+    receipts, utility = available(_jsonl(mem / "retrievals.jsonl"), now), available(_jsonl(mem / "utility.jsonl"), now)
+    graded = evaluations(decisions, utility, github)
     mode = {"shadow": "SHADOW", "canary": "CANARY", "coupled": "COUPLED", "rolled_back": "ROLLED_BACK"}.get(
         str(cfg.get("reward_mode", "")).lower(), "UNKNOWN")
     if not modes:
@@ -222,9 +248,11 @@ def build_export(mem, github, now=None, source_commit=None, demo=False):
             "history": [{"id": h["event_id"], "status": h["status"], "value": h.get("value"),
                          "at": h.get("verified_at") or h["occurred_at"]} for h in history[:-1]],
         })
-    stamps = [_ts(x) for x in [r.get("occurred_at") for r in feedback + decisions] + [r.get("created_at") for r in memories] if x]
+    # Freshness is the newest journal write, not the historical date a seeded lesson was learned.
+    stamps = [_ts(x) for x in [r.get("occurred_at") for r in feedback + decisions + receipts + utility]
+              + [m.get("available_at") or m.get("created_at") for m in memories] if x]
     last = max(stamps) if stamps else None
-    has_data = bool(feedback or decisions or memories)
+    has_data = bool(feedback or decisions or memories or receipts)
     env.update({
         "data_status": "stale" if has_data and last and (now - last).days > STALE_AFTER_DAYS
         else ("available" if has_data else "empty"),
@@ -235,14 +263,17 @@ def build_export(mem, github, now=None, source_commit=None, demo=False):
         "reward_influence": cfg.get("reward_influence"), "mode_history": [_mode_entry(m, github) for m in modes],
         "agents": {a: dict(v, cost={"value": None, "unit": None, "measured": False}) for a, v in agents.items()},
         "events": events,
-        "memories": memory_aggregates(memories, decisions, now, github),
+        "memories": memory_aggregates(memories, decisions, receipts, graded, github),
         "shadow": {
             "decisions": len(decisions),
+            "prepared": len(receipts),
+            "no_lesson_found": sum(1 for r in receipts if not r.get("memory_ids")),
+            "awaiting_decision": len({r["decision_id"] for r in receipts} - {d["decision_id"] for d in decisions}),
             "differences": sum(1 for d in decisions if d.get("shadow_memory_ids") and d["shadow_memory_ids"] != d.get("memory_ids")),
-            "evaluated": sum(1 for d in decisions if d.get("evaluation_ref")),
+            "evaluated": len(graded),
             "note": "A choice Q would have made but nobody made has no observed outcome.",
         },
-        "readiness": readiness(cfg, decisions, github),
+        "readiness": readiness(cfg, decisions, graded, github),
         "map_links": [{"memory_id": m["id"], "map_node_ids": m["map_node_ids"]} for m in memories
                       if m.get("visibility") == "public" and m.get("map_node_ids")],
     })

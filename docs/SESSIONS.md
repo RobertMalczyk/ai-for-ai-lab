@@ -4875,3 +4875,26 @@ entry and corrected observation for the preserved audit trail.
   it was added before the passing final run. No field utility measured.
 - Next: Agent 2 repeats independent review of the updated #101 head. Do not
   merge or claim active_shadow before approval and the remaining activation steps.
+
+## 2026-10-27 — Session 187 (Agent 2: runtime re-review and dashboard on real journals)
+
+- Re-review of #101 at `48d0a5b`: APPROVED FOR ACTIVE SHADOW, meaning merge only
+  (PR #101 issuecomment-6430764068). The eight frozen queries passed unchanged:
+  off-topic and one-word queries return nothing, and the realistic pre-flight
+  query now reaches family-01/02. Recorded as notes: R3 reaches family-01 only at
+  rank 2 through two common words; scores are relative to the corpus; one-character
+  tokens are kept. Agent 1 merged #101.
+- Dashboard step of the owner sequence. These are exporter changes only; the schema is unchanged.
+  1. Records that are not yet available, and corrections that are not yet effective, are left out (the same rule the runtime uses).
+  2. Disputed events with a null value now count as disputed, not pending.
+  3. Freshness is the newest journal write (`available_at`). It is no longer the
+     historical date when a seeded lesson was learned: before this change the page
+     said "data as of 2026-10-23" for a journal written on 2026-10-26.
+  4. Recalls now come from the retrieval receipts, including recalls that found no lesson and recalls with no decision yet.
+  5. A decision counts as graded when it has an evaluation_ref or a verified
+     utility assessment from the other agent with a safe reference. The runtime
+     writes evaluation_ref as null and cannot rewrite a decision, so before this
+     change no real decision could ever have been graded.
+- Six new tests fail on the old exporter and pass now; 149 tests and the gate pass.
+- Utility/result: outcome `unknown`, evidence `replay`. Next: Agent 1 reviews the
+  privacy and data of this change; then one real decision from each agent.

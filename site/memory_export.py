@@ -65,7 +65,7 @@ def _mode_entry(m, github):
 def available(records, now):
     """Records the runtime could see at `now`: not yet available or not yet effective corrections are left out."""
     def ok(r):
-        at = _ts(r.get("available_at") or r.get("created_at") or r.get("occurred_at"))
+        at = _ts(r.get("available_at") or r.get("created_at") or r.get("occurred_at") or r.get("at"))
         eff = _ts(r.get("correction_effective_at")) if r.get("supersedes") else None
         return (at is None or at <= now) and (eff is None or eff <= now)
     return [r for r in records if ok(r)]
@@ -224,9 +224,10 @@ def build_export(mem, github, now=None, source_commit=None, demo=False):
         return env
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
     memories, feedback = available(_jsonl(mem / "memories.jsonl"), now), available(_jsonl(mem / "feedback.jsonl"), now)
-    decisions, modes = available(_jsonl(mem / "decisions.jsonl"), now), _jsonl(mem / "mode_history.jsonl")
+    decisions, modes = available(_jsonl(mem / "decisions.jsonl"), now), available(_jsonl(mem / "mode_history.jsonl"), now)
     receipts, utility = available(_jsonl(mem / "retrievals.jsonl"), now), available(_jsonl(mem / "utility.jsonl"), now)
     graded = evaluations(decisions, utility, github)
+    journal_modes = list(modes)
     mode = {"shadow": "SHADOW", "canary": "CANARY", "coupled": "COUPLED", "rolled_back": "ROLLED_BACK"}.get(
         str(cfg.get("reward_mode", "")).lower(), "UNKNOWN")
     if not modes:
@@ -249,10 +250,12 @@ def build_export(mem, github, now=None, source_commit=None, demo=False):
                          "at": h.get("verified_at") or h["occurred_at"]} for h in history[:-1]],
         })
     # Freshness is the newest journal write, not the historical date a seeded lesson was learned.
+    # Mode records come from the journal only; the fallback built from the config above is not data.
     stamps = [_ts(x) for x in [r.get("occurred_at") for r in feedback + decisions + receipts + utility]
-              + [m.get("available_at") or m.get("created_at") for m in memories] if x]
+              + [m.get("available_at") or m.get("created_at") for m in memories]
+              + [m.get("at") for m in journal_modes] if x]
     last = max(stamps) if stamps else None
-    has_data = bool(feedback or decisions or memories or receipts)
+    has_data = bool(feedback or decisions or memories or receipts or journal_modes)
     env.update({
         "data_status": "stale" if has_data and last and (now - last).days > STALE_AFTER_DAYS
         else ("available" if has_data else "empty"),

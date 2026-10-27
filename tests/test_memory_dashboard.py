@@ -188,6 +188,15 @@ class RuntimeJournalAdaptationTest(unittest.TestCase):
         self.assertEqual(crit["per_agent"]["observed"], {"agent1": 0, "agent2": 1})
         self.assertNotIn("/home/x", json.dumps(e))
 
+    def test_mode_only_journal_is_data_and_future_modes_wait(self):
+        mode = lambda at: {"at": at, "from": None, "to": "SHADOW", "influence": 0, "scope": "none",
+                           "rule_version": "1.0.0", "decided_by": ["owner"], "reason": "t", "evidence_refs": []}
+        e = export(modes=[mode("2026-10-21T08:00:00Z"), mode("2026-10-23T08:00:00Z")])
+        self.assertEqual((e["data_status"], e["last_success_at"]), ("available", "2026-10-21T08:00:00+00:00"))
+        self.assertEqual([m["at"] for m in e["mode_history"]], ["2026-10-21T08:00:00Z"])
+        e = export(modes=[mode("2026-10-23T08:00:00Z")])
+        self.assertEqual((e["data_status"], e["last_success_at"]), ("empty", None))
+
     def test_real_journals_on_main_export_without_inventing_activity(self):
         e = mx.build_export(ROOT / "lab/memory", GH)
         self.assertEqual(e["mode"], "SHADOW")

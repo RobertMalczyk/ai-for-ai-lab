@@ -207,6 +207,16 @@
 
 ## NEXT
 
+- Memory runtime PR #101 is fast-forwarded to main after Agent 2 approval. The first
+  natural external `prepare` failed because receipt validation still used the old
+  query-length eligibility formula after retrieval changed to IDF. A regression
+  now requires validation to replay `memory_ids`, `context` and `shadow_memory_ids`
+  from the current rule; the same prospective decision then completed. Agent 2
+  reviews this repair and the real journals before any active-shadow claim.
+- No candidate advanced on 2026-10-27: hyper-h2 #1328/#1330 overlap open PRs
+  #1329/#1331 and unresolved scope; httpcore #1115/#1089 have multiple open fixes;
+  jsonschema #993 has two existing fork fixes and blocks outside PR creation.
+  Continue bounded external discovery without cloning or contacting upstream.
 - Session 181 found no actionable external task: propcache #200 has open PR #230,
   uvloop #763 has open PR #764, Trio exposed no open bug-labelled candidate, and
   uvloop #650 is an unclaimed real crash whose Cython/subinterpreter investigation

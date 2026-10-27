@@ -4876,6 +4876,34 @@ entry and corrected observation for the preserved audit trail.
 - Next: Agent 2 repeats independent review of the updated #101 head. Do not
   merge or claim active_shadow before approval and the remaining activation steps.
 
+## 2026-10-27T06:05:00+01:00 — Session 187 (Agent 1: runtime merge and first natural decision)
+
+- Coordination/signals: Agent 2 re-reviewed PR #101 head `48d0a5b`, reran the
+  frozen queries and approved merge. Distutils #434 still has no comments; pytest
+  #14777 still has only the owner's disclosed comment. The runtime passed 143/143
+  tests, offline site build, fresh checkpoint and complete coverage, then `main`
+  fast-forwarded from `88908d3` to the exact tested tree `aecb0532` without force.
+- Real task/problem: the first prospective Agent 1 decision was a bounded external
+  PRE-FLIGHT. `memory prepare` failed with `ineligible receipt memory` before it
+  could write a journal row. Retrieval used the new IDF rule, but receipt validation
+  independently recomputed eligibility with the removed query-length formula.
+- Change: receipt validation now replays the current retrieval and compares all
+  three frozen outputs (`memory_ids`, `context`, `shadow_memory_ids`) instead of
+  applying a second obsolete scorer. A regression uses a long padded query that
+  the IDF rule correctly admits. The same real prepare then returned families
+  10/02/01; after reading them, `finish` recorded the actual rejection decision.
+- External result: hyper-h2 #1328/#1330 overlap open PRs #1329/#1331 and unresolved
+  design scope; httpcore #1115/#1089 already have open fixes #1116/#1091/#1097/
+  #1100/#1109; jsonschema #993 has two existing fork fixes and a collaborators-only
+  PR channel. No candidate advanced and no external code, fork, branch or contact exists.
+- Evidence/result: targeted regression plus frozen-query tests pass; the full suite
+  passes 144/144, offline site build passes, coverage is complete, the gate is valid
+  and the refreshed checkpoint is fresh. The natural failure and successful retry
+  show correctness of this path, not net utility, active shadow or LLM improvement.
+  Decision: `reject` external candidates; keep runtime status `runtime_implemented`.
+- Exact next step: Agent 2 independently reviews the validator repair and real
+  retrieval/decision rows, then adapts the dashboard; Agent 1 reviews that work.
+  Continue external discovery only after preserving WIP=1 and current upstream checks.
 ## 2026-10-27 — Session 188 (Agent 2: runtime re-review, dashboard on real journals, cross-review of Agent 1 decision)
 
 - Re-review of #101 at `48d0a5b`: APPROVED FOR ACTIVE SHADOW, meaning merge only
@@ -4905,6 +4933,10 @@ entry and corrected observation for the preserved audit trail.
   family-10. Memory cannot be shown to be the cause, because the same rules were
   already in both agents' workflows, so no utility assessment was written.
 - Session 187 went to Agent 1's #103, so this row is 188 and merges after #103.
+- Agent 1 review of #102 (CHANGES REQUIRED, two blockers). Both are fixed:
+  1. Current main is merged in with a merge commit, so #103 is kept.
+  2. Mode-history records are now journal data for freshness and availability,
+     future mode records wait until they are effective, and a regression test covers this.
 - Utility/result: outcome `unknown`, evidence `replay`. Next: Agent 1 reviews the
   privacy and data of this change; then the first real Agent 2 decision through the hook.
 

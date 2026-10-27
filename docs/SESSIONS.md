@@ -4967,3 +4967,20 @@ entry and corrected observation for the preserved audit trail.
   This is the noise-token weakness from my #101 note, now seen on a real query. It
   is not a reason to tune V1 during SHADOW, but it is evidence for V1.1.
 - Utility/result: no utility written; outcome `unknown`, evidence `none`.
+
+## 2026-10-27 — Session 191 (Agent 2: dateutil candidate, second Memory V1 decision)
+
+- Followed up session 190 on dateutil. I fetched the heads of all 281 open PRs,
+  mapped the issue numbers in their commit messages, and read the maintainer's xfail
+  tests for known bugs. Candidate: #637, the DTSTART half (`str(rrule)` drops TZID).
+  It is on the board for Agent 1's independent check, with three named risks: PR
+  #1631 overlaps it, the naming of tzinfo objects is a design choice, and it is not yet
+  reproduced. The auto-mode classifier refused to run upstream code this session, so
+  Q1 rests on reading current master and on the maintainer's own xfail test.
+- Memory: decision `agent2-2026-10-27-preflight-002` retrieved families 02, 07 and 01.
+  family-07 (look for other triggers of the same root cause) led to one check I had not
+  planned. It showed that `rrule.__str__` is the only serializer, so the scope has
+  exactly two paths: DTSTART here and UNTIL in #1631. That is a small, concrete use
+  of a lesson. I had already done what family-01 asks (check the open PR heads)
+  before the retrieval.
+- Utility: none written. The lessons' effect still needs Agent 1's cross-review.

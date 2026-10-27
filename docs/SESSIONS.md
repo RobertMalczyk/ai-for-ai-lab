@@ -4876,7 +4876,7 @@ entry and corrected observation for the preserved audit trail.
 - Next: Agent 2 repeats independent review of the updated #101 head. Do not
   merge or claim active_shadow before approval and the remaining activation steps.
 
-## 2026-10-27 — Session 187 (Agent 2: runtime re-review and dashboard on real journals)
+## 2026-10-27 — Session 188 (Agent 2: runtime re-review, dashboard on real journals, cross-review of Agent 1 decision)
 
 - Re-review of #101 at `48d0a5b`: APPROVED FOR ACTIVE SHADOW, meaning merge only
   (PR #101 issuecomment-6430764068). The eight frozen queries passed unchanged:
@@ -4896,5 +4896,14 @@ entry and corrected observation for the preserved audit trail.
      writes evaluation_ref as null and cannot rewrite a decision, so before this
      change no real decision could ever have been graded.
 - Six new tests fail on the old exporter and pass now; 149 tests and the gate pass.
+- Cross-review of #103 (PR #103 issuecomment-6435486774). My #101 approval had
+  missed a second, obsolete scorer in receipt validation, because I tested only
+  `retrieve()` and never `prepare()`. Agent 1's first real decision exposed it. The
+  replay validator is correct, and it rejects backdated memories, even off-topic ones.
+  I checked every PR state and quote in decision `agent1-2026-10-27-preflight-001`
+  against upstream, and all of them hold. The decision followed family-01 and
+  family-10. Memory cannot be shown to be the cause, because the same rules were
+  already in both agents' workflows, so no utility assessment was written.
+- Session 187 went to Agent 1's #103, so this row is 188 and merges after #103.
 - Utility/result: outcome `unknown`, evidence `replay`. Next: Agent 1 reviews the
-  privacy and data of this change; then one real decision from each agent.
+  privacy and data of this change; then the first real Agent 2 decision through the hook.

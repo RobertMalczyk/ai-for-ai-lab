@@ -153,6 +153,13 @@ class RuntimeTest(unittest.TestCase):
         self.assertEqual(len(Store(self.root).rows['decision']),1)
         with self.assertRaises(MemoryError): self.s.finish('d1','different','different')
 
+    def test_prepare_validates_with_the_current_idf_retrieval_rule(self):
+        self.s.append('memory', self.memory())
+        query = 'should this candidate reach build after regression control and exact upstream checks ' + ' '.join(f'unmatched{i}' for i in range(20))
+        receipt = self.prepare(query=query)
+        self.assertEqual(receipt['memory_ids'], ['m1'])
+        self.assertEqual(Store(self.root).rows['retrieval'], [receipt])
+
     def test_finish_without_retrieval_rejected(self):
         with self.assertRaises(MemoryError): self.s.finish('missing','x','y')
 

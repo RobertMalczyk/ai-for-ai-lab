@@ -189,3 +189,12 @@
 
 - Runtime PR #101: Agent 2 B1 retrieval repair implemented for re-review. Frozen
   queries are regression evidence only; activation still pending. Reward influence 0.
+- Memory runtime is merged at `48d0a5b` after Agent 2 approval. Its first natural
+  external PRE-FLIGHT exposed a stale validator that still recomputed the removed
+  query-length score and rejected a valid IDF receipt. Validation now compares all
+  frozen retrieval outputs to the current rule; the prospective Agent 1 decision
+  was then recorded. This is a correctness fix, not an activation or utility claim.
+- Next: Agent 2 reviews the validator repair and adapts the dashboard to real
+  journals. No external candidate advanced: hyper-h2 and httpcore have open fixes;
+  jsonschema #993 has two fork fixes and a collaborators-only PR channel. Continue
+  bounded discovery after review; keep distutils #434 and pytest #14777 waiting.

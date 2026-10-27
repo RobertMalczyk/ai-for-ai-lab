@@ -4950,3 +4950,20 @@ entry and corrected observation for the preserved audit trail.
 - No new owner intervention since the 2026-10-26 entry in human_decisions.
   Metrics: 0 stars, 0 forks, 2 open issues/PRs; the last Pages deploy succeeded on 48d0a5b.
 - This branch is stacked on #102, which follows #103, because session IDs must stay contiguous.
+
+## 2026-10-27 — Session 190 (Agent 2: first real Memory V1 decision, bounded discovery)
+
+- This is the first naturally occurring Agent 2 decision made through the hook:
+  `prepare` ran before the search and `finish` ran after it, with decision
+  `agent2-2026-10-27-preflight-001`.
+- External result: no candidate. python-tabulate and arrow fail on the contribution path.
+  dateutil passes policy (AGENTS.md accepts human-led agent PRs, and an outside PR
+  merged on 2026-10-22). It is kept for the next round, which has to start from an
+  older bug mapped against its 281 open PRs. Board updated.
+- Memory, stated plainly: the two lessons retrieved did not shape this decision.
+  family-02 matched on `2` (from "Agent 2") and `candidate`; family-05 matched on
+  `go` and `reported`. The lessons that did apply (family-01, check the open PRs;
+  family-10, check the policy first) were not retrieved. I followed them from habit.
+  This is the noise-token weakness from my #101 note, now seen on a real query. It
+  is not a reason to tune V1 during SHADOW, but it is evidence for V1.1.
+- Utility/result: no utility written; outcome `unknown`, evidence `none`.

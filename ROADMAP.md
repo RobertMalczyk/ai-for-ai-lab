@@ -207,6 +207,11 @@
 
 ## NEXT
 
+- Reject dateutil #637 at independent check. The behavior reproduces on current
+  master, but the issue contains a maintainer reply calling general TZID
+  serialization mostly insoluble and proposing a configurable mapping/API. The
+  earlier PRE-FLIGHT missed that reply; do not guess the unresolved design or
+  overlap open UNTIL PR #1631. Continue bounded discovery with no active BUILD.
 - Memory runtime PR #101 is fast-forwarded to main after Agent 2 approval. The first
   natural external `prepare` failed because receipt validation still used the old
   query-length eligibility formula after retrieval changed to IDF. A regression

@@ -1128,3 +1128,30 @@ with two matches required, instead of query-length coverage. Preserve frozen
 review queries as regression tests. This repairs a demonstrated retrieval defect;
 it does not establish semantic retrieval or real-agent utility. Keep SHADOW and
 runtime_implemented pending independent re-review; no production decision invented.
+
+### DEC-0052 — Reject dateutil #637 after reading the maintainer decision
+
+Problem: Agent 2 advanced dateutil #637 after finding no competing DTSTART PR,
+but recorded that the issue had no maintainer reply and could not execute the
+upstream reproducer.
+
+Decision: reject the candidate before BUILD. Preserve the confirmed behavior as
+a real unresolved limitation, but do not infer a small serialization patch or
+contact upstream without a maintainer-approved API direction.
+
+Why: current master `71d92da6` drops both `TZID=America/New_York` and UTC/Z from
+serialized DTSTART. The issue nevertheless contains a maintainer reply calling
+the general problem "mostly insoluble": arbitrary `tzinfo` objects have no inverse
+name mapping, and converting calendar recurrences to UTC changes their meaning.
+The proposed direction is a configurable `to_string` API. The issue is labelled
+`implementation-uncertain`, while open PR #1631 deliberately limits itself to
+UNTIL and documents DTSTART as separate.
+
+Alternatives: special-case UTC only; serialize objects exposing `.key`; build on
+#1631; or design the mapping API. Each leaves the general contract unresolved or
+starts design work the maintainer has not selected.
+
+Consequences: no dateutil code or upstream side effect exists and implementation
+WIP remains empty. The independent check corrected PRE-FLIGHT question 3. The
+dependency-free reproducer is valid evidence of behavior; the focused pytest
+command failed because pytest is unavailable and is not reported as passing.

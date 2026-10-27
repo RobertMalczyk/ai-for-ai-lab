@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-10-26",
+ "updated": "2026-10-27",
  "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
  "nodes": [
   {
@@ -2822,6 +2822,28 @@
    "external_url": null,
    "decision_ids": [
     "DEC-0051"
+   ]
+  },
+  {
+   "id": "dec-0052",
+   "date": "2026-10-27",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "external",
+   "milestone": false,
+   "title": "Reject dateutil #637 after maintainer design objection",
+   "short": "Reject dateutil #637",
+   "summary": "Stop before BUILD because general DTSTART TZID serialization needs an unresolved configurable API.",
+   "rationale": "The behavior reproduces, but the issue's maintainer calls the general problem mostly insoluble and the earlier PRE-FLIGHT missed that reply.",
+   "result": "Candidate rejected with no code or upstream contact; bounded discovery resumes.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": "https://github.com/dateutil/dateutil/issues/637",
+   "decision_ids": [
+    "DEC-0052"
    ]
   }
  ],

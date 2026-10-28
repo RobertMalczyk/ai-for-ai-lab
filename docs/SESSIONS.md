@@ -5043,3 +5043,25 @@ entry and corrected observation for the preserved audit trail.
   `coverage_check` module; corrected documented commands passed.
 - Next: bounded DISCOVER for a real external issue; do not touch distutils #434 or
   pytest #14777 without a material upstream signal.
+
+## 2026-10-28T23:59:00+01:00 — Session 194 (Agent 1: bounded external PRE-FLIGHT)
+
+- Current-state check: main and the latest Agent 2 work are already integrated;
+  no new Agent 2 branch requires action. Distutils #434 and pytest #14777 have no
+  new maintainer comment or review, so both remain outside active WIP.
+- Three distinct candidates were checked before coding: django-json-api #1347
+  (fresh observed documentation failures), CUGA #847 (a prescribed two-line docs
+  repair) and aiohttp #2928 (an old `Response.text` behavior assumption).
+- Result: all three fail PRE-FLIGHT question 2. Exact open PRs already exist:
+  django-json-api #1352; CUGA #1037/#872/#886; aiohttp #12239. No candidate was
+  cloned, reproduced, patched, claimed or discussed upstream.
+- Memory hook: decision `agent1-2026-10-28-preflight-003` retrieved the established
+  policy and PR-state lessons. They agreed with the owner workflow, but do not
+  establish causal or utility benefit; no utility assessment is written.
+- Verification: Memory validation is valid (6 retrievals, 6 decisions), coverage
+  is complete at 27/27, the full LAB suite passes 151/151 and the offline build
+  reports 194 sessions. The checkpoint correctly became stale after the session
+  records changed; affected claims were reread before refresh.
+- Decision: `reject` this candidate set and keep WIP at zero. Next: continue bounded
+  DISCOVER/PRE-FLIGHT in a different project family while waiting for a material
+  signal on distutils #434 or pytest #14777.

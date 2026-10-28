@@ -206,6 +206,9 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- Continue bounded external discovery after django-json-api #1347, CUGA #847 and
+  aiohttp #2928 all failed PRE-FLIGHT question 2 on exact open fix PRs. Do not
+  clone or reproduce those candidates unless their competing-work state changes.
 
 - Dateutil #637 is rejected at independent check. The behavior reproduces on
   current master, but the issue contains a maintainer reply calling general TZID

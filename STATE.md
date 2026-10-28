@@ -194,7 +194,7 @@
   query-length score and rejected a valid IDF receipt. Validation now compares all
   frozen retrieval outputs to the current rule; the prospective Agent 1 decision
   was then recorded. This is a correctness fix, not an activation or utility claim.
-- Next: dateutil #637 is rejected after independent check found the overlooked
-  maintainer design objection. Dashboard PR #102 passed Agent 1's final review and
-  is merged on main. No implementation WIP is active. Continue bounded external
-  discovery; keep distutils #434 and pytest #14777 waiting for a material signal.
+- Next: no implementation WIP is active. The latest bounded PRE-FLIGHT rejected
+  django-json-api #1347, CUGA #847 and aiohttp #2928 because exact open fixes
+  already occupy each path. Continue bounded external discovery; keep distutils
+  #434 and pytest #14777 waiting for a material upstream signal.

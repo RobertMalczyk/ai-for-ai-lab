@@ -342,7 +342,7 @@
   },
   {
     "id": "external-oss-contribution",
-    "text": "The owner-directed external workflow submitted the reviewed distutils contribution; sqlparse, dinnerbell and inflect were rejected; Agent 2's discovery on 2026-10-27 advanced dateutil #637 (DTSTART half) to Agent 1's independent check, unreproduced and with named risks.",
+    "text": "The owner-directed external workflow submitted the reviewed distutils contribution; sqlparse, dinnerbell and inflect were rejected; dateutil #637 reproduced but was rejected at independent check because PRE-FLIGHT missed the maintainer's unresolved API-design objection.",
     "evidence": [
       "lab/tasks/EXTERNAL.md",
       "lab/observations/2026-10-12-distutils-433-build.json",

@@ -4990,3 +4990,56 @@ entry and corrected observation for the preserved audit trail.
   of a lesson. I had already done what family-01 asks (check the open PR heads)
   before the retrieval.
 - Utility: none written. The lessons' effect still needs Agent 1's cross-review.
+
+## 2026-10-27T23:58:00+01:00 — Session 192 (Agent 1: dateutil #637 independent check)
+
+- Gate/current work: owner-directed external work overrides the gate's parked
+  family. Agent 2 refreshed PR #102's checkpoint and assigned dateutil #637 for
+  independent check; external work took priority over the remaining dashboard review.
+- Result: REJECT before BUILD. On current dateutil master `71d92da6`, direct source
+  execution reproduced the loss for both `TZID=America/New_York` and UTC/Z. No
+  direct open PR fixes DTSTART; #1631 explicitly limits itself to aware UNTIL.
+- Corrected peer evidence: #637 does have a maintainer reply. It calls the general
+  problem mostly insoluble because arbitrary `tzinfo` objects cannot be mapped back
+  to a TZID and suggests a configurable `to_string` API. The issue is labelled
+  `implementation-uncertain`. This fails the small agreed-design contribution path.
+- Tests/evidence: the dependency-free reproducer passed and showed the reported
+  loss. The focused upstream pytest command failed before collection because pytest
+  is not installed; no dependency was installed and no pass is claimed. A first
+  Memory validation invocation put `--root` after the subcommand and failed on the
+  CLI contract; the corrected invocation passed. The LAB suite passes 151/151;
+  offline build, Memory validation, gate and coverage pass.
+  The refreshed checkpoint is verified fresh before publication.
+- Memory: families 10/02/01 repeated the established policy and PR-state checks;
+  live issue comments supplied the decisive evidence. No utility assessment is
+  written and no causal Memory claim is made.
+- External effects: no dateutil code, fork, branch, comment or maintainer contact.
+  Distutils #434 and pytest #14777 have no material new signal.
+- Decision/next: `reject` dateutil #637 and resume bounded DISCOVER elsewhere.
+  Final review of the refreshed dashboard PR #102 remains pending behind external work.
+
+## 2026-10-28T18:04:00+01:00 — Session 193 (Agent 1: final review and continuity integration)
+
+- Current-state check: main contains merged PRs #102, #104 and #105. Agent 2's
+  sessions 190–191 are preserved. Distutils #434 and pytest #14777 have no new
+  maintainer comment, review, CI action or other material signal.
+- Final review: exact PR #102 head `44d8942` was approved after 151/151 LAB tests,
+  29/29 dashboard tests, fresh 23-claim checkpoint, complete 27/27 coverage and
+  privacy/future-record checks. Its stale description was corrected before merge;
+  #102 is now merged as `d63c845`.
+- Continuity repair: integrated Agent 1's unmerged session 192 dateutil rejection
+  and session 193 final-review journals on top of current main. Append conflicts in
+  the two Memory journals retained Agent 2 sessions 190–191 and both Agent 1 rows.
+  Obsolete or patch-equivalent branches were not merged.
+- Outcome: no new external candidate and no upstream write. This is repository
+  continuity, not evidence of Memory or agent utility. Decision remains `reject`
+  for dateutil #637; #102 remains `approved/merged`.
+- Verification: 151/151 tests pass; offline site build reports 193 sessions;
+  Memory validation is valid (5 retrievals, 5 decisions); gate advances to 194;
+  coverage is complete at 27/27. Checkpoint correctly became stale after the
+  continuity edits and is refreshed only after reviewing the affected claims.
+  Three first attempts failed because they used a nonexistent `scripts/build_site.py`,
+  placed Memory `--root` after the subcommand, and named a nonexistent
+  `coverage_check` module; corrected documented commands passed.
+- Next: bounded DISCOVER for a real external issue; do not touch distutils #434 or
+  pytest #14777 without a material upstream signal.

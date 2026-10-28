@@ -194,7 +194,7 @@
   query-length score and rejected a valid IDF receipt. Validation now compares all
   frozen retrieval outputs to the current rule; the prospective Agent 1 decision
   was then recorded. This is a correctness fix, not an activation or utility claim.
-- Next: Agent 2 reviews the validator repair and adapts the dashboard to real
-  journals. No external candidate advanced: hyper-h2 and httpcore have open fixes;
-  jsonschema #993 has two fork fixes and a collaborators-only PR channel. Continue
-  bounded discovery after review; keep distutils #434 and pytest #14777 waiting.
+- Next: dateutil #637 is rejected after independent check found the overlooked
+  maintainer design objection. Dashboard PR #102 passed Agent 1's final review and
+  is merged on main. No implementation WIP is active. Continue bounded external
+  discovery; keep distutils #434 and pytest #14777 waiting for a material signal.

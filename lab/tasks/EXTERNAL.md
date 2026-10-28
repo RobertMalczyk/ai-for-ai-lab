@@ -99,34 +99,20 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   - Waste: several sessions of work before the existing PR #14777 was found. This is the baseline the
     PRE-FLIGHT step exists to avoid.
 
-## Waiting on Agent 1's INDEPENDENT CHECK
+## Rejected at independent check
 
-- **dateutil #637, DTSTART half: `str(rrule)` drops the DTSTART time zone** (Agent 2, 2026-10-27,
-  Memory V1 decision `agent2-2026-10-27-preflight-002`). Reported in 2018 by a real
-  user (an AWX maintainer). `rrulestr("DTSTART;TZID=America/New_York:...")` prints back as
-  a bare `DTSTART:...`, so the rule does not round-trip.
-  1. Q1, the bug still exists: by reading current master (`src/dateutil/rrule.py` near
-     line 727 on the 2026-10-25 head), `__str__` always writes `DTSTART:%Y%m%dT%H%M%S`
-     with no TZID. The xfail test `test_generated_aware_dtstart_rrulestr` cites #637.
-     **Not run:** the auto-mode classifier blocked executing upstream code this session,
-     so the reproduction is still owed.
-  2. Q2, no open PR fixes it: I fetched the heads of all 281 open PRs and grepped their
-     commit messages and `rrule.py` diffs. Open PR #1631 fixes only the UNTIL half
-     (aware UNTIL written as UTC `Z`). It edits the same method and adds a docstring
-     line saying an aware DTSTART "is not serialized". No open PR serializes DTSTART.
-     PR bodies were not searched.
-  3. Q3, not already solved or rejected: #637 shows no maintainer reply and no linked PR.
-  4. Q4, policy: dateutil's `AGENTS.md` (added 2026-10-23) gives rules for agents that work
-     for a person: search all PRs first, include a failing test, a towncrier fragment and
-     an AUTHORS entry. No AI ban.
-  5. Q5, contribution path: the maintainer is active (dozens of commits from 2026-10-22
-     to 10-25) and merged outside PR #1600 on 2026-10-22, but 281 PRs are open.
-  - **Risks for the check:** this is partly a design choice (which tzinfo objects have a
-    TZID name: `ZoneInfo.key`, dateutil `tz.gettz(...).key`, UTC as `Z`, fixed offsets
-    none?); the fix overlaps #1631 and would have to build on it or wait for it; it is
-    still unreproduced. From the family-07 lesson I checked for other paths with the
-    same cause: `rrule.__str__` is the only serializer (`rruleset` has none), so DTSTART
-    and UNTIL are the only two paths.
+- **dateutil #637, DTSTART half: `str(rrule)` drops the DTSTART time zone — REJECTED.**
+  Agent 1 reproduced both the `TZID=America/New_York` and UTC/Z losses on current
+  master `71d92da6`; the existing xfail also cites #637. No direct open PR fixes
+  DTSTART, while #1631 deliberately fixes only UNTIL. However, PRE-FLIGHT question
+  3 was recorded incorrectly: #637 has a maintainer reply calling general TZID
+  serialization "mostly insoluble" because arbitrary `tzinfo` objects have no
+  inverse name mapping. The suggested direction is a new configurable `to_string`
+  API, not the small inferred patch. The issue is labelled `implementation-uncertain`.
+  Therefore BUILD would guess an unresolved API design and overlap #1631's method.
+  No code, fork, branch, comment or other upstream contact was created. The focused
+  upstream pytest command could not run because pytest is absent; the dependency-free
+  source reproducer did run and produced the reported loss.
 
 ## No active implementation task
 

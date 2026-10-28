@@ -25,13 +25,13 @@ def ev(i, agent="agent1", task="T1", key="k1", cat="new_finding", val=0.2, statu
             "session_id": sess, "supersedes": sup}
 
 
-def export(feedback=(), memories=(), decisions=(), cfg=CFG, now=NOW, modes=()):
+def export(feedback=(), memories=(), decisions=(), cfg=CFG, now=NOW, modes=(), receipts=(), utility=()):
     with tempfile.TemporaryDirectory() as d:
         d = Path(d)
         if cfg is not None:
             (d / "config.v1.json").write_text(json.dumps(cfg))
         for name, rows in (("feedback", feedback), ("memories", memories), ("decisions", decisions),
-                           ("mode_history", modes)):
+                           ("mode_history", modes), ("retrievals", receipts), ("utility", utility)):
             if rows:
                 (d / f"{name}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
         return mx.build_export(d, GH, now=now)
@@ -132,6 +132,78 @@ class MemoryPageBuildTest(unittest.TestCase):
         self.assertFalse(set(e["id"] for e in demo.get("events", [])) & set(e["id"] for e in real.get("events", [])))
         for needle in ("/mnt/project-files", "/home/claude", "EQUILIBRIUM_TOKEN", "pilot-log"):
             self.assertNotIn(needle, text)
+
+
+def dec(i, agent="agent2", mids=("m1",), at="2026-10-21T12:00:00Z", ref=None):
+    return {"decision_id": i, "agent": agent, "task_id": "T-" + i, "task_type": "preflight", "session_id": "s1",
+            "occurred_at": at, "rule_version": "1.0.0", "memory_ids": list(mids), "suggested_action": "a",
+            "actual_action": "a", "shadow_memory_ids": list(mids), "alternative_outcome": "unobserved",
+            "evaluation_ref": ref, "cost": {"value": None, "unit": None, "measured": False}, "map_node_ids": []}
+
+
+def util(i, did, verifier="agent1", status="verified", agent="agent2", refs=("lab/tasks/EXTERNAL.md",)):
+    return {"assessment_id": i, "agent": agent, "memory_id": "m1", "decision_id": did, "context": "preflight",
+            "utility": 1, "verifier": verifier, "source_refs": list(refs), "occurred_at": "2026-10-21T13:00:00Z",
+            "status": status, "supersedes": None}
+
+
+class RuntimeJournalAdaptationTest(unittest.TestCase):
+    """Agent 2's adaptation to the merged runtime (#101): the cases Agent 1 listed in MEMORY_RUNTIME_V1.md."""
+
+    def test_disputed_with_null_value_is_disputed_not_pending(self):
+        a = export([ev("a", status="disputed", val=None)])["agents"]["agent1"]
+        self.assertEqual((a["disputed"], a["pending"]), (1, 0))
+
+    def test_records_not_yet_available_or_effective_are_left_out(self):
+        mem = lambda i, st, sup=None, avail="2026-10-20T00:00:00Z", eff=None: {
+            "id": i, "visibility": "public", "status": st, "supersedes": sup, "available_at": avail,
+            "created_at": "2026-10-01T00:00:00Z", "correction_effective_at": eff}
+        e = export(memories=[mem("m1", "active"), mem("m2", "active", avail="2026-10-23T00:00:00Z"),
+                             mem("m1r", "retracted", "m1", eff="2026-10-23T00:00:00Z")])
+        self.assertEqual(e["memories"]["public"]["active"], 1)
+        self.assertEqual(e["memories"]["public"]["retracted"], 0)
+        self.assertEqual(e["last_success_at"], "2026-10-20T00:00:00+00:00")
+
+    def test_freshness_is_the_journal_write_not_the_historical_lesson_date(self):
+        m = {"id": "m1", "visibility": "public", "status": "active", "supersedes": None, "historical_seed": True,
+             "created_at": "2026-10-04T00:00:00Z", "available_at": "2026-10-21T00:00:00Z"}
+        e = export(memories=[m])
+        self.assertEqual((e["last_success_at"], e["data_status"]), ("2026-10-21T00:00:00+00:00", "available"))
+
+    def test_zero_result_recall_and_recall_without_decision_are_shown(self):
+        r = lambda i, mids: {"decision_id": i, "occurred_at": "2026-10-21T11:00:00Z", "memory_ids": mids}
+        e = export(decisions=[dec("d1", mids=())], receipts=[r("d1", []), r("d2", ["m1"])])
+        self.assertEqual(e["memories"]["retrievals"], 2)
+        self.assertEqual((e["shadow"]["prepared"], e["shadow"]["no_lesson_found"], e["shadow"]["awaiting_decision"]),
+                         (2, 1, 1))
+
+    def test_decision_is_graded_only_by_an_independent_verified_assessment(self):
+        decisions = [dec("d1"), dec("d2"), dec("d3"), dec("d4")]
+        e = export(decisions=decisions, utility=[util("u1", "d1"), util("u2", "d2", verifier="agent2"),
+                                                 util("u3", "d3", status="pending"),
+                                                 util("u4", "d4", refs=("/home/x/notes.md",))])
+        self.assertEqual(e["shadow"]["evaluated"], 1)
+        self.assertEqual([r["decision_id"] for r in e["memories"]["recent_applications"]], ["d1"])
+        crit = {c["id"]: c for c in e["readiness"]["criteria"]}
+        self.assertEqual(crit["per_agent"]["observed"], {"agent1": 0, "agent2": 1})
+        self.assertNotIn("/home/x", json.dumps(e))
+
+    def test_mode_only_journal_is_data_and_future_modes_wait(self):
+        mode = lambda at: {"at": at, "from": None, "to": "SHADOW", "influence": 0, "scope": "none",
+                           "rule_version": "1.0.0", "decided_by": ["owner"], "reason": "t", "evidence_refs": []}
+        e = export(modes=[mode("2026-10-21T08:00:00Z"), mode("2026-10-23T08:00:00Z")])
+        self.assertEqual((e["data_status"], e["last_success_at"]), ("available", "2026-10-21T08:00:00+00:00"))
+        self.assertEqual([m["at"] for m in e["mode_history"]], ["2026-10-21T08:00:00Z"])
+        e = export(modes=[mode("2026-10-23T08:00:00Z")])
+        self.assertEqual((e["data_status"], e["last_success_at"]), ("empty", None))
+
+    def test_real_journals_on_main_export_without_inventing_activity(self):
+        e = mx.build_export(ROOT / "lab/memory", GH)
+        self.assertEqual(e["mode"], "SHADOW")
+        self.assertEqual(e["reward_influence"], 0)
+        self.assertGreater(e["memories"]["public"]["active"], 0)
+        self.assertEqual(e["memories"]["retrievals"], len(mx._jsonl(ROOT / "lab/memory/retrievals.jsonl")))
+        self.assertGreaterEqual(e["last_success_at"], "2026-10-26")
 
 
 class ExportSchemaConformanceTest(unittest.TestCase):

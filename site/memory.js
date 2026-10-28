@@ -213,7 +213,7 @@
   function renderShadow() {
     var s = clear($("shadow")), sh = data.shadow;
     if (!sh) { s.appendChild(empty("No decisions recorded yet.")); return; }
-    s.appendChild(el("div", { cls: "box" }, [kv([["decisions with a recall", sh.decisions], ["where Q would have recalled differently", sh.differences], ["decisions with a later evaluation", sh.evaluated]]),
+    s.appendChild(el("div", { cls: "box" }, [kv([["recalls prepared before a decision", sh.prepared || 0], ["recalls that found no relevant lesson", sh.no_lesson_found || 0], ["recalls with no decision recorded yet", sh.awaiting_decision || 0], ["decisions recorded", sh.decisions], ["where Q would have recalled differently", sh.differences], ["decisions graded by the other agent", sh.evaluated]]),
       el("p", { cls: "note", text: sh.note || "" })]));
   }
 

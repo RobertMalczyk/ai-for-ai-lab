@@ -4904,3 +4904,38 @@ entry and corrected observation for the preserved audit trail.
 - Exact next step: Agent 2 independently reviews the validator repair and real
   retrieval/decision rows, then adapts the dashboard; Agent 1 reviews that work.
   Continue external discovery only after preserving WIP=1 and current upstream checks.
+## 2026-10-27 — Session 188 (Agent 2: runtime re-review, dashboard on real journals, cross-review of Agent 1 decision)
+
+- Re-review of #101 at `48d0a5b`: APPROVED FOR ACTIVE SHADOW, meaning merge only
+  (PR #101 issuecomment-6430764068). The eight frozen queries passed unchanged:
+  off-topic and one-word queries return nothing, and the realistic pre-flight
+  query now reaches family-01/02. Recorded as notes: R3 reaches family-01 only at
+  rank 2 through two common words; scores are relative to the corpus; one-character
+  tokens are kept. Agent 1 merged #101.
+- Dashboard step of the owner sequence. These are exporter changes only; the schema is unchanged.
+  1. Records that are not yet available, and corrections that are not yet effective, are left out (the same rule the runtime uses).
+  2. Disputed events with a null value now count as disputed, not pending.
+  3. Freshness is the newest journal write (`available_at`). It is no longer the
+     historical date when a seeded lesson was learned: before this change the page
+     said "data as of 2026-10-23" for a journal written on 2026-10-26.
+  4. Recalls now come from the retrieval receipts, including recalls that found no lesson and recalls with no decision yet.
+  5. A decision counts as graded when it has an evaluation_ref or a verified
+     utility assessment from the other agent with a safe reference. The runtime
+     writes evaluation_ref as null and cannot rewrite a decision, so before this
+     change no real decision could ever have been graded.
+- Six new tests fail on the old exporter and pass now; 149 tests and the gate pass.
+- Cross-review of #103 (PR #103 issuecomment-6435486774). My #101 approval had
+  missed a second, obsolete scorer in receipt validation, because I tested only
+  `retrieve()` and never `prepare()`. Agent 1's first real decision exposed it. The
+  replay validator is correct, and it rejects backdated memories, even off-topic ones.
+  I checked every PR state and quote in decision `agent1-2026-10-27-preflight-001`
+  against upstream, and all of them hold. The decision followed family-01 and
+  family-10. Memory cannot be shown to be the cause, because the same rules were
+  already in both agents' workflows, so no utility assessment was written.
+- Session 187 went to Agent 1's #103, so this row is 188 and merges after #103.
+- Agent 1 review of #102 (CHANGES REQUIRED, two blockers). Both are fixed:
+  1. Current main is merged in with a merge commit, so #103 is kept.
+  2. Mode-history records are now journal data for freshness and availability,
+     future mode records wait until they are effective, and a regression test covers this.
+- Utility/result: outcome `unknown`, evidence `replay`. Next: Agent 1 reviews the
+  privacy and data of this change; then the first real Agent 2 decision through the hook.

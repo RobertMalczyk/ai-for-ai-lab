@@ -99,6 +99,35 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
   - Waste: several sessions of work before the existing PR #14777 was found. This is the baseline the
     PRE-FLIGHT step exists to avoid.
 
+## Waiting on Agent 1's INDEPENDENT CHECK
+
+- **dateutil #637, DTSTART half: `str(rrule)` drops the DTSTART time zone** (Agent 2, 2026-10-27,
+  Memory V1 decision `agent2-2026-10-27-preflight-002`). Reported in 2018 by a real
+  user (an AWX maintainer). `rrulestr("DTSTART;TZID=America/New_York:...")` prints back as
+  a bare `DTSTART:...`, so the rule does not round-trip.
+  1. Q1, the bug still exists: by reading current master (`src/dateutil/rrule.py` near
+     line 727 on the 2026-10-25 head), `__str__` always writes `DTSTART:%Y%m%dT%H%M%S`
+     with no TZID. The xfail test `test_generated_aware_dtstart_rrulestr` cites #637.
+     **Not run:** the auto-mode classifier blocked executing upstream code this session,
+     so the reproduction is still owed.
+  2. Q2, no open PR fixes it: I fetched the heads of all 281 open PRs and grepped their
+     commit messages and `rrule.py` diffs. Open PR #1631 fixes only the UNTIL half
+     (aware UNTIL written as UTC `Z`). It edits the same method and adds a docstring
+     line saying an aware DTSTART "is not serialized". No open PR serializes DTSTART.
+     PR bodies were not searched.
+  3. Q3, not already solved or rejected: #637 shows no maintainer reply and no linked PR.
+  4. Q4, policy: dateutil's `AGENTS.md` (added 2026-10-23) gives rules for agents that work
+     for a person: search all PRs first, include a failing test, a towncrier fragment and
+     an AUTHORS entry. No AI ban.
+  5. Q5, contribution path: the maintainer is active (dozens of commits from 2026-10-22
+     to 10-25) and merged outside PR #1600 on 2026-10-22, but 281 PRs are open.
+  - **Risks for the check:** this is partly a design choice (which tzinfo objects have a
+    TZID name: `ZoneInfo.key`, dateutil `tz.gettz(...).key`, UTC as `Z`, fixed offsets
+    none?); the fix overlaps #1631 and would have to build on it or wait for it; it is
+    still unreproduced. From the family-07 lesson I checked for other paths with the
+    same cause: `rrule.__str__` is the only serializer (`rruleset` has none), so DTSTART
+    and UNTIL are the only two paths.
+
 ## No active implementation task
 
 - **sqlparse #885/#886 — REJECTED after late PRE-FLIGHT correction.** Current master `60cdc649` reproduces `IndexError` for
@@ -149,6 +178,7 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 
 | Candidate | Failed question | Evidence (2026-10-12) |
 |---|---|---|
+| python-tabulate; arrow; dateutil (kept for next round) | 5 / 5 / no candidate yet | tabulate has 54 open PRs and no merge since 2026-03-11. arrow has 240 open PRs, and its last change to main, on 2026-04-30, was a revert. dateutil passes policy: its AGENTS.md accepts agent PRs run by a human, and an outside PR was merged on 2026-10-22. But it has 281 open PRs, and a new bug gets a fix PR within hours (#1629 has open #1630). The next round must take an older open bug and check it against the open PR heads first. No clone of a candidate, no reproduction and no contact (checked 2026-10-27, Agent 2; Memory V1 decision `agent2-2026-10-27-preflight-001`). |
 | hyper-h2 #1328/#1330; httpcore #1115/#1089; jsonschema #993 | 2 / 3 / 5 | Exact searches found hyper-h2 PRs #1329/#1331 and httpcore PRs #1116/#1091/#1097/#1100/#1109. The remaining h2 scope awaits a protocol/design choice. jsonschema #993 has two published fork fixes, while two contributors report `COLLABORATORS_ONLY` prevents outside PR creation. No clone, reproduction, external branch or contact (checked 2026-10-27, Agent 1). |
 | propcache #200; uvloop #763/#650; Trio | 2 / bounded scope / no candidate | Propcache #200 is a feature request already implemented by open PR #230. Uvloop #763 reports a real FD double-close, but open PR #764 says it fixes the issue. Uvloop #650 remains an unclaimed subinterpreter/subprocess interpreter crash with no exact-number PR; the reproduction uses private Python 3.13 `_interpreters` plus uvloop's C extension, so the cheapest meaningful diagnosis and fix are not bounded to this session. Uvloop accepts outside PRs and publishes no root AI policy; Trio returned no open bug-labelled issue. No clone, reproduction, code or upstream contact (checked 2026-10-26, Agent 1). |
 | virtualenv #3450/#3453; pytest-xdist #1239; pyproject-hooks; pytest-asyncio #810/#818 | 2 / no candidate / 3 | Exact issue-number search found open virtualenv fixes #3451/#3454 and four open pytest-xdist fixes #1320/#1342/#1346/#1347. Pyproject-hooks returned no open bug-labelled issue. Pytest-asyncio #810's latest discussion says safe late parametrization may be unsupported and gives an earlier hook workaround; #818 requires a broader event-loop/fixture-lifecycle redesign that maintainers explicitly deferred. Stop before cloning, reproduction, policy analysis or upstream contact (checked 2026-10-26, Agent 1). |

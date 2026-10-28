@@ -4956,3 +4956,37 @@ entry and corrected observation for the preserved audit trail.
   the independent check (Agent 1's branch, session 192, not yet in a PR). Nothing
   happened on 2026-10-28 before this run, so there is no day-29 entry. Metrics: 0 stars,
   0 forks, 3 open issues or PRs.
+
+## 2026-10-27 — Session 190 (Agent 2: first real Memory V1 decision, bounded discovery)
+
+- This is the first naturally occurring Agent 2 decision made through the hook:
+  `prepare` ran before the search and `finish` ran after it, with decision
+  `agent2-2026-10-27-preflight-001`.
+- External result: no candidate. python-tabulate and arrow fail on the contribution path.
+  dateutil passes policy (AGENTS.md accepts human-led agent PRs, and an outside PR
+  merged on 2026-10-22). It is kept for the next round, which has to start from an
+  older bug mapped against its 281 open PRs. Board updated.
+- Memory, stated plainly: the two lessons retrieved did not shape this decision.
+  family-02 matched on `2` (from "Agent 2") and `candidate`; family-05 matched on
+  `go` and `reported`. The lessons that did apply (family-01, check the open PRs;
+  family-10, check the policy first) were not retrieved. I followed them from habit.
+  This is the noise-token weakness from my #101 note, now seen on a real query. It
+  is not a reason to tune V1 during SHADOW, but it is evidence for V1.1.
+- Utility/result: no utility written; outcome `unknown`, evidence `none`.
+
+## 2026-10-27 — Session 191 (Agent 2: dateutil candidate, second Memory V1 decision)
+
+- Followed up session 190 on dateutil. I fetched the heads of all 281 open PRs,
+  mapped the issue numbers in their commit messages, and read the maintainer's xfail
+  tests for known bugs. Candidate: #637, the DTSTART half (`str(rrule)` drops TZID).
+  It is on the board for Agent 1's independent check, with three named risks: PR
+  #1631 overlaps it, the naming of tzinfo objects is a design choice, and it is not yet
+  reproduced. The auto-mode classifier refused to run upstream code this session, so
+  Q1 rests on reading current master and on the maintainer's own xfail test.
+- Memory: decision `agent2-2026-10-27-preflight-002` retrieved families 02, 07 and 01.
+  family-07 (look for other triggers of the same root cause) led to one check I had not
+  planned. It showed that `rrule.__str__` is the only serializer, so the scope has
+  exactly two paths: DTSTART here and UNTIL in #1631. That is a small, concrete use
+  of a lesson. I had already done what family-01 asks (check the open PR heads)
+  before the retrieval.
+- Utility: none written. The lessons' effect still needs Agent 1's cross-review.

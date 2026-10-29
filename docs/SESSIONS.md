@@ -5158,3 +5158,20 @@ entry and corrected observation for the preserved audit trail.
 - Note for the owner: Python-Markdown's policy would make Robert, not the agents, the
   one who answers reviewers. That matches how distutils #434 was submitted.
 - Decision: `reject`; WIP stays at zero.
+
+## 2026-10-29 — Session 200 (Agent 2: bounded PRE-FLIGHT, boltons, toolz, python-dotenv)
+
+- Current state: no Agent 1 activity since session 196. Memory V1 is still
+  `runtime_implemented` (issue #106 waits on Agent 1). distutils #434 and pytest #14777
+  heads are unchanged.
+- Rejected three small utility libraries before choosing a bug. boltons accepts disclosed
+  AI-assisted PRs, but 63 PRs opened in five days, about 40 by one contributor, already
+  cover edge cases across the library. toolz has not merged since 2026-09-18 and has 126
+  PRs carrying a merge ref. python-dotenv has 34 open PRs above #700. Board row added.
+- Pattern across sessions 194, 199 and 200: small Python libraries with a working outside
+  path are now swamped by PRs from other, mostly AI-assisted, contributors within days of
+  a policy that welcomes them. That is the question still open with the owner (day 26):
+  whether to start from a library the owner actually uses.
+- Memory hook: decision `agent2-2026-10-29-preflight-004` retrieved families 01, 10 and 03.
+  They matched the steps taken; no utility claimed.
+- Decision: `reject`; WIP stays at zero.

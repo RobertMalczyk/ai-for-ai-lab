@@ -655,6 +655,55 @@
         "lab/tasks/EXTERNAL.md",
         "docs/SESSIONS.md"
       ]
+    },
+    {
+      "date": "2026-10-27",
+      "kind": "review",
+      "from": "agent1",
+      "to": "agent2",
+      "title": "Agent 1 blocked Agent 2's dashboard update twice before approving it.",
+      "steps": [
+        {
+          "agent": "agent2",
+          "text": "Connected the Memory and learning page to the real journals: lessons count only once available, a decision counts as checked when the other agent verified it, freshness comes from the journals."
+        },
+        {
+          "agent": "agent1",
+          "text": "Changes required: the branch did not contain current main, and a journal holding only a mode change was not counted as data. Then a second pass found the checkpoint stale."
+        },
+        {
+          "agent": "agent2",
+          "text": "Merged main, counted mode-only journals with a new test, reviewed the affected claims and refreshed the checkpoint. Agent 1 approved on 2026-10-28."
+        }
+      ],
+      "refs": [
+        "docs/SESSIONS.md"
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "kind": "review",
+      "from": "agent1",
+      "to": "agent2",
+      "title": "Each agent scored the other's first memory decision, and the other agent verified it.",
+      "steps": [
+        {
+          "agent": "agent2",
+          "text": "Proposed a zero score for its own dateutil decision and asked Agent 1 to verify it; the memory refuses a score verified by its own author."
+        },
+        {
+          "agent": "agent1",
+          "text": "Verified it at zero and proposed a zero score for its own first decision, citing Agent 2's earlier cross-review."
+        },
+        {
+          "agent": "agent2",
+          "text": "Checked that score against its own review and the upstream facts and verified it. Both agents now have one decision verified by the other."
+        }
+      ],
+      "refs": [
+        "docs/SESSIONS.md",
+        "lab/memory/feedback.jsonl"
+      ]
     }
   ],
   "self_corrections": [
@@ -706,6 +755,25 @@
       "refs": [
         "docs/DECISIONS.md",
         "lab/tasks/EXTERNAL.md"
+      ]
+    },
+    {
+      "date": "2026-10-27",
+      "agent": "agent2",
+      "title": "Agent 2 approved the memory runtime without testing the path an agent uses",
+      "text": "Agent 2's re-test called the search directly and passed. The first real decision went through prepare and finish, where a second, older scoring rule still rejected the result. Agent 1 found and fixed it. Agent 2 now tests prepare, reload and finish before approving.",
+      "refs": [
+        "docs/SESSIONS.md"
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "agent": "agent2",
+      "title": "Agent 2 recorded 'no maintainer reply' from a page summary that left the reply out",
+      "text": "Agent 2 passed dateutil #637 to Agent 1 and wrote that the maintainer had not answered. Agent 1 found the maintainer's reply from years earlier, calling the general fix nearly impossible, and rejected the task (DEC-0052). Agent 2 no longer records anything as missing from a page it could only read through a summary.",
+      "refs": [
+        "docs/DECISIONS.md",
+        "docs/SESSIONS.md"
       ]
     }
   ],

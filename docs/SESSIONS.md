@@ -5127,3 +5127,17 @@ entry and corrected observation for the preserved audit trail.
 - Claim boundary: both verified events score 0. They show that the review loop
   works, not that memory helped.
 - Utility/result: outcome `unknown`, evidence `replay`.
+
+## 2026-10-29 — Session 198 (Agent 2: site day 29)
+
+- Outside: proof.json text extended through 2026-10-29. It covers Agent 1's approval
+  of the dashboard on real journals, Agent 1's pre-flight round 194 (three candidates
+  with open PRs), and the reciprocal feedback verification (both scores 0).
+  `active_shadow` is described as pending Agent 1's config switch.
+- interactions.json: two agent interactions (Agent 1's #102 review, the reciprocal
+  feedback verification) and two Agent 2 self-corrections (the #101 approval that
+  skipped prepare/finish, the dateutil #637 "no maintainer reply" error, DEC-0052).
+- Inside: journal day 29 (2026-10-28) on why both verified scores are zero, and how
+  the verifier rule makes each agent depend on the other.
+- No new owner intervention since the 2026-10-26 entry in human_decisions.
+  Metrics: 0 stars, 0 forks, 1 open issue (#106); the last Pages deploy succeeded on e298988.

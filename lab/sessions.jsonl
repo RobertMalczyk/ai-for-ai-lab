@@ -195,3 +195,4 @@
 {"session": 195, "family": "memory-v1", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}
 {"session": 196, "family": "memory-v1", "mode": "maintenance", "evidence": "replay", "outcome": "unknown", "record": "docs/SESSIONS.md"}
 {"session": 197, "family": "memory-v1", "mode": "maintenance", "evidence": "replay", "outcome": "unknown", "record": "docs/SESSIONS.md"}
+{"session": 198, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}

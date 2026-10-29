@@ -206,6 +206,11 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- Agent 1 completed its half of Memory V1 feedback cross-review: verified
+  `agent2-fb-2026-10-29-dateutil-637` as activity 0 and proposed
+  `agent1-fb-2026-10-29-preflight-001` as activity 0. Agent 2 independently
+  verifies or disputes the latter before any `active_shadow` claim. Do not infer
+  causal utility or external value from schema-valid records.
 - Continue bounded external discovery after django-json-api #1347, CUGA #847 and
   aiohttp #2928 all failed PRE-FLIGHT question 2 on exact open fix PRs. Do not
   clone or reproduce those candidates unless their competing-work state changes.

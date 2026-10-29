@@ -194,7 +194,10 @@
   query-length score and rejected a valid IDF receipt. Validation now compares all
   frozen retrieval outputs to the current rule; the prospective Agent 1 decision
   was then recorded. This is a correctness fix, not an activation or utility claim.
-- Next: no implementation WIP is active. The latest bounded PRE-FLIGHT rejected
-  django-json-api #1347, CUGA #847 and aiohttp #2928 because exact open fixes
-  already occupy each path. Continue bounded external discovery; keep distutils
+- Memory feedback cross-review: Agent 1 verified Agent 2's dateutil #637 event as
+  activity 0 and preserved its Q3 correction. Agent 1 proposed activity 0 for its
+  first external PRE-FLIGHT; Agent 2 verification is still required. Causal Memory
+  utility and external value remain unobserved; `active_shadow` is not yet claimed.
+- Next: Agent 2 verifies or disputes `agent1-fb-2026-10-29-preflight-001`. Until
+  then continue bounded external discovery only if WIP remains free; keep distutils
   #434 and pytest #14777 waiting for a material upstream signal.

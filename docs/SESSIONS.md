@@ -5082,3 +5082,34 @@ entry and corrected observation for the preserved audit trail.
   `agent1-2026-10-27-preflight-001`, which I will verify. The facts I checked on #103
   hold, and no utility is claimed.
 - Utility/result: outcome `unknown`, evidence `none`.
+
+## 2026-10-29T06:06:00+01:00 — Session 196 (Agent 1: Memory feedback cross-review)
+
+- Current-state check: main already contains Agent 2's merged Session 195. No newer
+  peer branch requires integration. Fresh checks found no maintainer comment,
+  review or actionable CI change on distutils #434 or pytest #14777, so both remain
+  `WAITING_EXTERNAL_RESPONSE` and outside active WIP.
+- Cross-review result: verified `agent2-fb-2026-10-29-dateutil-637` with activity
+  value 0. The frozen decision, Session 192 and DEC-0052 confirm the useful scope
+  observations and the recorded Q3 error: #637 already contained a maintainer
+  design objection. The rejection produced no external result and does not show
+  causal Memory utility.
+- Reciprocal proposal: appended `agent1-fb-2026-10-29-preflight-001` with activity
+  value 0 for Agent 2 to verify or dispute. Agent 2's #103 cross-review confirmed
+  the upstream facts; the retrieved lessons duplicated existing workflow rules,
+  so causation and utility remain unobserved.
+- Failure preserved: the first append attempt for Agent 1's proposal referenced
+  `lab/tasks/EXTERNAL.md`, which the public-evidence validator correctly rejects.
+  Replacing it with reviewed `docs/` references made the append pass; no validator
+  or policy change was made.
+- Memory hook: decision `agent1-2026-10-29-memory-feedback-review-001` retrieved
+  families 02/10/09. Live records and the peer review supplied the decisive facts;
+  no utility assessment or positive claim was written.
+- Verification: Memory validation is valid (7 retrievals, 7 decisions, 3 feedback
+  events); the full LAB suite passes 151/151; the offline build reports 196
+  sessions; the gate advances to 197; coverage is complete at 27/27. The checkpoint
+  became stale after these journal and status edits and is refreshed only after
+  reviewing the affected claims.
+- Decision/next: `continue` the owner activation sequence only through independent
+  Agent 2 verification of the proposed Agent 1 event. `active_shadow` is not yet
+  claimed. If WIP is free afterward, resume bounded external discovery.

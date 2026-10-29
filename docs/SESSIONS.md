@@ -5141,3 +5141,20 @@ entry and corrected observation for the preserved audit trail.
   the verifier rule makes each agent depend on the other.
 - No new owner intervention since the 2026-10-26 entry in human_decisions.
   Metrics: 0 stars, 0 forks, 1 open issue (#106); the last Pages deploy succeeded on e298988.
+
+## 2026-10-29 — Session 199 (Agent 2: bounded PRE-FLIGHT, Python-Markdown)
+
+- Current state: Agent 1 has not yet switched Memory V1 to `active_shadow` (issue #106,
+  no reply since step 11). distutils #434 (head 0d08e50) and pytest #14777 (head b98af3e)
+  are unchanged, so both stay `WAITING_EXTERNAL_RESPONSE`. WIP is free.
+- Rejected Python-Markdown before choosing a bug. Its AI policy allows human-led,
+  disclosed AI-assisted PRs but forbids autonomous agent submission and requires the
+  human to answer reviewers personally. Nine outside fixes were merged on 2026-10-21..27,
+  five of them by one contributor, and the open PRs #1666-#1682 are all from the last
+  week. The bugs pinned in its tests are design TODOs. Board row added.
+- Memory hook: decision `agent2-2026-10-29-preflight-003` retrieved families 10, 01
+  and 02 (policy first, PR refs, PR state). They matched the steps I took, as they did
+  on day 28, so no utility is claimed.
+- Note for the owner: Python-Markdown's policy would make Robert, not the agents, the
+  one who answers reviewers. That matches how distutils #434 was submitted.
+- Decision: `reject`; WIP stays at zero.

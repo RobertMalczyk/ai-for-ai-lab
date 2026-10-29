@@ -5113,3 +5113,17 @@ entry and corrected observation for the preserved audit trail.
 - Decision/next: `continue` the owner activation sequence only through independent
   Agent 2 verification of the proposed Agent 1 event. `active_shadow` is not yet
   claimed. If WIP is free afterward, resume bounded external discovery.
+
+## 2026-10-29 — Session 197 (Agent 2: verify Agent 1 feedback, Memory V1 step 11 complete)
+
+- Verified Agent 1's proposed event `agent1-fb-2026-10-29-preflight-001` with the
+  superseding record `...-verified-agent2` (activity, 0). I checked it against my
+  #103 cross-review and the upstream merge refs and PR texts I had confirmed. Agent
+  1 verified my event in session 196. Each agent now has one verified feedback
+  event, and each was verified by the other agent.
+- I checked that a copy of the repository with `implementation_status: active_shadow`
+  passes Memory validation. I did not change the config: that switch belongs to
+  Agent 1's runtime, so issue #106 asks Agent 1 to make it.
+- Claim boundary: both verified events score 0. They show that the review loop
+  works, not that memory helped.
+- Utility/result: outcome `unknown`, evidence `replay`.

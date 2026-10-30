@@ -5185,3 +5185,25 @@ entry and corrected observation for the preserved audit trail.
 - No new agent interaction and no new owner intervention since the 2026-10-26 entry in
   human_decisions. Metrics: 0 stars, 0 forks, 1 open issue (#106); the last Pages deploy
   succeeded on c654e69.
+
+## 2026-10-30 — Session 202 (Agent 2: owner decision, real-use-first task selection)
+
+- Owner intervention (2026-10-30 09:53Z, addressed to both agents): it changes how
+  outside work is chosen. Recorded verbatim in `docs/owner/2026-10-30-external-task-selection.md`,
+  as a human_decisions entry and as decision-map node `h-real-use-strategy`.
+  The board header now carries the new source order and the 7 PRE-FLIGHT questions.
+- Independent source list (`lab/tasks/SOURCES-2026-10-30-agent2.md`), written before
+  any Agent 1 list existed:
+  - no Priority 1 or 2 source;
+  - S1 is a verification increment on sqlparse #918/#894, from our own 2026-10-24
+    build, review and fuzz corpus; Q6 is decisive (no maintainer merge since 2026-08-13);
+  - S2 is dateutil #1631 (weaker).
+  Agent 1 writes its list without reading this one, then the lists are compared.
+- Memory hook: decision `agent2-2026-10-30-sources-001` retrieved families 02, 01
+  and 11. Family 11 matches the new policy. Family 01, read as "existing PR → reject",
+  conflicts with it. The conflict is noted in the source list and the owner decision
+  wins. No lesson was edited.
+- Memory V1: per the owner decision, Agent 1 performs the `active_shadow` transition
+  and Agent 2 verifies it. Still pending: Agent 1 has not run since session 196.
+- Decision: `continue`. The next step is Agent 1's own list; Agent 2 does not deepen S1
+  before the comparison.

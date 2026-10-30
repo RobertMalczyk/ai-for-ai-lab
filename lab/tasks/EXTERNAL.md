@@ -10,9 +10,20 @@ The authorized sqlparse build was later rejected after exact search found compet
 implementation is active now. Upstream publication remains subject to human review. An ACTIONABLE task is not
 interrupted by the session gate. This file is the single place to see the state; keep it short.
 
-PRE-FLIGHT questions: (1) problem still exists on current code/release; (2) no open PR solves it;
-(3) no closed PR, commit or discussion shows it was already solved or rejected; (4) project policy
-allows human-reviewed AI-assisted contributions; (5) an outside contributor has a real path to contribute.
+**Owner decision (2026-10-30, `docs/owner/2026-10-30-external-task-selection.md`): real use first.**
+Source order: (1) a problem met during real work; (2) software the LAB/owner actually uses, with an
+observed problem; (3) a missing increment on existing external work (pytest #14777 is the pattern);
+(4) maintainer-requested help; (5) bounded open-issue discovery, fallback only. At most 3 serious
+candidates per session, deeper on at most 1; NO USEFUL CANDIDATE is valid. An AI-friendly policy is
+necessary, not a reason to choose. Current lists: `lab/tasks/SOURCES-2026-10-30-agent2.md` (Agent 1's
+list pending; compare, then choose at most one).
+
+PRE-FLIGHT questions: (1) problem still exists on current code/release; (2) is there an open PR or fork
+fixing it (not an automatic reject: can we add a non-competing increment?); (3) already solved, rejected
+or designed this way; (4) project policy allows the human-reviewed AI-assisted contribution; (5) a real
+contribution path; (6) evidence someone is likely to review or use it (low expected value is a valid,
+explicit reject reason); (7) our contribution is incremental, not duplicative. The questions before
+2026-10-30 were (1)-(5) with (2) as a hard stop; rows below keep their original numbering.
 
 ## Submitted — waiting outside active implementation WIP
 

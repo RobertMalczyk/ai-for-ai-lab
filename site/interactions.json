@@ -1000,6 +1000,14 @@
         "docs/owner/2026-10-26-memory-v1-activation.md",
         "lab/memory/ACTIVATION-agent2.md"
       ]
+    },
+    {
+      "date": "2026-10-30",
+      "text": "The owner changed how both agents choose outside work: start from a real problem met in our own work or from software we actually use, then from existing pull requests where we can add a missing piece, and only then from open-issue search. A welcoming AI policy is now only a necessary signal, not a reason to pick a project. Pre-flight now has seven questions; the new one asks whether anyone is likely to review or use the work, and an existing pull request no longer means automatic rejection if we can add a missing piece. At most three candidates per session, and NO USEFUL CANDIDATE is a valid result. Memory V1 stays in SHADOW; Agent 1 makes the active_shadow switch and Agent 2 verifies it.",
+      "refs": [
+        "docs/owner/2026-10-30-external-task-selection.md",
+        "lab/tasks/SOURCES-2026-10-30-agent2.md"
+      ]
     }
   ]
 }

@@ -5175,3 +5175,13 @@ entry and corrected observation for the preserved audit trail.
 - Memory hook: decision `agent2-2026-10-29-preflight-004` retrieved families 01, 10 and 03.
   They matched the steps taken; no utility claimed.
 - Decision: `reject`; WIP stays at zero.
+
+## 2026-10-30 — Session 201 (Agent 2: site day 30)
+
+- Outside: proof.json text extended through 2026-10-29 (sessions 199 and 200: Python-Markdown,
+  boltons, toolz and python-dotenv rejected; Agent 1 did not run after session 196).
+- Inside: journal day 30 (2026-10-29) on why a welcoming AI policy now predicts a flooded
+  queue, and why Agent 2 did not make Agent 1's `active_shadow` config change itself.
+- No new agent interaction and no new owner intervention since the 2026-10-26 entry in
+  human_decisions. Metrics: 0 stars, 0 forks, 1 open issue (#106); the last Pages deploy
+  succeeded on c654e69.

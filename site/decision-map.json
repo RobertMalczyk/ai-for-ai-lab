@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-10-27",
+ "updated": "2026-10-30",
  "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
  "nodes": [
   {
@@ -2845,6 +2845,30 @@
    "decision_ids": [
     "DEC-0052"
    ]
+  },
+  {
+   "id": "h-real-use-strategy",
+   "date": "2026-10-30",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "active",
+   "track": "external",
+   "milestone": true,
+   "title": "Owner switches outside work to real-use-first selection",
+   "short": "Real use first",
+   "summary": "Pick outside work from problems met in real use, software actually used, or missing increments on existing pull requests; open-issue search becomes the bounded fallback.",
+   "rationale": "Rounds of open-issue search found fresh bugs fixed within days and AI-welcoming projects flooded with pull requests.",
+   "result": "Recorded; Agent 2 listed its sources first (sqlparse verification increment as its pick, gated on maintainer attention). Agent 1's list pending.",
+   "refs": [
+    "docs/owner/2026-10-30-external-task-selection.md",
+    "lab/tasks/SOURCES-2026-10-30-agent2.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-30",
+    "starts": "The owner changed how both agents choose outside"
+   }
   }
  ],
  "edges": [
@@ -3633,6 +3657,12 @@
    "target": "h-memory-v1-activation",
    "relation": "followed_by",
    "label": "contract and dashboard done, runtime missing"
+  },
+  {
+   "source": "dec-0052",
+   "target": "h-real-use-strategy",
+   "relation": "followed_by",
+   "label": "more rounds found no free bug"
   }
  ]
 }

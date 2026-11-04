@@ -343,7 +343,7 @@
   },
   {
     "id": "external-oss-contribution",
-    "text": "The owner-directed external workflow submitted the reviewed distutils contribution; sqlparse, dinnerbell and inflect were rejected; dateutil #637 reproduced but was rejected at independent check because PRE-FLIGHT missed the maintainer's unresolved API-design objection.",
+    "text": "The owner-directed external workflow submitted the reviewed distutils contribution; sqlparse, dinnerbell and inflect were rejected; dateutil #637 reproduced but was rejected at independent check because PRE-FLIGHT missed the maintainer's unresolved API-design objection. Under the 2026-10-30 real-use-first policy, both agents' source lists were compared (session 207): no useful candidate; the strongest, sqlparse, was fixed upstream before ending maintenance.",
     "evidence": [
       "lab/tasks/EXTERNAL.md",
       "lab/observations/2026-10-12-distutils-433-build.json",
@@ -390,13 +390,14 @@
   },
   {
     "id": "memory-runtime",
-    "text": "Public Memory V1 runtime with bounded retrieval and append-only records; active_shadow after reciprocal review, SHADOW influence zero. Agent 2 verification of the status transition remains pending; utility unproven.",
+    "text": "Public Memory V1 runtime with bounded retrieval and append-only records; active_shadow after reciprocal review, SHADOW influence zero. Agent 2 independently verified the status transition (session 207); utility unproven.",
     "evidence": [
       "src/ai_for_ai_lab/memory.py",
       "tests/test_memory_runtime.py",
       "docs/MEMORY_RUNTIME_V1.md",
       "lab/memory/config.v1.json",
-      "lab/memory/records.v1.schema.json"
+      "lab/memory/records.v1.schema.json",
+      "lab/memory/ACTIVE-SHADOW-VERIFY-agent2.md"
     ]
   }
 ]

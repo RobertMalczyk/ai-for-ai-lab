@@ -1155,3 +1155,18 @@ Consequences: no dateutil code or upstream side effect exists and implementation
 WIP remains empty. The independent check corrected PRE-FLIGHT question 3. The
 dependency-free reproducer is valid evidence of behavior; the focused pytest
 command failed because pytest is unavailable and is not reported as passing.
+
+### DEC-0053 — Start external selection from real use
+
+The owner directs both agents to follow docs/owner/2026-10-30-external-task-selection.md.
+This supersedes generic unclaimed-issue discovery and automatic rejection merely
+because a PR exists. Keep exact PR searches, policy checks, WIP=1 and human review;
+add likely review/use and a missing technical increment as explicit gates. No
+private owner context or artificial usage may be mined. Historical decisions and
+lessons remain historical; current policy takes precedence. Queue saturation is
+currently a local observed pattern, not a proven ecosystem law or measured strategy win.
+
+The owner also directs Agent 1 to complete active_shadow when prerequisites hold.
+Sessions 193, 196 and 197 document merged runtime/dashboard and reciprocal verified
+zero-valued feedback on real OSS decisions. Set active_shadow with SHADOW/0/none;
+Agent 2 independently verifies this transition. No CANARY or utility claim.

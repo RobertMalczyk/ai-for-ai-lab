@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-10-30",
+ "updated": "2026-11-04",
  "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
  "nodes": [
   {
@@ -2869,6 +2869,75 @@
     "date": "2026-10-30",
     "starts": "The owner changed how both agents choose outside"
    }
+  },
+  {
+   "id": "dec-0053",
+   "date": "2026-10-30",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "external",
+   "milestone": true,
+   "title": "Apply owner real-use-first policy and complete SHADOW activation",
+   "short": "Real-use-first",
+   "summary": "Owner policy 2026-10-30 supersedes older discovery directives: real encountered problem → actual software use with concrete friction → missing increment to existing work → maintainer request → bounded generic fallback. Existing PRs are not automatic rejection; duplication is. At most three candidates, one deeper investigation; WIP=1. See docs/owner/2026-10-30-external-task-selection.md.",
+   "rationale": "Repeated generic scans produced crowded queues and duplicate work.",
+   "result": "Seven PRE-FLIGHT checks; existing work may receive a missing increment. No claim yet that candidate yield improves.",
+   "refs": [
+    "docs/owner/2026-10-30-external-task-selection.md",
+    "docs/DECISIONS.md",
+    "lab/tasks/EXTERNAL.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0053"
+   ]
+  },
+  {
+   "id": "h-resume-agent1-20261030",
+   "date": "2026-10-30",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Owner resumes Agent 1 automation",
+   "short": "Resume Agent 1",
+   "summary": "Owner resumes the paused Agent 1 automation; Agent 1 also updates its prompt to the new strategy.",
+   "rationale": "Publication-blocked pause stopped scheduled work.",
+   "result": "Enabled every six hours.",
+   "refs": [
+    "docs/SESSIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-10-30",
+    "starts": "The owner resumed Agent 1 automation after its p"
+   }
+  },
+  {
+   "id": "h-memory-publication-resume",
+   "date": "2026-11-04",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "active",
+   "track": "lab",
+   "milestone": true,
+   "title": "Owner approves public journals and resumes SHADOW activation",
+   "short": "Publication approved",
+   "summary": "Publish the prepared public decision and retrieval journals and resume the interrupted activation.",
+   "rationale": "Publication was blocked pending explicit approval; the owner supplied it and requested continuation.",
+   "result": "Agent 1 resumes publication with zero reward influence; Agent 2 verifies the transition.",
+   "refs": [
+    "docs/SESSIONS.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-11-04",
+    "starts": "The owner explicitly approved publishing the pre"
+   }
   }
  ],
  "edges": [
@@ -3663,6 +3732,18 @@
    "target": "h-real-use-strategy",
    "relation": "followed_by",
    "label": "more rounds found no free bug"
+  },
+  {
+   "source": "h-real-use-strategy",
+   "target": "dec-0053",
+   "relation": "led_to",
+   "label": "Agent 1 applies instruction"
+  },
+  {
+   "source": "h-real-use-strategy",
+   "target": "h-memory-publication-resume",
+   "relation": "followed_by",
+   "label": "publication resumed"
   }
  ]
 }

@@ -1008,6 +1008,20 @@
         "docs/owner/2026-10-30-external-task-selection.md",
         "lab/tasks/SOURCES-2026-10-30-agent2.md"
       ]
+    },
+    {
+      "date": "2026-10-30",
+      "text": "The owner resumed Agent 1 automation after its publication-blocked pause. Agent 1 updated its automation prompt to the new real-use-first decision already recorded by Agent 2.",
+      "refs": [
+        "docs/SESSIONS.md"
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "text": "The owner explicitly approved publishing the prepared public Memory decision and retrieval journals, including session identifier, query and retrieved public lessons, then asked Agent 1 to resume the interrupted publication. This resumes the previously authorized SHADOW activation; reward influence remains zero.",
+      "refs": [
+        "docs/SESSIONS.md"
+      ]
     }
   ]
 }

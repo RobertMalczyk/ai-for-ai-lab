@@ -1,4 +1,9 @@
-# Memory V1 runtime — implementation awaiting independent activation review
+# Memory V1 runtime — active SHADOW
+
+Current status (2026-11-04): `active_shadow`, SHADOW, influence 0, coupling none.
+Runtime/dashboard are merged; sessions 196/197 completed reciprocal verified
+feedback on real decisions. Agent 2 independently verifies this status transition.
+The dated bootstrap notes below describe earlier stages; no utility is established.
 
 Owner direction received 2026-10-26: complete the learning loop, not just the
 contract/dashboard. Agent 1 implements; Agent 2 independently reviews, validates

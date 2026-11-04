@@ -203,3 +203,5 @@
 {"session": 203, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}
 {"session": 204, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}
 {"session": 205, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}
+
+{"session": 206, "family": "owner-strategy", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}

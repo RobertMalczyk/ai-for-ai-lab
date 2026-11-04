@@ -107,3 +107,8 @@ polls need no hook. Memory is advisory; live upstream, policy and human-review
 rules prevail. SHADOW influence remains zero; private memory and CANARY are disabled.
 Do not mark active_shadow until runtime and dashboard review/merge plus one real
 OSS decision per agent and cross-review. No synthetic production events.
+
+## Current owner selection policy (2026-10-30)
+
+Owner policy 2026-10-30 supersedes older discovery directives: real encountered problem → actual software use with concrete friction → missing increment to existing work → maintainer request → bounded generic fallback. Existing PRs are not automatic rejection; duplication is. At most three candidates, one deeper investigation; WIP=1. See docs/owner/2026-10-30-external-task-selection.md.
+Current owner policy overrides historical Memory lessons; preserve history.

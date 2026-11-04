@@ -21,6 +21,11 @@ class RuntimeTest(unittest.TestCase):
         shutil.copytree(ROOT/'lab/memory', self.mem)
         for p in self.mem.glob('*.jsonl'):
             p.write_text('')
+        # Empty synthetic journals start before activation, independent of live config.
+        config_path = self.mem/'config.v1.json'
+        config = json.loads(config_path.read_text())
+        config['implementation_status'] = 'runtime_implemented'
+        config_path.write_text(json.dumps(config))
         (self.root/'docs').mkdir()
         (self.root/'docs/evidence.md').write_text('Public review fixture. Not production evidence.')
         self.s = Store(self.root)

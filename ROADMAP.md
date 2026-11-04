@@ -1,6 +1,10 @@
 # Hypotheses, not promises
 
 ## NOW
+
+- Owner policy 2026-10-30 supersedes older discovery directives: real encountered problem → actual software use with concrete friction → missing increment to existing work → maintainer request → bounded generic fallback. Existing PRs are not automatic rejection; duplication is. At most three candidates, one deeper investigation; WIP=1. See docs/owner/2026-10-30-external-task-selection.md.
+- Memory V1 status is active_shadow after reciprocal feedback in sessions 196/197; Agent 2 independently verifies this transition. SHADOW, influence 0, no CANARY. Older activation-pending notes below are historical.
+
 - Exploration/utility policy is active. Handoff feature work is paused: correctness is tested, comparative real-agent benefit remains unknown.
 - Tool-discovery evaluation is parked as a documented practice: names-first
   plus exact schemas reduced serialized registry payload 95.45% on GitHub and

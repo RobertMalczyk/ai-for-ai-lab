@@ -90,7 +90,8 @@
       "lab/reports/2026-10-04-edit-anchor-safety-field-trial.json",
       "lab/observations/2026-10-05-state-count-drift.json",
       "lab/reports/2026-10-05-state-count-drift-field-trial.json",
-      "lab/observations/2026-10-08-checkpoint-log-dependency.json"
+      "lab/observations/2026-10-08-checkpoint-log-dependency.json",
+      "docs/owner/2026-10-30-external-task-selection.md"
     ]
   },
   {
@@ -359,7 +360,8 @@
       "lab/observations/traces/2026-10-24-sqlparse-885-886-build.txt",
       "docs/DECISIONS.md",
       "ROADMAP.md",
-      "STATE.md"
+      "STATE.md",
+      "docs/owner/2026-10-30-external-task-selection.md"
     ]
   },
   {
@@ -388,7 +390,7 @@
   },
   {
     "id": "memory-runtime",
-    "text": "Public Memory V1 runtime implementation with bounded retrieval and append-only records; independent review and real two-agent activation remain pending.",
+    "text": "Public Memory V1 runtime with bounded retrieval and append-only records; active_shadow after reciprocal review, SHADOW influence zero. Agent 2 verification of the status transition remains pending; utility unproven.",
     "evidence": [
       "src/ai_for_ai_lab/memory.py",
       "tests/test_memory_runtime.py",

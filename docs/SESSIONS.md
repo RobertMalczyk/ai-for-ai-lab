@@ -5234,3 +5234,78 @@ entry and corrected observation for the preserved audit trail.
   that the mutual-check rules have no deadline for the other agent's step.
 - No new owner intervention or agent interaction. Metrics: 0 stars, 0 forks, 2 open issues
   (#106, #114); the last Pages deploy succeeded on 54e03d4.
+
+## 2026-11-04 — Session 206 (Agent 1: owner real-use-first policy and SHADOW activation)
+
+- Owner instruction recorded verbatim in docs/owner/2026-10-30-external-task-selection.md,
+  DEC-0053, human_decisions and Decision Map. Automation remains enabled every
+  six hours with the new owner instruction replacing the old selection prompt.
+- Current base 509bf7a contains Agent 2 sessions through 201. Branch inventory:
+  204 ancestry-merged agent/opus refs; 6 ancestry-unmerged refs, retained untouched
+  (historical blocked submission, dateutil check, PR102 review and three Opus refs).
+  No old branch was integrated or overwritten. Earlier session history documents
+  the dateutil/PR102 integration. Startup gate asks exploration/Memory evaluation;
+  explicit owner policy/activation is a maintenance exception, not utility evidence.
+- Activation evidence: merged runtime and dashboard (193), real OSS decisions,
+  reciprocal independent zero-valued feedback (196/197). Set active_shadow; preserve
+  SHADOW, influence 0, coupling none, private memory disabled. Agent 2 must independently
+  verify the transition. No CANARY and no claim of causal learning utility.
+- Memory prepare returned current-reproduction and contribution-policy lessons
+  (families 05/10). They remain applicable. Older blanket open-PR rejection in
+  EXTERNAL.md conflicts with the new owner instruction; update current policy,
+  preserve the historical rejections and lessons. No memory correction is needed
+  for the two retrieved lessons; no new universal queue-saturation lesson is promoted.
+- Independent Agent 1 source shortlist (before any new Agent 2 conclusion):
+  1. Actual LAB publication refusal: operational friction, but no identified public
+     OSS component/reproducer or maintainer contribution route. Do not expose private
+     tool/session context or manufacture an upstream bug. Not a credible BUILD target.
+  2. Actual historical Click replay dependency drift: per-commit uv.lock already
+     resolved it (STATE/ROADMAP). No remaining defect or missing technical increment.
+     Existing native workaround is sufficient; no helper or upstream contribution.
+  3. Existing pytest/distutils contributions: genuine prior technical context but
+     remain waiting; this strategy instruction is not a new upstream signal. No
+     further investigation or contact merely to fill WIP.
+  Comparison: no present source supports a new external implementation. NO USEFUL
+  CANDIDATE; no generic scan, dependency audit or invented use. Agent 2 supplies its
+  independent sources before any joint selection. Queue observations support only
+  a dated local pattern; strategy advantage remains unmeasured.
+- Validation results recorded after execution below. Next: Agent 2 independently
+  verifies activation and supplies its own real-use sources; Agent 1 continues
+  the new policy without treating this as permission for upstream communication.
+- Verification: 151/151 tests pass; offline site builds 202 sessions; real Memory
+  validation passes. Initial run exposed 31 fixture setup errors because empty
+  synthetic journals inherited active production config; fixture now explicitly
+  starts runtime_implemented, preserving the separate activation guard test. Two
+  Decision Map metadata errors were corrected (owner enum and intervention link).
+  Reviewed affected checkpoint claims: historical evidence unchanged; workflow
+  gains owner policy reference; runtime claim now names activation and pending
+  peer verification. No production runtime logic or privacy guard was weakened.
+- Concurrent peer integration: Agent 2 published session 202 / PR #113 while this
+  session was being prepared. Preserve all peer records; assign this unpublished
+  session 206 and update its two local hook records/digest before first publication.
+  Keep Agent 2's canonical owner instruction and intervention/map entry; record
+  automation resumption separately, avoiding duplicate strategy interventions.
+- The independent Agent 1 list above was committed locally before reading Agent 2
+  SOURCES-2026-10-30-agent2.md. Comparing afterward: its sqlparse increment is the
+  strongest additional source; dateutil is weaker. Read-only PR #918 check confirms
+  open head 9933775, unchanged since Oct 5, zero conversation/review comments, and
+  base repository last push Aug 13. This does not establish likely attention (Q6),
+  so no BUILD is selected and no corpus run or contact follows. Agent 2's list
+  already makes Q6 decisive. No strategy success or technical impossibility claimed.
+
+- Resume/publication on 2026-11-04: the owner explicitly approved publication of
+  the prepared public decision/retrieval entries, including session identifier,
+  query and retrieved public lessons, then requested continuation after interruption.
+  Preserve Agent 2 sessions 203–205 unchanged. The unpublished Agent 1 draft is
+  assigned session 206; only its new receipt/session ID and digest are adjusted.
+  Its October 30 query/action timestamps remain historical, not a new retrieval.
+  Config/mode timestamp records this resumed activation, not the blocked draft date.
+  Source shortlist and comparison above were already prepared before interruption.
+  Current main ad1832e and issue #114 still request these two deliverables; no
+  current external pre-flight or new upstream contact is claimed in this resume.
+- Decision: complete the owner-authorized publication; Agent 2 independently
+  verifies the transition and source comparison. SHADOW influence remains zero.
+- Resumed verification: 151/151 tests pass; production Memory validation passes
+  (15 lessons, 11 decisions/retrievals, 4 feedback, 3 modes, 0 utility). Offline
+  site build succeeds with 206 sessions. One human-decision prefix length was
+  corrected after the first run. No historical peer record was rewritten.

@@ -1,7 +1,7 @@
 {
   "contract_version": "1.0.0",
   "rule_version": "1.0.0",
-  "implementation_status": "runtime_implemented",
+  "implementation_status": "active_shadow",
   "memory_enabled": true,
   "reward_mode": "shadow",
   "reward_influence": 0.0,
@@ -36,6 +36,6 @@
     "min_per_agent_during_canary": 3,
     "max_later_influence": 0.25
   },
-  "changed_at": "2026-10-22T00:00:00Z",
-  "changed_at_precision": "date"
+  "changed_at": "2026-11-04T09:16:30.192359Z",
+  "changed_at_precision": "timestamp"
 }

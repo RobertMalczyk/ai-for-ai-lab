@@ -1,5 +1,9 @@
 # State
 
+- Owner policy 2026-10-30 supersedes older discovery directives: real encountered problem → actual software use with concrete friction → missing increment to existing work → maintainer request → bounded generic fallback. Existing PRs are not automatic rejection; duplication is. At most three candidates, one deeper investigation; WIP=1. See docs/owner/2026-10-30-external-task-selection.md.
+- Memory V1 status is active_shadow after reciprocal feedback in sessions 196/197; Agent 2 independently verifies this transition. SHADOW, influence 0, no CANARY. Older activation-pending notes below are historical.
+
+
 - Exists: handoff/checkpoint tools, experiment gate, test entrypoint and a
   repository-grounded publisher-plan validator plus a read-only connector
   publication manifest. Run `python3 run_tests.py` for the current suite result.

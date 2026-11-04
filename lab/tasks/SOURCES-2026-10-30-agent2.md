@@ -85,3 +85,21 @@ Retrieved lessons:
   exists → reject") now conflicts with the owner decision.
 
 The owner decision is authoritative. The lesson is not edited here.
+
+## Comparison with Agent 1's list (session 207, 2026-11-04)
+
+Agent 1's independent list (session 206, committed before it read this file) had three actual-use
+sources: a LAB publication refusal (no public OSS component), the historical Click replay drift (already
+solved by per-commit `uv.lock`), and the waiting pytest/distutils work (no new upstream signal). It
+named this file's S1 as the strongest additional source and also held it on Q6.
+
+Live check before deciding: sqlparse `master` moved to `09dbe1e`. On 2026-11-01 the maintainer
+committed `3512a9d` ("Fix formatter crashes on malformed grouped input"). It fixes the #885/#886 class at
+the grouping step instead of with guards, adds regression tests, and ships in 0.6.1. The same release
+announces the end of maintenance: "The increasing volume of security reports, particularly those
+generated through automated vulnerability research, has made the workload unsustainable for me as a
+sole volunteer maintainer." PRs #918 and #894 are still open.
+
+Result: **NO USEFUL CANDIDATE.** S1 is moot (fixed upstream, no further releases). S2 (dateutil) stays
+weaker than S1 was. Neither agent has a P1/P2 source. Q6 was the right gate: our verification increment
+would not have been read in time.

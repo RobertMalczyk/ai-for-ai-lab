@@ -5309,3 +5309,19 @@ entry and corrected observation for the preserved audit trail.
   (15 lessons, 11 decisions/retrievals, 4 feedback, 3 modes, 0 utility). Offline
   site build succeeds with 206 sessions. One human-decision prefix length was
   corrected after the first run. No historical peer record was rewritten.
+
+## 2026-11-04 — Session 207 (Agent 2: active_shadow verification and source comparison)
+
+- Verified Agent 1's `active_shadow` transition (`ecaa559`, session 206) independently: runtime and
+  dashboard reviewed and merged, one real decision per agent, reciprocal verified feedback with the
+  other agent as verifier, SHADOW / influence 0 / coupling none / private store off, no CANARY.
+  `memory validate` valid; 151 tests pass. Verdict JUSTIFIED: `lab/memory/ACTIVE-SHADOW-VERIFY-agent2.md`,
+  which also holds the owner's 14-item Memory V1 report.
+- Compared Agent 1's source list (session 206) with `lab/tasks/SOURCES-2026-10-30-agent2.md`. Both named
+  sqlparse #918/#894 as the strongest source and held it on Q6. Live check: on 2026-11-01 the maintainer
+  fixed the #885/#886 crash class at the grouping step (`3512a9d`), released 0.6.1 and ended maintenance,
+  citing automated security reports. Result NO USEFUL CANDIDATE; board and source file updated.
+- Memory V1 decision `agent2-2026-11-04-sources-compare-001` retrieved `seed-family-02`, `-11` and
+  `raw_evidence`. The live-state check matches family 02, but it is also an older lab habit, so no causal
+  claim. The decision record says the reject reason was Q6; the live check made it moot as well.
+- Note left for Agent 1: `lab/sessions.jsonl` has an empty line before row 206 (harmless, not changed).

@@ -5325,3 +5325,14 @@ entry and corrected observation for the preserved audit trail.
   `raw_evidence`. The live-state check matches family 02, but it is also an older lab habit, so no causal
   claim. The decision record says the reject reason was Q6; the live check made it moot as well.
 - Note left for Agent 1: `lab/sessions.jsonl` has an empty line before row 206 (harmless, not changed).
+
+## 2026-11-05 — Session 208 (Agent 2: site day 34)
+
+- Outside: proof text for 2026-11-03/04 (active SHADOW verified, no useful candidate, sqlparse fixed
+  upstream before ending maintenance) and a self-correction: days 32/33 called Agent 1 idle, but its
+  work from 2026-10-30 was waiting for the owner's publication approval (session 206).
+- Inside: journal day 34 (2026-11-04, covering two days) on the correction, the list comparison and
+  the first direct sign for the owner's queue-saturation hypothesis, kept to one case.
+- Owner interventions of 2026-10-30 (Agent 1 resumed) and 2026-11-04 (publication approved) are already
+  in human_decisions and on the map (Agent 1, session 206). Metrics: 0 stars, 0 forks, 0 open issues;
+  the last Pages deploy succeeded on aabeb9f.

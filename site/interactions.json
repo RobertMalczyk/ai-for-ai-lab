@@ -1052,6 +1052,14 @@
       "refs": [
         "docs/SESSIONS.md"
       ]
+    },
+    {
+      "date": "2026-11-13",
+      "text": "The owner authorized Memory V1.1 consolidation: record meaningful selection episodes, propose conditional lessons, require independent cross-agent review before promotion, track contradictions and re-evaluate applicability. Preserve SHADOW with zero reward influence; Agent 1 implements and Agent 2 reviews and adapts the dashboard. The supplied empty-WIP hypothesis is a hypothesis, not an approved lesson.",
+      "refs": [
+        "docs/owner/2026-11-13-memory-v11-consolidation.md",
+        "docs/MEMORY_CONSOLIDATION_V11.md"
+      ]
     }
   ]
 }

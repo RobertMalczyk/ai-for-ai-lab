@@ -135,6 +135,28 @@
             "type": "string",
             "minLength": 1
           }
+        },
+        "source_candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applicability_conditions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "falsifier": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promoted_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promoted_by": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
         }
       },
       "required": [
@@ -753,6 +775,600 @@
         "rule_version",
         "reason",
         "decided_by",
+        "evidence_refs"
+      ]
+    },
+    "episode": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "occurred_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "episode_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "policy_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_mode": {
+          "enum": [
+            "actual_use",
+            "existing_work",
+            "maintainer_request",
+            "bounded_fallback"
+          ]
+        },
+        "sources_considered": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "candidate_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "actionable_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "outcome": {
+          "enum": [
+            "candidate_found",
+            "no_candidate",
+            "blocked",
+            "waiting_external"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "observation_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pattern_key": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "occurred_at",
+        "supersedes",
+        "episode_id",
+        "agent",
+        "session_id",
+        "policy_ref",
+        "source_mode",
+        "sources_considered",
+        "candidate_count",
+        "actionable_count",
+        "outcome",
+        "reason",
+        "evidence_refs",
+        "observation_key",
+        "pattern_key"
+      ]
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "occurred_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposer": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
+        },
+        "pattern": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supporting_decision_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "supporting_episode_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "support_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "contradiction_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "proposed_lesson": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actionable_implication": {
+          "type": "string",
+          "minLength": 1
+        },
+        "falsifier": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "status": {
+          "enum": [
+            "provisional",
+            "verified",
+            "rejected",
+            "promoted",
+            "superseded"
+          ]
+        },
+        "reviewer": {
+          "enum": [
+            null,
+            "agent1",
+            "agent2"
+          ]
+        },
+        "reviewed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "review_rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "promoted_memory_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "path": {
+          "enum": [
+            "repeated_pattern",
+            "cross_agent",
+            "strong_single_event"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "mechanism": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applicability_conditions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "counterevidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "novelty": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "records_support_pattern": {
+              "type": "boolean"
+            },
+            "independent_observations": {
+              "type": "boolean"
+            },
+            "scope_bounded": {
+              "type": "boolean"
+            },
+            "not_owner_policy": {
+              "type": "boolean"
+            },
+            "counterexamples_considered": {
+              "type": "boolean"
+            },
+            "novel_to_active_memory": {
+              "type": "boolean"
+            },
+            "action_follows": {
+              "type": "boolean"
+            },
+            "realistic_falsifier": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "records_support_pattern",
+            "independent_observations",
+            "scope_bounded",
+            "not_owner_policy",
+            "counterexamples_considered",
+            "novel_to_active_memory",
+            "action_follows",
+            "realistic_falsifier"
+          ]
+        },
+        "actor": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
+        },
+        "replaces_memory_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "occurred_at",
+        "supersedes",
+        "candidate_id",
+        "created_at",
+        "proposer",
+        "pattern",
+        "scope",
+        "supporting_decision_ids",
+        "supporting_episode_ids",
+        "support_count",
+        "contradiction_count",
+        "proposed_lesson",
+        "actionable_implication",
+        "falsifier",
+        "confidence",
+        "status",
+        "reviewer",
+        "reviewed_at",
+        "review_rationale",
+        "promoted_memory_id",
+        "path",
+        "evidence_refs",
+        "mechanism",
+        "applicability_conditions",
+        "exceptions",
+        "counterevidence",
+        "novelty",
+        "review_checks",
+        "actor",
+        "replaces_memory_id"
+      ]
+    },
+    "consolidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "occurred_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "consolidation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "episode_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "trigger_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "result": {
+          "enum": [
+            "CANDIDATE PROPOSED",
+            "NO LESSON CANDIDATE"
+          ]
+        },
+        "candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "occurred_at",
+        "supersedes",
+        "consolidation_id",
+        "agent",
+        "session_id",
+        "decision_ids",
+        "episode_ids",
+        "trigger_reasons",
+        "result",
+        "candidate_ids",
+        "rationale",
+        "evidence_refs"
+      ]
+    },
+    "memory_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "occurred_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "memory_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
+        },
+        "relation": {
+          "enum": [
+            "supports",
+            "contradicts",
+            "neutral"
+          ]
+        },
+        "evidence_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "significant": {
+          "type": "boolean"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "occurred_at",
+        "supersedes",
+        "evidence_id",
+        "memory_id",
+        "agent",
+        "relation",
+        "evidence_key",
+        "significant",
+        "rationale",
+        "evidence_refs"
+      ]
+    },
+    "reevaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "occurred_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reevaluation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "memory_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent": {
+          "enum": [
+            "agent1",
+            "agent2"
+          ]
+        },
+        "trigger": {
+          "enum": [
+            "contradiction",
+            "policy_change",
+            "external_change",
+            "irrelevant_retrieval",
+            "applicability_change"
+          ]
+        },
+        "outcome": {
+          "enum": [
+            "pending",
+            "remain_active",
+            "narrow_scope",
+            "supersede",
+            "retract"
+          ]
+        },
+        "reviewer": {
+          "enum": [
+            null,
+            "agent1",
+            "agent2"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "replacement_memory_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "occurred_at",
+        "supersedes",
+        "reevaluation_id",
+        "memory_id",
+        "agent",
+        "trigger",
+        "outcome",
+        "reviewer",
+        "rationale",
+        "replacement_memory_id",
         "evidence_refs"
       ]
     }

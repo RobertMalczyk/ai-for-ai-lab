@@ -1,5 +1,7 @@
 # State
 
+- Owner-directed Memory V1.1 consolidation is implemented on a review branch; Agent 2 adversarial review and dashboard adaptation precede the first real consolidation. Base Memory V1 remains active_shadow / SHADOW / influence 0. See docs/MEMORY_CONSOLIDATION_V11.md.
+
 - Owner policy 2026-10-30 supersedes older discovery directives: real encountered problem → actual software use with concrete friction → missing increment to existing work → maintainer request → bounded generic fallback. Existing PRs are not automatic rejection; duplication is. At most three candidates, one deeper investigation; WIP=1. See docs/owner/2026-10-30-external-task-selection.md.
 - Memory V1 status is active_shadow after reciprocal feedback in sessions 196/197; Agent 2 independently verifies this transition. SHADOW, influence 0, no CANARY. Older activation-pending notes below are historical.
 

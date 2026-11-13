@@ -399,5 +399,17 @@
       "lab/memory/records.v1.schema.json",
       "lab/memory/ACTIVE-SHADOW-VERIFY-agent2.md"
     ]
+  },
+  {
+    "id": "memory-consolidation",
+    "text": "Memory V1.1 implements append-only consolidation and independent lesson promotion on a review branch; Agent 2 review, dashboard and first real cycle remain pending. No learning utility established.",
+    "evidence": [
+      "src/ai_for_ai_lab/consolidation.py",
+      "src/ai_for_ai_lab/memory.py",
+      "tests/test_consolidation.py",
+      "lab/memory/records.v1.schema.json",
+      "docs/MEMORY_CONSOLIDATION_V11.md",
+      "docs/owner/2026-11-13-memory-v11-consolidation.md"
+    ]
   }
 ]

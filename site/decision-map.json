@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-04",
+ "updated": "2026-11-13",
  "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
  "nodes": [
   {
@@ -2938,6 +2938,32 @@
     "date": "2026-11-04",
     "starts": "The owner explicitly approved publishing the pre"
    }
+  },
+  {
+   "id": "h-memory-v11-consolidation",
+   "date": "2026-11-13",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "active",
+   "track": "lab",
+   "milestone": true,
+   "title": "Owner authorizes evidence consolidation and cross-reviewed lessons",
+   "short": "Memory V1.1",
+   "summary": "The owner authorized Memory V1.1 consolidation: record meaningful selection episodes, propose conditional lessons, require independent cross-agent review before promotion, track contradictions and re-evaluate applicability. Preserve SHADOW with zero reward influence; Agent 1 implements and Agent 2 reviews and adapts the dashboard. The supplied empty-WIP hypothesis is a hypothesis, not an approved lesson.",
+   "rationale": "V1 retrieves historical seeds but has not produced prospectively learned durable lessons.",
+   "result": "Agent 1 implementation awaits independent Agent 2 review; no new learned memory or utility claim.",
+   "refs": [
+    "docs/owner/2026-11-13-memory-v11-consolidation.md",
+    "docs/MEMORY_CONSOLIDATION_V11.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0054"
+   ],
+   "human_decision": {
+    "date": "2026-11-13",
+    "starts": "The owner authorized Memory V1.1 consolidation: "
+   }
   }
  ],
  "edges": [
@@ -3744,6 +3770,12 @@
    "target": "h-memory-publication-resume",
    "relation": "followed_by",
    "label": "publication resumed"
+  },
+  {
+   "source": "h-memory-publication-resume",
+   "target": "h-memory-v11-consolidation",
+   "relation": "followed_by",
+   "label": "consolidation authorized"
   }
  ]
 }

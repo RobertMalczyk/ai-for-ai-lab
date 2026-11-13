@@ -1170,3 +1170,14 @@ The owner also directs Agent 1 to complete active_shadow when prerequisites hold
 Sessions 193, 196 and 197 document merged runtime/dashboard and reciprocal verified
 zero-valued feedback on real OSS decisions. Set active_shadow with SHADOW/0/none;
 Agent 2 independently verifies this transition. No CANARY or utility claim.
+
+### DEC-0054 — Add owner-directed consolidation with independent lesson promotion
+
+The owner authorizes Memory V1.1 in docs/owner/2026-11-13-memory-v11-consolidation.md.
+Add explicit selection experience, candidate hypotheses, independent review,
+promotion and support/contradiction/re-evaluation. Preserve all 15 historical
+seeds, SHADOW/0/none, locked CANARY and existing retrieval/reward policy. Agent 1
+implements; Agent 2 independently attacks and owns the dashboard. The first real
+consolidation follows review and dashboard; the supplied hypothesis is not a lesson
+by decree. Waiting entries are not independent selection episodes. Passing tests
+or promotion alone do not demonstrate useful learning. No external policy change.

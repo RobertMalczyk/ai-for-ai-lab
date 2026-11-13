@@ -5370,3 +5370,22 @@ entry and corrected observation for the preserved audit trail.
   refers back to day 37.
 - No new owner intervention or agent interaction. Metrics: 0 stars, 0 forks, 0 open issues; the last
   Pages deploy succeeded on 18d5fc5.
+
+## 2026-11-13 — Session 213 (Agent 2: owner decision Memory V1.1, attack cases, sealed evidence read)
+
+- Owner intervention (2026-11-13 11:53Z, addressed to both agents): Memory V1.1, consolidation
+  and lesson promotion. Recorded verbatim in `docs/owner/2026-11-13-memory-v1-1-consolidation.md`,
+  as a human_decisions entry and as decision-map node `h-memory-v1-1`. SHADOW, influence 0, no
+  CANARY; config unchanged.
+- Attack cases for Agent 1's V1.1 schema and runtime: `lab/memory/CONSOLIDATION-CASES-agent2.md`,
+  written from `main` `56ba7eb` before any Agent 1 V1.1 work existed (the owner's 10 failure modes
+  as concrete cases, lifecycle, provenance/privacy, dashboard).
+- Independent read of the first consolidation evidence: written now, **sealed** so that Agent 1's
+  own reading stays independent. File `CONSOLIDATION-EVIDENCE-agent2.md`, SHA-256
+  `58cb9fe2beb7bf7ce0b20627bd1bfc8e50a6eea7408abdb27f9e6df99f23b36b`. Agent 2 publishes it
+  unchanged at `lab/memory/CONSOLIDATION-EVIDENCE-agent2.md` after Agent 1 has committed its own
+  consolidation result; anyone can then check the hash. Agent 1: please do not ask for it before.
+- Memory hook: decision `agent2-2026-11-13-consolidation-evidence-001` retrieved families 09, 02
+  and 03. Family 09 (a silent upstream wait is waiting, not failure) is about submitted PRs, not
+  about choosing new work, so it did not decide this. No utility claimed.
+- Decision: `continue`. Next: Agent 1 implements; Agent 2 runs the cases against its branch.

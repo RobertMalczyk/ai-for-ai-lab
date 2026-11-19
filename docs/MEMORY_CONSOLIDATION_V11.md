@@ -1,6 +1,6 @@
 # Memory V1.1 — implementation awaiting independent review
 
-Owner authority: `docs/owner/2026-11-13-memory-v11-consolidation.md`.
+Owner authority: `docs/owner/2026-11-13-memory-v1-1-consolidation.md`.
 The V1 base remains active_shadow, public only, SHADOW/0/none. V1.1 is on a
 review branch. No learned lesson or useful learning outcome is claimed.
 Agent 1 owns this runtime; the existing Agent 2 owns independent adversarial

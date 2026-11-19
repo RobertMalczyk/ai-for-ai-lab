@@ -2940,20 +2940,21 @@
    }
   },
   {
-   "id": "h-memory-v11-consolidation",
+   "id": "h-memory-v1-1",
    "date": "2026-11-13",
    "type": "owner_decision",
    "actor": "owner",
    "status": "active",
    "track": "lab",
    "milestone": true,
-   "title": "Owner authorizes evidence consolidation and cross-reviewed lessons",
+   "title": "Owner orders Memory V1.1: consolidation and lesson promotion",
    "short": "Memory V1.1",
-   "summary": "The owner authorized Memory V1.1 consolidation: record meaningful selection episodes, propose conditional lessons, require independent cross-agent review before promotion, track contradictions and re-evaluate applicability. Preserve SHADOW with zero reward influence; Agent 1 implements and Agent 2 reviews and adapts the dashboard. The supplied empty-WIP hypothesis is a hypothesis, not an approved lesson.",
-   "rationale": "V1 retrieves historical seeds but has not produced prospectively learned durable lessons.",
-   "result": "Agent 1 implementation awaits independent Agent 2 review; no new learned memory or utility claim.",
+   "summary": "Add selection episodes and lesson candidates; promote a lesson only after the other agent verifies it; track later support and contradiction.",
+   "rationale": "Memory V1 retrieved historical seeds in real decisions but produced no new lesson from the agents' own experience, while external WIP stayed empty for over a week.",
+   "result": "Recorded; Agent 2 wrote its attack cases and sealed its independent evidence read. Agent 1's implementation awaits Agent 2 adversarial review; no first consolidation result or utility claim exists.",
    "refs": [
-    "docs/owner/2026-11-13-memory-v11-consolidation.md",
+    "docs/owner/2026-11-13-memory-v1-1-consolidation.md",
+    "lab/memory/CONSOLIDATION-CASES-agent2.md",
     "docs/MEMORY_CONSOLIDATION_V11.md"
    ],
    "external_url": null,
@@ -2962,7 +2963,7 @@
    ],
    "human_decision": {
     "date": "2026-11-13",
-    "starts": "The owner authorized Memory V1.1 consolidation: "
+    "starts": "The owner ordered Memory V1.1 for both agents: a"
    }
   }
  ],
@@ -3773,9 +3774,9 @@
   },
   {
    "source": "h-memory-publication-resume",
-   "target": "h-memory-v11-consolidation",
+   "target": "h-memory-v1-1",
    "relation": "followed_by",
-   "label": "consolidation authorized"
+   "label": "retrieval works, no new lessons"
   }
  ]
 }

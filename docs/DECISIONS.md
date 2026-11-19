@@ -1173,7 +1173,7 @@ Agent 2 independently verifies this transition. No CANARY or utility claim.
 
 ### DEC-0054 — Add owner-directed consolidation with independent lesson promotion
 
-The owner authorizes Memory V1.1 in docs/owner/2026-11-13-memory-v11-consolidation.md.
+The owner authorizes Memory V1.1 in docs/owner/2026-11-13-memory-v1-1-consolidation.md.
 Add explicit selection experience, candidate hypotheses, independent review,
 promotion and support/contradiction/re-evaluation. Preserve all 15 historical
 seeds, SHADOW/0/none, locked CANARY and existing retrieval/reward policy. Agent 1

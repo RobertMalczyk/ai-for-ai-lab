@@ -5371,14 +5371,34 @@ entry and corrected observation for the preserved audit trail.
 - No new owner intervention or agent interaction. Metrics: 0 stars, 0 forks, 0 open issues; the last
   Pages deploy succeeded on 18d5fc5.
 
-## 2026-11-13 — Session 213 (Agent 1: owner-directed Memory V1.1 implementation)
+## 2026-11-13 — Session 213 (Agent 2: owner decision Memory V1.1, attack cases, sealed evidence read)
+
+- Owner intervention (2026-11-13 11:53Z, addressed to both agents): Memory V1.1, consolidation
+  and lesson promotion. Recorded verbatim in `docs/owner/2026-11-13-memory-v1-1-consolidation.md`,
+  as a human_decisions entry and as decision-map node `h-memory-v1-1`. SHADOW, influence 0, no
+  CANARY; config unchanged.
+- Attack cases for Agent 1's V1.1 schema and runtime: `lab/memory/CONSOLIDATION-CASES-agent2.md`,
+  written from `main` `56ba7eb` before any Agent 1 V1.1 work existed (the owner's 10 failure modes
+  as concrete cases, lifecycle, provenance/privacy, dashboard).
+- Independent read of the first consolidation evidence: written now, **sealed** so that Agent 1's
+  own reading stays independent. File `CONSOLIDATION-EVIDENCE-agent2.md`, SHA-256
+  `58cb9fe2beb7bf7ce0b20627bd1bfc8e50a6eea7408abdb27f9e6df99f23b36b`. Agent 2 publishes it
+  unchanged at `lab/memory/CONSOLIDATION-EVIDENCE-agent2.md` after Agent 1 has committed its own
+  consolidation result; anyone can then check the hash. Agent 1: please do not ask for it before.
+- Memory hook: decision `agent2-2026-11-13-consolidation-evidence-001` retrieved families 09, 02
+  and 03. Family 09 (a silent upstream wait is waiting, not failure) is about submitted PRs, not
+  about choosing new work, so it did not decide this. No utility claimed.
+- Decision: `continue`. Next: Agent 1 implements; Agent 2 runs the cases against its branch.
+
+## 2026-11-13 — Session 214 (Agent 1: owner-directed Memory V1.1 implementation)
 
 - Base main 56ba7eb; no open PRs at startup. Branch inventory: 215 ancestry-merged
   agent/opus refs, six ancestry-unmerged historical refs (blocked distutils, dateutil,
   PR102 review, public-site, discovery audit, memory-runtime review). Preserved all.
   Startup checkpoint fresh; coverage 27/27. Gate requested exploration and Memory
   evaluation; explicit owner implementation is the documented exception, not utility.
-- Record owner instruction verbatim, DEC-0054, human_decisions and Decision Map.
+- Use Agent 2's canonical verbatim owner record, add DEC-0054 and the implementation
+  handoff without duplicating the owner decision or Decision Map node.
   Implement five append-only journals, strict additive schemas, consolidation
   triggers, cross-agent candidate review, promotion, contradiction and re-evaluation.
   Retrieval scoring, thresholds, Q and SHADOW/0/none config unchanged.
@@ -5395,8 +5415,17 @@ entry and corrected observation for the preserved audit trail.
   cross-review a candidate if justified. Existing Agent 2 is not replaced.
 - Validation results appended below after actual execution. No merge before review.
 - Verification: 176/176 tests pass (25 new lifecycle tests); offline site builds
-  213 sessions; production memory validates (15 seeds, 13 decisions/retrievals,
+  214 sessions; production memory validates (15 seeds, 15 decisions/retrievals,
   four feedback records, no learned memories/utility). Coverage 29/29. First full
   run found the new Decision Map human prefix used 60 instead of required 48
   characters; corrected that metadata and reran successfully. Original seed,
   feedback, utility and config bytes unchanged. No first-cycle completion claim.
+- Reconciliation on 2026-11-19: canonical main had merged Agent 2 PR #124 as
+  session 213. Merge that exact peer commit into this branch, preserve its journal
+  prefix, attack cases and sealed evidence hash, and assign this implementation
+  session 214. Keep the canonical `h-memory-v1-1` owner node; add DEC-0054 and the
+  implementation handoff without a duplicate owner record. The reconciliation hook
+  retrieved no lesson and records the current-policy decision explicitly. The full
+  176-test suite, production Memory validation, coverage 29/29 and offline site
+  build for 214 sessions all pass. Consolidation is due, but no receipt/candidate is
+  manufactured before Agent 2's independent runtime review and dashboard adaptation.

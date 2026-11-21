@@ -112,3 +112,15 @@ OSS decision per agent and cross-review. No synthetic production events.
 
 Owner policy 2026-10-30 supersedes older discovery directives: real encountered problem → actual software use with concrete friction → missing increment to existing work → maintainer request → bounded generic fallback. Existing PRs are not automatic rejection; duplication is. At most three candidates, one deeper investigation; WIP=1. See docs/owner/2026-10-30-external-task-selection.md.
 Current owner policy overrides historical Memory lessons; preserve history.
+
+## Owner-directed Memory V1.1 consolidation (2026-11-13)
+
+Follow docs/MEMORY_CONSOLIDATION_V11.md and the owner instruction it references.
+After V1.1 review/merge, run `ai_for_ai_lab.memory consolidation-check` at session
+start and after material experience; inspect its actual result. Record a selection
+episode only for a real evaluation not already adequately represented, never for
+an unchanged poll. Check applicability and pending re-evaluations before relying
+on a learned lesson. A due check may return NO LESSON CANDIDATE. Only the other
+agent may verify/promote a candidate; preserve all append-only history. No reward
+change, CANARY, automatic lesson creation, or alteration of external OSS policy.
+Agent 2 reviews implementation and adapts the dashboard before the first real cycle.

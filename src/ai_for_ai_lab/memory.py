@@ -129,6 +129,8 @@ class Store:
         self.config = loads((self.path / 'config.v1.json').read_text())
         self.defs = loads((self.path / 'records.v1.schema.json').read_text())['$defs']
         self._config()
+        from .consolidation import JOURNALS as extra_journals
+        JOURNALS.update(extra_journals)
         self.rows = {k: self._read(name) for k, (name, _) in JOURNALS.items()}
         self._validate_all()
 
@@ -140,6 +142,10 @@ class Store:
                 and type(c.get('reward_influence')) in (int, float) and c['reward_influence'] == 0
                 and c.get('coupling_scope') == 'none', 'only active memory / SHADOW zero influence is supported')
         require(c.get('private_store_status') == 'unverified_not_enabled', 'private memory disabled')
+        seeds = c.get('historical_seed_ids')
+        require(isinstance(seeds, list) and seeds and len(seeds) == len(set(seeds))
+                and all(isinstance(mid, str) and mid for mid in seeds),
+                'invalid historical seed manifest')
         r = c['retrieval']
         require(type(r['max_lessons']) is int and 0 < r['max_lessons'] <= 3
                 and type(r['budget']) is int and 100 <= r['budget'] <= 3200
@@ -183,7 +189,7 @@ class Store:
                 validate(r, self.defs[kind], self.defs)
                 rid = r[key]
                 require(rid not in seen, 'duplicate ' + key)
-                for field in ('created_at', 'available_at', 'correction_effective_at', 'occurred_at', 'verified_at', 'at'):
+                for field in ('created_at', 'available_at', 'correction_effective_at', 'occurred_at', 'verified_at', 'reviewed_at', 'promoted_at', 'at'):
                     if r.get(field) is not None:
                         timestamp(r[field])
                 for ref in r.get('source_refs', r.get('evidence_refs', [])):
@@ -203,6 +209,9 @@ class Store:
                     replaced.add(parent)
                 seen[rid] = r
                 if kind == 'memory':
+                    if r['historical_seed']:
+                        require(r['id'] in self.config['historical_seed_ids'],
+                                'historical seed import set is closed')
                     require(timestamp(r['available_at']) >= timestamp(r['created_at']), 'memory available before creation')
                     require(bool(parent) == bool(r['correction_effective_at']), 'correction requires effective timestamp')
                     if parent:
@@ -234,6 +243,8 @@ class Store:
         memories = {m['id']: m for m in self.rows['memory']}
         receipts = {r['decision_id']: r for r in self.rows['retrieval']}
         decisions = {d['decision_id']: d for d in self.rows['decision']}
+        from .consolidation import validate_all
+        validate_all(self)
         for r in self.rows['retrieval']:
             require(r['rule_version'] == self.config['rule_version'], 'unknown retrieval rule')
             require(r['digest'] == self._digest(r), 'retrieval receipt modified')
@@ -295,8 +306,10 @@ class Store:
             return True
 
     def eligible(self, at):
+        from .consolidation import excluded
+        retired = excluded(self, at)
         return [m for m in effective(self.rows['memory'], 'id', timestamp(at))
-                if m['status'] == 'active' and m['type'] in ('lesson', 'procedure') and m['visibility'] == 'public']
+                if m['id'] not in retired and m['status'] == 'active' and m['type'] in ('lesson', 'procedure') and m['visibility'] == 'public']
 
     def q(self, mid, context, agent, at=None):
         values = [u['utility'] for u in effective(self.rows['utility'], 'assessment_id')
@@ -404,6 +417,14 @@ def main():
     sub = p.add_subparsers(dest='command', required=True)
     sub.add_parser('validate')
     sub.add_parser('totals')
+    sub.add_parser('consolidation-metrics')
+    t = sub.add_parser('consolidation-check')
+    t.add_argument('--explicit', action='store_true')
+    t = sub.add_parser('promote')
+    for field in ('candidate-id', 'memory-id', 'actor'):
+        t.add_argument('--' + field, required=True)
+    from .consolidation import JOURNALS as extra_journals
+    JOURNALS.update(extra_journals)
     s = sub.add_parser('prepare')
     for field in ('decision-id', 'agent', 'task-id', 'task-type', 'session-id', 'query'):
         s.add_argument('--' + field, required=True)
@@ -421,6 +442,15 @@ def main():
             out = {'valid': True, 'counts': {k: len(v) for k, v in store.rows.items()}}
         elif command == 'totals':
             out = store.totals()
+        elif command == 'consolidation-metrics':
+            from .consolidation import metrics
+            out = metrics(store)
+        elif command == 'consolidation-check':
+            from .consolidation import trigger
+            out = trigger(store, **args)
+        elif command == 'promote':
+            from .consolidation import promote
+            out = promote(store, **args)
         elif command == 'append':
             out = {'appended': store.append(args['kind'], loads(Path(args['file']).read_text()))}
         else:

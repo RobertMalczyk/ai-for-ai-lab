@@ -25,6 +25,9 @@ class RuntimeTest(unittest.TestCase):
         config_path = self.mem/'config.v1.json'
         config = json.loads(config_path.read_text())
         config['implementation_status'] = 'runtime_implemented'
+        config['historical_seed_ids'] = [
+            'm0', 'm1', 'm2', 'm3', 'm4', 'm5', 'm6', 'off', 'r', 'seed1'
+        ]
         config_path.write_text(json.dumps(config))
         (self.root/'docs').mkdir()
         (self.root/'docs/evidence.md').write_text('Public review fixture. Not production evidence.')
@@ -149,6 +152,16 @@ class RuntimeTest(unittest.TestCase):
         self.assertEqual(self.s.totals()['agent1']['net'],0)
         self.assertIsNone(self.s.q('m1','build','agent1'))
         self.assertEqual(self.prepare()['memory_ids'],['m1'])
+
+    def test_historical_seed_import_set_is_closed_in_both_runtime_states(self):
+        forged = self.memory('forged-late-seed')
+        for status in ('runtime_implemented', 'active_shadow'):
+            self.s.config['implementation_status'] = status
+            self.s.rows['memory'].append(forged)
+            with self.subTest(status=status), self.assertRaisesRegex(
+                    MemoryError, 'historical seed import set is closed'):
+                self.s._validate_all()
+            self.s.rows['memory'].pop()
 
     def test_decision_freeze_finish_and_restart_retries(self):
         self.s.append('memory',self.memory()); receipt=self.prepare()

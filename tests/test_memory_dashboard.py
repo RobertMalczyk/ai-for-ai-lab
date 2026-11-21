@@ -337,6 +337,38 @@ class ConsolidationExportTest(unittest.TestCase):
         self.assertNotIn("private_note", c)
         self.assertNotIn("/mnt/private", json.dumps(self.export()))
 
+    def test_private_memory_lifecycle_does_not_change_public_aggregates(self):
+        private = {
+            "id": "private1", "type": "lesson", "author": "agent1", "visibility": "private",
+            "created_at": "2026-10-20T12:00:00Z", "available_at": "2026-10-20T12:00:00Z",
+            "source_refs": ["docs/evidence.md"], "scope": "private fixture",
+            "content": "Private lifecycle fixture", "exceptions": [], "confidence": .8,
+            "evidence_status": "reviewed", "source_outcome": "unknown", "status": "provisional",
+            "historical_seed": False, "supersedes": None, "correction_effective_at": None,
+            "map_node_ids": [],
+        }
+        private_evidence = {
+            "evidence_id": "private-evidence", "occurred_at": "2026-10-24T12:00:00Z",
+            "supersedes": None, "memory_id": "private1", "agent": "agent1",
+            "relation": "contradicts", "evidence_key": "private-case", "significant": True,
+            "rationale": "Private lifecycle fixture", "evidence_refs": ["docs/evidence.md"],
+        }
+        private_review = {
+            "reevaluation_id": "private-review", "occurred_at": "2026-10-25T12:00:00Z",
+            "supersedes": None, "memory_id": "private1", "agent": "agent1",
+            "trigger": "contradiction", "outcome": "pending", "reviewer": None,
+            "rationale": "Private lifecycle fixture", "replacement_memory_id": None,
+            "evidence_refs": ["docs/evidence.md"],
+        }
+        for name, row in (("memories", private), ("memory_evidence", private_evidence),
+                          ("reevaluations", private_review)):
+            path = self.case.mem / (name + ".jsonl")
+            path.write_text(path.read_text() + json.dumps(row) + "\n")
+        out = self.export()
+        self.assertEqual(out["counts"]["contradictions"], 0)
+        self.assertEqual(out["counts"]["under_reevaluation"], 0)
+        self.assertNotIn("private1", json.dumps(out))
+
     def test_production_export_has_only_seeds(self):
         out = mx.build_export(ROOT / "lab/memory", GH)["consolidation"]
         self.assertEqual(out["counts"]["historical_seeds"], 15)

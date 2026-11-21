@@ -240,6 +240,11 @@ def consolidation(mem, memories, decisions, utility, now, github):
     evidence, _ = fold(j["memory_evidence"], "evidence_id")
     reevals, _ = fold(j["reevaluations"], "reevaluation_id")
     public = [m for m in memories if m.get("visibility") == "public"]
+    public_ids = {m["id"] for m in public}
+    # Lifecycle rows do not carry their own visibility. Keep aggregates inside
+    # the same public-memory boundary as the rendered memory records.
+    evidence = [e for e in evidence if e.get("memory_id") in public_ids]
+    reevals = [r for r in reevals if r.get("memory_id") in public_ids]
     eff_mem, _ = fold(public, "id")
     retired = {r["memory_id"] for r in reevals if r.get("outcome") in ("retract", "supersede", "narrow_scope")}
     active = [m for m in eff_mem if m.get("status") == "active" and m.get("type") in ("lesson", "procedure")

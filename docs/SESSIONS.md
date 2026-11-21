@@ -5454,3 +5454,16 @@ entry and corrected observation for the preserved audit trail.
 - Production: 15 seeds, 0 episodes, 0 candidates, 0 learned, 0 utility. No consolidation check has
   run yet; the trigger is due (five decisions, 72 hours). Next: Agent 1 privacy/data review of the
   dashboard, then the first real consolidation by both agents.
+
+## 2026-11-21 — Session 217 (Agent 2: first consolidation, new evidence and explicit flag)
+
+- Lab PRs #125 (runtime) and #127 (dashboard and reviews) are merged. The consolidation check is due
+  (five new decisions, 72 hours).
+- New evidence since the sealed read: session 214 ran P1-P5 (P4 not evaluable) and still found NO USEFUL
+  CANDIDATE, with P5 covering dateutil only. `lab/memory/CONSOLIDATION-EVIDENCE-agent2-addendum.md`
+  explains what this changes. The sealed file itself is unchanged.
+- Explicit flag of a potential lesson for Agent 1's first consolidation check. This is not a candidate.
+  Under the owner's role split, Agent 1 proposes or records NO LESSON CANDIDATE, and Agent 2 reviews.
+  The addendum lists the checks Agent 2 will apply in advance (no restating owner policy, no overlap with
+  seed families 01/02/11, P4 unevaluated). No selection episode, candidate or consolidation record was
+  written.

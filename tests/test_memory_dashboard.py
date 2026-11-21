@@ -285,5 +285,70 @@ class ReferenceLeakTest(unittest.TestCase):
         self.assertEqual(out["decided_by"], ["unknown"])
 
 
+class ConsolidationExportTest(unittest.TestCase):
+    """Memory V1.1 section (owner order 2026-11-13), cross-checked against the runtime's own metrics."""
+
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "src"))
+        sys.path.insert(0, str(ROOT / "tests"))
+        import test_consolidation
+        self.case = test_consolidation.ConsolidationTest("test_independent_verification_and_promotion")
+        self.case.setUp()
+        self.addCleanup(self.case.tmp.cleanup)
+        self.later = dt.datetime(2026, 10, 30, tzinfo=dt.timezone.utc)
+
+    def export(self):
+        return mx.build_export(self.case.mem, GH, now=self.later)["consolidation"]
+
+    def test_counts_match_runtime_metrics_through_the_lifecycle(self):
+        from ai_for_ai_lab.consolidation import metrics
+        from ai_for_ai_lab.memory import Store
+        self.case.promoted()
+        self.case.s.append("memory_evidence", self.case.evidence())
+        runtime = metrics(Store(self.case.root))
+        counts = self.export()["counts"]
+        for key in ("selection_episodes", "lesson_candidates", "provisional_candidates", "candidates_verified",
+                    "candidates_rejected", "historical_seeds", "active_memories", "promoted_learned_memories",
+                    "contradictions", "supersessions_retractions", "learned_memories_later_retrieved"):
+            self.assertEqual(counts[key], runtime[key], key)
+        self.assertEqual(counts["under_reevaluation"], len(runtime["memories_requiring_reevaluation"]))
+        self.assertEqual(counts["learned_memories_proven_useful"], runtime["learned_memories_positive_utility"])
+
+    def test_promoted_is_not_proven_useful(self):
+        self.case.promoted()
+        out = self.export()
+        self.assertEqual([(m["id"], m["state"], m["proven_useful"]) for m in out["learned"]],
+                         [("learned1", "active", False)])
+        self.assertEqual(out["counts"]["learned_memories_proven_useful"], 0)
+        self.assertIn("not proven useful", out["note"])
+
+    def test_no_candidate_check_is_shown_as_a_result(self):
+        self.case.test_no_lesson_is_valid_consolidation()
+        self.assertEqual(self.export()["last_check"]["result"], "NO LESSON CANDIDATE")
+
+    def test_candidate_fields_are_whitelisted_and_refs_sanitized(self):
+        self.case.propose()
+        rows = [json.loads(x) for x in (self.case.mem / "lesson_candidates.jsonl").read_text().splitlines()]
+        rows[0]["evidence_refs"] = ["/mnt/private/notes.md", "docs/evidence.md"]
+        rows[0]["private_note"] = "/home/private/x"
+        (self.case.mem / "lesson_candidates.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+        c = self.export()["candidates"][0]
+        self.assertEqual(c["refs"], [f"{GH}/blob/main/docs/evidence.md"])
+        self.assertNotIn("private_note", c)
+        self.assertNotIn("/mnt/private", json.dumps(self.export()))
+
+    def test_production_export_has_only_seeds(self):
+        out = mx.build_export(ROOT / "lab/memory", GH)["consolidation"]
+        self.assertEqual(out["counts"]["historical_seeds"], 15)
+        self.assertEqual(out["counts"]["promoted_learned_memories"], len(out["learned"]))
+
+    def test_counts_conform_to_schema(self):
+        schema = json.loads((ROOT / "lab/memory/export.v1.schema.json").read_text(encoding="utf-8"))
+        spec = schema["properties"]["consolidation"]
+        out = self.export()
+        self.assertEqual(set(out), set(spec["properties"]))
+        self.assertEqual(set(out["counts"]), set(spec["properties"]["counts"]["required"]))
+
+
 if __name__ == "__main__":
     unittest.main()

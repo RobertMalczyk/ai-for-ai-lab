@@ -110,6 +110,19 @@
       },
       "required": ["criteria", "assessments"]
     },
+    "consolidation": {
+      "description": "Memory V1.1 lifecycle (owner order 2026-11-13). Observation metrics only; PROMOTED is not PROVEN USEFUL. Optional: absent in exports built before V1.1.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["counts", "last_check", "candidates", "learned", "note"],
+      "properties": {
+        "counts": {"type": "object", "additionalProperties": false, "required": ["selection_episodes", "episodes_no_candidate", "material_decisions", "active_memories", "historical_seeds", "lesson_candidates", "provisional_candidates", "candidates_verified", "candidates_rejected", "promoted_learned_memories", "contradictions", "supersessions_retractions", "under_reevaluation", "learned_memories_later_retrieved", "learned_memories_proven_useful"], "properties": {"selection_episodes": {"type": "integer", "minimum": 0}, "episodes_no_candidate": {"type": "integer", "minimum": 0}, "material_decisions": {"type": "integer", "minimum": 0}, "active_memories": {"type": "integer", "minimum": 0}, "historical_seeds": {"type": "integer", "minimum": 0}, "lesson_candidates": {"type": "integer", "minimum": 0}, "provisional_candidates": {"type": "integer", "minimum": 0}, "candidates_verified": {"type": "integer", "minimum": 0}, "candidates_rejected": {"type": "integer", "minimum": 0}, "promoted_learned_memories": {"type": "integer", "minimum": 0}, "contradictions": {"type": "integer", "minimum": 0}, "supersessions_retractions": {"type": "integer", "minimum": 0}, "under_reevaluation": {"type": "integer", "minimum": 0}, "learned_memories_later_retrieved": {"type": "integer", "minimum": 0}, "learned_memories_proven_useful": {"type": "integer", "minimum": 0}}},
+        "last_check": {"type": ["object", "null"]},
+        "candidates": {"type": "array", "items": {"type": "object"}},
+        "learned": {"type": "array", "items": {"type": "object", "required": ["id", "state", "retrieved", "proven_useful"]}},
+        "note": {"type": "string"}
+      }
+    },
     "map_links": {"type": "array", "items": {"type": "object"}},
     "reason": {"type": "string"}
   },

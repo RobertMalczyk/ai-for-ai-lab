@@ -1,0 +1,1 @@
+{"consolidation_id": "demo-check1", "occurred_at": "2026-10-16T09:00:00Z", "supersedes": null, "agent": "agent1", "session_id": "d4", "decision_ids": [], "episode_ids": [], "trigger_reasons": ["explicit_flag"], "result": "NO LESSON CANDIDATE", "candidate_ids": [], "rationale": "DEMO: not enough independent evidence", "evidence_refs": ["docs/SESSIONS.md"]}

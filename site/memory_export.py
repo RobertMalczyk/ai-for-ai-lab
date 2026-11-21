@@ -213,6 +213,114 @@ def readiness(cfg, decisions, graded_refs, github):
     }
 
 
+LEARNING_JOURNALS = ("selection_episodes", "lesson_candidates", "consolidations", "memory_evidence", "reevaluations")
+
+
+def _occurred(records, now):
+    """V1.1 journals are dated by occurred_at (a review's created_at stays the proposal time)."""
+    return [r for r in records if (_ts(r.get("occurred_at")) or now) <= now]
+
+
+def _text(v, limit=600):
+    return v[:limit] if isinstance(v, str) else None
+
+
+def _agent(v):
+    return v if v in AGENTS else None
+
+
+def consolidation(mem, memories, decisions, utility, now, github):
+    """Memory V1.1 lifecycle for the page (owner order 2026-11-13). Computed here from the public
+    journals, independently of the runtime's `consolidation-metrics`, and cross-checked by a test.
+    Whitelisted fields only; references go through safe_ref. PROMOTED is never PROVEN USEFUL:
+    usefulness needs an independently verified positive utility assessment."""
+    j = {name: _occurred(_jsonl(mem / (name + ".jsonl")), now) for name in LEARNING_JOURNALS}
+    episodes, _ = fold(j["selection_episodes"], "episode_id")
+    cands, chains = fold(j["lesson_candidates"], "candidate_id")
+    evidence, _ = fold(j["memory_evidence"], "evidence_id")
+    reevals, _ = fold(j["reevaluations"], "reevaluation_id")
+    public = [m for m in memories if m.get("visibility") == "public"]
+    public_ids = {m["id"] for m in public}
+    # Lifecycle rows do not carry their own visibility. Keep aggregates inside
+    # the same public-memory boundary as the rendered memory records.
+    evidence = [e for e in evidence if e.get("memory_id") in public_ids]
+    reevals = [r for r in reevals if r.get("memory_id") in public_ids]
+    eff_mem, _ = fold(public, "id")
+    retired = {r["memory_id"] for r in reevals if r.get("outcome") in ("retract", "supersede", "narrow_scope")}
+    active = [m for m in eff_mem if m.get("status") == "active" and m.get("type") in ("lesson", "procedure")
+              and m["id"] not in retired]
+    learned = [m for m in public if m.get("source_candidate_id")]
+    learned_ids = {m["id"] for m in learned}
+    active_ids = {m["id"] for m in active}
+    retrieved = {mid for d in decisions for mid in d.get("memory_ids", [])}
+    useful = {u["memory_id"] for u in fold(utility, "assessment_id")[0]
+              if u.get("status") == "verified" and isinstance(u.get("utility"), (int, float)) and u["utility"] > 0}
+    due = {r["memory_id"] for r in reevals if r.get("outcome") == "pending"}
+    for mid in learned_ids & active_ids:
+        reviewed = [_ts(r["occurred_at"]) for r in reevals if r["memory_id"] == mid and r.get("outcome") != "pending"]
+        last = max(reviewed) if reviewed else None
+        new = [e for e in evidence if e["memory_id"] == mid and e.get("relation") == "contradicts"
+               and (last is None or _ts(e["occurred_at"]) > last)]
+        if len(new) >= 2 or any(e.get("significant") for e in new):
+            due.add(mid)
+    checks = sorted(j["consolidations"], key=lambda r: r["occurred_at"])
+    last_check = checks[-1] if checks else None
+    status = defaultdict(int)
+    for c in cands:
+        status[c.get("status")] += 1
+
+    def relation(mid, rel):
+        return sum(1 for e in evidence if e["memory_id"] == mid and e.get("relation") == rel)
+
+    return {
+        "counts": {
+            "selection_episodes": len(episodes),
+            "episodes_no_candidate": sum(1 for e in episodes if e.get("outcome") == "no_candidate"),
+            "material_decisions": len(decisions),
+            "active_memories": len(active),
+            "historical_seeds": sum(1 for m in active if m.get("historical_seed")),
+            "lesson_candidates": sum(1 for c in j["lesson_candidates"] if not c.get("supersedes")),
+            "provisional_candidates": status["provisional"],
+            "candidates_verified": status["verified"] + status["promoted"],
+            "candidates_rejected": status["rejected"],
+            "promoted_learned_memories": len(learned_ids),
+            "contradictions": sum(1 for e in evidence if e.get("relation") == "contradicts"),
+            "supersessions_retractions": sum(1 for m in public if m.get("status") in ("superseded", "retracted")
+                                             or m.get("supersedes"))
+                                         + sum(1 for r in reevals if r.get("outcome") == "retract"),
+            "under_reevaluation": len(due),
+            "learned_memories_later_retrieved": len(learned_ids & retrieved),
+            "learned_memories_proven_useful": len(learned_ids & useful),
+        },
+        "last_check": None if not last_check else {
+            "at": last_check["occurred_at"], "agent": _agent(last_check.get("agent")),
+            "result": last_check.get("result") if last_check.get("result") in ("CANDIDATE PROPOSED", "NO LESSON CANDIDATE") else None,
+            "trigger_reasons": [t for t in last_check.get("trigger_reasons", []) if isinstance(t, str)][:6],
+            "rationale": _text(last_check.get("rationale")), "refs": _refs(last_check.get("evidence_refs"), github)},
+        "candidates": [{
+            "id": c["candidate_id"], "status": c.get("status"), "proposer": _agent(c.get("proposer")),
+            "reviewer": _agent(c.get("reviewer")), "path": c.get("path"), "pattern": _text(c.get("pattern")),
+            "scope": _text(c.get("scope")), "lesson": _text(c.get("proposed_lesson")),
+            "falsifier": _text(c.get("falsifier")), "support_count": c.get("support_count"),
+            "contradiction_count": c.get("contradiction_count"), "review_rationale": _text(c.get("review_rationale")),
+            "promoted_memory_id": c.get("promoted_memory_id"), "created_at": c.get("created_at"),
+            "updated_at": c.get("occurred_at"), "revisions": len(chains[c["candidate_id"]]),
+            "refs": _refs(c.get("evidence_refs"), github)}
+            for c in sorted(cands, key=lambda c: c.get("occurred_at", ""), reverse=True)],
+        "learned": [{
+            "id": m["id"], "lesson": _text(m.get("content")), "scope": _text(m.get("scope")),
+            "author": _agent(m.get("author")), "promoted_by": _agent(m.get("promoted_by")),
+            "promoted_at": m.get("promoted_at"), "source_candidate_id": m.get("source_candidate_id"),
+            "state": "retired" if m["id"] in retired or m["id"] not in {x["id"] for x in eff_mem}
+            else ("under re-evaluation" if m["id"] in due else "active"),
+            "retrieved": m["id"] in retrieved, "proven_useful": m["id"] in useful,
+            "supports": relation(m["id"], "supports"), "contradicts": relation(m["id"], "contradicts"),
+            "refs": _refs(m.get("source_refs"), github)} for m in learned],
+        "note": "A promoted lesson passed review by the other agent. It is not proven useful until an independent "
+                "assessment shows that it improved a later real decision.",
+    }
+
+
 def build_export(mem, github, now=None, source_commit=None, demo=False):
     now = now or dt.datetime.now(dt.timezone.utc)
     mem = Path(mem)
@@ -276,6 +384,7 @@ def build_export(mem, github, now=None, source_commit=None, demo=False):
             "evaluated": len(graded),
             "note": "A choice Q would have made but nobody made has no observed outcome.",
         },
+        "consolidation": consolidation(mem, memories, decisions, utility, now, github),
         "readiness": readiness(cfg, decisions, graded, github),
         "map_links": [{"memory_id": m["id"], "map_node_ids": m["map_node_ids"]} for m in memories
                       if m.get("visibility") == "public" and m.get("map_node_ids")],

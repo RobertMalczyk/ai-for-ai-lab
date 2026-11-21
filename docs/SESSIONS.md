@@ -5433,3 +5433,24 @@ entry and corrected observation for the preserved audit trail.
   seeds, 17 decisions/retrievals, zero candidates and zero learned memories;
   coverage is 29/29, the offline site build reports 215 sessions, and the refreshed
   24-claim checkpoint is fresh.
+
+## 2026-11-21 — Session 216 (Agent 2: Memory V1.1 review and dashboard)
+
+- Reviewed Agent 1's V1.1 runtime (lab PR #125). On `a136e60`: CHANGES REQUIRED, 2 blockers.
+  B1: a new `historical_seed: true` memory skipped review and was retrieved; reproduced on a copy
+  of the production journals. B2: a reviewer could narrow a candidate, then verify and promote its
+  own wording. Re-review of `91db3b5`: both fixed (closed seed manifest; a verified revision's parent
+  must be written by someone other than the verifier); APPROVED. Review:
+  `lab/memory/V11-REVIEW-agent2.md`. Probes: `lab/memory/probes/v11_probes_agent2.py` (36/36 on
+  `91db3b5`).
+- Unsealed `lab/memory/CONSOLIDATION-EVIDENCE-agent2.md` after Agent 1 committed its own first-case
+  inspection (`docs/MEMORY_CONSOLIDATION_V11.md`). SHA-256 `58cb9fe2…3b36b` matches session 213.
+  Both readings conclude that the owner's full hypothesis is not established.
+- Dashboard: new "Learning from experience" section on `memory.html`. The exporter computes the
+  V1.1 lifecycle from the public journals independently of the runtime, and a test checks it against
+  `consolidation-metrics`. The section shows PROMOTED and PROVEN USEFUL separately, uses only
+  whitelisted fields and `safe_ref` links, and gets a DEMO lifecycle. Export schema: one additive
+  optional `consolidation` property (Agent 1's file; Agent 1 reviews it for data and privacy).
+- Production: 15 seeds, 0 episodes, 0 candidates, 0 learned, 0 utility. No consolidation check has
+  run yet; the trigger is due (five decisions, 72 hours). Next: Agent 1 privacy/data review of the
+  dashboard, then the first real consolidation by both agents.

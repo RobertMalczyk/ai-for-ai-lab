@@ -210,6 +210,35 @@
     m.appendChild(recent);
   }
 
+  function renderConsolidation() {
+    var c = clear($("consolidation")), cs = data.consolidation;
+    if (!cs) { c.appendChild(empty("No consolidation data in this export.")); return; }
+    var n = cs.counts || {};
+    c.appendChild(el("div", { cls: "grid2" }, [
+      el("div", { cls: "box" }, [el("h3", { text: "Memories" }), kv([["active memories (recallable now)", n.active_memories], ["historical seeds", n.historical_seeds], ["learned lessons promoted", n.promoted_learned_memories], ["learned lessons recalled later", n.learned_memories_later_retrieved], ["learned lessons PROVEN USEFUL", n.learned_memories_proven_useful], ["under re-evaluation", n.under_reevaluation], ["contradictions recorded", n.contradictions], ["supersessions / retractions", n.supersessions_retractions]])]),
+      el("div", { cls: "box" }, [el("h3", { text: "Candidates and checks" }), kv([["selection episodes", n.selection_episodes], ["of which no candidate (not a failure)", n.episodes_no_candidate], ["material decisions", n.material_decisions], ["lesson candidates", n.lesson_candidates], ["provisional (awaiting review)", n.provisional_candidates], ["verified or promoted", n.candidates_verified], ["rejected", n.candidates_rejected]]),
+        el("p", { cls: "note", text: cs.last_check ? "Last consolidation check: " + day(cs.last_check.at) + " by " + (NAME[cs.last_check.agent] || "unknown") + ": " + (cs.last_check.result || "unknown result") + (cs.last_check.rationale ? ". " + cs.last_check.rationale : "") : "Last consolidation check: none recorded yet." })])]));
+    var lt = el("div", { cls: "box", style: "margin-top:14px" }, [el("h3", { text: "Learned lessons" })]);
+    if (!(cs.learned || []).length) lt.appendChild(empty("None yet. Every recallable lesson is still a historical seed."));
+    (cs.learned || []).forEach(function (m) {
+      var tag = m.proven_useful ? "PROVEN USEFUL" : "PROMOTED, not proven useful";
+      lt.appendChild(el("p", null, [el("b", { text: m.id + " · " + m.state + " · " + tag }), el("br"), m.lesson || "", el("br"),
+        el("span", { cls: "note", text: "Promoted " + day(m.promoted_at) + " by " + (NAME[m.promoted_by] || "?") + " from " + (m.source_candidate_id || "?") + "; recalled later: " + (m.retrieved ? "yes" : "no") + "; evidence: " + m.supports + " supports, " + m.contradicts + " contradicts." })]));
+    });
+    c.appendChild(lt);
+    var ct = el("div", { cls: "box", style: "margin-top:14px" }, [el("h3", { text: "Lesson candidates (hypotheses, never recalled)" })]);
+    if (!(cs.candidates || []).length) ct.appendChild(empty("None yet."));
+    else {
+      var t = el("table", { cls: "crit", style: "min-width:640px" }, [el("tr", null, ["Updated", "Status", "Proposer → reviewer", "Support", "Lesson", "Review"].map(function (h) { return el("th", { text: h }); }))]);
+      cs.candidates.forEach(function (x) {
+        t.appendChild(el("tr", null, [el("td", { text: day(x.updated_at) }), el("td", { text: x.status }), el("td", { text: (NAME[x.proposer] || "?") + " → " + (NAME[x.reviewer] || "not reviewed") }), el("td", { text: String(x.support_count) }), el("td", { text: x.lesson || "" }), el("td", { text: x.review_rationale || "–" })]));
+      });
+      ct.appendChild(el("div", { cls: "tscroll" }, [t]));
+    }
+    c.appendChild(ct);
+    c.appendChild(el("p", { cls: "note", text: cs.note || "" }));
+  }
+
   function renderShadow() {
     var s = clear($("shadow")), sh = data.shadow;
     if (!sh) { s.appendChild(empty("No decisions recorded yet.")); return; }
@@ -242,7 +271,7 @@
   }
 
   function render() {
-    renderFresh(); renderMode(); renderCards(); renderCharts(); renderFilters(); renderEvents(); renderMemory(); renderShadow(); renderReady(); renderMap();
+    renderFresh(); renderMode(); renderCards(); renderCharts(); renderFilters(); renderEvents(); renderMemory(); renderConsolidation(); renderShadow(); renderReady(); renderMap();
   }
 
   function load(demo) {

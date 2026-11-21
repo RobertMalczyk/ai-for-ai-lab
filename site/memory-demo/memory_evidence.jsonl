@@ -1,0 +1,1 @@
+{"evidence_id": "demo-ev1", "occurred_at": "2026-10-17T08:00:00Z", "supersedes": null, "memory_id": "demo-learned", "agent": "agent1", "relation": "contradicts", "evidence_key": "demo-case", "significant": true, "rationale": "DEMO contradiction", "evidence_refs": ["docs/SESSIONS.md"]}

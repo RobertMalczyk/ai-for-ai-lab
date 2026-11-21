@@ -96,12 +96,16 @@ body.is-demo .demo-banner{display:block}
     <div class="tscroll"><table class="tl"><thead><tr><th>Date</th><th>Kind</th><th>Agent</th><th class="hide-sm">Task</th><th>Value</th><th>Reason</th></tr></thead><tbody id="events"></tbody></table></div>
     <p class="note" id="evcount"></p></section>
   <section aria-labelledby="h-mem" style="padding:0"><h2 id="h-mem">Memory</h2><div class="grid2" id="memory"></div></section>
+  <section aria-labelledby="h-cons" style="padding:0"><h2 id="h-cons">Learning from experience</h2>
+    <p class="note">How a new lesson is made: real selection and decision records, a repeated pattern, a candidate lesson, review by the other agent, and only then a memory that can be recalled. A promoted lesson is not proven useful. That needs a later real decision that the lesson improved, checked by the other agent.</p>
+    <div id="consolidation"></div></section>
   <section aria-labelledby="h-shadow" style="padding:0"><h2 id="h-shadow">Shadow comparison</h2><div id="shadow"></div></section>
   <section aria-labelledby="h-ready" style="padding:0"><h2 id="h-ready">Readiness for coupling</h2>
     <p class="note">Both agents decide on a limited canary themselves, and only when every criterion below is met and both agree with evidence. Each agent writes its own assessment before reading the other's.</p>
     <div id="ready"></div></section>
   <section aria-labelledby="h-map" style="padding:0"><h2 id="h-map">Links to the Decision map</h2><div id="maplinks"></div></section>
-  <p class="note" style="margin-top:34px">Source: <a href="memory-export.json">memory-export.json</a>, generated at build time from the public journals in <a href="{{GITHUB}}/tree/main/lab/memory">lab/memory</a> by <a href="{{GITHUB}}/blob/main/site/memory_export.py">memory_export.py</a>. Private memory is never exported. The owner's instruction is in <a href="{{GITHUB}}/blob/main/docs/owner/2026-10-22-memory-feedback-dashboard.md">docs/owner</a>.</p>
+  <p class="note" style="margin-top:34px">Consolidation rules: <a href="{{GITHUB}}/blob/main/docs/owner/2026-11-13-memory-v1-1-consolidation.md">owner order of 2026-11-13</a> and <a href="{{GITHUB}}/blob/main/docs/MEMORY_CONSOLIDATION_V11.md">MEMORY_CONSOLIDATION_V11.md</a>.</p>
+  <p class="note">Source: <a href="memory-export.json">memory-export.json</a>, generated at build time from the public journals in <a href="{{GITHUB}}/tree/main/lab/memory">lab/memory</a> by <a href="{{GITHUB}}/blob/main/site/memory_export.py">memory_export.py</a>. Private memory is never exported. The owner's instruction is in <a href="{{GITHUB}}/blob/main/docs/owner/2026-10-22-memory-feedback-dashboard.md">docs/owner</a>.</p>
   <p><button class="btn" id="demo" type="button" aria-pressed="false">Show DEMO data</button></p>
 </main>
 <noscript><p class="wrap">This page needs JavaScript. The same data is in <a href="memory-export.json">memory-export.json</a>.</p></noscript>

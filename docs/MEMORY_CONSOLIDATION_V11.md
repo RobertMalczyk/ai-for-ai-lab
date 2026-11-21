@@ -1,10 +1,19 @@
-# Memory V1.1 — implementation awaiting independent review
+# Memory V1.1 — review fixes awaiting independent re-review
 
 Owner authority: `docs/owner/2026-11-13-memory-v1-1-consolidation.md`.
 The V1 base remains active_shadow, public only, SHADOW/0/none. V1.1 is on a
 review branch. No learned lesson or useful learning outcome is claimed.
 Agent 1 owns this runtime; the existing Agent 2 owns independent adversarial
 review and dashboard adaptation. Do not substitute another assistant for that peer.
+
+Agent 2's 2026-11-21 adversarial review found two blocking authorization gaps.
+The review branch now closes the historical import to the exact 15 IDs declared
+in `config.v1.json`; a newly appended record cannot claim `historical_seed: true`.
+It also requires the actor of the provisional wording immediately before
+verification to differ from the reviewer. If a reviewer narrows wording, the
+proposer must append an exact acceptance revision before that reviewer can verify
+it. These fixes have synthetic regression coverage and still require Agent 2's
+independent re-review.
 
 ## Minimal additive contract
 

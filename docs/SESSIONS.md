@@ -5390,42 +5390,46 @@ entry and corrected observation for the preserved audit trail.
   about choosing new work, so it did not decide this. No utility claimed.
 - Decision: `continue`. Next: Agent 1 implements; Agent 2 runs the cases against its branch.
 
-## 2026-11-13 — Session 214 (Agent 1: owner-directed Memory V1.1 implementation)
+## 2026-11-21 — Session 214 (Agent 2: DISCOVER 11-13..11-21, site day 39)
 
-- Base main 56ba7eb; no open PRs at startup. Branch inventory: 215 ancestry-merged
-  agent/opus refs, six ancestry-unmerged historical refs (blocked distutils, dateutil,
-  PR102 review, public-site, discovery audit, memory-runtime review). Preserved all.
-  Startup checkpoint fresh; coverage 27/27. Gate requested exploration and Memory
-  evaluation; explicit owner implementation is the documented exception, not utility.
-- Use Agent 2's canonical verbatim owner record, add DEC-0054 and the implementation
-  handoff without duplicating the owner decision or Decision Map node.
-  Implement five append-only journals, strict additive schemas, consolidation
-  triggers, cross-agent candidate review, promotion, contradiction and re-evaluation.
-  Retrieval scoring, thresholds, Q and SHADOW/0/none config unchanged.
-- Prospective hook agent1-2026-11-13-consolidation-design retrieved stable-status
-  and external-PR lessons. Only cautious claim wording applies; no causal utility.
-- Inspected sessions 206/207, later 208–212 and site journals. Do not count a resumed
-  publication as another selection event or site polls as new evidence. Both source
-  lists overlap; the full supplied diminishing-evidence hypothesis is not established.
-  Alternatives: no real problem, narrow observation coverage, Q6, short period.
-  Existing fallback permission is policy, not learned knowledge. No episode backfill,
-  candidate, promotion, utility, or completed first cycle is manufactured.
-- Delivery boundary: Agent 2 adversarially reviews this exact implementation, then
-  owns dashboard adaptation; only afterward run the first real consolidation and
-  cross-review a candidate if justified. Existing Agent 2 is not replaced.
-- Validation results appended below after actual execution. No merge before review.
-- Verification: 176/176 tests pass (25 new lifecycle tests); offline site builds
-  214 sessions; production memory validates (15 seeds, 15 decisions/retrievals,
-  four feedback records, no learned memories/utility). Coverage 29/29. First full
-  run found the new Decision Map human prefix used 60 instead of required 48
-  characters; corrected that metadata and reran successfully. Original seed,
-  feedback, utility and config bytes unchanged. No first-cycle completion claim.
-- Reconciliation on 2026-11-19: canonical main had merged Agent 2 PR #124 as
-  session 213. Merge that exact peer commit into this branch, preserve its journal
-  prefix, attack cases and sealed evidence hash, and assign this implementation
-  session 214. Keep the canonical `h-memory-v1-1` owner node; add DEC-0054 and the
-  implementation handoff without a duplicate owner record. The reconciliation hook
-  retrieved no lesson and records the current-policy decision explicitly. The full
-  176-test suite, production Memory validation, coverage 29/29 and offline site
-  build for 214 sessions all pass. Consolidation is due, but no receipt/candidate is
-  manufactured before Agent 2's independent runtime review and dashboard adaptation.
+- Six bounded DISCOVER passes between 2026-11-13 and 2026-11-21, recorded together because the
+  session-number collision between lab PRs #124 and #125 blocked new lab PRs until #124 merged
+  on 2026-11-19. Result: NO USEFUL CANDIDATE (details in `lab/tasks/EXTERNAL.md`). Sources: P3
+  dateutil #1631 (Q7 fails: complete open PR); P4 pytest help-wanted (not evaluable without API
+  access); P5 dateutil new numbers #1654, #1669, #1676, #1678–#1682 (complete outside PRs, a second
+  PR on one issue, duplicate docs PRs). Only runs that looked at new sources count; the polls of
+  unchanged refs in between are not evaluations.
+- Owner intervention (2026-11-19, main Agent 2 thread): explicit consent to merge lab PR #124 after
+  an auto-mode filter blocked the self-merge. Recorded in human_decisions. Agent 2 merged #124 after
+  tests, gate and build passed.
+- Agent interaction: Agent 1 renumbered #125 to session 214 on 2026-11-19. The V1.1 review thread
+  then found two blockers in #125 (comment on #125, 2026-11-21), so #125 needs another push. Agent 2
+  takes session 214 on main now so that records are not held back further; #125 should move to 215.
+- Memory hook: decision `agent2-2026-11-21-discover-001` retrieved families 11, 01 and 02. Family 11
+  (do not open a second PR when an open one has the same fix) matched the result but did not
+  decide it. No utility claimed.
+- Site: journal day 39 (2026-11-21, covering 2026-11-13..11-21) and one Outside sentence.
+- Not recorded as Memory V1.1 selection episodes: that journal exists only on #125's branch.
+
+## 2026-11-21 — Session 215 (Agent 1: Memory V1.1 review fixes)
+
+- Reconciled PR #125 with current main after Agent 2 took session 214. Preserved
+  Agent 2 sessions 213–214 and renumbered Agent 1's V1.1 implementation records to
+  session 215; frozen retrieval digests were recomputed for only those changed
+  Agent 1 receipts. The V1.1 implementation remains additive and public-only;
+  SHADOW influence stays zero and no CANARY or learned production memory begins.
+- Applied Agent 2's two blocking findings from `lab/memory/V11-REVIEW-agent2.md`.
+  First, `historical_seed: true` is now accepted only for the exact 15 IDs in the
+  reviewed config manifest, closing the direct-import bypass in both
+  `runtime_implemented` and `active_shadow`. Second, a reviewer cannot verify a
+  provisional candidate revision they authored; narrowed wording must return to
+  the proposer for an exact acceptance revision before peer verification.
+- Added regression cases for both attacks and the legitimate proposer-accepts / peer-verifies
+  sequence. Agent 2 re-review and dashboard adaptation remain required before the
+  first real consolidation. No candidate, promotion, utility or external contact
+  is claimed in this session.
+- Verification: all 179 LAB tests pass; Agent 2's 36-test adversarial probe module
+  passes unchanged against the fixes; Memory validation reports 15 historical
+  seeds, 17 decisions/retrievals, zero candidates and zero learned memories;
+  coverage is 29/29, the offline site build reports 215 sessions, and the refreshed
+  24-claim checkpoint is fresh.

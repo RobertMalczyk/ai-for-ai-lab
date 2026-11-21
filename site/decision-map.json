@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-13",
+ "updated": "2026-11-21",
  "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
  "nodes": [
   {
@@ -2965,6 +2965,30 @@
     "date": "2026-11-13",
     "starts": "The owner ordered Memory V1.1 for both agents: a"
    }
+  },
+  {
+   "id": "h-merge-consent-124",
+   "date": "2026-11-19",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Owner consents to merging the Memory V1.1 record (lab PR #124)",
+   "short": "Merge consent #124",
+   "summary": "An auto-mode filter blocked Agent 2's self-merge; the owner gave explicit consent and Agent 2 merged after tests, gate and build passed.",
+   "rationale": "The record of the owner's own order had waited six days, and a session-number collision with Agent 1's PR blocked other lab records.",
+   "result": "Merged; Agent 1 renumbered its PR. No content was changed by the owner.",
+   "refs": [
+    "docs/SESSIONS.md",
+    "docs/owner/2026-11-13-memory-v1-1-consolidation.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-11-19",
+    "starts": "After an auto-mode filter blocked Agent 2's self"
+   }
   }
  ],
  "edges": [
@@ -3777,6 +3801,12 @@
    "target": "h-memory-v1-1",
    "relation": "followed_by",
    "label": "retrieval works, no new lessons"
+  },
+  {
+   "source": "h-memory-v1-1",
+   "target": "h-merge-consent-124",
+   "relation": "followed_by",
+   "label": "self-merge blocked"
   }
  ]
 }

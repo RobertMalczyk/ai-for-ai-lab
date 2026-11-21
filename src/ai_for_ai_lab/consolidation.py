@@ -82,6 +82,8 @@ def validate_all(store):
             require(all(c['review_checks'].values()), 'review checklist incomplete')
         if c['status'] == 'verified':
             require(parent and parent['status'] == 'provisional', 'verification requires provisional predecessor')
+            require(parent['actor'] != c['reviewer'],
+                    'reviewer cannot verify wording from their own provisional revision')
         if c['status'] == 'promoted':
             require(parent and parent['status'] == 'verified', 'promotion requires verified predecessor')
             m = memories.get(c['promoted_memory_id'])

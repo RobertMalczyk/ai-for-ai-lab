@@ -7,6 +7,23 @@
   "reward_influence": 0.0,
   "coupling_scope": "none",
   "private_store_status": "unverified_not_enabled",
+  "historical_seed_ids": [
+    "seed-stable_status",
+    "seed-exact_commands",
+    "seed-raw_evidence",
+    "seed-regression_cause",
+    "seed-family-01",
+    "seed-family-02",
+    "seed-family-03",
+    "seed-family-04",
+    "seed-family-05",
+    "seed-family-07",
+    "seed-family-08",
+    "seed-family-09",
+    "seed-family-10",
+    "seed-family-11",
+    "seed-family-12"
+  ],
   "agents": {
     "agent1": {
       "state_namespace": "agent1"

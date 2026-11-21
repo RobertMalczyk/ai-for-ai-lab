@@ -212,4 +212,5 @@
 {"session": 211, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}
 {"session": 212, "family": "public-site", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}
 {"session": 213, "family": "memory-v1", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}
-{"session": 214, "family": "memory-v1", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}
+{"session": 214, "family": "external-oss-contribution", "mode": "maintenance", "evidence": "none", "outcome": "negative", "record": "docs/SESSIONS.md"}
+{"session": 215, "family": "memory-v1", "mode": "maintenance", "evidence": "none", "outcome": "unknown", "record": "docs/SESSIONS.md"}

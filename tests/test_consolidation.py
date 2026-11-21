@@ -60,6 +60,34 @@ class ConsolidationTest(unittest.TestCase):
         self.s.append('candidate',c)
         with self.assertRaises(MemoryError):promote(self.s,'narrow','m','agent2',T3)
         self.assertEqual(len(self.s.rows['candidate']),2)
+    def test_reviewer_cannot_verify_own_narrowed_wording(self):
+        self.propose()
+        narrowed=self.candidate(candidate_id='narrow',supersedes='c1',occurred_at=T2,
+                                scope='one repository',actor='agent2')
+        self.s.append('candidate',narrowed)
+        checks={k:True for k in narrowed['review_checks']}
+        with self.assertRaises(MemoryError):
+            self.s.append('candidate',narrowed|dict(
+                candidate_id='narrow-verified',supersedes='narrow',status='verified',
+                reviewer='agent2',actor='agent2',reviewed_at=T3,occurred_at=T3,
+                review_rationale='Reviewer attempts to approve own wording',
+                review_checks=checks))
+    def test_proposer_can_accept_narrowing_before_peer_verifies(self):
+        self.propose()
+        narrowed=self.candidate(candidate_id='narrow',supersedes='c1',occurred_at=T2,
+                                scope='one repository',actor='agent2')
+        self.s.append('candidate',narrowed)
+        accepted=narrowed|dict(candidate_id='accepted',supersedes='narrow',
+                               occurred_at=T3,actor='agent1')
+        self.s.append('candidate',accepted)
+        checks={k:True for k in accepted['review_checks']}
+        verified=accepted|dict(candidate_id='accepted-verified',supersedes='accepted',
+                               status='verified',reviewer='agent2',actor='agent2',
+                               reviewed_at='2026-10-24T12:00:00Z',
+                               occurred_at='2026-10-24T12:00:00Z',
+                               review_rationale='Peer reviewed proposer-accepted wording',
+                               review_checks=checks)
+        self.s.append('candidate',verified)
     def test_rejected_never_retrieved(self):
         self.propose();self.verify(status='rejected');self.assertFalse(self.s.eligible(T3))
     def test_missing_falsifier_fails_closed(self):

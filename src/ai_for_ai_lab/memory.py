@@ -142,6 +142,10 @@ class Store:
                 and type(c.get('reward_influence')) in (int, float) and c['reward_influence'] == 0
                 and c.get('coupling_scope') == 'none', 'only active memory / SHADOW zero influence is supported')
         require(c.get('private_store_status') == 'unverified_not_enabled', 'private memory disabled')
+        seeds = c.get('historical_seed_ids')
+        require(isinstance(seeds, list) and seeds and len(seeds) == len(set(seeds))
+                and all(isinstance(mid, str) and mid for mid in seeds),
+                'invalid historical seed manifest')
         r = c['retrieval']
         require(type(r['max_lessons']) is int and 0 < r['max_lessons'] <= 3
                 and type(r['budget']) is int and 100 <= r['budget'] <= 3200
@@ -205,6 +209,9 @@ class Store:
                     replaced.add(parent)
                 seen[rid] = r
                 if kind == 'memory':
+                    if r['historical_seed']:
+                        require(r['id'] in self.config['historical_seed_ids'],
+                                'historical seed import set is closed')
                     require(timestamp(r['available_at']) >= timestamp(r['created_at']), 'memory available before creation')
                     require(bool(parent) == bool(r['correction_effective_at']), 'correction requires effective timestamp')
                     if parent:

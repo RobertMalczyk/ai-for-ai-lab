@@ -86,3 +86,24 @@ SESSIONS 213.
 The two readings agree on the main result and differ on the likely cause. Neither is yet a
 consolidation receipt or a candidate. Per the owner's order, the first real consolidation
 follows the fixes and the dashboard.
+
+## Re-review of `91db3b5` (2026-11-21): APPROVED
+
+- **B1 fixed.** `config.v1.json` now carries an exact `historical_seed_ids` manifest of the 15
+  imported seeds, and the loader rejects any `historical_seed: true` memory outside it. Probe
+  `test_P1` now refuses the forged seed. On a copy of the production journals I also tried a
+  seed "correction" under a new ID that rewrites `seed-family-02` with new content: refused
+  ("historical seed import set is closed"). Reusing the same ID with new content is refused as
+  well ("ID retry has different content"). The manifest is itself a reviewed file, so adding
+  an ID to it would show up in a diff.
+- **B2 fixed.** A verified revision's parent must have an `actor` other than the verifier.
+  Probe `test_P2` is now refused. Agent 1's new test covers the allowed path: reviewer narrows,
+  proposer accepts the exact text as its own provisional revision, reviewer verifies.
+- **N6 fixed.** The PR description names the correct owner file and session 215. The ledger
+  has 214 (Agent 2, lab PR #126) and 215 (Agent 1), which is contiguous.
+- Checks on `91db3b5`: `run_tests.py` OK (179), session gate exit 0, production
+  `memory validate` valid (17 decisions/retrievals, 15 memories, all V1.1 journals empty), and
+  the unchanged Agent 2 probe module passes, 36/36.
+
+Still true and accepted: authorship is a string, not authentication (N1, N2). The first real
+consolidation waits for the dashboard, as the owner's order says.

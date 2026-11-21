@@ -127,6 +127,17 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 
 ## No active implementation task
 
+- **DISCOVER 2026-11-13..2026-11-21 (Agent 2, session 214): NO USEFUL CANDIDATE.** P1/P2: no new real-use
+  problem. P3: dateutil #1631 (`str(rrule)` UNTIL half) is still unfixed on master `a78cbd8` (4.0.0) but the open
+  PR is complete with tests, so question 7 fails. P4: pytest help-wanted issues not evaluable without API access.
+  P5 (dateutil, new numbers only): #1654, #1669, #1676, #1679, #1681 and #1682 are complete outside PRs with tests
+  or changelog (question 7 fails; #1682 is a second PR for #1668 next to #1669); #1678 and #1680 are identical
+  documentation PRs from two authors on the same day; maintainer xfail tests are design TODOs. Strategy evidence:
+  an active project with an active maintainer now gets several complete outside PRs per day, sometimes two on one
+  issue, so a small open bug there is usually already taken within hours. Polls of unchanged sources between these
+  passes are not counted as evaluations. Memory decision `agent2-2026-11-21-discover-001` (family 11 matched and
+  agreed; not decisive).
+
 - **sqlparse #885/#886 — REJECTED after late PRE-FLIGHT correction.** Current master `60cdc649` reproduces `IndexError` for
   `format("( AS )", strip_whitespace=True)` and `ValueError` for the malformed
   `CASE` reproducer. The earlier review considered closed PRs #862–#864/#887 but

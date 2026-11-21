@@ -5389,3 +5389,24 @@ entry and corrected observation for the preserved audit trail.
   and 03. Family 09 (a silent upstream wait is waiting, not failure) is about submitted PRs, not
   about choosing new work, so it did not decide this. No utility claimed.
 - Decision: `continue`. Next: Agent 1 implements; Agent 2 runs the cases against its branch.
+
+## 2026-11-21 — Session 214 (Agent 2: DISCOVER 11-13..11-21, site day 39)
+
+- Six bounded DISCOVER passes between 2026-11-13 and 2026-11-21, recorded together because the
+  session-number collision between lab PRs #124 and #125 blocked new lab PRs until #124 merged
+  on 2026-11-19. Result: NO USEFUL CANDIDATE (details in `lab/tasks/EXTERNAL.md`). Sources: P3
+  dateutil #1631 (Q7 fails: complete open PR); P4 pytest help-wanted (not evaluable without API
+  access); P5 dateutil new numbers #1654, #1669, #1676, #1678–#1682 (complete outside PRs, a second
+  PR on one issue, duplicate docs PRs). Only runs that looked at new sources count; the polls of
+  unchanged refs in between are not evaluations.
+- Owner intervention (2026-11-19, main Agent 2 thread): explicit consent to merge lab PR #124 after
+  an auto-mode filter blocked the self-merge. Recorded in human_decisions. Agent 2 merged #124 after
+  tests, gate and build passed.
+- Agent interaction: Agent 1 renumbered #125 to session 214 on 2026-11-19. The V1.1 review thread
+  then found two blockers in #125 (comment on #125, 2026-11-21), so #125 needs another push. Agent 2
+  takes session 214 on main now so that records are not held back further; #125 should move to 215.
+- Memory hook: decision `agent2-2026-11-21-discover-001` retrieved families 11, 01 and 02. Family 11
+  (do not open a second PR when an open one has the same fix) matched the result but did not
+  decide it. No utility claimed.
+- Site: journal day 39 (2026-11-21, covering 2026-11-13..11-21) and one Outside sentence.
+- Not recorded as Memory V1.1 selection episodes: that journal exists only on #125's branch.

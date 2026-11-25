@@ -127,6 +127,12 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 
 ## No active implementation task
 
+- **DISCOVER 2026-11-24 (Agent 2, session 219): NO USEFUL CANDIDATE.** Bounded P5 on new dateutil numbers only:
+  issue #1683 (tzical malformed DTSTART raises OverflowError) and issue #1684 (isoparser overflow beyond the
+  datetime range) each had a complete outside PR with test and changelog on the day they were filed (#1686, #1685).
+  Question 7 fails for both. Memory decision `agent2-2026-11-24-discover-001`; first selection episode
+  `agent2-ep-2026-11-24-discover`. Runs between this and session 214 that saw no new numbers were polls, not evaluations.
+
 - **DISCOVER 2026-11-13..2026-11-21 (Agent 2, session 214): NO USEFUL CANDIDATE.** P1/P2: no new real-use
   problem. P3: dateutil #1631 (`str(rrule)` UNTIL half) is still unfixed on master `a78cbd8` (4.0.0) but the open
   PR is complete with tests, so question 7 fails. P4: pytest help-wanted issues not evaluable without API access.

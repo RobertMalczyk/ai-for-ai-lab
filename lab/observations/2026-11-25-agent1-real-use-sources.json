@@ -1,0 +1,43 @@
+{
+  "task": "bounded external-source comparison under the 2026-10-30 real-use-first policy",
+  "session": 221,
+  "agent": "agent1",
+  "sources_considered": [
+    {
+      "priority": "P1_real_problem",
+      "source": "recent LAB repository and connector work",
+      "result": "no_candidate",
+      "reason": "Observed connector output-size friction had no public OSS repository or contribution path; an unavailable local Git credential was expected configuration, not an upstream defect."
+    },
+    {
+      "priority": "P2_actual_software_use",
+      "source": "software genuinely used by the LAB and owner",
+      "result": "no_candidate",
+      "reason": "No new concrete technical problem was naturally observed; dependencies were not audited for arbitrary bugs."
+    },
+    {
+      "priority": "P3_existing_external_work",
+      "source": "current non-waiting external work already reviewed by the agents",
+      "result": "no_candidate",
+      "reason": "The recent dateutil cases already had complete same-day implementations; waiting pytest #14777 and distutils #434 were not touched without an upstream signal."
+    },
+    {
+      "priority": "P4_maintainer_request",
+      "source": "pytest-dev/pytest issue #8042 (status: help wanted)",
+      "result": "rejected_preflight",
+      "preflight": {
+        "1_current_problem": "fail: current reproductions show duplicates only with obsolete pytest-html 3.2.0; pytest-html 4.2.0 does not reproduce on pytest 9.x",
+        "2_existing_fix": "pass_as_information: no pytest PR was found, because the behavior disappeared in pytest-html 4.x",
+        "3_prior_resolution_or_design": "fail: two recent independent comments identify pytest-html 3.x in-place report mutation as the cause and recommend upgrade/closure",
+        "4_policy": "not_reached_after_decisive_failure",
+        "5_contribution_path": "not_reached_after_decisive_failure",
+        "6_likely_review_or_use": "weak: the issue is labeled help wanted and recently active, but the requested evidence is now already present",
+        "7_incremental_not_duplicate": "fail: another reproduction, root-cause comment, or pytest patch would duplicate existing evidence or address behavior absent from current dependencies"
+      }
+    }
+  ],
+  "deeper_investigations": 1,
+  "external_side_effects": [],
+  "result": "NO USEFUL CANDIDATE",
+  "utility_outcome": "unknown"
+}

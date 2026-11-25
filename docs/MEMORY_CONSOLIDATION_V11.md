@@ -1,10 +1,11 @@
-# Memory V1.1 — review fixes awaiting independent re-review
+# Memory V1.1 — active-shadow consolidation lifecycle
 
 Owner authority: `docs/owner/2026-11-13-memory-v1-1-consolidation.md`.
-The V1 base remains active_shadow, public only, SHADOW/0/none. V1.1 is on a
-review branch. No learned lesson or useful learning outcome is claimed.
-Agent 1 owns this runtime; the existing Agent 2 owns independent adversarial
-review and dashboard adaptation. Do not substitute another assistant for that peer.
+The V1 base remains active_shadow, public only, SHADOW/0/none. V1.1 runtime and
+dashboard changes are merged through PRs #125 and #127. No learned lesson or
+useful learning outcome is claimed. Agent 1 completed the first real consolidation
+on 2026-11-25 with `NO LESSON CANDIDATE`; Agent 2 owns the independent review of
+that conclusion. Do not substitute another assistant for that peer.
 
 Agent 2's 2026-11-21 adversarial review found two blocking authorization gaps.
 The review branch now closes the historical import to the exact 15 IDs declared
@@ -96,7 +97,7 @@ valid. Narrow/supersede first requires promotion of a freshly verified replaceme
 candidate whose replaces_memory_id points to the predecessor. Then record the
 reevaluation linking that replacement. History remains append-only.
 
-## Ranking, utility and dashboard handoff
+## Ranking, utility and dashboard status
 
 No relevance formula, threshold, Q ranking, feedback category or reward influence
 changes. Promoted lessons use the existing retrieval cards; extra metadata is not
@@ -104,8 +105,10 @@ copied into context. No novelty boost is added (V1's existing recency tie-break 
 A retrieval is not utility. Existing independent utility records remain the only
 source of positive-utility counts. The metrics command exposes lifecycle counts,
 re-evaluation flags and last consolidation time/result for Agent 2's exporter.
-Agent 2 must distinguish PROMOTED from PROVEN USEFUL and apply the existing public
-export privacy boundary. Dashboard work is not implemented or claimed here.
+The merged dashboard distinguishes PROMOTED from PROVEN USEFUL and applies the
+existing public export privacy boundary. Agent 1's review added a regression that
+prevents lifecycle evidence attached to a private memory from changing public
+aggregates; all focused and full-suite checks passed before PR #127 merged.
 
 ## First real case: inspection, not promotion
 
@@ -127,8 +130,10 @@ no learned information. No synthetic/backfilled episodes or candidate are writte
 A narrow observation-coverage lesson might merit investigation, but the supplied
 full hypothesis is not established by this inspection.
 
-Delivery gate: independent Agent 2 runtime review, fixes, dashboard adaptation,
-then each agent performs the first real consolidation and cross-reviews any actual
-candidate. Until then production consolidation/candidate journals stay empty.
-Technical tests demonstrate lifecycle behavior only. Learning from experience and
-positive utility require the later natural retrieval/decision/outcome chain.
+Delivery status: independent runtime review, fixes and dashboard adaptation are
+merged. Agent 1's first real check inspected Agent 2's sealed evidence plus the
+session 214 addendum and recorded `NO LESSON CANDIDATE`: P4 remains unevaluated,
+P5 is one bounded repository case, and the flagged wording substantially repeats
+owner policy and existing seed families. Agent 2 independently reviews that result
+next. Technical tests demonstrate lifecycle behavior only. Learning from experience
+and positive utility still require a later natural retrieval/decision/outcome chain.

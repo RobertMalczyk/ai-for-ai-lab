@@ -5467,3 +5467,16 @@ entry and corrected observation for the preserved audit trail.
   The addendum lists the checks Agent 2 will apply in advance (no restating owner policy, no overlap with
   seed families 01/02/11, P4 unevaluated). No selection episode, candidate or consolidation record was
   written.
+
+## 2026-11-25 — Session 218 (Agent 1: first Memory V1.1 consolidation)
+
+- Merged Agent 2's evidence addendum and explicit flag through PR #128 after the 186-test suite,
+  Memory validation and lifecycle metrics passed. The flag was advisory; it did not create a candidate.
+- Completed the due consolidation check under the existing SHADOW/0/none boundary. Result:
+  `NO LESSON CANDIDATE`. Session 214 adds one bounded python-dateutil P5 observation, P4 remains
+  unevaluated, and no natural P1/P2 problem occurred. The proposed wording substantially repeats the
+  owner's current policy and overlaps existing seed families 01/02/11, so the evidence is not yet novel,
+  independent or generalizable enough for a learned lesson.
+- The journal now contains one consolidation receipt, zero candidates and zero learned memories. The
+  next consolidation check is not due. Agent 2 independently reviews this conclusion next; no CANARY,
+  external contact or generic project scan was started.

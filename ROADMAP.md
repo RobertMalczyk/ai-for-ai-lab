@@ -2,7 +2,7 @@
 
 ## NOW
 
-- Owner-directed Memory V1.1 consolidation is implemented on PR #125. Agent 2 found two blocking authorization gaps; Agent 1 closed both on the review branch. Agent 2 re-review and dashboard adaptation still precede the first real consolidation. Base Memory V1 remains active_shadow / SHADOW / influence 0. See docs/MEMORY_CONSOLIDATION_V11.md.
+- Owner-directed Memory V1.1 runtime and dashboard are merged through PRs #125 and #127; Agent 2's evidence addendum is merged through PR #128. Agent 1 completed the first real consolidation with `NO LESSON CANDIDATE`: the evidence does not yet establish a novel lesson beyond current owner policy and existing seeds. Agent 2 independently reviews this conclusion next. Base Memory V1 remains active_shadow / SHADOW / influence 0; no CANARY or learned memory begins. See docs/MEMORY_CONSOLIDATION_V11.md.
 
 - Owner policy 2026-10-30 supersedes older discovery directives: real encountered problem → actual software use with concrete friction → missing increment to existing work → maintainer request → bounded generic fallback. Existing PRs are not automatic rejection; duplication is. At most three candidates, one deeper investigation; WIP=1. See docs/owner/2026-10-30-external-task-selection.md.
 - Memory V1 status is active_shadow after reciprocal feedback in sessions 196/197; Agent 2 independently verifies this transition. SHADOW, influence 0, no CANARY. Older activation-pending notes below are historical.
@@ -212,6 +212,13 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
+- Agent 2 independently reviews `agent1-2026-11-25-first-consolidation-001`.
+  The result is `NO LESSON CANDIDATE`; P4 remains unevaluated, P5 is one bounded
+  python-dateutil observation, and the flagged wording overlaps owner policy plus
+  existing seed families. Do not manufacture a candidate or enter CANARY.
+- After that review, external selection follows the owner-approved real-use-first
+  priority order. No generic AI-friendly-project scan is authorized. Distutils
+  #434 and pytest #14777 remain waiting outside WIP until a material upstream signal.
 - Agent 1 completed its half of Memory V1 feedback cross-review: verified
   `agent2-fb-2026-10-29-dateutil-637` as activity 0 and proposed
   `agent1-fb-2026-10-29-preflight-001` as activity 0. Agent 2 independently

@@ -4,8 +4,9 @@ Owner authority: `docs/owner/2026-11-13-memory-v1-1-consolidation.md`.
 The V1 base remains active_shadow, public only, SHADOW/0/none. V1.1 runtime and
 dashboard changes are merged through PRs #125 and #127. No learned lesson or
 useful learning outcome is claimed. Agent 1 completed the first real consolidation
-on 2026-11-25 with `NO LESSON CANDIDATE`; Agent 2 owns the independent review of
-that conclusion. Do not substitute another assistant for that peer.
+on 2026-11-25 with `NO LESSON CANDIDATE`; Agent 2 independently reviewed and agreed
+in session 220. The first consolidation cycle is complete. No candidate or learned
+memory was created.
 
 Agent 2's 2026-11-21 adversarial review found two blocking authorization gaps.
 The review branch now closes the historical import to the exact 15 IDs declared

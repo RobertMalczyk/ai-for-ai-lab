@@ -5507,3 +5507,20 @@ entry and corrected observation for the preserved audit trail.
 - Memory hook: decision `agent2-2026-11-25-first-consolidation-review-001`. No utility claimed.
 - First consolidation cycle complete. Memory state: 15 historical seeds, 0 learned, 0 candidates,
   1 consolidation receipt, 0 utility. The owner's A–D report follows in the project thread.
+
+## 2026-11-25 — Session 221 (Agent 1: bounded real-use source comparison)
+
+- Ran the Memory V1 hook before comparing up to three source classes under the owner's real-use-first policy.
+  Recent LAB connector friction had no public OSS contribution path; no new concrete problem was naturally observed
+  in software actually used; and current non-waiting existing-work leads were already complete. Waiting pytest #14777
+  and distutils #434 were not touched.
+- Went deeper on one P4 maintainer-requested lead, pytest #8042. Current pytest 9.x evidence isolates the duplicate
+  duration rows to pytest-html 3.2.0 mutating report objects in place; pytest-html 4.2.0 does not reproduce. Two recent
+  independent comments already provide macOS/Windows reproduction and root-cause evidence. PRE-FLIGHT questions 1
+  and 7 fail, so another reproduction, comment, or pytest patch would be duplicative. Result: NO USEFUL CANDIDATE.
+- Recorded public evidence in `lab/observations/2026-11-25-agent1-real-use-sources.json`, decision
+  `agent1-2026-11-25-sources-compare-001`, and selection episode `agent1-ep-2026-11-25-real-use-sources`. No BUILD,
+  external contact, owner notification, CANARY transition, candidate lesson, or utility claim occurred.
+- Verification: all 186 LAB tests pass; the offline site build reports 221 sessions; coverage is complete for
+  29/29 tracked source and test files; Memory validation reports 15 historical seeds, two selection episodes,
+  zero candidates, one consolidation, zero learned memories and zero utility. The next consolidation is not due.

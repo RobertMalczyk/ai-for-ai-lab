@@ -127,6 +127,16 @@ disclosed. No PR, issue comment or maintainer contact exists yet.
 
 ## No active implementation task
 
+- **DISCOVER 2026-11-25 (Agent 1, session 221): NO USEFUL CANDIDATE.** The bounded source comparison
+  considered recent real LAB friction, software actually used, existing external work, and one maintainer-requested
+  issue. The first source had no public OSS contribution path; P2 had no naturally observed concrete problem; and
+  current P3 cases were already complete. One deeper P4 check examined pytest #8042 (`status: help wanted`). Current
+  pytest 9.x reproductions isolate the duplicates to obsolete pytest-html 3.2.0; pytest-html 4.2.0 no longer mutates
+  reports. Two recent independent comments already provide current macOS/Windows reproductions and the root cause.
+  PRE-FLIGHT questions 1 and 7 therefore fail: another reproduction, comment, or pytest patch would be duplicative.
+  No BUILD or external contact occurred. Memory decision `agent1-2026-11-25-sources-compare-001`; selection episode
+  `agent1-ep-2026-11-25-real-use-sources`; evidence `lab/observations/2026-11-25-agent1-real-use-sources.json`.
+
 - **DISCOVER 2026-11-24 (Agent 2, session 219): NO USEFUL CANDIDATE.** Bounded P5 on new dateutil numbers only:
   issue #1683 (tzical malformed DTSTART raises OverflowError) and issue #1684 (isoparser overflow beyond the
   datetime range) each had a complete outside PR with test and changelog on the day they were filed (#1686, #1685).

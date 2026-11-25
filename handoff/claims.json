@@ -343,7 +343,7 @@
   },
   {
     "id": "external-oss-contribution",
-    "text": "The owner-directed external workflow submitted the reviewed distutils contribution; sqlparse, dinnerbell and inflect were rejected; dateutil #637 reproduced but was rejected at independent check because PRE-FLIGHT missed the maintainer's unresolved API-design objection. Under the 2026-10-30 real-use-first policy, both agents' source lists were compared (session 207): no useful candidate; the strongest, sqlparse, was fixed upstream before ending maintenance.",
+    "text": "The owner-directed external workflow submitted the reviewed distutils contribution; sqlparse, dinnerbell and inflect were rejected; dateutil #637 reproduced but was rejected at independent check because PRE-FLIGHT missed the maintainer's unresolved API-design objection. Under the 2026-10-30 real-use-first policy, bounded source comparisons continue to reject duplicative work: session 221 found pytest #8042 absent from current pytest-html and already supported by independent reproduction and root-cause evidence.",
     "evidence": [
       "lab/tasks/EXTERNAL.md",
       "lab/observations/2026-10-12-distutils-433-build.json",
@@ -356,6 +356,7 @@
       "lab/observations/2026-10-15-distutils-human-approval-sync.json",
       "lab/reports/2026-10-15-distutils-human-approval-sync-field-trial.json",
       "lab/observations/2026-10-24-sqlparse-885-886-build.json",
+      "lab/observations/2026-11-25-agent1-real-use-sources.json",
       "lab/observations/traces/2026-10-24-sqlparse-885-886.patch",
       "lab/observations/traces/2026-10-24-sqlparse-885-886-build.txt",
       "docs/DECISIONS.md",
@@ -402,13 +403,14 @@
   },
   {
     "id": "memory-consolidation",
-    "text": "Memory V1.1 append-only consolidation and independent lesson promotion are merged. Agent 1's first real check recorded NO LESSON CANDIDATE; Agent 2 review of that conclusion remains pending. No learned memory or learning utility is established.",
+    "text": "Memory V1.1 append-only consolidation and independent lesson promotion are merged. Agent 1's first real check recorded NO LESSON CANDIDATE, and Agent 2 independently agreed. No learned memory or learning utility is established.",
     "evidence": [
       "src/ai_for_ai_lab/consolidation.py",
       "src/ai_for_ai_lab/memory.py",
       "tests/test_consolidation.py",
       "lab/memory/records.v1.schema.json",
       "lab/memory/consolidations.jsonl",
+      "lab/memory/FIRST-CONSOLIDATION-REVIEW-agent2.md",
       "docs/MEMORY_CONSOLIDATION_V11.md",
       "docs/owner/2026-11-13-memory-v1-1-consolidation.md",
       "lab/memory/CONSOLIDATION-CASES-agent2.md"

@@ -5480,3 +5480,14 @@ entry and corrected observation for the preserved audit trail.
 - The journal now contains one consolidation receipt, zero candidates and zero learned memories. The
   next consolidation check is not due. Agent 2 independently reviews this conclusion next; no CANARY,
   external contact or generic project scan was started.
+
+## 2026-11-25 — Session 220 (Agent 2: review of the first Memory V1.1 consolidation)
+
+- Independent review of Agent 1's first consolidation (`agent1-2026-11-25-first-consolidation-001`,
+  session 218): **AGREE with NO LESSON CANDIDATE**. The only new evidence under real-use-first is one P5
+  observation in one repository, P4 has never been evaluated, and the flagged wording overlaps owner
+  policy and seed families 01/02/11. Review: `lab/memory/FIRST-CONSOLIDATION-REVIEW-agent2.md`, which also
+  says what would justify a candidate at a later check.
+- Memory hook: decision `agent2-2026-11-25-first-consolidation-review-001`. No utility claimed.
+- First consolidation cycle complete. Memory state: 15 historical seeds, 0 learned, 0 candidates,
+  1 consolidation receipt, 0 utility. The owner's A–D report follows in the project thread.

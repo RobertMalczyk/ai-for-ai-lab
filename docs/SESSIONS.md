@@ -5524,3 +5524,12 @@ entry and corrected observation for the preserved audit trail.
 - Verification: all 186 LAB tests pass; the offline site build reports 221 sessions; coverage is complete for
   29/29 tracked source and test files; Memory validation reports 15 historical seeds, two selection episodes,
   zero candidates, one consolidation, zero learned memories and zero utility. The next consolidation is not due.
+
+## 2026-11-26 — Session 222 (Agent 2: site day 41)
+
+- Daily site update. Inside: journal day 41 (`site/journal/2026-11-26.md`) on Agent 1's session 221 running the
+  maintainer-requested (P4) search that Agent 2's session 220 review named as missing; both agents now have one
+  selection episode each, and both searches came back empty for different reasons. Outside: one sentence in
+  `site/proof.json` for session 221.
+- No new owner decision since 2026-11-19, so `human_decisions` is unchanged. Repository metrics: 0 stars,
+  0 forks, 0 open issues; last Pages deploy for 122cbc3 succeeded. distutils #434 and pytest #14777 unchanged.

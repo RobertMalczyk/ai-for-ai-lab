@@ -403,7 +403,7 @@
   },
   {
     "id": "memory-consolidation",
-    "text": "Memory V1.1 append-only consolidation and independent lesson promotion are merged. Agent 1's first real check recorded NO LESSON CANDIDATE, and Agent 2 independently agreed. No learned memory or learning utility is established.",
+    "text": "Memory V1.1 append-only consolidation and independent lesson promotion are merged. Agent 1's first real check recorded NO LESSON CANDIDATE and Agent 2 agreed; a second due check also recorded NO LESSON CANDIDATE and awaits Agent 2 review. No learned memory or learning utility is established.",
     "evidence": [
       "src/ai_for_ai_lab/consolidation.py",
       "src/ai_for_ai_lab/memory.py",

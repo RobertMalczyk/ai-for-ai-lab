@@ -2,7 +2,7 @@
 
 ## NOW
 
-- Owner-directed Memory V1.1 runtime and dashboard are merged through PRs #125 and #127; Agent 2's evidence addendum is merged through PR #128. The first real consolidation cycle is complete: Agent 1 recorded `NO LESSON CANDIDATE`, and Agent 2 independently agreed. The evidence does not yet establish a novel lesson beyond current owner policy and existing seeds. Base Memory V1 remains active_shadow / SHADOW / influence 0; no CANARY or learned memory begins. See docs/MEMORY_CONSOLIDATION_V11.md.
+- Owner-directed Memory V1.1 runtime and dashboard are merged through PRs #125 and #127; Agent 2's evidence addendum is merged through PR #128. The first consolidation cycle ended with independently agreed `NO LESSON CANDIDATE`. A second due check also recorded `NO LESSON CANDIDATE`: one bounded P5 case and one bounded P4 case do not establish a strategy comparison or a novel lesson beyond current policy and seeds. Agent 2 independently reviews the second result next. Base Memory V1 remains active_shadow / SHADOW / influence 0; no CANARY or learned memory begins. See docs/MEMORY_CONSOLIDATION_V11.md.
 
 - Owner policy 2026-10-30 supersedes older discovery directives: real encountered problem → actual software use with concrete friction → missing increment to existing work → maintainer request → bounded generic fallback. Existing PRs are not automatic rejection; duplication is. At most three candidates, one deeper investigation; WIP=1. See docs/owner/2026-10-30-external-task-selection.md.
 - Memory V1 status is active_shadow after reciprocal feedback in sessions 196/197; Agent 2 independently verifies this transition. SHADOW, influence 0, no CANARY. Older activation-pending notes below are historical.
@@ -212,18 +212,17 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
-- Agent 2 independently reviews `agent1-2026-11-25-first-consolidation-001`.
-  The result is `NO LESSON CANDIDATE`; P4 remains unevaluated, P5 is one bounded
-  python-dateutil observation, and the flagged wording overlaps owner policy plus
-  existing seed families. Do not manufacture a candidate or enter CANARY.
+- Agent 2 independently reviews `agent1-2026-11-26-second-consolidation-001` and
+  verifies or disputes feedback proposal `agent1-fb-2026-11-26-real-use-sources`.
+  The consolidation result is `NO LESSON CANDIDATE`; the neutral feedback says
+  the retrieved lessons were relevant but not causally decisive. Do not manufacture
+  a candidate, utility claim or CANARY transition.
 - After that review, external selection follows the owner-approved real-use-first
   priority order. No generic AI-friendly-project scan is authorized. Distutils
   #434 and pytest #14777 remain waiting outside WIP until a material upstream signal.
-- Agent 1 completed its half of Memory V1 feedback cross-review: verified
-  `agent2-fb-2026-10-29-dateutil-637` as activity 0 and proposed
-  `agent1-fb-2026-10-29-preflight-001` as activity 0. Agent 2 independently
-  verifies or disputes the latter before any `active_shadow` claim. Do not infer
-  causal utility or external value from schema-valid records.
+- Earlier reciprocal feedback is verified and `active_shadow` is already active.
+  The new session-221 feedback remains proposed until Agent 2 independently checks
+  it. Do not infer causal utility or external value from schema-valid records.
 - Continue bounded external discovery after django-json-api #1347, CUGA #847 and
   aiohttp #2928 all failed PRE-FLIGHT question 2 on exact open fix PRs. Do not
   clone or reproduce those candidates unless their competing-work state changes.

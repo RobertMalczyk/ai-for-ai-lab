@@ -7,7 +7,7 @@ useful learning outcome is claimed. Agent 1 completed the first real consolidati
 on 2026-11-25 with `NO LESSON CANDIDATE`; Agent 2 independently reviewed and agreed
 in session 220. The first consolidation cycle is complete. No candidate or learned
 memory was created. A second due check on 2026-11-26 also recorded
-`NO LESSON CANDIDATE`; Agent 2 independently reviews that result next.
+`NO LESSON CANDIDATE`; Agent 2 independently reviewed and agreed in session 225.
 
 Agent 2's 2026-11-21 adversarial review found two blocking authorization gaps.
 The review branch now closes the historical import to the exact 15 IDs declared
@@ -137,6 +137,7 @@ merged. Agent 2 agreed with Agent 1's first `NO LESSON CANDIDATE`. The second du
 check adds one bounded P5 case and one bounded P4 case with different mechanisms;
 neither is a natural P1/P2 case or an actionable candidate, and together they do
 not establish a candidate-rate comparison. Agent 1 again recorded
-`NO LESSON CANDIDATE`; Agent 2 reviews it next. Technical tests demonstrate
-lifecycle behavior only. Learning from experience and positive utility still
+`NO LESSON CANDIDATE`; Agent 2 independently agreed and verified the associated
+activity feedback at value 0 in session 225. Technical tests demonstrate lifecycle
+behavior only. Learning from experience and positive utility still
 require a later natural retrieval/decision/outcome chain.

@@ -1,6 +1,6 @@
 # State
 
-- Owner-directed Memory V1.1 runtime and dashboard are merged through PRs #125 and #127; Agent 2's evidence addendum is merged through PR #128. The first real consolidation cycle is complete: Agent 1 recorded `NO LESSON CANDIDATE`, and Agent 2 independently agreed. P4 now has one bounded evaluation, but it produced no candidate; the learning evidence still does not justify promotion. Base Memory V1 remains active_shadow / SHADOW / influence 0; no CANARY or learned memory begins. See docs/MEMORY_CONSOLIDATION_V11.md.
+- Owner-directed Memory V1.1 runtime and dashboard are merged through PRs #125 and #127; Agent 2's evidence addendum is merged through PR #128. The first consolidation cycle ended with independently agreed `NO LESSON CANDIDATE`. A second due check also recorded `NO LESSON CANDIDATE`: one bounded P5 case and one bounded P4 case have different anti-duplication mechanisms and do not establish a strategy comparison. Agent 2 reviews that second result and Agent 1's neutral feedback proposal next. Base Memory V1 remains active_shadow / SHADOW / influence 0; no CANARY or learned memory begins. See docs/MEMORY_CONSOLIDATION_V11.md.
 
 - Owner policy 2026-10-30 supersedes older discovery directives: real encountered problem → actual software use with concrete friction → missing increment to existing work → maintainer request → bounded generic fallback. Existing PRs are not automatic rejection; duplication is. At most three candidates, one deeper investigation; WIP=1. See docs/owner/2026-10-30-external-task-selection.md.
 - Memory V1 status is active_shadow after reciprocal feedback in sessions 196/197; Agent 2 independently verifies this transition. SHADOW, influence 0, no CANARY. Older activation-pending notes below are historical.
@@ -156,10 +156,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: Agent 2 independently reviews Agent 1's first consolidation result. No
-  external implementation WIP is active. After that review, choose external work
-  only through the owner-approved real-use-first priority order; do not resume the
-  older generic project scan. Keep distutils #434 and pytest #14777 waiting for a
+- Next: Agent 2 independently reviews Agent 1's second `NO LESSON CANDIDATE`
+  consolidation and verifies or disputes the session-221 activity-0 feedback
+  proposal. No external implementation WIP is active. Further external selection
+  remains real-use-first; keep distutils #434 and pytest #14777 waiting for a
   material upstream signal.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.

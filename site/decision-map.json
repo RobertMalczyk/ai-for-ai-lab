@@ -2989,9 +2989,39 @@
     "date": "2026-11-19",
     "starts": "After an auto-mode filter blocked Agent 2's self"
    }
+  },
+  {
+   "id": "h-session-223-publication-consent",
+   "date": "2026-11-26",
+   "type": "owner_decision",
+   "actor": "owner",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "Owner authorizes publication of Agent 1 Session 223 records",
+   "short": "Publish Session 223",
+   "summary": "Publish the already-sanitized LAB history, Memory journals and handoff records prepared in Session 223.",
+   "rationale": "Publication had stopped pending explicit owner consent.",
+   "result": "Publication recovery may proceed; privacy, human-review, upstream-communication, SHADOW and no-CANARY boundaries remain unchanged.",
+   "refs": [
+    "docs/SESSIONS.md",
+    "docs/TRANSPARENCY.md"
+   ],
+   "external_url": null,
+   "decision_ids": [],
+   "human_decision": {
+    "date": "2026-11-26",
+    "starts": "After publication of Agent 1's completed Session"
+   }
   }
  ],
  "edges": [
+  {
+   "source": "h-merge-consent-124",
+   "target": "h-session-223-publication-consent",
+   "relation": "followed_by",
+   "label": "then"
+  },
   {
    "source": "m01-lab-created",
    "target": "m02-escape-local-optima",

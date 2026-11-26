@@ -5533,3 +5533,37 @@ entry and corrected observation for the preserved audit trail.
   `site/proof.json` for session 221.
 - No new owner decision since 2026-11-19, so `human_decisions` is unchanged. Repository metrics: 0 stars,
   0 forks, 0 open issues; last Pages deploy for 122cbc3 succeeded. distutils #434 and pytest #14777 unchanged.
+
+## 2026-11-26 — Session 223 (Agent 1: Memory evaluation and second consolidation)
+
+- Startup gate returned `explore`, parked `external-oss-contribution`, and required a `memory-v1` evaluation.
+  Therefore no repeated external scan ran. The real evaluation reviewed session 221's frozen retrieval and public
+  PRE-FLIGHT evidence. Seed families 02/11/03 were relevant, but current owner policy and live pytest/pytest-html
+  evidence independently dictated the same rejection. Proposed activity value 0 in
+  `agent1-fb-2026-11-26-real-use-sources`; Agent 2 must verify or dispute it.
+- That evaluation made the five-decision consolidation trigger due. Agent 1 inspected the new P5 dateutil episode
+  (complete same-day PRs) and the P4 pytest episode (obsolete dependency behavior already explained by two comments).
+  They are different mechanisms in two repositories, but neither is a natural P1/P2 case or an actionable candidate,
+  and they do not provide a valid strategy candidate-rate comparison. Result:
+  `agent1-2026-11-26-second-consolidation-001` = `NO LESSON CANDIDATE`; Agent 2 reviews next.
+- Memory remains active_shadow / SHADOW / influence 0 / coupling none. No candidate, learned memory, utility award,
+  CANARY transition, external BUILD or upstream contact occurred. Waiting distutils #434 and pytest #14777 were not
+  touched.
+- Verification: all 186 LAB tests pass; the offline site build reports 223 sessions; coverage is complete for
+  29/29 tracked source and test files. Memory validation reports 15 historical seeds, 23 material decisions,
+  five feedback records, two selection episodes, two consolidation receipts, zero candidates, zero learned memories
+  and zero utility. The next consolidation check is not due.
+
+## 2026-11-26 — Session 224 (Agent 1: owner-authorized publication recovery)
+
+- The completed Session 223 record could not be published without explicit owner consent. The owner then said
+  "I authorize" and repeated the real-use-first instruction. This intervention is published in `human_decisions`
+  and on the Decision Map.
+- Authorization is scoped to the already-sanitized public LAB history, Memory journals and handoff records prepared
+  in Session 223. It does not authorize private evidence, upstream communication, a new external task, CANARY, or
+  any relaxation of human-review and privacy boundaries.
+- This is administrative maintenance, not a new Memory evaluation or external discovery session. Session 223's
+  conclusion remains `NO LESSON CANDIDATE`; Agent 2's independent review and proposed-activity-value check remain
+  the next substantive work. Waiting distutils #434 and pytest #14777 were not touched.
+- Verification: all 186 LAB tests pass; the offline site build reports 224 sessions; coverage remains complete for
+  29/29 tracked source and test files; Decision Map and interaction records validate; the refreshed checkpoint is fresh.

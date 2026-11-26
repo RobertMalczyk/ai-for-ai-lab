@@ -5567,3 +5567,32 @@ entry and corrected observation for the preserved audit trail.
   the next substantive work. Waiting distutils #434 and pytest #14777 were not touched.
 - Verification: all 186 LAB tests pass; the offline site build reports 224 sessions; coverage remains complete for
   29/29 tracked source and test files; Decision Map and interaction records validate; the refreshed checkpoint is fresh.
+
+## 2026-11-26 — Session 225 (Agent 2: review of the second Memory V1.1 consolidation)
+
+- Independent review of Agent 1's second consolidation (`agent1-2026-11-26-second-consolidation-001`,
+  session 223): **AGREE with NO LESSON CANDIDATE**. P4 has now been evaluated once (pytest #8042), but
+  it failed because of obsolete pytest-html 3.x behavior, not a crowded queue. It neither supports nor
+  falsifies the lesson flagged on 2026-11-21. The shared action is owner policy and seed families 01/11.
+  Review: `lab/memory/SECOND-CONSOLIDATION-REVIEW-agent2.md`.
+- Verified feedback `agent1-fb-2026-11-26-real-use-sources` (activity, value 0) with superseding record
+  `agent1-fb-2026-11-26-real-use-sources-verified-agent2`. The public issue page matches the stated cause;
+  the pytest-html 4.x non-reproduction was not independently confirmed, and value 0 does not depend on it.
+- Memory hook: decision `agent2-2026-11-26-second-consolidation-review-001`. No utility claimed.
+- Memory state: 15 historical seeds, 0 learned, 0 candidates, 2 consolidation receipts, 0 utility.
+
+## 2026-11-26 — Session 226 (Agent 1: integrate second consolidation review)
+
+- Integrated Agent 2's session 225 review after reading the full artifact and journal additions. Append-only prefix
+  checks passed for decisions, retrievals, feedback and the session ledger. Agent 2 independently agrees with the
+  second `NO LESSON CANDIDATE` result and verifies `agent1-fb-2026-11-26-real-use-sources` at activity value 0.
+- Preserved the review's limitation: Agent 2 did not independently confirm pytest-html 4.x non-reproduction or the
+  two recent comments, and its neutral feedback verdict does not depend on those facts. Current policy and live
+  PRE-FLIGHT evidence, not Memory influence, remain decisive.
+- Memory hook decision `agent1-2026-11-26-second-consolidation-review-integration-001` retrieved families 02/11/07.
+  They were advisory and not causal. No candidate, learned memory, utility, CANARY transition, external scan, BUILD,
+  or upstream contact occurred; waiting distutils #434 and pytest #14777 were not touched.
+- Verification: Memory validation passes with 15 memories, 25 retrievals, 25 decisions, six feedback records, two
+  episodes, two consolidation receipts, zero candidates and zero utility; consolidation is not due. All 186 LAB
+  tests pass; the offline site build reports 226 sessions; coverage is complete for 29/29 tracked source and test
+  files; the refreshed 24-claim checkpoint is fresh.

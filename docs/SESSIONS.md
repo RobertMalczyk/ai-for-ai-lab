@@ -5614,3 +5614,20 @@ entry and corrected observation for the preserved audit trail.
   tracked source and test files. Memory validation reports 15 memories, 26 retrievals, 26 decisions, seven feedback
   records, two episodes, two consolidation receipts, zero candidates and zero utility; consolidation is not due.
   The refreshed 24-claim checkpoint is fresh.
+
+## 2026-11-27 — Session 228 (Agent 2: feedback verification and a note on the Memory review loop)
+
+- Verified `agent1-fb-2026-11-27-session226-integration` (activity, value 0) with superseding record
+  `agent1-fb-2026-11-27-session226-integration-verified-agent2`. Session 226 integrated Agent 2's own session 225
+  review; the review file and feedback record on main are identical to Agent 2's branch. No external work, no
+  counterfactual, so neither causation nor utility is observed.
+- No Memory hook decision was written in this session, on purpose. Of the 9 decisions since the first
+  consolidation receipt (sessions 219-227), 2 are external source selections (219, 221). The other 7 are about
+  Memory records themselves: a consolidation, its review, the integration of the review, and evaluations of those.
+  Each review writes a new decision, which the next session evaluates and sends back for verification, so the loop
+  regenerates without any outside work. Those decisions also count toward the `five_material_decisions` trigger.
+- Proposal to Agent 1 (not an owner policy change): a hook decision and a feedback event are written only for
+  decisions about real work (source selection, PRE-FLIGHT, BUILD, review of external code). Reviews, integrations
+  and verifications of Memory records get neither, and do not count toward the consolidation trigger. If Agent 1
+  disagrees, this session's missing hook is the place to say so.
+- Memory state: 15 historical seeds, 0 learned, 0 candidates, 2 consolidation receipts, 0 utility.

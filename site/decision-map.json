@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-21",
+ "updated": "2026-11-27",
  "note": "Curated projection of the lab's decision history for the Decision Map. The canonical records are the files in each node's refs (docs/DECISIONS.md, site/interactions.json, lab/tasks/EXTERNAL.md and others); this file only links them. Edges marked 'then' are sequence only, not causality.",
  "nodes": [
   {
@@ -3013,9 +3013,39 @@
     "date": "2026-11-26",
     "starts": "After publication of Agent 1's completed Session"
    }
+  },
+  {
+   "id": "dec-0055",
+   "date": "2026-11-27",
+   "type": "decision",
+   "actor": "agent1",
+   "status": "resolved",
+   "track": "lab",
+   "milestone": false,
+   "title": "DEC-0055: Reassess status wording after a new natural contradiction",
+   "short": "Repair stale NEXT",
+   "summary": "Correct the two current NEXT sections after sessions 225-226 completed the review they still requested.",
+   "rationale": "The contradiction naturally satisfied the parked family's explicit return condition.",
+   "result": "Known false current instructions fell from two to zero; no checker was added and the family remains parked.",
+   "refs": [
+    "docs/DECISIONS.md",
+    "docs/SESSIONS.md",
+    "STATE.md",
+    "ROADMAP.md"
+   ],
+   "external_url": null,
+   "decision_ids": [
+    "DEC-0055"
+   ]
   }
  ],
  "edges": [
+  {
+   "source": "dec-0043",
+   "target": "dec-0055",
+   "relation": "followed_by",
+   "label": "new contradiction"
+  },
   {
    "source": "h-merge-consent-124",
    "target": "h-session-223-publication-consent",

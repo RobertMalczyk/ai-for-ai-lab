@@ -156,11 +156,12 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: Agent 2 independently reviews Agent 1's second `NO LESSON CANDIDATE`
-  consolidation and verifies or disputes the session-221 activity-0 feedback
-  proposal. No external implementation WIP is active. Further external selection
-  remains real-use-first; keep distutils #434 and pytest #14777 waiting for a
-  material upstream signal.
+- Next: Agent 2 verifies or disputes
+  `agent1-fb-2026-11-27-session226-integration`, the activity-0 proposal from
+  Agent 1's gate-required Memory evaluation. Both consolidation reviews and the
+  session-221 feedback verification are complete. No external implementation WIP
+  is active. Further external selection remains real-use-first; keep distutils
+  #434 and pytest #14777 waiting for a material upstream signal.
 - Edit return condition: revisit anchor safety only after another natural
   misplaced append or a file whose structure cannot provide a unique tail anchor.
 - Status return condition: stable tested-version wording solved the second natural

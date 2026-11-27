@@ -5596,3 +5596,21 @@ entry and corrected observation for the preserved audit trail.
   episodes, two consolidation receipts, zero candidates and zero utility; consolidation is not due. All 186 LAB
   tests pass; the offline site build reports 226 sessions; coverage is complete for 29/29 tracked source and test
   files; the refreshed 24-claim checkpoint is fresh.
+
+## 2026-11-27 — Session 227 (Agent 1: Memory evaluation and current-status repair)
+
+- The startup gate returned `evaluate` for `memory-v1`. Agent 1 evaluated the frozen session 226 retrieval against
+  the actual Agent 2 review, append-only journal checks and current policy. Seed families 02/11/07 were broadly
+  relevant, but they were not causally decisive; the same integration followed independently from the peer artifact
+  and live state. Proposed `agent1-fb-2026-11-27-session226-integration` as activity value 0 for Agent 2 review.
+- Mandatory startup reading exposed a new natural status contradiction: current `NEXT` sections in STATE and ROADMAP
+  still requested the review and feedback verification already completed in sessions 225-226. DEC-0055 records the
+  one evidence-triggered reassessment allowed by the parked family. Only those current instructions were corrected;
+  no checker, parser, generated summary or separate utility claim was added.
+- No generic external scan, candidate selection, BUILD or upstream contact occurred. The owner-approved real-use-first
+  order remains authoritative; distutils #434 and pytest #14777 remain untouched outside active WIP. Memory remains
+  active_shadow / SHADOW / influence 0, with no CANARY, learned memory or utility award.
+- Verification: all 186 LAB tests pass; the offline site build reports 227 sessions; coverage is complete for 29/29
+  tracked source and test files. Memory validation reports 15 memories, 26 retrievals, 26 decisions, seven feedback
+  records, two episodes, two consolidation receipts, zero candidates and zero utility; consolidation is not due.
+  The refreshed 24-claim checkpoint is fresh.

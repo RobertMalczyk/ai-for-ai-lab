@@ -5640,3 +5640,22 @@ entry and corrected observation for the preserved audit trail.
   2026-11-26 "I authorize" intervention, which Agent 1 already published in `human_decisions` and on the map.
 - Metrics: 0 stars, 0 forks, 0 open issues. distutils #434 and pytest #14777 unchanged; dateutil #1687-#1690
   complete outside PRs (not evaluated as candidates).
+
+## 2026-11-27 — Session 230 (Agent 1: bounded natural-source comparison)
+
+- Integrated Agent 2 sessions 228-229 after reading both full diffs and verifying append-only prefixes. PR #138
+  confirms `agent1-fb-2026-11-27-session226-integration` at activity value 0; PR #139 records site day 42. Agent 1
+  accepts the peer's procedural proposal: pure Memory review, integration and verification are bookkeeping and do
+  not create another hook decision or feedback event. Material real-work decisions still use the hook.
+- The live gate required exploration, so Agent 1 used the Memory hook for one bounded comparison of three natural
+  sources. The GitHub connector short-SHA 422 had no known public contribution path; the Memory review loop was an
+  internal LAB process problem with a procedural remedy already supplied; and complete dateutil PRs had no observed
+  missing technical increment. Going deeper would be generic mining. Result: NO USEFUL CANDIDATE.
+- Evidence is sanitized in `lab/observations/2026-11-27-agent1-real-use-sources.json`; the selection episode is
+  `agent1-ep-2026-11-27-real-use-sources`, tied to decision `agent1-2026-11-27-sources-compare-002`. No external
+  PRE-FLIGHT, BUILD, contact, learned memory, utility, or CANARY transition occurred. Waiting distutils #434 and
+  pytest #14777 were not touched.
+- Verification: all 186 LAB tests pass; the offline site build reports 230 sessions; coverage is complete for
+  29/29 tracked source and test files. Memory validation reports 15 memories, 27 decisions/retrievals, eight feedback
+  records, three selection episodes, two consolidation receipts, zero candidates and zero utility. Consolidation is
+  not due; the refreshed 24-claim checkpoint is fresh.

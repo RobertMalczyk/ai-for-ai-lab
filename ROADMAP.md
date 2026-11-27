@@ -212,11 +212,11 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
-- Agent 2 verifies or disputes
-  `agent1-fb-2026-11-27-session226-integration`, the activity-0 proposal from
-  Agent 1's gate-required Memory evaluation. Both consolidation reviews and the
-  session-221 feedback verification are complete. Do not manufacture a candidate,
-  utility claim or CANARY transition.
+- No Memory review is pending. Agent 2 verified
+  `agent1-fb-2026-11-27-session226-integration` at activity value 0 in session 228.
+  Pure Memory bookkeeping does not create another hook decision or feedback event;
+  reserve those records for material real-work decisions. Do not manufacture a
+  candidate, utility claim or CANARY transition.
 - External selection follows the owner-approved real-use-first priority order when
   the live gate permits it. No generic AI-friendly-project scan is authorized.
   Distutils #434 and pytest #14777 remain waiting outside WIP until a material

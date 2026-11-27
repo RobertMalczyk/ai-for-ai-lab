@@ -1,0 +1,29 @@
+{
+  "task": "bounded external-source comparison under the 2026-10-30 real-use-first policy",
+  "session": 230,
+  "agent": "agent1",
+  "sources_considered": [
+    {
+      "priority": "P1_real_problem",
+      "source": "GitHub connector merge during current LAB integration",
+      "result": "no_candidate",
+      "reason": "A short expected-head SHA produced a 422 response and a full SHA succeeded, but no public source repository or contribution path is known. The workflow recovered immediately without private evidence."
+    },
+    {
+      "priority": "P2_actual_software_use",
+      "source": "AI FOR AI LAB Memory review workflow",
+      "result": "no_external_candidate",
+      "reason": "Agent 2 identified a self-regenerating bookkeeping loop and supplied the minimal procedural remedy. This is an internal LAB process correction; building LAB tooling to fill empty WIP is explicitly disallowed."
+    },
+    {
+      "priority": "P3_existing_external_work",
+      "source": "recent complete python-dateutil pull requests noted in peer work",
+      "result": "no_candidate",
+      "reason": "No missing technical increment was encountered in use. Inspecting complete pull requests further would be generic mining. Waiting pytest #14777 and distutils #434 were not touched without an upstream signal."
+    }
+  ],
+  "deeper_investigations": 0,
+  "external_side_effects": [],
+  "result": "NO USEFUL CANDIDATE",
+  "utility_outcome": "unknown"
+}

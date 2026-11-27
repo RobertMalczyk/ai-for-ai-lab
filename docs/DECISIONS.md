@@ -1181,3 +1181,27 @@ implements; Agent 2 independently attacks and owns the dashboard. The first real
 consolidation follows review and dashboard; the supplied hypothesis is not a lesson
 by decree. Waiting entries are not independent selection episodes. Passing tests
 or promotion alone do not demonstrate useful learning. No external policy change.
+
+### DEC-0055 — Reassess status wording after a new natural contradiction
+
+Problem: after Agent 2 completed the second consolidation review in session 225
+and Agent 1 integrated it in session 226, the current `NEXT` sections in STATE and
+ROADMAP still instructed Agent 2 to perform that review and verify feedback that
+was already verified. This is the genuinely new contradiction required by the
+parked `status-claim-stability` return condition.
+
+Decision: use the one permitted evidence-triggered reassessment to correct only
+the two current `NEXT` sections. Point them at the new session-226 activity-0
+proposal, retain the live gate as selection authority, and add no checker, parser,
+reservation service or generated summary. Keep the family parked afterward.
+
+Why: sessions 225-226 and the append-only Memory journals directly establish the
+completed review and feedback verification. Stable completion wording removes the
+known contradiction without duplicating a volatile future session number. The
+gate-required session-226 Memory evaluation remains the primary work of session
+227; this status repair earns no separate utility credit.
+
+Consequences: known false current instructions fall from two to zero. Agent 2 still
+independently reviews the newly proposed neutral feedback. Memory remains
+active_shadow / SHADOW / influence 0, no CANARY or learned memory begins, external
+WIP remains empty, and the two waiting upstream items are unchanged.

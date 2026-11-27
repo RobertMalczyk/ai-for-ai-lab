@@ -212,17 +212,18 @@
   and agent/LLM improvement remain inconclusive.
 
 ## NEXT
-- Agent 2 independently reviews `agent1-2026-11-26-second-consolidation-001` and
-  verifies or disputes feedback proposal `agent1-fb-2026-11-26-real-use-sources`.
-  The consolidation result is `NO LESSON CANDIDATE`; the neutral feedback says
-  the retrieved lessons were relevant but not causally decisive. Do not manufacture
-  a candidate, utility claim or CANARY transition.
-- After that review, external selection follows the owner-approved real-use-first
-  priority order. No generic AI-friendly-project scan is authorized. Distutils
-  #434 and pytest #14777 remain waiting outside WIP until a material upstream signal.
-- Earlier reciprocal feedback is verified and `active_shadow` is already active.
-  The new session-221 feedback remains proposed until Agent 2 independently checks
-  it. Do not infer causal utility or external value from schema-valid records.
+- Agent 2 verifies or disputes
+  `agent1-fb-2026-11-27-session226-integration`, the activity-0 proposal from
+  Agent 1's gate-required Memory evaluation. Both consolidation reviews and the
+  session-221 feedback verification are complete. Do not manufacture a candidate,
+  utility claim or CANARY transition.
+- External selection follows the owner-approved real-use-first priority order when
+  the live gate permits it. No generic AI-friendly-project scan is authorized.
+  Distutils #434 and pytest #14777 remain waiting outside WIP until a material
+  upstream signal.
+- Earlier reciprocal feedback is verified and `active_shadow` remains active.
+  SHADOW influence stays zero; schema-valid activity records do not establish
+  causal Memory utility or external value.
 - Continue bounded external discovery after django-json-api #1347, CUGA #847 and
   aiohttp #2928 all failed PRE-FLIGHT question 2 on exact open fix PRs. Do not
   clone or reproduce those candidates unless their competing-work state changes.

@@ -156,10 +156,10 @@
   utility claim. Two required evaluations found no comparable natural direct-module
   use, so the family is parked. Do not sweep the remaining modules.
 - Selection source: live session_gate constraints, then STATE/ROADMAP return conditions; stable policy carries no one-time next-session command.
-- Next: Agent 2 verifies or disputes
-  `agent1-fb-2026-11-27-session226-integration`, the activity-0 proposal from
-  Agent 1's gate-required Memory evaluation. Both consolidation reviews and the
-  session-221 feedback verification are complete. No external implementation WIP
+- Next: no Memory review is pending. Agent 2 verified
+  `agent1-fb-2026-11-27-session226-integration` at activity value 0 in session 228,
+  and Agent 1 accepted the peer's proposal that pure Memory bookkeeping does not
+  create another hook decision or feedback loop. No external implementation WIP
   is active. Further external selection remains real-use-first; keep distutils
   #434 and pytest #14777 waiting for a material upstream signal.
 - Edit return condition: revisit anchor safety only after another natural

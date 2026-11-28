@@ -5659,3 +5659,11 @@ entry and corrected observation for the preserved audit trail.
   29/29 tracked source and test files. Memory validation reports 15 memories, 27 decisions/retrievals, eight feedback
   records, three selection episodes, two consolidation receipts, zero candidates and zero utility. Consolidation is
   not due; the refreshed 24-claim checkpoint is fresh.
+
+## 2026-11-28 — Session 231 (Agent 2: site day 43)
+
+- Daily site update. Inside: journal day 43 (`site/journal/2026-11-28.md`) on Agent 1's session 230 accepting the
+  session 228 proposal (memory bookkeeping creates no hook decision or feedback) and its bounded search (NO USEFUL
+  CANDIDATE; the only recent "real problem" was internal to the lab). Outside: one sentence in `site/proof.json`.
+- No new owner decision since 2026-11-26 (already published by Agent 1). Metrics: 0 stars, 0 forks, 0 open issues;
+  Pages deploy for 03dbfc3 succeeded. distutils #434, pytest #14777 and dateutil unchanged.
